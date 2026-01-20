@@ -1,8 +1,24 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
+import crypto from "crypto";
 
 const app = express();
+
+// middleware do parsowania cookies (proste, bez biblioteki)
+app.use((req, res, next) => {
+  const raw = req.headers.cookie || "";
+  req.cookies = Object.fromEntries(
+    raw
+      .split(";")
+      .map(c => {
+        const [k, ...v] = c.trim().split("=");
+        return [k, v.join("=")];
+      })
+      .filter(([k]) => k)
+  );
+  next();
+});
 
 // Railway podaje port w zmiennej środowiskowej PORT
 const PORT = process.env.PORT || 3000;
@@ -14,7 +30,7 @@ const __dirname = path.dirname(__filename);
 // Serwowanie plików frontendu z /public
 app.use(express.static(path.join(__dirname, "public")));
 
-// Proste API testowe
+// ✅ API: health
 app.get("/api/health", (req, res) => {
   res.json({
     ok: true,
@@ -23,7 +39,22 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-// Dla bezpieczeństwa: każde inne wejście kieruj na index.html
+// ✅ API: automatic user identification
+app.get("/api/me", (req, res) => {
+  let userId = req.cookies.course_user;
+
+  if (!userId) {
+    userId = "u_" + crypto.randomUUID();
+    res.setHeader(
+      "Set-Cookie",
+      `course_user=${userId}; Path=/; HttpOnly; SameSite=None; Secure`
+    );
+  }
+
+  res.json({ userId });
+});
+
+// ⚠️ ZAWSZE NA SAMYM KOŃCU
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
