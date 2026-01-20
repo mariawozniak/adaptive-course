@@ -237,138 +237,90 @@ export const modules = [
 },
 
  listening: {
-  segments: [
+  exercises: [
     {
+      id: "listening_mcq_1",
       type: "mcq",
-      start: 0,
-      end: 7,
-      question: "Ross wznosi toast:",
-      answers: [
-        { text: "z powodu awansu siostry", correct: true },
-        { text: "za szefa kuchni", correct: false },
-        { text: "z powodu urodzenia dziecka", correct: false }
-      ],
-      explanation:
-        "Here is to my sister, the newly appointed Head Lunch Chef – za moją siostrę, nowo mianowaną szefową kuchni."
+      segments: [
+        {
+          start: 0,
+          end: 7,
+          question: "Ross wznosi toast:",
+          answers: [
+            { text: "z powodu awansu siostry", correct: true },
+            { text: "za szefa kuchni", correct: false },
+            { text: "z powodu urodzenia dziecka", correct: false }
+          ],
+          explanation:
+            "Here is to my sister, the newly appointed Head Lunch Chef."
+        },
+
+        {
+          start: 7,
+          end: 20,
+          question: "Monica wymienia:",
+          answers: [
+            { text: "jej nowe obowiązki w pracy", correct: false },
+            { text: "korzyści z nowego stanowiska", correct: true }
+          ],
+          explanation:
+            "In charge of purchasing – odpowiedzialna za zakupy."
+        }
+
+      ]
     },
+
     {
-      type: "mcq",
-      start: 7,
-      end: 20,
-      question: "Monica wymienia:",
-      answers: [
-        { text: "jej nowe obowiązki w pracy", correct: false },
-        { text: "korzyści z nowego stanowiska", correct: true }
-      ],
-      explanation:
-        "In charge of purchasing – odpowiedzialna za zakupy. Own little desk – własne małe biurko."
-    },
-    {
-      type: "mcq",
-      start: 20,
-      end: 29,
-      question: "Ross wyraża:",
-      answers: [
-        { text: "zniecierpliwienie", correct: true },
-        { text: "że nie ma potrzeby czekać", correct: false }
-      ],
-      explanation:
-        "That's fine, I'll just wait – w porządku, poczekam."
-    },
-    {
-      type: "mcq",
-      start: 29,
-      end: 39,
-      question: "Czy są gotowi, aby złożyć zamówienie?",
-      answers: [
-        { text: "Tak, czekają już dłuższą chwilę.", correct: false },
-        { text: "Nie, ledwie zerknęli na karty.", correct: false },
-        { text: "Jeszcze nawet nie spojrzeli w menu.", correct: true }
-      ],
-      explanation:
-        "We haven't even looked yet – jeszcze nawet nie spojrzeliśmy."
-    },
-    {
-      type: "mcq",
-      start: 39,
-      end: 53,
-      question: "Kobiety dyskutują o:",
-      answers: [
-        { text: "daniach", correct: false },
-        { text: "cenach", correct: true }
-      ],
-      explanation:
-        "Wow, look at these prices – wow, spójrz na te ceny."
-    },
-    {
-      type: "mcq",
-      start: 53,
-      end: 65,
-      question: "Chandler spóźnił się, ponieważ:",
-      answers: [
-        { text: "spędził popołudnie z dziewczyną", correct: true },
-        { text: "pokłócił się z dziewczyną", correct: false },
-        { text: "musiał odwieźć dziewczynę", correct: false }
-      ],
-      explanation:
-        "How incredible was my afternoon with Chit – jak niesamowite było moje popołudnie z Chit."
-    },
-    {
-      type: "mcq",
-      start: 65,
-      end: 74,
-      question: "Dziewczyna Chandlera:",
-      answers: [
-        { text: "zostawiła mu wiadomość na lodówce", correct: false },
-        { text: "zostawiła mu wiadomość na sekretarce", correct: true }
-      ],
-      explanation:
-        "The message she left for you on my machine – wiadomość, którą zostawiła ci na mojej sekretarce."
-    },
-    {
-      type: "mcq",
-      start: 74,
-      end: 103,
-      question: "Joey pyta kelnera:",
-      answers: [
-        { text: "czy pizza będzie tańsza bez niektórych dodatków", correct: true },
-        { text: "czy może dostać pizzę bez niektórych dodatków", correct: false },
-        { text: "o szczegóły dotyczące dodatków na pizzy", correct: false }
-      ],
-      explanation:
-        "If I get it without the nuts and leeks and stuff, is it cheaper?"
-    },
-    {
-      type: "mcq",
-      start: 103,
-      end: 120,
-      question: "Rachel zamówiła:",
-      answers: [
-        { text: "sałatkę i cokolwiek", correct: false },
-        { text: "sałatkę i wodę", correct: true },
-        { text: "tylko wodę", correct: false }
-      ],
-      explanation:
-        "Rachel zamawia sałatkę i wodę."
-    },
-    {
-      type: "mcq",
-      start: 120,
-      end: 136,
-      question: "Phoebe zamówiła:",
-      answers: [
-        { text: "sałatkę ogórkową", correct: false },
-        { text: "zupę ogórkową", correct: true }
-      ],
-      explanation:
-        "Cucumber soup – zupa ogórkowa."
+      id: "listening_gapfill_1",
+      type: "gapfill",
+      segments: [
+        {
+          start: 0,
+          end: 8,
+          parts: [
+            { text: "who's", gap: false },
+            { text: "also in", gap: true },
+            { text: "charge of purchasing", gap: false }
+          ]
+        },
+        {
+          start: 8,
+          end: 14,
+          parts: [
+            { text: "who", gap: false },
+            { text: "has her own", gap: true },
+            { text: "little desk when Roland's not there", gap: false }
+          ]
+        }
+      ]
     }
   ]
 },
 
+
     shadowing: {
-      segments: []
-    },
+  segments: [
+    { start: 0.0, end: 6.3, text: "Here is to my sister, the newly appointed Head Lunch Chef…" },
+    { start: 6.3, end: 8.0, text: "Who is also in charge of purchasing!" },
+    { start: 8.0, end: 11.7, text: "The newly appointed Head Lunch Chef, who’s also in charge of purchasing." },
+    { start: 11.7, end: 14.0, text: "Who has her own little desk when Roland’s not there!" },
+    { start: 14.0, end: 19.5, text: "Lunch Chef, purchasing, her own little desk when Roland’s not there." },
+    { start: 19.5, end: 21.0, text: "Here’s to my little sister!" }
+  ],
+
+  phrases: [
+    { en: "I'd like to", pl: "chciałbym / chciałabym" },
+    { en: "shut up about", pl: "przestać gadać o" },
+    { en: "as they are", pl: "tak jak są" }
+  ],
+
+  dictionary: {
+    "discuss": "dyskutować",
+    "dear": "drogi",
+    "papa": "tata",
+    "married": "żonaty/zamężna"
+  }
+},
 
     ai: {
       enabled: true,
