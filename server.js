@@ -31,6 +31,8 @@ const __dirname = path.dirname(__filename);
 
 // Serwowanie plików frontendu z /public
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/data", express.static(path.join(__dirname, "data")));
+
 
 app.get("/api/modules", (req, res) => {
   res.json(modules);
@@ -63,10 +65,12 @@ app.get("/api/me", (req, res) => {
 
 // ⚠️ ZAWSZE NA SAMYM KOŃCU
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "public", "course.html"));
 });
+
 
 app.listen(PORT, () => {
   console.log(`Server działa na porcie ${PORT}`);
 });
+
 
