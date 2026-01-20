@@ -8,7 +8,7 @@ export const modules = [
     vocabulary: {
       words: []
     },
-
+    
     quiz: {
       questions: []
     },
