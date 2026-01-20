@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kurs adaptacyjny</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 24px; line-height: 1.4; }
+      .box { border: 1px solid #ddd; border-radius: 12px; padding: 16px; max-width: 720px; }
+      code { background: #f5f5f5; padding: 2px 6px; border-radius: 6px; }
+      button { padding: 10px 14px; border-radius: 10px; border: 1px solid #ddd; background: white; cursor: pointer; }
+      button:hover { background: #f7f7f7; }
+      .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+      .muted { color: #666; font-size: 14px; }
+      pre { background: #0b1020; color: #c7d2fe; padding: 12px; border-radius: 12px; overflow: auto; }
+    </style>
+  </head>
+  <body>
+    <h1>Kurs adaptacyjny — Faza 1 ✅</h1>
+
+    <div class="box">
+      <p>Jeśli to widzisz w iframe na Publigo, to znaczy, że hosting działa.</p>
+
+      <div class="row">
+        <button id="btn">Sprawdź backend (/api/health)</button>
+        <span class="muted" id="status">—</span>
+      </div>
+
+      <pre id="out">Kliknij przycisk, żeby pobrać dane z backendu...</pre>
+
+      <p class="muted">
+        Endpoint testowy: <code>/api/health</code>
+      </p>
+    </div>
+
+    <script>
+      const btn = document.getElementById("btn");
+      const out = document.getElementById("out");
+      const status = document.getElementById("status");
+
+      btn.addEventListener("click", async () => {
+        status.textContent = "Ładuję...";
+        try {
+          const res = await fetch("/api/health");
+          const data = await res.json();
+          out.textContent = JSON.stringify(data, null, 2);
+          status.textContent = "OK ✅";
+        } catch (e) {
+          out.textContent = String(e);
+          status.textContent = "Błąd ❌";
+        }
+      });
+    </script>
+  </body>
+</html>
