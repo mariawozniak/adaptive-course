@@ -2,6 +2,8 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import crypto from "crypto";
+import { modules } from "./data/modules.js";
+
 
 const app = express();
 
@@ -29,6 +31,11 @@ const __dirname = path.dirname(__filename);
 
 // Serwowanie plików frontendu z /public
 app.use(express.static(path.join(__dirname, "public")));
+
+app.get("/api/modules", (req, res) => {
+  res.json(modules);
+});
+
 
 // ✅ API: health
 app.get("/api/health", (req, res) => {
@@ -62,3 +69,4 @@ app.get("*", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server działa na porcie ${PORT}`);
 });
+
