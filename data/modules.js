@@ -52,8 +52,189 @@ export const modules = [
 ,
     
     quiz: {
-      questions: []
+  questions: [
+    {
+      question: "Kiedy powiesz „here is to my sister”?",
+      answers: [
+        "przy wznoszeniu toastu",
+        "kiedy chcesz, aby ktoś przekazał coś twojej siostrze",
+        "kiedy jedziesz do siostry"
+      ],
+      correctIndex: 0
     },
+    {
+      question: "Jak przetłumaczyć „newly appointed”?",
+      answers: [
+        "Nowo mianowana",
+        "Nowo zatrudniona",
+        "Świeżo promowana"
+      ],
+      correctIndex: 0
+    },
+    {
+      question: "„In charge of purchasing” oznacza:",
+      answers: [
+        "Odpowiedzialny za zakupy",
+        "Odpowiedzialny za finanse",
+        "Odpowiedzialny za reklamy"
+      ],
+      correctIndex: 0
+    },
+    {
+      question: "Jak można przetłumaczyć „how about”?",
+      answers: [
+        "Co powiesz na",
+        "Jak tam",
+        "Jak o tym?"
+      ],
+      correctIndex: 0
+    },
+    {
+      question: "Jak przetłumaczyć „Are you ready to order?”?",
+      answers: [
+        "Czy jesteście gotowi, żeby zamówić?",
+        "Macie już zamówienie?",
+        "Czy wasze zamówienie jest gotowe?"
+      ],
+      correctIndex: 0
+    },
+    {
+      question: "Jak przetłumaczyć „I had to tell her”?",
+      answers: [
+        "Musiałem jej powiedzieć",
+        "Powinienem jej powiedzieć",
+        "Mogłem jej powiedzieć"
+      ],
+      correctIndex: 0
+    },
+    {
+      question: "Co oznacza „side salad”?",
+      answers: [
+        "Sałatka jako dodatek",
+        "Mała sałatka",
+        "Sałatka boczna"
+      ],
+      correctIndex: 0
+    },
+    {
+      question: "Co znaczy „sneeze”?",
+      answers: [
+        "Kichnięcie",
+        "Kaszel",
+        "Odetchnąć"
+      ],
+      correctIndex: 0
+    },
+    {
+      question: "Jak przetłumaczyć „without the nuts and leeks”?",
+      answers: [
+        "Bez orzechów i porów",
+        "Bez orzechów i szczypiorku",
+        "Bez dodatków i sosu"
+      ],
+      correctIndex: 0
+    },
+    {
+      question: "Jak przetłumaczyć „pretty incredible”?",
+      answers: [
+        "Całkiem niesamowite",
+        "Bardzo przeciętne",
+        "Naprawdę dziwne"
+      ],
+      correctIndex: 0
+    },
+    {
+      question: "Jak przetłumaczyć wyrażenie „on the edge of my seat”?",
+      answers: [
+        "Z zapartym tchem / w napięciu",
+        "Na skraju krzesła",
+        "Niepewnie siedząc"
+      ],
+      correctIndex: 0
+    },
+    {
+      question: "Jak przetłumaczyć zdanie „Tell me again, what do I do when Mr. Roper calls?”?",
+      answers: [
+        "Powiedz mi jeszcze raz, co mam zrobić, gdy zadzwoni pan Roper?",
+        "Przypomnij mi, co mam powiedzieć panu Roperowi, gdy przyjdzie?",
+        "Powiedz mi, jak rozmawiać z panem Roperem?"
+      ],
+      correctIndex: 0
+    },
+    {
+      question: "Co oznacza wyrażenie „same for me” w kontekście zamawiania jedzenia?",
+      answers: [
+        "To samo dla mnie",
+        "To też mi smakuje",
+        "Ja też lubię to danie"
+      ],
+      correctIndex: 0
+    },
+    {
+      question: "Jak najlepiej przetłumaczyć „That sounds great”?",
+      answers: [
+        "Brzmi świetnie",
+        "Wygląda dobrze",
+        "To jest naprawdę dobre"
+      ],
+      correctIndex: 0
+    },
+    {
+      question: "Co oznacza zdanie „Anything else?” w rozmowie z kelnerem?",
+      answers: [
+        "Czy coś jeszcze?",
+        "Czy to wszystko?",
+        "Czy smakuje?"
+      ],
+      correctIndex: 0
+    },
+    {
+      question: "Jak przetłumaczyć żart „You’re going to sneeze on my fish, aren’t you?”?",
+      answers: [
+        "Zamierzasz kichnąć na moją rybę, prawda?",
+        "Zamierzasz zepsuć moją rybę, prawda?",
+        "Chcesz mi oddać swoją rybę, prawda?"
+      ],
+      correctIndex: 0
+    },
+    {
+      question: "Uzupełnij zdanie: „Sorry I’m ______.”",
+      answers: [
+        "late",
+        "gone",
+        "tired"
+      ],
+      correctIndex: 0
+    },
+    {
+      question: "Uzupełnij zdanie: „Look at these ______.”",
+      answers: [
+        "prices",
+        "offers",
+        "meals"
+      ],
+      correctIndex: 0
+    },
+    {
+      question: "Uzupełnij zdanie: „My afternoon ______ was incredible.”",
+      answers: [
+        "date",
+        "meeting",
+        "lunch"
+      ],
+      correctIndex: 0
+    },
+    {
+      question: "Uzupełnij zdanie: „I ______ to tell her.”",
+      answers: [
+        "had",
+        "should",
+        "could"
+      ],
+      correctIndex: 0
+    }
+  ]
+},
 
     listening: {
       segments: []
