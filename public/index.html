@@ -16,6 +16,8 @@
     </style>
   </head>
   <body>
+    <p><strong>Twój userId:</strong> <span id="userId">—</span></p>
+
     <h1>Kurs adaptacyjny — Faza 1 ✅</h1>
 
     <div class="box">
@@ -34,6 +36,17 @@
     </div>
 
     <script>
+      const userIdEl = document.getElementById("userId");
+
+fetch("/api/me")
+  .then(res => res.json())
+  .then(data => {
+    userIdEl.textContent = data.userId;
+  })
+  .catch(() => {
+    userIdEl.textContent = "błąd";
+  });
+
       const btn = document.getElementById("btn");
       const out = document.getElementById("out");
       const status = document.getElementById("status");
@@ -53,3 +66,4 @@
     </script>
   </body>
 </html>
+
