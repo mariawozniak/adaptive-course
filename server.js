@@ -93,10 +93,18 @@ app.post("/api/lesson-complete", express.json(), (req, res) => {
   res.json({ ok: true });
 });
 
+app.get("/api/reset", (req, res) => {
+  for (const u in progressStore) {
+    delete progressStore[u];
+  }
+  res.json({ ok: true });
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server działa na porcie ${PORT}`);
 });
+
 
 
 
