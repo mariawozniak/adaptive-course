@@ -150,4 +150,6 @@ window.markCompleted = async (lessonId) => {
 };
 
 // ===== START =====
-loadProgress().then(render);
+document.addEventListener("DOMContentLoaded", () => {
+  loadProgress().then(render);
+});
