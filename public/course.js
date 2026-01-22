@@ -95,26 +95,25 @@ function renderContent() {
   }
 
   const item = activeVariant || activeActivity;
-  const lessonId = item.lessonId || item.id || null;
 
   if (item.type === "iframe") {
     return `
       <iframe src="${item.src}" width="100%" height="800"></iframe>
-      <div>${renderCompleteButton(lessonId)}</div>
+      <div>${renderCompleteButton(item)}</div>
     `;
   }
 
   if (item.type === "audio") {
     return `
       <audio controls src="${item.src}"></audio>
-      <div>${renderCompleteButton(lessonId)}</div>
+      <div>${renderCompleteButton(item)}</div>
     `;
   }
 
   if (item.type === "pdf") {
     return `
       <iframe src="${item.src}" width="100%" height="800"></iframe>
-      <div>${renderCompleteButton(lessonId)}</div>
+      <div>${renderCompleteButton(item)}</div>
     `;
   }
 
