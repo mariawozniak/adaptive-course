@@ -33,7 +33,11 @@ const progressStore = {};
 // ===== API =====
 
 app.get("/api/health", (req, res) => {
-  res.json({ ok: true, message: "Backend działa ✅", time: new Date().toISOString() });
+  res.json({
+    ok: true,
+    message: "Backend działa ✅",
+    time: new Date().toISOString()
+  });
 });
 
 app.get("/api/modules", (req, res) => {
@@ -42,6 +46,7 @@ app.get("/api/modules", (req, res) => {
 
 app.get("/api/me", (req, res) => {
   let userId = req.cookies.course_user;
+
   if (!userId) {
     userId = "u_" + crypto.randomUUID();
     res.setHeader(
@@ -49,14 +54,22 @@ app.get("/api/me", (req, res) => {
       `course_user=${userId}; Path=/; HttpOnly; SameSite=None; Secure`
     );
   }
+
   res.json({ userId });
 });
 
+// ✅ PROGRESS – MUSI BYĆ OSOBNO
 app.get("/api/progress", (req, res) => {
   const userId = req.cookies.course_user;
+
+  if (!userId) {
+    return res.json({});
+  }
+
   res.json(progressStore[userId] || {});
 });
 
+// ✅ ZAPIS UKOŃCZENIA LEKCJI
 app.post("/api/lesson-complete", (req, res) => {
   const { moduleId, lessonId } = req.body;
   const userId = req.cookies.course_user;
@@ -72,16 +85,17 @@ app.post("/api/lesson-complete", (req, res) => {
   res.json({ ok: true });
 });
 
+// ✅ RESET (DEV)
 app.get("/api/reset", (req, res) => {
   for (const u in progressStore) delete progressStore[u];
   res.json({ ok: true });
 });
 
-// ===== STATIC (DOPIERO TERAZ) =====
+// ===== STATIC =====
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/data", express.static(path.join(__dirname, "data")));
 
-// ===== FRONTEND CATCH-ALL (OSTATNIE) =====
+// ===== FRONTEND CATCH-ALL (ZAWSZE OSTATNIE) =====
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "course.html"));
 });
