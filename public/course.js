@@ -37,6 +37,18 @@ function isCompleted(lessonId) {
     progress?.[module.id]?.completedLessons?.[lessonId]
   );
 }
+function isActivityCompleted(activity) {
+  if (!activity?.variants?.length) return false;
+
+  // Słówka → wystarczy jedna ukończona lekcja
+  if (activity.completionRule === "any") {
+    return activity.variants.some(v => isCompleted(v.id));
+  }
+
+  // Domyślnie: wszystkie
+  return activity.variants.every(v => isCompleted(v.id));
+}
+
 
 // ===============================
 // UI HELPERS
