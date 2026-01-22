@@ -20,10 +20,13 @@ async function loadProgress() {
 
 
 function isCompleted(lessonId) {
-  if (!lessonId) return false;
-  if (!progress || !progress[module.id]) return false;
-  return progress[module.id].completedLessons?.[lessonId] === true;
+  if (!progress) return false;
+  if (!progress[module.id]) return false;
+  if (!progress[module.id].completedLessons) return false;
+
+  return progress[module.id].completedLessons[lessonId] === true;
 }
+
 
 
 // ===== UI =====
@@ -71,6 +74,8 @@ window.openVariant = (variantId) => {
 
 // ===== CONTENT =====
 function renderContent() {
+  console.log("PROGRESS:", progress);
+
   if (!activeActivity) {
     return `<p>Wybierz aktywność.</p>`;
   }
