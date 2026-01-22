@@ -10,17 +10,15 @@ export const modules = [
         id: "vocabulary",
         label: "Słówka",
         required: true,
+        completionRule: "any", // ✅ kluczowa linia
 
         variants: [
-         {
-  id: "vocabulary",
-  label: "Słówka",
-  required: true,
-  completionRule: "any", // 👈 KLUCZOWE
-
-  variants: [ ... ]
-},
-
+          {
+            id: "module_1__vocabulary__app",
+            label: "Aplikacja do słówek",
+            type: "internal",
+            key: "vocabulary"
+          },
           {
             id: "module_1__vocabulary__audio",
             label: "Nagranie MP3",
@@ -42,7 +40,6 @@ export const modules = [
         required: true,
         type: "internal",
         key: "test",
-        // 👇 TEST TEŻ JEST LEKCJĄ
         lessonId: "module_1__test"
       },
 
@@ -50,6 +47,7 @@ export const modules = [
         id: "listening",
         label: "Listening",
         required: true,
+        // brak completionRule → domyślnie "all"
 
         variants: [
           {
