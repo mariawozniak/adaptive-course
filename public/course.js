@@ -5,8 +5,21 @@ const module = modules[0];
 
 let activeActivity = null;
 let activeVariant = null;
+let progress = {};
 
-  function renderCompleteButton(lessonId) {
+// ===== PROGRESS =====
+async function loadProgress() {
+  const res = await fetch("/api/progress", { credentials: "include" });
+  progress = await res.json();
+}
+
+function isCompleted(lessonId) {
+  return progress?.[module.id]?.completedLessons?.[lessonId] === true;
+}
+
+// ===== UI =====
+function renderCompleteButton(lessonId) {
+  if (isCompleted(lessonId)) return "";
   return `
     <button onclick="markCompleted('${lessonId}')">
       ☑ Ukończone
@@ -18,7 +31,7 @@ function render() {
   app.innerHTML = `
     <h1>${module.title}</h1>
 
-    <div style="margin-bottom: 16px;">
+    <div style="margin-bottom:16px;">
       ${module.activities
         .map(
           act =>
@@ -35,6 +48,7 @@ function render() {
   `;
 }
 
+// ===== NAV =====
 window.openActivity = (activityId) => {
   activeActivity = module.activities.find(a => a.id === activityId);
   activeVariant = null;
@@ -46,12 +60,13 @@ window.openVariant = (variantId) => {
   render();
 };
 
+// ===== CONTENT =====
 function renderContent() {
   if (!activeActivity) {
     return `<p>Wybierz aktywność.</p>`;
   }
 
-  // AKTYWNOŚĆ Z WARIANTAMI
+  // aktywność z lekcjami (variants)
   if (activeActivity.variants && !activeVariant) {
     return `
       <h3>${activeActivity.label}</h3>
@@ -61,7 +76,7 @@ function renderContent() {
             v =>
               `<li>
                 <button onclick="openVariant('${v.id}')">
-                  ${v.label}
+                  ${isCompleted(v.id) ? "☑" : "☐"} ${v.label}
                 </button>
               </li>`
           )
@@ -73,61 +88,60 @@ function renderContent() {
   const item = activeVariant || activeActivity;
 
   // IFRAME
- if (item.type === "iframe") {
-  return `
-    <iframe
-      src="${item.src}"
-      width="100%"
-      height="800"
-      style="border:none;"
-    ></iframe>
-    ${renderCompleteButton(item.id)}
-  `;
-}
-
-
-  // AUDIO
-if (item.type === "audio") {
-  return `
-    <audio controls src="${item.src}"></audio>
-    ${renderCompleteButton(item.id)}
-  `;
-}
-
-
-  // PDF
-if (item.type === "pdf") {
-  return `
-    <iframe src="${item.src}" width="100%" height="800"></iframe>
-    ${renderCompleteButton(item.id)}
-  `;
-}
-
-
-  // INTERNAL (placeholder na teraz)
-  if (item.type === "internal") {
+  if (item.type === "iframe") {
     return `
-      <p>🛠 ${item.label} — do podłączenia</p>
+      <iframe
+        src="${item.src}"
+        width="100%"
+        height="800"
+        style="border:none;"
+      ></iframe>
+      ${renderCompleteButton(item.id)}
     `;
   }
 
+  // AUDIO
+  if (item.type === "audio") {
+    return `
+      <audio controls src="${item.src}"></audio>
+      ${renderCompleteButton(item.id)}
+    `;
+  }
+
+  // PDF
+  if (item.type === "pdf") {
+    return `
+      <iframe src="${item.src}" width="100%" height="800"></iframe>
+      ${renderCompleteButton(item.id)}
+    `;
+  }
+
+  // INTERNAL
+  if (item.type === "internal") {
+    return `
+      <p>🛠 ${item.label} — do podłączenia</p>
+      ${renderCompleteButton(item.id)}
+    `;
+  }
 
   return `<p>Nieznany typ aktywności</p>`;
 }
 
-render();
-
+// ===== ACTION =====
 window.markCompleted = async (lessonId) => {
   await fetch("/api/lesson-complete", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
     body: JSON.stringify({
-      moduleId: modules[0].id,
+      moduleId: module.id,
       lessonId
     })
   });
 
-  alert("Zapisano ✔");
+  await loadProgress();
+  render();
 };
 
+// ===== START =====
+loadProgress().then(render);
