@@ -7,24 +7,40 @@ let activeActivity = null;
 let activeVariant = null;
 let progress = {};
 
-// ===== PROGRESS =====
+// ===============================
+// API
+// ===============================
+async function ensureUser() {
+  await fetch("/api/me", {
+    credentials: "include"
+  });
+}
+
 async function loadProgress() {
   try {
-    const res = await fetch("/api/progress", { credentials: "include" });
+    const res = await fetch("/api/progress", {
+      credentials: "include"
+    });
     progress = await res.json();
   } catch {
     progress = {};
   }
 }
 
+// ===============================
+// PROGRESS HELPERS
+// ===============================
 function isCompleted(lessonId) {
+  if (!lessonId) return false;
+
   return Boolean(
-    lessonId &&
     progress?.[module.id]?.completedLessons?.[lessonId]
   );
 }
 
-// ===== UI =====
+// ===============================
+// UI HELPERS
+// ===============================
 function renderCompleteButton(item) {
   if (!item?.id) return "";
   if (item.type === "internal") return "";
@@ -37,7 +53,9 @@ function renderCompleteButton(item) {
   `;
 }
 
-
+// ===============================
+// RENDER
+// ===============================
 function render() {
   app.innerHTML = `
     <h1>${module.title}</h1>
@@ -45,19 +63,24 @@ function render() {
     <div style="margin-bottom:16px;">
       ${module.activities
         .map(
-          act =>
-            `<button onclick="openActivity('${act.id}')">
+          act => `
+            <button onclick="openActivity('${act.id}')">
               ${act.label}
-            </button>`
+            </button>
+          `
         )
         .join("")}
     </div>
 
-    <div id="content">${renderContent()}</div>
+    <div id="content">
+      ${renderContent()}
+    </div>
   `;
 }
 
-// ===== NAV =====
+// ===============================
+// NAVIGATION
+// ===============================
 window.openActivity = (activityId) => {
   activeActivity = module.activities.find(a => a.id === activityId);
   activeVariant = null;
@@ -69,25 +92,28 @@ window.openVariant = (variantId) => {
   render();
 };
 
-// ===== CONTENT =====
+// ===============================
+// CONTENT
+// ===============================
 function renderContent() {
   if (!activeActivity) {
     return `<p>Wybierz aktywność.</p>`;
   }
 
-  // lista lekcji
+  // Lista wariantów
   if (activeActivity.variants && !activeVariant) {
     return `
       <h3>${activeActivity.label}</h3>
       <ul>
         ${activeActivity.variants
           .map(
-            v =>
-              `<li>
+            v => `
+              <li>
                 <button onclick="openVariant('${v.id}')">
                   ${isCompleted(v.id) ? "☑" : "☐"} ${v.label}
                 </button>
-              </li>`
+              </li>
+            `
           )
           .join("")}
       </ul>
@@ -120,20 +146,23 @@ function renderContent() {
   if (item.type === "internal") {
     return `
       <p>🛠 ${item.label}</p>
-      <div>${renderCompleteButton(item)}</div>
     `;
   }
 
-  return `<p>Nieznany typ</p>`;
+  return `<p>Nieznany typ treści</p>`;
 }
 
-// ===== ACTION =====
+// ===============================
+// ACTIONS
+// ===============================
 window.markCompleted = async (lessonId) => {
   if (!lessonId) return;
 
   const res = await fetch("/api/lesson-complete", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json"
+    },
     credentials: "include",
     body: JSON.stringify({
       moduleId: module.id,
@@ -150,5 +179,13 @@ window.markCompleted = async (lessonId) => {
   render();
 };
 
-// ===== START =====
-loadProgress().then(render);
+// ===============================
+// INIT (WAŻNE)
+// ===============================
+async function init() {
+  await ensureUser();   // ⬅️ najpierw cookie
+  await loadProgress(); // ⬅️ potem progress
+  render();
+}
+
+init();
