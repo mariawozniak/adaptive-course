@@ -3,11 +3,8 @@ export const modules = [
     id: "module_1",
     title: "Restaurant",
     level: "A2",
-
-    // główne wideo modułu (intro / kontekst)
     videoId: "hy_72TdNtc4",
 
-    // SEKWENCJA AKTYWNOŚCI MODUŁU
     activities: [
       {
         id: "vocabulary",
@@ -16,19 +13,19 @@ export const modules = [
 
         variants: [
           {
-            id: "vocab_app",
+            id: "module_1__vocabulary__app",
             label: "Aplikacja do słówek",
             type: "internal",
             key: "vocabulary"
           },
           {
-            id: "vocab_audio",
+            id: "module_1__vocabulary__audio",
             label: "Nagranie MP3",
             type: "audio",
             src: "/assets/vocab/module_1.mp3"
           },
           {
-            id: "vocab_print",
+            id: "module_1__vocabulary__print",
             label: "Lista do druku",
             type: "pdf",
             src: "/assets/vocab/module_1.pdf"
@@ -41,7 +38,9 @@ export const modules = [
         label: "Test",
         required: true,
         type: "internal",
-        key: "test"
+        key: "test",
+        // 👇 TEST TEŻ JEST LEKCJĄ
+        lessonId: "module_1__test"
       },
 
       {
@@ -51,19 +50,19 @@ export const modules = [
 
         variants: [
           {
-            id: "listening_quiz",
+            id: "module_1__listening__quiz",
             label: "Quiz",
             type: "iframe",
             src: "/listening/index.html?mode=quiz"
           },
           {
-            id: "listening_gapfill",
+            id: "module_1__listening__gapfill",
             label: "Gap fill",
             type: "iframe",
             src: "/listening/index.html?mode=gapfill"
           },
           {
-            id: "listening_mixed",
+            id: "module_1__listening__mixed",
             label: "Mixed",
             type: "iframe",
             src: "/listening/index.html?mode=mixed"
@@ -76,7 +75,8 @@ export const modules = [
         label: "Shadowing",
         required: false,
         type: "iframe",
-        src: "/shadowing/index.html"
+        src: "/shadowing/index.html",
+        lessonId: "module_1__shadowing"
       },
 
       {
