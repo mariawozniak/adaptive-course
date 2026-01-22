@@ -44,14 +44,18 @@ function isCompleted(lessonId) {
 function renderCompleteButton(item) {
   if (!item?.id) return "";
   if (item.type === "internal") return "";
-  if (isCompleted(item.id)) return "";
+
+  if (isCompleted(item.id)) {
+    return `<button disabled>✔ Ukończone</button>`;
+  }
 
   return `
     <button onclick="markCompleted('${item.id}')">
-      ☑ Ukończone
+      ☑ Oznacz jako ukończone
     </button>
   `;
 }
+
 
 // ===============================
 // RENDER
