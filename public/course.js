@@ -6,6 +6,14 @@ const module = modules[0];
 let activeActivity = null;
 let activeVariant = null;
 
+  function renderCompleteButton(lessonId) {
+  return `
+    <button onclick="markCompleted('${lessonId}')">
+      ☑ Ukończone
+    </button>
+  `;
+}
+
 function render() {
   app.innerHTML = `
     <h1>${module.title}</h1>
@@ -65,34 +73,36 @@ function renderContent() {
   const item = activeVariant || activeActivity;
 
   // IFRAME
-  if (item.type === "iframe") {
-    return `
-      <iframe
-        src="${item.src}"
-        width="100%"
-        height="800"
-        style="border:none;"
-      ></iframe>
-    `;
-  }
+ if (item.type === "iframe") {
+  return `
+    <iframe
+      src="${item.src}"
+      width="100%"
+      height="800"
+      style="border:none;"
+    ></iframe>
+    ${renderCompleteButton(item.id)}
+  `;
+}
+
 
   // AUDIO
-  if (item.type === "audio") {
-    return `
-      <audio controls src="${item.src}"></audio>
-    `;
-  }
+if (item.type === "audio") {
+  return `
+    <audio controls src="${item.src}"></audio>
+    ${renderCompleteButton(item.id)}
+  `;
+}
+
 
   // PDF
-  if (item.type === "pdf") {
-    return `
-      <iframe
-        src="${item.src}"
-        width="100%"
-        height="800"
-      ></iframe>
-    `;
-  }
+if (item.type === "pdf") {
+  return `
+    <iframe src="${item.src}" width="100%" height="800"></iframe>
+    ${renderCompleteButton(item.id)}
+  `;
+}
+
 
   // INTERNAL (placeholder na teraz)
   if (item.type === "internal") {
@@ -101,7 +111,23 @@ function renderContent() {
     `;
   }
 
+
   return `<p>Nieznany typ aktywności</p>`;
 }
 
 render();
+
+window.markCompleted = async (lessonId) => {
+  await fetch("/api/lesson-complete", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({
+      moduleId: modules[0].id,
+      lessonId
+    })
+  });
+
+  alert("Zapisano ✔");
+};
+
