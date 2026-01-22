@@ -51,9 +51,17 @@ function renderView() {
     `;
   }
 
-  if (activeView === "listening") {
-    return `<p>🎧 Listening — w kolejnym kroku</p>`;
-  }
+if (activeView === "listening") {
+  return `
+    <iframe
+      src="/listening/index.html"
+      width="100%"
+      height="800"
+      style="border:none;"
+    ></iframe>
+  `;
+}
+
 
   if (activeView === "shadowing") {
     return `<p>🗣 Shadowing — w kolejnym kroku</p>`;
