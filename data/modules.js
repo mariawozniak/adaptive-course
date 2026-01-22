@@ -12,12 +12,15 @@ export const modules = [
         required: true,
 
         variants: [
-          {
-            id: "module_1__vocabulary__app",
-            label: "Aplikacja do słówek",
-            type: "internal",
-            key: "vocabulary"
-          },
+         {
+  id: "vocabulary",
+  label: "Słówka",
+  required: true,
+  completionRule: "any", // 👈 KLUCZOWE
+
+  variants: [ ... ]
+},
+
           {
             id: "module_1__vocabulary__audio",
             label: "Nagranie MP3",
