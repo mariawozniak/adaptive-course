@@ -90,7 +90,7 @@ function renderContent() {
             v =>
               `<li>
                 <button onclick="openVariant('${v.id}')">
-                  ${isCompleted(v.id) ? "☑" : "☐"} ${v.label}
+[${v.id}] ${isCompleted(v.id)} — ${v.label}
                 </button>
               </li>`
           )
