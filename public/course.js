@@ -12,29 +12,26 @@ async function loadProgress() {
   try {
     const res = await fetch("/api/progress", { credentials: "include" });
     progress = await res.json();
-  } catch (e) {
-    console.warn("Brak progressu – startujemy od zera");
+  } catch {
     progress = {};
   }
 }
 
-
 function isCompleted(lessonId) {
-  if (!progress) return false;
-  if (!progress[module.id]) return false;
-  if (!progress[module.id].completedLessons) return false;
-
-  return progress[module.id].completedLessons[lessonId] === true;
+  return Boolean(
+    lessonId &&
+    progress?.[module.id]?.completedLessons?.[lessonId]
+  );
 }
-
-
 
 // ===== UI =====
 function renderCompleteButton(lessonId) {
-  if (isCompleted(lessonId)) return "";
+  if (!lessonId) return "";
+  if (isCompleted(lessonId)) return "☑ Ukończone";
+
   return `
     <button onclick="markCompleted('${lessonId}')">
-      ☑ Ukończone
+      ☑ Oznacz jako ukończone
     </button>
   `;
 }
@@ -54,9 +51,7 @@ function render() {
         .join("")}
     </div>
 
-    <div id="content">
-      ${renderContent()}
-    </div>
+    <div id="content">${renderContent()}</div>
   `;
 }
 
@@ -74,13 +69,11 @@ window.openVariant = (variantId) => {
 
 // ===== CONTENT =====
 function renderContent() {
-  console.log("PROGRESS:", progress);
-
   if (!activeActivity) {
     return `<p>Wybierz aktywność.</p>`;
   }
 
-  // aktywność z lekcjami (variants)
+  // lista lekcji
   if (activeActivity.variants && !activeVariant) {
     return `
       <h3>${activeActivity.label}</h3>
@@ -90,7 +83,7 @@ function renderContent() {
             v =>
               `<li>
                 <button onclick="openVariant('${v.id}')">
-[${v.id}] ${isCompleted(v.id)} — ${v.label}
+                  ${isCompleted(v.id) ? "☑" : "☐"} ${v.label}
                 </button>
               </li>`
           )
@@ -100,54 +93,44 @@ function renderContent() {
   }
 
   const item = activeVariant || activeActivity;
+  const lessonId = item.lessonId || item.id || null;
 
-  // IFRAME
   if (item.type === "iframe") {
     return `
-      <iframe
-        src="${item.src}"
-        width="100%"
-        height="800"
-        style="border:none;"
-      ></iframe>
-      ${renderCompleteButton(item.id)}
+      <iframe src="${item.src}" width="100%" height="800"></iframe>
+      <div>${renderCompleteButton(lessonId)}</div>
     `;
   }
 
-  // AUDIO
   if (item.type === "audio") {
     return `
       <audio controls src="${item.src}"></audio>
-      ${renderCompleteButton(item.id)}
+      <div>${renderCompleteButton(lessonId)}</div>
     `;
   }
 
-  // PDF
   if (item.type === "pdf") {
     return `
       <iframe src="${item.src}" width="100%" height="800"></iframe>
-      ${renderCompleteButton(item.id)}
+      <div>${renderCompleteButton(lessonId)}</div>
     `;
   }
 
-  // INTERNAL
   if (item.type === "internal") {
     return `
-      <p>🛠 ${item.label} — do podłączenia</p>
-      ${renderCompleteButton(item.id)}
+      <p>🛠 ${item.label}</p>
+      <div>${renderCompleteButton(item.lessonId)}</div>
     `;
   }
 
-  return `<p>Nieznany typ aktywności</p>`;
+  return `<p>Nieznany typ</p>`;
 }
 
 // ===== ACTION =====
 window.markCompleted = async (lessonId) => {
-  if (!lessonId) {
-    console.warn("Brak lessonId – nie zapisuję");
-    return;
-  }
-  await fetch("/api/lesson-complete", {
+  if (!lessonId) return;
+
+  const res = await fetch("/api/lesson-complete", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
@@ -157,11 +140,14 @@ window.markCompleted = async (lessonId) => {
     })
   });
 
+  if (!res.ok) {
+    alert("Błąd zapisu postępu");
+    return;
+  }
+
   await loadProgress();
   render();
 };
 
 // ===== START =====
-document.addEventListener("DOMContentLoaded", () => {
-  loadProgress().then(render);
-});
+loadProgress().then(render);
