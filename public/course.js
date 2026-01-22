@@ -51,7 +51,7 @@ function renderCompleteButton(item) {
 
   return `
     <button onclick="markCompleted('${item.id}')">
-      ☑ Oznacz jako ukończone
+      ☐ Oznacz jako ukończone
     </button>
   `;
 }
