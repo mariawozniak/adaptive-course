@@ -20,8 +20,10 @@ async function loadProgress() {
 
 
 function isCompleted(lessonId) {
-  return progress?.[module.id]?.completedLessons?.[lessonId] === true;
+  if (!progress || !progress[module.id]) return false;
+  return progress[module.id].completedLessons?.[lessonId] === true;
 }
+
 
 // ===== UI =====
 function renderCompleteButton(lessonId) {
