@@ -121,7 +121,7 @@ function renderContent() {
   if (item.type === "internal") {
     return `
       <p>🛠 ${item.label}</p>
-      <div>${renderCompleteButton(item.lessonId)}</div>
+      <div>${renderCompleteButton(item)}</div>
     `;
   }
 
