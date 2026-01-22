@@ -68,9 +68,35 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "course.html"));
 });
 
+// in-memory store (na teraz)
+const progressStore = {};
+
+// oznacz lekcję jako ukończoną
+app.post("/api/lesson-complete", express.json(), (req, res) => {
+  const { moduleId, lessonId } = req.body;
+  const userId = req.cookies.course_user;
+
+  if (!userId || !moduleId || !lessonId) {
+    return res.status(400).json({ ok: false });
+  }
+
+  if (!progressStore[userId]) {
+    progressStore[userId] = {};
+  }
+
+  if (!progressStore[userId][moduleId]) {
+    progressStore[userId][moduleId] = { completedLessons: {} };
+  }
+
+  progressStore[userId][moduleId].completedLessons[lessonId] = true;
+
+  res.json({ ok: true });
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server działa na porcie ${PORT}`);
 });
+
 
 
