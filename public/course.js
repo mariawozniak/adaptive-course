@@ -100,9 +100,40 @@ window.openVariant = (variantId) => {
 // CONTENT
 // ===============================
 function renderContent() {
-  if (!activeActivity) {
-    return `<p>Wybierz aktywność.</p>`;
-  }
+ if (!activeActivity) {
+  return `
+    <div style="
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      min-height:60vh;
+      text-align:center;
+      gap:20px;
+    ">
+      <img
+        src="/assets/covers/module_1.jpg"
+        alt="${module.title}"
+        style="max-width:320px;border-radius:16px;"
+      />
+
+      <h2>${module.title}</h2>
+
+      <button
+        style="
+          padding:14px 28px;
+          font-size:18px;
+          font-weight:600;
+          cursor:pointer;
+        "
+        onclick="startModule()"
+      >
+        ▶ Rozpocznij
+      </button>
+    </div>
+  `;
+}
+
 
   // Lista wariantów
   if (activeActivity.variants && !activeVariant) {
@@ -191,5 +222,11 @@ async function init() {
   await loadProgress(); // ⬅️ potem progress
   render();
 }
+window.startModule = () => {
+  activeActivity = module.activities[0];
+  activeVariant = null;
+  render();
+};
+
 
 init();
