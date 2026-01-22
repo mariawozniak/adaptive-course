@@ -20,6 +20,7 @@ async function loadProgress() {
 
 
 function isCompleted(lessonId) {
+  if (!lessonId) return false;
   if (!progress || !progress[module.id]) return false;
   return progress[module.id].completedLessons?.[lessonId] === true;
 }
@@ -137,6 +138,10 @@ function renderContent() {
 
 // ===== ACTION =====
 window.markCompleted = async (lessonId) => {
+  if (!lessonId) {
+    console.warn("Brak lessonId – nie zapisuję");
+    return;
+  }
   await fetch("/api/lesson-complete", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
