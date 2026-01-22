@@ -37,6 +37,23 @@ function isCompleted(lessonId) {
     progress?.[module.id]?.completedLessons?.[lessonId]
   );
 }
+
+function getLessonId(item) {
+  if (!item) return null;
+
+  // wariant (np. audio, pdf, listening quiz)
+  if (item.id && !item.lessonId) {
+    return item.id;
+  }
+
+  // aktywność będąca jedną lekcją (Test, Shadowing)
+  if (item.lessonId) {
+    return item.lessonId;
+  }
+
+  return null;
+}
+
 function isActivityCompleted(activity) {
   if (!activity?.variants?.length) return false;
 
@@ -54,19 +71,23 @@ function isActivityCompleted(activity) {
 // UI HELPERS
 // ===============================
 function renderCompleteButton(item) {
-  if (!item?.id) return "";
+  const lessonId = getLessonId(item);
+  if (!lessonId) return "";
+
+  // internal nie mają ręcznego checkboxa
   if (item.type === "internal") return "";
 
-  if (isCompleted(item.id)) {
+  if (isCompleted(lessonId)) {
     return `<button disabled>✔ Ukończone</button>`;
   }
 
   return `
-    <button onclick="markCompleted('${item.id}')">
+    <button onclick="markCompleted('${lessonId}')">
       ☐ Oznacz jako ukończone
     </button>
   `;
 }
+
 
 
 // ===============================
