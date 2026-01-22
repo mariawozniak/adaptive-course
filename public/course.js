@@ -9,9 +9,15 @@ let progress = {};
 
 // ===== PROGRESS =====
 async function loadProgress() {
-  const res = await fetch("/api/progress", { credentials: "include" });
-  progress = await res.json();
+  try {
+    const res = await fetch("/api/progress", { credentials: "include" });
+    progress = await res.json();
+  } catch (e) {
+    console.warn("Brak progressu – startujemy od zera");
+    progress = {};
+  }
 }
+
 
 function isCompleted(lessonId) {
   return progress?.[module.id]?.completedLessons?.[lessonId] === true;
