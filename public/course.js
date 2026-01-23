@@ -3,6 +3,7 @@ import { modules } from "../data/modules.js";
 const app = document.getElementById("app");
 const module = modules[0];
 
+let moduleStarted = false; // 🔑 KLUCZOWE
 let activeActivity = null;
 let activeVariant = null;
 let progress = {};
@@ -38,17 +39,15 @@ function isCompleted(lessonId) {
   );
 }
 
-
-
 function getLessonId(item) {
   if (!item) return null;
 
-  // wariant (np. audio, pdf, listening quiz)
+  // wariant (audio, pdf, listening)
   if (item.id && !item.lessonId) {
     return item.id;
   }
 
-  // aktywność będąca jedną lekcją (Test, Shadowing)
+  // aktywność = jedna lekcja (Test, Shadowing)
   if (item.lessonId) {
     return item.lessonId;
   }
@@ -57,17 +56,23 @@ function getLessonId(item) {
 }
 
 function isActivityCompleted(activity) {
-  if (!activity?.variants?.length) return false;
+  if (!activity) return false;
 
-  // Słówka → wystarczy jedna ukończona lekcja
-  if (activity.completionRule === "any") {
-    return activity.variants.some(v => isCompleted(v.id));
+  // aktywności z wariantami (Słówka, Listening)
+  if (activity.variants?.length) {
+    if (activity.completionRule === "any") {
+      return activity.variants.some(v => isCompleted(v.id));
+    }
+    return activity.variants.every(v => isCompleted(v.id));
   }
 
-  // Domyślnie: wszystkie
-  return activity.variants.every(v => isCompleted(v.id));
-}
+  // aktywności = jedna lekcja (Test, Shadowing)
+  if (activity.lessonId) {
+    return isCompleted(activity.lessonId);
+  }
 
+  return false;
+}
 
 // ===============================
 // UI HELPERS
@@ -76,7 +81,7 @@ function renderCompleteButton(item) {
   const lessonId = getLessonId(item);
   if (!lessonId) return "";
 
-  // internal nie mają ręcznego checkboxa
+  // internal = brak ręcznego checkboxa
   if (item.type === "internal") return "";
 
   const completed = isCompleted(lessonId);
@@ -87,9 +92,6 @@ function renderCompleteButton(item) {
     </button>
   `;
 }
-
-
-
 
 // ===============================
 // RENDER
@@ -103,7 +105,7 @@ function render() {
         .map(
           act => `
             <button onclick="openActivity('${act.id}')">
-              ${act.label}
+              ${isActivityCompleted(act) ? "☑" : "☐"} ${act.label}
             </button>
           `
         )
@@ -120,6 +122,7 @@ function render() {
 // NAVIGATION
 // ===============================
 window.openActivity = (activityId) => {
+  moduleStarted = true;
   activeActivity = module.activities.find(a => a.id === activityId);
   activeVariant = null;
   render();
@@ -134,43 +137,43 @@ window.openVariant = (variantId) => {
 // CONTENT
 // ===============================
 function renderContent() {
- if (!activeActivity) {
-  return `
-    <div style="
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      min-height:60vh;
-      text-align:center;
-      gap:20px;
-    ">
-      <img
-        src="/assets/covers/module_1.jpg"
-        alt="${module.title}"
-        style="max-width:320px;border-radius:16px;"
-      />
+  // ⬅️ EKRAN STARTOWY TYLKO PRZED ROZPOCZĘCIEM
+  if (!moduleStarted) {
+    return `
+      <div style="
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        min-height:60vh;
+        text-align:center;
+        gap:20px;
+      ">
+        <img
+          src="/assets/covers/module_1.jpg"
+          alt="${module.title}"
+          style="max-width:320px;border-radius:16px;"
+        />
 
-      <h2>${module.title}</h2>
+        <h2>${module.title}</h2>
 
-      <button
-        style="
-          padding:14px 28px;
-          font-size:18px;
-          font-weight:600;
-          cursor:pointer;
-        "
-        onclick="startModule()"
-      >
-        ▶ Rozpocznij
-      </button>
-    </div>
-  `;
-}
+        <button
+          style="
+            padding:14px 28px;
+            font-size:18px;
+            font-weight:600;
+            cursor:pointer;
+          "
+          onclick="startModule()"
+        >
+          ▶ Rozpocznij
+        </button>
+      </div>
+    `;
+  }
 
-
-  // Lista wariantów
-if (activeActivity.variants?.length && !activeVariant) {
+  // Lista wariantów (Słówka, Listening)
+  if (activeActivity?.variants?.length && !activeVariant) {
     return `
       <h3>${activeActivity.label}</h3>
       <ul>
@@ -190,6 +193,8 @@ if (activeActivity.variants?.length && !activeVariant) {
   }
 
   const item = activeVariant || activeActivity;
+
+  if (!item) return "";
 
   if (item.type === "iframe") {
     return `
@@ -213,9 +218,7 @@ if (activeActivity.variants?.length && !activeVariant) {
   }
 
   if (item.type === "internal") {
-    return `
-      <p>🛠 ${item.label}</p>
-    `;
+    return `<p>🛠 ${item.label}</p>`;
   }
 
   return `<p>Nieznany typ treści</p>`;
@@ -249,18 +252,19 @@ window.markCompleted = async (lessonId) => {
 };
 
 // ===============================
-// INIT (WAŻNE)
+// INIT
 // ===============================
 async function init() {
-  await ensureUser();   // ⬅️ najpierw cookie
-  await loadProgress(); // ⬅️ potem progress
+  await ensureUser();
+  await loadProgress();
   render();
 }
+
 window.startModule = () => {
+  moduleStarted = true;
   activeActivity = module.activities[0];
   activeVariant = null;
   render();
 };
-
 
 init();
