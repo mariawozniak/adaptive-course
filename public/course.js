@@ -170,7 +170,7 @@ function renderContent() {
 
 
   // Lista wariantów
-  if (activeActivity.variants && !activeVariant) {
+if (activeActivity.variants?.length && !activeVariant) {
     return `
       <h3>${activeActivity.label}</h3>
       <ul>
