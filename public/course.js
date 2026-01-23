@@ -41,6 +41,18 @@ function isCompleted(lessonId) {
 function getLessonId(item) {
   if (!item) return null;
 
+  // wariant (audio, pdf, listening)
+  if (item.id && !item.lessonId) return item.id;
+
+  // aktywność będąca jedną lekcją (test, shadowing)
+  if (item.lessonId) return item.lessonId;
+
+  return null;
+}
+
+function getLessonId(item) {
+  if (!item) return null;
+
   // wariant (np. audio, pdf, listening quiz)
   if (item.id && !item.lessonId) {
     return item.id;
@@ -77,16 +89,15 @@ function renderCompleteButton(item) {
   // internal nie mają ręcznego checkboxa
   if (item.type === "internal") return "";
 
-  if (isCompleted(lessonId)) {
-    return `<button disabled>✔ Ukończone</button>`;
-  }
+  const completed = isCompleted(lessonId);
 
   return `
     <button onclick="markCompleted('${lessonId}')">
-      ☐ Oznacz jako ukończone
+      ${completed ? "☑" : "☐"} Oznacz jako ukończone
     </button>
   `;
 }
+
 
 
 
