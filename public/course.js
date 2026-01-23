@@ -38,17 +38,7 @@ function isCompleted(lessonId) {
   );
 }
 
-function getLessonId(item) {
-  if (!item) return null;
 
-  // wariant (audio, pdf, listening)
-  if (item.id && !item.lessonId) return item.id;
-
-  // aktywność będąca jedną lekcją (test, shadowing)
-  if (item.lessonId) return item.lessonId;
-
-  return null;
-}
 
 function getLessonId(item) {
   if (!item) return null;
