@@ -61,8 +61,8 @@ function isCompleted(lessonId) {
 
 function getLessonId(item) {
   if (!item) return null;
-  if (item.id && !item.lessonId) return item.id;
   if (item.lessonId) return item.lessonId;
+  if (item.id) return item.id;
   return null;
 }
 
@@ -92,10 +92,15 @@ function isModuleCompleted() {
 // ===============================
 // UI HELPERS
 // ===============================
+function shouldRenderCheckbox(item) {
+  return item?.completion === "manual";
+}
+
 function renderCompleteButton(item) {
+  if (!shouldRenderCheckbox(item)) return "";
+
   const lessonId = getLessonId(item);
   if (!lessonId) return "";
-  if (item.type === "internal") return "";
 
   return `
     <button onclick="markCompleted('${lessonId}')">
@@ -235,10 +240,17 @@ function renderContent() {
   const item = activeVariant || activeActivity;
   if (!item) return "";
 
-  if (item.type === "iframe") return `<iframe src="${item.src}" width="100%" height="800"></iframe>${renderCompleteButton(item)}`;
-  if (item.type === "audio") return `<audio controls src="${item.src}"></audio>${renderCompleteButton(item)}`;
-  if (item.type === "pdf") return `<iframe src="${item.src}" width="100%" height="800"></iframe>${renderCompleteButton(item)}`;
-  if (item.type === "internal") return `<p>🛠 ${item.label}</p>`;
+  if (item.type === "iframe")
+    return `<iframe src="${item.src}" width="100%" height="800"></iframe>${renderCompleteButton(item)}`;
+
+  if (item.type === "audio")
+    return `<audio controls src="${item.src}"></audio>${renderCompleteButton(item)}`;
+
+  if (item.type === "pdf")
+    return `<iframe src="${item.src}" width="100%" height="800"></iframe>${renderCompleteButton(item)}`;
+
+  if (item.type === "internal")
+    return `<p>🛠 ${item.label}</p>`;
 
   return "";
 }
