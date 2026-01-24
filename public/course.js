@@ -1,29 +1,24 @@
 import { modules } from "../data/modules.js";
 
 const app = document.getElementById("app");
-const currentModule = modules[0];
 
-let moduleStarted = false; // 🔑 KLUCZOWE
+let currentModule = modules[0]; // ⬅️ na razie jeden, backend zmieni później
+let moduleStarted = false;
 let activeActivity = null;
 let activeVariant = null;
 let progress = {};
 let currentLevel = null;
 
-
 // ===============================
 // API
 // ===============================
 async function ensureUser() {
-  await fetch("/api/me", {
-    credentials: "include"
-  });
+  await fetch("/api/me", { credentials: "include" });
 }
 
 async function loadProgress() {
   try {
-    const res = await fetch("/api/progress", {
-      credentials: "include"
-    });
+    const res = await fetch("/api/progress", { credentials: "include" });
     progress = await res.json();
   } catch {
     progress = {};
@@ -53,38 +48,26 @@ async function saveLevel(level) {
   currentLevel = data.level;
 }
 
-
 // ===============================
 // PROGRESS HELPERS
 // ===============================
 function isCompleted(lessonId) {
   if (!lessonId) return false;
-
   return Boolean(
-    progress?.[module.id]?.completedLessons?.[lessonId]
+    progress?.[currentModule.id]?.completedLessons?.[lessonId]
   );
 }
 
 function getLessonId(item) {
   if (!item) return null;
-
-  // wariant (audio, pdf, listening)
-  if (item.id && !item.lessonId) {
-    return item.id;
-  }
-
-  // aktywność = jedna lekcja (Test, Shadowing)
-  if (item.lessonId) {
-    return item.lessonId;
-  }
-
+  if (item.id && !item.lessonId) return item.id;
+  if (item.lessonId) return item.lessonId;
   return null;
 }
 
 function isActivityCompleted(activity) {
   if (!activity) return false;
 
-  // aktywności z wariantami (Słówka, Listening)
   if (activity.variants?.length) {
     if (activity.completionRule === "any") {
       return activity.variants.some(v => isCompleted(v.id));
@@ -92,7 +75,6 @@ function isActivityCompleted(activity) {
     return activity.variants.every(v => isCompleted(v.id));
   }
 
-  // aktywności = jedna lekcja (Test, Shadowing)
   if (activity.lessonId) {
     return isCompleted(activity.lessonId);
   }
@@ -106,15 +88,11 @@ function isActivityCompleted(activity) {
 function renderCompleteButton(item) {
   const lessonId = getLessonId(item);
   if (!lessonId) return "";
-
-  // internal = brak ręcznego checkboxa
   if (item.type === "internal") return "";
-
-  const completed = isCompleted(lessonId);
 
   return `
     <button onclick="markCompleted('${lessonId}')">
-      ${completed ? "☑" : "☐"} Oznacz jako ukończone
+      ${isCompleted(lessonId) ? "☑" : "☐"} Oznacz jako ukończone
     </button>
   `;
 }
@@ -124,10 +102,10 @@ function renderCompleteButton(item) {
 // ===============================
 function render() {
   app.innerHTML = `
-    <h1>${module.title}</h1>
+    <h1>${currentModule.title}</h1>
 
     <div style="margin-bottom:16px;">
-      ${module.activities
+      ${currentModule.activities
         .map(
           act => `
             <button onclick="openActivity('${act.id}')">
@@ -149,7 +127,7 @@ function render() {
 // ===============================
 window.openActivity = (activityId) => {
   moduleStarted = true;
-  activeActivity = module.activities.find(a => a.id === activityId);
+  activeActivity = currentModule.activities.find(a => a.id === activityId);
   activeVariant = null;
   render();
 };
@@ -163,20 +141,19 @@ window.openVariant = (variantId) => {
 // CONTENT
 // ===============================
 function renderContent() {
-  // 1) WYBÓR POZIOMU (jeśli brak)
+  // 1️⃣ WYBÓR POZIOMU
   if (!currentLevel) {
     return `
       <h2>Wybierz poziom startowy</h2>
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        ${[1,2,3,4,5].map(lvl => `
-          <button onclick="chooseLevel(${lvl})">Poziom ${lvl}</button>
-        `).join("")}
+        ${[1,2,3,4,5]
+          .map(lvl => `<button onclick="chooseLevel(${lvl})">Poziom ${lvl}</button>`)
+          .join("")}
       </div>
     `;
   }
 
-  // ...reszta Twojego renderContent() bez zmian
-
+  // 2️⃣ EKRAN STARTOWY MODUŁU
   if (!moduleStarted) {
     return `
       <div style="
@@ -189,20 +166,13 @@ function renderContent() {
         gap:20px;
       ">
         <img
-          src="/assets/covers/module_1.jpg"
-          alt="${module.title}"
+          src="/assets/covers/${currentModule.id}.jpg"
+          alt="${currentModule.title}"
           style="max-width:320px;border-radius:16px;"
         />
-
-        <h2>${module.title}</h2>
-
+        <h2>${currentModule.title}</h2>
         <button
-          style="
-            padding:14px 28px;
-            font-size:18px;
-            font-weight:600;
-            cursor:pointer;
-          "
+          style="padding:14px 28px;font-size:18px;font-weight:600;"
           onclick="startModule()"
         >
           ▶ Rozpocznij
@@ -211,7 +181,7 @@ function renderContent() {
     `;
   }
 
-  // Lista wariantów (Słówka, Listening)
+  // 3️⃣ LISTA WARIANTÓW
   if (activeActivity?.variants?.length && !activeVariant) {
     return `
       <h3>${activeActivity.label}</h3>
@@ -232,28 +202,21 @@ function renderContent() {
   }
 
   const item = activeVariant || activeActivity;
-
   if (!item) return "";
 
   if (item.type === "iframe") {
-    return `
-      <iframe src="${item.src}" width="100%" height="800"></iframe>
-      <div>${renderCompleteButton(item)}</div>
-    `;
+    return `<iframe src="${item.src}" width="100%" height="800"></iframe>
+            ${renderCompleteButton(item)}`;
   }
 
   if (item.type === "audio") {
-    return `
-      <audio controls src="${item.src}"></audio>
-      <div>${renderCompleteButton(item)}</div>
-    `;
+    return `<audio controls src="${item.src}"></audio>
+            ${renderCompleteButton(item)}`;
   }
 
   if (item.type === "pdf") {
-    return `
-      <iframe src="${item.src}" width="100%" height="800"></iframe>
-      <div>${renderCompleteButton(item)}</div>
-    `;
+    return `<iframe src="${item.src}" width="100%" height="800"></iframe>
+            ${renderCompleteButton(item)}`;
   }
 
   if (item.type === "internal") {
@@ -267,16 +230,12 @@ function renderContent() {
 // ACTIONS
 // ===============================
 window.markCompleted = async (lessonId) => {
-  if (!lessonId) return;
-
   const res = await fetch("/api/lesson-complete", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    headers: { "Content-Type": "application/json" },
     credentials: "include",
     body: JSON.stringify({
-      moduleId: module.id,
+      moduleId: currentModule.id,
       lessonId
     })
   });
@@ -290,14 +249,9 @@ window.markCompleted = async (lessonId) => {
   render();
 };
 
-// ===============================
-// INIT
-// ===============================
-
-
 window.startModule = () => {
   moduleStarted = true;
-  activeActivity = module.activities[0];
+  activeActivity = currentModule.activities[0];
   activeVariant = null;
   render();
 };
@@ -314,12 +268,14 @@ window.chooseLevel = async (lvl) => {
   }
 };
 
+// ===============================
+// INIT
+// ===============================
 async function init() {
   await ensureUser();
   await loadProgress();
-  await loadState();   // ✅ DODAJ TO
+  await loadState();
   render();
 }
-
 
 init();
