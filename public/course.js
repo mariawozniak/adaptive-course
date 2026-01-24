@@ -1,12 +1,14 @@
 import { modules } from "../data/modules.js";
 
 const app = document.getElementById("app");
-const module = modules[0];
+const currentModule = modules[0];
 
 let moduleStarted = false; // 🔑 KLUCZOWE
 let activeActivity = null;
 let activeVariant = null;
 let progress = {};
+let currentLevel = null;
+
 
 // ===============================
 // API
@@ -27,6 +29,30 @@ async function loadProgress() {
     progress = {};
   }
 }
+
+async function loadState() {
+  try {
+    const res = await fetch("/api/state", { credentials: "include" });
+    const data = await res.json();
+    currentLevel = data?.level ?? null;
+  } catch {
+    currentLevel = null;
+  }
+}
+
+async function saveLevel(level) {
+  const res = await fetch("/api/level", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ level })
+  });
+
+  if (!res.ok) throw new Error("level save failed");
+  const data = await res.json();
+  currentLevel = data.level;
+}
+
 
 // ===============================
 // PROGRESS HELPERS
@@ -137,7 +163,20 @@ window.openVariant = (variantId) => {
 // CONTENT
 // ===============================
 function renderContent() {
-  // ⬅️ EKRAN STARTOWY TYLKO PRZED ROZPOCZĘCIEM
+  // 1) WYBÓR POZIOMU (jeśli brak)
+  if (!currentLevel) {
+    return `
+      <h2>Wybierz poziom startowy</h2>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        ${[1,2,3,4,5].map(lvl => `
+          <button onclick="chooseLevel(${lvl})">Poziom ${lvl}</button>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  // ...reszta Twojego renderContent() bez zmian
+
   if (!moduleStarted) {
     return `
       <div style="
@@ -254,11 +293,7 @@ window.markCompleted = async (lessonId) => {
 // ===============================
 // INIT
 // ===============================
-async function init() {
-  await ensureUser();
-  await loadProgress();
-  render();
-}
+
 
 window.startModule = () => {
   moduleStarted = true;
@@ -266,5 +301,25 @@ window.startModule = () => {
   activeVariant = null;
   render();
 };
+
+window.chooseLevel = async (lvl) => {
+  try {
+    await saveLevel(lvl);
+    moduleStarted = false;
+    activeActivity = null;
+    activeVariant = null;
+    render();
+  } catch {
+    alert("Nie udało się zapisać poziomu");
+  }
+};
+
+async function init() {
+  await ensureUser();
+  await loadProgress();
+  await loadState();   // ✅ DODAJ TO
+  render();
+}
+
 
 init();
