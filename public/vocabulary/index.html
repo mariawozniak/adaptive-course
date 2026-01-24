@@ -183,6 +183,43 @@
   const LESSON_ID = "module_1__vocabulary__app";
   let lessonCompletedSent = false;
 
+  (function () {
+  const MODULE_ID = "module_1";
+  const LESSON_ID = "module_1__vocabulary__app";
+  let lessonCompletedSent = false;
+
+  // ✅ TU WKLEJ FUNKCJĘ
+  async function tryAutoCompleteLesson() {
+    if (lessonCompletedSent) return;
+
+    const flashDone = queueFlashcards.length === 0;
+    const practiceDone = queuePractice.length === 0;
+
+    // ANY: fiszki LUB pisownia
+    if (!flashDone && !practiceDone) return;
+
+    lessonCompletedSent = true;
+
+    try {
+      await fetch("/api/lesson-complete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          moduleId: MODULE_ID,
+          lessonId: LESSON_ID
+        })
+      });
+    } catch (err) {
+      console.error("Vocabulary auto-complete failed", err);
+      lessonCompletedSent = false;
+    }
+  }
+
+  const words = [
+    ...
+
+
   const words = [
   { en: "here is to my sister", pl: "za moją siostrę" },
   { en: "newly appointed", pl: "nowo mianowana" },
@@ -530,32 +567,7 @@ const KEY_PRACTICE = "practice-queue-m1";
   renderCard();   // wejdź w fiszki na start
 })();
 
-    async function tryAutoCompleteLesson() {
-    if (lessonCompletedSent) return;
-
-    const flashDone = queueFlashcards.length === 0;
-    const practiceDone = queuePractice.length === 0;
-
-    // ANY: fiszki LUB pisownia
-    if (!flashDone && !practiceDone) return;
-
-    lessonCompletedSent = true;
-
-    try {
-      await fetch("/api/lesson-complete", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({
-          moduleId: MODULE_ID,
-          lessonId: LESSON_ID
-        })
-      });
-    } catch (err) {
-      console.error("Vocabulary auto-complete failed", err);
-      lessonCompletedSent = false;
-    }
-  }
+  
 
 </script>
 </body>
