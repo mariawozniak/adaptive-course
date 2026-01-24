@@ -101,6 +101,17 @@ function renderCompleteButton(item) {
 // RENDER
 // ===============================
 function render() {
+  // ⬅️ JEŚLI NIE MA POZIOMU – TYLKO WYBÓR POZIOMU
+  if (!currentLevel) {
+    app.innerHTML = `
+      <div id="content">
+        ${renderContent()}
+      </div>
+    `;
+    return;
+  }
+
+  // ⬅️ DOPIERO PO WYBORZE POZIOMU – CAŁY KURS
   app.innerHTML = `
     <h1>${currentModule.title}</h1>
 
@@ -121,6 +132,7 @@ function render() {
     </div>
   `;
 }
+
 
 // ===============================
 // NAVIGATION
