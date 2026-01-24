@@ -2,7 +2,7 @@ import { modules } from "../data/modules.js";
 
 const app = document.getElementById("app");
 
-let currentModule = modules[0]; // ⬅️ na razie jeden, backend zmieni później
+let currentModule = modules[0];
 let moduleStarted = false;
 let activeActivity = null;
 let activeVariant = null;
@@ -97,11 +97,29 @@ function renderCompleteButton(item) {
   `;
 }
 
+function renderLiveFeedbackBar() {
+  if (!currentLevel || !moduleStarted) return "";
+
+  return `
+    <div style="
+      margin-top:32px;
+      padding:16px;
+      border-top:1px solid #ddd;
+      display:flex;
+      gap:16px;
+      justify-content:center;
+    ">
+      <button onclick="sendFeedback('easier')">🔻 Za trudne</button>
+      <button onclick="sendFeedback('harder')">🔺 Za łatwe</button>
+    </div>
+  `;
+}
+
 // ===============================
 // RENDER
 // ===============================
 function render() {
-  // ⬅️ JEŚLI NIE MA POZIOMU – TYLKO WYBÓR POZIOMU
+  // ⬅️ TYLKO WYBÓR POZIOMU
   if (!currentLevel) {
     app.innerHTML = `
       <div id="content">
@@ -111,7 +129,7 @@ function render() {
     return;
   }
 
-  // ⬅️ DOPIERO PO WYBORZE POZIOMU – CAŁY KURS
+  // ⬅️ PEŁNY KURS
   app.innerHTML = `
     <h1>${currentModule.title}</h1>
 
@@ -129,10 +147,10 @@ function render() {
 
     <div id="content">
       ${renderContent()}
+      ${renderLiveFeedbackBar()}
     </div>
   `;
 }
-
 
 // ===============================
 // NAVIGATION
@@ -278,6 +296,33 @@ window.chooseLevel = async (lvl) => {
   } catch {
     alert("Nie udało się zapisać poziomu");
   }
+};
+
+window.sendFeedback = async (dir) => {
+  const res = await fetch("/api/feedback", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ dir })
+  });
+
+  if (!res.ok) {
+    alert("Nie udało się zmienić poziomu");
+    return;
+  }
+
+  const data = await res.json();
+  currentLevel = data.level;
+
+  const next = modules.find(m => m.id === data.moduleId);
+  if (next) currentModule = next;
+
+  moduleStarted = false;
+  activeActivity = null;
+  activeVariant = null;
+  progress = {};
+
+  render();
 };
 
 // ===============================
