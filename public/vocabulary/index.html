@@ -41,6 +41,7 @@
       position: absolute;
       width: 100%;
       height: 100%;
+      -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
       border: 2px solid #ccc;
       border-radius: 12px;
@@ -52,6 +53,7 @@
       background: white;
       padding: 20px;
       box-sizing: border-box;
+      color: #111;
     }
     .card-back { background: #e0f2fe; transform: rotateY(180deg); }
     .speak-btn {
@@ -68,55 +70,467 @@
 
     .practice-container { text-align:left; margin-top:20px; }
     .practice-word { font-size:22px; font-weight:bold; margin-bottom:10px; }
+
+    .typing-wrap { position: relative; }
     .practice-input {
       width:100%;
       font-size:18px;
       padding:8px;
-      border:2px solid #facc15;
+      border:2px solid #facc15 !important;
+      outline:none;
       border-radius:8px;
+      background: transparent;
+      color: transparent;
+      caret-color: #111827;
+      position: relative;
+      z-index: 2;
+      box-sizing: border-box;
     }
+    .highlighter {
+      position: absolute;
+      inset: 0;
+      padding: 8px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-family: inherit;
+      line-height: 1.4;
+      white-space: pre-wrap;
+      pointer-events: none;
+      z-index: 1;
+      background: white;
+    }
+    .highlighter .wrong { color:#dc2626; }
+    .highlighter .correct { color:#16a34a; }
+
     .practice-btn {
-      padding:10px 16px;
-      border:none;
-      border-radius:6px;
-      background:#3b82f6;
-      color:white;
-      font-weight:bold;
-      cursor:pointer;
+      padding:10px 16px; border:none; border-radius:6px;
+      background:#3b82f6; color:white; font-weight:bold; cursor:pointer;
     }
     .idk-link { float:right; color:teal; cursor:pointer; font-size:14px; }
-    .hidden { display:none; }
+
+    .feedback {
+      margin-top: 8px;
+      font-size: 18px;
+      font-family: inherit;
+    }
+
+    /* MENU CUSTOM */
+    .menu {
+      position: relative;
+      display: inline-block;
+    }
+    #menu-btn {
+      padding: 6px 12px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+    }
+    #menu-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background: white;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      width: max-content;
+      z-index: 100;
+    }
+    #menu-list li {
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    #menu-list li:hover {
+      background: #f0f0f0;
+    }
+    .hidden { display: none; }
+
+    /* podczas przesuwania kolorujemy także środek */
+    .swipe-left .card-front,
+    .swipe-left .card-back { background: #fecaca !important; }
+    .swipe-right .card-front,
+    .swipe-right .card-back { background: #bbf7d0 !important; }
   </style>
 </head>
 <body>
+  <div class="flashcard-wrapper">
+    <div style="margin-bottom:10px; text-align:right;">
+      <div class="menu">
+        <button id="menu-btn">Menu⚙️</button>
+        <ul id="menu-list" class="hidden"></ul>
+      </div>
+    </div>
 
-<div class="flashcard-wrapper">
-  <div style="margin-bottom:10px; text-align:right;">
-    <button id="menu-btn">Menu ⚙️</button>
-    <ul id="menu-list" class="hidden"></ul>
+    <div id="card-area">
+      <div class="flashcard" id="card"></div>
+    </div>
+
+    <div class="nav-controls">
+      <button id="again-btn">⬅️ Wciąż się uczę</button>
+      <button id="know-btn">Umiem ➡️</button>
+    </div>
+
+    <div id="message" style="margin-top:20px; font-weight:bold;"></div>
   </div>
-
-  <div id="card" class="flashcard"></div>
-
-  <div class="nav-controls">
-    <button id="again-btn">⬅️ Wciąż się uczę</button>
-    <button id="know-btn">Umiem ➡️</button>
-  </div>
-
-  <div id="message" style="margin-top:20px;font-weight:bold;"></div>
-</div>
 
 <script>
 (function () {
-
-  /* ===============================
-     AUTO-COMPLETE CONFIG
-     =============================== */
-  const MODULE_ID = "module_1";
+    const MODULE_ID = "module_1";
   const LESSON_ID = "module_1__vocabulary__app";
   let lessonCompletedSent = false;
 
-  async function tryAutoCompleteLesson() {
+  const words = [
+  { en: "here is to my sister", pl: "za moją siostrę" },
+  { en: "newly appointed", pl: "nowo mianowana" },
+  { en: "in charge of purchasing", pl: "odpowiedzialna za zakupy" },
+  { en: "her own little desk", pl: "jej własne małe biurko" },
+  { en: "when Roland's not there", pl: "kiedy Rolanda nie ma" },
+  { en: "beeper", pl: "pager" },
+  { en: "Are you ready to order?", pl: "Czy jesteście gotowi, żeby zamówić?" },
+  { en: "We haven't even looked yet.", pl: "Jeszcze nawet nie spojrzeliśmy." },
+  { en: "just let me know", pl: "po prostu daj mi znać" },
+  { en: "I'll be right over there on the edge of my seat.", pl: "Będę tuż obok, czekając w napięciu." },
+  { en: "look at these prices", pl: "spójrz na te ceny" },
+  { en: "what are these?", pl: "co to jest?" },
+  { en: "famous chickens", pl: "słynne kurczaki" },
+  { en: "Sorry I'm late.", pl: "Przepraszam za spóźnienie." },
+  { en: "Congratulations", pl: "Gratulacje" },
+  { en: "How incredible was my afternoon", pl: "Jak niesamowite było moje popołudnie" },
+  { en: "pretty incredible", pl: "całkiem niesamowite" },
+  { en: "according to the message she left for you", pl: "sądząc po wiadomości, którą ci zostawiła" },
+  { en: "leave a message on a machine", pl: "zostawić wiadomość na sekretarce" },
+  { en: "I had to tell her", pl: "musiałem jej powiedzieć" },
+  { en: "Do I dare ask?", pl: "Czy mogę zapytać?" },
+  { en: "I'll start with", pl: "Zacznę od" },
+  { en: "I'll have the grilled prawns", pl: "Wezmę grillowane krewetki" },
+  { en: "That sounds great.", pl: "Brzmi świetnie." },
+  { en: "Same for me.", pl: "Dla mnie to samo." },
+  { en: "And for the gentleman?", pl: "A dla pana?" },
+  { en: "Yeah, I'll have the Thai chicken pizza.", pl: "Tak, wezmę tajską pizzę z kurczakiem." },
+  { en: "without the nuts and leeks", pl: "bez orzechów i porów" },
+  { en: "is it cheaper?", pl: "będzie taniej?" },
+  { en: "You'd think, wouldn't you?", pl: "Można by tak pomyśleć, prawda?" },
+  { en: "side salad", pl: "sałatka jako dodatek" },
+  { en: "And what would that be on the side of?", pl: "A do czego miałby być ten dodatek?" },
+  { en: "Why don't you just put it right here next to my water?", pl: "Może po prostu połóż ją tutaj, obok mojej wody?" },
+  { en: "And for you?", pl: "A dla ciebie?" },
+  { en: "I'm going to have a cup of the cucumber soup.", pl: "Wezmę filiżankę zupy ogórkowej." },
+  { en: "take care", pl: "trzymaj się" },
+  { en: "Anything else?", pl: "Coś jeszcze?" },
+  { en: "how about", pl: "a może" },
+  { en: "verse", pl: "zwrotka" },
+  { en: "sneeze", pl: "kichnąć" }
+];
+
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+const KEY_FLASH = "flashcards-queue-m1";
+const KEY_PRACTICE = "practice-queue-m1";
+
+
+  let frontLang = "en";
+  let flipped = false;
+  let queueFlashcards;
+  let queuePractice;
+  let currentCard = null;
+  let selectedVoice = null;
+  let practiceMode = false;
+
+  // load saved queues
+  let savedFlash = localStorage.getItem(KEY_FLASH);
+  if (savedFlash) {
+    try { queueFlashcards = JSON.parse(savedFlash); }
+    catch { queueFlashcards = shuffleArray([...words]); }
+  } else {
+    queueFlashcards = shuffleArray([...words]);
+  }
+
+  let savedPractice = localStorage.getItem(KEY_PRACTICE);
+  if (savedPractice) {
+    try { queuePractice = JSON.parse(savedPractice); }
+    catch { queuePractice = shuffleArray([...words]); }
+  } else {
+    queuePractice = shuffleArray([...words]);
+  }
+
+  function saveFlashcards() {
+    localStorage.setItem(KEY_FLASH, JSON.stringify(queueFlashcards));
+  }
+  function savePractice() {
+    localStorage.setItem(KEY_PRACTICE, JSON.stringify(queuePractice));
+  }
+
+  function loadVoices() {
+    const voices = speechSynthesis.getVoices();
+    if (!voices.length) { setTimeout(loadVoices, 250); return; }
+    selectedVoice = voices.find(v => /Google (US|UK) English/.test(v.name));
+    if (!selectedVoice) selectedVoice = voices.find(v => v.lang.startsWith("en"));
+  }
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+  loadVoices();
+
+  const cardContainer = document.getElementById("card");
+  const againBtn = document.getElementById("again-btn");
+  const knowBtn = document.getElementById("know-btn");
+  const message = document.getElementById("message");
+
+  // MENU refs
+  const menuBtn  = document.getElementById("menu-btn");
+  const menuList = document.getElementById("menu-list");
+
+  // === RENDER MENU (dynamicznie wg trybu) ===
+  function renderMenu() {
+    if (practiceMode) {
+      // tryb ćwiczenia pisowni → 3 opcje
+      menuList.innerHTML = `
+        <li data-action="flashcards">Fiszki</li>
+        <li data-action="reset">Wyzeruj postęp fiszek</li>
+        <li data-action="resetPractice">Wyzeruj postęp pisowni</li>
+      `;
+    } else {
+      // tryb fiszek → pełne menu
+      menuList.innerHTML = `
+        <li data-action="flashcards">Fiszki</li>
+        <li data-action="en">Angielski z przodu</li>
+        <li data-action="pl">Polski z przodu</li>
+        <li data-action="reset">Wyzeruj postęp fiszek</li>
+        <li data-action="resetPractice">Wyzeruj postęp pisowni</li>
+        <li data-action="practice">Ćwiczenie pisowni</li>
+      `;
+    }
+  }
+
+  // fiszki: klik karty / głośniczka
+  cardContainer.addEventListener("click", (e) => {
+    if (practiceMode) return;
+    if (e.target.closest(".speak-btn")) {
+      e.stopPropagation();
+      e.preventDefault();
+      const utterance = new SpeechSynthesisUtterance(currentCard.en);
+      utterance.lang = "en-US";
+      if (selectedVoice) utterance.voice = selectedVoice;
+      speechSynthesis.speak(utterance);
+      return;
+    }
+    flipped = !flipped;
+    cardContainer.className = "flashcard" + (flipped ? " flipped" : "");
+  });
+
+  function renderCard() {
+    practiceMode = false;
+    document.querySelector(".nav-controls").style.display = "block";
+    renderMenu();
+
+    if (queueFlashcards.length === 0) {
+      message.textContent = "";
+      cardContainer.className = "flashcard";
+      cardContainer.innerHTML = `
+        <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%;">
+          <div style="font-size:20px; font-weight:bold; margin-bottom:20px;">
+            🎉 Gratulacje! Przerobiłeś wszystkie fiszki.
+          </div>
+          <button id="restart-btn" class="practice-btn">Zacznij od nowa</button>
+        </div>
+      `;
+      document.getElementById("restart-btn").addEventListener("click", () => {
+        queueFlashcards = shuffleArray([...words]);
+        saveFlashcards();
+        renderCard();
+      });
+            tryAutoCompleteLesson();
+
+      return;
+    }
+    message.textContent = "";
+    currentCard = queueFlashcards[0];
+    flipped = false;
+    cardContainer.className = "flashcard";
+    cardContainer.innerHTML = `
+      <div class="card-inner">
+        <div class="card-front">
+          ${frontLang === "en" ? currentCard.en : currentCard.pl}
+          ${frontLang === "en" ? `<button type="button" class="speak-btn">🔊</button>` : ""}
+        </div>
+        <div class="card-back">
+          ${frontLang === "en" ? currentCard.pl : currentCard.en}
+          ${frontLang === "pl" ? `<button type="button" class="speak-btn">🔊</button>` : ""}
+        </div>
+      </div>
+    `;
+  }
+
+  function swipeCard(direction) {
+    if (!currentCard) return;
+    if (direction === "left") {
+      cardContainer.classList.add("swipe-left");
+      setTimeout(() => {
+        queueFlashcards.push(queueFlashcards.shift());
+        saveFlashcards();
+        cardContainer.classList.remove("swipe-left");
+        renderCard();
+      }, 400);
+    } else if (direction === "right") {
+      cardContainer.classList.add("swipe-right");
+      setTimeout(() => {
+        queueFlashcards.shift();
+        saveFlashcards();
+        cardContainer.classList.remove("swipe-right");
+        renderCard();
+      }, 400);
+    }
+  }
+
+  // gesty
+  let startX = 0;
+  cardContainer.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+  });
+  cardContainer.addEventListener("touchend", (e) => {
+    const endX = e.changedTouches[0].clientX;
+    const diffX = endX - startX;
+    if (Math.abs(diffX) > 50) {
+      if (diffX > 0) swipeCard("right");
+      else swipeCard("left");
+    }
+  });
+
+  // tryb ćwiczenia pisowni
+  function renderPractice() {
+    practiceMode = true;
+    document.querySelector(".nav-controls").style.display = "none";
+    renderMenu();
+
+    cardContainer.innerHTML = "";
+    message.textContent = "";
+  if (queuePractice.length === 0) {
+  cardContainer.innerHTML = "🎉 Gratulacje! Przerobiłeś wszystkie słowa w ćwiczeniu pisowni.";
+  tryAutoCompleteLesson();
+  return;
+}
+
+    const polishWord = queuePractice[0].pl;
+    cardContainer.innerHTML = `
+      <div class="practice-container">
+        <div class="practice-word">
+          ${polishWord}
+          <span id="idk" class="idk-link">Nie wiem</span>
+        </div>
+        <div class="typing-wrap">
+          <div id="hl" class="highlighter" aria-hidden="true"></div>
+          <input id="answer" type="text" class="practice-input" placeholder="(ANGIELSKI)" autocomplete="off">
+        </div>
+        <div id="correct-answer" class="feedback"></div>
+        <div style="margin-top:10px; text-align:right;">
+          <button id="check-btn" class="practice-btn">Odpowiedz</button>
+        </div>
+      </div>
+    `;
+
+    const answerInput = document.getElementById("answer");
+    const hl          = document.getElementById("hl");
+    const correctDiv  = document.getElementById("correct-answer");
+    const checkBtn    = document.getElementById("check-btn");
+    const correctRaw  = queuePractice[0].en;
+    const correctLC   = correctRaw.toLowerCase();
+
+    answerInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        checkBtn.click();
+      }
+    });
+
+    const esc = (s) => (s || "").replace(/[&<>"']/g, c => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    }[c]));
+    answerInput.addEventListener("input", () => {
+      const userRaw = answerInput.value;
+      let out = "";
+      for (let i = 0; i < userRaw.length; i++) {
+        if (userRaw[i].toLowerCase() === correctLC[i]) {
+          out += `<span class="correct">${esc(userRaw[i])}</span>`;
+        } else {
+          out += `<span class="wrong">${esc(userRaw[i])}</span>`;
+        }
+      }
+      hl.innerHTML = out;
+    });
+
+    checkBtn.onclick = () => {
+      const userRaw = answerInput.value.trim().toLowerCase();
+      if (!userRaw) {
+        correctDiv.textContent = `${correctRaw}`;
+        setTimeout(() => { correctDiv.textContent = ""; answerInput.value = ""; hl.innerHTML=""; answerInput.focus(); }, 4000);
+        return;
+      }
+      if (userRaw === correctLC) {
+        correctDiv.textContent = `✔️ ${correctRaw}`;
+        setTimeout(() => {
+          queuePractice.shift();
+          savePractice();
+          renderPractice();
+        }, 1000);
+      } else {
+        correctDiv.textContent = `${correctRaw}`;
+        setTimeout(() => { correctDiv.textContent = ""; answerInput.value = ""; hl.innerHTML=""; answerInput.focus(); }, 4000);
+      }
+    };
+
+    document.getElementById("idk").onclick = () => {
+      correctDiv.textContent = `${correctRaw}`;
+      setTimeout(() => {
+        correctDiv.textContent = "";
+        answerInput.value = "";
+        hl.innerHTML = "";
+        answerInput.focus();
+      }, 3000);
+    };
+
+    answerInput.focus();
+  }
+
+  // obsługa menu (otwieranie / zamykanie / klik pozycji)
+  menuBtn.addEventListener("click", () => {
+    menuList.classList.toggle("hidden");
+  });
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".menu")) {
+      menuList.classList.add("hidden");
+    }
+  });
+  menuList.addEventListener("click", (e) => {
+    if (e.target.tagName !== "LI") return;
+    const val = e.target.dataset.action;
+    menuList.classList.add("hidden");
+
+    if (val === "flashcards") renderCard();
+    if (val === "en") { frontLang = "en"; renderCard(); }
+    if (val === "pl") { frontLang = "pl"; renderCard(); }
+    if (val === "reset") { queueFlashcards = shuffleArray([...words]); saveFlashcards(); renderCard(); }
+    if (val === "resetPractice") { queuePractice = shuffleArray([...words]); savePractice(); renderPractice(); }
+    if (val === "practice") renderPractice();
+  });
+
+  againBtn.addEventListener("click", () => swipeCard("left"));
+  knowBtn.addEventListener("click", () => swipeCard("right"));
+
+  // start
+  renderMenu();   // ustaw menu do trybu startowego
+  renderCard();   // wejdź w fiszki na start
+})();
+
+    async function tryAutoCompleteLesson() {
     if (lessonCompletedSent) return;
 
     const flashDone = queueFlashcards.length === 0;
@@ -138,117 +552,11 @@
         })
       });
     } catch (err) {
-      console.error("Auto-complete failed", err);
+      console.error("Vocabulary auto-complete failed", err);
       lessonCompletedSent = false;
     }
   }
 
-  /* ===============================
-     DATA
-     =============================== */
-  const words = [
-    { en: "here is to my sister", pl: "za moją siostrę" },
-    { en: "newly appointed", pl: "nowo mianowana" },
-    { en: "in charge of purchasing", pl: "odpowiedzialna za zakupy" }
-  ];
-
-  function shuffle(arr) {
-    return arr.sort(() => Math.random() - 0.5);
-  }
-
-  const KEY_FLASH = "flashcards-m1";
-  const KEY_PRACTICE = "practice-m1";
-
-  let queueFlashcards = JSON.parse(localStorage.getItem(KEY_FLASH) || "null") || shuffle([...words]);
-  let queuePractice   = JSON.parse(localStorage.getItem(KEY_PRACTICE) || "null") || shuffle([...words]);
-
-  function save() {
-    localStorage.setItem(KEY_FLASH, JSON.stringify(queueFlashcards));
-    localStorage.setItem(KEY_PRACTICE, JSON.stringify(queuePractice));
-  }
-
-  const card = document.getElementById("card");
-  const msg  = document.getElementById("message");
-  const againBtn = document.getElementById("again-btn");
-  const knowBtn  = document.getElementById("know-btn");
-
-  /* ===============================
-     FISZKI
-     =============================== */
-  function renderFlashcard() {
-    if (queueFlashcards.length === 0) {
-      card.innerHTML = "🎉 Ukończyłeś fiszki!";
-      msg.textContent = "";
-      tryAutoCompleteLesson();
-      return;
-    }
-
-    const w = queueFlashcards[0];
-    card.innerHTML = `<div>${w.en}<br/><small>${w.pl}</small></div>`;
-  }
-
-  againBtn.onclick = () => {
-    queueFlashcards.push(queueFlashcards.shift());
-    save();
-    renderFlashcard();
-  };
-
-  knowBtn.onclick = () => {
-    queueFlashcards.shift();
-    save();
-    renderFlashcard();
-  };
-
-  /* ===============================
-     PRACTICE
-     =============================== */
-  function renderPractice() {
-    if (queuePractice.length === 0) {
-      card.innerHTML = "🎉 Ukończyłeś pisownię!";
-      tryAutoCompleteLesson();
-      return;
-    }
-
-    const w = queuePractice[0];
-    card.innerHTML = `
-      <div class="practice-container">
-        <div class="practice-word">${w.pl}</div>
-        <input id="inp" class="practice-input" />
-        <button id="chk" class="practice-btn">OK</button>
-      </div>
-    `;
-
-    document.getElementById("chk").onclick = () => {
-      const val = document.getElementById("inp").value.trim().toLowerCase();
-      if (val === w.en.toLowerCase()) {
-        queuePractice.shift();
-        save();
-        renderPractice();
-      }
-    };
-  }
-
-  /* ===============================
-     MENU
-     =============================== */
-  const menuBtn = document.getElementById("menu-btn");
-  const menuList = document.getElementById("menu-list");
-
-  menuBtn.onclick = () => {
-    menuList.classList.toggle("hidden");
-    menuList.innerHTML = `
-      <li onclick="renderFlashcard()">Fiszki</li>
-      <li onclick="renderPractice()">Pisownia</li>
-    `;
-  };
-
-  /* ===============================
-     START
-     =============================== */
-  renderFlashcard();
-
-})();
 </script>
-
 </body>
 </html>
