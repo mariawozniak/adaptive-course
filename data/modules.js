@@ -16,13 +16,14 @@ export const modules = [
         completionRule: "any", // ukończone, jeśli dowolny wariant zaliczony
 
         variants: [
-          {
-            id: "module_1__vocabulary__app",
-            label: "Aplikacja do słówek",
-            type: "internal",
-            key: "vocabulary",
-            completion: "auto" // ✅ auto-zaliczenie po przejściu wszystkich fiszek
-          },
+  {
+  id: "module_1__vocabulary__app",
+  label: "Aplikacja do słówek",
+  type: "iframe",
+  src: "/vocabulary/index.html",
+  completion: "auto"
+},
+
           {
             id: "module_1__vocabulary__audio",
             label: "Nagranie MP3",
