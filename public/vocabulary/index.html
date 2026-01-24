@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fiszki EN-PL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin:0;
+      font:16px/1.5 "Inter", system-ui, Segoe UI, Roboto, Arial, sans-serif;
+      background:#f5f7fb; color:#111827;
+    }
+    .flashcard-wrapper { text-align: center; margin: 2em auto; max-width: 600px; }
+    .nav-controls { margin: 14px 0 0; }
+    .nav-controls button {
+      padding: 10px 16px;
+      margin: 4px;
+      border: none;
+      border-radius: 6px;
+      background: #eee;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .flashcard {
+      width: 100%;
+      height: 200px;
+      perspective: 1000px;
+      margin: 0 auto;
+      position: relative;
+      transition: transform 0.4s ease, opacity 0.4s ease, background 0.4s ease;
+    }
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+    .flipped .card-inner { transform: rotateY(180deg); }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      font-size: 24px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .card-back { background: #e0f2fe; transform: rotateY(180deg); }
+    .speak-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 20px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .swipe-left { transform: translateX(-120%) rotate(-15deg); opacity: 0; background:#fecaca !important; }
+    .swipe-right { transform: translateX(120%) rotate(15deg); opacity: 0; background:#bbf7d0 !important; }
+
+    .practice-container { text-align:left; margin-top:20px; }
+    .practice-word { font-size:22px; font-weight:bold; margin-bottom:10px; }
+    .practice-input {
+      width:100%;
+      font-size:18px;
+      padding:8px;
+      border:2px solid #facc15;
+      border-radius:8px;
+    }
+    .practice-btn {
+      padding:10px 16px;
+      border:none;
+      border-radius:6px;
+      background:#3b82f6;
+      color:white;
+      font-weight:bold;
+      cursor:pointer;
+    }
+    .idk-link { float:right; color:teal; cursor:pointer; font-size:14px; }
+    .hidden { display:none; }
+  </style>
+</head>
+<body>
+
+<div class="flashcard-wrapper">
+  <div style="margin-bottom:10px; text-align:right;">
+    <button id="menu-btn">Menu ⚙️</button>
+    <ul id="menu-list" class="hidden"></ul>
+  </div>
+
+  <div id="card" class="flashcard"></div>
+
+  <div class="nav-controls">
+    <button id="again-btn">⬅️ Wciąż się uczę</button>
+    <button id="know-btn">Umiem ➡️</button>
+  </div>
+
+  <div id="message" style="margin-top:20px;font-weight:bold;"></div>
+</div>
+
+<script>
+(function () {
+
+  /* ===============================
+     AUTO-COMPLETE CONFIG
+     =============================== */
+  const MODULE_ID = "module_1";
+  const LESSON_ID = "module_1__vocabulary__app";
+  let lessonCompletedSent = false;
+
+  async function tryAutoCompleteLesson() {
+    if (lessonCompletedSent) return;
+
+    const flashDone = queueFlashcards.length === 0;
+    const practiceDone = queuePractice.length === 0;
+
+    // ANY: fiszki LUB pisownia
+    if (!flashDone && !practiceDone) return;
+
+    lessonCompletedSent = true;
+
+    try {
+      await fetch("/api/lesson-complete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          moduleId: MODULE_ID,
+          lessonId: LESSON_ID
+        })
+      });
+    } catch (err) {
+      console.error("Auto-complete failed", err);
+      lessonCompletedSent = false;
+    }
+  }
+
+  /* ===============================
+     DATA
+     =============================== */
+  const words = [
+    { en: "here is to my sister", pl: "za moją siostrę" },
+    { en: "newly appointed", pl: "nowo mianowana" },
+    { en: "in charge of purchasing", pl: "odpowiedzialna za zakupy" }
+  ];
+
+  function shuffle(arr) {
+    return arr.sort(() => Math.random() - 0.5);
+  }
+
+  const KEY_FLASH = "flashcards-m1";
+  const KEY_PRACTICE = "practice-m1";
+
+  let queueFlashcards = JSON.parse(localStorage.getItem(KEY_FLASH) || "null") || shuffle([...words]);
+  let queuePractice   = JSON.parse(localStorage.getItem(KEY_PRACTICE) || "null") || shuffle([...words]);
+
+  function save() {
+    localStorage.setItem(KEY_FLASH, JSON.stringify(queueFlashcards));
+    localStorage.setItem(KEY_PRACTICE, JSON.stringify(queuePractice));
+  }
+
+  const card = document.getElementById("card");
+  const msg  = document.getElementById("message");
+  const againBtn = document.getElementById("again-btn");
+  const knowBtn  = document.getElementById("know-btn");
+
+  /* ===============================
+     FISZKI
+     =============================== */
+  function renderFlashcard() {
+    if (queueFlashcards.length === 0) {
+      card.innerHTML = "🎉 Ukończyłeś fiszki!";
+      msg.textContent = "";
+      tryAutoCompleteLesson();
+      return;
+    }
+
+    const w = queueFlashcards[0];
+    card.innerHTML = `<div>${w.en}<br/><small>${w.pl}</small></div>`;
+  }
+
+  againBtn.onclick = () => {
+    queueFlashcards.push(queueFlashcards.shift());
+    save();
+    renderFlashcard();
+  };
+
+  knowBtn.onclick = () => {
+    queueFlashcards.shift();
+    save();
+    renderFlashcard();
+  };
+
+  /* ===============================
+     PRACTICE
+     =============================== */
+  function renderPractice() {
+    if (queuePractice.length === 0) {
+      card.innerHTML = "🎉 Ukończyłeś pisownię!";
+      tryAutoCompleteLesson();
+      return;
+    }
+
+    const w = queuePractice[0];
+    card.innerHTML = `
+      <div class="practice-container">
+        <div class="practice-word">${w.pl}</div>
+        <input id="inp" class="practice-input" />
+        <button id="chk" class="practice-btn">OK</button>
+      </div>
+    `;
+
+    document.getElementById("chk").onclick = () => {
+      const val = document.getElementById("inp").value.trim().toLowerCase();
+      if (val === w.en.toLowerCase()) {
+        queuePractice.shift();
+        save();
+        renderPractice();
+      }
+    };
+  }
+
+  /* ===============================
+     MENU
+     =============================== */
+  const menuBtn = document.getElementById("menu-btn");
+  const menuList = document.getElementById("menu-list");
+
+  menuBtn.onclick = () => {
+    menuList.classList.toggle("hidden");
+    menuList.innerHTML = `
+      <li onclick="renderFlashcard()">Fiszki</li>
+      <li onclick="renderPractice()">Pisownia</li>
+    `;
+  };
+
+  /* ===============================
+     START
+     =============================== */
+  renderFlashcard();
+
+})();
+</script>
+
+</body>
+</html>
