@@ -8,6 +8,19 @@ import { modules } from "./data/modules.js";
 const app = express();
 app.use(express.json());
 
+app.get("/api/debug-key", (req, res) => {
+  const key = process.env.OPENAI_API_KEY;
+  res.json({
+    hasKey: Boolean(key),
+    keyLength: key ? key.length : 0,
+    keyPrefix: key ? key.slice(0, 3) : null,
+    allEnvKeys: Object.keys(process.env).filter(k =>
+      k.toLowerCase().includes("openai")
+    )
+  });
+});
+
+
 // ===== COOKIES =====
 app.use((req, res, next) => {
   const raw = req.headers.cookie || "";
@@ -180,4 +193,5 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
