@@ -1,9 +1,110 @@
-/* =========================================================
-   GAPFILL THEME — 1:1 VISUAL FROM MONOLITH
-   Odpowiada WYŁĄCZNIE za wygląd ćwiczenia gap fill
-   ========================================================= */
+/* =========================
+   ROOT / VARIABLES
+   ========================= */
 
-/* ---------- Instruction ---------- */
+:root {
+  --pad: 20px;
+  --card-pad: 20px;
+  --btn-pad-y: 10px;
+  --btn-pad-x: 14px;
+  --radius: 12px;
+  --font-h1: 28px;
+  --font-q: 18px;
+  --font-btn: 16px;
+  --hit: 44px; /* minimalny rozmiar tap target */
+}
+
+/* iOS: żeby nie powiększał fontów sam z siebie */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* =========================
+   BASE
+   ========================= */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0e14;
+  color: #eee;
+}
+
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding-left: max(var(--pad), env(safe-area-inset-left));
+  padding-right: max(var(--pad), env(safe-area-inset-right));
+  padding-top: max(var(--pad), env(safe-area-inset-top));
+  padding-bottom: max(var(--pad), env(safe-area-inset-bottom));
+}
+
+/* =========================
+   PLAYER
+   ========================= */
+
+.player {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#yt {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================
+   SCORE BOX
+   ========================= */
+
+#scoreBox {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #ffd257;
+  z-index: 10;
+}
+
+/* =========================
+   OVERLAY
+   ========================= */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: none;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(3px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card {
+  background: #1b2130;
+  border: 1px solid #2a3445;
+  border-radius: var(--radius);
+  padding: var(--card-pad);
+  max-width: 700px;
+  width: min(700px, 100%);
+  max-height: min(80vh, 620px);
+  overflow: auto;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================
+   TEXT / QUESTION
+   ========================= */
 
 #instruction {
   font-size: 20px;
@@ -11,65 +112,58 @@
   margin-bottom: 12px;
 }
 
-/* ---------- Question text ---------- */
-
 .qtext {
-  font-size: 18px;
+  font-size: var(--font-q);
   line-height: 1.6;
-  color: #eee;
 }
 
-/* ---------- Gap container ---------- */
+/* =========================
+   GAP (KLUCZOWE 1:1)
+   ========================= */
 
 .gap {
   display: inline-block;
   min-width: 7ch;
-  padding: 2px 8px;                 /* 1:1 wysokość z monolitu */
+  padding: 4px 8px;
   margin: 2px 2px;
   background: #0f1520;
   border: 1px dashed #446;
   border-radius: 8px;
+
   vertical-align: baseline;
+  line-height: inherit;
 }
 
-/* ---------- Gap input ---------- */
+/* INPUT W LUKACH */
 
 .gap input {
   background: transparent;
   border: none;
   outline: none;
+
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+
   color: #ffd257;
-
   text-align: center;
-  width: 100%;
-  min-width: 3ch;
-
-  font-family: inherit;             /* KLUCZ: ta sama czcionka */
-  font-size: inherit;               /* KLUCZ: brak różnicy px */
-  line-height: inherit;             /* KLUCZ: brak wyskakiwania */
 
   padding: 0;
   margin: 0;
+  width: 100%;
+  min-width: 3ch;
   box-sizing: border-box;
-  vertical-align: baseline;
 }
 
-/* Placeholder (… ) */
+/* OCENA (PO SPRAWDZENIU) */
 
-.gap input::placeholder {
-  color: #556;
-  opacity: 1;
+.gap span {
+  white-space: nowrap;
 }
 
-/* ---------- Correct answer ---------- */
-
-.correct {
-  color: #35c28d;
-  font-weight: 600;
-  margin-left: 6px;
-}
-
-/* ---------- Actions row ---------- */
+/* =========================
+   ACTIONS
+   ========================= */
 
 .actions {
   margin-top: 14px;
@@ -78,7 +172,28 @@
   align-items: center;
 }
 
-/* ---------- Replay icon ---------- */
+/* BUTTONS */
+
+button {
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  font-weight: 700;
+  font-size: var(--font-btn);
+  min-height: var(--hit);
+  color: #000;
+}
+
+button:hover {
+  background: #ffdf7e;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* REPLAY */
 
 .replay {
   cursor: pointer;
@@ -87,37 +202,50 @@
   color: #fff;
   text-shadow: 1px 1px 5px #000;
   transition: transform 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--hit);
+  height: var(--hit);
+  border-radius: 10px;
 }
 
 .replay:active {
   transform: scale(0.95);
 }
 
-/* ---------- Button (Dalej ▶) ---------- */
+/* =========================
+   END OVERLAY
+   ========================= */
 
-.actions button {
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
+#endOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+}
 
+#endOverlay .end-card {
+  background: #1b2130;
+  border: 1px solid #2a3445;
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  max-width: 420px;
+  width: 90%;
+}
+
+#endOverlay h1 {
+  margin-top: 0;
+}
+
+#finalScoreEnd {
+  font-size: 28px;
   font-weight: 700;
-  font-size: 16px;
-
-  background: #ffd257;
-  color: #000;
-}
-
-.actions button:hover {
-  background: #ffdf7e;
-}
-
-.actions button:active {
-  transform: scale(0.98);
-}
-
-/* ---------- Evaluation (wrong → correct) ---------- */
-
-.gap span {
-  white-space: nowrap;
+  color: #ffd257;
+  margin: 16px 0 24px;
 }
