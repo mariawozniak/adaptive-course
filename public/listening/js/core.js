@@ -148,6 +148,25 @@ const path = `/data/listening/${moduleName}.${mode}.json`;
       };
     });
   }
+function nextSegment() {
+  // 👉 jeśli engine (np. mixed) chce przejąć „Dalej”
+  if (engine && typeof engine.onNext === "function") {
+    const canProceed = engine.onNext(currentSegmentIndex);
+
+    // engine mówi: „jeszcze nie”
+    if (canProceed === false) return;
+  }
+
+  // standardowe przejście dalej
+  CORE_API.hideOverlay();
+  currentSegmentIndex++;
+
+  if (currentSegmentIndex < data.segments.length) {
+    playSegment(currentSegmentIndex);
+  } else {
+    CORE_API.finishExercise();
+  }
+}
 
   // ---- init ----
   async function start() {
@@ -174,6 +193,12 @@ updateScoreBox();
     // Jeśli chcesz wymusić kliknięcie play → powiemy engine/core jak to zsynchronizować.
     playSegment(0);
   }
+
+  const nextBtn = document.getElementById("next");
+if (nextBtn) {
+  nextBtn.onclick = nextSegment;
+}
+
 
   // Globalnie dla debug (opcjonalnie)
   window.__CORE__ = { CORE_API };
