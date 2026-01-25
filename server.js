@@ -154,6 +154,18 @@ app.post("/api/translate", async (req, res) => {
     res.status(500).json({ error: "Translate failed" });
   }
 });
+// ===== DEBUG OPENAI KEY =====
+app.get("/api/debug-key", (req, res) => {
+  res.json({
+    hasKey: Boolean(process.env.OPENAI_API_KEY),
+    keyLength: process.env.OPENAI_API_KEY
+      ? process.env.OPENAI_API_KEY.length
+      : 0,
+    keyPrefix: process.env.OPENAI_API_KEY
+      ? process.env.OPENAI_API_KEY.slice(0, 7) + "..."
+      : null
+  });
+});
 
 // ===== STATIC =====
 app.use(express.static(path.join(__dirname, "public")));
@@ -168,3 +180,4 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
