@@ -11,3 +11,16 @@
 .green {
   color: #35c28d;
 }
+/* ===== MIXED: ORDER ===== */
+
+.order-zone {
+  display: flex;
+  flex-direction: column;
+  gap: 14px; /* 🔥 KLUCZOWE – odstęp między rzędami */
+}
+
+.order-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
