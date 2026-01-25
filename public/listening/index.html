@@ -4,962 +4,125 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <style>
-    body { margin:0; font-family:Arial,sans-serif; background:#0b0e14; color:#eee; }
-    .wrap { max-width:960px; margin:0 auto; padding:20px; }
-    .player { position:relative; aspect-ratio:16/9; background:#111; border-radius:12px; overflow:hidden; }
-    #yt { position:absolute; inset:0; width:100%; height:100%; }
 
-    /* SCORE BOX */
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0e14;
+      color: #eee;
+    }
+
+    .wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .player {
+      position: relative;
+      aspect-ratio: 16/9;
+      background: #111;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    #yt {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
     #scoreBox {
-      position:absolute; top:8px; right:12px;
-      background:rgba(0,0,0,.6);
-      padding:6px 12px; border-radius:8px;
-      font-weight:600; font-size:14px; color:#ffd257;
-      z-index:10;
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      background: rgba(0,0,0,.6);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #ffd257;
+      z-index: 10;
     }
 
     .overlay {
-      position:absolute; inset:0; display:none;
-      background:rgba(0,0,0,.65); backdrop-filter:blur(3px);
-      align-items:center; justify-content:center; padding:20px;
-    }
-    .card {
-  background:#1b2130;
-  border:1px solid #2a3445;
-  border-radius:var(--radius);
-  padding:var(--card-pad);
-  max-width:700px;
-  width:min(700px, 100%);
-  max-height: min(80vh, 620px);
-  overflow:auto; /* klucz: karta nie wyleci poza ekran */
-  box-shadow:0 6px 20px rgba(0,0,0,.5);
-}
-
-    #instruction { font-size:20px; font-weight:600; margin-bottom:12px; }
-.qtext {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.6;
-  margin-bottom: 16px;
-}
-    .gap {
-  display:inline-block;
-  min-width:7ch;
-  padding:4px 8px;
-  margin:2px 2px;
-  background:#0f1520;
-  border:1px dashed #446;
-  border-radius:8px;
-}
-
-    .gap input { background:transparent; border:none; outline:none; color:#ffd257;
-                 text-align:center; font-size:16px; width:100%; }
-    .correct { color:#35c28d; font-weight:600; margin-left:6px; }
-    .actions { margin-top:14px; display:flex; gap:12px; align-items:center; }
-button {
-  padding: var(--btn-pad-y) var(--btn-pad-x);
-  border-radius: 10px;
-  cursor: pointer;
-  border: none;
-  font-weight: 700;
-  font-size: var(--font-btn);
-  min-height: var(--hit);
-  color: #000;
-}
-
-
-button:hover {
-  background: #ffdf7e;
-}
-
-button:active {
-  transform: scale(0.98);
-}
-
-button:active { transform: scale(0.98); }
-.replay {
-  cursor:pointer;
-  font-size:30px;
-  user-select:none;
-  color:#fff;
-  text-shadow:1px 1px 5px #000;
-  transition:transform .15s ease;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width: var(--hit);
-  height: var(--hit);
-  border-radius: 10px;
-}
-.replay:active { transform: scale(0.95); }
-
-
-
-    /* --- Fullscreen overlay --- */
-    .fullscreen-overlay {
+      position: absolute;
+      inset: 0;
       display: none;
-    }
-    @media (max-width: 768px) {
-      .fullscreen-overlay {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.9);
-        color: white;
-        z-index: 9999;
-        flex-direction: column;
-        text-align: center;
-        padding: 1em;
-      }
-      .fullscreen-overlay button {
-        background-color: #ffffff;
-        color: #000;
-        border: none;
-        padding: 1em 2em;
-        font-size: 1.2em;
-        border-radius: 8px;
-        cursor: pointer;
-        margin-top: 20px;
-      }
-    }
-
-   /* iOS pseudo-fullscreen */
-.ios-fullscreen {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100vw !important;
-  height: 100vh !important;
-  z-index: 9998;
-  border-radius: 0 !important;
-}
-
-/* iOS: stabilniejsze vh */
-@supports (height: 100dvh) {
-  .ios-fullscreen {
-    height: 100dvh !important;
-  }
-}
-
-    /* --- Rotate overlay for iOS --- */
-    #rotateOverlay {
-      display: none;   /* <-- tylko to zostaje */
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.9);
-      color: #fff;
-      z-index: 10000;
-      flex-direction: column;
+      background: rgba(0,0,0,.65);
+      backdrop-filter: blur(3px);
       align-items: center;
       justify-content: center;
-      text-align: center;
       padding: 20px;
     }
-    #rotateOverlay .material-icons {
-      font-size: 64px;
-      margin-bottom: 20px;
-      animation: rotateHint 2s infinite linear;
+
+    .card {
+      background: #1b2130;
+      border: 1px solid #2a3445;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 700px;
+      width: 100%;
+      max-height: 80vh;
+      overflow: auto;
+      box-shadow: 0 6px 20px rgba(0,0,0,.5);
     }
-    @keyframes rotateHint {
-      0% { transform: rotate(0deg); }
-      50% { transform: rotate(90deg); }
-      100% { transform: rotate(0deg); }
+
+    .actions {
+      margin-top: 16px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
     }
-:root{
-  --pad: 20px;
-  --card-pad: 20px;
-  --btn-pad-y: 10px;
-  --btn-pad-x: 14px;
-  --radius: 12px;
-  --font-h1: 28px;
-  --font-q: 18px;
-  --font-btn: 16px;
-  --hit: 44px; /* minimalny rozmiar tap target */
-}
 
-/* iOS: żeby nie powiększał fontów sam z siebie */
-html { -webkit-text-size-adjust: 100%; }
-
-/* Bezpieczne area dla notcha (iOS) */
-.wrap{
-  padding-left: max(var(--pad), env(safe-area-inset-left));
-  padding-right: max(var(--pad), env(safe-area-inset-right));
-  padding-top: max(var(--pad), env(safe-area-inset-top));
-  padding-bottom: max(var(--pad), env(safe-area-inset-bottom));
-}
-
-h1{ font-size: var(--font-h1); margin: 0 0 14px; }
-
-#endOverlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(4px);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 10001; /* wyżej niż fullscreenOverlay */
-}
-
-#endOverlay .end-card {
-  background: #1b2130;
-  border: 1px solid #2a3445;
-  border-radius: 16px;
-  padding: 32px 24px;
-  text-align: center;
-  max-width: 420px;
-  width: 90%;
-}
-
-#endOverlay h1 {
-  margin-top: 0;
-}
-
-#finalScoreEnd {
-  font-size: 28px;
-  font-weight: 700;
-  color: #ffd257;
-  margin: 16px 0 24px;
-}
-/* ===== MCQ (multiple choice) ===== */
-#answers { margin-top: 12px; }
-
-.answer {
-  background:#f2f4f8;
-  border:1px solid #d0d7e2;
-  border-radius:12px;
-  padding:16px;
-  margin:10px 0;
-  cursor:pointer;
-  transition:.2s;
-  color:#1b2130;
-  font-weight:600;
-font-size: 17px;
-
-}
-
-
-.answer:hover {
-  background: #e8ecf3;   /* jasne tło */
-  color: #0b0e14;        /* bardzo ciemny tekst */
-}
-
-.answer.correct {
-  background: #9fe4cb;          /* bardziej nasycona zieleń */
-  border-color: #158a64;
-  color: #063d2a;
-}
-
-.answer.wrong {
-  background: #f1a5a5;          /* bardziej nasycona czerwień */
-  border-color: #c93434;
-  color: #5a0f0f;
-}
-
-
-  #answers {
-    margin-top: 8px;
-  }
-
-  .answer {
-    padding: 12px 10px;     /* 🔥 było 16px */
-    margin: 6px 0;          /* 🔥 było 10px */
-    font-size: 15px;        /* 🔥 było 17px */
-    border-radius: 10px;
-  }
-
-  .actions {
-    gap: 8px;
-  }
-
-  button {
-    padding: 8px 12px;      /* 🔥 węższe */
-    font-size: 15px;
-    min-height: 44px;       /* ✅ nadal OK */
-  }
-
-  .replay {
-    width: 44px;
-    height: 44px;
-    font-size: 24px;
-  }
-}
-
-/* === ONLY MCQ ANSWERS: MOBILE WIDTH FIX === */
-@media (max-width: 480px) {
-
-  #answers {
-    margin-top: 8px;
-  }
-
-  .answer {
-    padding: 10px 8px;   /* 🔥 węższe w pionie i poziomie */
-    margin: 6px 0;       /* 🔥 mniejsze odstępy */
-    font-size: 15px;     /* 🔥 delikatnie mniejszy tekst */
-    line-height: 1.35;
-  }
-}
-/* odpowiedzi po wyborze – neutralne */
-.answer {
-  transition: background-color .2s, color .2s, opacity .2s;
-}
-
-/* neutralne odpowiedzi TYLKO gdy jedna jest zaznaczona */
-#answers:has(.answer.correct),
-#answers:has(.answer.wrong) {
-
-  .answer:not(.correct):not(.wrong) {
-    background: #f5f7fb;
-    color: #2b3440;
-    opacity: 0.85;
-  }
-}
-
-
+    button {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
 
-    <!-- Fullscreen overlay -->
-    <div class="fullscreen-overlay" id="fullscreenOverlay">
-      <div id="overlayMessage"></div>
-      <button id="overlayButton">Ok</button>
-    </div>
-
-    <!-- Rotate overlay (iOS portrait warning) -->
-    <div id="rotateOverlay">
-      <span class="material-icons">screen_rotation</span>
-      <div>Obróć telefon w poziom, aby wygodnie korzystać.</div>
-    </div>
-
     <div class="player">
       <div id="yt"></div>
-      <!-- SCORE BOX -->
-      <div id="scoreBox">0 / 0</div>
+
+      <!-- score / overlay / content: OBSŁUGIWANE PRZEZ ENGINE -->
+      <div id="scoreBox"></div>
+
       <div class="overlay" id="overlay">
         <div class="card">
           <div id="instruction"></div>
-          <div class="qtext" id="qtext"></div>
-<!-- MCQ answers -->
-<div id="answers"></div>
-
-<!-- MCQ explanation -->
-<div id="explanation" style="
-  display:none;
-  margin-top:16px;
-  padding:14px;
-  background:#0f1520;
-  border-radius:10px;
-  font-size:18px;
-"></div>
+          <div id="qtext"></div>
+          <div id="answers"></div>
+          <div id="explanation"></div>
 
           <div class="actions">
-            <span class="material-icons replay" id="replayBtn">replay</span>
+            <span class="material-icons" id="replayBtn">replay</span>
             <button id="next">Dalej ▶</button>
           </div>
-          <div class="msg" id="msg"></div>
+
+          <div id="msg"></div>
         </div>
       </div>
     </div>
-  </div>
-<!-- EKRAN KOŃCOWY -->
-<div id="end-screen" style="display:none; padding:20px">
-  <div class="card" style="text-align:center">
-    <h1>🎉 Brawo!</h1>
-    <p>Twój wynik:</p>
-    <div
-      id="finalScore"
-      style="font-size:28px;font-weight:700;color:#ffd257;margin-bottom:20px">
-    </div>
-    <div style="display:flex; gap:12px; justify-content:center;">
-  <button onclick="restartQuiz()">🔄 Zagraj ponownie</button>
-  <button onclick="closeEndScreen()">✖ Zamknij</button>
-</div>
 
   </div>
-</div>
 
-  <script>
-/*
-const params = new URLSearchParams(window.location.search);
-const MODE = params.get("mode") || "quiz";
-const MODULE_ID = params.get("module") || "module_1";
-
-let SEGMENTS = [];
-let VIDEO_ID = null;
-*/
-
-
-
-
-
-    let player, current = 0, watcher=null;
-    let score = 0;
-    let showedAnswers = false; 
-    let quizStarted = false;
-// --- MCQ state ---
-let mcqSelected = false;
-let mcqPhase = "answer"; // "answer" -> "explanation"
-
-let maxScore = 0;
-
-
-async function loadData() {
-  const res = await fetch(`/data/listening/${MODULE_ID}.${MODE}.json`);
-  const data = await res.json();
-
-  VIDEO_ID = data.videoId;
-  SEGMENTS = data.segments;
-
-maxScore = data.segments.reduce((sum, seg) => {
-  if (seg.type === "mcq") return sum + 1;
-  if (!seg.parts) return sum;
-  return sum + seg.parts.filter(p => p.gap).length;
-}, 0);
-
-
-  updateScoreBox();
-}
-
-
-loadData();
-
-    function updateScoreBox(){
-      document.getElementById("scoreBox").textContent = `${score} / ${maxScore}`;
-    }
-    updateScoreBox();
-
-   function renderParts(parts){
-  const frag = document.createDocumentFragment();
-
-  parts.forEach((p, index) => {
-    if (!p.gap) {
-      const span = document.createElement("span");
-      span.textContent = p.text + " ";
-      frag.appendChild(span);
-    } else {
-      const span = document.createElement("span");
-      span.className = "gap";
-
-      const input = document.createElement("input");
-      input.value = p.userAnswer || "";
-      input.placeholder = "…";
-input.dataset.answer = p.text;
-
-
-      // zapis do SEGMENTS przy pisaniu
-      input.addEventListener("input", e => {
-        p.userAnswer = e.target.value;
-      });
-
-      span.appendChild(input);
-      frag.appendChild(span);
-      frag.appendChild(document.createTextNode(" "));
-    }
-  });
-
-  return frag;
-}
-
-function renderEvaluation(parts){
-  const frag = document.createDocumentFragment();
-
-  parts.forEach(p => {
-    if (!p.gap) {
-      const span = document.createElement("span");
-      span.textContent = p.text + " ";
-      frag.appendChild(span);
-    } else {
-      const span = document.createElement("span");
-      span.className = "gap";
-
-      if (p.isCorrect) {
-        span.innerHTML = `<span style="color:#35c28d">${p.text}</span>`;
-      } else {
-        const user = p.userAnswer?.trim() || "—";
-        span.innerHTML =
-          `<span style="color:#ff6b6b">${user}</span> → ` +
-          `<span style="color:#35c28d">${p.text}</span>`;
-      }
-
-      frag.appendChild(span);
-      frag.appendChild(document.createTextNode(" "));
-    }
-  });
-
-  return frag;
-}
-
-function renderMCQ(seg){
-  // reset stanu
-  mcqSelected = false;
-  mcqPhase = "answer";
-
-  // instruction
-  const instr = document.getElementById("instruction");
-  instr.style.display = "block";
-
-  // question
-  const q = document.getElementById("qtext");
-  q.innerHTML = "";
-  q.textContent = seg.question;
-
-  // msg / explanation
-  document.getElementById("msg").textContent = "";
-  const exp = document.getElementById("explanation");
-  exp.style.display = "none";
-  exp.textContent = "";
-
-  // answers
-  const box = document.getElementById("answers");
-  box.innerHTML = "";
-
-  seg.answers.forEach(ans => {
-    const div = document.createElement("div");
-    div.className = "answer";
-    div.textContent = ans.text;
-
-  div.addEventListener("click", () => {
-  if (mcqSelected) return;
-  mcqSelected = true;
-
-  // zaznacz klikniętą odpowiedź
-  if (ans.correct) {
-    div.classList.add("correct");
-    score++;
-    updateScoreBox();
-  } else {
-    div.classList.add("wrong");
-
-    // 🔥 PODŚWIETL POPRAWNĄ ODPOWIEDŹ
-    [...box.children].forEach(el => {
-      const correctAnswer = seg.answers.find(
-        a => a.correct && a.text === el.textContent
-      );
-      if (correctAnswer) {
-        el.classList.add("correct");
-      }
-    });
-  }
-});
-
-
-    box.appendChild(div);
-  });
-
-  // pokaż overlay
-document.getElementById("answers").style.display = "block";
-
-  document.getElementById("overlay").style.display = "flex";
-}
-
-
-
-   function showQuestion(seg){
-  const q = document.getElementById("qtext");
-  q.innerHTML = "";
-
-const wasChecked = (seg.parts || []).some(p => p.gap && p.isCorrect !== null);
-
-  if (wasChecked) {
-    q.appendChild(renderEvaluation(seg.parts));
-  } else {
-    q.appendChild(renderParts(seg.parts));
-  }
-
-  // wyczyść MCQ UI
-  document.getElementById("answers").innerHTML = "";
-  document.getElementById("explanation").style.display = "none";
-  document.getElementById("explanation").textContent = "";
-
-
-  document.getElementById("overlay").style.display = "flex";
-  document.getElementById("msg").textContent = "";
-  document.getElementById("instruction").style.display = "block";
-}
-
-    function hideQuestion(){
-      document.getElementById("overlay").style.display="none";
-    }
-function showEndScreen(){
-
-  // zatrzymaj wideo
-  if (watcher) clearInterval(watcher);
-  player.pauseVideo();
-
-  // 👇 WYJŚCIE Z FULLSCREEN (KLUCZOWE)
-  if (document.fullscreenElement) {
-    document.exitFullscreen();
-  }
-
-  // iOS pseudo-fullscreen
-  const playerContainer = document.querySelector(".player");
-  playerContainer.classList.remove("ios-fullscreen");
-  document.body.style.overflow = "";
-
-  // ukryj inne overlaye
-  document.getElementById("overlay").style.display = "none";
-  const fs = document.getElementById("fullscreenOverlay");
-  if (fs) fs.style.display = "none";
-
-  // ustaw wynik
-  document.getElementById("finalScoreEnd").textContent =
-    `${score} / ${maxScore}`;
-
-  // 🔥 pokaż ekran końcowy JUŻ PO WYJŚCIU Z PLAYERA
-  document.getElementById("endOverlay").style.display = "flex";
-}
-
-function restartQuiz(){
-
-  // ukryj ekran końcowy
-  document.getElementById("endOverlay").style.display = "none";
-
-  // reset stanu
-  score = 0;
-  current = 0;
-  showedAnswers = false;
-  quizStarted = false;
-
-SEGMENTS.forEach(seg => {
-  if (!seg.parts) return;
-  seg.parts.forEach(p => {
-    if (p.gap) {
-      p.userAnswer = "";
-      p.isCorrect = null;
-    }
-  });
-});
-
-
-
-  updateScoreBox();
-
-  const playerContainer = document.querySelector(".player");
-  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-  // 👇 PRZYWRÓĆ FULLSCREEN
-  if (isIOS) {
-    // iOS pseudo-fullscreen
-    playerContainer.classList.add("ios-fullscreen");
-    document.body.style.overflow = "hidden";
-  } else {
-    // Android / desktop
-    if (playerContainer.requestFullscreen) {
-      playerContainer.requestFullscreen().catch(()=>{});
-    }
-  }
-
-  // małe opóźnienie, żeby fullscreen zdążył się aktywować
-  setTimeout(() => {
-    playSegment(0);
-  }, 300);
-}
-
-
-
-function closeEndScreen(){
-  document.getElementById("endOverlay").style.display = "none";
-}
-
-
-   function playSegment(idx){
-  const seg = SEGMENTS[idx];
-
-  player.seekTo(seg.start, true);
-  player.playVideo();
-
-  if (watcher) clearInterval(watcher);
-
-  watcher = setInterval(() => {
-    if (player.getCurrentTime() >= seg.end) {
-      clearInterval(watcher);
-      player.pauseVideo();
-
-      // 👇 JEŚLI TO OSTATNI SEGMENT → EKRAN KOŃCOWY
-      if (idx === SEGMENTS.length - 1) {
-        showEndScreen();
-      } else {
-if (seg.type === "mcq") {
-  renderMCQ(seg);
-} else {
-  showQuestion(seg);
-}
-      }
-    }
-  }, 200);
-}
-
-
-    function checkAnswer(){
-      const inputs=document.querySelectorAll("#qtext input");
-      let allOk=true;
-      inputs.forEach(inp=>{
-        if(inp.value.trim().toLowerCase()===inp.dataset.answer.toLowerCase()){
-          inp.style.outline="2px solid #35c28d";
-        } else {
-          inp.style.outline="2px solid #ff6b6b";
-          allOk=false;
-        }
-      });
-      return allOk;
-    }
-
-   function nextSegment(){
-  const seg = SEGMENTS[current];
-
-  // --- MCQ flow: 1 klik = explanation, 2 klik = dalej ---
-
-if (seg.type === "mcq") {
-  if (!mcqSelected) return;
-
-  // ===== FAZA 1 → EXPLANATION =====
-  if (mcqPhase === "answer") {
-    // ukryj odpowiedzi
-    document.getElementById("answers").style.display = "none";
-
-    // ustaw explanation jako JEDYNĄ treść
-    const q = document.getElementById("qtext");
-    q.textContent = seg.explanation || "";
-
-    document.getElementById("instruction").textContent = "Wyjaśnienie";
-    document.getElementById("explanation").style.display = "none";
-
-    mcqPhase = "explanation";
-    return;
-  }
-
-  // ===== FAZA 2 → DALEJ =====
-  hideQuestion();
-  current++;
-  mcqSelected = false;
-  mcqPhase = "answer";
-
-  if (current < SEGMENTS.length) {
-    playSegment(current);
-  } else {
-    player.pauseVideo();
-    showEndScreen();
-  }
-  return;
-}
-
-  const inputs = document.querySelectorAll("#qtext input");
-  let allOk = true;
-
-  inputs.forEach(inp => {
-    const userVal = inp.value.trim().toLowerCase();
-    const correctVal = inp.dataset.answer.toLowerCase();
-
-    // znajdź odpowiadającą część w SEGMENTS
-    const part = SEGMENTS[current].parts.find(
-      p => p.gap && p.text === inp.dataset.answer
-    );
-
-    if (userVal === correctVal) {
-      inp.style.outline = "2px solid #35c28d";
-      score++;
-
-      if (part) part.isCorrect = true;
-
-      const span = document.createElement("span");
-      span.innerHTML = `<span style="color:#35c28d">${inp.dataset.answer}</span>`;
-      inp.parentNode.replaceChild(span, inp);
-
-    } else {
-      inp.style.outline = "2px solid #ff6b6b";
-      allOk = false;
-
-      if (part) part.isCorrect = false;
-
-      const userAns = inp.value.trim() || "—";
-      const correctAns = inp.dataset.answer;
-
-      const span = document.createElement("span");
-      span.innerHTML =
-        `<span style="color:#ff6b6b">${userAns}</span> → ` +
-        `<span style="color:#35c28d">${correctAns}</span>`;
-
-      inp.parentNode.replaceChild(span, inp);
-    }
-  });
-
-  updateScoreBox();
-
-  // pierwsze kliknięcie: tylko pokaż odpowiedzi
-  if (!showedAnswers) {
-    showedAnswers = true;
-    return;
-  }
-
-  // drugie kliknięcie: przejście dalej
-  hideQuestion();
-  current++;
-  showedAnswers = false;
-
- if (current < SEGMENTS.length) {
-  playSegment(current);
-} else {
-  player.pauseVideo();
-  showEndScreen();
-}
-
-}
-
-
-    document.getElementById("next").onclick=nextSegment;
-
-    document.getElementById("replayBtn").onclick=()=>{
-      hideQuestion();
-      playSegment(current);
-    };
-
-    function onYouTubeIframeAPIReady(){
-      player=new YT.Player("yt",{
-videoId: VIDEO_ID,
-        playerVars:{rel:0,modestbranding:1,playsinline:1},
-        events:{
-          onReady:()=>{},
-        onStateChange: (event) => {
-
-  // start quizu
-if (
-  event.data === YT.PlayerState.PLAYING &&
-  !quizStarted &&
-  SEGMENTS.length
-) {
-  quizStarted = true;
-  playSegment(current);
-}
-
-
-  // 👇 JEDYNE PEWNE ZAKOŃCZENIE FILMU
-  if (event.data === YT.PlayerState.ENDED) {
-    showEndScreen();
-  }
-}
-
-       
-        }
-      });
-    }
-    (function(){let tag=document.createElement("script");tag.src="https://www.youtube.com/iframe_api";document.head.appendChild(tag);})();
-    window.onYouTubeIframeAPIReady=onYouTubeIframeAPIReady;
-
-    // --- Fullscreen overlay logic ---
-    window.addEventListener("load", function () {
-      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-      const isAndroid = /Android/i.test(navigator.userAgent);
-      const overlay = document.getElementById("fullscreenOverlay");
-      const overlayMessage = document.getElementById("overlayMessage");
-      const overlayButton = document.getElementById("overlayButton");
-      const playerContainer = document.querySelector(".player");
-
-      const instrukcjaHTML = `
-        <strong>Instrukcja:</strong><br><br>
-        1. Kliknij czerwony przycisk "play", aby uruchomić filmik. Po chwili zatrzyma się i wyświetli się pytanie.<br><br>
-        2. Jeśli chcesz powtórzyć fragment, kliknij ikonę odtwarzania wstecz.<br><br>
-        3. Aby przejść dalej, kliknij przycisk "Dalej ▶".
-      `;
-
-      if (isIOS) {
-        overlayMessage.innerHTML = instrukcjaHTML;
-        overlayButton.innerText = "Start";
-        overlay.style.display = "flex";
-        overlayButton.onclick = function () {
-          enterFullscreenCSS();
-          overlay.style.display = "none";
-        };
-      } else if (isAndroid) {
-        overlayMessage.innerHTML = instrukcjaHTML;
-        overlayButton.innerText = "Ok";
-        overlay.style.display = "flex";
-        overlayButton.onclick = function () {
-          enterFullscreen(playerContainer);
-          overlay.style.display = "none";
-        };
-      }
-    });
-
-    function enterFullscreen(element) {
-      if (element.requestFullscreen) {
-        element.requestFullscreen();
-      } else if (element.webkitRequestFullscreen) {
-        element.webkitRequestFullscreen();
-      } else if (element.msRequestFullscreen) {
-        element.msRequestFullscreen();
-      }
-
-      if (screen.orientation && screen.orientation.lock) {
-        screen.orientation.lock("landscape").catch(() => {});
-      }
-    }
-
-    function enterFullscreenCSS() {
-      const playerContainer = document.querySelector(".player");
-      playerContainer.classList.add("ios-fullscreen");
-      document.body.style.overflow = "hidden";
-
-      if (screen.orientation && screen.orientation.lock) {
-        screen.orientation.lock("landscape").catch(() => {});
-      }
-    }
-
-   // nakładka rotacji tylko dla iOS
-const rotateOverlay = document.getElementById("rotateOverlay");
-
-if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-
-  function updateRotateOverlay() {
-    if (window.orientation === 0 || window.orientation === 180) {
-      rotateOverlay.style.display = "flex";   // pion
-    } else {
-      rotateOverlay.style.display = "none";   // poziom
-    }
-  }
-
-  // sprawdź od razu przy starcie
-  updateRotateOverlay();
-
-  // i reaguj na zmiany
-  window.addEventListener("orientationchange", updateRotateOverlay);
-}
-document.addEventListener("keydown", function (e) {
-  if (e.key === "Enter") {
-    const overlay = document.getElementById("overlay");
-
-    // tylko gdy pytanie jest widoczne
-    if (overlay.style.display === "flex") {
-      e.preventDefault();
-      nextSegment();
-    }
-  }
-});
-
-  </script>
-<!-- END OVERLAY (ekran końcowy) -->
-<div id="endOverlay">
-  <div class="end-card">
-    <h1>🎉 Brawo!</h1>
-    <p>Twój wynik:</p>
-    <div id="finalScoreEnd"></div>
-   <div style="display:flex; gap:12px; justify-content:center;">
-  <button onclick="restartQuiz()">🔄 Zagraj ponownie</button>
-  <button onclick="closeEndScreen()">✖ Zamknij</button>
-</div>
-
-  </div>
-</div>
-<script src="/listening/js/core.js"></script>
-<script src="/listening/js/gapfillEngine.js"></script>
+  <!-- ================= CORE ================= -->
+  <script src="/listening/js/core.js"></script>
+
+  <!-- ================= ENGINES ================= -->
+  <!-- docelowo tylko JEDEN engine będzie ładowany -->
+  <script src="/listening/js/gapfillEngine.js"></script>
+  <!-- <script src="/listening/js/quizEngine.js"></script> -->
+  <!-- <script src="/listening/js/mixedEngine.js"></script> -->
 
 </body>
 </html>
