@@ -94,9 +94,8 @@ export const modules = [
   id: "shadowing",
   label: "Shadowing",
   required: false,
-  type: "internal",
-  engine: "shadowing",
-  player: "youtube", // albo "vimeo"
+  type: "iframe",
+  src: "/shadowing/index.html?module=module_1",
   lessonId: "module_1__shadowing",
   completion: "manual"
 },
