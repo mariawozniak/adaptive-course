@@ -44,7 +44,7 @@ async function init() {
 
 // ====== LOADERS ======
 async function loadModuleData(moduleId) {
-  const res = await fetch(`/listening/data/${moduleId}.json`);
+  const res = await fetch(`/data/listening/${moduleId}.gapfill.json`);
   return await res.json();
 }
 
