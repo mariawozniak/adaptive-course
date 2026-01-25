@@ -90,15 +90,17 @@ export const modules = [
       /* =======================
          SHADOWING
          ======================= */
-      {
-        id: "shadowing",
-        label: "Shadowing",
-        required: false,
-        type: "iframe",
-        src: "/shadowing/index.html?module=module_1",
-        lessonId: "module_1__shadowing",
-        completion: "manual"
-      },
+{
+  id: "shadowing",
+  label: "Shadowing",
+  required: false,
+  type: "internal",
+  engine: "shadowing",
+  player: "youtube", // albo "vimeo"
+  lessonId: "module_1__shadowing",
+  completion: "manual"
+},
+
 
       /* =======================
          AI (PLACEHOLDER)
