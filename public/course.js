@@ -249,8 +249,45 @@ function renderContent() {
   if (item.type === "pdf")
     return `<iframe src="${item.src}" width="100%" height="800"></iframe>${renderCompleteButton(item)}`;
 
-  if (item.type === "internal")
-    return `<p>🛠 ${item.label}</p>`;
+if (item.type === "internal" && item.engine === "shadowing") {
+  // renderujemy HTML shadowingu
+  setTimeout(() => {
+    import("/shadowing/shadowingEngine.js");
+  }, 0);
+
+  return `
+    <div id="main-card">
+      <div class="player-wrap">
+        ${
+          item.player === "youtube"
+            ? `<iframe id="ytplayer"></iframe>`
+            : `<iframe id="vimeoplayer"></iframe>`
+        }
+      </div>
+
+      <div class="controls">
+        <button onclick="startShadowing()">▶ Start</button>
+        <div class="nav-buttons">
+          <button onclick="prevSegment()">◀ Wstecz</button>
+          <button onclick="nextSegment()">Dalej ▶</button>
+          <button onclick="retrySegment()">🔄 Powtórz</button>
+          <button onclick="markAsGood()">✔ Było dobrze</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p id="sentence" class="hidden"></p>
+        <p id="status"></p>
+      </div>
+    </div>
+
+    <div id="end-screen" class="hidden">
+      <h2>🎉 Koniec shadowingu</h2>
+      <button onclick="openActivity('${activeActivity.id}')">⬅ Wróć</button>
+    </div>
+  `;
+}
+
 
   return "";
 }
