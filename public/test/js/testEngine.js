@@ -110,9 +110,6 @@ function onSelect(el, question) {
 }
 
 
-    document.getElementById("nextBtn").disabled = false;
-  }
-
   /* =========================
      NEXT QUESTION
      ========================= */
