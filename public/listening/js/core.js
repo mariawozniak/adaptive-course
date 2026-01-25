@@ -66,7 +66,12 @@
     },
     getCurrentSegmentIndex() {
       return currentSegmentIndex;
-    }
+    },
+    setMaxScore(n) {
+  maxScore = n;
+  updateScoreBox();
+}
+
   };
 
   // ---- segment control ----
@@ -162,6 +167,7 @@ updateScoreBox();
 
     await loadYouTubeIframeApi();
     await createPlayer(data.videoId);
+    
 
     // Start: od razu odtwarzamy pierwszy segment (jak w prototypie po PLAY)
     // Tu celowo upraszczam: startujemy automatycznie.
