@@ -7,6 +7,46 @@
 
 (function () {
   "use strict";
+  (function injectGapStyles() {
+  if (document.getElementById("gapfill-styles")) return;
+
+  const style = document.createElement("style");
+  style.id = "gapfill-styles";
+  style.textContent = `
+    .gap {
+      display: inline-block;
+      min-width: 7ch;
+      padding: 4px 8px;
+      margin: 0 2px;
+      background: #0f1520;
+      border: 1px dashed #446;
+      border-radius: 8px;
+      vertical-align: baseline;
+    }
+
+    .gap input {
+      background: transparent;
+      border: none;
+      outline: none;
+
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+
+      color: #ffd257;
+      text-align: center;
+
+      padding: 0;
+      margin: 0;
+
+      width: auto;
+      vertical-align: baseline;
+    }
+  `;
+  document.head.appendChild(style);
+})();
+
 
   // =========================
   // STATE
