@@ -55,42 +55,48 @@
       });
     },
 
-    onNext(seg, CORE) {
-      const q = document.getElementById("qtext");
+onNext(seg, CORE) {
+  // FAZA 1 – pokaż feedback
+  if (this.phase === "edit") {
+    const input = document.querySelector(".edit-input");
+    if (!input) return false;
 
-      /* === FAZA 1: FEEDBACK === */
-      if (this.phase === "edit") {
-        if (!this.clicked) return false;
+    const user = input.value.trim();
+    const isCorrect = user.toLowerCase() === seg.correct.toLowerCase();
 
-        const isCorrect = this.inputValue.toLowerCase() === seg.correct.toLowerCase();
-
-        if (isCorrect) {
-          CORE.setScore(1);
-        }
-
-        q.innerHTML = `
-          <div>
-            ${seg.sentence.map(w => {
-              if (w === seg.wrong) {
-                return `<span class="green">${seg.correct}</span>`;
-              }
-              if (w === this.clicked) {
-                return `<span class="red">${this.inputValue || "—"}</span>`;
-              }
-              return w;
-            }).join(" ")}
-          </div>
+    const q = document.getElementById("qtext");
+q.innerHTML = `
+  <div class="feedback-block">
+    ${seg.sentence.map(w => {
+      if (w === seg.wrong) {
+        return `
+          <span class="red">(${w})</span>
+          <span class="${isCorrect ? "green" : "red"}"> ${user || "—"}</span>
+          ${!isCorrect ? ` → <span class="green">${seg.correct}</span>` : ""}
         `;
-
-        this.phase = "feedback";
-        return false;
       }
+      return `<span>${w}</span>`;
+    }).join(" ")}
+  </div>
+`;
 
-      /* === FAZA 2: DALEJ === */
-      this.phase = "edit";
-      this.clicked = null;
-      this.inputValue = "";
-      return true;
-    }
+
+    if (isCorrect) CORE.setScore(1);
+
+    this.phase = "result";
+    return false; // ⛔️ jeszcze nie przechodź dalej
+  }
+
+  // FAZA 2 – idziemy dalej
+  this.phase = "edit";
+  return true;
+}
+
   });
+  reset() {
+  this.phase = "edit";
+  this.clicked = null;
+  this.inputValue = "";
+}
+
 })();
