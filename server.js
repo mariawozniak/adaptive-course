@@ -1,3 +1,4 @@
+import OpenAI from "openai";
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -7,7 +8,7 @@ import { modules } from "./data/modules.js";
 const app = express();
 app.use(express.json());
 
-// ===== COOKIES (TWÓJ MECHANIZM – ZOSTAJE) =====
+// ===== COOKIES =====
 app.use((req, res, next) => {
   const raw = req.headers.cookie || "";
   req.cookies = Object.fromEntries(
@@ -28,12 +29,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // ===== IN-MEMORY STORES =====
-const progressStore = {};   // { userId: { moduleId: { completedLessons } } }
-const userStateStore = {};  // { userId: { level } }
+const progressStore = {};
+const userStateStore = {};
 
-// ===== API =====
-
-// --- HEALTH ---
+// ===== HEALTH =====
 app.get("/api/health", (req, res) => {
   res.json({
     ok: true,
@@ -42,12 +41,12 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-// --- MODULES (CONFIG) ---
+// ===== MODULES =====
 app.get("/api/modules", (req, res) => {
   res.json(modules);
 });
 
-// --- USER / COOKIE ---
+// ===== USER / COOKIE =====
 app.get("/api/me", (req, res) => {
   let userId = req.cookies.course_user;
 
@@ -106,10 +105,7 @@ app.post("/api/level", (req, res) => {
   res.json({ ok: true, level });
 });
 
-// ===== NEXT MODULE LOGIC (MVP) =====
-
-// tymczasowa mapa: każdy level → module_1
-// później zamienisz to na realną logikę
+// ===== NEXT MODULE =====
 const modulesByLevel = {
   1: "module_1",
   2: "module_1",
@@ -134,18 +130,55 @@ app.post("/api/feedback", (req, res) => {
   const userId = req.cookies.course_user;
   if (!userId) return res.status(401).json({ error: "No user" });
 
-  const dir = req.body?.dir; // "easier" | "ok" | "harder"
+  const dir = req.body?.dir;
   let level = userStateStore[userId]?.level;
   if (!level) return res.status(400).json({ error: "Level not set" });
 
   if (dir === "harder") level = Math.min(5, level + 1);
   if (dir === "easier") level = Math.max(1, level - 1);
-  // "ok" → bez zmian
 
   userStateStore[userId].level = level;
-
   const moduleId = modulesByLevel[level] || "module_1";
+
   res.json({ ok: true, level, moduleId });
+});
+
+// ===== TRANSLATE (OPENAI) =====
+app.post("/api/translate", async (req, res) => {
+  try {
+    const { word, sentence } = req.body;
+    if (!word) {
+      return res.status(400).json({ error: "No word provided" });
+    }
+
+    const client = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY
+    });
+
+    const completion = await client.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        {
+          role: "system",
+          content:
+            "Translate English words to Polish. Return only the translation, no explanations."
+        },
+        {
+          role: "user",
+          content: `Translate the word "${word}" as used in this sentence:\n"${sentence}"`
+        }
+      ],
+      temperature: 0.2
+    });
+
+    const translation =
+      completion.choices[0]?.message?.content?.trim();
+
+    res.json({ translation });
+  } catch (err) {
+    console.error("TRANSLATE ERROR:", err);
+    res.status(500).json({ error: "Translate failed" });
+  }
 });
 
 // ===== RESET (DEV) =====
@@ -159,15 +192,12 @@ app.get("/api/reset", (req, res) => {
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/data", express.static(path.join(__dirname, "data")));
 
-// ===== FRONTEND ENTRYPOINT =====
-// ⚠️ UWAGA: TYLKO /course → frontend kursu
+// ===== FRONTEND =====
 app.get("/course", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "course.html"));
 });
 
-// ❌ NIE MA app.get("*")
-
 // ===== START =====
 app.listen(PORT, () => {
-  console.log(`Server działa na porcie ${PORT}`);
+  console.log(`🚀 Server działa na porcie ${PORT}`);
 });
