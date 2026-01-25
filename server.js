@@ -1,3 +1,4 @@
+console.log("🔥 SERVER.JS STARTED 🔥");
 import express from "express";
 import OpenAI from "openai";
 import path from "path";
@@ -193,6 +194,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
