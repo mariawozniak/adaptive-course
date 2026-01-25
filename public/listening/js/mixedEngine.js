@@ -1,17 +1,21 @@
 (() => {
   "use strict";
 
+  const registry = {};
+
   const engine = {
     data: null,
     CORE: null,
-    current: 0,
+
+    register(type, handler) {
+      registry[type] = handler;
+    },
 
     init(data, CORE) {
       this.data = data;
       this.CORE = CORE;
-      this.current = 0;
 
-      // ===== maxScore (1:1 z monolitu) =====
+      // === MAX SCORE (1:1 z monolitu) ===
       const total = data.segments.reduce((sum, seg) => {
         if (seg.type === "extra-word") return sum + 1;
         if (seg.type === "mcq") return sum + 1;
@@ -25,15 +29,23 @@
     },
 
     onSegmentEnd(index) {
-      this.current = index;
       const seg = this.data.segments[index];
+      const handler = registry[seg.type];
 
-      // 🚦 dispatcher — NA RAZIE PUSTY
-      // TU BĘDZIEMY PODPINAĆ mini-engines
-      console.log("MIXED segment:", seg.type);
+      if (!handler) {
+        console.warn(`No mixed handler for type: ${seg.type}`);
+        return;
+      }
 
-      // tymczasowo: stop
-      this.CORE.showOverlay();
+      handler.render(seg, this.CORE);
+    },
+
+    onNext(index) {
+      const seg = this.data.segments[index];
+      const handler = registry[seg.type];
+
+      if (!handler) return true;
+      return handler.onNext(seg, this.CORE);
     }
   };
 
