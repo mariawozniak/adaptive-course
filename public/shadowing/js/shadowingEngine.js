@@ -411,8 +411,12 @@ if (data.player.type === "youtube") {
 
 statusEl.textContent = "Słucham…";
 statusEl.classList.add("listening");
+let stopped = false;
 
 function stop() {
+  if (stopped) return;
+  stopped = true;
+
   try { rec.stop(); } catch {}
 
   statusEl.classList.remove("listening");
@@ -422,6 +426,9 @@ function stop() {
     statusEl.textContent = "Nic nie usłyszałem.";
     return;
   }
+
+
+
 
   const { diff } = diffWords(expectedText, spoken);
   renderSpokenDiff(diff);
