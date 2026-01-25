@@ -1,4 +1,6 @@
 // ===== GAPFILL ENGINE (1:1 jak stara lekcja) =====
+console.log("🔥 GAPFILL ENGINE LOADED");
+
 
 let SEGMENTS = [];
 let VIDEO_ID = null;
