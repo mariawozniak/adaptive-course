@@ -24,7 +24,7 @@
 .gap {
   display: inline-block;
   min-width: 7ch;
-  padding: 4px 8px;
+  padding: 2px 8px;                 /* 1:1 wysokość z monolitu */
   margin: 2px 2px;
   background: #0f1520;
   border: 1px dashed #446;
@@ -41,19 +41,21 @@
   color: #ffd257;
 
   text-align: center;
-  font-size: 16px;
-
   width: 100%;
   min-width: 3ch;
 
-  font-family: inherit;   /* KLUCZ: identyczna czcionka jak tekst */
-  line-height: inherit;   /* KLUCZ: brak „wyskakiwania” inputa */
+  font-family: inherit;             /* KLUCZ: ta sama czcionka */
+  font-size: inherit;               /* KLUCZ: brak różnicy px */
+  line-height: inherit;             /* KLUCZ: brak wyskakiwania */
 
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
 }
 
-/* placeholder (trzy kropki) */
+/* Placeholder (… ) */
+
 .gap input::placeholder {
   color: #556;
   opacity: 1;
