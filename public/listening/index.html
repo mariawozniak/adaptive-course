@@ -559,16 +559,6 @@ document.getElementById("answers").style.display = "block";
   document.getElementById("overlay").style.display = "flex";
 }
 
-function renderGapfill(seg) {
-  showQuestion(seg);
-}
-
-
-    const MODE_RENDER = {
-  quiz: renderMCQ,
-  gapfill: renderGapfill
-};
-
 
 
    function showQuestion(seg){
@@ -696,8 +686,11 @@ function closeEndScreen(){
       if (idx === SEGMENTS.length - 1) {
         showEndScreen();
       } else {
-MODE_RENDER[MODE](seg);
-
+if (seg.type === "mcq") {
+  renderMCQ(seg);
+} else {
+  showQuestion(seg);
+}
       }
     }
   }, 200);
