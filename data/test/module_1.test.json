@@ -1,0 +1,206 @@
+{
+  "moduleId": "module_1",
+  "lessonId": "module_1__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Kiedy powiesz „here is to my sister”?",
+      "comment": "Wyrażenie „here is to...” używane jest przy wznoszeniu toastu.",
+      "answers": [
+        { "text": "przy wznoszeniu toastu", "correct": true },
+        { "text": "kiedy chcesz, aby ktoś przekazał coś twojej siostrze", "correct": false },
+        { "text": "kiedy jedziesz do siostry", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Jak przetłumaczyć „newly appointed”?",
+      "comment": "„Newly appointed” oznacza kogoś, kto właśnie objął nowe stanowisko.",
+      "answers": [
+        { "text": "Nowo mianowana", "correct": true },
+        { "text": "Nowo zatrudniona", "correct": false },
+        { "text": "Świeżo promowana", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "„In charge of purchasing” oznacza:",
+      "comment": "Chodzi o odpowiedzialność za zakupy, a nie inne obszary.",
+      "answers": [
+        { "text": "Odpowiedzialny za zakupy", "correct": true },
+        { "text": "Odpowiedzialny za finanse", "correct": false },
+        { "text": "Odpowiedzialny za reklamy", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Jak można przetłumaczyć „how about”?",
+      "comment": "To propozycja, np. podczas rozmowy lub zamawiania.",
+      "answers": [
+        { "text": "Co powiesz na", "correct": true },
+        { "text": "Jak tam", "correct": false },
+        { "text": "Jak o tym?", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Jak przetłumaczyć „Are you ready to order?”?",
+      "comment": "Kelner pyta, czy goście są gotowi złożyć zamówienie.",
+      "answers": [
+        { "text": "Czy jesteście gotowi, żeby zamówić?", "correct": true },
+        { "text": "Macie już zamówienie?", "correct": false },
+        { "text": "Czy wasze zamówienie jest gotowe?", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Jak przetłumaczyć „I had to tell her”?",
+      "comment": "Chodzi o konieczność zrobienia czegoś.",
+      "answers": [
+        { "text": "Musiałem jej powiedzieć", "correct": true },
+        { "text": "Powinienem jej powiedzieć", "correct": false },
+        { "text": "Mogłem jej powiedzieć", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Co oznacza „side salad”?",
+      "comment": "To sałatka jako dodatek do dania głównego.",
+      "answers": [
+        { "text": "Sałatka jako dodatek", "correct": true },
+        { "text": "Mała sałatka", "correct": false },
+        { "text": "Sałatka boczna", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Co znaczy „sneeze”?",
+      "comment": "To czynność związana z kichaniem.",
+      "answers": [
+        { "text": "Kichnięcie", "correct": true },
+        { "text": "Kaszel", "correct": false },
+        { "text": "Odetchnąć", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Jak przetłumaczyć „without the nuts and leeks”?",
+      "comment": "Chodzi o brak konkretnych składników w daniu.",
+      "answers": [
+        { "text": "Bez orzechów i porów", "correct": true },
+        { "text": "Bez orzechów i szczypiorku", "correct": false },
+        { "text": "Bez dodatków i sosu", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Jak przetłumaczyć „pretty incredible”?",
+      "comment": "Wyrażenie wzmacniające pozytywną opinię.",
+      "answers": [
+        { "text": "Całkiem niesamowite", "correct": true },
+        { "text": "Bardzo przeciętne", "correct": false },
+        { "text": "Naprawdę dziwne", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Jak przetłumaczyć wyrażenie „on the edge of my seat”?",
+      "comment": "Oznacza duże napięcie lub podekscytowanie.",
+      "answers": [
+        { "text": "Z zapartym tchem / w napięciu", "correct": true },
+        { "text": "Na skraju krzesła", "correct": false },
+        { "text": "Niepewnie siedząc", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Jak przetłumaczyć zdanie „Tell me again, what do I do when Mr. Roper calls?”?",
+      "comment": "Chodzi o przypomnienie instrukcji na przyszłość.",
+      "answers": [
+        { "text": "Powiedz mi jeszcze raz, co mam zrobić, gdy zadzwoni pan Roper?", "correct": true },
+        { "text": "Przypomnij mi, co mam powiedzieć panu Roperowi, gdy przyjdzie?", "correct": false },
+        { "text": "Powiedz mi, jak rozmawiać z panem Roperem?", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Co oznacza wyrażenie „same for me” w kontekście zamawiania jedzenia?",
+      "comment": "Używane, gdy chcemy zamówić to samo co ktoś inny.",
+      "answers": [
+        { "text": "To samo dla mnie", "correct": true },
+        { "text": "To też mi smakuje", "correct": false },
+        { "text": "Ja też lubię to danie", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Jak najlepiej przetłumaczyć „That sounds great”?",
+      "comment": "Odnosi się do tego, co słyszymy, a nie widzimy.",
+      "answers": [
+        { "text": "Brzmi świetnie", "correct": true },
+        { "text": "Wygląda dobrze", "correct": false },
+        { "text": "To jest naprawdę dobre", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Co oznacza zdanie „Anything else?” w rozmowie z kelnerem?",
+      "comment": "Kelner pyta, czy klient chce jeszcze coś zamówić.",
+      "answers": [
+        { "text": "Czy coś jeszcze?", "correct": true },
+        { "text": "Czy to wszystko?", "correct": false },
+        { "text": "Czy smakuje?", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Jak przetłumaczyć żart „You’re going to sneeze on my fish, aren’t you?”?",
+      "comment": "To żartobliwe pytanie o kichnięcie.",
+      "answers": [
+        { "text": "Zamierzasz kichnąć na moją rybę, prawda?", "correct": true },
+        { "text": "Zamierzasz zepsuć moją rybę, prawda?", "correct": false },
+        { "text": "Chcesz mi oddać swoją rybę, prawda?", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Uzupełnij zdanie: „Sorry I’m ______.”",
+      "comment": "To standardowe przeprosiny za spóźnienie.",
+      "answers": [
+        { "text": "late", "correct": true },
+        { "text": "gone", "correct": false },
+        { "text": "tired", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Uzupełnij zdanie: „Look at these ______.”",
+      "comment": "Chodzi o ceny w menu.",
+      "answers": [
+        { "text": "prices", "correct": true },
+        { "text": "offers", "correct": false },
+        { "text": "meals", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "Uzupełnij zdanie: „My afternoon ______ was incredible.”",
+      "comment": "Chodzi o randkę.",
+      "answers": [
+        { "text": "date", "correct": true },
+        { "text": "meeting", "correct": false },
+        { "text": "lunch", "correct": false }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Uzupełnij zdanie: „I ______ to tell her.”",
+      "comment": "Wyraża konieczność wykonania czynności.",
+      "answers": [
+        { "text": "had", "correct": true },
+        { "text": "should", "correct": false },
+        { "text": "could", "correct": false }
+      ]
+    }
+  ]
+}
