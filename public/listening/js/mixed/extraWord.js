@@ -54,34 +54,45 @@ function onNext(seg, CORE) {
 
     const q = document.getElementById("qtext");
 
+    // 🔥 znajdź KONKRETNE zbędne wystąpienie
+    const extraIndex = seg.sentence.findIndex(
+      (w, i) => w === seg.extra && i !== selectedIndex
+    );
+
     [...q.children].forEach((el, i) => {
-      if (i === selectedIndex && seg.sentence[i] === seg.extra) {
+      // 🟢 poprawne zbędne słowo
+      if (i === extraIndex) {
         el.style.background = "#35c28d";
         el.style.color = "#000";
-      } else if (i === selectedIndex) {
+      }
+      // 🟡 kliknięte przez użytkownika (błędne)
+      else if (i === selectedIndex) {
         el.style.background = "#ffd257";
         el.style.color = "#000";
-      } else {
+      }
+      // reszta
+      else {
         el.style.background = "transparent";
         el.style.color = "#fff";
       }
     });
 
-    if (seg.sentence[selectedIndex] === seg.extra) {
+    if (selectedIndex === extraIndex) {
       CORE.setScore(1);
     }
 
     phase = "result";
-    return false; // ⛔ STOP – pokazaliśmy feedback
+    return false; // ⛔ pokazaliśmy feedback
   }
 
-  // FAZA 2 – TERAZ JUŻ MOŻEMY IŚĆ DALEJ
+  // FAZA 2 – przejście dalej
   phase = "select";
   selectedIndex = null;
 
   CORE.hideOverlay();
-  return true; // ✅ POZWÓL CORE PRZEJŚĆ DALEJ
+  return true;
 }
+
 
 
   window.mixedEngine.register("extra-word", { render, onNext });
