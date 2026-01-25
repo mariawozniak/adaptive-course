@@ -3,11 +3,161 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Słówka</title>
-</head>
-<body>
-  <div id="app"></div>
+  <title>Test</title>
 
-<script src="/test/js/testEngine.js"></script>
+  <style>
+    /* ===== BASE ===== */
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: #f6f7fb;
+      color: #1f2937;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    /* ===== PROGRESS ===== */
+    .progress {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 12px;
+    }
+
+    /* ===== QUESTION ===== */
+    .question {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      line-height: 1.4;
+    }
+
+    /* ===== ANSWERS ===== */
+    .answers {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .answer {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      cursor: pointer;
+      background: #f9fafb;
+      transition: all 0.15s ease;
+      font-size: 16px;
+    }
+
+    .answer::before {
+      content: "";
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 2px solid #c7c9d1;
+      background: white;
+      flex-shrink: 0;
+    }
+
+    .answer:hover {
+      background: #eef2ff;
+      border-color: #c7d2fe;
+    }
+
+    .answer.correct {
+      background: #e6f7f0;
+      border-color: #34d399;
+      font-weight: 600;
+    }
+
+    .answer.correct::before {
+      background: #34d399;
+      border-color: #34d399;
+    }
+
+    .answer.wrong {
+      background: #fee2e2;
+      border-color: #f87171;
+    }
+
+    .answer.wrong::before {
+      background: #f87171;
+      border-color: #f87171;
+    }
+
+    /* ===== COMMENT ===== */
+    .comment {
+      margin-top: 20px;
+      padding: 14px 16px;
+      background: #eef2ff;
+      border-left: 4px solid #6366f1;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    /* ===== ACTIONS ===== */
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 28px;
+    }
+
+    button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: none;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #f87171;
+      color: white;
+      transition: background 0.15s ease;
+    }
+
+    button:hover {
+      background: #ef4444;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    /* ===== RESULT ===== */
+    .result {
+      text-align: center;
+    }
+
+    .score {
+      font-size: 36px;
+      font-weight: 800;
+      color: #f87171;
+      margin: 16px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="card" id="app"></div>
+  </div>
+
+  <script src="/test/js/testEngine.js"></script>
 </body>
 </html>
