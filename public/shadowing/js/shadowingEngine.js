@@ -419,6 +419,8 @@ function stop() {
 
   try { rec.stop(); } catch {}
 
+  isPlayingVideoSegment = false; // ⬅️ BRAKOWAŁO
+
   statusEl.classList.remove("listening");
 
   const spoken = transcript.trim();
@@ -427,13 +429,11 @@ function stop() {
     return;
   }
 
-
-
-
   const { diff } = diffWords(expectedText, spoken);
   renderSpokenDiff(diff);
   renderExpectedDiff(diff);
 }
+
 
 
     function arm() {
@@ -484,6 +484,42 @@ rec.onresult = e => {
       });
     } catch {}
   }
+async function translateWord(word, sentence, targetEl) {
+  try {
+    const res = await fetch("/api/translate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ word, sentence })
+    });
+
+    if (!res.ok) throw new Error("Translate failed");
+
+    const data = await res.json();
+    showPopup(targetEl, data.translation || "(brak tłumaczenia)");
+  } catch (err) {
+    console.error(err);
+    showPopup(targetEl, "❌ błąd tłumaczenia");
+  }
+}
+function showPopup(targetEl, text) {
+  document.querySelectorAll(".translation-popup").forEach(p => p.remove());
+
+  const pop = document.createElement("div");
+  pop.className = "translation-popup";
+  pop.textContent = text;
+  document.body.appendChild(pop);
+
+  const r = targetEl.getBoundingClientRect();
+  pop.style.left = `${r.left + window.scrollX}px`;
+  pop.style.top  = `${r.bottom + window.scrollY + 6}px`;
+
+  requestAnimationFrame(() => pop.classList.add("show"));
+
+  setTimeout(() => {
+    pop.classList.remove("show");
+    setTimeout(() => pop.remove(), 200);
+  }, 2500);
+}
 
   /* =========================
      BOOT
@@ -494,5 +530,32 @@ rec.onresult = e => {
       console.error(err);
       statusEl.textContent = err.message;
     });
+
+  // =========================
+// WORD CLICK: TTS + TRANSLATION
+// =========================
+document.addEventListener("click", (e) => {
+  const el = e.target.closest(".word[data-raw]");
+  if (!el) return;
+
+  // nie przerywaj wideo
+
+  const raw = decodeURIComponent(el.dataset.raw || "");
+  if (!raw) return;
+
+  const currentSentence = segments[iSeg]?.text || "";
+
+  // 1️⃣ TTS
+  try {
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(raw);
+    u.lang = "en-US";
+    speechSynthesis.speak(u);
+  } catch {}
+
+  // 2️⃣ tłumaczenie (tymczasowo: console)
+  translateWord(raw, currentSentence, el);
+});
+
 
 })();
