@@ -1,1 +1,62 @@
+/* ROOT */
+.shadowing-root {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+/* CARD */
+.shadowing-card {
+  width: 100%;
+  max-width: 960px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+/* PLAYER */
+.shadowing-player {
+  aspect-ratio: 16 / 9;
+  background: #eef2f7;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+/* CONTROLS */
+.shadowing-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.shadowing-controls button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* SENTENCE */
+.shadowing-sentence {
+  font-size: 20px;
+  line-height: 1.8;
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* STATUS */
+.shadowing-status {
+  margin-top: 12px;
+  font-size: 18px;
+  text-align: center;
+  color: #374151;
+}
 
