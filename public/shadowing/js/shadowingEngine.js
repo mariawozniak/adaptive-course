@@ -118,6 +118,40 @@ function onYTStateChange(e) {
       .replace(/\s+/g, " ")
       .trim();
   }
+// =========================
+// EARLY FINISH – heurystyka monolitu
+// =========================
+
+// czy końcówki zdań się zgadzają (ostatnie N słów)
+function tailsMatch(expected, spoken, tailWindow = 4) {
+  const expWords = normalize(expected).split(/\s+/).filter(Boolean);
+  const spkWords = normalize(spoken).split(/\s+/).filter(Boolean);
+
+  if (!expWords.length || !spkWords.length) return false;
+
+  const k = Math.min(tailWindow, expWords.length, spkWords.length);
+  for (let i = 0; i < k; i++) {
+    const ew = expWords[expWords.length - k + i];
+    const sw = spkWords[spkWords.length - k + i];
+    if (ew !== sw) return false;
+  }
+  return true;
+}
+
+// decyzja: czy możemy zakończyć nasłuch wcześniej
+function earlyDone(expected, spoken) {
+  const expWords = normalize(expected).split(/\s+/).filter(Boolean);
+  const spkWords = normalize(spoken).split(/\s+/).filter(Boolean);
+
+  if (!expWords.length) return false;
+
+  // użytkownik powiedział >= 70% zdania
+  const coverage = spkWords.length / expWords.length;
+  if (coverage < 0.7) return false;
+
+  // końcówka zdania się zgadza
+  return tailsMatch(expected, spoken, 4);
+}
 
   /* =========================
    DIFF ENGINE (z monolitu)
@@ -400,14 +434,22 @@ function stop() {
       inactivityTimer = setTimeout(stop, 1200);
     }
 
-    rec.onresult = e => {
-      for (let i = e.resultIndex; i < e.results.length; i++) {
-        if (e.results[i].isFinal) {
-          transcript += e.results[i][0].transcript + " ";
-        }
-      }
-      arm();
-    };
+rec.onresult = e => {
+  for (let i = e.resultIndex; i < e.results.length; i++) {
+    if (e.results[i].isFinal) {
+      transcript += e.results[i][0].transcript + " ";
+    }
+  }
+
+  // 🔥 EARLY FINISH jak w monolicie
+  if (earlyDone(expectedText, transcript)) {
+    stop();
+    return;
+  }
+
+  arm(); // standardowy timeout ciszy
+};
+
 
     rec.onerror = () => stop();
     rec.onend   = () => stop();
