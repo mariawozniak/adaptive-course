@@ -63,12 +63,28 @@
   }
 }
 
+let startedByYT = false;
+
 function createYTPlayer() {
   player = new YT.Player("ytplayer", {
-    videoId: data.player.videoId
+    videoId: data.player.videoId,
+    events: {
+      onReady: () => {
+        playerReady = Promise.resolve();
+      },
+      onStateChange: onYTStateChange
+    }
   });
-  playerReady = Promise.resolve();
 }
+
+function onYTStateChange(e) {
+  if (e.data === YT.PlayerState.PLAYING && !startedByYT) {
+    startedByYT = true;
+    iSeg = 0;
+    playSegment(iSeg);
+  }
+}
+
 
 
   /* ===== VIMEO ===== */
