@@ -1,4 +1,5 @@
 import express from "express";
+import OpenAI from "openai";
 import path from "path";
 import { fileURLToPath } from "url";
 import crypto from "crypto";
@@ -56,70 +57,54 @@ app.get("/api/me", (req, res) => {
   res.json({ userId });
 });
 
-// ===== PROGRESS =====
-app.get("/api/progress", (req, res) => {
-  const userId = req.cookies.course_user;
-  res.json(progressStore[userId] || {});
-});
+// ===== TRANSLATE (OPENAI) =====
+app.post("/api/translate", async (req, res) => {
+  try {
+    const { word, sentence } = req.body;
 
-app.post("/api/lesson-complete", (req, res) => {
-  const { moduleId, lessonId } = req.body;
-  const userId = req.cookies.course_user;
+    if (!word) {
+      return res.status(400).json({ error: "No word" });
+    }
 
-  if (!userId || !moduleId || !lessonId) {
-    return res.status(400).json({ ok: false });
+    const client = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY
+    });
+
+    const completion = await client.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        {
+          role: "system",
+          content:
+            "Translate English words to Polish. Return only the translation."
+        },
+        {
+          role: "user",
+          content: `Translate "${word}" in this sentence:\n${sentence || ""}`
+        }
+      ],
+      temperature: 0.2
+    });
+
+    res.json({
+      translation: completion.choices[0].message.content.trim()
+    });
+  } catch (err) {
+    console.error("TRANSLATE ERROR", err);
+    res.status(500).json({ error: "Translate failed" });
   }
-
-  progressStore[userId] ??= {};
-  progressStore[userId][moduleId] ??= { completedLessons: {} };
-  progressStore[userId][moduleId].completedLessons[lessonId] = true;
-
-  res.json({ ok: true });
-});
-
-// ===== LEVEL =====
-app.get("/api/state", (req, res) => {
-  const userId = req.cookies.course_user;
-  res.json({ level: userStateStore[userId]?.level ?? null });
-});
-
-app.post("/api/level", (req, res) => {
-  const userId = req.cookies.course_user;
-  const level = Number(req.body?.level);
-
-  if (!userId || ![1,2,3,4,5].includes(level)) {
-    return res.status(400).json({ error: "Invalid" });
-  }
-
-  userStateStore[userId] = { level };
-  res.json({ ok: true, level });
-});
-
-// ===== NEXT =====
-const modulesByLevel = {
-  1: "module_1",
-  2: "module_1",
-  3: "module_1",
-  4: "module_1",
-  5: "module_1"
-};
-
-app.get("/api/next", (req, res) => {
-  const userId = req.cookies.course_user;
-  const level = userStateStore[userId]?.level;
-  if (!level) return res.status(400).json({ error: "No level" });
-  res.json({ moduleId: modulesByLevel[level], level });
 });
 
 // ===== STATIC =====
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/data", express.static(path.join(__dirname, "data")));
 
+// ===== FRONTEND =====
 app.get("/course", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "course.html"));
 });
 
 // ===== START =====
 app.listen(PORT, () => {
-  console.log(`Server running on ${PORT}`);
+  console.log("Server running on port", PORT);
 });
