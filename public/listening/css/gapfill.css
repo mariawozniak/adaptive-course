@@ -298,3 +298,30 @@ button:active { transform: scale(0.98); }
   color: #ffd257;
 }
 
+/* ===== ORDER (mixed) ===== */
+.order-zone {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.order-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.order-word {
+  background: #f2f4f8;
+  color: #1b2130;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+
+.order-word.selected {
+  background: #ffd257;
+  color: #000;
+}
