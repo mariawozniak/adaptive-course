@@ -45,39 +45,44 @@
     CORE.showOverlay();
   }
 
-  function onNext(seg, CORE) {
-    if (phase === "select") {
-      if (selectedIndex === null) return false;
 
-      const q = document.getElementById("qtext");
 
-      [...q.children].forEach((el, i) => {
-        if (i === selectedIndex && seg.sentence[i] === seg.extra) {
-          // ✅ poprawnie wskazane zbędne słowo
-          el.style.background = "#35c28d";
-          el.style.color = "#000";
-        } else if (i === selectedIndex) {
-          // ❌ błędnie kliknięte słowo
-          el.style.background = "#ffd257";
-          el.style.color = "#000";
-        } else {
-          // reszta zdania
-          el.style.background = "transparent";
-          el.style.color = "#fff";
-        }
-      });
+function onNext(seg, CORE) {
+  // FAZA 1 – pokaż feedback
+  if (phase === "select") {
+    if (selectedIndex === null) return false;
 
-      if (seg.sentence[selectedIndex] === seg.extra) {
-        CORE.setScore(1);
+    const q = document.getElementById("qtext");
+
+    [...q.children].forEach((el, i) => {
+      if (i === selectedIndex && seg.sentence[i] === seg.extra) {
+        el.style.background = "#35c28d";
+        el.style.color = "#000";
+      } else if (i === selectedIndex) {
+        el.style.background = "#ffd257";
+        el.style.color = "#000";
+      } else {
+        el.style.background = "transparent";
+        el.style.color = "#fff";
       }
+    });
 
-      phase = "result";
-      return false; // ⛔ jeszcze nie przechodź dalej
+    if (seg.sentence[selectedIndex] === seg.extra) {
+      CORE.setScore(1);
     }
 
-    CORE.hideOverlay();
-    return true;
+    phase = "result";
+    return false; // ⛔ STOP – pokazaliśmy feedback
   }
+
+  // FAZA 2 – TERAZ JUŻ MOŻEMY IŚĆ DALEJ
+  phase = "select";
+  selectedIndex = null;
+
+  CORE.hideOverlay();
+  return true; // ✅ POZWÓL CORE PRZEJŚĆ DALEJ
+}
+
 
   window.mixedEngine.register("extra-word", { render, onNext });
 })();
