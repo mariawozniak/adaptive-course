@@ -394,6 +394,7 @@ const MODULE_ID = params.get("module") || "module_1";
 
 let SEGMENTS = [];
 
+let VIDEO_ID = null;
 
 
 
@@ -406,16 +407,26 @@ let SEGMENTS = [];
 let mcqSelected = false;
 let mcqPhase = "answer"; // "answer" -> "explanation"
 
- const maxScore = SEGMENTS.reduce((sum, seg) => {
-  if (!seg.parts) return sum;
-  return sum + seg.parts.filter(p => p.gap).length;
-}, 0);
+let maxScore = 0;
+
 
 async function loadData() {
   const res = await fetch(`/data/listening/${MODULE_ID}.${MODE}.json`);
   const data = await res.json();
+
+  VIDEO_ID = data.videoId;
   SEGMENTS = data.segments;
+
+maxScore = data.segments.reduce((sum, seg) => {
+  if (seg.type === "mcq") return sum + 1;
+  if (!seg.parts) return sum;
+  return sum + seg.parts.filter(p => p.gap).length;
+}, 0);
+
+
+  updateScoreBox();
 }
+
 
 loadData();
 
@@ -818,10 +829,15 @@ videoId: VIDEO_ID,
         onStateChange: (event) => {
 
   // start quizu
-  if (event.data === YT.PlayerState.PLAYING && !quizStarted) {
-    quizStarted = true;
-    playSegment(current);
-  }
+if (
+  event.data === YT.PlayerState.PLAYING &&
+  !quizStarted &&
+  SEGMENTS.length
+) {
+  quizStarted = true;
+  playSegment(current);
+}
+
 
   // 👇 JEDYNE PEWNE ZAKOŃCZENIE FILMU
   if (event.data === YT.PlayerState.ENDED) {
