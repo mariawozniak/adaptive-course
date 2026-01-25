@@ -46,6 +46,54 @@
 
   </div>
 
+ <!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- GAPFILL THEME (1:1 z monolitu) -->
+<link rel="stylesheet" href="/listening/css/gapfill.css">
+
+  <link rel="stylesheet" href="/listening/css/quiz.css">
+
+
+  <!-- SHELL / APP STYLES -->
+ 
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="player">
+      <div id="yt"></div>
+
+      <!-- SCORE -->
+      <div id="scoreBox"></div>
+
+      <!-- OVERLAY (renderowane przez engine) -->
+      <div class="overlay" id="overlay">
+        <div class="card">
+          <div id="instruction"></div>
+          <div id="qtext"></div>
+          <div id="answers"></div>
+          <div id="explanation"></div>
+
+          <div class="actions">
+            <span class="material-icons replay" id="replayBtn">replay</span>
+            <button id="next">Dalej ▶</button>
+          </div>
+
+          <div id="msg"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
   <!-- ================= CORE ================= -->
   <script src="/listening/js/core.js"></script>
 
@@ -58,3 +106,4 @@
 
 </body>
 </html>
+
