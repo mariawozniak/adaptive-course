@@ -43,15 +43,16 @@ export const modules = [
       /* =======================
          TEST
          ======================= */
-      {
-        id: "test",
-        label: "Test",
-        required: true,
-        type: "internal",
-        key: "test",
-        lessonId: "module_1__test",
-        completion: "auto"
-      },
+    {
+  id: "test",
+  label: "Test",
+  required: true,
+  type: "iframe",
+  src: "/test/index.html?module=module_1",
+  lessonId: "module_1__test",
+  completion: "auto"
+},
+
 
       /* =======================
          LISTENING
