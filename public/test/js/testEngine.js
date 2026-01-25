@@ -20,10 +20,10 @@
      DATA LOADING
      ========================= */
   async function loadData() {
-    const res = await fetch(`/data/test/${moduleName}.test.json`)
+const res = await fetch(`/data/test/${moduleName}.test.json`, {
+  cache: "no-store"
+});
 
-      cache: "no-store"
-    });
 
     if (!res.ok) {
       throw new Error("Nie można załadować danych testu");
