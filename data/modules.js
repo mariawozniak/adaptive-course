@@ -56,35 +56,35 @@ export const modules = [
       /* =======================
          LISTENING
          ======================= */
-      {
-        id: "listening",
-        label: "Listening",
-        required: true,
+    {
+  id: "listening",
+  label: "Listening",
+  required: true,
 
-        variants: [
-          {
-            id: "module_1__listening__quiz",
-            label: "Quiz",
-            type: "iframe",
-            src: "/listening/index.html?module=module_1&lesson=quiz",
-            completion: "manual"
-          },
-          {
-            id: "module_1__listening__gapfill",
-            label: "Gap fill",
-            type: "iframe",
-            src: "/listening/index.html?module=module_1&lesson=gapfill",
-            completion: "manual"
-          },
-          {
-            id: "module_1__listening__mixed",
-            label: "Mixed",
-            type: "iframe",
-            src: "/listening/index.html?module=module_1&lesson=mixed",
-            completion: "manual"
-          }
-        ]
-      },
+  variants: [
+    {
+      id: "module_1__listening__quiz",
+      label: "Quiz",
+      type: "iframe",
+      src: "/listening/index.html?module=module_1&mode=quiz",
+      completion: "manual"
+    },
+    {
+      id: "module_1__listening__gapfill",
+      label: "Gap fill",
+      type: "iframe",
+      src: "/listening/index.html?module=module_1&mode=gapfill",
+      completion: "manual"
+    },
+    {
+      id: "module_1__listening__mixed",
+      label: "Mixed",
+      type: "iframe",
+      src: "/listening/index.html?module=module_1&mode=mixed",
+      completion: "manual"
+    }
+  ]
+},
 
       /* =======================
          SHADOWING
