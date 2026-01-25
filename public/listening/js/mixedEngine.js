@@ -28,17 +28,21 @@
       CORE.setMaxScore(total);
     },
 
-    onSegmentEnd(index) {
-      const seg = this.data.segments[index];
-      const handler = registry[seg.type];
+onSegmentEnd(index) {
+  const seg = this.data.segments[index];
+  const handler = registry[seg.type];
 
-      if (!handler) {
-        console.warn(`No mixed handler for type: ${seg.type}`);
-        return;
-      }
+  if (!handler) {
+    console.warn(`No mixed handler for type: ${seg.type}`);
+    return;
+  }
 
-      handler.render(seg, this.CORE);
-    },
+  // 🔥 KLUCZOWE
+  this.CORE.showOverlay();
+
+  handler.render(seg, this.CORE);
+}
+
 
     onNext(index) {
       const seg = this.data.segments[index];
