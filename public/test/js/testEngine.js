@@ -84,24 +84,31 @@ const res = await fetch(`/data/test/${moduleName}.test.json`, {
   /* =========================
      ANSWER SELECTION
      ========================= */
-  function onSelect(el, question) {
-    if (answered) return;
-    answered = true;
+function onSelect(el, question) {
+  if (answered) return;
+  answered = true;
 
-    const isCorrect = el.dataset.correct === "true";
-    if (isCorrect) score++;
+  const isCorrect = el.dataset.correct === "true";
+  if (isCorrect) score++;
 
-    app.querySelectorAll(".answer").forEach(a => {
-      const correct = a.dataset.correct === "true";
+  const answers = app.querySelectorAll(".answer");
+
+  answers.forEach(a => {
+    const correct = a.dataset.correct === "true";
+
+    // kliknięta odpowiedź
+    if (a === el) {
       a.classList.add(correct ? "correct" : "wrong");
-    });
-
-    if (question.comment) {
-      const comment = document.createElement("div");
-      comment.className = "comment";
-      comment.textContent = question.comment;
-      app.appendChild(comment);
     }
+    // jeśli kliknięto błędną → pokaż poprawną
+    else if (!isCorrect && correct) {
+      a.classList.add("correct");
+    }
+  });
+
+  document.getElementById("nextBtn").disabled = false;
+}
+
 
     document.getElementById("nextBtn").disabled = false;
   }
