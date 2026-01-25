@@ -20,7 +20,8 @@
      DATA LOADING
      ========================= */
   async function loadData() {
-    const res = await fetch(`/test/data/${moduleName}.test.json`, {
+    const res = await fetch(`/data/test/${moduleName}.test.json`)
+
       cache: "no-store"
     });
 
