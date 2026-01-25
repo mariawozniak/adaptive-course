@@ -1,0 +1,145 @@
+{
+  "videoId": "hy_72TdNtc4",
+  "segments": [
+    {
+      "start": 0,
+      "end": 8,
+      "parts": [
+        { "text": "who's", "gap": false },
+        { "text": "also in", "gap": true },
+        { "text": "charge of purchasing", "gap": false }
+      ]
+    },
+    {
+      "start": 8,
+      "end": 14,
+      "parts": [
+        { "text": "who", "gap": false },
+        { "text": "has her own", "gap": true },
+        { "text": "little desk when Roland's not there", "gap": false }
+      ]
+    },
+    {
+      "start": 14,
+      "end": 24,
+      "parts": [
+        { "text": "and", "gap": false },
+        { "text": "I got", "gap": true },
+        { "text": "a beeper", "gap": false }
+      ]
+    },
+    {
+      "start": 24,
+      "end": 28,
+      "parts": [
+        { "text": "that's fine. I'll... I'll", "gap": false },
+        { "text": "just", "gap": true },
+        { "text": "wait", "gap": false }
+      ]
+    },
+    {
+      "start": 28,
+      "end": 39,
+      "parts": [
+        { "text": "We haven't", "gap": false },
+        { "text": "even looked", "gap": true },
+        { "text": "yet", "gap": false }
+      ]
+    },
+    {
+      "start": 39,
+      "end": 43,
+      "parts": [
+        { "text": "I'll be right over", "gap": false },
+        { "text": "there on the", "gap": true },
+        { "text": "edge of my seat", "gap": false }
+      ]
+    },
+    {
+      "start": 43,
+      "end": 57,
+      "parts": [
+        { "text": "Oh, what are these,", "gap": false },
+        { "text": "like", "gap": true },
+        { "text": "famous chickens", "gap": false }
+      ]
+    },
+    {
+      "start": 57,
+      "end": 65,
+      "parts": [
+        { "text": "Sorry I'm late. How incredible", "gap": false },
+        { "text": "was my", "gap": true },
+        { "text": "afternoon", "gap": false },
+        { "text": "with", "gap": true },
+        { "text": "Chit.", "gap": false }
+      ]
+    },
+    {
+      "start": 65,
+      "end": 70,
+      "parts": [
+        { "text": "Well, pretty incredible,", "gap": false },
+        { "text": "according to", "gap": true },
+        { "text": "the message she left", "gap": false },
+        { "text": "for you on", "gap": true },
+        { "text": "my machine", "gap": false }
+      ]
+    },
+    {
+      "start": 70,
+      "end": 86,
+      "parts": [
+        { "text": "Hey, tell me again,", "gap": false },
+        { "text": "what do I do", "gap": true },
+        { "text": "when Mr. Roper calls?", "gap": false }
+      ]
+    },
+    {
+      "start": 86,
+      "end": 94,
+      "parts": [
+        { "text": "Yes, I'll", "gap": false },
+        { "text": "start with", "gap": true },
+        { "text": "the kpacho, and then I'll", "gap": false },
+        { "text": "have", "gap": true },
+        { "text": "the grilled prawn", "gap": false }
+      ]
+    },
+    {
+      "start": 94,
+      "end": 103,
+      "parts": [
+        { "text": "If I", "gap": false },
+        { "text": "get it without", "gap": true },
+        { "text": "the nuts and leeks and stuff, is it cheaper?", "gap": false }
+      ]
+    },
+    {
+      "start": 103,
+      "end": 112,
+      "parts": [
+        { "text": "Okay, I will have the, uh,", "gap": false },
+        { "text": "side salad", "gap": true }
+      ]
+    },
+    {
+      "start": 112,
+      "end": 134,
+      "parts": [
+        { "text": "Um, I'm going to have a", "gap": false },
+        { "text": "cup of", "gap": true },
+        { "text": "the cucumber soup", "gap": false }
+      ]
+    },
+    {
+      "start": 134,
+      "end": 142,
+      "parts": [
+        { "text": "Yes,", "gap": false },
+        { "text": "how about", "gap": true },
+        { "text": "a verse of Killing Me Softly ?", "gap": false }
+      ]
+    }
+  ]
+}
