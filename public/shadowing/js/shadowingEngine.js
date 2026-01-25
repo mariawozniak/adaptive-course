@@ -234,7 +234,8 @@ function onYTStateChange(e) {
     let transcript = "";
     let inactivityTimer;
 
-    statusEl.textContent = "Słucham…";
+statusEl.textContent = "Słucham…";
+statusEl.classList.add("listening");
 
     function stop() {
       try { rec.stop(); } catch {}
