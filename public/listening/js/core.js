@@ -111,7 +111,7 @@
 
   // ---- data loading ----
   async function loadModuleJson() {
-const path = `/listening/data/listening/${moduleName}.${mode}.json`;
+const path = `/data/listening/${moduleName}.${mode}.json`;
     const res = await fetch(path, { cache: "no-store" });
     if (!res.ok) throw new Error(`Cannot load JSON: ${path} (${res.status})`);
     return await res.json();
