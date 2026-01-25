@@ -42,6 +42,19 @@ onSegmentEnd(index) {
 
   handler.render(seg, this.CORE);
 },
+onReplay(index) {
+  const seg = this.data.segments[index];
+  const handler = registry[seg.type];
+  if (!handler) return;
+
+  // reset stanu handlera (jeśli istnieje)
+  if (typeof handler.reset === "function") {
+    handler.reset();
+  }
+
+  this.CORE.showOverlay();
+  handler.render(seg, this.CORE);
+},
 
 
     onNext(index) {
