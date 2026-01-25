@@ -1,1 +1,64 @@
+{
+  "moduleId": "module_1",
+  "lessonId": "module_1__shadowing",
+
+  "player": {
+    "type": "youtube",
+    "videoId": "hy_72TdNtc4a"
+  },
+
+  "phrases": [
+    { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
+    { "en": "shut up about", "pl": "przestać gadać o" },
+    { "en": "as they are", "pl": "tak jak są" }
+  ],
+
+  "dictionary": {
+    "discuss": "dyskutować",
+    "dear": "drogi",
+    "papa": "tata",
+    "married": "żonaty/zamężna",
+    "king": "król",
+    "happy": "szczęśliwy",
+    "blessing": "błogosławieństwo"
+  },
+
+  "segments": [
+    { "start": 0.0, "end": 6.3, "text": "Here is to my sister, the newly appointed Head Lunch Chef…" },
+    { "start": 6.3, "end": 8.0, "text": "Who is also in charge of purchasing!" },
+    { "start": 8.0, "end": 11.7, "text": "The newly appointed Head Lunch Chef, who’s also in charge of purchasing." },
+    { "start": 11.7, "end": 14.0, "text": "Who has her own little desk when Roland’s not there!" },
+    { "start": 14.0, "end": 19.5, "text": "Lunch Chef, purchasing, her own little desk when Roland’s not there." },
+    { "start": 19.5, "end": 21.0, "text": "Here’s to my little sister!" },
+    { "start": 21.0, "end": 23.0, "text": "Wait, and I’ve got a beeper!" },
+    { "start": 23.0, "end": 28.0, "text": "That’s fine. I’ll just… wait." },
+    { "start": 28.0, "end": 30.0, "text": "Sorry, sorry!" },
+    { "start": 30.0, "end": 37.0, "text": "Are you ready to order?" },
+    { "start": 37.0, "end": 39.0, "text": "Oh, you know what? We haven’t even looked yet." },
+    { "start": 39.0, "end": 43.0, "text": "Well, when you do, just let me know. I’ll be right over there… on the edge of my seat." },
+    { "start": 43.0, "end": 51.0, "text": "Wow, look at these prices." },
+    { "start": 51.0, "end": 53.0, "text": "Yeah, these are pretty… cha-ching!" },
+    { "start": 53.0, "end": 56.5, "text": "What, are these like famous chickens?" },
+    { "start": 56.5, "end": 61.0, "text": "Sorry I’m late. Congratulations, Mon!" },
+    { "start": 61.0, "end": 65.0, "text": "I’m not sorry I’m late with how incredible was my afternoon with Jade." },
+    { "start": 65.0, "end": 70.0, "text": "Well, pretty incredible, according to the message she left for you on my machine." },
+    { "start": 70.0, "end": 74.0, "text": "Hey, Chandler, why is this woman leaving a message for you on my machine?" },
+    { "start": 74.0, "end": 81.0, "text": "Oh, see, I had to tell her that my number was your number because I couldn’t tell her that my number was my number, because she thinks my number is Bob’s number." },
+  { "start": 81.0,  "end": 86.0,  "text": "Tell me again, what do I do when Mr. Roper calls?" },
+  { "start": 86.0,  "end": 89.5,  "text": "Do I dare ask?" },
+  { "start": 89.5,  "end": 93.0,  "text": "Yes, I’ll start with the carpaccio, and then I’ll have the grilled prawns." },
+  { "start": 93.0,  "end": 95.0,  "text": "That sounds great, same for me." },
+  { "start": 95.0,  "end": 96.0,  "text": "And for the gentleman?" },
+  { "start": 96.0,  "end": 102.5, "text": "Yeah, I’ll have the Thai chicken pizza. But hey, if I get it without the nuts, leeks, and stuff… is it cheaper?" },
+  { "start": 102.5, "end": 105.5, "text": "You’d think, wouldn’t you?" },
+  { "start": 105.5, "end": 112.0, "text": "Miss? Okay, I will have the side salad." },
+  { "start": 112.0, "end": 115.0, "text": "And what will that be on the side of?" },
+  { "start": 115.0, "end": 120.0, "text": "I don’t know… why don’t you just put it right here next to my water?" },
+  { "start": 120.0, "end": 123.5, "text": "And for you?" },
+  { "start": 123.5, "end": 133.0, "text": "I’m gonna have a cup of the cucumber soup and… take care" },
+  { "start": 133.0, "end": 138.5, "text": "I wll have the Cajun catfish." },
+  { "start": 138.5, "end": 140.0, "text": "Anything else?" },
+  { "start": 140.0, "end": 142.0, "text": "Yes, how about a verse of Killing Me Softly?" },
+  { "start": 142.0, "end": 147.0, "text": "You’re going to sneeze on my fish, aren’t you?" }
+]
 
