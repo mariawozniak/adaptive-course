@@ -169,8 +169,10 @@ function onYTStateChange(e) {
     if (!segments[idx]) return;
 
     const seg = segments[idx];
-    sentenceEl.className = "";
-    statusEl.textContent = "";
+  sentenceEl.className = "";
+statusEl.textContent = "";
+statusEl.classList.remove("listening");
+
 
     sentenceEl.innerHTML = makeSentenceClickable(seg.text);
     sentenceEl.classList.remove("hidden");
