@@ -1,0 +1,166 @@
+/* =========================================================
+   QUIZ / MCQ — CSS 1:1 Z MONOLITU
+   NIE DOTYKAĆ
+   ========================================================= */
+
+:root{
+  --pad: 20px;
+  --card-pad: 20px;
+  --btn-pad-y: 10px;
+  --btn-pad-x: 14px;
+  --radius: 12px;
+  --font-h1: 28px;
+  --font-q: 18px;
+  --font-btn: 16px;
+  --hit: 44px;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+
+body { margin:0; font-family:Arial,sans-serif; background:#0b0e14; color:#eee; }
+
+.wrap{
+  max-width:960px;
+  margin:0 auto;
+  padding-left: max(var(--pad), env(safe-area-inset-left));
+  padding-right: max(var(--pad), env(safe-area-inset-right));
+  padding-top: max(var(--pad), env(safe-area-inset-top));
+  padding-bottom: max(var(--pad), env(safe-area-inset-bottom));
+}
+
+.player { position:relative; aspect-ratio:16/9; background:#111; border-radius:12px; overflow:hidden; }
+#yt { position:absolute; inset:0; width:100%; height:100%; }
+
+/* SCORE BOX */
+#scoreBox{
+  position:absolute; top:8px; right:12px;
+  background:rgba(0,0,0,.6);
+  padding:6px 12px; border-radius:8px;
+  font-weight:600; font-size:14px; color:#ffd257;
+  z-index:10;
+}
+
+/* OVERLAY */
+.overlay{
+  position:absolute; inset:0; display:none;
+  background:rgba(0,0,0,.65); backdrop-filter:blur(3px);
+  align-items:center; justify-content:center; padding:20px;
+}
+
+.card{
+  background:#1b2130;
+  border:1px solid #2a3445;
+  border-radius:var(--radius);
+  padding:var(--card-pad);
+  max-width:700px;
+  width:min(700px, 100%);
+  max-height: min(80vh, 620px);
+  overflow:auto;
+  box-shadow:0 6px 20px rgba(0,0,0,.5);
+}
+
+#instruction { font-size:20px; font-weight:600; margin-bottom:12px; }
+
+.qtext{
+  font-size:20px;
+  font-weight:700;
+  line-height:1.6;
+  margin-bottom:16px;
+}
+
+/* ===== MCQ ===== */
+#answers { margin-top:12px; }
+
+.answer{
+  background:#f2f4f8;
+  border:1px solid #d0d7e2;
+  border-radius:12px;
+  padding:16px;
+  margin:10px 0;
+  cursor:pointer;
+  transition:.2s;
+  color:#1b2130;
+  font-weight:600;
+  font-size:17px;
+}
+
+.answer:hover{
+  background:#e8ecf3;
+  color:#0b0e14;
+}
+
+.answer.correct{
+  background:#9fe4cb;
+  border-color:#158a64;
+  color:#063d2a;
+}
+
+.answer.wrong{
+  background:#f1a5a5;
+  border-color:#c93434;
+  color:#5a0f0f;
+}
+
+/* mobile tuning */
+@media (max-width:768px){
+  .answer{
+    padding:12px 10px;
+    margin:6px 0;
+    font-size:15px;
+    border-radius:10px;
+  }
+}
+
+@media (max-width:480px){
+  .answer{
+    padding:10px 8px;
+    margin:6px 0;
+    font-size:15px;
+    line-height:1.35;
+  }
+}
+
+/* neutral answers after choice */
+#answers:has(.answer.correct),
+#answers:has(.answer.wrong){
+  .answer:not(.correct):not(.wrong){
+    background:#f5f7fb;
+    color:#2b3440;
+    opacity:.85;
+  }
+}
+
+/* ACTIONS */
+.actions{ margin-top:14px; display:flex; gap:12px; align-items:center; }
+
+button{
+  padding:var(--btn-pad-y) var(--btn-pad-x);
+  border-radius:10px;
+  cursor:pointer;
+  border:none;
+  font-weight:700;
+  font-size:var(--font-btn);
+  min-height:var(--hit);
+  color:#000;
+  background:#fff;
+}
+
+button:hover{ background:#ffdf7e; }
+button:active{ transform:scale(.98); }
+
+.replay{
+  cursor:pointer;
+  font-size:30px;
+  user-select:none;
+  color:#fff;
+  text-shadow:1px 1px 5px #000;
+  transition:transform .15s ease;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:var(--hit);
+  height:var(--hit);
+  border-radius:10px;
+}
+
+.replay:active{ transform:scale(.95); }
