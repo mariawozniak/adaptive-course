@@ -120,6 +120,136 @@ function onYTStateChange(e) {
   }
 
   /* =========================
+   DIFF ENGINE (z monolitu)
+   ========================= */
+
+function levenshtein(a, b) {
+  a = a || ""; b = b || "";
+  const m = a.length, n = b.length;
+  const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
+  for (let i = 0; i <= m; i++) dp[i][0] = i;
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      dp[i][j] = Math.min(
+        dp[i - 1][j] + 1,
+        dp[i][j - 1] + 1,
+        dp[i - 1][j - 1] + cost
+      );
+    }
+  }
+  return dp[m][n];
+}
+
+function consonantKey(w) {
+  const n = normalize(w).replace(/[^a-z]/g, "");
+  return n.replace(/[aeiouy]/g, "");
+}
+
+function isNearHomophone(expectedWord, spokenWord) {
+  const eKey = consonantKey(expectedWord);
+  const sKey = consonantKey(spokenWord);
+  if (eKey.length >= 2 && eKey === sKey) return true;
+
+  const e = normalize(expectedWord).replace(/[^a-z]/g, "");
+  const s = normalize(spokenWord).replace(/[^a-z]/g, "");
+  if (!e || !s) return false;
+
+  const dist = levenshtein(e, s);
+  const maxLen = Math.max(e.length, s.length);
+  return maxLen <= 4 ? dist <= 1 : dist <= 2;
+}
+
+function diffWords(expectedText, spokenText) {
+  const eOrig = expectedText.trim().split(/\s+/);
+  const sOrig = spokenText.trim().split(/\s+/);
+  const e = eOrig.map(w => normalize(w));
+  const s = sOrig.map(w => normalize(w));
+
+  const m = e.length, n = s.length;
+  const dp = Array.from({length:m+1}, () => Array(n+1).fill(0));
+  for (let i=0;i<=m;i++) dp[i][0] = i;
+  for (let j=0;j<=n;j++) dp[0][j] = j;
+
+  for (let i=1;i<=m;i++){
+    for (let j=1;j<=n;j++){
+      const cost = e[i-1] === s[j-1] ? 0 : 1;
+      dp[i][j] = Math.min(
+        dp[i-1][j] + 1,
+        dp[i][j-1] + 1,
+        dp[i-1][j-1] + cost
+      );
+    }
+  }
+
+  return { diff: outReverse(dp, eOrig, sOrig, e, s) };
+}
+
+function outReverse(dp, eOrig, sOrig, eNorm, sNorm){
+  let i=eOrig.length, j=sOrig.length;
+  const out=[];
+  while(i>0||j>0){
+    if (i > 0 && j > 0 &&
+        dp[i][j] === dp[i-1][j-1] + (eNorm[i-1] === sNorm[j-1] ? 0 : 1)) {
+
+      const expected = eOrig[i-1];
+      const spoken   = sOrig[j-1];
+      const near = (eNorm[i-1] !== sNorm[j-1]) && isNearHomophone(expected, spoken);
+
+      out.push({
+        type: (eNorm[i-1] === sNorm[j-1] || near) ? 'ok' : 'sub',
+        expected,
+        spoken: near ? expected : spoken
+      });
+
+      i--; j--;
+    } else if(i>0 && dp[i][j] === dp[i-1][j] + 1){
+      out.push({ type:'miss', expected:eOrig[i-1], spoken:'' });
+      i--;
+    } else {
+      out.push({ type:'extra', expected:'', spoken:sOrig[j-1] });
+      j--;
+    }
+  }
+  out.reverse();
+  return out;
+}
+
+function renderSpokenDiff(diffArr) {
+  const html = diffArr
+    .filter(tok => tok.spoken !== "")
+    .map(tok => {
+      if (tok.type === "ok") return `<span>${escapeHtml(tok.spoken)}</span>`;
+      return `<span class="wrong">${escapeHtml(tok.spoken)}</span>`;
+    })
+    .join(" ");
+
+  statusEl.innerHTML = `Powiedziałeś: ${html}`;
+}
+
+function renderExpectedDiff(diffArr) {
+  sentenceEl.classList.remove("hidden");
+
+  const html = diffArr
+    .filter(tok => tok.expected !== "")
+    .map(tok => {
+      const raw = tok.expected;
+      const safe = escapeHtml(raw);
+      const enc  = encodeURIComponent(raw);
+      const cls =
+        tok.type === "ok"   ? "okw" :
+        tok.type === "sub"  ? "sub" :
+        tok.type === "miss" ? "miss" : "";
+      return `<span class="word ${cls}" data-raw="${enc}">${safe}</span>`;
+    })
+    .join(" ");
+
+  sentenceEl.innerHTML = html;
+}
+
+
+  /* =========================
      SENTENCE RENDER
      ========================= */
   function makeSentenceClickable(text) {
@@ -248,10 +378,22 @@ if (data.player.type === "youtube") {
 statusEl.textContent = "Słucham…";
 statusEl.classList.add("listening");
 
-    function stop() {
-      try { rec.stop(); } catch {}
-      renderDiff(expectedText, transcript.trim());
-    }
+function stop() {
+  try { rec.stop(); } catch {}
+
+  statusEl.classList.remove("listening");
+
+  const spoken = transcript.trim();
+  if (!spoken) {
+    statusEl.textContent = "Nic nie usłyszałem.";
+    return;
+  }
+
+  const { diff } = diffWords(expectedText, spoken);
+  renderSpokenDiff(diff);
+  renderExpectedDiff(diff);
+}
+
 
     function arm() {
       clearTimeout(inactivityTimer);
@@ -274,20 +416,6 @@ statusEl.classList.add("listening");
     rec.start();
   }
 
-  /* =========================
-     DIFF RENDER
-     ========================= */
-  function renderDiff(expected, spoken) {
-    statusEl.classList.remove("listening");
-
-    if (!spoken) {
-      statusEl.textContent = "Nic nie usłyszałem.";
-      return;
-    }
-
-    statusEl.innerHTML = `Powiedziałeś: <b>${escapeHtml(spoken)}</b>`;
-    sentenceEl.innerHTML = makeSentenceClickable(expected);
-  }
 
   /* =========================
      FINISH
