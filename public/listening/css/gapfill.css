@@ -264,3 +264,37 @@ button:active { transform: scale(0.98); }
   color: #ffd257;
   margin: 16px 0 24px;
 }
+/* =========================
+   GAP STATES — 1:1 MONOLIT
+   ========================= */
+
+/* default gap */
+.gap {
+  background: #0f1520;
+  border-color: #446;
+}
+
+/* correct answer */
+.gap .gap--correct,
+.gap span.gap--correct {
+  color: #35c28d;
+  font-weight: 600;
+}
+
+/* wrong answer */
+.gap .gap--wrong,
+.gap span.gap--wrong {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+/* arrow separator */
+.gap {
+  color: #eee; /* tekst bazowy */
+}
+
+/* input (before check) */
+.gap input {
+  color: #ffd257;
+}
+
