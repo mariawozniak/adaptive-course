@@ -20,13 +20,7 @@
   let maxScore = 0;
 
   // ---- helpers ----
-  function calcMaxScore(segments) {
-    let total = 0;
-    for (const seg of segments) {
-      for (const p of seg.parts) if (p.gap) total++;
-    }
-    return total;
-  }
+ 
 
   function updateScoreBox() {
     if (!scoreBoxEl) return;
@@ -153,9 +147,10 @@ const path = `/data/listening/${moduleName}.${mode}.json`;
   // ---- init ----
   async function start() {
     data = await loadModuleJson();
-    maxScore = calcMaxScore(data.segments);
-    score = 0;
-    updateScoreBox();
+ score = 0;
+maxScore = 0;
+updateScoreBox();
+
 
     engine = pickEngine(mode);
     if (!engine || typeof engine.init !== "function") {
