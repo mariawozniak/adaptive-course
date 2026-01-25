@@ -1,11 +1,11 @@
 (() => {
   "use strict";
 
-  let selected = null;
+  let selectedIndex = null;
   let phase = "select"; // select → result
 
   function render(seg, CORE) {
-    selected = null;
+    selectedIndex = null;
     phase = "select";
 
     const instr = document.getElementById("instruction");
@@ -16,7 +16,7 @@
 
     q.innerHTML = "";
 
-    seg.sentence.forEach(word => {
+    seg.sentence.forEach((word, index) => {
       const span = document.createElement("span");
       span.textContent = word;
       span.style.marginRight = "8px";
@@ -27,6 +27,8 @@
       span.onclick = () => {
         if (phase !== "select") return;
 
+        selectedIndex = index;
+
         [...q.children].forEach(el => {
           el.style.background = "transparent";
           el.style.color = "#fff";
@@ -34,7 +36,6 @@
 
         span.style.background = "#ffd257";
         span.style.color = "#000";
-        selected = word;
       };
 
       q.appendChild(span);
@@ -46,28 +47,32 @@
 
   function onNext(seg, CORE) {
     if (phase === "select") {
-      if (!selected) return false;
+      if (selectedIndex === null) return false;
 
       const q = document.getElementById("qtext");
-      [...q.children].forEach(el => {
-        if (el.textContent === seg.extra) {
+
+      [...q.children].forEach((el, i) => {
+        if (i === selectedIndex && seg.sentence[i] === seg.extra) {
+          // ✅ poprawnie wskazane zbędne słowo
           el.style.background = "#35c28d";
           el.style.color = "#000";
-        } else if (el.textContent === selected) {
+        } else if (i === selectedIndex) {
+          // ❌ błędnie kliknięte słowo
           el.style.background = "#ffd257";
           el.style.color = "#000";
         } else {
+          // reszta zdania
           el.style.background = "transparent";
           el.style.color = "#fff";
         }
       });
 
-      if (selected === seg.extra) {
+      if (seg.sentence[selectedIndex] === seg.extra) {
         CORE.setScore(1);
       }
 
       phase = "result";
-      return false;
+      return false; // ⛔ jeszcze nie przechodź dalej
     }
 
     CORE.hideOverlay();
