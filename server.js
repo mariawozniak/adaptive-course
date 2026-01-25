@@ -72,6 +72,48 @@ app.get("/api/me", (req, res) => {
 });
 
 // ===== STATE =====
+const userStateStore = {};
+const progressStore = {};
+
+app.get("/api/state", (req, res) => {
+  const userId = req.cookies.course_user;
+  res.json({ level: userStateStore[userId]?.level ?? null });
+});
+
+app.post("/api/level", (req, res) => {
+  const userId = req.cookies.course_user;
+  const level = Number(req.body?.level);
+
+  if (!userId || !level) {
+    return res.status(400).json({ error: "bad request" });
+  }
+
+  userStateStore[userId] = { level };
+  res.json({ ok: true, level });
+});
+
+app.get("/api/progress", (req, res) => {
+  const userId = req.cookies.course_user;
+  res.json(progressStore[userId] || {});
+});
+
+app.post("/api/lesson-complete", (req, res) => {
+  const { moduleId, lessonId } = req.body;
+  const userId = req.cookies.course_user;
+
+  progressStore[userId] ??= {};
+  progressStore[userId][moduleId] ??= { completedLessons: {} };
+  progressStore[userId][moduleId].completedLessons[lessonId] = true;
+
+  res.json({ ok: true });
+});
+
+app.post("/api/feedback", (req, res) => {
+  res.json({ ok: true, level: 1, moduleId: "module_1" });
+});
+
+
+// ===== STATE =====
 app.get("/api/state", (req, res) => {
   const userId = req.cookies.course_user;
   res.json({ level: userId ? userStateStore[userId]?.level ?? null : null });
@@ -194,6 +236,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
