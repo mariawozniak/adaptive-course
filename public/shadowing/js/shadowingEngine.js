@@ -78,12 +78,18 @@ function createYTPlayer() {
 }
 
 function onYTStateChange(e) {
+  if (e.data === YT.PlayerState.ENDED) {
+    startedByYT = false;
+    return;
+  }
+
   if (e.data === YT.PlayerState.PLAYING && !startedByYT) {
     startedByYT = true;
     iSeg = 0;
     playSegment(iSeg);
   }
 }
+
 
 
 
@@ -174,9 +180,12 @@ function onYTStateChange(e) {
 
     if (watcher) clearInterval(watcher);
 
-    if (data.player.type === "youtube") {
-      player.seekTo(seg.start, true);
-      player.playVideo();
+if (data.player.type === "youtube") {
+  if (player.getPlayerState && player.getPlayerState() !== YT.PlayerState.PLAYING) {
+    player.playVideo();
+  }
+  player.seekTo(seg.start, true);
+
 
       watcher = setInterval(() => {
         if (player.getCurrentTime() >= seg.end) {
