@@ -1,144 +1,185 @@
-console.log("🧠 CORE LOADED");
+// public/listening/js/core.js
+(() => {
+  "use strict";
 
-const params = new URLSearchParams(window.location.search);
-const MODE = params.get("mode") || "gapfill";
-const MODULE_ID = params.get("module") || "module_1";
+  // ---- URL params ----
+  const params = new URLSearchParams(window.location.search);
+  const mode = params.get("mode") || "gapfill";
+  const moduleName = params.get("module") || "module_1";
 
-window.APP_CONTEXT = { MODE, MODULE_ID };
+  // ---- DOM ----
+  const scoreBoxEl = document.getElementById("scoreBox");
 
-// ====== STATE ======
-let player;
-let data;
-let engine;
-let currentSegment = 0;
-let score = 0;
-let watcher = null;
+  // ---- runtime ----
+  let data = null;              // loaded JSON
+  let engine = null;            // selected engine instance
+  let player = null;            // YT player
+  let watcher = null;           // interval id
+  let currentSegmentIndex = 0;  // global progress
+  let score = 0;
+  let maxScore = 0;
 
-// ====== DOM ======
-const overlay = document.getElementById("overlay");
-const scoreBox = document.getElementById("scoreBox");
-
-// ====== CORE API (dla engine) ======
-const CORE_API = {
-  playSegment,
-  showOverlay,
-  hideOverlay,
-  setScore,
-  updateScoreBox,
-  finishExercise
-};
-
-// ====== INIT ======
-init();
-
-async function init() {
-  data = await loadModuleData(MODULE_ID);
-
-  data.maxScore = data.segments.reduce(
-  (sum, seg) => sum + seg.parts.filter(p => p.gap).length,
-  0
-);
-
-
-  engine = loadEngine(MODE);
-  engine.init(data, CORE_API);
-
-  initYouTube(data.videoId);
-  bindUI();
-  updateScoreBox();
-}
-
-// ====== LOADERS ======
-async function loadModuleData(moduleId) {
-  const res = await fetch(`/data/listening/${moduleId}.gapfill.json`);
-  return await res.json();
-}
-
-function loadEngine(mode) {
-  if (mode === "gapfill") return window.GapFillEngine;
-  if (mode === "quiz") return window.QuizEngine;
-  if (mode === "mixed") return window.MixedEngine;
-  throw new Error("Unknown mode: " + mode);
-}
-
-// ====== UI ======
-function bindUI() {
-  document.getElementById("next").onclick = () => engine.onNext();
-  document.getElementById("replayBtn").onclick = () => engine.onReplay();
-}
-
-function showOverlay() {
-  overlay.style.display = "flex";
-}
-
-function hideOverlay() {
-  overlay.style.display = "none";
-}
-
-// ====== SCORE ======
-function setScore(delta) {
-  score += delta;
-}
-
-function updateScoreBox() {
-  scoreBox.textContent = `${score} / ${data.maxScore}`;
-}
-
-// ====== VIDEO ======
-function initYouTube(videoId) {
-  const tag = document.createElement("script");
-  tag.src = "https://www.youtube.com/iframe_api";
-  document.head.appendChild(tag);
-
-  window.onYouTubeIframeAPIReady = () => {
-    player = new YT.Player("yt", {
-      videoId,
-      playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
-      events: {
-        onStateChange
-      }
-    });
-  };
-}
-
-function playSegment(index) {
-  const seg = data.segments[index];
-  currentSegment = index;
-
-  player.seekTo(seg.start, true);
-  player.playVideo();
-
-  if (watcher) clearInterval(watcher);
-
-  watcher = setInterval(() => {
-    if (player.getCurrentTime() >= seg.end) {
-      clearInterval(watcher);
-      player.pauseVideo();
-      engine.onSegmentEnd();
+  // ---- helpers ----
+  function calcMaxScore(segments) {
+    let total = 0;
+    for (const seg of segments) {
+      for (const p of seg.parts) if (p.gap) total++;
     }
-  }, 200);
-}
+    return total;
+  }
 
-function initYouTube(videoId) {
-  const tag = document.createElement("script");
-  tag.src = "https://www.youtube.com/iframe_api";
-  document.head.appendChild(tag);
+  function updateScoreBox() {
+    if (!scoreBoxEl) return;
+    scoreBoxEl.textContent = `${score} / ${maxScore}`;
+  }
 
-  window.onYouTubeIframeAPIReady = () => {
-    player = new YT.Player("yt", {
-      videoId,
-      playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
-      events: {
-        onReady: () => {
-          playSegment(0); // 👈 STARTUJEMY TYLKO RAZ
+  function clearWatcher() {
+    if (watcher) {
+      clearInterval(watcher);
+      watcher = null;
+    }
+  }
+
+  // ---- CORE API for engines ----
+  const CORE_API = {
+    playSegment(index) {
+      playSegment(index);
+    },
+    showOverlay() {
+      const overlay = document.getElementById("overlay");
+      if (overlay) overlay.style.display = "flex";
+    },
+    hideOverlay() {
+      const overlay = document.getElementById("overlay");
+      if (overlay) overlay.style.display = "none";
+    },
+    setScore(delta) {
+      score += delta;
+      updateScoreBox();
+    },
+    updateScoreBox() {
+      updateScoreBox();
+    },
+    finishExercise() {
+      // Na razie minimalnie: engine może wołać finish.
+      // Docelowo: ekran końcowy + restart itp.
+      clearWatcher();
+      if (player) player.pauseVideo();
+      const endOverlay = document.getElementById("endOverlay");
+      const finalScoreEnd = document.getElementById("finalScoreEnd");
+      if (finalScoreEnd) finalScoreEnd.textContent = `${score} / ${maxScore}`;
+      if (endOverlay) endOverlay.style.display = "flex";
+    },
+    getCurrentSegmentIndex() {
+      return currentSegmentIndex;
+    }
+  };
+
+  // ---- segment control ----
+  function playSegment(index) {
+    if (!data || !player) return;
+
+    const seg = data.segments[index];
+    if (!seg) return;
+
+    currentSegmentIndex = index;
+
+    player.seekTo(seg.start, true);
+    player.playVideo();
+
+    clearWatcher();
+    watcher = setInterval(() => {
+      const t = player.getCurrentTime();
+      if (t >= seg.end) {
+        clearWatcher();
+        player.pauseVideo();
+        if (engine && typeof engine.onSegmentEnd === "function") {
+          engine.onSegmentEnd(index);
         }
       }
+    }, 200);
+  }
+
+  // ---- engine selection ----
+  function pickEngine(mode) {
+    // Na razie tylko gapfill — reszta później.
+    if (mode === "gapfill") return window.gapfillEngine;
+    if (mode === "quiz") return window.quizEngine;
+    if (mode === "mixed") return window.mixedEngine;
+    throw new Error(`Unknown mode: ${mode}`);
+  }
+
+  // ---- data loading ----
+  async function loadModuleJson() {
+    const path = `data/listening/${moduleName}.${mode}.json`;
+    const res = await fetch(path, { cache: "no-store" });
+    if (!res.ok) throw new Error(`Cannot load JSON: ${path} (${res.status})`);
+    return await res.json();
+  }
+
+  // ---- YouTube bootstrap ----
+  function loadYouTubeIframeApi() {
+    return new Promise((resolve) => {
+      const existing = document.querySelector('script[src="https://www.youtube.com/iframe_api"]');
+      if (existing) return resolve();
+
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      document.head.appendChild(tag);
+      resolve();
     });
-  };
-}
+  }
 
+  function createPlayer(videoId) {
+    return new Promise((resolve) => {
+      window.onYouTubeIframeAPIReady = () => {
+        player = new YT.Player("yt", {
+          videoId,
+          playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
+          events: {
+            onReady: () => resolve(player),
+            onStateChange: (event) => {
+              // Jeśli film faktycznie dojedzie do końca, kończymy ćwiczenie.
+              if (event.data === YT.PlayerState.ENDED) {
+                CORE_API.finishExercise();
+              }
+            }
+          }
+        });
+      };
+    });
+  }
 
-// ====== END ======
-function finishExercise() {
-  alert(`Koniec 🎉 Wynik: ${score}/${data.maxScore}`);
-}
+  // ---- init ----
+  async function start() {
+    data = await loadModuleJson();
+    maxScore = calcMaxScore(data.segments);
+    score = 0;
+    updateScoreBox();
+
+    engine = pickEngine(mode);
+    if (!engine || typeof engine.init !== "function") {
+      throw new Error(`Engine for mode=${mode} is missing or invalid.`);
+    }
+
+    // init engine (render + handlers), engine dostaje CORE_API
+    engine.init(data, CORE_API);
+
+    await loadYouTubeIframeApi();
+    await createPlayer(data.videoId);
+
+    // Start: od razu odtwarzamy pierwszy segment (jak w prototypie po PLAY)
+    // Tu celowo upraszczam: startujemy automatycznie.
+    // Jeśli chcesz wymusić kliknięcie play → powiemy engine/core jak to zsynchronizować.
+    playSegment(0);
+  }
+
+  // Globalnie dla debug (opcjonalnie)
+  window.__CORE__ = { CORE_API };
+
+  // Odpal
+  start().catch((err) => {
+    console.error(err);
+    alert(err.message || String(err));
+  });
+})();
