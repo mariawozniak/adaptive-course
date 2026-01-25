@@ -1,0 +1,31 @@
+{
+  "moduleId": "module_1",
+  "lessonId": "module_1.listening.quiz",
+  "lessonType": "quiz",
+  "videoId": "hy_72TdNtc4",
+
+  "segments": [
+    {
+      "type": "mcq",
+      "start": 0,
+      "end": 7,
+      "question": "Ross wznosi toast:",
+      "answers": [
+        { "text": "z powodu awansu siostry", "correct": true },
+        { "text": "za szefa kuchni", "correct": false }
+      ],
+      "explanation": "Here is to my sister – za moją siostrę"
+    },
+    {
+      "type": "mcq",
+      "start": 7,
+      "end": 20,
+      "question": "Monica mówi o:",
+      "answers": [
+        { "text": "jej obowiązkach", "correct": true },
+        { "text": "jej wynagrodzeniu", "correct": false }
+      ],
+      "explanation": "In charge of purchasing – odpowiedzialna za zakupy"
+    }
+  ]
+}
