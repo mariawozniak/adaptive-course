@@ -50,7 +50,7 @@ app.get("/api/me", (req, res) => {
     userId = "u_" + crypto.randomUUID();
     res.setHeader(
       "Set-Cookie",
-      `course_user=${userId}; Path=/; HttpOnly; SameSite=None; Secure`
+      `course_user=${userId}; Path=/; HttpOnly; SameSite=Lax`
     );
   }
 
@@ -108,3 +108,4 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
