@@ -1,203 +1,262 @@
-// ===== GAPFILL ENGINE (1:1 jak stara lekcja) =====
-console.log("🔥 GAPFILL ENGINE LOADED");
+// /listening/js/gapfillEngine.js
+// Engine typu: gap fill (uzupełnianie luk)
+// UWAGA: ten plik NIE zna YouTube, fullscreen, end-screen.
+// Komunikuje się wyłącznie przez "api" przekazane z core.js.
 
+(function () {
+  "use strict";
 
-let SEGMENTS = [];
-let VIDEO_ID = null;
-let player = null;
+  // ====== STATE ======
+  let segments = [];
+  let current = 0;
+  let showedAnswers = false;
+  let api = null;
 
-let current = 0;
-let watcher = null;
-let score = 0;
-let showedAnswers = false;
-let quizStarted = false;
-let maxScore = 0;
+  // ====== HELPERS ======
+  function $(id) {
+    return document.getElementById(id);
+  }
 
-// ===== UI helpers =====
+  function normalize(s) {
+    return (s ?? "").toString().trim().toLowerCase();
+  }
 
-function updateScoreBox(){
-  document.getElementById("scoreBox").textContent = `${score} / ${maxScore}`;
-}
+  function ensureGapState(data) {
+    // Dodatkowe zabezpieczenie: jeśli JSON już ma userAnswer/isCorrect, nie psujemy tego
+    return data.segments.map(seg => ({
+      ...seg,
+      parts: (seg.parts || []).map(p => {
+        if (!p || typeof p !== "object") return p;
+        if (!p.gap) return { ...p };
+        return {
+          ...p,
+          userAnswer: p.userAnswer ?? "",
+          isCorrect: p.isCorrect ?? null
+        };
+      })
+    }));
+  }
 
-// ===== Rendering =====
+  // ====== RENDERING ======
+  function renderParts(parts) {
+    const frag = document.createDocumentFragment();
 
-function renderParts(parts){
-  const frag = document.createDocumentFragment();
+    parts.forEach(p => {
+      if (!p.gap) {
+        const span = document.createElement("span");
+        span.textContent = (p.text || "") + " ";
+        frag.appendChild(span);
+        return;
+      }
 
-  parts.forEach(p => {
-    if (!p.gap) {
-      const span = document.createElement("span");
-      span.textContent = p.text + " ";
-      frag.appendChild(span);
-    } else {
-      const span = document.createElement("span");
-      span.className = "gap";
+      const wrap = document.createElement("span");
+      wrap.className = "gap";
 
       const input = document.createElement("input");
-      input.value = p.userAnswer || "";
       input.placeholder = "…";
-      input.dataset.answer = p.text;
+      input.value = p.userAnswer || "";
+      input.dataset.answer = p.text || "";
 
       input.addEventListener("input", e => {
         p.userAnswer = e.target.value;
       });
 
-      span.appendChild(input);
-      frag.appendChild(span);
+      // UX: enter przechodzi dalej (ale tylko gdy overlay jest widoczny)
+      input.addEventListener("keydown", e => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          onNext();
+        }
+      });
+
+      wrap.appendChild(input);
+      frag.appendChild(wrap);
       frag.appendChild(document.createTextNode(" "));
-    }
-  });
+    });
 
-  return frag;
-}
+    return frag;
+  }
 
-function renderEvaluation(parts){
-  const frag = document.createDocumentFragment();
+  function renderEvaluation(parts) {
+    const frag = document.createDocumentFragment();
 
-  parts.forEach(p => {
-    if (!p.gap) {
-      const span = document.createElement("span");
-      span.textContent = p.text + " ";
-      frag.appendChild(span);
-    } else {
-      const span = document.createElement("span");
-      span.className = "gap";
-
-      if (p.isCorrect) {
-        span.innerHTML = `<span style="color:#35c28d">${p.text}</span>`;
-      } else {
-        const user = p.userAnswer?.trim() || "—";
-        span.innerHTML =
-          `<span style="color:#ff6b6b">${user}</span> → ` +
-          `<span style="color:#35c28d">${p.text}</span>`;
+    parts.forEach(p => {
+      if (!p.gap) {
+        const span = document.createElement("span");
+        span.textContent = (p.text || "") + " ";
+        frag.appendChild(span);
+        return;
       }
 
-      frag.appendChild(span);
+      const wrap = document.createElement("span");
+      wrap.className = "gap";
+
+      const correctText = p.text || "";
+      const userText = (p.userAnswer ?? "").toString().trim() || "—";
+
+      // p.isCorrect jest booleanem (true/false) po sprawdzeniu
+      if (p.isCorrect === true) {
+        wrap.innerHTML = `<span style="color:#35c28d">${escapeHtml(correctText)}</span>`;
+      } else {
+        wrap.innerHTML =
+          `<span style="color:#ff6b6b">${escapeHtml(userText)}</span> → ` +
+          `<span style="color:#35c28d">${escapeHtml(correctText)}</span>`;
+      }
+
+      frag.appendChild(wrap);
       frag.appendChild(document.createTextNode(" "));
-    }
-  });
+    });
 
-  return frag;
-}
-
-// ===== Question flow =====
-
-function showQuestion(seg){
-  const q = document.getElementById("qtext");
-  q.innerHTML = "";
-
-  const wasChecked = seg.parts.some(p => p.gap && p.isCorrect !== null);
-
-  if (wasChecked) {
-    q.appendChild(renderEvaluation(seg.parts));
-  } else {
-    q.appendChild(renderParts(seg.parts));
+    return frag;
   }
 
-  document.getElementById("overlay").style.display = "flex";
-}
+  function escapeHtml(str) {
+    // Bezpieczne wstrzyknięcie tekstu w innerHTML (unikamy psucia layoutu)
+    return (str ?? "")
+      .toString()
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
 
-function hideQuestion(){
-  document.getElementById("overlay").style.display = "none";
-}
+  function render() {
+    if (!segments.length) return;
 
-// ===== Video flow =====
+    const seg = segments[current];
+    const q = $("qtext");
+    if (!q) return;
 
-function playSegment(idx){
-  const seg = SEGMENTS[idx];
+    q.innerHTML = "";
 
-  player.seekTo(seg.start, true);
-  player.playVideo();
+    const wasChecked = (seg.parts || []).some(p => p.gap && p.isCorrect !== null);
 
-  if (watcher) clearInterval(watcher);
+    if (wasChecked) q.appendChild(renderEvaluation(seg.parts || []));
+    else q.appendChild(renderParts(seg.parts || []));
 
-  watcher = setInterval(() => {
-    if (player.getCurrentTime() >= seg.end) {
-      clearInterval(watcher);
-      player.pauseVideo();
+    const instruction = $("instruction");
+    if (instruction) instruction.textContent = "Uzupełnij luki.";
 
-      if (idx === SEGMENTS.length - 1) {
-        showEndScreen();
-      } else {
-        showQuestion(seg);
+    const msg = $("msg");
+    if (msg) msg.textContent = "";
+
+    if (api && typeof api.showOverlay === "function") api.showOverlay();
+    else {
+      // awaryjnie (gdyby core nie dawał api.showOverlay)
+      const ov = $("overlay");
+      if (ov) ov.style.display = "flex";
+    }
+
+    // UX: focus na pierwszy input jeśli istnieje
+    setTimeout(() => {
+      const first = q.querySelector("input");
+      if (first) first.focus();
+    }, 0);
+  }
+
+  // ====== CORE EVENTS ======
+  function onSegmentEnd() {
+    // Core mówi: "fragment się skończył, pokaż pytanie"
+    render();
+  }
+
+  function onReplay() {
+    // Ukryj overlay i odtwórz ten sam segment
+    if (api && typeof api.hideOverlay === "function") api.hideOverlay();
+    else {
+      const ov = $("overlay");
+      if (ov) ov.style.display = "none";
+    }
+
+    if (api && typeof api.playSegment === "function") {
+      api.playSegment(current);
+    }
+  }
+
+  function onNext() {
+    if (!segments.length) return;
+
+    const seg = segments[current];
+
+    // 1) Sprawdź tylko te luki, które nie były jeszcze ocenione (isCorrect === null)
+    (seg.parts || []).forEach(p => {
+      if (!p.gap) return;
+      if (p.isCorrect !== null) return;
+
+      const ok = normalize(p.userAnswer) === normalize(p.text);
+      p.isCorrect = ok;
+
+      if (ok && api && typeof api.setScore === "function") {
+        api.setScore(1);
+      }
+    });
+
+    if (api && typeof api.updateScoreBox === "function") {
+      api.updateScoreBox();
+    }
+
+    // 2) Pierwsze kliknięcie: pokaż ocenę, nie przechodź dalej
+    if (!showedAnswers) {
+      showedAnswers = true;
+      render();
+      return;
+    }
+
+    // 3) Drugie kliknięcie: przejdź do następnego segmentu
+    showedAnswers = false;
+    current++;
+
+    if (api && typeof api.hideOverlay === "function") api.hideOverlay();
+    else {
+      const ov = $("overlay");
+      if (ov) ov.style.display = "none";
+    }
+
+    if (current < segments.length) {
+      // reset: kolejny segment ma być "czysty" na wejściu (ale userAnswer już jest w segmencie)
+      if (api && typeof api.playSegment === "function") {
+        api.playSegment(current);
+      }
+    } else {
+      // koniec ćwiczenia
+      if (api && typeof api.finishExercise === "function") {
+        api.finishExercise();
       }
     }
-  }, 200);
-}
+  }
 
-// ===== Navigation =====
+  // ====== INIT ======
+  function init(data, coreApi) {
+    api = coreApi || null;
 
-function nextSegment(){
-  const inputs = document.querySelectorAll("#qtext input");
-
-  inputs.forEach(inp => {
-    const userVal = inp.value.trim().toLowerCase();
-    const correctVal = inp.dataset.answer.toLowerCase();
-    const part = SEGMENTS[current].parts.find(
-      p => p.gap && p.text === inp.dataset.answer
-    );
-
-    if (userVal === correctVal) {
-      score++;
-      if (part) part.isCorrect = true;
-    } else {
-      if (part) part.isCorrect = false;
+    // Bezpieczne mapowanie danych
+    if (!data || !Array.isArray(data.segments)) {
+      console.error("GapFillEngine.init: brak data.segments");
+      segments = [];
+      current = 0;
+      showedAnswers = false;
+      return;
     }
-  });
 
-  updateScoreBox();
-
-  if (!showedAnswers) {
-    showedAnswers = true;
-    showQuestion(SEGMENTS[current]);
-    return;
-  }
-
-  hideQuestion();
-  current++;
-  showedAnswers = false;
-
-  if (current < SEGMENTS.length) {
-    playSegment(current);
-  } else {
-    showEndScreen();
-  }
-}
-
-// ===== End =====
-
-function showEndScreen(){
-  player.pauseVideo();
-  document.getElementById("finalScoreEnd").textContent =
-    `${score} / ${maxScore}`;
-  document.getElementById("endOverlay").style.display = "flex";
-}
-
-// ===== PUBLIC API =====
-
-window.gapfillEngine = {
-  init({ segments, videoId, ytPlayer }) {
-    SEGMENTS = segments;
-    VIDEO_ID = videoId;
-    player = ytPlayer;
+    segments = ensureGapState(data);
 
     current = 0;
-    score = 0;
     showedAnswers = false;
 
-    maxScore = SEGMENTS.reduce(
-      (sum, seg) => sum + seg.parts.filter(p => p.gap).length,
-      0
-    );
+    // Ustaw początkowy napis instrukcji (core może mieć pusty)
+    const instruction = $("instruction");
+    if (instruction) instruction.textContent = "Uzupełnij luki.";
 
-    updateScoreBox();
-  },
-
-  play() {
-    playSegment(current);
-  },
-
-  next() {
-    nextSegment();
+    // UWAGA: nie odpalamy playSegment tutaj – to robi core, kiedy player gotowy
   }
-};
+
+  // ====== EXPORT ======
+  window.GapFillEngine = {
+    init,
+    render,       // opcjonalnie (core może zawołać ręcznie)
+    onNext,
+    onReplay,
+    onSegmentEnd
+  };
+})();
