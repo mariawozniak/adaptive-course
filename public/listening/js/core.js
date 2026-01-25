@@ -137,12 +137,15 @@ const path = `/data/listening/${moduleName}.${mode}.json`;
           playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
           events: {
             onReady: () => resolve(player),
-            onStateChange: (event) => {
-              // Jeśli film faktycznie dojedzie do końca, kończymy ćwiczenie.
-              if (event.data === YT.PlayerState.ENDED) {
-                CORE_API.finishExercise();
-              }
-            }
+ onStateChange: (event) => {
+  if (event.data === YT.PlayerState.ENDED) {
+    // 🔒 tylko jeśli to naprawdę OSTATNI segment
+    if (currentSegmentIndex >= data.segments.length - 1) {
+      CORE_API.finishExercise();
+    }
+  }
+}
+
           }
         });
       };
