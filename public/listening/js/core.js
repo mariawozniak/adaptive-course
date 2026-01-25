@@ -201,6 +201,25 @@ updateScoreBox();
 if (nextBtn) {
   nextBtn.onclick = nextSegment;
 }
+  const replayBtn = document.getElementById("replayBtn");
+if (replayBtn) {
+  replayBtn.onclick = () => {
+    // ukryj overlay
+    CORE_API.hideOverlay();
+
+    // zatrzymaj watcher
+    clearWatcher();
+
+    // cofnij wideo do początku aktualnego segmentu
+    playSegment(currentSegmentIndex);
+
+    // 🔥 poinformuj engine (mixed / quiz / gapfill)
+    if (engine && typeof engine.onReplay === "function") {
+      engine.onReplay(currentSegmentIndex);
+    }
+  };
+}
+
 
 
   // Globalnie dla debug (opcjonalnie)
