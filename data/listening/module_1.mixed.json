@@ -1,1 +1,88 @@
-
+{
+  "videoId": "hy_72TdNtc4",
+  "segments": [
+    {
+      "type": "extra-word",
+      "start": 0,
+      "end": 8,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["who's", "also", "in", "charge", "of", "the", "purchasing"],
+      "extra": "the"
+    },
+    {
+      "type": "order",
+      "start": 8,
+      "end": 15,
+      "instruction": "Ułóż zdanie w poprawnej kolejności.",
+      "words": ["who", "has", "her", "own", "little", "desk", "when", "Roland's", "not", "there"],
+      "correct": ["who", "has", "her", "own", "little", "desk", "when", "Roland's", "not", "there"]
+    },
+    {
+      "type": "order",
+      "start": 15,
+      "end": 37,
+      "instruction": "Ułóż zdanie w poprawnej kolejności.",
+      "words": ["are", "you", "ready", "to", "order"],
+      "correct": ["are", "you", "ready", "to", "order"]
+    },
+    {
+      "type": "order",
+      "start": 37,
+      "end": 43,
+      "instruction": "Ułóż zdanie w poprawnej kolejności.",
+      "words": ["I'll", "be", "right", "over", "there", "on", "the", "edge", "of", "my", "seat"],
+      "correct": ["I'll", "be", "right", "over", "there", "on", "the", "edge", "of", "my", "seat"]
+    },
+    {
+      "type": "order",
+      "start": 43,
+      "end": 57,
+      "instruction": "Ułóż zdanie w poprawnej kolejności.",
+      "words": ["what", "are", "these,", "like", "famous", "chickens"],
+      "correct": ["what", "are", "these,", "like", "famous", "chickens"]
+    },
+    {
+      "type": "correct-word",
+      "start": 57,
+      "end": 70,
+      "instruction": "Kliknij i popraw błędne słowo.",
+      "sentence": ["Well,", "pretty", "incredible,", "according", "with", "the", "message", "she", "left", "for", "you", "on", "my", "machine."],
+      "wrong": "with",
+      "correct": "to"
+    },
+    {
+      "type": "correct-word",
+      "start": 70,
+      "end": 96,
+      "instruction": "Kliknij i popraw błędne słowo.",
+      "sentence": ["it", "sounds", "great.", "Same", "for", "me"],
+      "wrong": "it",
+      "correct": "That"
+    },
+    {
+      "type": "correct-word",
+      "start": 96,
+      "end": 106,
+      "instruction": "Kliknij i popraw błędne słowo.",
+      "sentence": ["We", "'d", "think,", "wouldn't", "you?"],
+      "wrong": "We",
+      "correct": "You"
+    },
+    {
+      "type": "order",
+      "start": 106,
+      "end": 120,
+      "instruction": "Ułóż zdanie w poprawnej kolejności.",
+      "words": ["why", "don't", "you", "just", "put", "it", "right", "here", "next", "to", "my", "water"],
+      "correct": ["why", "don't", "you", "just", "put", "it", "right", "here", "next", "to", "my", "water"]
+    },
+    {
+      "type": "extra-word",
+      "start": 120,
+      "end": 146,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["You're", "going", "to", "sneeze", "on", "to", "my", "fish,", "aren't", "you?"],
+      "extra": "to"
+    }
+  ]
+}
