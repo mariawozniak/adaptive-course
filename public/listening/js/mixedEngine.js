@@ -41,7 +41,7 @@ onSegmentEnd(index) {
   this.CORE.showOverlay();
 
   handler.render(seg, this.CORE);
-}
+},
 
 
     onNext(index) {
