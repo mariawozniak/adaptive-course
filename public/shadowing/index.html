@@ -5,54 +5,58 @@
   <title>Shadowing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- CSS -->
   <link rel="stylesheet" href="/shadowing/css/shadowing.css" />
 
-  <!-- YT / Vimeo (ładowane warunkowo, ale mogą być oba) -->
+  <!-- Player API -->
   <script src="https://www.youtube.com/iframe_api"></script>
   <script src="https://player.vimeo.com/api/player.js"></script>
 </head>
 <body>
 
-<div class="shadowing-root">
-  <div id="main-card" class="shadowing-card">
-
-    <!-- PLAYER -->
-    <div class="shadowing-player">
-      <!-- YT -->
+<div class="page">
+  <div id="main-card" class="card">
+    <div class="player-wrap">
       <div id="ytplayer"></div>
-
-      <!-- Vimeo -->
-      <iframe
-        id="vimeoplayer"
-        style="display:none"
-        allow="autoplay; fullscreen"
-        playsinline>
-      </iframe>
+      <iframe id="vimeoplayer" class="hidden"></iframe>
     </div>
 
-    <!-- CONTROLS -->
-    <div class="shadowing-controls">
-      <button onclick="startShadowing()">▶ Start</button>
-      <button onclick="prevSegment()">◀ Wstecz</button>
-      <button onclick="nextSegment()">Dalej ▶</button>
-      <button onclick="retrySegment()">🔄 Powtórz</button>
-      <button onclick="markAsGood()">✔ Było dobrze</button>
+    <div class="controls">
+      <div class="subs-toggle">
+        <label class="pill">
+          <input type="radio" name="subsMode" value="with" checked> Z napisami
+        </label>
+        <label class="pill">
+          <input type="radio" name="subsMode" value="without"> Bez napisów
+        </label>
+      </div>
+
+      <button class="btn btn-lg btn-start" onclick="startShadowing()">▶ Start</button>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="prevSegment()">◀ Wstecz</button>
+        <button class="btn" onclick="nextSegment()">Dalej ▶</button>
+        <button class="btn" onclick="retrySegment()">🔄 Powtórz</button>
+        <button class="btn" onclick="markAsGood()">Było dobrze ✔</button>
+      </div>
     </div>
 
-    <!-- TEXT -->
-    <p id="sentence" class="shadowing-sentence hidden"></p>
-    <p id="status" class="shadowing-status"></p>
+    <div class="panel">
+      <p id="sentence" class="hidden"></p>
+      <p id="status" class="foot"></p>
+    </div>
   </div>
 
-  <!-- END SCREEN -->
   <div id="end-screen" class="hidden">
-    <h2>🎉 Koniec shadowingu</h2>
-    <button onclick="location.reload()">← Wróć</button>
+    <div class="card">
+      <div class="end-inner">
+        <h2>🎉 Brawo, to wszystko na dziś!</h2>
+        <p>Świetna robota.</p>
+        <button class="btn btn-lg" onclick="restart()">🔄 Zacznij od nowa</button>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- ENGINE -->
 <script src="/shadowing/js/shadowingEngine.js"></script>
 </body>
 </html>
