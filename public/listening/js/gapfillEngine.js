@@ -1,35 +1,80 @@
 // /listening/js/gapfillEngine.js
-// Engine typu: gap fill (uzupełnianie luk)
-// UWAGA: ten plik NIE zna YouTube, fullscreen, end-screen.
-// Komunikuje się wyłącznie przez "api" przekazane z core.js.
+// Gap Fill Engine — działa w 2 trybach:
+// A) z core API (preferowane): core steruje YT i wywołuje engine.onSegmentEnd()
+// B) fallback (jeśli core nie ma YT): engine sam tworzy YT i steruje segmentami
+//
+// Minimalne wymagania HTML: elementy z id: yt, overlay, qtext, instruction, msg, next, replayBtn, scoreBox
 
 (function () {
   "use strict";
 
-  // ====== STATE ======
+  // =========================
+  // STATE
+  // =========================
   let segments = [];
   let current = 0;
   let showedAnswers = false;
+
+  let score = 0;
+  let maxScore = 0;
+
+  // core API (opcjonalne)
   let api = null;
 
-  // ====== HELPERS ======
-  function $(id) {
-    return document.getElementById(id);
+  // fallback YT (tylko gdy core nie dostarcza api.playSegment)
+  let player = null;
+  let watcher = null;
+  let ytReady = false;
+  let videoId = null;
+
+  // =========================
+  // DOM HELPERS
+  // =========================
+  const $ = (id) => document.getElementById(id);
+
+  function setText(id, txt) {
+    const el = $(id);
+    if (el) el.textContent = txt;
+  }
+
+  function showOverlay() {
+    if (api?.showOverlay) return api.showOverlay();
+    const ov = $("overlay");
+    if (ov) ov.style.display = "flex";
+  }
+
+  function hideOverlay() {
+    if (api?.hideOverlay) return api.hideOverlay();
+    const ov = $("overlay");
+    if (ov) ov.style.display = "none";
   }
 
   function normalize(s) {
     return (s ?? "").toString().trim().toLowerCase();
   }
 
-  function ensureGapState(data) {
-    // Dodatkowe zabezpieczenie: jeśli JSON już ma userAnswer/isCorrect, nie psujemy tego
-    return data.segments.map(seg => ({
-      ...seg,
+  function escapeHtml(str) {
+    return (str ?? "")
+      .toString()
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  // =========================
+  // DATA PREP
+  // =========================
+  function hydrateSegments(rawSegments) {
+    return (rawSegments || []).map(seg => ({
+      start: Number(seg.start ?? 0),
+      end: Number(seg.end ?? 0),
       parts: (seg.parts || []).map(p => {
-        if (!p || typeof p !== "object") return p;
-        if (!p.gap) return { ...p };
+        if (!p?.gap) return { text: p?.text ?? "", gap: false };
         return {
-          ...p,
+          text: p.text ?? "",
+          gap: true,
           userAnswer: p.userAnswer ?? "",
           isCorrect: p.isCorrect ?? null
         };
@@ -37,7 +82,23 @@
     }));
   }
 
-  // ====== RENDERING ======
+  function computeMaxScore(segs) {
+    let n = 0;
+    segs.forEach(seg => seg.parts.forEach(p => { if (p.gap) n++; }));
+    return n;
+  }
+
+  function updateScoreBox() {
+    // jeśli core ogarnia scorebox, użyj core
+    if (api?.updateScoreBox) return api.updateScoreBox();
+
+    const sb = $("scoreBox");
+    if (sb) sb.textContent = `${score} / ${maxScore}`;
+  }
+
+  // =========================
+  // RENDER
+  // =========================
   function renderParts(parts) {
     const frag = document.createDocumentFragment();
 
@@ -61,7 +122,7 @@
         p.userAnswer = e.target.value;
       });
 
-      // UX: enter przechodzi dalej (ale tylko gdy overlay jest widoczny)
+      // Enter = Next (tylko gdy overlay widoczny)
       input.addEventListener("keydown", e => {
         if (e.key === "Enter") {
           e.preventDefault();
@@ -94,7 +155,6 @@
       const correctText = p.text || "";
       const userText = (p.userAnswer ?? "").toString().trim() || "—";
 
-      // p.isCorrect jest booleanem (true/false) po sprawdzeniu
       if (p.isCorrect === true) {
         wrap.innerHTML = `<span style="color:#35c28d">${escapeHtml(correctText)}</span>`;
       } else {
@@ -110,18 +170,7 @@
     return frag;
   }
 
-  function escapeHtml(str) {
-    // Bezpieczne wstrzyknięcie tekstu w innerHTML (unikamy psucia layoutu)
-    return (str ?? "")
-      .toString()
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
-  }
-
-  function render() {
+  function renderQuestion() {
     if (!segments.length) return;
 
     const seg = segments[current];
@@ -130,133 +179,225 @@
 
     q.innerHTML = "";
 
-    const wasChecked = (seg.parts || []).some(p => p.gap && p.isCorrect !== null);
+    const wasChecked = seg.parts.some(p => p.gap && p.isCorrect !== null);
+    q.appendChild(wasChecked ? renderEvaluation(seg.parts) : renderParts(seg.parts));
 
-    if (wasChecked) q.appendChild(renderEvaluation(seg.parts || []));
-    else q.appendChild(renderParts(seg.parts || []));
+    setText("instruction", "Uzupełnij luki.");
+    setText("msg", "");
 
-    const instruction = $("instruction");
-    if (instruction) instruction.textContent = "Uzupełnij luki.";
+    showOverlay();
 
-    const msg = $("msg");
-    if (msg) msg.textContent = "";
-
-    if (api && typeof api.showOverlay === "function") api.showOverlay();
-    else {
-      // awaryjnie (gdyby core nie dawał api.showOverlay)
-      const ov = $("overlay");
-      if (ov) ov.style.display = "flex";
-    }
-
-    // UX: focus na pierwszy input jeśli istnieje
+    // focus na pierwszą lukę
     setTimeout(() => {
       const first = q.querySelector("input");
       if (first) first.focus();
     }, 0);
   }
 
-  // ====== CORE EVENTS ======
-  function onSegmentEnd() {
-    // Core mówi: "fragment się skończył, pokaż pytanie"
-    render();
-  }
+  // =========================
+  // CHECK / NEXT
+  // =========================
+  function gradeCurrentSegment() {
+    const seg = segments[current];
+    if (!seg) return;
 
-  function onReplay() {
-    // Ukryj overlay i odtwórz ten sam segment
-    if (api && typeof api.hideOverlay === "function") api.hideOverlay();
-    else {
-      const ov = $("overlay");
-      if (ov) ov.style.display = "none";
-    }
+    seg.parts.forEach(p => {
+      if (!p.gap) return;
+      if (p.isCorrect !== null) return; // ocenione wcześniej
 
-    if (api && typeof api.playSegment === "function") {
-      api.playSegment(current);
-    }
+      const ok = normalize(p.userAnswer) === normalize(p.text);
+      p.isCorrect = ok;
+
+      if (ok) {
+        if (api?.setScore) api.setScore(1);
+        else score += 1;
+      }
+    });
+
+    updateScoreBox();
   }
 
   function onNext() {
     if (!segments.length) return;
 
-    const seg = segments[current];
+    // 1) Oceń (tylko raz na segment)
+    gradeCurrentSegment();
 
-    // 1) Sprawdź tylko te luki, które nie były jeszcze ocenione (isCorrect === null)
-    (seg.parts || []).forEach(p => {
-      if (!p.gap) return;
-      if (p.isCorrect !== null) return;
-
-      const ok = normalize(p.userAnswer) === normalize(p.text);
-      p.isCorrect = ok;
-
-      if (ok && api && typeof api.setScore === "function") {
-        api.setScore(1);
-      }
-    });
-
-    if (api && typeof api.updateScoreBox === "function") {
-      api.updateScoreBox();
-    }
-
-    // 2) Pierwsze kliknięcie: pokaż ocenę, nie przechodź dalej
+    // 2) Pierwsze kliknięcie: pokaż odpowiedzi, zostań
     if (!showedAnswers) {
       showedAnswers = true;
-      render();
+      renderQuestion();
       return;
     }
 
-    // 3) Drugie kliknięcie: przejdź do następnego segmentu
+    // 3) Drugie kliknięcie: przejdź dalej
     showedAnswers = false;
+    hideOverlay();
     current++;
 
-    if (api && typeof api.hideOverlay === "function") api.hideOverlay();
-    else {
-      const ov = $("overlay");
-      if (ov) ov.style.display = "none";
-    }
-
     if (current < segments.length) {
-      // reset: kolejny segment ma być "czysty" na wejściu (ale userAnswer już jest w segmencie)
-      if (api && typeof api.playSegment === "function") {
-        api.playSegment(current);
-      }
+      playSegment(current);
     } else {
-      // koniec ćwiczenia
-      if (api && typeof api.finishExercise === "function") {
-        api.finishExercise();
+      // koniec
+      if (api?.finishExercise) api.finishExercise();
+      else {
+        // fallback: prosty komunikat
+        alert(`Koniec 🎉 Wynik: ${score} / ${maxScore}`);
       }
     }
   }
 
-  // ====== INIT ======
+  function onReplay() {
+    hideOverlay();
+    playSegment(current);
+  }
+
+  // =========================
+  // PLAY SEGMENT
+  // =========================
+  function playSegment(index) {
+    if (!segments[index]) return;
+
+    // preferujemy core
+    if (api?.playSegment) {
+      api.playSegment(index);
+      return;
+    }
+
+    // fallback YT
+    if (!player || !ytReady) {
+      // jeśli YT jeszcze nie gotowe, spróbuj ponownie za chwilę
+      setTimeout(() => playSegment(index), 100);
+      return;
+    }
+
+    const seg = segments[index];
+
+    player.seekTo(seg.start, true);
+    player.playVideo();
+
+    if (watcher) clearInterval(watcher);
+    watcher = setInterval(() => {
+      if (!player) return;
+      if (player.getCurrentTime() >= seg.end) {
+        clearInterval(watcher);
+        watcher = null;
+        player.pauseVideo();
+        onSegmentEnd();
+      }
+    }, 200);
+  }
+
+  function onSegmentEnd() {
+    // core może wołać to po zatrzymaniu fragmentu
+    renderQuestion();
+  }
+
+  // =========================
+  // FALLBACK: YOUTUBE INIT
+  // =========================
+  function ensureYouTubeFallback() {
+    // jeśli core zapewnia odtwarzanie, nie tworzymy własnego playera
+    if (api?.playSegment) return;
+    if (!videoId) {
+      console.warn("GapFillEngine: brak videoId w data, a core nie dostarcza playSegment().");
+      return;
+    }
+
+    // jeśli YT już zainicjalizowane, nic nie rób
+    if (window.YT && window.YT.Player) {
+      createPlayer();
+      return;
+    }
+
+    // załaduj API
+    const tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
+
+    // zachowaj ewentualny poprzedni handler
+    const prev = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = function () {
+      if (typeof prev === "function") prev();
+      createPlayer();
+    };
+  }
+
+  function createPlayer() {
+    if (player) return;
+    const mount = $("yt");
+    if (!mount) {
+      console.error("GapFillEngine: brak #yt w HTML.");
+      return;
+    }
+
+    player = new YT.Player("yt", {
+      videoId: videoId,
+      playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
+      events: {
+        onReady: () => {
+          ytReady = true;
+          // start od 0 segmentu automatycznie (żeby nie było czarnego ekranu)
+          playSegment(0);
+        },
+        onStateChange: (event) => {
+          // jak film się skończy, też kończymy ćwiczenie
+          if (event.data === YT.PlayerState.ENDED) {
+            if (api?.finishExercise) api.finishExercise();
+            else alert(`Koniec 🎉 Wynik: ${score} / ${maxScore}`);
+          }
+        }
+      }
+    });
+  }
+
+  // =========================
+  // INIT
+  // =========================
   function init(data, coreApi) {
     api = coreApi || null;
 
-    // Bezpieczne mapowanie danych
-    if (!data || !Array.isArray(data.segments)) {
-      console.error("GapFillEngine.init: brak data.segments");
-      segments = [];
-      current = 0;
-      showedAnswers = false;
-      return;
-    }
-
-    segments = ensureGapState(data);
-
+    // dane
+    segments = hydrateSegments(data?.segments || []);
     current = 0;
     showedAnswers = false;
 
-    // Ustaw początkowy napis instrukcji (core może mieć pusty)
-    const instruction = $("instruction");
-    if (instruction) instruction.textContent = "Uzupełnij luki.";
+    // score: jeśli core liczy wynik, to i tak scoreBox aktualizuje core
+    maxScore = data?.maxScore ?? computeMaxScore(segments);
+    score = 0;
+    updateScoreBox();
 
-    // UWAGA: nie odpalamy playSegment tutaj – to robi core, kiedy player gotowy
+    // videoId dla fallbacku
+    videoId = data?.videoId || data?.video_id || data?.youtubeId || null;
+
+    // podpinamy przyciski (bezpiecznie — nadpisujemy onclick, więc bez dubli)
+    const nextBtn = $("next");
+    if (nextBtn) nextBtn.onclick = onNext;
+
+    const replayBtn = $("replayBtn");
+    if (replayBtn) replayBtn.onclick = onReplay;
+
+    // fallback YT, jeżeli core jeszcze nie steruje playerem
+    ensureYouTubeFallback();
+
+    // jeśli core steruje playerem, to core powinien odpalić playSegment(0)
+    // ale jako zabezpieczenie: jeśli core ma api.playSegment, spróbujmy wystartować po krótkim ticku
+    if (api?.playSegment) {
+      setTimeout(() => {
+        try { api.playSegment(0); } catch (_) {}
+      }, 0);
+    }
   }
 
-  // ====== EXPORT ======
+  // =========================
+  // EXPORT
+  // =========================
   window.GapFillEngine = {
     init,
-    render,       // opcjonalnie (core może zawołać ręcznie)
     onNext,
     onReplay,
-    onSegmentEnd
+    onSegmentEnd,
+    render: renderQuestion
   };
+
 })();
