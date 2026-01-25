@@ -34,6 +34,12 @@ init();
 async function init() {
   data = await loadModuleData(MODULE_ID);
 
+  data.maxScore = data.segments.reduce(
+  (sum, seg) => sum + seg.parts.filter(p => p.gap).length,
+  0
+);
+
+
   engine = loadEngine(MODE);
   engine.init(data, CORE_API);
 
