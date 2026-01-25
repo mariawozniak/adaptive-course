@@ -113,11 +113,24 @@ function playSegment(index) {
   }, 200);
 }
 
-function onStateChange(e) {
-  if (e.data === YT.PlayerState.PLAYING && currentSegment === 0) {
-    playSegment(0);
-  }
+function initYouTube(videoId) {
+  const tag = document.createElement("script");
+  tag.src = "https://www.youtube.com/iframe_api";
+  document.head.appendChild(tag);
+
+  window.onYouTubeIframeAPIReady = () => {
+    player = new YT.Player("yt", {
+      videoId,
+      playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
+      events: {
+        onReady: () => {
+          playSegment(0); // 👈 STARTUJEMY TYLKO RAZ
+        }
+      }
+    });
+  };
 }
+
 
 // ====== END ======
 function finishExercise() {
