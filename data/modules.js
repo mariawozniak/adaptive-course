@@ -16,27 +16,26 @@ export const modules = [
         completionRule: "any", // ukończone, jeśli dowolny wariant zaliczony
 
         variants: [
-  {
-  id: "module_1__vocabulary__app",
-  label: "Aplikacja do słówek",
-  type: "iframe",
-  src: "/vocabulary/index.html",
-  completion: "auto"
-},
-
+          {
+            id: "module_1__vocabulary__app",
+            label: "Aplikacja do słówek",
+            type: "iframe",
+            src: "/vocabulary/index.html",
+            completion: "auto"
+          },
           {
             id: "module_1__vocabulary__audio",
             label: "Nagranie MP3",
             type: "audio",
             src: "/assets/vocab/module_1.mp3",
-            completion: "manual" // ✅ user decyduje
+            completion: "manual"
           },
           {
             id: "module_1__vocabulary__print",
             label: "Lista do druku",
             type: "pdf",
             src: "/assets/vocab/module_1.pdf",
-            completion: "manual" // ✅ user decyduje
+            completion: "manual"
           }
         ]
       },
@@ -51,7 +50,7 @@ export const modules = [
         type: "internal",
         key: "test",
         lessonId: "module_1__test",
-        completion: "auto" // ✅ zaliczany automatycznie po zdaniu
+        completion: "auto"
       },
 
       /* =======================
@@ -61,28 +60,27 @@ export const modules = [
         id: "listening",
         label: "Listening",
         required: true,
-        // domyślna reguła: all (wszystkie warianty, jeśli user je zaznaczy)
 
         variants: [
           {
             id: "module_1__listening__quiz",
             label: "Quiz",
             type: "iframe",
-            src: "/listening/index.html?mode=quiz",
-            completion: "manual" // ✅ manual – intencja użytkownika
+            src: "/listening/index.html?module=module_1&lesson=quiz",
+            completion: "manual"
           },
           {
             id: "module_1__listening__gapfill",
             label: "Gap fill",
             type: "iframe",
-            src: "/listening/index.html?mode=gapfill",
+            src: "/listening/index.html?module=module_1&lesson=gapfill",
             completion: "manual"
           },
           {
             id: "module_1__listening__mixed",
             label: "Mixed",
             type: "iframe",
-            src: "/listening/index.html?mode=mixed",
+            src: "/listening/index.html?module=module_1&lesson=mixed",
             completion: "manual"
           }
         ]
@@ -96,9 +94,9 @@ export const modules = [
         label: "Shadowing",
         required: false,
         type: "iframe",
-        src: "/shadowing/index.html",
+        src: "/shadowing/index.html?module=module_1",
         lessonId: "module_1__shadowing",
-        completion: "manual" // ✅ user sam uznaje ukończenie
+        completion: "manual"
       },
 
       /* =======================
