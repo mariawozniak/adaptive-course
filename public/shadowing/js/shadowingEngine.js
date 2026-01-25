@@ -55,14 +55,21 @@
   }
 
   /* ===== YOUTUBE ===== */
-  function initYouTube() {
-    window.onYouTubeIframeAPIReady = () => {
-      player = new YT.Player("ytplayer", {
-        videoId: data.player.videoId
-      });
-      playerReady = Promise.resolve();
-    };
+ function initYouTube() {
+  if (window.YT && YT.Player) {
+    createYTPlayer();
+  } else {
+    window.onYouTubeIframeAPIReady = createYTPlayer;
   }
+}
+
+function createYTPlayer() {
+  player = new YT.Player("ytplayer", {
+    videoId: data.player.videoId
+  });
+  playerReady = Promise.resolve();
+}
+
 
   /* ===== VIMEO ===== */
   function initVimeo() {
