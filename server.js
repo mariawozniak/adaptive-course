@@ -72,8 +72,6 @@ app.get("/api/me", (req, res) => {
 });
 
 // ===== STATE =====
-const userStateStore = {};
-const progressStore = {};
 
 app.get("/api/state", (req, res) => {
   const userId = req.cookies.course_user;
@@ -236,6 +234,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
