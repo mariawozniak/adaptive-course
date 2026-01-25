@@ -267,6 +267,8 @@ statusEl.classList.add("listening");
      DIFF RENDER
      ========================= */
   function renderDiff(expected, spoken) {
+    statusEl.classList.remove("listening");
+
     if (!spoken) {
       statusEl.textContent = "Nic nie usłyszałem.";
       return;
