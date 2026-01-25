@@ -265,3 +265,38 @@ body{
   50%{ transform:scale(1.2); opacity:1; }
   100%{ transform:scale(1); opacity:.6; }
 }
+
+/* === LAYOUT CARD === */
+#main-card{
+  display:grid;
+  grid-template-areas:
+    "player"
+    "subs"
+    "panel"
+    "nav";
+  row-gap:14px;
+}
+
+/* przypisania */
+.player-wrap{
+  grid-area:player;
+}
+
+.controls{
+  display:contents; /* kluczowe */
+}
+
+.subs-toggle{
+  grid-area:subs;
+}
+
+.panel{
+  grid-area:panel;
+  margin-top:0;
+}
+
+.nav-buttons{
+  grid-area:nav;
+  margin-top:4px;
+}
+
