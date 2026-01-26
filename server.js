@@ -202,6 +202,46 @@ app.get("/api/debug-key", (req, res) => {
       : null
   });
 });
+// ===== PUBLIGO WEBHOOK =====
+app.post("/api/publigo-webhook", (req, res) => {
+  console.log("📩 PUBLIGO WEBHOOK RECEIVED");
+  console.log(JSON.stringify(req.body, null, 2));
+
+  const data = req.body;
+
+  // PRZYKŁADOWE POLA (zabezpieczenie)
+  const publigoUserId =
+    data?.customer?.user_id ||
+    data?.customer?.id ||
+    data?.user_id ||
+    null;
+
+  const email =
+    data?.customer?.email ||
+    data?.email ||
+    null;
+
+  const productId =
+    data?.product?.id ||
+    data?.product_id ||
+    null;
+
+  if (!publigoUserId) {
+    console.log("❌ Brak publigo user_id");
+    return res.status(200).json({ ok: false });
+  }
+
+  const internalUserId = `publigo_${publigoUserId}`;
+
+  // zapisz mapowanie usera (na razie w pamięci)
+  userStateStore[internalUserId] ??= {};
+  userStateStore[internalUserId].email = email;
+  userStateStore[internalUserId].productId = productId;
+
+  console.log("✅ User mapped:", internalUserId);
+
+  res.status(200).json({ ok: true });
+});
 
 // ===== STATIC =====
 app.use(express.static(path.join(__dirname, "public")));
@@ -216,6 +256,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
