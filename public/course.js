@@ -10,9 +10,9 @@ let progress = {};
 let currentLevel = null;
 let finalFeedbackShown = false;
 
-// ===============================
-// API
-// ===============================
+/* ===============================
+   API
+=============================== */
 async function ensureUser() {
   await fetch("/api/me", { credentials: "include" });
 }
@@ -49,9 +49,9 @@ async function saveLevel(level) {
   currentLevel = data.level;
 }
 
-// ===============================
-// PROGRESS HELPERS
-// ===============================
+/* ===============================
+   PROGRESS HELPERS
+=============================== */
 function isCompleted(lessonId) {
   if (!lessonId) return false;
   return Boolean(
@@ -61,9 +61,7 @@ function isCompleted(lessonId) {
 
 function getLessonId(item) {
   if (!item) return null;
-  if (item.lessonId) return item.lessonId;
-  if (item.id) return item.id;
-  return null;
+  return item.lessonId || item.id || null;
 }
 
 function isActivityCompleted(activity) {
@@ -89,9 +87,9 @@ function isModuleCompleted() {
     .every(a => isActivityCompleted(a));
 }
 
-// ===============================
-// UI HELPERS
-// ===============================
+/* ===============================
+   UI HELPERS
+=============================== */
 function shouldRenderCheckbox(item) {
   return item?.completion === "manual";
 }
@@ -119,29 +117,8 @@ function renderCompleteButton(item) {
   `;
 }
 
-
-function renderLiveFeedbackBar() {
-  if (!currentLevel || !moduleStarted) return "";
-
-  return `
-    <div style="
-      margin-top:32px;
-      padding:16px;
-      border-top:1px solid #ddd;
-      display:flex;
-      gap:16px;
-      justify-content:center;
-    ">
-      <button onclick="sendFeedback('easier')">🔻 Za trudne</button>
-      <button onclick="sendFeedback('harder')">🔺 Za łatwe</button>
-    </div>
-  `;
-}
-
 function renderFinalFeedback() {
-  if (!moduleStarted) return "";
-  if (!isModuleCompleted()) return "";
-  if (finalFeedbackShown) return "";
+  if (!moduleStarted || !isModuleCompleted() || finalFeedbackShown) return "";
 
   return `
     <div style="
@@ -162,6 +139,7 @@ function renderFinalFeedback() {
     </div>
   `;
 }
+
 function renderBackButton() {
   if (activeVariant || activeActivity) {
     return `
@@ -174,17 +152,14 @@ function renderBackButton() {
 }
 
 window.goBack = () => {
-  if (activeVariant) {
-    activeVariant = null;
-  } else if (activeActivity) {
-    activeActivity = null;
-  }
+  if (activeVariant) activeVariant = null;
+  else if (activeActivity) activeActivity = null;
   render();
 };
 
-// ===============================
-// RENDER
-// ===============================
+/* ===============================
+   RENDER
+=============================== */
 function render() {
   if (!currentLevel) {
     app.innerHTML = renderContent();
@@ -195,11 +170,7 @@ function render() {
     <div id="content">
       <div class="module-inner">
 
-        ${!moduleStarted ? "" : `
-          <h1 style="margin-bottom:24px;">
-            ${currentModule.title}
-          </h1>
-        `}
+        ${!moduleStarted ? "" : `<h1>${currentModule.title}</h1>`}
 
         ${
           moduleStarted && !activeActivity
@@ -228,20 +199,11 @@ function render() {
       </div>
     </div>
   `;
-
-  // ⬇️⬇️⬇️ TO JEST TO „OSTATNIE” ⬇️⬇️⬇️
-  const item = activeVariant || activeActivity;
-  if (item?.type === "iframe") {
-    loadLessonHTML(item.src);
-  }
 }
 
-
-
-
-// ===============================
-// NAVIGATION
-// ===============================
+/* ===============================
+   NAVIGATION
+=============================== */
 window.openActivity = (activityId) => {
   moduleStarted = true;
   activeActivity = currentModule.activities.find(a => a.id === activityId);
@@ -254,160 +216,88 @@ window.openVariant = (variantId) => {
   render();
 };
 
-// ===============================
-// CONTENT
-// ===============================
+/* ===============================
+   CONTENT
+=============================== */
 function renderContent() {
-
-  // ===============================
-  // LEVEL SELECT
-  // ===============================
   if (!currentLevel) {
     return `
       <div class="level-page">
-        <h1 class="level-title">Z jakiego poziomu startujemy?</h1>
-
+        <h1>Z jakiego poziomu startujemy?</h1>
         <div class="level-list">
-          <button class="level-item" onclick="chooseLevel(1)">
-            <span class="level-code">A0</span>
-            <span class="level-desc">Zaczynam od zera</span>
-          </button>
-
-          <button class="level-item" onclick="chooseLevel(2)">
-            <span class="level-code">A1</span>
-            <span class="level-desc">Znam absolutne podstawy</span>
-          </button>
-
-          <button class="level-item" onclick="chooseLevel(3)">
-            <span class="level-code">A2</span>
-            <span class="level-desc">Umiem dogadać się w prostych sytuacjach</span>
-          </button>
-
-          <button class="level-item" onclick="chooseLevel(4)">
-            <span class="level-code">B1</span>
-            <span class="level-desc">Mówię, ale chcę lepiej</span>
-          </button>
-
-          <button class="level-item" onclick="chooseLevel(5)">
-            <span class="level-code">B2</span>
-            <span class="level-desc">Mówię dość swobodnie</span>
-          </button>
+          ${[1,2,3,4,5].map(l => `
+            <button onclick="chooseLevel(${l})">Poziom ${l}</button>
+          `).join("")}
         </div>
       </div>
     `;
   }
 
-  // ===============================
-  // MODULE HERO
-  // ===============================
   if (!moduleStarted) {
     return `
       <div class="module-hero">
-        <div class="module-card">
-          <img
-            src="/assets/covers/${currentModule.id}.jpg"
-            alt="${currentModule.title}"
-            class="module-cover"
-          />
-
-          <h2 class="module-title">${currentModule.title}</h2>
-
-          <button class="btn-primary" onclick="startModule()">
-            Rozpocznij moduł
-          </button>
-        </div>
+        <img src="/assets/covers/${currentModule.id}.jpg" />
+        <h2>${currentModule.title}</h2>
+        <button onclick="startModule()">Rozpocznij moduł</button>
       </div>
     `;
   }
 
-  // ===============================
-  // VARIANTS SELECT
-  // ===============================
-  if (activeActivity && activeActivity.variants?.length && !activeVariant) {
+  if (activeActivity?.variants?.length && !activeVariant) {
     return `
       <div class="activities-list">
-        ${activeActivity.variants.map(variant => `
-          <div
-            class="activity-item"
-            onclick="openVariant('${variant.id}')"
-          >
+        ${activeActivity.variants.map(v => `
+          <div class="activity-item" onclick="openVariant('${v.id}')">
             <span class="activity-status ${
-              isCompleted(variant.id) ? "done" : ""
+              isCompleted(v.id) ? "done" : ""
             }"></span>
-            <span class="activity-label">${variant.label}</span>
+            <span class="activity-label">${v.label}</span>
           </div>
         `).join("")}
       </div>
     `;
   }
 
- // ===============================
-// ACTUAL LESSON (STARY, SPRAWDZONY MECHANIZM)
-// ===============================
-const item = activeVariant || activeActivity;
-if (!item) return "";
+  const item = activeVariant || activeActivity;
+  if (!item) return "";
 
-if (item.type === "iframe")
-  return `
-    <iframe
-      src="${item.src}"
-      width="100%"
-      height="800"
-      style="border:0;"
-    ></iframe>
-    ${renderCompleteButton(item)}
-  `;
+  if (item.type === "iframe") {
+    return `
+      <iframe
+        src="${item.src}"
+        width="100%"
+        height="800"
+        style="border:0;"
+      ></iframe>
+      ${renderCompleteButton(item)}
+    `;
+  }
 
-if (item.type === "audio")
-  return `
-    <audio controls src="${item.src}"></audio>
-    ${renderCompleteButton(item)}
-  `;
-
-if (item.type === "pdf")
-  return `
-    <iframe
-      src="${item.src}"
-      width="100%"
-      height="800"
-      style="border:0;"
-    ></iframe>
-    ${renderCompleteButton(item)}
-  `;
-
-return "";
-
-
-
-
-
-if (item.type === "audio") {
-  return `
-    <div class="lesson-wrap">
+  if (item.type === "audio") {
+    return `
       <audio controls src="${item.src}"></audio>
       ${renderCompleteButton(item)}
-    </div>
-  `;
-}
+    `;
+  }
 
-
-if (item.type === "pdf") {
-  return `
-    <div class="lesson-wrap">
-      <iframe src="${item.src}"></iframe>
+  if (item.type === "pdf") {
+    return `
+      <iframe
+        src="${item.src}"
+        width="100%"
+        height="800"
+        style="border:0;"
+      ></iframe>
       ${renderCompleteButton(item)}
-    </div>
-  `;
-}
-
+    `;
+  }
 
   return "";
 }
 
-
-// ===============================
-// ACTIONS
-// ===============================
+/* ===============================
+   ACTIONS
+=============================== */
 window.markCompleted = async (lessonId) => {
   await fetch("/api/lesson-complete", {
     method: "POST",
@@ -415,19 +305,17 @@ window.markCompleted = async (lessonId) => {
     credentials: "include",
     body: JSON.stringify({ moduleId: currentModule.id, lessonId })
   });
-
   await loadProgress();
   render();
 };
 
 window.startModule = () => {
   moduleStarted = true;
-  activeActivity = null;   // <-- klucz: po starcie NIE wybieramy aktywności
+  activeActivity = null;
   activeVariant = null;
   finalFeedbackShown = false;
   render();
 };
-
 
 window.chooseLevel = async (lvl) => {
   await saveLevel(lvl);
@@ -438,7 +326,7 @@ window.chooseLevel = async (lvl) => {
   render();
 };
 
-window.sendFeedback = async (dir) => {
+window.sendFinalFeedback = window.sendFeedback = async (dir) => {
   const res = await fetch("/api/feedback", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -461,49 +349,9 @@ window.sendFeedback = async (dir) => {
   render();
 };
 
-window.sendFinalFeedback = window.sendFeedback;
-
-async function loadLessonHTML(src) {
-  const res = await fetch(src);
-  const html = await res.text();
-
-  const root = document.getElementById("lesson-root");
-  if (!root) return;
-
-  // 1️⃣ wyczyść starą lekcję
-  root.innerHTML = "";
-
-  // 2️⃣ stwórz tymczasowy kontener
-  const tmp = document.createElement("div");
-  tmp.innerHTML = html;
-
-  // 3️⃣ przenieś HTML (bez scriptów)
-  [...tmp.children].forEach(el => {
-    if (el.tagName !== "SCRIPT") {
-      root.appendChild(el);
-    }
-  });
-
-  // 4️⃣ ręcznie odpal scripty
-  const scripts = tmp.querySelectorAll("script");
-  for (const oldScript of scripts) {
-    const s = document.createElement("script");
-
-    if (oldScript.src) {
-      s.src = oldScript.src;
-    } else {
-      s.textContent = oldScript.textContent;
-    }
-
-    document.body.appendChild(s);
-  }
-}
-
-
-
-// ===============================
-// INIT
-// ===============================
+/* ===============================
+   INIT
+=============================== */
 async function init() {
   await ensureUser();
   await loadProgress();
