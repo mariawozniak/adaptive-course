@@ -27,27 +27,28 @@ async function loadProgress() {
 }
 
 async function loadState() {
-  try {
-    const res = await fetch("/api/state", { credentials: "include" });
-    const data = await res.json();
-    currentLevel = data?.level ?? null;
-  } catch {
-    currentLevel = null;
+  const res = await fetch("/api/state", { credentials: "include" });
+  const data = await res.json();
+
+  currentLevel = data?.level ?? null;
+
+  if (data?.lastActivity) {
+    const { moduleId, activityId, variantId } = data.lastActivity;
+
+    const mod = modules.find(m => m.id === moduleId);
+    if (mod) currentModule = mod;
+
+    if (activityId) {
+      moduleStarted = true;
+      activeActivity = currentModule.activities.find(a => a.id === activityId);
+    }
+
+    if (variantId && activeActivity) {
+      activeVariant = activeActivity.variants.find(v => v.id === variantId);
+    }
   }
 }
 
-async function saveLevel(level) {
-  const res = await fetch("/api/level", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    credentials: "include",
-    body: JSON.stringify({ level })
-  });
-
-  if (!res.ok) throw new Error("level save failed");
-  const data = await res.json();
-  currentLevel = data.level;
-}
 
 async function saveLastActivity(data) {
   await fetch("/api/last-activity", {
