@@ -334,24 +334,6 @@ function renderContent() {
 }
 
 
-  // === VARIANTS ===
-
-
-  const item = activeVariant || activeActivity;
-  if (!item) return "";
-
-  if (item.type === "iframe")
-    return `<iframe src="${item.src}" width="100%" height="800"></iframe>${renderCompleteButton(item)}`;
-
-  if (item.type === "audio")
-    return `<audio controls src="${item.src}"></audio>${renderCompleteButton(item)}`;
-
-  if (item.type === "pdf")
-    return `<iframe src="${item.src}" width="100%" height="800"></iframe>${renderCompleteButton(item)}`;
-
-  return "";
-}
-
 // ===============================
 // ACTIONS
 // ===============================
