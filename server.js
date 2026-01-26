@@ -96,8 +96,14 @@ app.get("/api/me", (req, res) => {
 // ===== STATE =====
 app.get("/api/state", (req, res) => {
   const userId = req.userId;
-  res.json({ level: userId ? userStateStore[userId]?.level ?? null : null });
+  const state = userId ? userStateStore[userId] : null;
+
+  res.json({
+    level: state?.level ?? null,
+    lastActivity: state?.lastActivity ?? null
+  });
 });
+
 
 app.post("/api/level", (req, res) => {
   const userId = req.userId;
@@ -256,6 +262,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
