@@ -416,10 +416,14 @@ body {
 
 .lesson-iframe-wrapper iframe{
   width: 100%;
+  max-width: 100%;
   aspect-ratio: 16 / 9;
+  height: auto;
   border: none;
   border-radius: 16px;
-  background: #000; /* tylko wnętrze playera */
+  background: #000;
+  display: block;
 }
+
 
 
