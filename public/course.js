@@ -162,10 +162,10 @@ function render() {
   }
 
   app.innerHTML = `
-    ${!moduleStarted ? "" : `<h1>${currentModule.title}</h1>`}
-
     <div id="content">
       <div class="module-inner">
+
+        ${!moduleStarted ? "" : `<h1 style="margin-bottom:24px;">${currentModule.title}</h1>`}
 
         ${!moduleStarted ? "" : `
           <div class="activities-list">
@@ -188,6 +188,7 @@ function render() {
     </div>
   `;
 }
+
 
 
 // ===============================
