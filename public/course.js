@@ -10,9 +10,9 @@ let progress = {};
 let currentLevel = null;
 let finalFeedbackShown = false;
 
-/* ===============================
-   API
-=============================== */
+// ===============================
+// API
+// ===============================
 async function ensureUser() {
   await fetch("/api/me", { credentials: "include" });
 }
@@ -49,9 +49,9 @@ async function saveLevel(level) {
   currentLevel = data.level;
 }
 
-/* ===============================
-   PROGRESS HELPERS
-=============================== */
+// ===============================
+// PROGRESS HELPERS
+// ===============================
 function isCompleted(lessonId) {
   if (!lessonId) return false;
   return Boolean(
@@ -61,7 +61,9 @@ function isCompleted(lessonId) {
 
 function getLessonId(item) {
   if (!item) return null;
-  return item.lessonId || item.id || null;
+  if (item.lessonId) return item.lessonId;
+  if (item.id) return item.id;
+  return null;
 }
 
 function isActivityCompleted(activity) {
@@ -87,9 +89,9 @@ function isModuleCompleted() {
     .every(a => isActivityCompleted(a));
 }
 
-/* ===============================
-   UI HELPERS
-=============================== */
+// ===============================
+// UI HELPERS
+// ===============================
 function shouldRenderCheckbox(item) {
   return item?.completion === "manual";
 }
@@ -100,19 +102,27 @@ function renderCompleteButton(item) {
   const lessonId = getLessonId(item);
   if (!lessonId) return "";
 
-  const done = isCompleted(lessonId);
+  return `
+    <button onclick="markCompleted('${lessonId}')">
+      ${isCompleted(lessonId) ? "☑" : "☐"} Oznacz jako ukończone
+    </button>
+  `;
+}
+
+function renderLiveFeedbackBar() {
+  if (!currentLevel || !moduleStarted) return "";
 
   return `
-    <div class="lesson-complete">
-      <button
-        class="complete-btn ${done ? "done" : ""}"
-        onclick="markCompleted('${lessonId}')"
-      >
-        <span class="complete-check"></span>
-        <span class="complete-label">
-          ${done ? "Ukończone" : "Oznacz jako ukończone"}
-        </span>
-      </button>
+    <div style="
+      margin-top:32px;
+      padding:16px;
+      border-top:1px solid #ddd;
+      display:flex;
+      gap:16px;
+      justify-content:center;
+    ">
+      <button onclick="sendFeedback('easier')">🔻 Za trudne</button>
+      <button onclick="sendFeedback('harder')">🔺 Za łatwe</button>
     </div>
   `;
 }
@@ -142,74 +152,41 @@ function renderFinalFeedback() {
   `;
 }
 
-function renderBackButton() {
-  if (activeVariant || activeActivity) {
-    return `
-      <button class="btn-back" onclick="goBack()">
-        ← Wróć
-      </button>
-    `;
-  }
-  return "";
-}
-
-window.goBack = () => {
-  if (activeVariant) activeVariant = null;
-  else if (activeActivity) activeActivity = null;
-  render();
-};
-
-/* ===============================
-   RENDER
-=============================== */
+// ===============================
+// RENDER
+// ===============================
 function render() {
   if (!currentLevel) {
-    app.innerHTML = renderContent();
+    app.innerHTML = `<div>${renderContent()}</div>`;
     return;
   }
 
   app.innerHTML = `
+    <h1>${currentModule.title}</h1>
+
+    <div style="margin-bottom:16px;">
+      ${currentModule.activities
+        .map(
+          act => `
+            <button onclick="openActivity('${act.id}')">
+              ${isActivityCompleted(act) ? "☑" : "☐"} ${act.label}
+            </button>
+          `
+        )
+        .join("")}
+    </div>
+
     <div id="content">
-      <div class="module-inner">
-
-        ${!moduleStarted ? "" : `
-          <h1 style="margin-bottom:24px;">
-            ${currentModule.title}
-          </h1>
-        `}
-
-        ${
-          moduleStarted && !activeActivity
-            ? `
-              <div class="activities-list">
-                ${currentModule.activities.map(act => `
-                  <div
-                    class="activity-item"
-                    onclick="openActivity('${act.id}')"
-                  >
-                    <span class="activity-status ${
-                      isActivityCompleted(act) ? "done" : ""
-                    }"></span>
-                    <span class="activity-label">${act.label}</span>
-                  </div>
-                `).join("")}
-              </div>
-            `
-            : ""
-        }
-
-        ${renderBackButton()}
-        ${renderContent()}
-        ${renderFinalFeedback()}
-
-      </div>
+      ${renderContent()}
+      ${renderLiveFeedbackBar()}
+      ${renderFinalFeedback()}
     </div>
   `;
 }
 
-/* ===============================
-   NAVIGATION
-=============================== */
+// ===============================
+// NAVIGATION
+// ===============================
 window.openActivity = (activityId) => {
   moduleStarted = true;
   activeActivity = currentModule.activities.find(a => a.id === activityId);
@@ -222,108 +199,69 @@ window.openVariant = (variantId) => {
   render();
 };
 
-/* ===============================
-   CONTENT
-=============================== */
+// ===============================
+// CONTENT
+// ===============================
 function renderContent() {
-
-  /* LEVEL SELECT */
   if (!currentLevel) {
     return `
-      <div class="level-page">
-        <h1 class="level-title">Z jakiego poziomu startujemy?</h1>
-        <div class="level-list">
-          ${[1,2,3,4,5].map(l => `
-            <button class="level-item" onclick="chooseLevel(${l})">
-              <span class="level-code">${["A0","A1","A2","B1","B2"][l-1]}</span>
-              <span class="level-desc">Poziom ${l}</span>
-            </button>
-          `).join("")}
-        </div>
+      <h2>Wybierz poziom startowy</h2>
+      <div style="display:flex;gap:10px;">
+        ${[1,2,3,4,5].map(l => `<button onclick="chooseLevel(${l})">Poziom ${l}</button>`).join("")}
       </div>
     `;
   }
 
-  /* MODULE HERO */
   if (!moduleStarted) {
     return `
-      <div class="module-hero">
-        <div class="module-card">
-          <img
-            src="/assets/covers/${currentModule.id}.jpg"
-            class="module-cover"
-          />
-          <h2 class="module-title">${currentModule.title}</h2>
-          <button class="btn-primary" onclick="startModule()">
-            Rozpocznij moduł
-          </button>
-        </div>
+      <div style="text-align:center;margin-top:40px;">
+        <img src="/assets/covers/${currentModule.id}.jpg" style="max-width:320px;border-radius:16px;" />
+        <h2>${currentModule.title}</h2>
+        <button onclick="startModule()">▶ Rozpocznij</button>
       </div>
     `;
   }
 
-  /* VARIANTS */
   if (activeActivity?.variants?.length && !activeVariant) {
     return `
-      <div class="activities-list">
+      <h3>${activeActivity.label}</h3>
+      <ul>
         ${activeActivity.variants.map(v => `
-          <div
-            class="activity-item"
-            onclick="openVariant('${v.id}')"
-          >
-            <span class="activity-status ${
-              isCompleted(v.id) ? "done" : ""
-            }"></span>
-            <span class="activity-label">${v.label}</span>
-          </div>
+          <li>
+            <button onclick="openVariant('${v.id}')">
+              ${isCompleted(v.id) ? "☑" : "☐"} ${v.label}
+            </button>
+          </li>
         `).join("")}
-      </div>
+      </ul>
     `;
   }
 
-  /* ACTUAL LESSON — STARY MECHANIZM */
   const item = activeVariant || activeActivity;
   if (!item) return "";
 
-  if (item.type === "internal" && item.engine === "shadowing") {
-    window.location.href =
-      `/shadowing/index.html?module=${currentModule.id}`;
-    return "";
-  }
-
-  if (item.type === "iframe") {
-    return `
-      <div class="lesson-wrap">
-        <iframe src="${item.src}"></iframe>
-        ${renderCompleteButton(item)}
-      </div>
-    `;
-  }
-
-  if (item.type === "audio") {
-    return `
-      <div class="lesson-wrap">
-        <audio controls src="${item.src}"></audio>
-        ${renderCompleteButton(item)}
-      </div>
-    `;
-  }
-
-  if (item.type === "pdf") {
-    return `
-      <div class="lesson-wrap">
-        <iframe src="${item.src}"></iframe>
-        ${renderCompleteButton(item)}
-      </div>
-    `;
-  }
-
+  // 👉 PRZEJŚCIE DO SHADOWINGU (OSOBNA APLIKACJA)
+if (item.type === "internal" && item.engine === "shadowing") {
+  window.location.href =
+    `/shadowing/index.html?module=${currentModule.id}`;
   return "";
 }
 
-/* ===============================
-   ACTIONS
-=============================== */
+
+  if (item.type === "iframe")
+    return `<iframe src="${item.src}" width="100%" height="800"></iframe>${renderCompleteButton(item)}`;
+
+  if (item.type === "audio")
+    return `<audio controls src="${item.src}"></audio>${renderCompleteButton(item)}`;
+
+  if (item.type === "pdf")
+    return `<iframe src="${item.src}" width="100%" height="800"></iframe>${renderCompleteButton(item)}`;
+return "";
+}
+
+// ===============================
+// ACTIONS
+// ===============================
 window.markCompleted = async (lessonId) => {
   await fetch("/api/lesson-complete", {
     method: "POST",
@@ -338,9 +276,8 @@ window.markCompleted = async (lessonId) => {
 
 window.startModule = () => {
   moduleStarted = true;
-  activeActivity = null;
+  activeActivity = currentModule.activities[0];
   activeVariant = null;
-  finalFeedbackShown = false;
   render();
 };
 
@@ -353,7 +290,7 @@ window.chooseLevel = async (lvl) => {
   render();
 };
 
-window.sendFeedback = window.sendFinalFeedback = async (dir) => {
+window.sendFeedback = async (dir) => {
   const res = await fetch("/api/feedback", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -376,9 +313,11 @@ window.sendFeedback = window.sendFinalFeedback = async (dir) => {
   render();
 };
 
-/* ===============================
-   INIT
-=============================== */
+window.sendFinalFeedback = window.sendFeedback;
+
+// ===============================
+// INIT
+// ===============================
 async function init() {
   await ensureUser();
   await loadProgress();
