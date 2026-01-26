@@ -27,39 +27,12 @@ async function loadProgress() {
 }
 
 async function loadState() {
-  const res = await fetch("/api/state", { credentials: "include" });
-  const data = await res.json();
-
-  currentLevel = data?.level ?? null;
-
-  // 👉 wybór modułu
-  if (data?.currentModuleId) {
-    const mod = modules.find(m => m.id === data.currentModuleId);
-    if (mod) currentModule = mod;
-  }
-
-  // 👉 jeśli moduł ukończony → następny
-  if (data?.moduleCompleted && currentLevel) {
-    const next = modules.find(m => m.level === currentLevel && m.id !== currentModule.id);
-    if (next) {
-      currentModule = next;
-      moduleStarted = false;
-      return;
-    }
-  }
-
-  // 👉 przywrócenie miejsca
-  if (data?.lastActivity) {
-    const { activityId, variantId } = data.lastActivity;
-
-    if (activityId) {
-      moduleStarted = true;
-      activeActivity = currentModule.activities.find(a => a.id === activityId);
-    }
-
-    if (variantId && activeActivity) {
-      activeVariant = activeActivity.variants.find(v => v.id === variantId);
-    }
+  try {
+    const res = await fetch("/api/state", { credentials: "include" });
+    const data = await res.json();
+    currentLevel = data?.level ?? null;
+  } catch {
+    currentLevel = null;
   }
 }
 
@@ -72,19 +45,8 @@ async function saveLevel(level) {
   });
 
   if (!res.ok) throw new Error("level save failed");
-
   const data = await res.json();
   currentLevel = data.level;
-}
-
-
-async function saveLastActivity(data) {
-  await fetch("/api/last-activity", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    credentials: "include",
-    body: JSON.stringify(data)
-  });
 }
 
 // ===============================
@@ -203,7 +165,11 @@ function renderFinalFeedback() {
 function render() {
   app.innerHTML = `
     <div id="content">
-      <div class="${moduleStarted && (activeActivity || activeVariant) ? "" : "module-inner"}">
+      <div class="${
+        moduleStarted && (activeActivity || activeVariant)
+          ? ""
+          : "module-inner"
+      }">
         ${renderContent()}
         ${renderFinalFeedback()}
       </div>
@@ -211,48 +177,24 @@ function render() {
   `;
 }
 
-
-
-
 // ===============================
 // NAVIGATION
 // ===============================
 window.goBack = () => {
   if (activeVariant) {
     activeVariant = null;
-
-    saveLastActivity({
-      moduleId: currentModule.id,
-      activityId: activeActivity.id,
-      variantId: null
-    });
-
     render();
     return;
   }
 
   if (activeActivity) {
     activeActivity = null;
-
-    saveLastActivity({
-      moduleId: currentModule.id,
-      activityId: null,
-      variantId: null
-    });
-
     render();
     return;
   }
 
   if (moduleStarted) {
     moduleStarted = false;
-
-    saveLastActivity({
-      moduleId: currentModule.id,
-      activityId: null,
-      variantId: null
-    });
-
     render();
   }
 };
@@ -261,286 +203,53 @@ window.openActivity = (activityId) => {
   moduleStarted = true;
   activeActivity = currentModule.activities.find(a => a.id === activityId);
   activeVariant = null;
-  saveLastActivity({
-  moduleId: currentModule.id,
-  activityId,
-  variantId: null
-});
-
   render();
 };
 
 window.openVariant = (variantId) => {
   activeVariant = activeActivity.variants.find(v => v.id === variantId);
-  saveLastActivity({
-  moduleId: currentModule.id,
-  activityId: activeActivity.id,
-  variantId
-});
-
   render();
 };
-
-function renderLessonHeader(item) {
-  if (!item) return "";
-
-  const parts = [
-    currentModule.title,
-    activeActivity?.label
-  ];
-
-  if (activeVariant) {
-    const index = activeActivity.variants.findIndex(
-      v => v.id === activeVariant.id
-    );
-    parts.push(`Ćwiczenie ${index + 1}`);
-  }
-
-  return `
-    <div class="lesson-header">
-      <div class="lesson-header-inner">
-
-        <button class="lesson-back-btn" onclick="goBack()">
-          ← Wróć
-        </button>
-
-        <div class="lesson-breadcrumbs">
-          ${parts.join(" → ")}
-        </div>
-
-        ${shouldRenderCheckbox(item) ? `
-<label class="lesson-checkbox">
-  <input
-    type="checkbox"
-    ${isCompleted(getLessonId(item)) ? "checked" : ""}
-    onchange="markCompleted('${getLessonId(item)}')"
-  />
-  <span class="lesson-checkmark"></span>
-  <span class="lesson-check-label">Oznacz jako ukończone</span>
-</label>
-
-        ` : ""}
-
-      </div>
-    </div>
-  `;
-}
-
-function renderListHeader(title) {
-  return `
-    <div class="lesson-header">
-      <div class="lesson-header-inner">
-
-        <button class="lesson-back-btn" onclick="goBack()">
-          ← Wróć
-        </button>
-
-        <div class="lesson-breadcrumbs">
-          ${title}
-        </div>
-
-      </div>
-    </div>
-  `;
-}
-function currentModuleStarted() {
-  return Boolean(
-    progress?.[currentModule.id] ||
-    activeActivity ||
-    activeVariant
-  );
-}
-
-
 
 // ===============================
 // CONTENT
 // ===============================
 function renderContent() {
- if (!currentLevel) {
-  return `
-    <div class="level-page">
-      <h1 class="level-title">Z jakiego poziomu startujemy?</h1>
-
-      <div class="level-list">
-        <button class="level-item" onclick="chooseLevel(1)">
-          <span class="level-code">A0</span>
-          <span class="level-desc">Zaczynam od zera</span>
-        </button>
-
-        <button class="level-item" onclick="chooseLevel(2)">
-          <span class="level-code">A1</span>
-          <span class="level-desc">Znam absolutne podstawy</span>
-        </button>
-
-        <button class="level-item" onclick="chooseLevel(3)">
-          <span class="level-code">A2</span>
-          <span class="level-desc">Umiem dogadać się w prostych sytuacjach</span>
-        </button>
-
-        <button class="level-item" onclick="chooseLevel(4)">
-          <span class="level-code">B1</span>
-          <span class="level-desc">Mówię, ale chcę lepiej</span>
-        </button>
-
-        <button class="level-item" onclick="chooseLevel(5)">
-          <span class="level-code">B2</span>
-          <span class="level-desc">Mówię dość swobodnie</span>
-        </button>
+  if (!currentLevel) {
+    return `
+      <div class="level-page">
+        <h1 class="level-title">Z jakiego poziomu startujemy?</h1>
+        <div class="level-list">
+          <button onclick="chooseLevel(1)">A0</button>
+          <button onclick="chooseLevel(2)">A1</button>
+          <button onclick="chooseLevel(3)">A2</button>
+          <button onclick="chooseLevel(4)">B1</button>
+          <button onclick="chooseLevel(5)">B2</button>
+        </div>
       </div>
-    </div>
-  `;
-}
+    `;
+  }
 
+  if (!moduleStarted) {
+    return `
+      <h2>${currentModule.title}</h2>
+      <button onclick="startModule()">Rozpocznij moduł</button>
+    `;
+  }
 
-if (!moduleStarted) {
-  return `
-    <div class="module-hero">
-      <div class="module-card">
-        <img
-          src="/assets/covers/${currentModule.id}.jpg"
-          alt="${currentModule.title}"
-          class="module-cover"
-        />
-
-        <h2 class="module-title">${currentModule.title}</h2>
-
-<button class="btn-primary" onclick="startModule()">
-  ${currentModuleStarted() ? "Kontynuuj moduł" : "Rozpocznij moduł"}
-</button>
-
+  if (!activeActivity) {
+    return `
+      <div>
+        ${currentModule.activities.map(a => `
+          <div onclick="openActivity('${a.id}')">
+            ${a.label}
+          </div>
+        `).join("")}
       </div>
-    </div>
-  `;
-}
+    `;
+  }
 
-  if (moduleStarted && !activeActivity) {
-  return `
-<h1 class="page-title">${currentModule.title}</h1>
-
-    <div class="activities-list">
-      ${currentModule.activities.map(act => `
-        <div
-          class="activity-item"
-          onclick="openActivity('${act.id}')"
-        >
-          <span class="activity-status ${
-            isActivityCompleted(act) ? "done" : ""
-          }"></span>
-          <span class="activity-label">${act.label}</span>
-        </div>
-      `).join("")}
-    </div>
-  `;
-}
-
-
-// ===============================
-// VARIANTS LIST (PO KLIKNIĘCIU AKTYWNOŚCI)
-// ===============================
-// ===== VARIANTS (ALE NIE VOCABULARY) =====
-if (
-  activeActivity &&
-  activeActivity.variants?.length &&
-  !activeVariant &&
-  activeActivity.id !== "vocabulary"
-) {
-  return `
-    ${renderListHeader(activeActivity.label)}
-
-    <div class="activities-list">
-      ${activeActivity.variants.map((v, index) => `
-        <div
-          class="activity-item"
-          onclick="openVariant('${v.id}')"
-        >
-          <span class="activity-status ${isCompleted(v.id) ? "done" : ""}"></span>
-          <span class="activity-label">
-            ${getVariantDisplayName(activeActivity, index)}
-          </span>
-        </div>
-      `).join("")}
-    </div>
-  `;
-}
-
-// ===== VOCABULARY – STARY WIDOK (SPECJALNY) =====
-if (
-  activeActivity &&
-  activeActivity.id === "vocabulary" &&
-  activeActivity.variants?.length &&
-  !activeVariant
-) {
-  return `
-    ${renderListHeader(activeActivity.label)}
-
-    <h2 class="page-subtitle">Jak wolisz się uczyć?</h2>
-
-    <div class="activities-list">
-      ${activeActivity.variants.map(v => `
-        <div
-          class="activity-item"
-          onclick="openVariant('${v.id}')"
-        >
-          <span class="activity-status ${
-            isCompleted(v.id) ? "done" : ""
-          }"></span>
-          <span class="activity-label">${v.label}</span>
-        </div>
-      `).join("")}
-    </div>
-  `;
-}
-
-
-
-
-
-
-  const item = activeVariant || activeActivity;
-  if (!item) return "";
-
-  // 👉 PRZEJŚCIE DO SHADOWINGU (OSOBNA APLIKACJA)
-if (item.type === "internal" && item.engine === "shadowing") {
-  window.location.href =
-    `/shadowing/index.html?module=${currentModule.id}`;
   return "";
-}
-
-
-if (item.type === "iframe")
-  return `
-    ${renderLessonHeader(item)}
-
-    <div class="lesson-iframe-wrapper">
-<iframe
-  src="${item.src}"
-  allowfullscreen
-  loading="lazy"
-  scrolling="no"
-></iframe>
-
-    </div>
-  `;
-
-
-
-if (item.type === "audio")
-  return `
-    ${renderLessonHeader(item)}
-
-    <div class="lesson-audio-wrapper">
-      <audio controls src="${item.src}"></audio>
-    </div>
-  `;
-
-
-if (item.type === "pdf")
-  return `
-    ${renderLessonHeader(item)}
-    <iframe src="${item.src}" width="100%" height="800"></iframe>
-  `;
-
 }
 
 // ===============================
@@ -551,7 +260,10 @@ window.markCompleted = async (lessonId) => {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
-    body: JSON.stringify({ moduleId: currentModule.id, lessonId })
+    body: JSON.stringify({
+      moduleId: currentModule.id,
+      lessonId
+    })
   });
 
   await loadProgress();
@@ -562,17 +274,8 @@ window.startModule = () => {
   moduleStarted = true;
   activeActivity = null;
   activeVariant = null;
-
-  saveLastActivity({
-    moduleId: currentModule.id,
-    activityId: null,
-    variantId: null
-  });
-
   render();
 };
-
-
 
 window.chooseLevel = async (lvl) => {
   await saveLevel(lvl);
@@ -606,20 +309,7 @@ window.sendFeedback = async (dir) => {
   render();
 };
 
-window.sendFinalFeedback = async (dir) => {
-  // 🔒 oznacz moduł jako ukończony
-  await fetch("/api/module-complete", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    credentials: "include",
-    body: JSON.stringify({ moduleId: currentModule.id })
-  });
-
-  finalFeedbackShown = true;
-
-  // dalej normalny feedback (zmiana poziomu / modułu)
-  await sendFeedback(dir);
-};
+window.sendFinalFeedback = window.sendFeedback;
 
 // ===============================
 // INIT
