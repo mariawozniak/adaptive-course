@@ -208,31 +208,30 @@ function renderLessonHeader(item) {
   ];
 
   if (activeVariant) {
-    const index = activeActivity.variants.findIndex(v => v.id === activeVariant.id);
+    const index = activeActivity.variants.findIndex(
+      v => v.id === activeVariant.id
+    );
     parts.push(`Ćwiczenie ${index + 1}`);
   }
 
   return `
-    <div style="
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom:16px;
-      gap:16px;
-      flex-wrap:wrap;
-    ">
-      <div style="font-size:15px;color:#6b4e2e;">
-        ${parts.join(" → ")}
-      </div>
+    <div class="lesson-header">
+      <div class="lesson-header-inner">
+        <div class="lesson-breadcrumbs">
+          ${parts.join(" → ")}
+        </div>
 
-      ${shouldRenderCheckbox(item) ? `
-        <button onclick="markCompleted('${getLessonId(item)}')">
-          ${isCompleted(getLessonId(item)) ? "☑" : "☐"} Oznacz jako ukończone
-        </button>
-      ` : ""}
+        ${shouldRenderCheckbox(item) ? `
+          <button class="lesson-complete-btn"
+            onclick="markCompleted('${getLessonId(item)}')">
+            ${isCompleted(getLessonId(item)) ? "☑" : "☐"} Ukończone
+          </button>
+        ` : ""}
+      </div>
     </div>
   `;
 }
+
 
 
 // ===============================
