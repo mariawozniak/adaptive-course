@@ -164,27 +164,31 @@ function render() {
   app.innerHTML = `
     ${!moduleStarted ? "" : `<h1>${currentModule.title}</h1>`}
 
-${!moduleStarted ? "" : `
-  <div class="activities-list">
-    ${currentModule.activities.map(act => `
-      <div
-        class="activity-item"
-        onclick="openActivity('${act.id}')"
-      >
-        <span class="activity-status ${isActivityCompleted(act) ? "done" : ""}"></span>
-        <span class="activity-label">${act.label}</span>
-      </div>
-    `).join("")}
-  </div>
-`}
-
-
     <div id="content">
-      ${renderContent()}
-      ${renderFinalFeedback()}
+      <div class="module-inner">
+
+        ${!moduleStarted ? "" : `
+          <div class="activities-list">
+            ${currentModule.activities.map(act => `
+              <div
+                class="activity-item"
+                onclick="openActivity('${act.id}')"
+              >
+                <span class="activity-status ${isActivityCompleted(act) ? "done" : ""}"></span>
+                <span class="activity-label">${act.label}</span>
+              </div>
+            `).join("")}
+          </div>
+        `}
+
+        ${renderContent()}
+        ${renderFinalFeedback()}
+
+      </div>
     </div>
   `;
 }
+
 
 // ===============================
 // NAVIGATION
