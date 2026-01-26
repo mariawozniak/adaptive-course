@@ -1,3 +1,6 @@
+import cookieParser from "cookie-parser";
+app.use(cookieParser());
+
 import express from "express";
 import OpenAI from "openai";
 import path from "path";
@@ -9,6 +12,16 @@ console.log("🔥 SERVER STARTING 🔥");
 
 const app = express();
 app.use(express.json());
+
+app.get("/api/me", (req, res) => {
+  const userId =
+    req.headers["x-publigo-user-id"] ||
+    req.cookies?.publigoUserId ||
+    "anon";
+
+  res.json({ userId });
+});
+
 
 // ===== SETUP =====
 const PORT = process.env.PORT || 8080;
@@ -173,3 +186,4 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("✅ Server running on port", PORT);
 });
+
