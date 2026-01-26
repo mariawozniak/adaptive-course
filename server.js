@@ -78,18 +78,19 @@ app.get("/api/modules", (req, res) => {
 
 // ===== USER =====
 app.get("/api/me", (req, res) => {
-  let userId = req.cookies.course_user;
+  let userId = req.userId;
 
   if (!userId) {
     userId = "u_" + crypto.randomUUID();
     res.setHeader(
       "Set-Cookie",
-      `course_user=${userId}; Path=/; HttpOnly; SameSite=Lax`
+      `course_user=${userId}; Path=/; SameSite=Lax`
     );
   }
 
   res.json({ userId });
 });
+
 
 // ===== STATE =====
 
@@ -254,6 +255,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
