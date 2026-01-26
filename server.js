@@ -118,13 +118,30 @@ app.get("/api/state", (req, res) => {
 
   res.json({
 level: Number.isInteger(row?.level) ? row.level : null,
-currentModuleId:
-  row?.current_module ??
-  (row?.last_activity ? JSON.parse(row.last_activity).moduleId : null),
+app.get("/api/state", (req, res) => {
+  const userId = req.userId;
+  if (!userId) return res.json({});
+
+  const row = db.prepare(`
+    SELECT level, current_module, module_completed, last_activity
+    FROM user_state WHERE user_id=?
+  `).get(userId);
+
+  let parsedLast = null;
+
+  if (row?.last_activity) {
+    try {
+      parsedLast = JSON.parse(row.last_activity);
+    } catch {
+      parsedLast = null;
+    }
+  }
+
+  res.json({
+    level: Number.isInteger(row?.level) ? row.level : null,
+    currentModuleId: row?.current_module ?? parsedLast?.moduleId ?? null,
     moduleCompleted: Boolean(row?.module_completed),
-    lastActivity: row?.last_activity
-      ? JSON.parse(row.last_activity)
-      : null
+    lastActivity: parsedLast
   });
 });
 
@@ -350,6 +367,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
