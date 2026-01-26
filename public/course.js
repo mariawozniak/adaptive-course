@@ -351,10 +351,12 @@ window.markCompleted = async (lessonId) => {
 
 window.startModule = () => {
   moduleStarted = true;
-  activeActivity = currentModule.activities[0];
+  activeActivity = null;   // <-- klucz: po starcie NIE wybieramy aktywności
   activeVariant = null;
+  finalFeedbackShown = false;
   render();
 };
+
 
 window.chooseLevel = async (lvl) => {
   await saveLevel(lvl);
