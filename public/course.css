@@ -245,3 +245,33 @@ body {
   max-width:560px;
 }
 
+.lesson-header {
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 24px;
+}
+
+.lesson-header-inner {
+  max-width: 1200px;   /* 🔥 szeroko, jak dawniej */
+  margin: 0 auto;
+  padding: 12px 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.lesson-breadcrumbs {
+  font-size: 14px;
+  color: #6b4e2e;
+}
+
+.lesson-complete-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
