@@ -350,11 +350,16 @@ function renderContent() {
 if (item.type === "iframe") {
   return `
     <div class="lesson-wrap">
-      <div id="lesson-root"></div>
+      <iframe
+        src="${item.src}"
+        style="width:100%;border:0;"
+        onload="this.style.height=this.contentWindow.document.body.scrollHeight + 'px'"
+      ></iframe>
       ${renderCompleteButton(item)}
     </div>
   `;
 }
+
 
 
 
