@@ -248,6 +248,21 @@ app.post("/api/publigo-webhook", (req, res) => {
 
   res.status(200).json({ ok: true });
 });
+app.post("/api/last-activity", (req, res) => {
+  const userId = req.userId;
+  const { moduleId, activityId, variantId } = req.body;
+
+  if (!userId) return res.status(401).json({ error: "No user" });
+
+  userStateStore[userId] ??= {};
+  userStateStore[userId].lastActivity = {
+    moduleId,
+    activityId,
+    variantId: variantId || null
+  };
+
+  res.json({ ok: true });
+});
 
 // ===== STATIC =====
 app.use(express.static(path.join(__dirname, "public")));
@@ -262,6 +277,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
