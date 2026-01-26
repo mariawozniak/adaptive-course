@@ -9,6 +9,32 @@ import { modules } from "./data/modules.js";
 const app = express();
 app.use(express.json());
 
+// ===== PUBLIGO LINK LOGIN =====
+app.use((req, res, next) => {
+  // jeśli user już jest w cookie – nie rób nic
+  if (req.cookies?.course_user) {
+    req.userId = req.cookies.course_user;
+    return next();
+  }
+
+  // jeśli przyszedł z Publigo
+  const publigoUid = req.query.publigo_uid;
+
+  if (publigoUid) {
+    const userId = `publigo_${publigoUid}`;
+
+    res.setHeader(
+      "Set-Cookie",
+      `course_user=${userId}; Path=/; SameSite=Lax; Secure`
+    );
+
+    req.userId = userId;
+  }
+
+  next();
+});
+
+
 app.get("/api/debug-key", (req, res) => {
   const key = process.env.OPENAI_API_KEY;
   res.json({
@@ -256,6 +282,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
