@@ -151,6 +151,25 @@ function renderFinalFeedback() {
     </div>
   `;
 }
+function renderBackButton() {
+  if (activeVariant || activeActivity) {
+    return `
+      <button class="btn-back" onclick="goBack()">
+        ← Wróć
+      </button>
+    `;
+  }
+  return "";
+}
+
+window.goBack = () => {
+  if (activeVariant) {
+    activeVariant = null;
+  } else if (activeActivity) {
+    activeActivity = null;
+  }
+  render();
+};
 
 // ===============================
 // RENDER
@@ -191,7 +210,8 @@ function render() {
             : ""
         }
 
-        ${renderContent()}
+${renderBackButton()}
+${renderContent()}
         ${renderFinalFeedback()}
 
       </div>
