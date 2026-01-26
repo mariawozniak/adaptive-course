@@ -179,10 +179,13 @@ app.innerHTML = renderContent();
 `}
 
 
-  <div id="content">
+ <div id="content">
+  <div class="module-inner">
     ${renderContent()}
     ${renderFinalFeedback()}
   </div>
+</div>
+
 `;
 }
 
