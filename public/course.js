@@ -164,17 +164,20 @@ function render() {
   app.innerHTML = `
     ${!moduleStarted ? "" : `<h1>${currentModule.title}</h1>`}
 
-    ${!moduleStarted ? "" : `
-      <div style="margin-bottom:16px;">
-        ${currentModule.activities.map(
-          act => `
-            <button onclick="openActivity('${act.id}')">
-              ${isActivityCompleted(act) ? "☑" : "☐"} ${act.label}
-            </button>
-          `
-        ).join("")}
+${!moduleStarted ? "" : `
+  <div class="activities-list">
+    ${currentModule.activities.map(act => `
+      <div
+        class="activity-item"
+        onclick="openActivity('${act.id}')"
+      >
+        <span class="activity-status ${isActivityCompleted(act) ? "done" : ""}"></span>
+        <span class="activity-label">${act.label}</span>
       </div>
-    `}
+    `).join("")}
+  </div>
+`}
+
 
     <div id="content">
       ${renderContent()}
