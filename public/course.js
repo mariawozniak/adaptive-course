@@ -163,20 +163,16 @@ function renderFinalFeedback() {
 // RENDER
 // ===============================
 function render() {
-  if (!currentLevel) {
-    app.innerHTML = renderContent();
-    return;
-  }
-
-  // === WIDOK LEKCJI (pełna szerokość, jak dawniej) ===
-  if (moduleStarted && (activeActivity || activeVariant)) {
-    app.innerHTML = `
-      <div id="content">
+  // ZAWSZE ten sam wrapper, żeby wszystko było wyśrodkowane
+  app.innerHTML = `
+    <div id="content">
+      <div class="${moduleStarted && (activeActivity || activeVariant) ? "" : "module-inner"}">
         ${renderContent()}
+        ${renderFinalFeedback()}
       </div>
-    `;
-    return;
-  }
+    </div>
+  `;
+}
 
   // === WIDOK LISTY AKTYWNOŚCI / STARTU MODUŁU ===
   app.innerHTML = `
