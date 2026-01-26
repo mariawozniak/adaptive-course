@@ -27,20 +27,30 @@ async function loadProgress() {
 }
 
 async function loadState() {
-  moduleStarted = false;
-activeActivity = null;
-activeVariant = null;
-
   const res = await fetch("/api/state", { credentials: "include" });
   const data = await res.json();
 
   currentLevel = data?.level ?? null;
 
-  if (data?.lastActivity) {
-    const { moduleId, activityId, variantId } = data.lastActivity;
-
-    const mod = modules.find(m => m.id === moduleId);
+  // 👉 wybór modułu
+  if (data?.currentModuleId) {
+    const mod = modules.find(m => m.id === data.currentModuleId);
     if (mod) currentModule = mod;
+  }
+
+  // 👉 jeśli moduł ukończony → następny
+  if (data?.moduleCompleted && currentLevel) {
+    const next = modules.find(m => m.level === currentLevel && m.id !== currentModule.id);
+    if (next) {
+      currentModule = next;
+      moduleStarted = false;
+      return;
+    }
+  }
+
+  // 👉 przywrócenie miejsca
+  if (data?.lastActivity) {
+    const { activityId, variantId } = data.lastActivity;
 
     if (activityId) {
       moduleStarted = true;
