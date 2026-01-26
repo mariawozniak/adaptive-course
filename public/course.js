@@ -236,12 +236,17 @@ function renderLessonHeader(item) {
   </div>
 
 
-        ${shouldRenderCheckbox(item) ? `
-          <button class="lesson-complete-btn"
-            onclick="markCompleted('${getLessonId(item)}')">
-            ${isCompleted(getLessonId(item)) ? "☑" : "☐"} Ukończone
-          </button>
-        ` : ""}
+  ${shouldRenderCheckbox(item) ? `
+  <label class="lesson-checkbox">
+    <input
+      type="checkbox"
+      ${isCompleted(getLessonId(item)) ? "checked" : ""}
+      onchange="markCompleted('${getLessonId(item)}')"
+    />
+    <span>Oznacz jako ukończone</span>
+  </label>
+` : ""}
+
       </div>
     </div>
   `;
