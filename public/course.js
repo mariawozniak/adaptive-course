@@ -332,23 +332,22 @@ if (
   !activeVariant &&
   activeActivity.id !== "vocabulary"
 ) {
-  return `
-    <div class="activities-list">
-activeActivity.variants.map((v, index) => `
-        <div
-          class="activity-item"
-          onclick="openVariant('${v.id}')"
-        >
-          <span class="activity-status ${
-            isCompleted(v.id) ? "done" : ""
-          }"></span>
-<span class="activity-label">
-  ${getVariantDisplayName(activeActivity, index)}
-</span>
-        </div>
-      `).join("")}
-    </div>
-  `;
+return `
+  <div class="activities-list">
+    ${activeActivity.variants.map((v, index) => `
+      <div
+        class="activity-item"
+        onclick="openVariant('${v.id}')"
+      >
+        <span class="activity-status ${isCompleted(v.id) ? "done" : ""}"></span>
+        <span class="activity-label">
+          ${getVariantDisplayName(activeActivity, index)}
+        </span>
+      </div>
+    `).join("")}
+  </div>
+`;
+
 }
 // ===== VOCABULARY – STARY WIDOK (SPECJALNY) =====
 if (
