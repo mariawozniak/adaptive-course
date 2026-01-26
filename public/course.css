@@ -420,3 +420,8 @@ body {
   border-radius: 16px;
   background: #000; /* tylko wnętrze playera */
 }
+/* 🔥 BLOKADA SCROLLA W IFRAME (LISTENING) */
+
+.lesson-iframe-wrapper iframe{
+  overflow: hidden;
+}
