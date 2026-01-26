@@ -179,6 +179,25 @@ function render() {
 // ===============================
 // NAVIGATION
 // ===============================
+window.goBack = () => {
+  if (activeVariant) {
+    activeVariant = null;
+    render();
+    return;
+  }
+
+  if (activeActivity) {
+    activeActivity = null;
+    render();
+    return;
+  }
+
+  if (moduleStarted) {
+    moduleStarted = false;
+    render();
+  }
+};
+
 window.openActivity = (activityId) => {
   moduleStarted = true;
   activeActivity = currentModule.activities.find(a => a.id === activityId);
@@ -207,11 +226,15 @@ function renderLessonHeader(item) {
   }
 
   return `
-    <div class="lesson-header">
-      <div class="lesson-header-inner">
-        <div class="lesson-breadcrumbs">
-          ${parts.join(" → ")}
-        </div>
+  <div class="lesson-header-inner">
+  <button class="lesson-back-btn" onclick="goBack()">
+    ← Wróć
+  </button>
+
+  <div class="lesson-breadcrumbs">
+    ${parts.join(" → ")}
+  </div>
+
 
         ${shouldRenderCheckbox(item) ? `
           <button class="lesson-complete-btn"
