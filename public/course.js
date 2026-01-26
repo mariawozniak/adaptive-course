@@ -157,24 +157,24 @@ function renderFinalFeedback() {
 // ===============================
 function render() {
   if (!currentLevel) {
-    app.innerHTML = `<div>${renderContent()}</div>`;
+    app.innerHTML = renderContent();
     return;
   }
 
   app.innerHTML = `
-    <h1>${currentModule.title}</h1>
+    ${!moduleStarted ? "" : `<h1>${currentModule.title}</h1>`}
 
-    <div style="margin-bottom:16px;">
-      ${currentModule.activities
-        .map(
+    ${!moduleStarted ? "" : `
+      <div style="margin-bottom:16px;">
+        ${currentModule.activities.map(
           act => `
             <button onclick="openActivity('${act.id}')">
               ${isActivityCompleted(act) ? "☑" : "☐"} ${act.label}
             </button>
           `
-        )
-        .join("")}
-    </div>
+        ).join("")}
+      </div>
+    `}
 
     <div id="content">
       ${renderContent()}
@@ -203,64 +203,65 @@ window.openVariant = (variantId) => {
 // CONTENT
 // ===============================
 function renderContent() {
-if (!currentLevel) {
-  return `
-    <div class="level-page">
-      <h1 class="level-title">Z jakiego poziomu startujemy?</h1>
 
-      <div class="level-list">
-        <button class="level-item" onclick="chooseLevel(1)">
-          <span class="level-code">A0</span>
-          <span class="level-desc">Zaczynam od zera</span>
-        </button>
+  // === LEVEL SELECT ===
+  if (!currentLevel) {
+    return `
+      <div class="level-page">
+        <h1 class="level-title">Z jakiego poziomu startujemy?</h1>
 
-        <button class="level-item" onclick="chooseLevel(2)">
-          <span class="level-code">A1</span>
-          <span class="level-desc">Znam absolutne podstawy</span>
-        </button>
+        <div class="level-list">
+          <button class="level-item" onclick="chooseLevel(1)">
+            <span class="level-code">A0</span>
+            <span class="level-desc">Zaczynam od zera</span>
+          </button>
 
-        <button class="level-item" onclick="chooseLevel(3)">
-          <span class="level-code">A2</span>
-          <span class="level-desc">Umiem dogadać się w prostych sytuacjach</span>
-        </button>
+          <button class="level-item" onclick="chooseLevel(2)">
+            <span class="level-code">A1</span>
+            <span class="level-desc">Znam absolutne podstawy</span>
+          </button>
 
-        <button class="level-item" onclick="chooseLevel(4)">
-          <span class="level-code">B1</span>
-          <span class="level-desc">Mówię, ale chcę lepiej</span>
-        </button>
+          <button class="level-item" onclick="chooseLevel(3)">
+            <span class="level-code">A2</span>
+            <span class="level-desc">Umiem dogadać się w prostych sytuacjach</span>
+          </button>
 
-        <button class="level-item" onclick="chooseLevel(5)">
-          <span class="level-code">B2</span>
-          <span class="level-desc">Mówię dość swobodnie</span>
-        </button>
+          <button class="level-item" onclick="chooseLevel(4)">
+            <span class="level-code">B1</span>
+            <span class="level-desc">Mówię, ale chcę lepiej</span>
+          </button>
+
+          <button class="level-item" onclick="chooseLevel(5)">
+            <span class="level-code">B2</span>
+            <span class="level-desc">Mówię dość swobodnie</span>
+          </button>
+        </div>
       </div>
-    </div>
-  `;
-}
+    `;
+  }
 
+  // === MODULE HERO ===
+  if (!moduleStarted) {
+    return `
+      <div class="module-hero">
+        <div class="module-card">
+          <img
+            src="/assets/covers/${currentModule.id}.jpg"
+            alt="${currentModule.title}"
+            class="module-cover"
+          />
 
+          <h2 class="module-title">${currentModule.title}</h2>
 
-if (!moduleStarted) {
-  return `
-    <div class="module-hero">
-      <div class="module-card">
-        <img
-          src="/assets/covers/${currentModule.id}.jpg"
-          alt="${currentModule.title}"
-          class="module-cover"
-        />
-
-        <h2 class="module-title">${currentModule.title}</h2>
-
-        <button class="btn-primary" onclick="startModule()">
-          Rozpocznij moduł
-        </button>
+          <button class="btn-primary" onclick="startModule()">
+            Rozpocznij moduł
+          </button>
+        </div>
       </div>
-    </div>
-  `;
-}
+    `;
+  }
 
-
+  // === VARIANTS ===
   if (activeActivity?.variants?.length && !activeVariant) {
     return `
       <h3>${activeActivity.label}</h3>
@@ -279,14 +280,6 @@ if (!moduleStarted) {
   const item = activeVariant || activeActivity;
   if (!item) return "";
 
-  // 👉 PRZEJŚCIE DO SHADOWINGU (OSOBNA APLIKACJA)
-if (item.type === "internal" && item.engine === "shadowing") {
-  window.location.href =
-    `/shadowing/index.html?module=${currentModule.id}`;
-  return "";
-}
-
-
   if (item.type === "iframe")
     return `<iframe src="${item.src}" width="100%" height="800"></iframe>${renderCompleteButton(item)}`;
 
@@ -295,7 +288,8 @@ if (item.type === "internal" && item.engine === "shadowing") {
 
   if (item.type === "pdf")
     return `<iframe src="${item.src}" width="100%" height="800"></iframe>${renderCompleteButton(item)}`;
-return "";
+
+  return "";
 }
 
 // ===============================
