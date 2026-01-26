@@ -447,8 +447,35 @@ async function loadLessonHTML(src) {
   const root = document.getElementById("lesson-root");
   if (!root) return;
 
-  root.innerHTML = html;
+  // 1️⃣ wyczyść starą lekcję
+  root.innerHTML = "";
+
+  // 2️⃣ stwórz tymczasowy kontener
+  const tmp = document.createElement("div");
+  tmp.innerHTML = html;
+
+  // 3️⃣ przenieś HTML (bez scriptów)
+  [...tmp.children].forEach(el => {
+    if (el.tagName !== "SCRIPT") {
+      root.appendChild(el);
+    }
+  });
+
+  // 4️⃣ ręcznie odpal scripty
+  const scripts = tmp.querySelectorAll("script");
+  for (const oldScript of scripts) {
+    const s = document.createElement("script");
+
+    if (oldScript.src) {
+      s.src = oldScript.src;
+    } else {
+      s.textContent = oldScript.textContent;
+    }
+
+    document.body.appendChild(s);
+  }
 }
+
 
 
 // ===============================
