@@ -432,8 +432,16 @@ if (item.type === "internal" && item.engine === "shadowing") {
 if (item.type === "iframe")
   return `
     ${renderLessonHeader(item)}
-    <iframe src="${item.src}" width="100%" height="800"></iframe>
+
+    <div class="lesson-iframe-wrapper">
+      <iframe
+        src="${item.src}"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    </div>
   `;
+
 
 
 if (item.type === "audio")
