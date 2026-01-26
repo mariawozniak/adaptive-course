@@ -239,15 +239,26 @@ function renderContent() {
 }
 
 
-  if (!moduleStarted) {
-    return `
-      <div style="text-align:center;margin-top:40px;">
-        <img src="/assets/covers/${currentModule.id}.jpg" style="max-width:320px;border-radius:16px;" />
-        <h2>${currentModule.title}</h2>
-        <button onclick="startModule()">▶ Rozpocznij</button>
+if (!moduleStarted) {
+  return `
+    <div class="module-hero">
+      <div class="module-card">
+        <img
+          src="/assets/covers/${currentModule.id}.jpg"
+          alt="${currentModule.title}"
+          class="module-cover"
+        />
+
+        <h2 class="module-title">${currentModule.title}</h2>
+
+        <button class="btn-primary" onclick="startModule()">
+          Rozpocznij moduł
+        </button>
       </div>
-    `;
-  }
+    </div>
+  `;
+}
+
 
   if (activeActivity?.variants?.length && !activeVariant) {
     return `
