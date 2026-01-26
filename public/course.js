@@ -157,35 +157,20 @@ function renderFinalFeedback() {
 // ===============================
 function render() {
   if (!currentLevel) {
-app.innerHTML = renderContent();
+    app.innerHTML = renderContent();
     return;
   }
 
   app.innerHTML = `
-  ${!moduleStarted ? "" : `<h1>${currentModule.title}</h1>`}
-
- ${moduleStarted && !activeActivity ? `
-  <div class="activities-list">
-    ${currentModule.activities.map(act => `
-      <div
-        class="activity-item"
-        onclick="openActivity('${act.id}')"
-      >
-        <span class="activity-status ${isActivityCompleted(act) ? "done" : ""}"></span>
-        <span class="activity-label">${act.label}</span>
+    <div id="content">
+      <div class="module-inner">
+        ${renderContent()}
+        ${renderFinalFeedback()}
       </div>
-    `).join("")}
-  </div>
-` : ""}
-
-
-
-  <div id="content">
-    ${renderContent()}
-    ${renderFinalFeedback()}
-  </div>
-`;
+    </div>
+  `;
 }
+
 
 // ===============================
 // NAVIGATION
