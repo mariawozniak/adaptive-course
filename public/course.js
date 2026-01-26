@@ -434,11 +434,13 @@ if (item.type === "iframe")
     ${renderLessonHeader(item)}
 
     <div class="lesson-iframe-wrapper">
-      <iframe
-        src="${item.src}"
-        allowfullscreen
-        loading="lazy"
-      ></iframe>
+<iframe
+  src="${item.src}"
+  allowfullscreen
+  loading="lazy"
+  scrolling="no"
+></iframe>
+
     </div>
   `;
 
