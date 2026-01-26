@@ -399,5 +399,24 @@ body {
   width: 100%;
   max-width: 560px;
 }
+/* ===== LISTENING / IFRAME LESSON ===== */
+
+.lesson-iframe-wrapper{
+  margin: 32px auto 0;
+  max-width: 900px;
+  background: #fffaf4;
+  border: 1px solid #f1e3d3;
+  border-radius: 24px;
+  padding: 16px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.08);
+}
+
+.lesson-iframe-wrapper iframe{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 16px;
+  background: #000; /* tylko wnętrze playera */
+}
 
 
