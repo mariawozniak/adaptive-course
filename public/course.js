@@ -157,7 +157,7 @@ function renderFinalFeedback() {
 // ===============================
 function render() {
   if (!currentLevel) {
-    app.innerHTML = `<div>${renderContent()}</div>`;
+app.innerHTML = renderContent();
     return;
   }
 
