@@ -165,21 +165,31 @@ function render() {
     <div id="content">
       <div class="module-inner">
 
-        ${!moduleStarted ? "" : `<h1 style="margin-bottom:24px;">${currentModule.title}</h1>`}
-
         ${!moduleStarted ? "" : `
-          <div class="activities-list">
-            ${currentModule.activities.map(act => `
-              <div
-                class="activity-item"
-                onclick="openActivity('${act.id}')"
-              >
-                <span class="activity-status ${isActivityCompleted(act) ? "done" : ""}"></span>
-                <span class="activity-label">${act.label}</span>
-              </div>
-            `).join("")}
-          </div>
+          <h1 style="margin-bottom:24px;">
+            ${currentModule.title}
+          </h1>
         `}
+
+        ${
+          moduleStarted && !activeActivity
+            ? `
+              <div class="activities-list">
+                ${currentModule.activities.map(act => `
+                  <div
+                    class="activity-item"
+                    onclick="openActivity('${act.id}')"
+                  >
+                    <span class="activity-status ${
+                      isActivityCompleted(act) ? "done" : ""
+                    }"></span>
+                    <span class="activity-label">${act.label}</span>
+                  </div>
+                `).join("")}
+              </div>
+            `
+            : ""
+        }
 
         ${renderContent()}
         ${renderFinalFeedback()}
@@ -211,7 +221,9 @@ window.openVariant = (variantId) => {
 // ===============================
 function renderContent() {
 
-  // === LEVEL SELECT ===
+  // ===============================
+  // LEVEL SELECT
+  // ===============================
   if (!currentLevel) {
     return `
       <div class="level-page">
@@ -247,7 +259,9 @@ function renderContent() {
     `;
   }
 
-  // === MODULE HERO ===
+  // ===============================
+  // MODULE HERO
+  // ===============================
   if (!moduleStarted) {
     return `
       <div class="module-hero">
@@ -267,6 +281,58 @@ function renderContent() {
       </div>
     `;
   }
+
+  // ===============================
+  // VARIANTS SELECT
+  // ===============================
+  if (activeActivity && activeActivity.variants?.length && !activeVariant) {
+    return `
+      <div class="activities-list">
+        ${activeActivity.variants.map(variant => `
+          <div
+            class="activity-item"
+            onclick="openVariant('${variant.id}')"
+          >
+            <span class="activity-status ${
+              isCompleted(variant.id) ? "done" : ""
+            }"></span>
+            <span class="activity-label">${variant.label}</span>
+          </div>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  // ===============================
+  // ACTUAL LESSON
+  // ===============================
+  const item = activeVariant || activeActivity;
+  if (!item) return "";
+
+  if (item.type === "iframe") {
+    return `
+      <iframe src="${item.src}" width="100%" height="800"></iframe>
+      ${renderCompleteButton(item)}
+    `;
+  }
+
+  if (item.type === "audio") {
+    return `
+      <audio controls src="${item.src}"></audio>
+      ${renderCompleteButton(item)}
+    `;
+  }
+
+  if (item.type === "pdf") {
+    return `
+      <iframe src="${item.src}" width="100%" height="800"></iframe>
+      ${renderCompleteButton(item)}
+    `;
+  }
+
+  return "";
+}
+
 
   // === VARIANTS ===
 
