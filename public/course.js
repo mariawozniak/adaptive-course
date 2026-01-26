@@ -286,7 +286,7 @@ if (!moduleStarted) {
 if (activeActivity && activeActivity.variants?.length && !activeVariant) {
   return `
     <div class="activities-list">
-      ${activeActivity.variants.map(v => `
+      ${activeActivity.variants.map((v, index) => `
         <div
           class="activity-item"
           onclick="openVariant('${v.id}')"
@@ -294,12 +294,15 @@ if (activeActivity && activeActivity.variants?.length && !activeVariant) {
           <span class="activity-status ${
             isCompleted(v.id) ? "done" : ""
           }"></span>
-          <span class="activity-label">${v.label}</span>
+          <span class="activity-label">
+            Ćwiczenie ${index + 1}
+          </span>
         </div>
       `).join("")}
     </div>
   `;
 }
+
 
 
 
