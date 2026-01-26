@@ -277,3 +277,22 @@ body {
   max-width:560px;
   margin:0 auto;   /* ← TO JEST KLUCZ */
 }
+/* ===== FULL WIDTH LESSON (jak w starym kodzie) ===== */
+.lesson-full {
+  width: 100%;
+  margin-top: 24px;
+}
+
+/* iframe lekcji NIE jest kartą */
+.lesson-full iframe {
+  width: 100%;
+  min-height: 800px;
+  border: none;
+  border-radius: 0;
+  display: block;
+}
+
+/* audio też na pełnej szerokości */
+.lesson-full audio {
+  width: 100%;
+}
