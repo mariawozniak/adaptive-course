@@ -425,3 +425,6 @@ body {
 .lesson-iframe-wrapper iframe{
   overflow: hidden;
 }
+.lesson-iframe-wrapper iframe::-webkit-scrollbar{
+  display: none;
+}
