@@ -181,7 +181,6 @@ app.innerHTML = renderContent();
 
   <div id="content">
     ${renderContent()}
-    ${renderLiveFeedbackBar()}
     ${renderFinalFeedback()}
   </div>
 `;
