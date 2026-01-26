@@ -183,14 +183,8 @@ body {
 
 .lesson-wrap{
   margin-top:24px;
-  background:#fffaf4;
-  border-radius:20px;
-  padding:20px;
-  box-shadow:0 16px 40px rgba(0,0,0,.08);
-  display:flex;
-  flex-direction:column;
-  gap:20px;
 }
+
 
 .lesson-wrap iframe{
   width:100%;
@@ -267,9 +261,8 @@ body {
 /* ===== MODULE CONTENT WRAPPER ===== */
 #content{
   width:100%;
-  display:flex;
-  justify-content:center;
 }
+
 
 /* ograniczamy szerokość wszystkiego w module */
 .module-inner{
@@ -296,3 +289,11 @@ body {
 .lesson-full audio {
   width: 100%;
 }
+
+/* listening / pełne iframe NIE w karcie */
+.lesson-wrap iframe[src*="listening"],
+.lesson-wrap iframe[src*="quiz"],
+.lesson-wrap iframe[src*="gapfill"] {
+  border-radius: 0;
+}
+
