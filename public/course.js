@@ -329,26 +329,35 @@ function renderContent() {
   const item = activeVariant || activeActivity;
   if (!item) return "";
 
-  if (item.type === "iframe") {
-    return `
-      <iframe src="${item.src}" width="100%" height="800"></iframe>
+if (item.type === "iframe") {
+  return `
+    <div class="lesson-wrap">
+      <iframe src="${item.src}"></iframe>
       ${renderCompleteButton(item)}
-    `;
-  }
+    </div>
+  `;
+}
 
-  if (item.type === "audio") {
-    return `
+
+if (item.type === "audio") {
+  return `
+    <div class="lesson-wrap">
       <audio controls src="${item.src}"></audio>
       ${renderCompleteButton(item)}
-    `;
-  }
+    </div>
+  `;
+}
 
-  if (item.type === "pdf") {
-    return `
-      <iframe src="${item.src}" width="100%" height="800"></iframe>
+
+if (item.type === "pdf") {
+  return `
+    <div class="lesson-wrap">
+      <iframe src="${item.src}"></iframe>
       ${renderCompleteButton(item)}
-    `;
-  }
+    </div>
+  `;
+}
+
 
   return "";
 }
