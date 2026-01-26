@@ -53,6 +53,20 @@ activeVariant = null;
   }
 }
 
+async function saveLevel(level) {
+  const res = await fetch("/api/level", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ level })
+  });
+
+  if (!res.ok) throw new Error("level save failed");
+
+  const data = await res.json();
+  currentLevel = data.level;
+}
+
 
 async function saveLastActivity(data) {
   await fetch("/api/last-activity", {
