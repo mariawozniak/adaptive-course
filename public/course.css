@@ -181,6 +181,39 @@ body {
   transform:translateY(-1px);
 }
 
+.lesson-wrap{
+  margin-top:24px;
+  background:#fffaf4;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 16px 40px rgba(0,0,0,.08);
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.lesson-wrap iframe{
+  width:100%;
+  min-height:600px;
+  border:none;
+  border-radius:14px;
+}
+
+.lesson-wrap audio{
+  width:100%;
+}
+
+.btn-back{
+  margin-bottom:16px;
+  background:none;
+  border:none;
+  font-size:15px;
+  font-weight:500;
+  color:#a16207;
+  cursor:pointer;
+}
+
+
 /* ===== STATUS CIRCLE ===== */
 .activity-status{
   width:20px;
