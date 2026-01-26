@@ -2,7 +2,7 @@ export const modules = [
   {
     id: "module_1",
     title: "Restaurant",
-    level: "A2",
+    level: 3, // A2 = 3
     videoId: "hy_72TdNtc4",
 
     activities: [
@@ -13,7 +13,7 @@ export const modules = [
         id: "vocabulary",
         label: "Słówka",
         required: true,
-        completionRule: "any", // ukończone, jeśli dowolny wariant zaliczony
+        completionRule: "any",
 
         variants: [
           {
@@ -43,63 +43,62 @@ export const modules = [
       /* =======================
          TEST
          ======================= */
-    {
-  id: "test",
-  label: "Test",
-  required: true,
-  type: "iframe",
-  src: "/test/index.html?module=module_1",
-  lessonId: "module_1__test",
-  completion: "auto"
-},
-
+      {
+        id: "test",
+        label: "Test",
+        required: true,
+        type: "iframe",
+        src: "/test/index.html?module=module_1",
+        lessonId: "module_1__test",
+        completion: "auto"
+      },
 
       /* =======================
          LISTENING
          ======================= */
-    {
-  id: "listening",
-  label: "Listening",
-  required: true,
+      {
+        id: "listening",
+        label: "Listening",
+        required: true,
+        completionRule: "any",
 
-  variants: [
-    {
-      id: "module_1__listening__quiz",
-      label: "Quiz",
-      type: "iframe",
-      src: "/listening/index.html?module=module_1&mode=quiz",
-      completion: "manual"
-    },
-    {
-      id: "module_1__listening__gapfill",
-      label: "Gap fill",
-      type: "iframe",
-      src: "/listening/index.html?module=module_1&mode=gapfill",
-      completion: "manual"
-    },
-    {
-      id: "module_1__listening__mixed",
-      label: "Mixed",
-      type: "iframe",
-      src: "/listening/index.html?module=module_1&mode=mixed",
-      completion: "manual"
-    }
-  ]
-},
+        variants: [
+          {
+            id: "module_1__listening__quiz",
+            label: "Quiz",
+            type: "iframe",
+            src: "/listening/index.html?module=module_1&mode=quiz",
+            completion: "manual"
+          },
+          {
+            id: "module_1__listening__gapfill",
+            label: "Gap fill",
+            type: "iframe",
+            src: "/listening/index.html?module=module_1&mode=gapfill",
+            completion: "manual"
+          },
+          {
+            id: "module_1__listening__mixed",
+            label: "Mixed",
+            type: "iframe",
+            src: "/listening/index.html?module=module_1&mode=mixed",
+            completion: "manual"
+          }
+        ]
+      },
 
       /* =======================
          SHADOWING
          ======================= */
-{
-  id: "shadowing",
-  label: "Shadowing",
-  required: false,
-  type: "iframe",
-  src: "/shadowing/index.html?module=module_1",
-  lessonId: "module_1__shadowing",
-  completion: "manual"
-},
-
+      {
+        id: "shadowing",
+        label: "Shadowing",
+        required: false,
+        type: "iframe",
+        src: "/shadowing/index.html?module=module_1",
+        lessonId: "module_1__shadowing",
+        completion: "manual"
+      },
 
       /* =======================
          AI (PLACEHOLDER)
@@ -109,9 +108,6 @@ export const modules = [
         label: "Lektor AI",
         required: false,
         enabled: false
-        // docelowo:
-        // completion: "auto"
-        // requires: ["vocabulary", "test", "listening", "shadowing"]
       }
     ]
   }
