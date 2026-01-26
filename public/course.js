@@ -203,40 +203,41 @@ window.openVariant = (variantId) => {
 // CONTENT
 // ===============================
 function renderContent() {
-  if (!currentLevel) {
-    return `
-      <div class="level-page">
-        <h1>Z jakiego poziomu startujemy?</h1>
+if (!currentLevel) {
+  return `
+    <div class="level-page">
+      <h1 class="level-title">Z jakiego poziomu startujemy?</h1>
 
-        <div class="levels">
-          <button class="level-card" onclick="chooseLevel(1)">
-            <span class="level-name">Zaczynam od zera</span>
-            <span class="level-tag">A0</span>
-          </button>
+      <div class="level-list">
+        <button class="level-item" onclick="chooseLevel(1)">
+          <span class="level-code">A0</span>
+          <span class="level-desc">Zaczynam od zera</span>
+        </button>
 
-          <button class="level-card" onclick="chooseLevel(2)">
-            <span class="level-name">Znam absolutne podstawy</span>
-            <span class="level-tag">A1</span>
-          </button>
+        <button class="level-item" onclick="chooseLevel(2)">
+          <span class="level-code">A1</span>
+          <span class="level-desc">Znam absolutne podstawy</span>
+        </button>
 
-          <button class="level-card" onclick="chooseLevel(3)">
-            <span class="level-name">Umiem dogadać się w prostych sytuacjach</span>
-            <span class="level-tag">A2</span>
-          </button>
+        <button class="level-item" onclick="chooseLevel(3)">
+          <span class="level-code">A2</span>
+          <span class="level-desc">Umiem dogadać się w prostych sytuacjach</span>
+        </button>
 
-          <button class="level-card" onclick="chooseLevel(4)">
-            <span class="level-name">Mówię, ale chcę lepiej</span>
-            <span class="level-tag">B1</span>
-          </button>
+        <button class="level-item" onclick="chooseLevel(4)">
+          <span class="level-code">B1</span>
+          <span class="level-desc">Mówię, ale chcę lepiej</span>
+        </button>
 
-          <button class="level-card" onclick="chooseLevel(5)">
-            <span class="level-name">Mówię dość swobodnie</span>
-            <span class="level-tag">B2</span>
-          </button>
-        </div>
+        <button class="level-item" onclick="chooseLevel(5)">
+          <span class="level-code">B2</span>
+          <span class="level-desc">Mówię dość swobodnie</span>
+        </button>
       </div>
-    `;
-  }
+    </div>
+  `;
+}
+
 
 
   if (!moduleStarted) {
