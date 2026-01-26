@@ -152,12 +152,13 @@ body {
 }
 /* ===== ACTIVITIES LIST ===== */
 .activities-list{
-  margin-top:24px;
+  margin:24px auto 0;
   max-width:560px;
   display:flex;
   flex-direction:column;
   gap:14px;
 }
+
 
 /* pojedyncza aktywność */
 .activity-item{
