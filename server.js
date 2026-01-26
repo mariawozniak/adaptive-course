@@ -37,6 +37,26 @@ app.use((req, res, next) => {
   next();
 });
 
+// ===== USER ID (PUBLIGO / COOKIE) =====
+app.use((req, res, next) => {
+  const publigoId =
+    req.headers["x-publigo-user-id"] ||
+    req.headers["x-user-id"] ||
+    req.headers["x-publigo-id"];
+
+  if (publigoId) {
+    req.userId = `publigo_${publigoId}`;
+    res.setHeader(
+      "Set-Cookie",
+      `course_user=${req.userId}; Path=/; SameSite=Lax`
+    );
+  } else {
+    req.userId = req.cookies.course_user || null;
+  }
+
+  next();
+});
+
 // ===== SETUP =====
 const PORT = process.env.PORT || 8080;
 const __filename = fileURLToPath(import.meta.url);
@@ -234,6 +254,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
