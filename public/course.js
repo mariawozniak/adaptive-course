@@ -271,6 +271,7 @@ function renderListHeader(title) {
 }
 
 
+
 // ===============================
 // CONTENT
 // ===============================
@@ -362,23 +363,25 @@ if (
   !activeVariant &&
   activeActivity.id !== "vocabulary"
 ) {
-return `
-  <div class="activities-list">
-    ${activeActivity.variants.map((v, index) => `
-      <div
-        class="activity-item"
-        onclick="openVariant('${v.id}')"
-      >
-        <span class="activity-status ${isCompleted(v.id) ? "done" : ""}"></span>
-        <span class="activity-label">
-          ${getVariantDisplayName(activeActivity, index)}
-        </span>
-      </div>
-    `).join("")}
-  </div>
-`;
+  return `
+    ${renderListHeader(activeActivity.label)}
 
+    <div class="activities-list">
+      ${activeActivity.variants.map((v, index) => `
+        <div
+          class="activity-item"
+          onclick="openVariant('${v.id}')"
+        >
+          <span class="activity-status ${isCompleted(v.id) ? "done" : ""}"></span>
+          <span class="activity-label">
+            ${getVariantDisplayName(activeActivity, index)}
+          </span>
+        </div>
+      `).join("")}
+    </div>
+  `;
 }
+
 // ===== VOCABULARY – STARY WIDOK (SPECJALNY) =====
 if (
   activeActivity &&
@@ -387,25 +390,26 @@ if (
   !activeVariant
 ) {
   return `
-    <div>
-<h2 class="page-subtitle">Jak wolisz się uczyć?</h2>
+    ${renderListHeader(activeActivity.label)}
 
-      <div class="activities-list">
-        ${activeActivity.variants.map(v => `
-          <div
-            class="activity-item"
-            onclick="openVariant('${v.id}')"
-          >
-            <span class="activity-status ${
-              isCompleted(v.id) ? "done" : ""
-            }"></span>
-            <span class="activity-label">${v.label}</span>
-          </div>
-        `).join("")}
-      </div>
+    <h2 class="page-subtitle">Jak wolisz się uczyć?</h2>
+
+    <div class="activities-list">
+      ${activeActivity.variants.map(v => `
+        <div
+          class="activity-item"
+          onclick="openVariant('${v.id}')"
+        >
+          <span class="activity-status ${
+            isCompleted(v.id) ? "done" : ""
+          }"></span>
+          <span class="activity-label">${v.label}</span>
+        </div>
+      `).join("")}
     </div>
   `;
 }
+
 
 
 
