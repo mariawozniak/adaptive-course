@@ -252,6 +252,23 @@ function renderLessonHeader(item) {
   `;
 }
 
+function renderListHeader(title) {
+  return `
+    <div class="lesson-header">
+      <div class="lesson-header-inner">
+
+        <button class="lesson-back-btn" onclick="goBack()">
+          ← Wróć
+        </button>
+
+        <div class="lesson-breadcrumbs">
+          ${title}
+        </div>
+
+      </div>
+    </div>
+  `;
+}
 
 
 // ===============================
