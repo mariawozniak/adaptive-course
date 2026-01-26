@@ -262,6 +262,26 @@ if (!moduleStarted) {
   `;
 }
 
+// ===============================
+// VARIANTS LIST (PO KLIKNIĘCIU AKTYWNOŚCI)
+// ===============================
+if (activeActivity && activeActivity.variants?.length && !activeVariant) {
+  return `
+    <div class="activities-list">
+      ${activeActivity.variants.map(v => `
+        <div
+          class="activity-item"
+          onclick="openVariant('${v.id}')"
+        >
+          <span class="activity-status ${
+            isCompleted(v.id) ? "done" : ""
+          }"></span>
+          <span class="activity-label">${v.label}</span>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
 
 
 
