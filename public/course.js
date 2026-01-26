@@ -304,10 +304,11 @@ window.markCompleted = async (lessonId) => {
 
 window.startModule = () => {
   moduleStarted = true;
-  activeActivity = currentModule.activities[0];
+  activeActivity = null;   // ← KLUCZ
   activeVariant = null;
   render();
 };
+
 
 window.chooseLevel = async (lvl) => {
   await saveLevel(lvl);
