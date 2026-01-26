@@ -343,7 +343,7 @@ if (
 ) {
   return `
     <div>
-      <h2 style="margin-bottom:16px;">Jak wolisz się uczyć?</h2>
+<h2 class="page-subtitle">Jak wolisz się uczyć?</h2>
 
       <div class="activities-list">
         ${activeActivity.variants.map(v => `
