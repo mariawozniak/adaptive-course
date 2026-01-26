@@ -102,12 +102,23 @@ function renderCompleteButton(item) {
   const lessonId = getLessonId(item);
   if (!lessonId) return "";
 
+  const done = isCompleted(lessonId);
+
   return `
-    <button onclick="markCompleted('${lessonId}')">
-      ${isCompleted(lessonId) ? "☑" : "☐"} Oznacz jako ukończone
-    </button>
+    <div class="lesson-complete">
+      <button
+        class="complete-btn ${done ? "done" : ""}"
+        onclick="markCompleted('${lessonId}')"
+      >
+        <span class="complete-check"></span>
+        <span class="complete-label">
+          ${done ? "Ukończone" : "Oznacz jako ukończone"}
+        </span>
+      </button>
+    </div>
   `;
 }
+
 
 function renderLiveFeedbackBar() {
   if (!currentLevel || !moduleStarted) return "";
