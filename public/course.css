@@ -320,5 +320,71 @@ body {
   cursor:pointer;
 }
 
+/* ===== CUSTOM CHECKBOX (LESSON) ===== */
+
+.lesson-checkbox{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+  user-select:none;
+}
+
+/* ukrywamy systemowy checkbox */
+.lesson-checkbox input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+
+/* kółko */
+.lesson-checkmark{
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  border:2px solid #f1c27d;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:
+    background .15s ease,
+    border-color .15s ease,
+    transform .1s ease;
+}
+
+/* check */
+.lesson-checkmark::after{
+  content:"✓";
+  font-size:13px;
+  font-weight:600;
+  color:#fff;
+  opacity:0;
+  transform:scale(0.5);
+  transition:
+    opacity .12s ease,
+    transform .12s ease;
+}
+
+/* label tekstowy */
+.lesson-check-label{
+  font-size:14px;
+  color:#3a2a1a;
+}
+
+/* STAN ZAZNACZONY */
+.lesson-checkbox input:checked + .lesson-checkmark{
+  background:#f59e0b;
+  border-color:#f59e0b;
+}
+
+.lesson-checkbox input:checked + .lesson-checkmark::after{
+  opacity:1;
+  transform:scale(1);
+}
+
+/* hover */
+.lesson-checkbox:hover .lesson-checkmark{
+  transform:scale(1.05);
+}
 
 
