@@ -233,4 +233,15 @@ body {
     font-size:16px;
   }
 }
+/* ===== MODULE CONTENT WRAPPER ===== */
+#content{
+  display:flex;
+  justify-content:center;
+}
+
+/* ograniczamy szerokość wszystkiego w module */
+.module-inner{
+  width:100%;
+  max-width:560px;
+}
 
