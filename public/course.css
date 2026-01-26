@@ -233,9 +233,11 @@ body {
 }
 /* ===== MODULE CONTENT WRAPPER ===== */
 #content{
+  width:100%;
   display:flex;
   justify-content:center;
 }
+
 
 /* ograniczamy szerokość wszystkiego w module */
 .module-inner{
