@@ -299,7 +299,7 @@ if (!moduleStarted) {
 
   if (moduleStarted && !activeActivity) {
   return `
-    <h1>${currentModule.title}</h1>
+<h1 class="page-title">${currentModule.title}</h1>
 
     <div class="activities-list">
       ${currentModule.activities.map(act => `
