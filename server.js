@@ -9,43 +9,6 @@ import { modules } from "./data/modules.js";
 const app = express();
 app.use(express.json());
 
-// ===== PUBLIGO LINK LOGIN =====
-app.use((req, res, next) => {
-  // jeśli user już jest w cookie – nie rób nic
-  if (req.cookies?.course_user) {
-    req.userId = req.cookies.course_user;
-    return next();
-  }
-
-  // jeśli przyszedł z Publigo
-  const publigoUid = req.query.publigo_uid;
-
-  if (publigoUid) {
-    const userId = `publigo_${publigoUid}`;
-
-    res.setHeader(
-      "Set-Cookie",
-      `course_user=${userId}; Path=/; SameSite=Lax; Secure`
-    );
-
-    req.userId = userId;
-  }
-
-  next();
-});
-
-
-app.get("/api/debug-key", (req, res) => {
-  const key = process.env.OPENAI_API_KEY;
-  res.json({
-    hasKey: Boolean(key),
-    keyLength: key ? key.length : 0,
-    keyPrefix: key ? key.slice(0, 3) : null,
-    allEnvKeys: Object.keys(process.env).filter(k =>
-      k.toLowerCase().includes("openai")
-    )
-  });
-});
 
 
 // ===== COOKIES =====
@@ -63,26 +26,34 @@ app.use((req, res, next) => {
   next();
 });
 
-// ===== USER ID (PUBLIGO / COOKIE) =====
+// ===== USER IDENTIFICATION (PUBLIGO + COOKIE) =====
 app.use((req, res, next) => {
-  const publigoId =
-    req.headers["x-publigo-user-id"] ||
-    req.headers["x-user-id"] ||
-    req.headers["x-publigo-id"];
-
-  if (publigoId) {
-    req.userId = `publigo_${publigoId}`;
-    res.setHeader(
-      "Set-Cookie",
-      `course_user=${req.userId}; Path=/; SameSite=Lax`
-    );
-  } else {
-    req.userId = req.userId
- || null;
+  // 1. jeśli mamy cookie – użyj go
+  if (req.cookies.course_user) {
+    req.userId = req.cookies.course_user;
+    return next();
   }
 
+  // 2. jeśli przyszło z Publigo
+  const publigoUid = req.query.publigo_uid;
+
+  if (publigoUid) {
+    const userId = `publigo_${publigoUid}`;
+
+    res.setHeader(
+      "Set-Cookie",
+      `course_user=${userId}; Path=/; SameSite=Lax; Secure`
+    );
+
+    req.userId = userId;
+    return next();
+  }
+
+  // 3. brak usera – dalej (fallback zrobi /api/me)
+  req.userId = null;
   next();
 });
+
 
 // ===== SETUP =====
 const PORT = process.env.PORT || 8080;
@@ -111,7 +82,7 @@ app.get("/api/me", (req, res) => {
     userId = "u_" + crypto.randomUUID();
     res.setHeader(
       "Set-Cookie",
-      `course_user=${userId}; Path=/; SameSite=Lax`
+`course_user=${userId}; Path=/; SameSite=Lax; Secure`
     );
   }
 
@@ -119,44 +90,7 @@ app.get("/api/me", (req, res) => {
 });
 
 
-// ===== STATE =====
 
-app.get("/api/state", (req, res) => {
-  const userId = req.userId;
-  res.json({ level: userStateStore[userId]?.level ?? null });
-});
-
-app.post("/api/level", (req, res) => {
-  const userId = req.userId;
-  const level = Number(req.body?.level);
-
-  if (!userId || !level) {
-    return res.status(400).json({ error: "bad request" });
-  }
-
-  userStateStore[userId] = { level };
-  res.json({ ok: true, level });
-});
-
-app.get("/api/progress", (req, res) => {
-  const userId = req.userId;
-  res.json(progressStore[userId] || {});
-});
-
-app.post("/api/lesson-complete", (req, res) => {
-  const { moduleId, lessonId } = req.body;
-  const userId = req.userId;
-
-  progressStore[userId] ??= {};
-  progressStore[userId][moduleId] ??= { completedLessons: {} };
-  progressStore[userId][moduleId].completedLessons[lessonId] = true;
-
-  res.json({ ok: true });
-});
-
-app.post("/api/feedback", (req, res) => {
-  res.json({ ok: true, level: 1, moduleId: "module_1" });
-});
 
 
 // ===== STATE =====
@@ -282,6 +216,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
