@@ -163,9 +163,6 @@ window.goBack = () => {
    RENDER
 =============================== */
 function render() {
-  // ===============================
-  // LEVEL SELECT (bez layoutu modułu)
-  // ===============================
   if (!currentLevel) {
     app.innerHTML = renderContent();
     return;
@@ -173,61 +170,39 @@ function render() {
 
   app.innerHTML = `
     <div id="content">
-
-      <!-- =========================
-           UI KURSU (wąska kolumna)
-           ========================= -->
       <div class="module-inner">
 
-        ${
-          !moduleStarted
-            ? ""
-            : `
-              <h1 style="margin-bottom:24px;">
-                ${currentModule.title}
-              </h1>
-            `
-        }
+        ${!moduleStarted ? "" : `
+          <h1 style="margin-bottom:24px;">
+            ${currentModule.title}
+          </h1>
+        `}
 
         ${
           moduleStarted && !activeActivity
             ? `
               <div class="activities-list">
-                ${currentModule.activities
-                  .map(
-                    act => `
-                      <div
-                        class="activity-item"
-                        onclick="openActivity('${act.id}')"
-                      >
-                        <span class="activity-status ${
-                          isActivityCompleted(act) ? "done" : ""
-                        }"></span>
-                        <span class="activity-label">
-                          ${act.label}
-                        </span>
-                      </div>
-                    `
-                  )
-                  .join("")}
+                ${currentModule.activities.map(act => `
+                  <div
+                    class="activity-item"
+                    onclick="openActivity('${act.id}')"
+                  >
+                    <span class="activity-status ${
+                      isActivityCompleted(act) ? "done" : ""
+                    }"></span>
+                    <span class="activity-label">${act.label}</span>
+                  </div>
+                `).join("")}
               </div>
             `
             : ""
         }
 
         ${renderBackButton()}
+        ${renderContent()}
         ${renderFinalFeedback()}
 
       </div>
-
-      <!-- =========================
-           LEKCJA (pełna szerokość,
-           dokładnie jak w starym kodzie)
-           ========================= -->
-      <div class="lesson-full">
-        ${renderContent()}
-      </div>
-
     </div>
   `;
 }
