@@ -199,6 +199,42 @@ window.openVariant = (variantId) => {
   render();
 };
 
+function renderLessonHeader(item) {
+  if (!item) return "";
+
+  const parts = [
+    currentModule.title,
+    activeActivity?.label
+  ];
+
+  if (activeVariant) {
+    const index = activeActivity.variants.findIndex(v => v.id === activeVariant.id);
+    parts.push(`Ćwiczenie ${index + 1}`);
+  }
+
+  return `
+    <div style="
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:16px;
+      gap:16px;
+      flex-wrap:wrap;
+    ">
+      <div style="font-size:15px;color:#6b4e2e;">
+        ${parts.join(" → ")}
+      </div>
+
+      ${shouldRenderCheckbox(item) ? `
+        <button onclick="markCompleted('${getLessonId(item)}')">
+          ${isCompleted(getLessonId(item)) ? "☑" : "☐"} Oznacz jako ukończone
+        </button>
+      ` : ""}
+    </div>
+  `;
+}
+
+
 // ===============================
 // CONTENT
 // ===============================
@@ -322,15 +358,25 @@ if (item.type === "internal" && item.engine === "shadowing") {
 }
 
 
-  if (item.type === "iframe")
-    return `<iframe src="${item.src}" width="100%" height="800"></iframe>${renderCompleteButton(item)}`;
+if (item.type === "iframe")
+  return `
+    ${renderLessonHeader(item)}
+    <iframe src="${item.src}" width="100%" height="800"></iframe>
+  `;
 
-  if (item.type === "audio")
-    return `<audio controls src="${item.src}"></audio>${renderCompleteButton(item)}`;
 
-  if (item.type === "pdf")
-    return `<iframe src="${item.src}" width="100%" height="800"></iframe>${renderCompleteButton(item)}`;
-return "";
+if (item.type === "audio")
+  return `
+    ${renderLessonHeader(item)}
+    <audio controls src="${item.src}"></audio>
+  `;
+
+if (item.type === "pdf")
+  return `
+    ${renderLessonHeader(item)}
+    <iframe src="${item.src}" width="100%" height="800"></iframe>
+  `;
+
 }
 
 // ===============================
