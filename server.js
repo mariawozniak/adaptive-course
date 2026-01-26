@@ -116,17 +116,6 @@ app.get("/api/state", (req, res) => {
     FROM user_state WHERE user_id=?
   `).get(userId);
 
-  res.json({
-level: Number.isInteger(row?.level) ? row.level : null,
-app.get("/api/state", (req, res) => {
-  const userId = req.userId;
-  if (!userId) return res.json({});
-
-  const row = db.prepare(`
-    SELECT level, current_module, module_completed, last_activity
-    FROM user_state WHERE user_id=?
-  `).get(userId);
-
   let parsedLast = null;
 
   if (row?.last_activity) {
@@ -367,6 +356,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
