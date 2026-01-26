@@ -606,7 +606,20 @@ window.sendFeedback = async (dir) => {
   render();
 };
 
-window.sendFinalFeedback = window.sendFeedback;
+window.sendFinalFeedback = async (dir) => {
+  // 🔒 oznacz moduł jako ukończony
+  await fetch("/api/module-complete", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ moduleId: currentModule.id })
+  });
+
+  finalFeedbackShown = true;
+
+  // dalej normalny feedback (zmiana poziomu / modułu)
+  await sendFeedback(dir);
+};
 
 // ===============================
 // INIT
