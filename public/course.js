@@ -205,12 +205,39 @@ window.openVariant = (variantId) => {
 function renderContent() {
   if (!currentLevel) {
     return `
-      <h2>Wybierz poziom startowy</h2>
-      <div style="display:flex;gap:10px;">
-        ${[1,2,3,4,5].map(l => `<button onclick="chooseLevel(${l})">Poziom ${l}</button>`).join("")}
+      <div class="level-page">
+        <h1>Z jakiego poziomu startujemy?</h1>
+
+        <div class="levels">
+          <button class="level-card" onclick="chooseLevel(1)">
+            <span class="level-name">Zaczynam od zera</span>
+            <span class="level-tag">A0</span>
+          </button>
+
+          <button class="level-card" onclick="chooseLevel(2)">
+            <span class="level-name">Znam absolutne podstawy</span>
+            <span class="level-tag">A1</span>
+          </button>
+
+          <button class="level-card" onclick="chooseLevel(3)">
+            <span class="level-name">Umiem dogadać się w prostych sytuacjach</span>
+            <span class="level-tag">A2</span>
+          </button>
+
+          <button class="level-card" onclick="chooseLevel(4)">
+            <span class="level-name">Mówię, ale chcę lepiej</span>
+            <span class="level-tag">B1</span>
+          </button>
+
+          <button class="level-card" onclick="chooseLevel(5)">
+            <span class="level-name">Mówię dość swobodnie</span>
+            <span class="level-tag">B2</span>
+          </button>
+        </div>
       </div>
     `;
   }
+
 
   if (!moduleStarted) {
     return `
