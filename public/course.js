@@ -342,7 +342,9 @@ if (
           <span class="activity-status ${
             isCompleted(v.id) ? "done" : ""
           }"></span>
-          <span class="activity-label">${v.label}</span>
+<span class="activity-label">
+  ${getVariantDisplayName(activeActivity, index)}
+</span>
         </div>
       `).join("")}
     </div>
