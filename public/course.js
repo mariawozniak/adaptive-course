@@ -226,26 +226,27 @@ function renderLessonHeader(item) {
   }
 
   return `
-  <div class="lesson-header-inner">
-  <button class="lesson-back-btn" onclick="goBack()">
-    ← Wróć
-  </button>
+    <div class="lesson-header">
+      <div class="lesson-header-inner">
 
-  <div class="lesson-breadcrumbs">
-    ${parts.join(" → ")}
-  </div>
+        <button class="lesson-back-btn" onclick="goBack()">
+          ← Wróć
+        </button>
 
+        <div class="lesson-breadcrumbs">
+          ${parts.join(" → ")}
+        </div>
 
-  ${shouldRenderCheckbox(item) ? `
-  <label class="lesson-checkbox">
-    <input
-      type="checkbox"
-      ${isCompleted(getLessonId(item)) ? "checked" : ""}
-      onchange="markCompleted('${getLessonId(item)}')"
-    />
-    <span>Oznacz jako ukończone</span>
-  </label>
-` : ""}
+        ${shouldRenderCheckbox(item) ? `
+          <label class="lesson-checkbox">
+            <input
+              type="checkbox"
+              ${isCompleted(getLessonId(item)) ? "checked" : ""}
+              onchange="markCompleted('${getLessonId(item)}')"
+            />
+            <span>Oznacz jako ukończone</span>
+          </label>
+        ` : ""}
 
       </div>
     </div>
