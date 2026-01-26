@@ -162,26 +162,26 @@ app.innerHTML = renderContent();
   }
 
   app.innerHTML = `
-    <h1>${currentModule.title}</h1>
+  ${!moduleStarted ? "" : `<h1>${currentModule.title}</h1>`}
 
+  ${!moduleStarted ? "" : `
     <div style="margin-bottom:16px;">
-      ${currentModule.activities
-        .map(
-          act => `
-            <button onclick="openActivity('${act.id}')">
-              ${isActivityCompleted(act) ? "☑" : "☐"} ${act.label}
-            </button>
-          `
-        )
-        .join("")}
+      ${currentModule.activities.map(
+        act => `
+          <button onclick="openActivity('${act.id}')">
+            ${isActivityCompleted(act) ? "☑" : "☐"} ${act.label}
+          </button>
+        `
+      ).join("")}
     </div>
+  `}
 
-    <div id="content">
-      ${renderContent()}
-      ${renderLiveFeedbackBar()}
-      ${renderFinalFeedback()}
-    </div>
-  `;
+  <div id="content">
+    ${renderContent()}
+    ${renderLiveFeedbackBar()}
+    ${renderFinalFeedback()}
+  </div>
+`;
 }
 
 // ===============================
