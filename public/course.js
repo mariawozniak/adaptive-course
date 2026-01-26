@@ -502,10 +502,18 @@ window.markCompleted = async (lessonId) => {
 
 window.startModule = () => {
   moduleStarted = true;
-  activeActivity = null;   // ← KLUCZ
+  activeActivity = null;
   activeVariant = null;
+
+  saveLastActivity({
+    moduleId: currentModule.id,
+    activityId: null,
+    variantId: null
+  });
+
   render();
 };
+
 
 
 window.chooseLevel = async (lvl) => {
