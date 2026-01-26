@@ -343,6 +343,13 @@ function renderListHeader(title) {
     </div>
   `;
 }
+function currentModuleStarted() {
+  return Boolean(
+    progress?.[currentModule.id] ||
+    activeActivity ||
+    activeVariant
+  );
+}
 
 
 
@@ -398,9 +405,10 @@ if (!moduleStarted) {
 
         <h2 class="module-title">${currentModule.title}</h2>
 
-        <button class="btn-primary" onclick="startModule()">
-          Rozpocznij moduł
-        </button>
+<button class="btn-primary" onclick="startModule()">
+  ${currentModuleStarted() ? "Kontynuuj moduł" : "Rozpocznij moduł"}
+</button>
+
       </div>
     </div>
   `;
