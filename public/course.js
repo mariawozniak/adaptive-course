@@ -161,6 +161,17 @@ function render() {
     return;
   }
 
+  // === WIDOK LEKCJI (pełna szerokość, jak dawniej) ===
+  if (moduleStarted && (activeActivity || activeVariant)) {
+    app.innerHTML = `
+      <div id="content">
+        ${renderContent()}
+      </div>
+    `;
+    return;
+  }
+
+  // === WIDOK LISTY AKTYWNOŚCI / STARTU MODUŁU ===
   app.innerHTML = `
     <div id="content">
       <div class="module-inner">
@@ -170,6 +181,7 @@ function render() {
     </div>
   `;
 }
+
 
 
 // ===============================
