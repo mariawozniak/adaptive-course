@@ -247,6 +247,27 @@ if (!moduleStarted) {
   `;
 }
 
+  if (moduleStarted && !activeActivity) {
+  return `
+    <h1>${currentModule.title}</h1>
+
+    <div class="activities-list">
+      ${currentModule.activities.map(act => `
+        <div
+          class="activity-item"
+          onclick="openActivity('${act.id}')"
+        >
+          <span class="activity-status ${
+            isActivityCompleted(act) ? "done" : ""
+          }"></span>
+          <span class="activity-label">${act.label}</span>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+
 // ===============================
 // VARIANTS LIST (PO KLIKNIĘCIU AKTYWNOŚCI)
 // ===============================
