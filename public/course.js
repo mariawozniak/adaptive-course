@@ -27,6 +27,10 @@ async function loadProgress() {
 }
 
 async function loadState() {
+  moduleStarted = false;
+activeActivity = null;
+activeVariant = null;
+
   const res = await fetch("/api/state", { credentials: "include" });
   const data = await res.json();
 
