@@ -163,21 +163,9 @@ function renderFinalFeedback() {
 // RENDER
 // ===============================
 function render() {
-  // ZAWSZE ten sam wrapper, żeby wszystko było wyśrodkowane
   app.innerHTML = `
     <div id="content">
       <div class="${moduleStarted && (activeActivity || activeVariant) ? "" : "module-inner"}">
-        ${renderContent()}
-        ${renderFinalFeedback()}
-      </div>
-    </div>
-  `;
-}
-
-  // === WIDOK LISTY AKTYWNOŚCI / STARTU MODUŁU ===
-  app.innerHTML = `
-    <div id="content">
-      <div class="module-inner">
         ${renderContent()}
         ${renderFinalFeedback()}
       </div>
