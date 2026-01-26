@@ -181,7 +181,6 @@ ${!moduleStarted ? "" : `
 
     <div id="content">
       ${renderContent()}
-      ${renderLiveFeedbackBar()}
       ${renderFinalFeedback()}
     </div>
   `;
@@ -265,20 +264,7 @@ function renderContent() {
   }
 
   // === VARIANTS ===
-  if (activeActivity?.variants?.length && !activeVariant) {
-    return `
-      <h3>${activeActivity.label}</h3>
-      <ul>
-        ${activeActivity.variants.map(v => `
-          <li>
-            <button onclick="openVariant('${v.id}')">
-              ${isCompleted(v.id) ? "☑" : "☐"} ${v.label}
-            </button>
-          </li>
-        `).join("")}
-      </ul>
-    `;
-  }
+
 
   const item = activeVariant || activeActivity;
   if (!item) return "";
