@@ -409,7 +409,10 @@ body {
   border-radius: 24px;
   padding: 16px;
   box-shadow: 0 18px 40px rgba(0,0,0,.08);
+
+  display: inline-block;
 }
+
 
 .lesson-iframe-wrapper iframe{
   width: 100%;
