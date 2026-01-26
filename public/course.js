@@ -221,14 +221,21 @@ function render() {
             : ""
         }
 
-${renderBackButton()}
-${renderContent()}
+        ${renderBackButton()}
+        ${renderContent()}
         ${renderFinalFeedback()}
 
       </div>
     </div>
   `;
+
+  // ⬇️⬇️⬇️ TO JEST TO „OSTATNIE” ⬇️⬇️⬇️
+  const item = activeVariant || activeActivity;
+  if (item?.type === "iframe") {
+    loadLessonHTML(item.src);
+  }
 }
+
 
 
 
@@ -343,11 +350,12 @@ function renderContent() {
 if (item.type === "iframe") {
   return `
     <div class="lesson-wrap">
-      <iframe src="${item.src}"></iframe>
+      <div id="lesson-root"></div>
       ${renderCompleteButton(item)}
     </div>
   `;
 }
+
 
 
 if (item.type === "audio") {
@@ -431,6 +439,17 @@ window.sendFeedback = async (dir) => {
 };
 
 window.sendFinalFeedback = window.sendFeedback;
+
+async function loadLessonHTML(src) {
+  const res = await fetch(src);
+  const html = await res.text();
+
+  const root = document.getElementById("lesson-root");
+  if (!root) return;
+
+  root.innerHTML = html;
+}
+
 
 // ===============================
 // INIT
