@@ -341,24 +341,42 @@ function renderContent() {
     `;
   }
 
-  // ===============================
-  // ACTUAL LESSON
-  // ===============================
-  const item = activeVariant || activeActivity;
-  if (!item) return "";
+ // ===============================
+// ACTUAL LESSON (STARY, SPRAWDZONY MECHANIZM)
+// ===============================
+const item = activeVariant || activeActivity;
+if (!item) return "";
 
-if (item.type === "iframe") {
+if (item.type === "iframe")
   return `
-    <div class="lesson-wrap">
-      <iframe
-        src="${item.src}"
-        style="width:100%;border:0;"
-        onload="this.style.height=this.contentWindow.document.body.scrollHeight + 'px'"
-      ></iframe>
-      ${renderCompleteButton(item)}
-    </div>
+    <iframe
+      src="${item.src}"
+      width="100%"
+      height="800"
+      style="border:0;"
+    ></iframe>
+    ${renderCompleteButton(item)}
   `;
-}
+
+if (item.type === "audio")
+  return `
+    <audio controls src="${item.src}"></audio>
+    ${renderCompleteButton(item)}
+  `;
+
+if (item.type === "pdf")
+  return `
+    <iframe
+      src="${item.src}"
+      width="100%"
+      height="800"
+      style="border:0;"
+    ></iframe>
+    ${renderCompleteButton(item)}
+  `;
+
+return "";
+
 
 
 
