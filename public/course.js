@@ -342,6 +342,33 @@ if (
     </div>
   `;
 }
+// ===== VOCABULARY – STARY WIDOK (SPECJALNY) =====
+if (
+  activeActivity &&
+  activeActivity.id === "vocabulary" &&
+  activeActivity.variants?.length &&
+  !activeVariant
+) {
+  return `
+    <div>
+      <h2 style="margin-bottom:16px;">Jak wolisz się uczyć?</h2>
+
+      <div class="activities-list">
+        ${activeActivity.variants.map(v => `
+          <div
+            class="activity-item"
+            onclick="openVariant('${v.id}')"
+          >
+            <span class="activity-status ${
+              isCompleted(v.id) ? "done" : ""
+            }"></span>
+            <span class="activity-label">${v.label}</span>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
 
 
 
