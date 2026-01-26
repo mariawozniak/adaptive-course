@@ -1,29 +1,22 @@
 console.log("🔥 SERVER.JS STARTED 🔥");
+
 import express from "express";
 import OpenAI from "openai";
 import path from "path";
 import { fileURLToPath } from "url";
 import crypto from "crypto";
 import { modules } from "./data/modules.js";
-import Database from "better-sqlite3";
+import { createClient } from "@supabase/supabase-js";
 
-const db = new Database("course.db");
+// ===== SUPABASE =====
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_ANON_KEY
+);
 
-db.prepare(`
-  CREATE TABLE IF NOT EXISTS user_state (
-    user_id TEXT PRIMARY KEY,
-    level INTEGER,
-    current_module TEXT,
-    module_completed INTEGER,
-    last_activity TEXT
-  )
-`).run();
-
-
+// ===== APP =====
 const app = express();
 app.use(express.json());
-
-
 
 // ===== COOKIES =====
 app.use((req, res, next) => {
@@ -40,41 +33,34 @@ app.use((req, res, next) => {
   next();
 });
 
-// ===== USER IDENTIFICATION (PUBLIGO + COOKIE) =====
+// ===== USER IDENTIFICATION =====
 app.use((req, res, next) => {
-  // 1. jeśli mamy cookie – użyj go
   if (req.cookies.course_user) {
     req.userId = req.cookies.course_user;
     return next();
   }
 
-  // 2. jeśli przyszło z Publigo
   const publigoUid = req.query.publigo_uid;
-
   if (publigoUid) {
     const userId = `publigo_${publigoUid}`;
-
     res.setHeader(
       "Set-Cookie",
       `course_user=${userId}; Path=/; SameSite=Lax; Secure`
     );
-
     req.userId = userId;
     return next();
   }
 
-  // 3. brak usera – dalej (fallback zrobi /api/me)
   req.userId = null;
   next();
 });
-
 
 // ===== SETUP =====
 const PORT = process.env.PORT || 8080;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// ===== IN-MEMORY STORES =====
+// ===== IN-MEMORY PROGRESS =====
 const progressStore = {};
 
 // ===== HEALTH =====
@@ -95,68 +81,51 @@ app.get("/api/me", (req, res) => {
     userId = "u_" + crypto.randomUUID();
     res.setHeader(
       "Set-Cookie",
-`course_user=${userId}; Path=/; SameSite=Lax; Secure`
+      `course_user=${userId}; Path=/; SameSite=Lax; Secure`
     );
   }
 
   res.json({ userId });
 });
 
-
-
-
-
 // ===== STATE =====
-app.get("/api/state", (req, res) => {
+app.get("/api/state", async (req, res) => {
   const userId = req.userId;
   if (!userId) return res.json({});
 
-  const row = db.prepare(`
-    SELECT level, current_module, module_completed, last_activity
-    FROM user_state WHERE user_id=?
-  `).get(userId);
+  const { data } = await supabase
+    .from("user_state")
+    .select("*")
+    .eq("user_id", userId)
+    .single();
 
-  let parsedLast = null;
-
-  if (row?.last_activity) {
-    try {
-      parsedLast = JSON.parse(row.last_activity);
-    } catch {
-      parsedLast = null;
-    }
-  }
+  if (!data) return res.json({});
 
   res.json({
-    level: Number.isInteger(row?.level) ? row.level : null,
-    currentModuleId: row?.current_module ?? parsedLast?.moduleId ?? null,
-    moduleCompleted: Boolean(row?.module_completed),
-    lastActivity: parsedLast
+    level: data.level,
+    currentModuleId: data.current_module,
+    moduleCompleted: Boolean(data.module_completed),
+    lastActivity: data.last_activity
   });
 });
 
-
-
-app.post("/api/level", (req, res) => {
+// ===== LEVEL =====
+app.post("/api/level", async (req, res) => {
   const userId = req.userId;
   const level = Number(req.body?.level);
 
   if (!userId) return res.status(401).json({ error: "No user" });
-  if (![1,2,3,4,5].includes(level)) {
+  if (![1, 2, 3, 4, 5].includes(level)) {
     return res.status(400).json({ error: "Invalid level" });
   }
 
-
-
-  db.prepare(`
-  INSERT INTO user_state (user_id, level, current_module, module_completed)
-  VALUES (?, ?, NULL, 0)
-  ON CONFLICT(user_id)
-  DO UPDATE SET
-    level=excluded.level,
-    current_module=NULL,
-    module_completed=0
-`).run(userId, level);
-
+  await supabase.from("user_state").upsert({
+    user_id: userId,
+    level,
+    current_module: null,
+    module_completed: false,
+    last_activity: null
+  });
 
   res.json({ ok: true, level });
 });
@@ -191,27 +160,29 @@ const modulesByLevel = {
   5: "module_1"
 };
 
-app.post("/api/feedback", (req, res) => {
+app.post("/api/feedback", async (req, res) => {
   const userId = req.userId;
   const dir = req.body?.dir;
 
   if (!userId) return res.status(401).json({ error: "No user" });
 
-  const row = db
-    .prepare("SELECT level FROM user_state WHERE user_id=?")
-    .get(userId);
+  const { data } = await supabase
+    .from("user_state")
+    .select("level")
+    .eq("user_id", userId)
+    .single();
 
-  if (!row?.level)
+  if (!data?.level)
     return res.status(400).json({ error: "Level not set" });
 
-  let level = row.level;
-
+  let level = data.level;
   if (dir === "harder") level = Math.min(5, level + 1);
   if (dir === "easier") level = Math.max(1, level - 1);
 
-  db.prepare(`
-    UPDATE user_state SET level=? WHERE user_id=?
-  `).run(level, userId);
+  await supabase
+    .from("user_state")
+    .update({ level })
+    .eq("user_id", userId);
 
   res.json({
     ok: true,
@@ -220,7 +191,41 @@ app.post("/api/feedback", (req, res) => {
   });
 });
 
-// ===== TRANSLATE (OPENAI) =====
+// ===== LAST ACTIVITY =====
+app.post("/api/last-activity", async (req, res) => {
+  const userId = req.userId;
+  const { moduleId, activityId, variantId } = req.body;
+
+  if (!userId) return res.status(401).json({ error: "No user" });
+
+  await supabase.from("user_state").upsert({
+    user_id: userId,
+    current_module: moduleId,
+    last_activity: { activityId, variantId },
+    module_completed: false
+  });
+
+  res.json({ ok: true });
+});
+
+// ===== MODULE COMPLETE =====
+app.post("/api/module-complete", async (req, res) => {
+  const userId = req.userId;
+  const { moduleId } = req.body;
+
+  if (!userId || !moduleId)
+    return res.status(400).json({ error: "Missing data" });
+
+  await supabase.from("user_state").upsert({
+    user_id: userId,
+    current_module: moduleId,
+    module_completed: true
+  });
+
+  res.json({ ok: true });
+});
+
+// ===== TRANSLATE =====
 app.post("/api/translate", async (req, res) => {
   try {
     const { word, sentence } = req.body;
@@ -245,103 +250,6 @@ app.post("/api/translate", async (req, res) => {
     res.status(500).json({ error: "Translate failed" });
   }
 });
-// ===== DEBUG OPENAI KEY =====
-app.get("/api/debug-key", (req, res) => {
-  res.json({
-    hasKey: Boolean(process.env.OPENAI_API_KEY),
-    keyLength: process.env.OPENAI_API_KEY
-      ? process.env.OPENAI_API_KEY.length
-      : 0,
-    keyPrefix: process.env.OPENAI_API_KEY
-      ? process.env.OPENAI_API_KEY.slice(0, 7) + "..."
-      : null
-  });
-});
-// ===== PUBLIGO WEBHOOK =====
-app.post("/api/publigo-webhook", (req, res) => {
-  console.log("📩 PUBLIGO WEBHOOK RECEIVED");
-  console.log(JSON.stringify(req.body, null, 2));
-
-  const data = req.body;
-
-  // PRZYKŁADOWE POLA (zabezpieczenie)
-  const publigoUserId =
-    data?.customer?.user_id ||
-    data?.customer?.id ||
-    data?.user_id ||
-    null;
-
-  const email =
-    data?.customer?.email ||
-    data?.email ||
-    null;
-
-  const productId =
-    data?.product?.id ||
-    data?.product_id ||
-    null;
-
-  if (!publigoUserId) {
-    console.log("❌ Brak publigo user_id");
-    return res.status(200).json({ ok: false });
-  }
-
-  const internalUserId = `publigo_${publigoUserId}`;
-
-  // zapisz mapowanie usera (na razie w pamięci)
-
-  console.log("✅ User mapped:", internalUserId);
-
-  res.status(200).json({ ok: true });
-});
-app.post("/api/last-activity", (req, res) => {
-  const userId = req.userId;
-  const { moduleId, activityId, variantId } = req.body;
-
-  if (!userId) return res.status(401).json({ error: "No user" });
-
-  const lastActivity = {
-    moduleId,
-    activityId,
-    variantId: variantId || null
-  };
-
-
-  db.prepare(`
-    INSERT INTO user_state (user_id, current_module, last_activity, module_completed)
-    VALUES (?, ?, ?, 0)
-    ON CONFLICT(user_id)
-    DO UPDATE SET
-      current_module=excluded.current_module,
-      last_activity=excluded.last_activity,
-      module_completed=0
-  `).run(
-    userId,
-    moduleId,
-    JSON.stringify(lastActivity)
-  );
-
-  res.json({ ok: true });
-});
-
-app.post("/api/module-complete", (req, res) => {
-  const userId = req.userId;
-  const { moduleId } = req.body;
-
-  if (!userId || !moduleId)
-    return res.status(400).json({ error: "Missing data" });
-
-  db.prepare(`
-    INSERT INTO user_state (user_id, current_module, module_completed)
-    VALUES (?, ?, 1)
-    ON CONFLICT(user_id)
-    DO UPDATE SET
-      current_module=excluded.current_module,
-      module_completed=1
-  `).run(userId, moduleId);
-
-  res.json({ ok: true });
-});
 
 // ===== STATIC =====
 app.use(express.static(path.join(__dirname, "public")));
@@ -356,18 +264,3 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
