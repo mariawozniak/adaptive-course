@@ -334,7 +334,7 @@ if (
 ) {
   return `
     <div class="activities-list">
-      ${activeActivity.variants.map(v => `
+activeActivity.variants.map((v, index) => `
         <div
           class="activity-item"
           onclick="openVariant('${v.id}')"
