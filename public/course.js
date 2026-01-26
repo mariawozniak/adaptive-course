@@ -92,6 +92,13 @@ function isModuleCompleted() {
 // ===============================
 // UI HELPERS
 // ===============================
+function getVariantDisplayName(activity, index) {
+  if (activity.id === "listening") {
+    return `Ćwiczenie ${index + 1}`;
+  }
+  return activity.variants[index].label;
+}
+
 function shouldRenderCheckbox(item) {
   return item?.completion === "manual";
 }
