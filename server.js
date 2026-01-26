@@ -5,6 +5,20 @@ import path from "path";
 import { fileURLToPath } from "url";
 import crypto from "crypto";
 import { modules } from "./data/modules.js";
+import Database from "better-sqlite3";
+
+const db = new Database("course.db");
+
+db.prepare(`
+  CREATE TABLE IF NOT EXISTS user_state (
+    user_id TEXT PRIMARY KEY,
+    level INTEGER,
+    current_module TEXT,
+    module_completed INTEGER,
+    last_activity TEXT
+  )
+`).run();
+
 
 const app = express();
 app.use(express.json());
@@ -62,7 +76,6 @@ const __dirname = path.dirname(__filename);
 
 // ===== IN-MEMORY STORES =====
 const progressStore = {};
-const userStateStore = {};
 
 // ===== HEALTH =====
 app.get("/api/health", (req, res) => {
@@ -96,13 +109,25 @@ app.get("/api/me", (req, res) => {
 // ===== STATE =====
 app.get("/api/state", (req, res) => {
   const userId = req.userId;
-  const state = userId ? userStateStore[userId] : null;
+  if (!userId) return res.json({});
+
+  const row = db.prepare(`
+    SELECT level, current_module, module_completed, last_activity
+    FROM user_state WHERE user_id=?
+  `).get(userId);
 
   res.json({
-    level: state?.level ?? null,
-    lastActivity: state?.lastActivity ?? null
+level: Number.isInteger(row?.level) ? row.level : null,
+currentModuleId:
+  row?.current_module ??
+  (row?.last_activity ? JSON.parse(row.last_activity).moduleId : null),
+    moduleCompleted: Boolean(row?.module_completed),
+    lastActivity: row?.last_activity
+      ? JSON.parse(row.last_activity)
+      : null
   });
 });
+
 
 
 app.post("/api/level", (req, res) => {
@@ -114,8 +139,18 @@ app.post("/api/level", (req, res) => {
     return res.status(400).json({ error: "Invalid level" });
   }
 
-  userStateStore[userId] ??= {};
-  userStateStore[userId].level = level;
+
+
+  db.prepare(`
+  INSERT INTO user_state (user_id, level, current_module, module_completed)
+  VALUES (?, ?, NULL, 0)
+  ON CONFLICT(user_id)
+  DO UPDATE SET
+    level=excluded.level,
+    current_module=NULL,
+    module_completed=0
+`).run(userId, level);
+
 
   res.json({ ok: true, level });
 });
@@ -156,13 +191,21 @@ app.post("/api/feedback", (req, res) => {
 
   if (!userId) return res.status(401).json({ error: "No user" });
 
-  let level = userStateStore[userId]?.level;
-  if (!level) return res.status(400).json({ error: "Level not set" });
+  const row = db
+    .prepare("SELECT level FROM user_state WHERE user_id=?")
+    .get(userId);
+
+  if (!row?.level)
+    return res.status(400).json({ error: "Level not set" });
+
+  let level = row.level;
 
   if (dir === "harder") level = Math.min(5, level + 1);
   if (dir === "easier") level = Math.max(1, level - 1);
 
-  userStateStore[userId].level = level;
+  db.prepare(`
+    UPDATE user_state SET level=? WHERE user_id=?
+  `).run(level, userId);
 
   res.json({
     ok: true,
@@ -240,9 +283,6 @@ app.post("/api/publigo-webhook", (req, res) => {
   const internalUserId = `publigo_${publigoUserId}`;
 
   // zapisz mapowanie usera (na razie w pamięci)
-  userStateStore[internalUserId] ??= {};
-  userStateStore[internalUserId].email = email;
-  userStateStore[internalUserId].productId = productId;
 
   console.log("✅ User mapped:", internalUserId);
 
@@ -254,12 +294,45 @@ app.post("/api/last-activity", (req, res) => {
 
   if (!userId) return res.status(401).json({ error: "No user" });
 
-  userStateStore[userId] ??= {};
-  userStateStore[userId].lastActivity = {
+  const lastActivity = {
     moduleId,
     activityId,
     variantId: variantId || null
   };
+
+
+  db.prepare(`
+    INSERT INTO user_state (user_id, current_module, last_activity, module_completed)
+    VALUES (?, ?, ?, 0)
+    ON CONFLICT(user_id)
+    DO UPDATE SET
+      current_module=excluded.current_module,
+      last_activity=excluded.last_activity,
+      module_completed=0
+  `).run(
+    userId,
+    moduleId,
+    JSON.stringify(lastActivity)
+  );
+
+  res.json({ ok: true });
+});
+
+app.post("/api/module-complete", (req, res) => {
+  const userId = req.userId;
+  const { moduleId } = req.body;
+
+  if (!userId || !moduleId)
+    return res.status(400).json({ error: "Missing data" });
+
+  db.prepare(`
+    INSERT INTO user_state (user_id, current_module, module_completed)
+    VALUES (?, ?, 1)
+    ON CONFLICT(user_id)
+    DO UPDATE SET
+      current_module=excluded.current_module,
+      module_completed=1
+  `).run(userId, moduleId);
 
   res.json({ ok: true });
 });
@@ -277,6 +350,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
