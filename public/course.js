@@ -164,7 +164,7 @@ app.innerHTML = renderContent();
   app.innerHTML = `
   ${!moduleStarted ? "" : `<h1>${currentModule.title}</h1>`}
 
- ${!moduleStarted ? "" : `
+ ${moduleStarted && !activeActivity ? `
   <div class="activities-list">
     ${currentModule.activities.map(act => `
       <div
@@ -176,7 +176,8 @@ app.innerHTML = renderContent();
       </div>
     `).join("")}
   </div>
-`}
+` : ""}
+
 
 
   <div id="content">
