@@ -49,6 +49,15 @@ async function saveLevel(level) {
   currentLevel = data.level;
 }
 
+async function saveLastActivity(data) {
+  await fetch("/api/last-activity", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify(data)
+  });
+}
+
 // ===============================
 // PROGRESS HELPERS
 // ===============================
@@ -202,11 +211,23 @@ window.openActivity = (activityId) => {
   moduleStarted = true;
   activeActivity = currentModule.activities.find(a => a.id === activityId);
   activeVariant = null;
+  saveLastActivity({
+  moduleId: currentModule.id,
+  activityId,
+  variantId: null
+});
+
   render();
 };
 
 window.openVariant = (variantId) => {
   activeVariant = activeActivity.variants.find(v => v.id === variantId);
+  saveLastActivity({
+  moduleId: currentModule.id,
+  activityId: activeActivity.id,
+  variantId
+});
+
   render();
 };
 
