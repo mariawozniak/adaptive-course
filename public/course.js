@@ -439,8 +439,12 @@ if (item.type === "iframe")
 if (item.type === "audio")
   return `
     ${renderLessonHeader(item)}
-    <audio controls src="${item.src}"></audio>
+
+    <div class="lesson-audio-wrapper">
+      <audio controls src="${item.src}"></audio>
+    </div>
   `;
+
 
 if (item.type === "pdf")
   return `
