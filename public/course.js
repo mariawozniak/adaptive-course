@@ -259,7 +259,7 @@ window.markCompleted = async (lessonId) => {
   await fetch("/api/lesson-complete", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    credentials: "include",
+    credentials: "include", 
     body: JSON.stringify({
       moduleId: currentModule.id,
       lessonId
