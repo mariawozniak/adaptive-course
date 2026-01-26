@@ -283,10 +283,16 @@ if (!moduleStarted) {
 // ===============================
 // VARIANTS LIST (PO KLIKNIĘCIU AKTYWNOŚCI)
 // ===============================
-if (activeActivity && activeActivity.variants?.length && !activeVariant) {
+// ===== VARIANTS (ALE NIE VOCABULARY) =====
+if (
+  activeActivity &&
+  activeActivity.variants?.length &&
+  !activeVariant &&
+  activeActivity.id !== "vocabulary"
+) {
   return `
     <div class="activities-list">
-      ${activeActivity.variants.map((v, index) => `
+      ${activeActivity.variants.map(v => `
         <div
           class="activity-item"
           onclick="openVariant('${v.id}')"
@@ -294,14 +300,13 @@ if (activeActivity && activeActivity.variants?.length && !activeVariant) {
           <span class="activity-status ${
             isCompleted(v.id) ? "done" : ""
           }"></span>
-          <span class="activity-label">
-            Ćwiczenie ${index + 1}
-          </span>
+          <span class="activity-label">${v.label}</span>
         </div>
       `).join("")}
     </div>
   `;
 }
+
 
 
 
