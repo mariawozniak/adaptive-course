@@ -51,7 +51,8 @@ app.use((req, res, next) => {
       `course_user=${req.userId}; Path=/; SameSite=Lax`
     );
   } else {
-    req.userId = req.cookies.course_user || null;
+    req.userId = req.userId
+ || null;
   }
 
   next();
@@ -95,12 +96,12 @@ app.get("/api/me", (req, res) => {
 // ===== STATE =====
 
 app.get("/api/state", (req, res) => {
-  const userId = req.cookies.course_user;
+  const userId = req.userId;
   res.json({ level: userStateStore[userId]?.level ?? null });
 });
 
 app.post("/api/level", (req, res) => {
-  const userId = req.cookies.course_user;
+  const userId = req.userId;
   const level = Number(req.body?.level);
 
   if (!userId || !level) {
@@ -112,13 +113,13 @@ app.post("/api/level", (req, res) => {
 });
 
 app.get("/api/progress", (req, res) => {
-  const userId = req.cookies.course_user;
+  const userId = req.userId;
   res.json(progressStore[userId] || {});
 });
 
 app.post("/api/lesson-complete", (req, res) => {
   const { moduleId, lessonId } = req.body;
-  const userId = req.cookies.course_user;
+  const userId = req.userId;
 
   progressStore[userId] ??= {};
   progressStore[userId][moduleId] ??= { completedLessons: {} };
@@ -134,12 +135,12 @@ app.post("/api/feedback", (req, res) => {
 
 // ===== STATE =====
 app.get("/api/state", (req, res) => {
-  const userId = req.cookies.course_user;
+  const userId = req.userId;
   res.json({ level: userId ? userStateStore[userId]?.level ?? null : null });
 });
 
 app.post("/api/level", (req, res) => {
-  const userId = req.cookies.course_user;
+  const userId = req.userId;
   const level = Number(req.body?.level);
 
   if (!userId) return res.status(401).json({ error: "No user" });
@@ -155,12 +156,12 @@ app.post("/api/level", (req, res) => {
 
 // ===== PROGRESS =====
 app.get("/api/progress", (req, res) => {
-  const userId = req.cookies.course_user;
+  const userId = req.userId;
   res.json(userId ? progressStore[userId] || {} : {});
 });
 
 app.post("/api/lesson-complete", (req, res) => {
-  const userId = req.cookies.course_user;
+  const userId = req.userId;
   const { moduleId, lessonId } = req.body;
 
   if (!userId || !moduleId || !lessonId) {
@@ -184,7 +185,7 @@ const modulesByLevel = {
 };
 
 app.post("/api/feedback", (req, res) => {
-  const userId = req.cookies.course_user;
+  const userId = req.userId;
   const dir = req.body?.dir;
 
   if (!userId) return res.status(401).json({ error: "No user" });
@@ -255,6 +256,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
