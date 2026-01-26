@@ -196,18 +196,39 @@ function render() {
 window.goBack = () => {
   if (activeVariant) {
     activeVariant = null;
+
+    saveLastActivity({
+      moduleId: currentModule.id,
+      activityId: activeActivity.id,
+      variantId: null
+    });
+
     render();
     return;
   }
 
   if (activeActivity) {
     activeActivity = null;
+
+    saveLastActivity({
+      moduleId: currentModule.id,
+      activityId: null,
+      variantId: null
+    });
+
     render();
     return;
   }
 
   if (moduleStarted) {
     moduleStarted = false;
+
+    saveLastActivity({
+      moduleId: currentModule.id,
+      activityId: null,
+      variantId: null
+    });
+
     render();
   }
 };
