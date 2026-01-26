@@ -238,10 +238,9 @@ body {
   justify-content:center;
 }
 
-
 /* ograniczamy szerokość wszystkiego w module */
 .module-inner{
   width:100%;
   max-width:560px;
+  margin:0 auto;   /* ← TO JEST KLUCZ */
 }
-
