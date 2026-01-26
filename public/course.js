@@ -118,7 +118,9 @@ function renderCompleteButton(item) {
 }
 
 function renderFinalFeedback() {
-  if (!moduleStarted || !isModuleCompleted() || finalFeedbackShown) return "";
+  if (!moduleStarted) return "";
+  if (!isModuleCompleted()) return "";
+  if (finalFeedbackShown) return "";
 
   return `
     <div style="
@@ -170,7 +172,11 @@ function render() {
     <div id="content">
       <div class="module-inner">
 
-        ${!moduleStarted ? "" : `<h1>${currentModule.title}</h1>`}
+        ${!moduleStarted ? "" : `
+          <h1 style="margin-bottom:24px;">
+            ${currentModule.title}
+          </h1>
+        `}
 
         ${
           moduleStarted && !activeActivity
@@ -220,34 +226,51 @@ window.openVariant = (variantId) => {
    CONTENT
 =============================== */
 function renderContent() {
+
+  /* LEVEL SELECT */
   if (!currentLevel) {
     return `
       <div class="level-page">
-        <h1>Z jakiego poziomu startujemy?</h1>
+        <h1 class="level-title">Z jakiego poziomu startujemy?</h1>
         <div class="level-list">
           ${[1,2,3,4,5].map(l => `
-            <button onclick="chooseLevel(${l})">Poziom ${l}</button>
+            <button class="level-item" onclick="chooseLevel(${l})">
+              <span class="level-code">${["A0","A1","A2","B1","B2"][l-1]}</span>
+              <span class="level-desc">Poziom ${l}</span>
+            </button>
           `).join("")}
         </div>
       </div>
     `;
   }
 
+  /* MODULE HERO */
   if (!moduleStarted) {
     return `
       <div class="module-hero">
-        <img src="/assets/covers/${currentModule.id}.jpg" />
-        <h2>${currentModule.title}</h2>
-        <button onclick="startModule()">Rozpocznij moduł</button>
+        <div class="module-card">
+          <img
+            src="/assets/covers/${currentModule.id}.jpg"
+            class="module-cover"
+          />
+          <h2 class="module-title">${currentModule.title}</h2>
+          <button class="btn-primary" onclick="startModule()">
+            Rozpocznij moduł
+          </button>
+        </div>
       </div>
     `;
   }
 
+  /* VARIANTS */
   if (activeActivity?.variants?.length && !activeVariant) {
     return `
       <div class="activities-list">
         ${activeActivity.variants.map(v => `
-          <div class="activity-item" onclick="openVariant('${v.id}')">
+          <div
+            class="activity-item"
+            onclick="openVariant('${v.id}')"
+          >
             <span class="activity-status ${
               isCompleted(v.id) ? "done" : ""
             }"></span>
@@ -258,37 +281,40 @@ function renderContent() {
     `;
   }
 
+  /* ACTUAL LESSON — STARY MECHANIZM */
   const item = activeVariant || activeActivity;
   if (!item) return "";
 
+  if (item.type === "internal" && item.engine === "shadowing") {
+    window.location.href =
+      `/shadowing/index.html?module=${currentModule.id}`;
+    return "";
+  }
+
   if (item.type === "iframe") {
     return `
-      <iframe
-        src="${item.src}"
-        width="100%"
-        height="800"
-        style="border:0;"
-      ></iframe>
-      ${renderCompleteButton(item)}
+      <div class="lesson-wrap">
+        <iframe src="${item.src}"></iframe>
+        ${renderCompleteButton(item)}
+      </div>
     `;
   }
 
   if (item.type === "audio") {
     return `
-      <audio controls src="${item.src}"></audio>
-      ${renderCompleteButton(item)}
+      <div class="lesson-wrap">
+        <audio controls src="${item.src}"></audio>
+        ${renderCompleteButton(item)}
+      </div>
     `;
   }
 
   if (item.type === "pdf") {
     return `
-      <iframe
-        src="${item.src}"
-        width="100%"
-        height="800"
-        style="border:0;"
-      ></iframe>
-      ${renderCompleteButton(item)}
+      <div class="lesson-wrap">
+        <iframe src="${item.src}"></iframe>
+        ${renderCompleteButton(item)}
+      </div>
     `;
   }
 
@@ -305,6 +331,7 @@ window.markCompleted = async (lessonId) => {
     credentials: "include",
     body: JSON.stringify({ moduleId: currentModule.id, lessonId })
   });
+
   await loadProgress();
   render();
 };
@@ -326,7 +353,7 @@ window.chooseLevel = async (lvl) => {
   render();
 };
 
-window.sendFinalFeedback = window.sendFeedback = async (dir) => {
+window.sendFeedback = window.sendFinalFeedback = async (dir) => {
   const res = await fetch("/api/feedback", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
