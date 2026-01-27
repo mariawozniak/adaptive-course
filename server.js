@@ -7,8 +7,12 @@ import path from "path";
 import { fileURLToPath } from "url";
 import crypto from "crypto";
 import { modules } from "./data/modules.js";
+import { Resend } from "resend";
+
 
 const app = express();
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 app.use(express.json());
 
 // ===== COOKIES =====
@@ -252,6 +256,24 @@ app.get("/api/debug-key", (req, res) => {
   });
 });
 
+async function sendMagicLink(email, link) {
+  await resend.emails.send({
+    from: "Kurs <onboarding@resend.dev>",
+    to: email,
+    subject: "Dostęp do kursu",
+    html: `
+      <p>Cześć 👋</p>
+      <p>Kliknij w link poniżej, aby wejść do kursu:</p>
+      <p>
+        <a href="${link}">👉 Otwórz kurs</a>
+      </p>
+      <p>
+        Jeśli otwierasz kurs na nowym urządzeniu, ten link zaloguje Cię automatycznie.
+      </p>
+    `
+  });
+}
+
 // ===== PUBLIGO WEBHOOK =====
 /*
 
@@ -307,4 +329,5 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
