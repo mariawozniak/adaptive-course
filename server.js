@@ -275,46 +275,52 @@ async function sendMagicLink(email, link) {
 }
 
 // ===== PUBLIGO WEBHOOK =====
-/*
 
-app.post("/api/publigo-webhook", (req, res) => {
-  console.log("📩 PUBLIGO WEBHOOK RECEIVED");
-  console.log(JSON.stringify(req.body, null, 2));
-
-  const data = req.body;
-
-  const publigoUserId =
-    data?.customer?.user_id ||
-    data?.customer?.id ||
-    data?.user_id ||
-    null;
+app.post("/api/publigo-webhook", async (req, res) => {
+  console.log("📩 PUBLIGO WEBHOOK");
 
   const email =
-    data?.customer?.email ||
-    data?.email ||
+    req.body?.customer?.email ||
+    req.body?.email ||
     null;
 
-  const productId =
-    data?.product?.id ||
-    data?.product_id ||
-    null;
-
-  if (!publigoUserId) {
-    console.log("❌ Brak publigo user_id");
+  if (!email) {
     return res.status(200).json({ ok: false });
   }
 
-  const internalUserId = `publigo_${publigoUserId}`;
+  // 1️⃣ znajdź lub utwórz użytkownika
+  let user = db
+    .prepare("SELECT id FROM users WHERE email = ?")
+    .get(email);
 
-  userStateStore[internalUserId] ??= {};
-  userStateStore[internalUserId].email = email;
-  userStateStore[internalUserId].productId = productId;
+  if (!user) {
+    const id = "u_" + crypto.randomUUID();
+    db.prepare(`
+      INSERT INTO users (id, email)
+      VALUES (?, ?)
+    `).run(id, email);
+    user = { id };
+  }
 
-  console.log("✅ User mapped:", internalUserId);
+  // 2️⃣ generuj magic token
+  const token = crypto.randomUUID();
+
+  db.prepare(`
+    UPDATE users
+    SET login_token = ?
+    WHERE id = ?
+  `).run(token, user.id);
+
+  // 3️⃣ magic link
+  const link =
+    `https://adaptive-course-production.up.railway.app/course?token=${token}`;
+
+  // 4️⃣ wyślij maila
+  await sendMagicLink(email, link);
 
   res.status(200).json({ ok: true });
 });
-*/
+
 
 // ===== STATIC =====
 app.use(express.static(path.join(__dirname, "public")));
@@ -322,12 +328,48 @@ app.use("/data", express.static(path.join(__dirname, "data")));
 
 // ===== FRONTEND =====
 app.get("/course", (req, res) => {
+  const token = req.query.token;
+
+  if (token) {
+    const user = db.prepare(`
+      SELECT id, devices_count
+      FROM users
+      WHERE login_token = ?
+    `).get(token);
+
+    if (!user) {
+      return res.status(403).send("Nieprawidłowy link");
+    }
+
+    if (user.devices_count >= 2) {
+      return res
+        .status(403)
+        .send("Limit urządzeń został osiągnięty");
+    }
+
+    // zapisujemy cookie (NOWE urządzenie)
+    res.setHeader(
+      "Set-Cookie",
+      `course_user=${user.id}; Path=/; SameSite=Lax; Secure`
+    );
+
+    // zwiększamy licznik + kasujemy token
+    db.prepare(`
+      UPDATE users
+      SET devices_count = devices_count + 1,
+          login_token = NULL
+      WHERE id = ?
+    `).run(user.id);
+  }
+
   res.sendFile(path.join(__dirname, "public", "course.html"));
 });
+
 
 // ===== START =====
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
