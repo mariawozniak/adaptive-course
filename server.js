@@ -279,12 +279,24 @@ async function sendMagicLink(email, link) {
 app.post("/api/publigo-webhook", async (req, res) => {
   console.log("📩 PUBLIGO WEBHOOK");
 
+  // ✅ produkt (żeby widzieć, co kupiono)
+  const productId =
+    req.body?.product?.id ||
+    req.body?.product_id ||
+    null;
+
+  console.log("🧾 productId:", productId);
+
+  // ✅ email (żeby wiedzieć, na co ma iść link)
   const email =
     req.body?.customer?.email ||
     req.body?.email ||
     null;
 
+  console.log("📧 email:", email);
+
   if (!email) {
+    console.log("❌ Brak email w webhooku");
     return res.status(200).json({ ok: false });
   }
 
@@ -302,6 +314,8 @@ app.post("/api/publigo-webhook", async (req, res) => {
     user = { id };
   }
 
+  console.log("👤 userId:", user.id);
+
   // 2️⃣ generuj magic token
   const token = crypto.randomUUID();
 
@@ -315,11 +329,20 @@ app.post("/api/publigo-webhook", async (req, res) => {
   const link =
     `https://adaptive-course-production.up.railway.app/course?token=${token}`;
 
+  console.log("🔗 magic link:", link);
+
   // 4️⃣ wyślij maila
-  await sendMagicLink(email, link);
+  console.log("✉️ Wysyłam magic link na:", email);
+  try {
+    await sendMagicLink(email, link);
+    console.log("✅ Mail wysłany");
+  } catch (err) {
+    console.error("❌ Błąd wysyłki maila:", err);
+  }
 
   res.status(200).json({ ok: true });
 });
+
 
 
 // ===== STATIC =====
@@ -370,6 +393,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
