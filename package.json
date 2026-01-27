@@ -12,6 +12,6 @@
   "dependencies": {
     "express": "^4.19.2",
     "openai": "^4.0.0",
-    "@supabase/supabase-js": "^2.39.5"
+    "better-sqlite3": "^9.4.0"
   }
 }
