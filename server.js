@@ -1,5 +1,6 @@
 console.log("🔥 SERVER.JS STARTED 🔥");
 
+import { db } from "./db.js";
 import express from "express";
 import OpenAI from "openai";
 import path from "path";
@@ -58,9 +59,7 @@ const PORT = process.env.PORT || 8080;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// ===== IN-MEMORY STORES =====
-const progressStore = {};
-const userStateStore = {};
+
 
 // ===== HEALTH =====
 app.get("/api/health", (req, res) => {
@@ -74,57 +73,104 @@ app.get("/api/modules", (req, res) => {
 
 // ===== USER =====
 app.get("/api/me", (req, res) => {
-  let userId = req.userId;
+  const userId = req.cookies.course_user;
 
   if (!userId) {
-    userId = "u_" + crypto.randomUUID();
-    res.setHeader(
-      "Set-Cookie",
-      `course_user=${userId}; Path=/; SameSite=Lax; Secure`
-    );
+    return res.json({ userId: null, level: null });
   }
 
-  res.json({ userId });
+  const user = db
+    .prepare("SELECT id, level FROM users WHERE id = ?")
+    .get(userId);
+
+  if (!user) {
+    return res.json({ userId: null, level: null });
+  }
+
+  res.json({
+    userId: user.id,
+    level: user.level ?? null
+  });
 });
+
 
 // ===== STATE =====
 app.get("/api/state", (req, res) => {
-  const userId = req.userId;
-  res.json({ level: userId ? userStateStore[userId]?.level ?? null : null });
+  const userId = req.cookies.course_user;
+
+  if (!userId) {
+    return res.json({ level: null });
+  }
+
+  const user = db
+    .prepare("SELECT level FROM users WHERE id = ?")
+    .get(userId);
+
+  res.json({
+    level: user?.level ?? null
+  });
 });
 
+
 app.post("/api/level", (req, res) => {
-  const userId = req.userId;
+  const userId = req.cookies.course_user;
   const level = Number(req.body?.level);
 
-  if (!userId) return res.status(401).json({ error: "No user" });
+  if (!userId) {
+    return res.status(401).json({ error: "No user" });
+  }
+
   if (![1, 2, 3, 4, 5].includes(level)) {
     return res.status(400).json({ error: "Invalid level" });
   }
 
-  userStateStore[userId] ??= {};
-  userStateStore[userId].level = level;
+  db.prepare(`
+    UPDATE users
+    SET level = ?
+    WHERE id = ?
+  `).run(level, userId);
 
   res.json({ ok: true, level });
 });
 
+
 // ===== PROGRESS =====
 app.get("/api/progress", (req, res) => {
-  const userId = req.userId;
-  res.json(userId ? progressStore[userId] || {} : {});
+  const userId = req.cookies.course_user;
+
+  if (!userId) {
+    return res.json({});
+  }
+
+  const rows = db.prepare(`
+    SELECT module_id, lesson_id
+    FROM progress
+    WHERE user_id = ?
+  `).all(userId);
+
+  const result = {};
+
+  for (const row of rows) {
+    result[row.module_id] ??= { completedLessons: {} };
+    result[row.module_id].completedLessons[row.lesson_id] = true;
+  }
+
+  res.json(result);
 });
 
+
 app.post("/api/lesson-complete", (req, res) => {
-  const userId = req.userId;
+  const userId = req.cookies.course_user;
   const { moduleId, lessonId } = req.body;
 
   if (!userId || !moduleId || !lessonId) {
     return res.status(400).json({ ok: false });
   }
 
-  progressStore[userId] ??= {};
-  progressStore[userId][moduleId] ??= { completedLessons: {} };
-  progressStore[userId][moduleId].completedLessons[lessonId] = true;
+  db.prepare(`
+    INSERT OR IGNORE INTO progress (user_id, module_id, lesson_id)
+    VALUES (?, ?, ?)
+  `).run(userId, moduleId, lessonId);
 
   res.json({ ok: true });
 });
@@ -137,7 +183,7 @@ const modulesByLevel = {
   4: "module_1",
   5: "module_1"
 };
-
+/*
 app.post("/api/feedback", (req, res) => {
   const userId = req.userId;
   const dir = req.body?.dir;
@@ -158,7 +204,7 @@ app.post("/api/feedback", (req, res) => {
     moduleId: modulesByLevel[level]
   });
 });
-
+*/
 // ===== TRANSLATE (OPENAI) =====
 app.post("/api/translate", async (req, res) => {
   try {
@@ -207,6 +253,8 @@ app.get("/api/debug-key", (req, res) => {
 });
 
 // ===== PUBLIGO WEBHOOK =====
+/*
+
 app.post("/api/publigo-webhook", (req, res) => {
   console.log("📩 PUBLIGO WEBHOOK RECEIVED");
   console.log(JSON.stringify(req.body, null, 2));
@@ -244,6 +292,7 @@ app.post("/api/publigo-webhook", (req, res) => {
 
   res.status(200).json({ ok: true });
 });
+*/
 
 // ===== STATIC =====
 app.use(express.static(path.join(__dirname, "public")));
@@ -258,3 +307,4 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
