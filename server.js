@@ -414,11 +414,6 @@ app.post("/api/tts", async (req, res) => {
   }
 });
 
-app.post("/api/whisper", async (req, res) => {
-  try {
-    const client = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY
-    });
 
     const transcription = await client.audio.transcriptions.create({
       file: req,
@@ -652,6 +647,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
