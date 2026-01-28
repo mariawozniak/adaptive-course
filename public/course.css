@@ -437,7 +437,7 @@ body {
 
 .lesson-iframe-wrapper iframe[src*="/vocabulary/"] {
   aspect-ratio: auto;
-  height: auto;
+  height: 75svh;
   min-height: 75svh;
   background: transparent;
 }
