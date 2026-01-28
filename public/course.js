@@ -18,6 +18,8 @@ let finalFeedbackShown = false;
 const LS_VIEW_KEY = "course_view";
 
 const LS_LAST_URL_KEY = "course_last_url";
+const LS_ACTIVE_ITEM_KEY = "course_active_item";
+
 
 
 function setSavedView(view) {
@@ -234,6 +236,31 @@ function renderFinalFeedback() {
   `;
 }
 
+function saveActiveItem(data) {
+  try {
+    localStorage.setItem(
+      LS_ACTIVE_ITEM_KEY,
+      JSON.stringify(data)
+    );
+  } catch {}
+}
+
+function loadActiveItem() {
+  try {
+    const raw = localStorage.getItem(LS_ACTIVE_ITEM_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+
+function clearActiveItem() {
+  try {
+    localStorage.removeItem(LS_ACTIVE_ITEM_KEY);
+  } catch {}
+}
+
+
 // ===============================
 // RENDER
 // ===============================
@@ -266,11 +293,11 @@ window.goBack = () => {
 
 if (moduleStarted) {
   moduleStarted = false;
-
-  setSavedView("hero"); // ✅ wracamy do hero, więc to zapisujemy
-
+  clearActiveItem();
+  setSavedView("hero");
   render();
 }
+
 
 };
 
@@ -510,29 +537,64 @@ if (
 }
 
   const item = activeVariant || activeActivity;
+  if (item?.type === "iframe") {
+  return `
+    ${renderLessonHeader(item)}
+
+    <div class="lesson-iframe-wrapper">
+      <iframe
+        src="${item.src}"
+        loading="lazy"
+        allowfullscreen
+      ></iframe>
+    </div>
+  `;
+}
+
   if (!item) return "";
 
   // 👉 PRZEJŚCIE DO SHADOWINGU (OSOBNA APLIKACJA)
 if (item.type === "internal" && item.engine === "shadowing") {
-  window.location.href =
-    `/shadowing/index.html?module=${currentModule.id}`;
+  activeActivity = {
+    type: "iframe",
+    src: `/shadowing/index.html?module=${currentModule.id}`,
+    lessonId: item.id
+  };
+
+  saveActiveItem(activeActivity);
+  render();
   return "";
 }
 
+
   // 👉 AI LEKTOR (OSOBNA APLIKACJA)
 if (item.type === "internal" && item.engine === "ai-voice") {
-  window.location.href =
-    `/ai-voice/index.html?module=${currentModule.id}`;
+  activeActivity = {
+    type: "iframe",
+    src: `/ai-voice/index.html?module=${currentModule.id}`,
+    lessonId: item.id
+  };
+
+  saveActiveItem(activeActivity);
+  render();
   return "";
 }
+
 
 
   // 👉 VOCABULARY ENGINE (osobna aplikacja)
 if (item.id === "vocabulary") {
-  window.location.href =
-    `/vocabulary/index.html?module=${currentModule.id}`;
+  activeActivity = {
+    type: "iframe",
+    src: `/vocabulary/index.html?module=${currentModule.id}`,
+    lessonId: item.id
+  };
+
+  saveActiveItem(activeActivity);
+  render();
   return "";
 }
+
 
 
 if (item.type === "iframe")
@@ -681,6 +743,14 @@ async function init() {
   await ensureUser();
   await loadProgress();
   await loadState();
+  const savedItem = loadActiveItem();
+
+if (savedItem) {
+  moduleStarted = true;
+  activeActivity = savedItem;
+  activeVariant = null;
+}
+
 
   if (currentLevel) {
     const view = getSavedView();
