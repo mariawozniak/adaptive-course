@@ -668,14 +668,15 @@ async function init() {
   const lastUrl = localStorage.getItem(LS_LAST_URL_KEY);
 
   // 🔁 jeśli user był w innej części kursu — wróć tam
-  if (
-    lastUrl &&
-    !lastUrl.includes("/course") &&
-    location.pathname.startsWith("/course")
-  ) {
-    window.location.replace(lastUrl);
-    return;
-  }
+ if (
+  lastUrl &&
+  lastUrl !== window.location.href &&
+  location.pathname.startsWith("/course")
+) {
+  window.location.replace(lastUrl);
+  return;
+}
+
 
   await ensureUser();
   await loadProgress();
