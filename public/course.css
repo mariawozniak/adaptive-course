@@ -560,3 +560,12 @@ body {
     font-size: 17px;
   }
 }
+
+/* ===== MOBILE: header spacing ===== */
+@media (max-width: 600px) {
+  .page-title,
+  .page-subtitle {
+    margin-bottom: 24px;
+  }
+}
+
