@@ -556,6 +556,27 @@ document.addEventListener("click", (e) => {
   // 2️⃣ tłumaczenie (tymczasowo: console)
   translateWord(raw, currentSentence, el);
 });
+// =========================
+// AUTO HEIGHT → tylko dla shadowingu
+// =========================
+function notifyParentHeight() {
+  const h = document.documentElement.scrollHeight;
+  window.parent?.postMessage(
+    {
+      type: "shadowing-height",
+      source: "shadowing",
+      height: h
+    },
+    "*"
+  );
+}
+
+// po starcie i przy zmianach UI
+window.addEventListener("load", notifyParentHeight);
+window.addEventListener("resize", notifyParentHeight);
+
+// lekkie polling (bezpieczne)
+setInterval(notifyParentHeight, 400);
 
 
 })();
