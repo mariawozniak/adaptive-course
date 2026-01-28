@@ -176,12 +176,16 @@ function restoreFromURL() {
   moduleStarted = started;
 
   // 4) Activity
-  if (activityId && currentModule?.activities?.length) {
-    activeActivity = currentModule.activities.find(a => a.id === activityId) || null;
-    if (activeActivity) moduleStarted = true; // jak jest activity, to znaczy że jesteśmy "w module"
+if (activityId && currentModule?.activities?.length) {
+  const found = currentModule.activities.find(a => a.id === activityId);
+  if (found) {
+    activeActivity = found;
+    moduleStarted = true;
   } else {
     activeActivity = null;
   }
+}
+
 
   // 5) Variant
   if (variantId && activeActivity?.variants?.length) {
@@ -689,7 +693,9 @@ window.lessonFeedback = async (dir) => {
   finalFeedbackShown = false;
 
   window.scrollTo(0, 0);
-  render();
+  updateURL();
+render();
+
 };
 
 
@@ -708,10 +714,12 @@ async function init() {
     await loadState();
   }
 
-  // 3) po loadState możemy jeszcze raz ustawić moduł
-  if (currentLevel) {
-    setModuleForLevel(currentLevel);
-  }
+// jeśli URL NIE podał modułu, dopiero wtedy ustaw z levela
+const params = new URLSearchParams(window.location.search);
+if (currentLevel && !params.get("module")) {
+  setModuleForLevel(currentLevel);
+}
+
 
   // 4) zsynchronizuj URL (żeby zawsze był poprawny)
   updateURL();
