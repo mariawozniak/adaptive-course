@@ -31,7 +31,6 @@
   </div>
 
 <script type="module">
-import { modules } from "../../data/modules.js";
 
 /* =========================================================
    VOCAB ENGINE – KONFIGURACJA
@@ -56,12 +55,13 @@ const data = await res.json();
 const WORDS = data.words;
 
 
+
+
 /* 
   Tymczasowo:
   słówka bierzemy bezpośrednio z activity
   (następny krok: osobny JSON)
 */
-const WORDS = vocabActivity.words;
 
 /* lessonId do progressu */
 const LESSON_ID = `${MODULE_ID}__vocabulary__engine`;
