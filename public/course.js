@@ -150,6 +150,66 @@ function isModuleCompleted() {
     .filter(a => a.required)
     .every(a => isActivityCompleted(a));
 }
+function restoreFromURL() {
+  const params = new URLSearchParams(window.location.search);
+
+  const levelParam = params.get("level");
+  const moduleId = params.get("module");
+  const started = params.get("started") === "1";
+  const activityId = params.get("activity");
+  const variantId = params.get("variant");
+
+  // 1) Level
+  const level = levelParam ? Number(levelParam) : null;
+  if (level && [1,2,3,4,5].includes(level)) {
+    currentLevel = level;
+    setModuleForLevel(level);
+  }
+
+  // 2) Module (nadpisuje wybrany przez setModuleForLevel jeśli jest w URL)
+  if (moduleId) {
+    const mod = modules.find(m => m.id === moduleId);
+    if (mod) currentModule = mod;
+  }
+
+  // 3) Started
+  moduleStarted = started;
+
+  // 4) Activity
+  if (activityId && currentModule?.activities?.length) {
+    activeActivity = currentModule.activities.find(a => a.id === activityId) || null;
+    if (activeActivity) moduleStarted = true; // jak jest activity, to znaczy że jesteśmy "w module"
+  } else {
+    activeActivity = null;
+  }
+
+  // 5) Variant
+  if (variantId && activeActivity?.variants?.length) {
+    activeVariant = activeActivity.variants.find(v => v.id === variantId) || null;
+  } else {
+    activeVariant = null;
+  }
+}
+
+// ===============================
+// URL STATE (zapisywanie widoku do URL)
+// ===============================
+function updateURL() {
+  const params = new URLSearchParams();
+
+  if (currentLevel) params.set("level", String(currentLevel));
+  if (currentModule?.id) params.set("module", currentModule.id);
+  if (moduleStarted) params.set("started", "1");
+  if (activeActivity?.id) params.set("activity", activeActivity.id);
+  if (activeVariant?.id) params.set("variant", activeVariant.id);
+
+  const qs = params.toString();
+  const newUrl = qs ? `${window.location.pathname}?${qs}` : window.location.pathname;
+
+  // replaceState = zmienia URL bez dodawania historii (Back działa normalnie)
+  window.history.replaceState({}, "", newUrl);
+}
+
 
 // ===============================
 // UI HELPERS
@@ -229,33 +289,41 @@ function render() {
 window.goBack = () => {
   if (activeVariant) {
     activeVariant = null;
+    updateURL();
     render();
     return;
   }
 
   if (activeActivity) {
     activeActivity = null;
+    updateURL();
     render();
     return;
   }
 
   if (moduleStarted) {
     moduleStarted = false;
+    updateURL();
     render();
   }
 };
+
 
 window.openActivity = (activityId) => {
   moduleStarted = true;
   activeActivity = currentModule.activities.find(a => a.id === activityId);
   activeVariant = null;
+  updateURL();
   render();
 };
 
+
 window.openVariant = (variantId) => {
   activeVariant = activeActivity.variants.find(v => v.id === variantId);
+  updateURL();
   render();
 };
+
 
 function renderLessonHeader(item) {
   if (!item) return "";
@@ -573,10 +641,12 @@ window.markCompleted = async (lessonId) => {
 
 window.startModule = () => {
   moduleStarted = true;
-  activeActivity = null;   // ← KLUCZ
+  activeActivity = null;
   activeVariant = null;
+  updateURL();
   render();
 };
+
 
 window.chooseLevel = async (lvl) => {
   await saveLevel(lvl);
@@ -588,8 +658,10 @@ window.chooseLevel = async (lvl) => {
   finalFeedbackShown = false;
 
   window.scrollTo(0, 0);
+  updateURL();
   render();
 };
+
 
 window.lessonFeedback = async (dir) => {
   // dir: "easier" | "harder"
@@ -627,11 +699,28 @@ window.lessonFeedback = async (dir) => {
 async function init() {
   await ensureUser();
   await loadProgress();
-  await loadState();
+
+  // 1) najpierw spróbuj odtworzyć stan z URL
+  restoreFromURL();
+
+  // 2) jeśli URL nie miał levela, to pobierz level z serwera
+  if (!currentLevel) {
+    await loadState();
+  }
+
+  // 3) po loadState możemy jeszcze raz ustawić moduł
+  if (currentLevel) {
+    setModuleForLevel(currentLevel);
+  }
+
+  // 4) zsynchronizuj URL (żeby zawsze był poprawny)
+  updateURL();
+
   render();
 }
 
 init();
+
 
 // ===============================
 // iframe auto-height — TYLKO shadowing
