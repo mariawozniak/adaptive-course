@@ -126,16 +126,36 @@ function levelUp() {
   const i = levels.indexOf(level);
   if (i < levels.length - 1) {
     level = levels[i + 1];
-    displayMessage(`Level increased to ${level.toUpperCase()}.`, "ai");
+
+    displayMessage(
+      `Got it… we’re moving up to ${level.toUpperCase()} now. Ready?`,
+      "ai"
+    );
+  } else {
+    displayMessage(
+      "You're already at the highest level. Nice work!",
+      "ai"
+    );
   }
 }
+
 function levelDown() {
   const i = levels.indexOf(level);
   if (i > 0) {
     level = levels[i - 1];
-    displayMessage(`Level decreased to ${level.toUpperCase()}.`, "ai");
+
+    displayMessage(
+      `Alright… let’s slow things down to ${level.toUpperCase()}.`,
+      "ai"
+    );
+  } else {
+    displayMessage(
+      "This is already the easiest level. You're doing fine.",
+      "ai"
+    );
   }
 }
+
 
 /* --------------------------------------------------------
    PRZYCISK SŁUCHANIA
