@@ -7,119 +7,143 @@
   <!-- Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <!-- GAPFILL / QUIZ / MIXED – styles (1:1 z monolitu) -->
+  <!-- Styles -->
   <link rel="stylesheet" href="/listening/css/gapfill.css">
   <link rel="stylesheet" href="/listening/css/quiz.css">
   <link rel="stylesheet" href="/listening/css/mixed.css">
+
+  <style>
+    /* ===== ROTATE / START OVERLAY (MOBILE) ===== */
+    #rotateOverlay{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.9);
+      color:#fff;
+      z-index:10000;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:24px;
+    }
+    #rotateOverlay button{
+      padding:14px 28px;
+      font-size:16px;
+      font-weight:600;
+      border-radius:10px;
+      border:none;
+      cursor:pointer;
+    }
+
+    /* iOS pseudo fullscreen */
+    .ios-fullscreen{
+      position:fixed !important;
+      inset:0;
+      width:100vw !important;
+      height:100vh !important;
+      z-index:9999;
+      border-radius:0 !important;
+      background:#000;
+    }
+    @supports (height: 100dvh){
+      .ios-fullscreen{ height:100dvh !important; }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- ===================================== -->
-  <!-- 🔄 ROTATE / START OVERLAY (MOBILE) -->
-  <!-- ===================================== -->
-  <div id="rotateOverlay">
-    <div class="rotate-card">
-      <span class="material-icons rotate-icon">screen_rotation</span>
-      <div class="rotate-text">
-        Obróć telefon poziomo,<br>
-        aby wygodnie korzystać
-      </div>
-      <button id="rotateOkBtn">OK</button>
+<!-- 🔥 ROTATE / START OVERLAY -->
+<div id="rotateOverlay">
+  <div>
+    <span class="material-icons" style="font-size:64px;display:block;margin-bottom:16px;">
+      screen_rotation
+    </span>
+    <div style="font-size:18px;font-weight:600;margin-bottom:20px;">
+      Obróć telefon poziomo,<br>aby wygodnie korzystać
     </div>
+    <button id="rotateOkBtn">OK</button>
   </div>
+</div>
 
-  <!-- ===================================== -->
-  <!-- LISTENING APP -->
-  <!-- ===================================== -->
-  <div class="wrap">
+<div class="wrap">
+  <div class="player">
+    <div id="yt"></div>
 
-    <div class="player">
-      <div id="yt"></div>
+    <div id="scoreBox"></div>
 
-      <!-- SCORE -->
-      <div id="scoreBox"></div>
+    <div class="overlay" id="overlay">
+      <div class="card">
+        <div id="instruction"></div>
+        <div id="qtext"></div>
+        <div id="answers"></div>
+        <div id="explanation"></div>
 
-      <!-- QUESTION / QUIZ OVERLAY -->
-      <div class="overlay" id="overlay">
-        <div class="card">
-          <div id="instruction"></div>
-          <div id="qtext"></div>
-          <div id="answers"></div>
-          <div id="explanation"></div>
-
-          <div class="actions">
-            <span class="material-icons replay" id="replayBtn">replay</span>
-            <button id="next">Dalej ▶</button>
-          </div>
-
-          <div id="msg"></div>
+        <div class="actions">
+          <span class="material-icons replay" id="replayBtn">replay</span>
+          <button id="next">Dalej ▶</button>
         </div>
+
+        <div id="msg"></div>
       </div>
     </div>
-
   </div>
+</div>
 
-  <!-- ===================================== -->
-  <!-- CORE -->
-  <!-- ===================================== -->
-  <script src="/listening/js/core.js"></script>
+<!-- ================= CORE ================= -->
+<script src="/listening/js/core.js"></script>
 
-  <!-- ===================================== -->
-  <!-- ENGINES -->
-  <!-- ===================================== -->
-  <script src="/listening/js/gapfillEngine.js"></script>
-  <script src="/listening/js/quizEngine.js"></script>
-  <script src="/listening/js/mixedEngine.js"></script>
-  <script src="/listening/js/mixed/extraWord.js"></script>
-  <script src="/listening/js/mixed/order.js"></script>
-  <script src="/listening/js/mixed/correctWord.js"></script>
-  <script src="/listening/js/mixed/match.js"></script>
+<!-- ================= ENGINES ================= -->
+<script src="/listening/js/gapfillEngine.js"></script>
+<script src="/listening/js/quizEngine.js"></script>
+<script src="/listening/js/mixedEngine.js"></script>
+<script src="/listening/js/mixed/extraWord.js"></script>
+<script src="/listening/js/mixed/order.js"></script>
+<script src="/listening/js/mixed/correctWord.js"></script>
+<script src="/listening/js/mixed/match.js"></script>
 
-  <!-- ===================================== -->
-  <!-- 🔥 ROTATE + FULLSCREEN LOGIC (LISTENING ONLY) -->
-  <!-- ===================================== -->
-  <script>
-  (function(){
-    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    const isAndroid = /Android/i.test(navigator.userAgent);
-    const isMobile = isIOS || isAndroid;
-    if (!isMobile) return;
+<!-- ================= FULLSCREEN / ROTATE ================= -->
+<script>
+(function(){
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const isAndroid = /Android/i.test(navigator.userAgent);
+  if (!isIOS && !isAndroid) return;
 
-    const overlay = document.getElementById("rotateOverlay");
-    const okBtn = document.getElementById("rotateOkBtn");
+  const overlay = document.getElementById("rotateOverlay");
+  const okBtn = document.getElementById("rotateOkBtn");
+
+  function showOverlay(){
+    if (window.matchMedia("(orientation: portrait)").matches){
+      overlay.style.display = "flex";
+    } else {
+      overlay.style.display = "none";
+    }
+  }
+
+  okBtn.addEventListener("click", () => {
     const player = document.querySelector(".player");
+    if (!player) return;
 
-    function enterFullscreen(){
-      if (isIOS) {
-        player.classList.add("ios-fullscreen");
-        document.body.style.overflow = "hidden";
-      } else if (player.requestFullscreen) {
+    if (isIOS){
+      player.classList.add("ios-fullscreen");
+      document.body.style.overflow = "hidden";
+    } else {
+      if (player.requestFullscreen){
         player.requestFullscreen().catch(()=>{});
       }
-
-      if (screen.orientation && screen.orientation.lock) {
-        screen.orientation.lock("landscape").catch(()=>{});
-      }
     }
 
-    function updateOverlay(){
-      if (window.matchMedia("(orientation: portrait)").matches) {
-        overlay.style.display = "flex";
-      } else {
-        overlay.style.display = "none";
-      }
+    if (screen.orientation?.lock){
+      screen.orientation.lock("landscape").catch(()=>{});
     }
 
-    okBtn.addEventListener("click", () => {
-      overlay.style.display = "none";
-      enterFullscreen();
-    });
+    overlay.style.display = "none";
+  });
 
-    updateOverlay();
-    window.addEventListener("orientationchange", updateOverlay);
-  })();
-  </script>
+  showOverlay();
+  window.addEventListener("orientationchange", showOverlay);
+})();
+</script>
 
 </body>
 </html>
