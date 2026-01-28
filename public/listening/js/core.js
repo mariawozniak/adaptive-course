@@ -18,6 +18,8 @@
   let currentSegmentIndex = 0;  // global progress
   let score = 0;
   let maxScore = 0;
+  let startedOnce = false;
+
 
   // ---- helpers ----
  
@@ -187,34 +189,26 @@ function nextSegment() {
 }
 
   // ---- init ----
-  async function start() {
-    data = await loadModuleJson();
- score = 0;
-maxScore = 0;
-updateScoreBox();
+async function start() {
+  data = await loadModuleJson();
+  score = 0;
+  maxScore = 0;
+  updateScoreBox();
 
+  engine = pickEngine(mode);
+  if (!engine || typeof engine.init !== "function") {
+    throw new Error(`Engine for mode=${mode} is missing or invalid.`);
+  }
 
-    engine = pickEngine(mode);
-    if (!engine || typeof engine.init !== "function") {
-      throw new Error(`Engine for mode=${mode} is missing or invalid.`);
-    }
+  engine.init(data, CORE_API);
 
-    // init engine (render + handlers), engine dostaje CORE_API
-    engine.init(data, CORE_API);
+  await loadYouTubeIframeApi();
+  await createPlayer(data.videoId);
 
-    await loadYouTubeIframeApi();
-    await createPlayer(data.videoId);
-    
-
-    // Start: od razu odtwarzamy pierwszy segment (jak w prototypie po PLAY)
-    // Tu celowo upraszczam: startujemy automatycznie.
-    // Jeśli chcesz wymusić kliknięcie play → powiemy engine/core jak to zsynchronizować.
-// ===== START CONTROL (monolit style) =====
-const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-const isAndroid = /Android/i.test(navigator.userAgent);
-const isMobile = isIOS || isAndroid;
-
-let startedOnce = false;
+  // ===== START CONTROL (monolit style) =====
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const isAndroid = /Android/i.test(navigator.userAgent);
+  const isMobile = isIOS || isAndroid;
 
 function startFirstSegment(){
   if (startedOnce) return;
@@ -222,37 +216,30 @@ function startFirstSegment(){
   playSegment(0);
 }
 
-// core wystawia funkcję, którą odpali index.html po kliknięciu Start
-window.__LISTENING_START__ = startFirstSegment;
 
-// desktop: startujemy od razu
-if (!isMobile) {
-  startFirstSegment();
-}
-  
+  window.__LISTENING_START__ = startFirstSegment;
 
+  if (!isMobile) {
+    startFirstSegment();
+  }
+
+  // buttons
   const nextBtn = document.getElementById("next");
-if (nextBtn) {
-  nextBtn.onclick = nextSegment;
-}
+  if (nextBtn) nextBtn.onclick = nextSegment;
+
   const replayBtn = document.getElementById("replayBtn");
-if (replayBtn) {
-  replayBtn.onclick = () => {
-    // ukryj overlay
-    CORE_API.hideOverlay();
-
-    // zatrzymaj watcher
-    clearWatcher();
-
-    // cofnij wideo do początku aktualnego segmentu
-    playSegment(currentSegmentIndex);
-
-    // 🔥 poinformuj engine (mixed / quiz / gapfill)
-    if (engine && typeof engine.onReplay === "function") {
-      engine.onReplay(currentSegmentIndex);
-    }
-  };
+  if (replayBtn) {
+    replayBtn.onclick = () => {
+      CORE_API.hideOverlay();
+      clearWatcher();
+      playSegment(currentSegmentIndex);
+      if (engine && typeof engine.onReplay === "function") {
+        engine.onReplay(currentSegmentIndex);
+      }
+    };
+  }
 }
+
 
 
 
