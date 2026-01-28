@@ -17,6 +17,9 @@ let finalFeedbackShown = false;
 // "activities" = lista aktywności w module (po starcie)
 const LS_VIEW_KEY = "course_view";
 
+const LS_LAST_URL_KEY = "course_last_url";
+
+
 function setSavedView(view) {
   try {
     localStorage.setItem(LS_VIEW_KEY, view);
@@ -662,11 +665,22 @@ window.lessonFeedback = async (dir) => {
 // INIT
 // ===============================
 async function init() {
+  const lastUrl = localStorage.getItem(LS_LAST_URL_KEY);
+
+  // 🔁 jeśli user był w innej części kursu — wróć tam
+  if (
+    lastUrl &&
+    !lastUrl.includes("/course") &&
+    location.pathname.startsWith("/course")
+  ) {
+    window.location.replace(lastUrl);
+    return;
+  }
+
   await ensureUser();
   await loadProgress();
   await loadState();
 
-  // ✅ jeśli mamy level, to odtwarzamy widok (hero/activities) po refreshu
   if (currentLevel) {
     const view = getSavedView();
 
@@ -675,7 +689,6 @@ async function init() {
       activeActivity = null;
       activeVariant = null;
     } else {
-      // domyślnie hero modułu
       moduleStarted = false;
       activeActivity = null;
       activeVariant = null;
@@ -684,9 +697,6 @@ async function init() {
 
   render();
 }
-
-init();
-
 
 // ===============================
 // iframe auto-height — TYLKO shadowing
