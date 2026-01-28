@@ -760,4 +760,37 @@ body {
   }
 }
 
+/* ===================================== */
+/* 🔥 TEST – REAL FIX (NO CUT, NO GUESS) */
+/* ===================================== */
+
+@media (max-width: 600px) {
+
+  /* wrapper ma prawdziwą wysokość ekranu */
+  .lesson-iframe-wrapper:has(iframe[src*="/test"]),
+  .lesson-iframe-wrapper:has(iframe[src*="/quiz"]),
+  .lesson-iframe-wrapper:has(iframe[src*="/exercise"]),
+  .lesson-iframe-wrapper:has(iframe[src*="/exam"]) {
+
+    height: calc(100svh - 72px); /* nagłówek */
+    padding: 0;                 /* ⬅️ KLUCZ */
+    overflow: hidden;
+  }
+
+  /* iframe wypełnia wrapper i scrolluje */
+  .lesson-iframe-wrapper iframe[src*="/test"],
+  .lesson-iframe-wrapper iframe[src*="/quiz"],
+  .lesson-iframe-wrapper iframe[src*="/exercise"],
+  .lesson-iframe-wrapper iframe[src*="/exam"] {
+
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+
+    aspect-ratio: auto !important;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 0; /* opcjonalnie */
+  }
+}
 
