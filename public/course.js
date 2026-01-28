@@ -716,4 +716,5 @@ window.addEventListener("message", (e) => {
 
   iframe.style.height = e.data.height + "px";
 });
+init();
 
