@@ -1052,7 +1052,9 @@ mediaRecorder.onstop = () => {
   audioContext.close();
 
   const blob = new Blob(chunks, { type: "audio/webm" });
-  processAudio(blob);
+transcribeWhisper(blob).then(text => {
+  if (text) handleText(text);
+});
 };
 
     mediaRecorder.start();
