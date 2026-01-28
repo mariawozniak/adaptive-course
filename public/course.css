@@ -727,3 +727,24 @@ body {
   }
 }
 
+/* ===================================== */
+/* 🔥 FIX: TEST IFRAME – MOBILE HEIGHT */
+/* ===================================== */
+
+/* test / quiz / exercises iframe */
+@media (max-width: 600px) {
+  .lesson-iframe-wrapper iframe[src*="/test"],
+  .lesson-iframe-wrapper iframe[src*="/quiz"],
+  .lesson-iframe-wrapper iframe[src*="/exercise"],
+  .lesson-iframe-wrapper iframe[src*="/exam"] {
+    aspect-ratio: auto !important;
+
+    height: 75svh;          /* ⬅️ KLUCZ */
+    min-height: 75svh;
+
+    overflow-y: auto;
+    background: #fff;
+  }
+}
+
+
