@@ -432,15 +432,30 @@ body {
 }
 
 /* ===================================== */
-/* 🔥 FIX: vocabulary iframe (app, nie video) */
+/* 🔥 MOBILE: vocabulary iframe SAFE HEIGHT */
 /* ===================================== */
 
-.lesson-iframe-wrapper iframe[src*="/vocabulary/"] {
-  aspect-ratio: auto;
-  height: 75svh;
-  min-height: 75svh;
-  background: transparent;
+@media (max-width: 600px) {
+
+  .lesson-iframe-wrapper iframe[src*="/vocabulary/"] {
+    aspect-ratio: auto;
+
+    /* 
+      100svh
+      - nagłówek lekcji
+      - przyciski difficulty
+      - padding wrappera
+    */
+    height: calc(100svh - 260px);
+    max-height: calc(100svh - 260px);
+
+    width: 100%;
+    border: none;
+    background: transparent;
+  }
+
 }
+
 
 
 /* ===== LESSON DIFFICULTY FEEDBACK ===== */
