@@ -7,6 +7,12 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
 
 <style>
+
+  /* 🔒 MOBILE SAFETY: box model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Roboto', Arial, sans-serif;
   color: #222;
@@ -68,13 +74,16 @@ button:hover { opacity: 0.8; }
   position: absolute;
   background-color: rgba(0,0,0,0.85);
   color: #fff;
-  padding: 5px 10px;
+  padding: 6px 10px;
   border-radius: 6px;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   pointer-events: none;
-  white-space: nowrap;
+  max-width: calc(100vw - 20px);
+  white-space: normal;
+  word-wrap: break-word;
   z-index: 1000;
+
 }
 .translation-popup.show { opacity: 1; }
 
@@ -100,18 +109,19 @@ button:disabled { opacity: 0.5 !important; cursor: not-allowed !important; }
 
   body {
     background: #fafafa !important;
-    padding: 10px;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
   }
 
   #chatbox {
+    width: 100%;
     max-width: 100%;
-    margin: 10px auto;
+    margin: 0;
     padding: 12px;
-    border-radius: 14px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-radius: 0;
   }
+
 
   #messages {
     max-height: 60vh;
