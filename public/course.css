@@ -568,4 +568,16 @@ body {
     margin-bottom: 24px;
   }
 }
+/* ========================================= */
+/* MOBILE: hide breadcrumbs in variants menu */
+/* ========================================= */
+
+@media (max-width: 600px) {
+
+  /* menu wariantów (listening, vocabulary) */
+  .lesson-header-inner:not(:has(.lesson-checkbox)):not(:has(.lesson-difficulty))
+  .lesson-breadcrumbs {
+    display: none;
+  }
+}
 
