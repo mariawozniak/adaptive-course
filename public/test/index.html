@@ -14,11 +14,12 @@
       color: #1f2937;
     }
 
-    .page {
-      max-width: 960px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px 20px 24px;
+}
+
 
     .card {
       background: #ffffff;
@@ -150,6 +151,22 @@
       color: #f87171;
       margin: 16px 0;
     }
+
+    /* ===================================== */
+/* 🔥 IFRAME SAFE MODE (MOBILE) */
+/* ===================================== */
+
+@media (max-width: 600px) {
+  body {
+    overflow-y: auto;
+  }
+
+  .page {
+    padding-top: 16px;
+    padding-bottom: 32px; /* ⬅️ miejsce na ostatni przycisk */
+  }
+}
+
   </style>
 </head>
 
