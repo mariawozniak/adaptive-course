@@ -353,6 +353,37 @@ app.post("/api/translate", async (req, res) => {
     res.status(500).json({ error: "Translate failed" });
   }
 });
+// ===== TTS (OPENAI) =====
+app.post("/api/tts", async (req, res) => {
+  try {
+    const { text, voice, instructions } = req.body || {};
+
+    if (!text || typeof text !== "string") {
+      return res.status(400).json({ error: "Missing text" });
+    }
+
+    const client = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY
+    });
+
+    const mp3 = await client.audio.speech.create({
+      model: "gpt-4o-mini-tts",
+      voice: voice || "coral",
+      input: text,
+      instructions: instructions || undefined
+      // domyślnie zwraca mp3
+    });
+
+    const buffer = Buffer.from(await mp3.arrayBuffer());
+
+    res.setHeader("Content-Type", "audio/mpeg");
+    res.setHeader("Cache-Control", "no-store");
+    res.send(buffer);
+  } catch (err) {
+    console.error("TTS failed:", err);
+    res.status(500).json({ error: "TTS failed" });
+  }
+});
 
 // ===== DEBUG OPENAI KEY =====
 app.get("/api/debug-key", (req, res) => {
@@ -512,6 +543,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
