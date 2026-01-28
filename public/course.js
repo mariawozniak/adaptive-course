@@ -122,6 +122,7 @@ function renderLiveFeedbackBar() {
 
 
 function renderFinalFeedback() {
+  return "";
   if (!moduleStarted) return "";
   if (!isModuleCompleted()) return "";
   if (finalFeedbackShown) return "";
@@ -468,30 +469,6 @@ window.chooseLevel = async (lvl) => {
   render();
 };
 
-window.sendFeedback = async (dir) => {
-  const res = await fetch("/api/feedback", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    credentials: "include",
-    body: JSON.stringify({ dir })
-  });
-
-  const data = await res.json();
-  currentLevel = data.level;
-
-  const next = modules.find(m => m.id === data.moduleId);
-  if (next) currentModule = next;
-
-  moduleStarted = false;
-  activeActivity = null;
-  activeVariant = null;
-  progress = {};
-  finalFeedbackShown = false;
-
-  render();
-};
-
-window.sendFinalFeedback = window.sendFeedback;
 
 // ===============================
 // INIT
