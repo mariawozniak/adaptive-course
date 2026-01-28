@@ -749,21 +749,23 @@ ${emotionInstruction}
   ];
 
   // 🔥 5. Pobranie odpowiedzi AI
-  const res = await fetch("https://api.openai.com/v1/chat/completions", {
+  const res = await fetch("/api/chat", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${apiKey}`
+      "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      model: "gpt-4o",
       messages
     })
   });
 
+  if (!res.ok) {
+    throw new Error("Chat backend failed");
+  }
+
   const data = await res.json();
-  return data.choices[0].message.content;
-}
+  return data.reply;
+
 
 
 /* --------------------------------------------------------
