@@ -101,13 +101,14 @@ export const modules = [
       },
 
       /* =======================
-         AI (PLACEHOLDER)
+         AI LEKTOR
          ======================= */
       {
-        id: "ai",
-        label: "Lektor AI",
+        id: "ai-voice",
+        label: "AI Lektor",
         required: false,
-        enabled: false
+        type: "internal",
+        engine: "ai-voice"
       }
     ]
   }
