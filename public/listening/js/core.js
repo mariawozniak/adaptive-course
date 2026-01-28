@@ -34,6 +34,18 @@
     }
   }
 
+  function exitFullscreenIfAny(){
+  // normal fullscreen
+  if (document.fullscreenElement) {
+    document.exitFullscreen().catch(()=>{});
+  }
+
+  // iOS pseudo fullscreen
+  const playerEl = document.querySelector(".player");
+  if (playerEl) playerEl.classList.remove("ios-fullscreen");
+  document.body.style.overflow = "";
+}
+
   // ---- CORE API for engines ----
   const CORE_API = {
     playSegment(index) {
@@ -59,6 +71,9 @@
       // Docelowo: ekran końcowy + restart itp.
       clearWatcher();
       if (player) player.pauseVideo();
+
+        exitFullscreenIfAny(); // 🔥 auto-exit fullscreen
+
       const endOverlay = document.getElementById("endOverlay");
       const finalScoreEnd = document.getElementById("finalScoreEnd");
       if (finalScoreEnd) finalScoreEnd.textContent = `${score} / ${maxScore}`;
@@ -194,8 +209,27 @@ updateScoreBox();
     // Start: od razu odtwarzamy pierwszy segment (jak w prototypie po PLAY)
     // Tu celowo upraszczam: startujemy automatycznie.
     // Jeśli chcesz wymusić kliknięcie play → powiemy engine/core jak to zsynchronizować.
-    playSegment(0);
-  }
+// ===== START CONTROL (monolit style) =====
+const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+const isAndroid = /Android/i.test(navigator.userAgent);
+const isMobile = isIOS || isAndroid;
+
+let startedOnce = false;
+
+function startFirstSegment(){
+  if (startedOnce) return;
+  startedOnce = true;
+  playSegment(0);
+}
+
+// core wystawia funkcję, którą odpali index.html po kliknięciu Start
+window.__LISTENING_START__ = startFirstSegment;
+
+// desktop: startujemy od razu
+if (!isMobile) {
+  startFirstSegment();
+}
+  
 
   const nextBtn = document.getElementById("next");
 if (nextBtn) {
