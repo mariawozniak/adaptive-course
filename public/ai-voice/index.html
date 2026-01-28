@@ -9,65 +9,62 @@
 <style>
 
 /* =========================================================
-   RESET + MOBILE SAFETY
+   RESET
 ========================================================= */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 html, body {
-  height: 100%;
-}
-
-body {
   margin: 0;
   padding: 0;
+}
 
+/* =========================================================
+   BODY
+========================================================= */
+body {
   font-family: 'Roboto', Arial, sans-serif;
   color: #222;
   background: #fafafa;
 
-  display: flex;
-  flex-direction: column;
-  min-height: 100svh; /* 🔥 realna wysokość mobile */
+  min-height: 100svh;
   overflow-x: hidden;
 }
 
 /* =========================================================
-   CHATBOX – GŁÓWNY KONTENER
+   CHATBOX
 ========================================================= */
 #chatbox {
   width: 100%;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 24px auto;
 
-  flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 12px;
 
-  padding: 14px;
+  padding: 16px;
   background: #ffffff;
 
   border: 1px solid #ddd;
-  border-radius: 0;
+  border-radius: 16px;
 }
 
 /* =========================================================
-   WIADOMOŚCI
+   MESSAGES
 ========================================================= */
 #messages {
-  flex: 1;
+  max-height: 60vh;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
-  margin-bottom: 12px;
   font-size: 18px;
   line-height: 1.6;
 }
 
 .message {
   margin: 8px 0;
-  max-width: 100%;
   word-wrap: break-word;
 }
 
@@ -82,12 +79,11 @@ body {
 }
 
 /* =========================================================
-   PRZYCISKI
+   BUTTONS – BASE
 ========================================================= */
 button {
   padding: 14px 18px;
   font-size: 16px;
-  margin: 6px;
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -103,38 +99,34 @@ button:disabled {
   cursor: not-allowed;
 }
 
+/* =========================================================
+   PRIMARY BUTTONS
+========================================================= */
 .speak-button {
   background: #ffffff;
   border: 2px solid #333;
   color: #333;
 }
 
-.level-up-button {
-  background: #F4A300;
-}
-
-.level-down-button {
-  background: #A3D9A5;
-}
-
-.toggle-errors-button {
-  background: #8FB2F4;
+#speakBtn {
+  width: 100%;
+  font-size: 18px;
+  padding: 16px;
 }
 
 /* =========================================================
-   BUTTON CONTAINER
+   SECONDARY BUTTONS
 ========================================================= */
-.button-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
+.level-up-button {
+  background: #f4a300;
 }
 
-#speakBtn {
-  flex: 1 1 100%;
-  font-size: 18px;
-  padding: 16px;
+.level-down-button {
+  background: #a3d9a5;
+}
+
+.toggle-errors-button {
+  background: #8fb2f4;
 }
 
 #playAnswerBtn {
@@ -145,23 +137,33 @@ button:disabled {
 }
 
 /* =========================================================
+   BUTTON GROUP
+========================================================= */
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+/* =========================================================
    LISTENING STATE
 ========================================================= */
 #speakBtn.listening {
-  background-color: #d9534f;
-  color: white;
-  border: 2px solid #d9534f;
+  background: #d9534f;
+  color: #fff;
+  border-color: #d9534f;
   animation: pulse 1.2s infinite;
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(217,83,79,0.6); }
-  70% { box-shadow: 0 0 0 10px rgba(217,83,79,0); }
+  0%   { box-shadow: 0 0 0 0 rgba(217,83,79,0.6); }
+  70%  { box-shadow: 0 0 0 10px rgba(217,83,79,0); }
   100% { box-shadow: 0 0 0 0 rgba(217,83,79,0); }
 }
 
 /* =========================================================
-   TRANSLATABLE WORDS + POPUP
+   TRANSLATION
 ========================================================= */
 .translatable-word {
   cursor: pointer;
@@ -179,7 +181,6 @@ button:disabled {
   border-radius: 6px;
 
   max-width: calc(100vw - 20px);
-  white-space: normal;
   word-wrap: break-word;
 
   opacity: 0;
@@ -193,13 +194,25 @@ button:disabled {
 }
 
 /* =========================================================
+   BOTTOM SETTINGS
+========================================================= */
+#bottomSettings {
+  text-align: center;
+  margin: 16px 0;
+}
+
+#settingsBtnBottom {
+  padding: 10px 16px;
+  border-radius: 999px;
+}
+
+/* =========================================================
    SETTINGS PANEL
 ========================================================= */
 #settingsPanel {
   max-width: 600px;
   margin: 10px auto;
   padding: 10px;
-  text-align: left;
 }
 
 .setting-group {
@@ -207,7 +220,6 @@ button:disabled {
 }
 
 .setting-option {
-  margin: 5px 5px 0 0;
   padding: 8px 12px;
   border-radius: 8px;
   border: 1px solid #ccc;
@@ -217,20 +229,28 @@ button:disabled {
 
 .setting-option.active {
   background: #2563eb;
-  color: white;
+  color: #fff;
   border-color: #2563eb;
 }
 
 /* =========================================================
-   BOTTOM SETTINGS BUTTON
+   MOBILE
 ========================================================= */
-#bottomSettings {
-  text-align: center;
-  padding: 10px;
+@media (max-width: 600px) {
+  #chatbox {
+    margin: 0 auto;
+    border-radius: 0;
+    min-height: 100svh;
+  }
+
+  #messages {
+    max-height: 55vh;
+    font-size: 17px;
+  }
 }
 
 /* =========================================================
-   SAFE AREA – iOS NOTCH / HOME BAR
+   SAFE AREA (iOS)
 ========================================================= */
 @supports (padding: env(safe-area-inset-bottom)) {
   body {
@@ -238,10 +258,9 @@ button:disabled {
   }
 
   #chatbox {
-    padding-bottom: calc(14px + env(safe-area-inset-bottom));
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
   }
 }
-
 
 </style>
 </head>
