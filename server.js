@@ -353,6 +353,35 @@ app.post("/api/translate", async (req, res) => {
     res.status(500).json({ error: "Translate failed" });
   }
 });
+
+// ===== CHAT (OPENAI) =====
+app.post("/api/chat", async (req, res) => {
+  try {
+    const { messages } = req.body || {};
+
+    if (!Array.isArray(messages)) {
+      return res.status(400).json({ error: "Invalid messages" });
+    }
+
+    const client = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY
+    });
+
+    const completion = await client.chat.completions.create({
+      model: "gpt-4o",
+      messages,
+      temperature: 0.7
+    });
+
+    res.json({
+      reply: completion.choices[0].message.content
+    });
+  } catch (err) {
+    console.error("CHAT failed:", err);
+    res.status(500).json({ error: "Chat failed" });
+  }
+});
+
 // ===== TTS (OPENAI) =====
 app.post("/api/tts", async (req, res) => {
   try {
@@ -543,6 +572,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
