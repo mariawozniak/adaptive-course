@@ -37,11 +37,8 @@
 ========================================================= */
 
 const params = new URLSearchParams(window.location.search);
-const MODULE_ID = params.get("module");
+const MODULE_ID = params.get("module") || "module_1";
 
-if (!MODULE_ID) {
-  document.body.innerHTML = "Brak moduleId w URL";
-  throw new Error("Missing moduleId");
 }
 
 const res = await fetch(`/data/vocabulary/${MODULE_ID}.json`);
