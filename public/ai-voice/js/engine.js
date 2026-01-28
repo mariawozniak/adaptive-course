@@ -888,9 +888,24 @@ if (now - lastSoundTime > 3000) {
 --------------------------------------------------------- */
 function toggleErrorCorrection() {
   correctErrors = !correctErrors;
-  document.getElementById("toggleErrorsButton").textContent =
-correctErrors ? "✏️ Nie poprawiaj" : "Poprawiaj błędy";
+
+  const btn = document.getElementById("toggleErrorsButton");
+
+  btn.textContent = correctErrors
+    ? "✏️ Nie poprawiaj"
+    : "Poprawiaj błędy";
+
+  btn.style.background = correctErrors ? "#22c55e" : "#8fb2f4";
+  btn.style.color = "#111";
+
+  displayMessage(
+    correctErrors
+      ? "Okay, I’ll correct your mistakes as you speak."
+      : "Alright, I won’t correct mistakes now.",
+    "ai"
+  );
 }
+
 
 /* --------------------------------------------------------
    START
