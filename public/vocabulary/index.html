@@ -44,7 +44,7 @@ if (!MODULE_ID) {
   throw new Error("Missing moduleId");
 }
 
-const res = await fetch(`../data/vocabulary/${MODULE_ID}.json`);
+const res = await fetch(`/data/vocabulary/${MODULE_ID}.json`);
 
 if (!res.ok) {
   document.body.innerHTML = "Nie znaleziono danych słówek";
