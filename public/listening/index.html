@@ -97,6 +97,16 @@
 
   </div>
 
+    <!-- ✅ ZAPIS OSTATNIEJ STRONY -->
+  <script>
+    try {
+      localStorage.setItem(
+        "course_last_url",
+        window.location.href
+      );
+    } catch {}
+  </script>
+
   <!-- ================= CORE ================= -->
   <script src="/listening/js/core.js"></script>
 
