@@ -1,13 +1,39 @@
 (async function () {
 
+  const params = new URLSearchParams(window.location.search);
+const moduleId = params.get("module") || "module_1";
+
+
   /* =======================
      ŁADOWANIE DANYCH MODUŁU
      ======================= */
-const MODULE_PATH = "/data/vocabulary/module_1.json";
+const MODULE_PATH = `/data/vocabulary/${moduleId}.json`;
 
 const response = await fetch(MODULE_PATH);
 const moduleData = await response.json();
-const words = moduleData.words;
+const words = moduleData.words.map((w, index) => ({
+  ...w,
+  _id: `${moduleId}_${index}`
+}));
+/* =======================
+   STATUSY Z BACKENDU
+   ======================= */
+
+let vocabStatuses = {};
+
+try {
+  const res = await fetch(`/api/vocab/status?moduleId=${moduleId}`, {
+    credentials: "include"
+  });
+
+  const data = await res.json();
+
+  if (data.ok) {
+    vocabStatuses = data.statuses || {};
+  }
+} catch (e) {
+  console.warn("Nie udało się pobrać statusów vocabulary", e);
+}
 
 
   /* =======================
@@ -20,6 +46,29 @@ const words = moduleData.words;
     }
     return array;
   }
+function buildInitialQueue(words, statuses) {
+  const learning = [];
+  const fresh = [];
+  const known = [];
+
+  for (const w of words) {
+    const status = statuses[w._id];
+
+    if (status === "learning") {
+      learning.push(w);
+    } else if (status === "known") {
+      known.push(w);
+    } else {
+      fresh.push(w); // brak statusu = nowe
+    }
+  }
+
+  return [
+    ...shuffleArray(learning),
+    ...shuffleArray(fresh),
+    ...shuffleArray(known)
+  ];
+}
 
   const KEY_FLASH = "flashcards-queue-m1";
   const KEY_PRACTICE = "practice-queue-m1";
@@ -35,6 +84,7 @@ const words = moduleData.words;
   /* =======================
      KOLEJKI (LOCALSTORAGE)
      ======================= */
+  /*
   let savedFlash = localStorage.getItem(KEY_FLASH);
   if (savedFlash) {
     try { queueFlashcards = JSON.parse(savedFlash); }
@@ -49,7 +99,14 @@ const words = moduleData.words;
     catch { queuePractice = shuffleArray([...words]); }
   } else {
     queuePractice = shuffleArray([...words]);
-  }
+  } 
+  */
+
+  queueFlashcards = buildInitialQueue(words, vocabStatuses);
+
+// practice na razie zostawiamy prosto
+queuePractice = shuffleArray([...words]);
+
 
   function saveFlashcards() {
     localStorage.setItem(KEY_FLASH, JSON.stringify(queueFlashcards));
