@@ -746,5 +746,18 @@ body {
   }
 }
 
+/* ===================================== */
+/* 🔥 FIX: TEST IFRAME – DO NOT CUT BOTTOM */
+/* ===================================== */
+
+@media (max-width: 600px) {
+  /* pozwalamy testowi scrollować się W RAMCE */
+  .lesson-iframe-wrapper:has(iframe[src*="/test"]),
+  .lesson-iframe-wrapper:has(iframe[src*="/quiz"]),
+  .lesson-iframe-wrapper:has(iframe[src*="/exercise"]),
+  .lesson-iframe-wrapper:has(iframe[src*="/exam"]) {
+    overflow: visible; /* ⬅️ KLUCZ */
+  }
+}
 
 
