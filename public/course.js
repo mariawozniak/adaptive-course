@@ -368,25 +368,29 @@ function renderLessonHeader(item) {
 </label>
         ` : ""}
 
-        <!-- ⬇⬇⬇ TO JEST TEN KROK 1.5 ⬇⬇⬇ -->
-        <div class="lesson-difficulty">
-          <button
-            class="lesson-diff-btn"
-            onclick="lessonFeedback('easier')"
-          >
-            Za trudne
-          </button>
 
-          <button
-            class="lesson-diff-btn"
-            onclick="lessonFeedback('harder')"
-          >
-            Za łatwe
-          </button>
-        </div>
-        <!-- ⬆⬆⬆ KONIEC KROKU 1.5 ⬆⬆⬆ -->
 
       </div>
+    </div>
+  `;
+}
+
+function renderLessonDifficultyBottom() {
+  return `
+    <div class="lesson-difficulty-bottom">
+      <button
+        class="lesson-diff-btn"
+        onclick="lessonFeedback('easier')"
+      >
+        Za trudne
+      </button>
+
+      <button
+        class="lesson-diff-btn"
+        onclick="lessonFeedback('harder')"
+      >
+        Za łatwe
+      </button>
     </div>
   `;
 }
@@ -587,22 +591,9 @@ if (item.type === "iframe")
       ></iframe>
     </div>
 
-    <div class="lesson-difficulty lesson-difficulty-mobile">
-      <button
-        class="lesson-diff-btn"
-        onclick="lessonFeedback('easier')"
-      >
-        Za trudne
-      </button>
-
-      <button
-        class="lesson-diff-btn"
-        onclick="lessonFeedback('harder')"
-      >
-        Za łatwe
-      </button>
-    </div>
+    ${renderLessonDifficultyBottom()}
   `;
+
 
 
 if (item.type === "audio")
@@ -610,20 +601,27 @@ if (item.type === "audio")
     ${renderLessonHeader(item)}
 
     <div class="lesson-audio-wrapper">
-<audio
-  controls
-  controlsList="nodownload"
-  preload="metadata"
-  src="${item.src}"
-></audio>
+      <audio
+        controls
+        controlsList="nodownload"
+        preload="metadata"
+        src="${item.src}"
+      ></audio>
     </div>
+
+    ${renderLessonDifficultyBottom()}
   `;
+
 
 if (item.type === "pdf")
   return `
     ${renderLessonHeader(item)}
+
     <iframe src="${item.src}" width="100%" height="800"></iframe>
+
+    ${renderLessonDifficultyBottom()}
   `;
+
 
 }
 
