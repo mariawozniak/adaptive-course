@@ -406,6 +406,14 @@ if (item.type === "internal" && item.engine === "shadowing") {
   return "";
 }
 
+  // 👉 VOCABULARY ENGINE (osobna aplikacja)
+if (item.id === "vocabulary") {
+  window.location.href =
+    `/vocabulary/index.html?module=${currentModule.id}`;
+  return "";
+}
+
+
 if (item.type === "iframe")
   return `
     ${renderLessonHeader(item)}
@@ -436,13 +444,6 @@ if (item.type === "pdf")
     <iframe src="${item.src}" width="100%" height="800"></iframe>
   `;
 
-}
-
-// 👉 VOCABULARY ENGINE (osobna aplikacja)
-if (item.id === "vocabulary") {
-  window.location.href =
-    `/vocabulary/index.html?module=${currentModule.id}`;
-  return "";
 }
 
 // ===============================
