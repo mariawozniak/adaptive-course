@@ -1081,3 +1081,10 @@ function resetListeningState() {
   resetButton();
 }
 
+// =====================================
+// 🔥 EXPOSE FUNCTIONS FOR INLINE HTML
+// =====================================
+
+window.levelUp = levelUp;
+window.levelDown = levelDown;
+window.toggleErrorCorrection = toggleErrorCorrection;
