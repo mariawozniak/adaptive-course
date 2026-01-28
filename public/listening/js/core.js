@@ -18,8 +18,6 @@
   let currentSegmentIndex = 0;  // global progress
   let score = 0;
   let maxScore = 0;
-  let startedOnce = false;
-
 
   // ---- helpers ----
  
@@ -35,18 +33,6 @@
       watcher = null;
     }
   }
-
-  function exitFullscreenIfAny(){
-  // normal fullscreen
-  if (document.fullscreenElement) {
-    document.exitFullscreen().catch(()=>{});
-  }
-
-  // iOS pseudo fullscreen
-  const playerEl = document.querySelector(".player");
-  if (playerEl) playerEl.classList.remove("ios-fullscreen");
-  document.body.style.overflow = "";
-}
 
   // ---- CORE API for engines ----
   const CORE_API = {
@@ -73,9 +59,6 @@
       // Docelowo: ekran końcowy + restart itp.
       clearWatcher();
       if (player) player.pauseVideo();
-
-        exitFullscreenIfAny(); // 🔥 auto-exit fullscreen
-
       const endOverlay = document.getElementById("endOverlay");
       const finalScoreEnd = document.getElementById("finalScoreEnd");
       if (finalScoreEnd) finalScoreEnd.textContent = `${score} / ${maxScore}`;
@@ -155,15 +138,12 @@ const path = `/data/listening/${moduleName}.${mode}.json`;
           events: {
             onReady: () => resolve(player),
  onStateChange: (event) => {
-if (event.data === YT.PlayerState.ENDED) {
-  if (
-    startedOnce &&
-    currentSegmentIndex >= data.segments.length - 1
-  ) {
-    CORE_API.finishExercise();
+  if (event.data === YT.PlayerState.ENDED) {
+    // 🔒 tylko jeśli to naprawdę OSTATNI segment
+    if (currentSegmentIndex >= data.segments.length - 1) {
+      CORE_API.finishExercise();
+    }
   }
-}
-
 }
 
           }
@@ -192,57 +172,53 @@ function nextSegment() {
 }
 
   // ---- init ----
-async function start() {
-  data = await loadModuleJson();
-  score = 0;
-  maxScore = 0;
-  updateScoreBox();
+  async function start() {
+    data = await loadModuleJson();
+ score = 0;
+maxScore = 0;
+updateScoreBox();
 
-  engine = pickEngine(mode);
-  if (!engine || typeof engine.init !== "function") {
-    throw new Error(`Engine for mode=${mode} is missing or invalid.`);
+
+    engine = pickEngine(mode);
+    if (!engine || typeof engine.init !== "function") {
+      throw new Error(`Engine for mode=${mode} is missing or invalid.`);
+    }
+
+    // init engine (render + handlers), engine dostaje CORE_API
+    engine.init(data, CORE_API);
+
+    await loadYouTubeIframeApi();
+    await createPlayer(data.videoId);
+    
+
+    // Start: od razu odtwarzamy pierwszy segment (jak w prototypie po PLAY)
+    // Tu celowo upraszczam: startujemy automatycznie.
+    // Jeśli chcesz wymusić kliknięcie play → powiemy engine/core jak to zsynchronizować.
+    playSegment(0);
   }
 
-  engine.init(data, CORE_API);
-
-  await loadYouTubeIframeApi();
-  await createPlayer(data.videoId);
-
-  // ===== START CONTROL (monolit style) =====
-  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  const isAndroid = /Android/i.test(navigator.userAgent);
-  const isMobile = isIOS || isAndroid;
-
-function startFirstSegment(){
-  if (startedOnce) return;
-  startedOnce = true;
-  playSegment(0);
-}
-
-
-  window.__LISTENING_START__ = startFirstSegment;
-
-  if (!isMobile) {
-    startFirstSegment();
-  }
-
-  // buttons
   const nextBtn = document.getElementById("next");
-  if (nextBtn) nextBtn.onclick = nextSegment;
-
-  const replayBtn = document.getElementById("replayBtn");
-  if (replayBtn) {
-    replayBtn.onclick = () => {
-      CORE_API.hideOverlay();
-      clearWatcher();
-      playSegment(currentSegmentIndex);
-      if (engine && typeof engine.onReplay === "function") {
-        engine.onReplay(currentSegmentIndex);
-      }
-    };
-  }
+if (nextBtn) {
+  nextBtn.onclick = nextSegment;
 }
+  const replayBtn = document.getElementById("replayBtn");
+if (replayBtn) {
+  replayBtn.onclick = () => {
+    // ukryj overlay
+    CORE_API.hideOverlay();
 
+    // zatrzymaj watcher
+    clearWatcher();
+
+    // cofnij wideo do początku aktualnego segmentu
+    playSegment(currentSegmentIndex);
+
+    // 🔥 poinformuj engine (mixed / quiz / gapfill)
+    if (engine && typeof engine.onReplay === "function") {
+      engine.onReplay(currentSegmentIndex);
+    }
+  };
+}
 
 
 
