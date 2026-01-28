@@ -728,23 +728,23 @@ body {
 }
 
 /* ===================================== */
-/* 🔥 FIX: TEST IFRAME – MOBILE HEIGHT */
+/* 🔥 SHADOWING – MOBILE PERFECT FIT */
 /* ===================================== */
 
-/* test / quiz / exercises iframe */
 @media (max-width: 600px) {
-  .lesson-iframe-wrapper iframe[src*="/test"],
-  .lesson-iframe-wrapper iframe[src*="/quiz"],
-  .lesson-iframe-wrapper iframe[src*="/exercise"],
-  .lesson-iframe-wrapper iframe[src*="/exam"] {
+  .lesson-iframe-wrapper iframe[src*="/shadowing/"] {
     aspect-ratio: auto !important;
 
-    height: 75svh;          /* ⬅️ KLUCZ */
-    min-height: 75svh;
+    /* pełna wysokość ekranu
+       minus nagłówek lekcji */
+    height: calc(100svh - 72px);
+    min-height: calc(100svh - 72px);
+    max-height: calc(100svh - 72px);
 
-    overflow-y: auto;
-    background: #fff;
+    overflow: hidden;
+    background: transparent;
   }
 }
+
 
 
