@@ -262,6 +262,43 @@ button:disabled {
   }
 }
 
+  /* =========================================================
+   MOBILE FIX — TOUCH + BUTTONS (CRITICAL)
+========================================================= */
+
+/* Zapobiega przechwytywaniu dotyku przez Speak */
+#speakBtn {
+  touch-action: manipulation;
+  position: relative;
+  z-index: 2;
+}
+
+/* Wszystkie przyciski MUSZĄ być klikalne */
+.button-container {
+  pointer-events: auto;
+  position: relative;
+  z-index: 3;
+}
+
+.button-container button {
+  pointer-events: auto;
+  position: relative;
+  z-index: 3;
+}
+
+/* Gdy Speak jest w stanie "listening", NIE BLOKUJEMY innych */
+#speakBtn.listening {
+  pointer-events: auto;
+}
+
+/* Panel ustawień też zabezpieczamy */
+#settingsPanel,
+#bottomSettings {
+  position: relative;
+  z-index: 4;
+}
+
+
 </style>
 </head>
 
