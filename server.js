@@ -414,15 +414,6 @@ app.post("/api/tts", async (req, res) => {
   }
 });
 
-
-    const transcription = await client.audio.transcriptions.create({
-      file: req,
-      model: "whisper-1",
-      language: "en"
-    });
-
-    let text = transcription.text?.trim() || "";
-
     // ---- FILTR ŚMIECI ----
     const falsePositives = [
       "thank you",
@@ -647,6 +638,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
