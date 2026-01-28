@@ -7,20 +7,31 @@
   <!-- Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <!-- GAPFILL THEME (1:1 z monolitu) -->
-<link rel="stylesheet" href="/listening/css/gapfill.css">
-
+  <!-- GAPFILL / QUIZ / MIXED – styles (1:1 z monolitu) -->
+  <link rel="stylesheet" href="/listening/css/gapfill.css">
   <link rel="stylesheet" href="/listening/css/quiz.css">
-
   <link rel="stylesheet" href="/listening/css/mixed.css">
-
-
-
-  <!-- SHELL / APP STYLES -->
- 
 </head>
 
 <body>
+
+  <!-- ===================================== -->
+  <!-- 🔄 ROTATE / START OVERLAY (MOBILE) -->
+  <!-- ===================================== -->
+  <div id="rotateOverlay">
+    <div class="rotate-card">
+      <span class="material-icons rotate-icon">screen_rotation</span>
+      <div class="rotate-text">
+        Obróć telefon poziomo,<br>
+        aby wygodnie korzystać
+      </div>
+      <button id="rotateOkBtn">OK</button>
+    </div>
+  </div>
+
+  <!-- ===================================== -->
+  <!-- LISTENING APP -->
+  <!-- ===================================== -->
   <div class="wrap">
 
     <div class="player">
@@ -29,7 +40,7 @@
       <!-- SCORE -->
       <div id="scoreBox"></div>
 
-      <!-- OVERLAY (renderowane przez engine) -->
+      <!-- QUESTION / QUIZ OVERLAY -->
       <div class="overlay" id="overlay">
         <div class="card">
           <div id="instruction"></div>
@@ -49,69 +60,66 @@
 
   </div>
 
- <!doctype html>
-<html lang="pl">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <!-- GAPFILL THEME (1:1 z monolitu) -->
-<link rel="stylesheet" href="/listening/css/gapfill.css">
-
-  <link rel="stylesheet" href="/listening/css/quiz.css">
-
-
-  <!-- SHELL / APP STYLES -->
- 
-</head>
-
-<body>
-  <div class="wrap">
-
-    <div class="player">
-      <div id="yt"></div>
-
-      <!-- SCORE -->
-      <div id="scoreBox"></div>
-
-      <!-- OVERLAY (renderowane przez engine) -->
-      <div class="overlay" id="overlay">
-        <div class="card">
-          <div id="instruction"></div>
-          <div id="qtext"></div>
-          <div id="answers"></div>
-          <div id="explanation"></div>
-
-          <div class="actions">
-            <span class="material-icons replay" id="replayBtn">replay</span>
-            <button id="next">Dalej ▶</button>
-          </div>
-
-          <div id="msg"></div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-
-  <!-- ================= CORE ================= -->
+  <!-- ===================================== -->
+  <!-- CORE -->
+  <!-- ===================================== -->
   <script src="/listening/js/core.js"></script>
 
-  <!-- ================= ENGINES ================= -->
-<script src="/listening/js/gapfillEngine.js"></script>
-<script src="/listening/js/quizEngine.js"></script>
-
-<script src="/listening/js/mixedEngine.js"></script>
-<script src="/listening/js/mixed/extraWord.js"></script>
+  <!-- ===================================== -->
+  <!-- ENGINES -->
+  <!-- ===================================== -->
+  <script src="/listening/js/gapfillEngine.js"></script>
+  <script src="/listening/js/quizEngine.js"></script>
+  <script src="/listening/js/mixedEngine.js"></script>
+  <script src="/listening/js/mixed/extraWord.js"></script>
   <script src="/listening/js/mixed/order.js"></script>
   <script src="/listening/js/mixed/correctWord.js"></script>
-<script src="/listening/js/mixed/match.js"></script>
+  <script src="/listening/js/mixed/match.js"></script>
 
+  <!-- ===================================== -->
+  <!-- 🔥 ROTATE + FULLSCREEN LOGIC (LISTENING ONLY) -->
+  <!-- ===================================== -->
+  <script>
+  (function(){
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    const isMobile = isIOS || isAndroid;
+    if (!isMobile) return;
+
+    const overlay = document.getElementById("rotateOverlay");
+    const okBtn = document.getElementById("rotateOkBtn");
+    const player = document.querySelector(".player");
+
+    function enterFullscreen(){
+      if (isIOS) {
+        player.classList.add("ios-fullscreen");
+        document.body.style.overflow = "hidden";
+      } else if (player.requestFullscreen) {
+        player.requestFullscreen().catch(()=>{});
+      }
+
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(()=>{});
+      }
+    }
+
+    function updateOverlay(){
+      if (window.matchMedia("(orientation: portrait)").matches) {
+        overlay.style.display = "flex";
+      } else {
+        overlay.style.display = "none";
+      }
+    }
+
+    okBtn.addEventListener("click", () => {
+      overlay.style.display = "none";
+      enterFullscreen();
+    });
+
+    updateOverlay();
+    window.addEventListener("orientationchange", updateOverlay);
+  })();
+  </script>
 
 </body>
 </html>
-
