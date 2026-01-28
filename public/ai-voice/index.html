@@ -956,7 +956,7 @@ async function commitManualReply() {
   if (text) handleText(text);
 }
 
-// 🔥 WYCIĄGNIĘTE z processAudio, ale bez auto-restartów i bez filtrów "ciszy"
+// 🔥 Jedyna ścieżka Whisper STT (backend + filtr śmieci)
 async function transcribeWhisper(blob) {
   if (blob.size < 1000) return "";
 
