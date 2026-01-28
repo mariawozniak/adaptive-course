@@ -676,3 +676,22 @@ body {
   position: relative;
   z-index: 1;
 }
+
+/* ===================================== */
+/* 🔥 LESSON DIFFICULTY – FINAL MOBILE UX */
+/* ===================================== */
+
+.lesson-difficulty-bottom {
+  display: flex;
+  justify-content: center;        /* idealne wyśrodkowanie */
+  align-items: stretch;
+  gap: 16px;
+
+  margin: 40px auto 24px;         /* ⬅️ WIĘCEJ miejsca od góry */
+  padding: 0 16px;
+
+  max-width: 520px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
