@@ -13,13 +13,13 @@ let finalFeedbackShown = false;
 // ===== LEVEL -> MODULE MAP (FRONTEND) =====
 // USTAW TU, który moduł ma być otwierany dla danego poziomu.
 // Na start możesz zostawić wszystko na module_1, potem zmienisz.
-const modulesByLevel = {
-  1: "module_1",
-  2: "module_1",
-  3: "module_1",
-  4: "module_1",
-  5: "module_1"
-};
+
+function getModulesForLevel(level) {
+  return modules
+    .filter(m => m.level === level)
+    .sort((a, b) => a.id.localeCompare(b.id));
+}
+
 
 function isModuleFullyCompleted(module) {
   if (!module) return false;
@@ -41,17 +41,28 @@ function isModuleFullyCompleted(module) {
 
 
 function setModuleForLevel(level) {
-  const moduleId = modulesByLevel[level];
-  if (!moduleId) {
+  if (!level) {
     currentModule = modules[0];
     return;
   }
 
-  const startIndex = modules.findIndex(m => m.id === moduleId);
-  if (startIndex === -1) {
+  const sameLevelModules = getModulesForLevel(level);
+
+  if (!sameLevelModules.length) {
     currentModule = modules[0];
     return;
   }
+
+  for (const m of sameLevelModules) {
+    if (!isModuleFullyCompleted(m)) {
+      currentModule = m;
+      return;
+    }
+  }
+
+  currentModule = sameLevelModules[0];
+}
+
 
   // szukamy pierwszego NIEUKOŃCZONEGO modułu
   for (let i = startIndex; i < modules.length; i++) {
