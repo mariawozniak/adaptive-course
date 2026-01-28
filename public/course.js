@@ -438,6 +438,13 @@ if (item.type === "pdf")
 
 }
 
+// 👉 VOCABULARY ENGINE (osobna aplikacja)
+if (item.id === "vocabulary") {
+  window.location.href =
+    `/vocabulary/index.html?module=${currentModule.id}`;
+  return "";
+}
+
 // ===============================
 // ACTIONS
 // ===============================
