@@ -103,6 +103,12 @@ function buildInitialQueue(words, statuses) {
   */
 
   queueFlashcards = buildInitialQueue(words, vocabStatuses);
+  
+  console.log(
+  "QUEUE:",
+  queueFlashcards.map(w => `${w._id}:${vocabStatuses[w._id] || "new"}`)
+);
+
 
 // practice na razie zostawiamy prosto
 queuePractice = shuffleArray([...words]);
