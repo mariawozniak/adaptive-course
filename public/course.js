@@ -10,6 +10,24 @@ let progress = {};
 let currentLevel = null;
 let finalFeedbackShown = false;
 
+// ===== LEVEL -> MODULE MAP (FRONTEND) =====
+// USTAW TU, który moduł ma być otwierany dla danego poziomu.
+// Na start możesz zostawić wszystko na module_1, potem zmienisz.
+const modulesByLevel = {
+  1: "module_1",
+  2: "module_1",
+  3: "module_1",
+  4: "module_1",
+  5: "module_1"
+};
+
+function setModuleForLevel(level) {
+  const moduleId = modulesByLevel[level] || modules[0]?.id;
+  const found = modules.find(m => m.id === moduleId);
+  currentModule = found || modules[0];
+}
+
+
 // ===============================
 // API
 // ===============================
@@ -31,10 +49,15 @@ async function loadState() {
     const res = await fetch("/api/state", { credentials: "include" });
     const data = await res.json();
     currentLevel = data?.level ?? null;
+
+    if (currentLevel) {
+      setModuleForLevel(currentLevel);
+    }
   } catch {
     currentLevel = null;
   }
 }
+
 
 async function saveLevel(level) {
   const res = await fetch("/api/level", {
@@ -232,13 +255,31 @@ function renderLessonHeader(item) {
   <span class="lesson-checkmark"></span>
   <span class="lesson-check-label">Oznacz jako ukończone</span>
 </label>
-
         ` : ""}
+
+        <!-- ⬇⬇⬇ TO JEST TEN KROK 1.5 ⬇⬇⬇ -->
+        <div class="lesson-difficulty">
+          <button
+            class="lesson-diff-btn"
+            onclick="lessonFeedback('easier')"
+          >
+            Za trudne
+          </button>
+
+          <button
+            class="lesson-diff-btn"
+            onclick="lessonFeedback('harder')"
+          >
+            Za łatwe
+          </button>
+        </div>
+        <!-- ⬆⬆⬆ KONIEC KROKU 1.5 ⬆⬆⬆ -->
 
       </div>
     </div>
   `;
 }
+
 
 function renderListHeader(title) {
   return `
@@ -471,10 +512,43 @@ window.startModule = () => {
 
 window.chooseLevel = async (lvl) => {
   await saveLevel(lvl);
+  setModuleForLevel(currentLevel);
+
   moduleStarted = false;
   activeActivity = null;
   activeVariant = null;
   finalFeedbackShown = false;
+
+  window.scrollTo(0, 0);
+  render();
+};
+
+window.lessonFeedback = async (dir) => {
+  // dir: "easier" | "harder"
+  const msg =
+    "Teraz opuścisz moduł i zaproponuję Ci materiał bardziej odpowiedni dla Ciebie.";
+
+  const ok = window.confirm(msg);
+  if (!ok) return;
+
+  if (!currentLevel) return;
+
+  let newLevel = currentLevel;
+
+  if (dir === "harder") newLevel = Math.min(5, currentLevel + 1);
+  if (dir === "easier") newLevel = Math.max(1, currentLevel - 1);
+
+  // jeśli i tak jesteśmy na granicy (1 albo 5), nic się nie zmieni — ale nadal ok:
+  await saveLevel(newLevel);
+  setModuleForLevel(currentLevel);
+
+  // wyjście do ekranu modułu (hero)
+  moduleStarted = false;
+  activeActivity = null;
+  activeVariant = null;
+  finalFeedbackShown = false;
+
+  window.scrollTo(0, 0);
   render();
 };
 
