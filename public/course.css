@@ -640,3 +640,10 @@ body {
   background: #fff;
 }
 
+/* ===================================== */
+/* 🔥 FIX: AI LEKTOR – iframe NIE łapie dotyku */
+/* ===================================== */
+
+.lesson-iframe-wrapper iframe[src*="/ai-voice/"] {
+  pointer-events: none;
+}
