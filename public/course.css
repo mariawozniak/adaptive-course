@@ -629,4 +629,14 @@ body {
   }
 }
 
+/* ===================================== */
+/* 🔥 FIX: AI LEKTOR – FULL HEIGHT IFRAME */
+/* ===================================== */
+
+.lesson-iframe-wrapper iframe[src*="/ai-voice/"] {
+  aspect-ratio: auto !important;
+  height: 100svh;
+  min-height: 100svh;
+  background: #fff;
+}
 
