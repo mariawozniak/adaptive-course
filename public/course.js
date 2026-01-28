@@ -117,22 +117,9 @@ function renderCompleteButton(item) {
 }
 
 function renderLiveFeedbackBar() {
-  if (!currentLevel || !moduleStarted) return "";
-
-  return `
-    <div style="
-      margin-top:32px;
-      padding:16px;
-      border-top:1px solid #ddd;
-      display:flex;
-      gap:16px;
-      justify-content:center;
-    ">
-      <button onclick="sendFeedback('easier')">🔻 Za trudne</button>
-      <button onclick="sendFeedback('harder')">🔺 Za łatwe</button>
-    </div>
-  `;
+  return "";
 }
+
 
 function renderFinalFeedback() {
   if (!moduleStarted) return "";
