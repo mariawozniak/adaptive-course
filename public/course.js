@@ -275,8 +275,12 @@ window.openActivity = (activityId) => {
   moduleStarted = true;
   activeActivity = currentModule.activities.find(a => a.id === activityId);
   activeVariant = null;
+
+  setSavedView("activities"); // ✅ nadal jesteśmy „w module”
+
   render();
 };
+
 
 window.openVariant = (variantId) => {
   activeVariant = activeActivity.variants.find(v => v.id === variantId);
