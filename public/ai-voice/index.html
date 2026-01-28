@@ -1010,61 +1010,6 @@ function startWebSpeech() {
   rec.start();
 }
 
-/* Whisper STT */
-/* Whisper STT z filtrowaniem śmieciowych nagrań */
-async function processAudio(blob) {
-// FILTR 1: odrzucamy nagrania krótsze niż 350 ms
-if (blob.size < 1000) {  // 1000 bajtów ≈ ok. 300–350 ms
-  console.log("❌ Zbyt krótkie nagranie — odrzucono");
-return; // po prostu kończymy
-  return;
-}
-
-  const form = new FormData();
-  form.append("file", blob, "voice.webm");
-  form.append("model", "whisper-1");
-  form.append("language", "en");
-
-  const res = await fetch("https://api.openai.com/v1/audio/transcriptions", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}` },
-    body: form
-  });
-
-  const data = await res.json();
-let text = data.text?.trim();
-
-  // brak tekstu
-  if (!text) {
-return; // kończymy, czekamy na użytkownika
-  }
-
-  // Lista niepożądanych „fałszywych” nagrań
-  const falsePositives = [
-    "thank you", "thanks", "thank you for watching",
-    "subscribe", "follow me", "that's it",
-    "hello everyone", "hi guys"
-  ];
-
-  // FILTR ŚMIECI
-  const isGarbage =
-    text.length < 3 ||                             // za krótkie
-    text.split(/\s+/).length < 2 ||                // tylko jedno słowo
-    !/[aeiouy]/i.test(text) ||                     // nie zawiera samogłosek
-    /^[^a-zA-Z]+$/.test(text) ||                   // same symbole
-    /\b(uh+|um+|mm+|hm+|ah+|eh+|yeah+|no+|huh+|mmm+)\b/i.test(text) ||
-    /[\u3040-\u30ff\u4e00-\u9faf]/.test(text) ||   // japońskie/chińskie śmieci
-    falsePositives.some(p => text.includes(p));    // natrętne frazy z filmów
-
-  if (isGarbage) {
-    console.log("❌ Odrzucono śmieciowy transcript:", text);
-return; // kończymy i czekamy na użytkownika
-
-  }
-
-  // Jeśli tu dotarliśmy → nagranie jest dobre
-  handleText(text);
-}
 
 
 /* Smart recording */
