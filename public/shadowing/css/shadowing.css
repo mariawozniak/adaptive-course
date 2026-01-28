@@ -266,3 +266,42 @@ body{
   100%{ transform:scale(1); opacity:.6; }
 }
 
+/* ===== FIX: iframe height + mobile ===== */
+
+/* pozwól stronie rosnąć */
+html, body {
+  height: auto;
+  min-height: 100%;
+}
+
+/* główny wrapper strony */
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+}
+
+/* karta shadowingu MUSI móc rosnąć */
+#main-card {
+  width: 100%;
+}
+
+/* 🔥 NAJWAŻNIEJSZE: player nie może blokować wysokości */
+.player-wrap {
+  aspect-ratio: auto;      /* ⬅️ USUWAMY SZTYWNY RATIO */
+  height: auto;
+  min-height: 220px;
+}
+
+/* iframe ma się skalować, ale NIE UCINAĆ reszty */
+.player-wrap iframe {
+  position: relative;
+  height: 100%;
+  min-height: 220px;
+}
+
+/* panel z napisami + feedback */
+.panel {
+  margin-bottom: 24px; /* ⬅️ zapas na dół iframe */
+}
+
