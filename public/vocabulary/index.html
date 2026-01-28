@@ -2,15 +2,17 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <title>Słówka – kurs</title>
+  <title>Fiszki EN–PL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- CSS będzie w osobnym pliku -->
-  <link rel="stylesheet" href="./vocab.css" />
+  <!-- STYLE -->
+  <link rel="stylesheet" href="vocab.css" />
 </head>
-
 <body>
+
   <div class="flashcard-wrapper">
+
+    <!-- MENU -->
     <div style="margin-bottom:10px; text-align:right;">
       <div class="menu">
         <button id="menu-btn">Menu ⚙️</button>
@@ -18,313 +20,23 @@
       </div>
     </div>
 
+    <!-- KARTA -->
     <div id="card-area">
       <div class="flashcard" id="card"></div>
     </div>
 
+    <!-- NAWIGACJA -->
     <div class="nav-controls">
       <button id="again-btn">⬅️ Wciąż się uczę</button>
       <button id="know-btn">Umiem ➡️</button>
     </div>
 
+    <!-- KOMUNIKATY -->
     <div id="message" style="margin-top:20px; font-weight:bold;"></div>
+
   </div>
 
-<script type="module">
-
-/* =========================================================
-   VOCAB ENGINE – KONFIGURACJA
-========================================================= */
-
-const params = new URLSearchParams(window.location.search);
-const MODULE_ID = params.get("module") || "module_1";
-
-const res = await fetch(`/data/vocabulary/${MODULE_ID}.json`);
-
-if (!res.ok) {
-  document.body.innerHTML = "Nie znaleziono danych słówek";
-  throw new Error("Vocabulary JSON not found");
-}
-
-const data = await res.json();
-const WORDS = data.words;
-
-
-
-
-/* 
-  Tymczasowo:
-  słówka bierzemy bezpośrednio z activity
-  (następny krok: osobny JSON)
-*/
-
-/* lessonId do progressu */
-const LESSON_ID = `${MODULE_ID}__vocabulary__engine`;
-
-/* localStorage – per moduł */
-const KEY_FLASH = `flashcards-${MODULE_ID}`;
-const KEY_PRACTICE = `practice-${MODULE_ID}`;
-
-/* =========================================================
-   APLIKACJA (LOGIKA – 1:1 Z TWOJĄ OBECNĄ)
-========================================================= */
-
-(function () {
-
-  let lessonCompletedSent = false;
-
-  const words = WORDS.map(w => ({
-    en: w.en,
-    pl: w.pl
-  }));
-
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
-
-  let frontLang = "en";
-  let flipped = false;
-  let queueFlashcards;
-  let queuePractice;
-  let currentCard = null;
-  let selectedVoice = null;
-  let practiceMode = false;
-
-  async function tryAutoCompleteLesson() {
-    if (lessonCompletedSent) return;
-
-    const flashDone = queueFlashcards.length === 0;
-    const practiceDone = queuePractice.length === 0;
-
-    if (!flashDone && !practiceDone) return;
-
-    lessonCompletedSent = true;
-
-    try {
-      await fetch("/api/lesson-complete", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({
-          moduleId: MODULE_ID,
-          lessonId: LESSON_ID
-        })
-      });
-    } catch (err) {
-      console.error("Vocabulary auto-complete failed", err);
-      lessonCompletedSent = false;
-    }
-  }
-
-  // ===== localStorage =====
-  let savedFlash = localStorage.getItem(KEY_FLASH);
-  if (savedFlash) {
-    try { queueFlashcards = JSON.parse(savedFlash); }
-    catch { queueFlashcards = shuffleArray([...words]); }
-  } else {
-    queueFlashcards = shuffleArray([...words]);
-  }
-
-  let savedPractice = localStorage.getItem(KEY_PRACTICE);
-  if (savedPractice) {
-    try { queuePractice = JSON.parse(savedPractice); }
-    catch { queuePractice = shuffleArray([...words]); }
-  } else {
-    queuePractice = shuffleArray([...words]);
-  }
-
-  function saveFlashcards() {
-    localStorage.setItem(KEY_FLASH, JSON.stringify(queueFlashcards));
-  }
-  function savePractice() {
-    localStorage.setItem(KEY_PRACTICE, JSON.stringify(queuePractice));
-  }
-
-  // ===== TTS =====
-  function loadVoices() {
-    const voices = speechSynthesis.getVoices();
-    if (!voices.length) {
-      setTimeout(loadVoices, 250);
-      return;
-    }
-    selectedVoice =
-      voices.find(v => /Google (US|UK) English/.test(v.name)) ||
-      voices.find(v => v.lang.startsWith("en"));
-  }
-  window.speechSynthesis.onvoiceschanged = loadVoices;
-  loadVoices();
-
-  // ===== DOM =====
-  const cardContainer = document.getElementById("card");
-  const againBtn = document.getElementById("again-btn");
-  const knowBtn = document.getElementById("know-btn");
-  const message = document.getElementById("message");
-
-  const menuBtn  = document.getElementById("menu-btn");
-  const menuList = document.getElementById("menu-list");
-
-  // ===== MENU =====
-  function renderMenu() {
-    if (practiceMode) {
-      menuList.innerHTML = `
-        <li data-action="flashcards">Fiszki</li>
-        <li data-action="reset">Wyzeruj fiszki</li>
-        <li data-action="resetPractice">Wyzeruj pisownię</li>
-      `;
-    } else {
-      menuList.innerHTML = `
-        <li data-action="flashcards">Fiszki</li>
-        <li data-action="en">Angielski z przodu</li>
-        <li data-action="pl">Polski z przodu</li>
-        <li data-action="reset">Wyzeruj fiszki</li>
-        <li data-action="resetPractice">Wyzeruj pisownię</li>
-        <li data-action="practice">Ćwiczenie pisowni</li>
-      `;
-    }
-  }
-
-  // ===== FISZKI =====
-  cardContainer.addEventListener("click", (e) => {
-    if (practiceMode) return;
-
-    if (e.target.closest(".speak-btn")) {
-      e.stopPropagation();
-      const utterance = new SpeechSynthesisUtterance(currentCard.en);
-      utterance.lang = "en-US";
-      if (selectedVoice) utterance.voice = selectedVoice;
-      speechSynthesis.speak(utterance);
-      return;
-    }
-
-    flipped = !flipped;
-    cardContainer.className = "flashcard" + (flipped ? " flipped" : "");
-  });
-
-  function renderCard() {
-    practiceMode = false;
-    document.querySelector(".nav-controls").style.display = "block";
-    renderMenu();
-
-    if (queueFlashcards.length === 0) {
-      cardContainer.innerHTML = `
-        <div class="empty-state">
-          🎉 Gratulacje! Przerobiłaś wszystkie fiszki.
-          <br><br>
-          <button id="restart-btn">Zacznij od nowa</button>
-        </div>
-      `;
-      document.getElementById("restart-btn").onclick = () => {
-        queueFlashcards = shuffleArray([...words]);
-        saveFlashcards();
-        renderCard();
-      };
-      tryAutoCompleteLesson();
-      return;
-    }
-
-    currentCard = queueFlashcards[0];
-    flipped = false;
-    cardContainer.className = "flashcard";
-    cardContainer.innerHTML = `
-      <div class="card-inner">
-        <div class="card-front">
-          ${frontLang === "en" ? currentCard.en : currentCard.pl}
-          ${frontLang === "en" ? `<button class="speak-btn">🔊</button>` : ""}
-        </div>
-        <div class="card-back">
-          ${frontLang === "en" ? currentCard.pl : currentCard.en}
-          ${frontLang === "pl" ? `<button class="speak-btn">🔊</button>` : ""}
-        </div>
-      </div>
-    `;
-  }
-
-  function swipeCard(dir) {
-    if (!currentCard) return;
-
-    cardContainer.classList.add(dir === "left" ? "swipe-left" : "swipe-right");
-
-    setTimeout(() => {
-      if (dir === "left") {
-        queueFlashcards.push(queueFlashcards.shift());
-      } else {
-        queueFlashcards.shift();
-      }
-      saveFlashcards();
-      cardContainer.className = "flashcard";
-      renderCard();
-    }, 400);
-  }
-
-  againBtn.onclick = () => swipeCard("left");
-  knowBtn.onclick  = () => swipeCard("right");
-
-  // ===== PRACTICE =====
-  function renderPractice() {
-    practiceMode = true;
-    document.querySelector(".nav-controls").style.display = "none";
-    renderMenu();
-
-    if (queuePractice.length === 0) {
-      cardContainer.innerHTML = "🎉 Ukończyłaś ćwiczenie pisowni!";
-      tryAutoCompleteLesson();
-      return;
-    }
-
-    const polishWord = queuePractice[0].pl;
-    const correctRaw = queuePractice[0].en;
-    const correctLC  = correctRaw.toLowerCase();
-
-    cardContainer.innerHTML = `
-      <div class="practice-container">
-        <div class="practice-word">${polishWord}</div>
-        <input id="answer" placeholder="ANGIELSKI" />
-        <div id="feedback"></div>
-        <button id="check">Sprawdź</button>
-      </div>
-    `;
-
-    const input = document.getElementById("answer");
-    const feedback = document.getElementById("feedback");
-
-    document.getElementById("check").onclick = () => {
-      if (input.value.trim().toLowerCase() === correctLC) {
-        queuePractice.shift();
-        savePractice();
-        renderPractice();
-      } else {
-        feedback.textContent = correctRaw;
-      }
-    };
-
-    input.focus();
-  }
-
-  // ===== MENU ACTIONS =====
-  menuBtn.onclick = () => menuList.classList.toggle("hidden");
-
-  menuList.onclick = (e) => {
-    if (e.target.tagName !== "LI") return;
-    const a = e.target.dataset.action;
-    menuList.classList.add("hidden");
-
-    if (a === "flashcards") renderCard();
-    if (a === "en") { frontLang = "en"; renderCard(); }
-    if (a === "pl") { frontLang = "pl"; renderCard(); }
-    if (a === "reset") { queueFlashcards = shuffleArray([...words]); saveFlashcards(); renderCard(); }
-    if (a === "resetPractice") { queuePractice = shuffleArray([...words]); savePractice(); renderPractice(); }
-    if (a === "practice") renderPractice();
-  };
-
-  renderMenu();
-  renderCard();
-
-})();
-</script>
-
+  <!-- LOGIKA -->
+  <script src="vocab.js"></script>
 </body>
 </html>
