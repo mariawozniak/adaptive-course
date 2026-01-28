@@ -17,7 +17,6 @@ let finalFeedbackShown = false;
 // "activities" = lista aktywności w module (po starcie)
 const LS_VIEW_KEY = "course_view";
 
-const LS_LAST_URL_KEY = "course_last_url";
 const LS_ACTIVE_ITEM_KEY = "course_active_item";
 
 
@@ -595,37 +594,6 @@ if (item.id === "vocabulary") {
   return "";
 }
 
-
-
-if (item.type === "iframe")
-  return `
-    ${renderLessonHeader(item)}
-
-    <div class="lesson-iframe-wrapper">
-      <iframe
-        src="${item.src}"
-        allowfullscreen
-        loading="lazy"
-        scrolling="no"
-      ></iframe>
-    </div>
-
-    <div class="lesson-difficulty lesson-difficulty-mobile">
-      <button
-        class="lesson-diff-btn"
-        onclick="lessonFeedback('easier')"
-      >
-        Za trudne
-      </button>
-
-      <button
-        class="lesson-diff-btn"
-        onclick="lessonFeedback('harder')"
-      >
-        Za łatwe
-      </button>
-    </div>
-  `;
 
 
 if (item.type === "audio")
