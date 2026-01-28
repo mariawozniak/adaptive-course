@@ -732,7 +732,25 @@ body {
 /* ===================================== */
 
 @media (max-width: 600px) {
+  .lesson-iframe-wrapper iframe[src*="//* ===================================== */
+/* 🔥 SHADOWING – SAFE HEIGHT + SCROLL */
+/* ===================================== */
+
+@media (max-width: 600px) {
   .lesson-iframe-wrapper iframe[src*="/shadowing/"] {
+    aspect-ratio: auto !important;
+
+    /* trochę więcej niż ekran */
+    height: calc(100svh - 40px);
+    min-height: calc(100svh - 40px);
+
+    overflow-y: auto;      /* ⬅️ KLUCZ */
+    overscroll-behavior: contain;
+
+    background: transparent;
+  }
+}
+g/"] {
     aspect-ratio: auto !important;
 
     /* pełna wysokość ekranu
