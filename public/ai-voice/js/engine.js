@@ -1,4 +1,3 @@
-<script>
 /* --------------------------------------------------------
    USTAWIENIA PODSTAWOWE
 --------------------------------------------------------- */
@@ -1047,4 +1046,3 @@ function resetListeningState() {
   resetButton();
 }
 
-</script>
