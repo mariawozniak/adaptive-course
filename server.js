@@ -414,39 +414,6 @@ app.post("/api/tts", async (req, res) => {
   }
 });
 
-    // ---- FILTR ŚMIECI ----
-    const falsePositives = [
-      "thank you",
-      "thanks",
-      "thank you for watching",
-      "subscribe",
-      "follow me",
-      "that's it",
-      "hello everyone",
-      "hi guys"
-    ];
-
-    const isGarbage =
-      text.length < 3 ||
-      text.split(/\s+/).length < 2 ||
-      !/[aeiouy]/i.test(text) ||
-      /^[^a-zA-Z]+$/.test(text) ||
-      /\b(uh+|um+|mm+|hm+|ah+|eh+|yeah+|no+|huh+|mmm+)\b/i.test(text) ||
-      /[\u3040-\u30ff\u4e00-\u9faf]/.test(text) ||
-      falsePositives.some(p => text.toLowerCase().includes(p));
-
-    if (isGarbage) {
-      console.log("🗑️ Whisper garbage filtered:", text);
-      return res.json({ text: "" });
-    }
-
-    res.json({ text });
-
-  } catch (err) {
-    console.error("Whisper error:", err);
-    res.status(500).json({ error: "Whisper failed" });
-  }
-});
 
 
 // ===== WHISPER (OPENAI) =====
@@ -638,6 +605,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
