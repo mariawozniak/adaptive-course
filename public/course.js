@@ -10,6 +10,28 @@ let progress = {};
 let currentLevel = null;
 let finalFeedbackShown = false;
 
+// ===============================
+// PERSIST VIEW (refresh restore)
+// ===============================
+// "hero" = ekran z okładką modułu i przyciskiem "Rozpocznij moduł"
+// "activities" = lista aktywności w module (po starcie)
+const LS_VIEW_KEY = "course_view";
+
+function setSavedView(view) {
+  try {
+    localStorage.setItem(LS_VIEW_KEY, view);
+  } catch {}
+}
+
+function getSavedView() {
+  try {
+    return localStorage.getItem(LS_VIEW_KEY);
+  } catch {
+    return null;
+  }
+}
+
+
 // ===== LEVEL -> MODULE MAP (FRONTEND) =====
 // USTAW TU, który moduł ma być otwierany dla danego poziomu.
 // Na start możesz zostawić wszystko na module_1, potem zmienisz.
@@ -239,10 +261,14 @@ window.goBack = () => {
     return;
   }
 
-  if (moduleStarted) {
-    moduleStarted = false;
-    render();
-  }
+if (moduleStarted) {
+  moduleStarted = false;
+
+  setSavedView("hero"); // ✅ wracamy do hero, więc to zapisujemy
+
+  render();
+}
+
 };
 
 window.openActivity = (activityId) => {
@@ -573,10 +599,14 @@ window.markCompleted = async (lessonId) => {
 
 window.startModule = () => {
   moduleStarted = true;
-  activeActivity = null;   // ← KLUCZ
+  activeActivity = null;
   activeVariant = null;
+
+  setSavedView("activities"); // ✅ zapamiętaj widok listy aktywności
+
   render();
 };
+
 
 window.chooseLevel = async (lvl) => {
   await saveLevel(lvl);
@@ -586,6 +616,9 @@ window.chooseLevel = async (lvl) => {
   activeActivity = null;
   activeVariant = null;
   finalFeedbackShown = false;
+
+  setSavedView("hero"); // ✅ po wyborze poziomu pokazujemy hero modułu
+
 
   window.scrollTo(0, 0);
   render();
@@ -628,10 +661,28 @@ async function init() {
   await ensureUser();
   await loadProgress();
   await loadState();
+
+  // ✅ jeśli mamy level, to odtwarzamy widok (hero/activities) po refreshu
+  if (currentLevel) {
+    const view = getSavedView();
+
+    if (view === "activities") {
+      moduleStarted = true;
+      activeActivity = null;
+      activeVariant = null;
+    } else {
+      // domyślnie hero modułu
+      moduleStarted = false;
+      activeActivity = null;
+      activeVariant = null;
+    }
+  }
+
   render();
 }
 
 init();
+
 
 // ===============================
 // iframe auto-height — TYLKO shadowing
