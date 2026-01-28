@@ -958,24 +958,22 @@ async function commitManualReply() {
 
 // 🔥 WYCIĄGNIĘTE z processAudio, ale bez auto-restartów i bez filtrów "ciszy"
 async function transcribeWhisper(blob) {
-  // opcjonalnie: odrzuć bardzo krótkie
   if (blob.size < 1000) return "";
 
-  const form = new FormData();
-  form.append("file", blob, "voice.webm");
-  form.append("model", "whisper-1");
-  form.append("language", "en");
-
-  const res = await fetch("https://api.openai.com/v1/audio/transcriptions", {
+  const res = await fetch("/api/whisper", {
     method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}` },
-    body: form
+    body: blob
   });
 
+  if (!res.ok) {
+    console.error("Whisper backend failed");
+    return "";
+  }
+
   const data = await res.json();
-  const text = (data.text || "").trim();
-  return text;
+  return (data.text || "").trim();
 }
+
 
 
 /* Web Speech STT */
