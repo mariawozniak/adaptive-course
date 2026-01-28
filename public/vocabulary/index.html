@@ -36,6 +36,16 @@
 
   </div>
 
+    <!-- ✅ ZAPIS OSTATNIEJ STRONY -->
+  <script>
+    try {
+      localStorage.setItem(
+        "course_last_url",
+        window.location.href
+      );
+    } catch {}
+  </script>
+
   <!-- LOGIKA -->
   <script src="js/vocabEngine.js"></script>
 </body>
