@@ -1,149 +1,222 @@
 body {
-      margin:0;
-      font:16px/1.5 "Inter", system-ui, Segoe UI, Roboto, Arial, sans-serif;
-      background:#f5f7fb; color:#111827;
-    }
-    .flashcard-wrapper { text-align: center; margin: 2em auto; max-width: 600px; }
-    .nav-controls { margin: 14px 0 0; }
-    .nav-controls button {
-      padding: 10px 16px;
-      margin: 4px;
-      border: none;
-      border-radius: 6px;
-      background: #eee;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .flashcard {
-      width: 100%;
-      height: 200px;
-      perspective: 1000px;
-      margin: 0 auto;
-      position: relative;
-      transition: transform 0.4s ease, opacity 0.4s ease, background 0.4s ease;
-    }
-    .card-inner {
-      width: 100%;
-      height: 100%;
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
-      position: relative;
-    }
-    .flipped .card-inner { transform: rotateY(180deg); }
-    .card-front, .card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      border: 2px solid #ccc;
-      border-radius: 12px;
-      font-size: 24px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: white;
-      padding: 20px;
-      box-sizing: border-box;
-      color: #111;
-    }
-    .card-back { background: #e0f2fe; transform: rotateY(180deg); }
-    .speak-btn {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      font-size: 20px;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
-    .swipe-left { transform: translateX(-120%) rotate(-15deg); opacity: 0; background:#fecaca !important; }
-    .swipe-right { transform: translateX(120%) rotate(15deg); opacity: 0; background:#bbf7d0 !important; }
+  margin:0;
+  font:16px/1.5 "Inter", system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  background:#f5f7fb;
+  color:#111827;
+}
 
-    .practice-container { text-align:left; margin-top:20px; }
-    .practice-word { font-size:22px; font-weight:bold; margin-bottom:10px; }
+.flashcard-wrapper {
+  text-align: center;
+  margin: 2em auto;
+  max-width: 600px;
+}
 
-    .typing-wrap { position: relative; }
-    .practice-input {
-      width:100%;
-      font-size:18px;
-      padding:8px;
-      border:2px solid #facc15 !important;
-      outline:none;
-      border-radius:8px;
-      background: transparent;
-      color: transparent;
-      caret-color: #111827;
-      position: relative;
-      z-index: 2;
-      box-sizing: border-box;
-    }
-    .highlighter {
-      position: absolute;
-      inset: 0;
-      padding: 8px;
-      border-radius: 8px;
-      font-size: 18px;
-      font-family: inherit;
-      line-height: 1.4;
-      white-space: pre-wrap;
-      pointer-events: none;
-      z-index: 1;
-      background: white;
-    }
-    .highlighter .wrong { color:#dc2626; }
-    .highlighter .correct { color:#16a34a; }
+.nav-controls {
+  margin: 14px 0 0;
+}
 
-    .practice-btn {
-      padding:10px 16px; border:none; border-radius:6px;
-      background:#3b82f6; color:white; font-weight:bold; cursor:pointer;
-    }
-    .idk-link { float:right; color:teal; cursor:pointer; font-size:14px; }
+.nav-controls button {
+  padding: 10px 16px;
+  margin: 4px;
+  border: none;
+  border-radius: 6px;
+  background: #eee;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    .feedback {
-      margin-top: 8px;
-      font-size: 18px;
-      font-family: inherit;
-    }
+.flashcard {
+  width: 100%;
+  height: 200px;
+  perspective: 1000px;
+  margin: 0 auto;
+  position: relative;
+  transition: transform 0.4s ease, opacity 0.4s ease, background 0.4s ease;
+}
 
-    /* MENU CUSTOM */
-    .menu {
-      position: relative;
-      display: inline-block;
-    }
-    #menu-btn {
-      padding: 6px 12px;
-      font-size: 16px;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      background: #fff;
-      cursor: pointer;
-    }
-    #menu-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      position: absolute;
-      right: 0;
-      top: 100%;
-      background: white;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      width: max-content;
-      z-index: 100;
-    }
-    #menu-list li {
-      padding: 8px 12px;
-      cursor: pointer;
-    }
-    #menu-list li:hover {
-      background: #f0f0f0;
-    }
-    .hidden { display: none; }
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
 
-    /* podczas przesuwania kolorujemy także środek */
-    .swipe-left .card-front,
-    .swipe-left .card-back { background: #fecaca !important; }
-    .swipe-right .card-front,
-    .swipe-right .card-back { background: #bbf7d0 !important; }
+.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #111;
+}
+
+.card-back {
+  background: #e0f2fe;
+  transform: rotateY(180deg);
+}
+
+.speak-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.swipe-left {
+  transform: translateX(-120%) rotate(-15deg);
+  opacity: 0;
+  background:#fecaca !important;
+}
+
+.swipe-right {
+  transform: translateX(120%) rotate(15deg);
+  opacity: 0;
+  background:#bbf7d0 !important;
+}
+
+.practice-container {
+  text-align:left;
+  margin-top:20px;
+}
+
+.practice-word {
+  font-size:22px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.typing-wrap {
+  position: relative;
+}
+
+.practice-input {
+  width:100%;
+  font-size:18px;
+  padding:8px;
+  border:2px solid #facc15 !important;
+  outline:none;
+  border-radius:8px;
+  background: transparent;
+  color: transparent;
+  caret-color: #111827;
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.highlighter {
+  position: absolute;
+  inset: 0;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-family: inherit;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  pointer-events: none;
+  z-index: 1;
+  background: white;
+}
+
+.highlighter .wrong {
+  color:#dc2626;
+}
+
+.highlighter .correct {
+  color:#16a34a;
+}
+
+.practice-btn {
+  padding:10px 16px;
+  border:none;
+  border-radius:6px;
+  background:#3b82f6;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.idk-link {
+  float:right;
+  color:teal;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.feedback {
+  margin-top: 8px;
+  font-size: 18px;
+  font-family: inherit;
+}
+
+/* MENU CUSTOM */
+.menu {
+  position: relative;
+  display: inline-block;
+}
+
+#menu-btn {
+  padding: 6px 12px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+
+#menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  width: max-content;
+  z-index: 100;
+}
+
+#menu-list li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+#menu-list li:hover {
+  background: #f0f0f0;
+}
+
+.hidden {
+  display: none;
+}
+
+/* podczas przesuwania kolorujemy także środek */
+.swipe-left .card-front,
+.swipe-left .card-back {
+  background: #fecaca !important;
+}
+
+.swipe-right .card-front,
+.swipe-right .card-back {
+  background: #bbf7d0 !important;
+}
