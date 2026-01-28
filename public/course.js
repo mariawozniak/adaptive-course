@@ -603,3 +603,23 @@ async function init() {
 }
 
 init();
+
+// ===============================
+// iframe auto-height — TYLKO shadowing
+// ===============================
+window.addEventListener("message", (e) => {
+  if (
+    e.data?.type !== "shadowing-height" ||
+    e.data?.source !== "shadowing"
+  ) return;
+
+  // znajdź iframe, który pokazuje shadowing
+  const iframe = document.querySelector(
+    'iframe[src*="/shadowing/"]'
+  );
+
+  if (!iframe) return;
+
+  iframe.style.height = e.data.height + "px";
+});
+
