@@ -1,149 +1,107 @@
-<!doctype html>
-<html lang="pl">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+// public/listening/js/quizEngine.js
+(() => {
+  "use strict";
 
-  <!-- Icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  const engine = {
+    data: null,
+    CORE: null,
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="/listening/css/gapfill.css">
-  <link rel="stylesheet" href="/listening/css/quiz.css">
-  <link rel="stylesheet" href="/listening/css/mixed.css">
+    state: {
+      current: 0,
+      selected: false,
+      phase: "answer" // answer | explanation
+    },
 
-  <style>
-    /* ===== ROTATE / START OVERLAY (MOBILE) ===== */
-    #rotateOverlay{
-      display:none;
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,0.9);
-      color:#fff;
-      z-index:10000;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:24px;
-    }
-    #rotateOverlay button{
-      padding:14px 28px;
-      font-size:16px;
-      font-weight:600;
-      border-radius:10px;
-      border:none;
-      cursor:pointer;
-    }
+    init(data, CORE_API){
+      this.data = data;
+      this.CORE = CORE_API;
 
-    /* iOS pseudo fullscreen */
-    .ios-fullscreen{
-      position:fixed !important;
-      inset:0;
-      width:100vw !important;
-      height:100vh !important;
-      z-index:9999;
-      border-radius:0 !important;
-      background:#000;
-    }
-    @supports (height: 100dvh){
-      .ios-fullscreen{ height:100dvh !important; }
-    }
-  </style>
-</head>
+      this.cacheDom();
+      this.bindEvents();
+    },
 
-<body>
+    cacheDom(){
+      this.overlay = document.getElementById("overlay");
+      this.qtext = document.getElementById("qtext");
+      this.answersBox = document.getElementById("answers");
+      this.instruction = document.getElementById("instruction");
+      this.nextBtn = document.getElementById("next");
+      this.replayBtn = document.getElementById("replayBtn");
+    },
 
-<!-- 🔥 ROTATE / START OVERLAY -->
-<div id="rotateOverlay">
-  <div>
-    <span class="material-icons" style="font-size:64px;display:block;margin-bottom:16px;">
-      screen_rotation
-    </span>
-    <div style="font-size:18px;font-weight:600;margin-bottom:20px;">
-      Obróć telefon poziomo,<br>aby wygodnie korzystać
-    </div>
-    <button id="rotateOkBtn">OK</button>
-  </div>
-</div>
+    bindEvents(){
+      this.nextBtn.addEventListener("click", () => this.onNext());
+      this.replayBtn.addEventListener("click", () => this.onReplay());
+    },
 
-<div class="wrap">
-  <div class="player">
-    <div id="yt"></div>
+    onSegmentEnd(index){
+      this.state.current = index;
+      this.renderMCQ(this.data.segments[index]);
+      this.CORE.showOverlay();
+    },
 
-    <div id="scoreBox"></div>
+    renderMCQ(seg){
+      this.state.selected = false;
+      this.state.phase = "answer";
 
-    <div class="overlay" id="overlay">
-      <div class="card">
-        <div id="instruction"></div>
-        <div id="qtext"></div>
-        <div id="answers"></div>
-        <div id="explanation"></div>
+      this.instruction.textContent = "Pytanie";
+      this.qtext.textContent = seg.question;
 
-        <div class="actions">
-          <span class="material-icons replay" id="replayBtn">replay</span>
-          <button id="next">Dalej ▶</button>
-        </div>
+      this.answersBox.innerHTML = "";
+      this.answersBox.style.display = "block";
 
-        <div id="msg"></div>
-      </div>
-    </div>
-  </div>
-</div>
+      seg.answers.forEach(ans => {
+        const div = document.createElement("div");
+        div.className = "answer";
+        div.textContent = ans.text;
 
-<!-- ================= CORE ================= -->
-<script src="/listening/js/core.js"></script>
+        div.onclick = () => {
+          if (this.state.selected) return;
+          this.state.selected = true;
 
-<!-- ================= ENGINES ================= -->
-<script src="/listening/js/gapfillEngine.js"></script>
-<script src="/listening/js/quizEngine.js"></script>
-<script src="/listening/js/mixedEngine.js"></script>
-<script src="/listening/js/mixed/extraWord.js"></script>
-<script src="/listening/js/mixed/order.js"></script>
-<script src="/listening/js/mixed/correctWord.js"></script>
-<script src="/listening/js/mixed/match.js"></script>
+          if (ans.correct){
+            div.classList.add("correct");
+            this.CORE.setScore(1);
+          } else {
+            div.classList.add("wrong");
+            [...this.answersBox.children].forEach(el => {
+              const correct = seg.answers.find(a => a.correct && a.text === el.textContent);
+              if (correct) el.classList.add("correct");
+            });
+          }
+        };
 
-<!-- ================= FULLSCREEN / ROTATE ================= -->
-<script>
-(function(){
-  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  const isAndroid = /Android/i.test(navigator.userAgent);
-  if (!isIOS && !isAndroid) return;
+        this.answersBox.appendChild(div);
+      });
+    },
 
-  const overlay = document.getElementById("rotateOverlay");
-  const okBtn = document.getElementById("rotateOkBtn");
+    onNext(){
+      const seg = this.data.segments[this.state.current];
+      if (!this.state.selected) return;
 
-  function showOverlay(){
-    if (window.matchMedia("(orientation: portrait)").matches){
-      overlay.style.display = "flex";
-    } else {
-      overlay.style.display = "none";
-    }
-  }
-
-  okBtn.addEventListener("click", () => {
-    const player = document.querySelector(".player");
-    if (!player) return;
-
-    if (isIOS){
-      player.classList.add("ios-fullscreen");
-      document.body.style.overflow = "hidden";
-    } else {
-      if (player.requestFullscreen){
-        player.requestFullscreen().catch(()=>{});
+      if (this.state.phase === "answer"){
+        this.answersBox.style.display = "none";
+        this.qtext.textContent = seg.explanation || "";
+        this.instruction.textContent = "Wyjaśnienie";
+        this.state.phase = "explanation";
+        return;
       }
+
+      this.CORE.hideOverlay();
+
+      const next = this.state.current + 1;
+      if (next < this.data.segments.length){
+        this.CORE.playSegment(next);
+      } else {
+        this.CORE.finishExercise();
+      }
+    },
+
+    onReplay(){
+      this.CORE.hideOverlay();
+      this.CORE.playSegment(this.state.current);
     }
+  };
 
-    if (screen.orientation?.lock){
-      screen.orientation.lock("landscape").catch(()=>{});
-    }
-
-    overlay.style.display = "none";
-  });
-
-  showOverlay();
-  window.addEventListener("orientationchange", showOverlay);
+  window.quizEngine = engine;
 })();
-</script>
-
-</body>
-</html>
