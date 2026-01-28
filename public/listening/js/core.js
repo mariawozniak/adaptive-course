@@ -155,12 +155,15 @@ const path = `/data/listening/${moduleName}.${mode}.json`;
           events: {
             onReady: () => resolve(player),
  onStateChange: (event) => {
-  if (event.data === YT.PlayerState.ENDED) {
-    // 🔒 tylko jeśli to naprawdę OSTATNI segment
-    if (currentSegmentIndex >= data.segments.length - 1) {
-      CORE_API.finishExercise();
-    }
+if (event.data === YT.PlayerState.ENDED) {
+  if (
+    startedOnce &&
+    currentSegmentIndex >= data.segments.length - 1
+  ) {
+    CORE_API.finishExercise();
   }
+}
+
 }
 
           }
