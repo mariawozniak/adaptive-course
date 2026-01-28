@@ -179,6 +179,117 @@ app.post("/api/lesson-complete", (req, res) => {
   res.json({ ok: true });
 });
 
+function ensureUserRow(userId) {
+  if (!userId) return null;
+
+  const user = db
+    .prepare("SELECT id FROM users WHERE id = ?")
+    .get(userId);
+
+  if (user) return userId;
+
+  // user ma cookie, ale nie istnieje jeszcze w tabeli users
+  db.prepare(`
+    INSERT INTO users (id, email)
+    VALUES (?, NULL)
+  `).run(userId);
+
+  return userId;
+}
+// ===== VOCABULARY =====
+
+// pobierz statusy fiszek dla modułu
+app.get("/api/vocab/status", (req, res) => {
+  const userId = req.cookies.course_user;
+  const moduleId = req.query.moduleId;
+
+  if (!userId) {
+    return res.status(401).json({ error: "No user" });
+  }
+
+  if (!moduleId) {
+    return res.status(400).json({ error: "No moduleId" });
+  }
+
+  ensureUserRow(userId);
+
+  const rows = db.prepare(`
+    SELECT word_id, status
+    FROM vocabulary_progress
+    WHERE user_id = ? AND module_id = ?
+  `).all(userId, moduleId);
+
+  const statuses = {};
+  for (const row of rows) {
+    statuses[row.word_id] = row.status;
+  }
+
+  res.json({
+    ok: true,
+    statuses
+  });
+});
+// zapisz odpowiedź użytkownika dla fiszki
+app.post("/api/vocab/answer", (req, res) => {
+  const userId = req.cookies.course_user;
+  const { moduleId, wordId, status } = req.body;
+
+  if (!userId) {
+    return res.status(401).json({ error: "No user" });
+  }
+
+  if (!moduleId || !wordId || !status) {
+    return res.status(400).json({ error: "Missing data" });
+  }
+
+  if (!["known", "learning"].includes(status)) {
+    return res.status(400).json({ error: "Invalid status" });
+  }
+
+  ensureUserRow(userId);
+
+  db.prepare(`
+    INSERT INTO vocabulary_progress
+      (user_id, module_id, word_id, status, updated_at)
+    VALUES (?, ?, ?, ?, ?)
+    ON CONFLICT(user_id, module_id, word_id)
+    DO UPDATE SET
+      status = excluded.status,
+      updated_at = excluded.updated_at
+  `).run(
+    userId,
+    moduleId,
+    wordId,
+    status,
+    Date.now()
+  );
+
+  res.json({ ok: true });
+});
+// reset postępów fiszek dla modułu
+app.post("/api/vocab/reset", (req, res) => {
+  const userId = req.cookies.course_user;
+  const { moduleId } = req.body;
+
+  if (!userId) {
+    return res.status(401).json({ error: "No user" });
+  }
+
+  if (!moduleId) {
+    return res.status(400).json({ error: "No moduleId" });
+  }
+
+  ensureUserRow(userId);
+
+  db.prepare(`
+    DELETE FROM vocabulary_progress
+    WHERE user_id = ? AND module_id = ?
+  `).run(userId, moduleId);
+
+  res.json({ ok: true });
+});
+
+
 // ===== FEEDBACK =====
 const modulesByLevel = {
   1: "module_1",
@@ -401,6 +512,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
