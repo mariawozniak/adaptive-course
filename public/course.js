@@ -486,6 +486,14 @@ if (item.type === "internal" && item.engine === "shadowing") {
   return "";
 }
 
+  // 👉 AI LEKTOR (OSOBNA APLIKACJA)
+if (item.type === "internal" && item.engine === "ai-voice") {
+  window.location.href =
+    `/ai-voice/index.html?module=${currentModule.id}`;
+  return "";
+}
+
+
   // 👉 VOCABULARY ENGINE (osobna aplikacja)
 if (item.id === "vocabulary") {
   window.location.href =
