@@ -2,165 +2,18 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <title>Fiszki EN-PL</title>
+  <title>Słówka – kurs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      margin:0;
-      font:16px/1.5 "Inter", system-ui, Segoe UI, Roboto, Arial, sans-serif;
-      background:#f5f7fb; color:#111827;
-    }
-    .flashcard-wrapper { text-align: center; margin: 2em auto; max-width: 600px; }
-    .nav-controls { margin: 14px 0 0; }
-    .nav-controls button {
-      padding: 10px 16px;
-      margin: 4px;
-      border: none;
-      border-radius: 6px;
-      background: #eee;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .flashcard {
-      width: 100%;
-      height: 200px;
-      perspective: 1000px;
-      margin: 0 auto;
-      position: relative;
-      transition: transform 0.4s ease, opacity 0.4s ease, background 0.4s ease;
-    }
-    .card-inner {
-      width: 100%;
-      height: 100%;
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
-      position: relative;
-    }
-    .flipped .card-inner { transform: rotateY(180deg); }
-    .card-front, .card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      border: 2px solid #ccc;
-      border-radius: 12px;
-      font-size: 24px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: white;
-      padding: 20px;
-      box-sizing: border-box;
-      color: #111;
-    }
-    .card-back { background: #e0f2fe; transform: rotateY(180deg); }
-    .speak-btn {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      font-size: 20px;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
-    .swipe-left { transform: translateX(-120%) rotate(-15deg); opacity: 0; background:#fecaca !important; }
-    .swipe-right { transform: translateX(120%) rotate(15deg); opacity: 0; background:#bbf7d0 !important; }
 
-    .practice-container { text-align:left; margin-top:20px; }
-    .practice-word { font-size:22px; font-weight:bold; margin-bottom:10px; }
-
-    .typing-wrap { position: relative; }
-    .practice-input {
-      width:100%;
-      font-size:18px;
-      padding:8px;
-      border:2px solid #facc15 !important;
-      outline:none;
-      border-radius:8px;
-      background: transparent;
-      color: transparent;
-      caret-color: #111827;
-      position: relative;
-      z-index: 2;
-      box-sizing: border-box;
-    }
-    .highlighter {
-      position: absolute;
-      inset: 0;
-      padding: 8px;
-      border-radius: 8px;
-      font-size: 18px;
-      font-family: inherit;
-      line-height: 1.4;
-      white-space: pre-wrap;
-      pointer-events: none;
-      z-index: 1;
-      background: white;
-    }
-    .highlighter .wrong { color:#dc2626; }
-    .highlighter .correct { color:#16a34a; }
-
-    .practice-btn {
-      padding:10px 16px; border:none; border-radius:6px;
-      background:#3b82f6; color:white; font-weight:bold; cursor:pointer;
-    }
-    .idk-link { float:right; color:teal; cursor:pointer; font-size:14px; }
-
-    .feedback {
-      margin-top: 8px;
-      font-size: 18px;
-      font-family: inherit;
-    }
-
-    /* MENU CUSTOM */
-    .menu {
-      position: relative;
-      display: inline-block;
-    }
-    #menu-btn {
-      padding: 6px 12px;
-      font-size: 16px;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      background: #fff;
-      cursor: pointer;
-    }
-    #menu-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      position: absolute;
-      right: 0;
-      top: 100%;
-      background: white;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      width: max-content;
-      z-index: 100;
-    }
-    #menu-list li {
-      padding: 8px 12px;
-      cursor: pointer;
-    }
-    #menu-list li:hover {
-      background: #f0f0f0;
-    }
-    .hidden { display: none; }
-
-    /* podczas przesuwania kolorujemy także środek */
-    .swipe-left .card-front,
-    .swipe-left .card-back { background: #fecaca !important; }
-    .swipe-right .card-front,
-    .swipe-right .card-back { background: #bbf7d0 !important; }
-  </style>
+  <!-- CSS będzie w osobnym pliku -->
+  <link rel="stylesheet" href="./vocab.css" />
 </head>
+
 <body>
   <div class="flashcard-wrapper">
     <div style="margin-bottom:10px; text-align:right;">
       <div class="menu">
-        <button id="menu-btn">Menu⚙️</button>
+        <button id="menu-btn">Menu ⚙️</button>
         <ul id="menu-list" class="hidden"></ul>
       </div>
     </div>
@@ -177,60 +30,59 @@
     <div id="message" style="margin-top:20px; font-weight:bold;"></div>
   </div>
 
-<script>
+<script type="module">
+import { modules } from "../../data/modules.js";
 
+/* =========================================================
+   VOCAB ENGINE – KONFIGURACJA
+========================================================= */
 
-  (function () {
-  const MODULE_ID = "module_1";
-  const LESSON_ID = "module_1__vocabulary__app";
+const params = new URLSearchParams(window.location.search);
+const MODULE_ID = params.get("module");
+
+if (!MODULE_ID) {
+  document.body.innerHTML = "Brak moduleId w URL";
+  throw new Error("Missing moduleId");
+}
+
+const module = modules.find(m => m.id === MODULE_ID);
+if (!module) {
+  document.body.innerHTML = "Nie znaleziono modułu";
+  throw new Error("Module not found");
+}
+
+const vocabActivity = module.activities.find(a => a.id === "vocabulary");
+if (!vocabActivity) {
+  document.body.innerHTML = "Brak słówek w tym module";
+  throw new Error("Vocabulary not found");
+}
+
+/* 
+  Tymczasowo:
+  słówka bierzemy bezpośrednio z activity
+  (następny krok: osobny JSON)
+*/
+const WORDS = vocabActivity.words;
+
+/* lessonId do progressu */
+const LESSON_ID = `${MODULE_ID}__vocabulary__engine`;
+
+/* localStorage – per moduł */
+const KEY_FLASH = `flashcards-${MODULE_ID}`;
+const KEY_PRACTICE = `practice-${MODULE_ID}`;
+
+/* =========================================================
+   APLIKACJA (LOGIKA – 1:1 Z TWOJĄ OBECNĄ)
+========================================================= */
+
+(function () {
+
   let lessonCompletedSent = false;
 
- 
-
-
-  const words = [
-  { en: "here is to my sister", pl: "za moją siostrę" },
-  { en: "newly appointed", pl: "nowo mianowana" },
-  { en: "in charge of purchasing", pl: "odpowiedzialna za zakupy" },
-  { en: "her own little desk", pl: "jej własne małe biurko" },
-  { en: "when Roland's not there", pl: "kiedy Rolanda nie ma" },
-  { en: "beeper", pl: "pager" },
-  { en: "Are you ready to order?", pl: "Czy jesteście gotowi, żeby zamówić?" },
-  { en: "We haven't even looked yet.", pl: "Jeszcze nawet nie spojrzeliśmy." },
-  { en: "just let me know", pl: "po prostu daj mi znać" },
-  { en: "I'll be right over there on the edge of my seat.", pl: "Będę tuż obok, czekając w napięciu." },
-  { en: "look at these prices", pl: "spójrz na te ceny" },
-  { en: "what are these?", pl: "co to jest?" },
-  { en: "famous chickens", pl: "słynne kurczaki" },
-  { en: "Sorry I'm late.", pl: "Przepraszam za spóźnienie." },
-  { en: "Congratulations", pl: "Gratulacje" },
-  { en: "How incredible was my afternoon", pl: "Jak niesamowite było moje popołudnie" },
-  { en: "pretty incredible", pl: "całkiem niesamowite" },
-  { en: "according to the message she left for you", pl: "sądząc po wiadomości, którą ci zostawiła" },
-  { en: "leave a message on a machine", pl: "zostawić wiadomość na sekretarce" },
-  { en: "I had to tell her", pl: "musiałem jej powiedzieć" },
-  { en: "Do I dare ask?", pl: "Czy mogę zapytać?" },
-  { en: "I'll start with", pl: "Zacznę od" },
-  { en: "I'll have the grilled prawns", pl: "Wezmę grillowane krewetki" },
-  { en: "That sounds great.", pl: "Brzmi świetnie." },
-  { en: "Same for me.", pl: "Dla mnie to samo." },
-  { en: "And for the gentleman?", pl: "A dla pana?" },
-  { en: "Yeah, I'll have the Thai chicken pizza.", pl: "Tak, wezmę tajską pizzę z kurczakiem." },
-  { en: "without the nuts and leeks", pl: "bez orzechów i porów" },
-  { en: "is it cheaper?", pl: "będzie taniej?" },
-  { en: "You'd think, wouldn't you?", pl: "Można by tak pomyśleć, prawda?" },
-  { en: "side salad", pl: "sałatka jako dodatek" },
-  { en: "And what would that be on the side of?", pl: "A do czego miałby być ten dodatek?" },
-  { en: "Why don't you just put it right here next to my water?", pl: "Może po prostu połóż ją tutaj, obok mojej wody?" },
-  { en: "And for you?", pl: "A dla ciebie?" },
-  { en: "I'm going to have a cup of the cucumber soup.", pl: "Wezmę filiżankę zupy ogórkowej." },
-  { en: "take care", pl: "trzymaj się" },
-  { en: "Anything else?", pl: "Coś jeszcze?" },
-  { en: "how about", pl: "a może" },
-  { en: "verse", pl: "zwrotka" },
-  { en: "sneeze", pl: "kichnąć" }
-];
-
+  const words = WORDS.map(w => ({
+    en: w.en,
+    pl: w.pl
+  }));
 
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -240,22 +92,20 @@
     return array;
   }
 
-const KEY_FLASH = "flashcards-queue-m1";
-const KEY_PRACTICE = "practice-queue-m1";
-
-
   let frontLang = "en";
   let flipped = false;
   let queueFlashcards;
   let queuePractice;
+  let currentCard = null;
+  let selectedVoice = null;
+  let practiceMode = false;
 
-     async function tryAutoCompleteLesson() {
+  async function tryAutoCompleteLesson() {
     if (lessonCompletedSent) return;
 
     const flashDone = queueFlashcards.length === 0;
     const practiceDone = queuePractice.length === 0;
 
-    // ANY: fiszki LUB pisownia
     if (!flashDone && !practiceDone) return;
 
     lessonCompletedSent = true;
@@ -275,11 +125,8 @@ const KEY_PRACTICE = "practice-queue-m1";
       lessonCompletedSent = false;
     }
   }
-  let currentCard = null;
-  let selectedVoice = null;
-  let practiceMode = false;
 
-  // load saved queues
+  // ===== localStorage =====
   let savedFlash = localStorage.getItem(KEY_FLASH);
   if (savedFlash) {
     try { queueFlashcards = JSON.parse(savedFlash); }
@@ -303,58 +150,62 @@ const KEY_PRACTICE = "practice-queue-m1";
     localStorage.setItem(KEY_PRACTICE, JSON.stringify(queuePractice));
   }
 
+  // ===== TTS =====
   function loadVoices() {
     const voices = speechSynthesis.getVoices();
-    if (!voices.length) { setTimeout(loadVoices, 250); return; }
-    selectedVoice = voices.find(v => /Google (US|UK) English/.test(v.name));
-    if (!selectedVoice) selectedVoice = voices.find(v => v.lang.startsWith("en"));
+    if (!voices.length) {
+      setTimeout(loadVoices, 250);
+      return;
+    }
+    selectedVoice =
+      voices.find(v => /Google (US|UK) English/.test(v.name)) ||
+      voices.find(v => v.lang.startsWith("en"));
   }
   window.speechSynthesis.onvoiceschanged = loadVoices;
   loadVoices();
 
+  // ===== DOM =====
   const cardContainer = document.getElementById("card");
   const againBtn = document.getElementById("again-btn");
   const knowBtn = document.getElementById("know-btn");
   const message = document.getElementById("message");
 
-  // MENU refs
   const menuBtn  = document.getElementById("menu-btn");
   const menuList = document.getElementById("menu-list");
 
-  // === RENDER MENU (dynamicznie wg trybu) ===
+  // ===== MENU =====
   function renderMenu() {
     if (practiceMode) {
-      // tryb ćwiczenia pisowni → 3 opcje
       menuList.innerHTML = `
         <li data-action="flashcards">Fiszki</li>
-        <li data-action="reset">Wyzeruj postęp fiszek</li>
-        <li data-action="resetPractice">Wyzeruj postęp pisowni</li>
+        <li data-action="reset">Wyzeruj fiszki</li>
+        <li data-action="resetPractice">Wyzeruj pisownię</li>
       `;
     } else {
-      // tryb fiszek → pełne menu
       menuList.innerHTML = `
         <li data-action="flashcards">Fiszki</li>
         <li data-action="en">Angielski z przodu</li>
         <li data-action="pl">Polski z przodu</li>
-        <li data-action="reset">Wyzeruj postęp fiszek</li>
-        <li data-action="resetPractice">Wyzeruj postęp pisowni</li>
+        <li data-action="reset">Wyzeruj fiszki</li>
+        <li data-action="resetPractice">Wyzeruj pisownię</li>
         <li data-action="practice">Ćwiczenie pisowni</li>
       `;
     }
   }
 
-  // fiszki: klik karty / głośniczka
+  // ===== FISZKI =====
   cardContainer.addEventListener("click", (e) => {
     if (practiceMode) return;
+
     if (e.target.closest(".speak-btn")) {
       e.stopPropagation();
-      e.preventDefault();
       const utterance = new SpeechSynthesisUtterance(currentCard.en);
       utterance.lang = "en-US";
       if (selectedVoice) utterance.voice = selectedVoice;
       speechSynthesis.speak(utterance);
       return;
     }
+
     flipped = !flipped;
     cardContainer.className = "flashcard" + (flipped ? " flipped" : "");
   });
@@ -365,26 +216,22 @@ const KEY_PRACTICE = "practice-queue-m1";
     renderMenu();
 
     if (queueFlashcards.length === 0) {
-      message.textContent = "";
-      cardContainer.className = "flashcard";
       cardContainer.innerHTML = `
-        <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%;">
-          <div style="font-size:20px; font-weight:bold; margin-bottom:20px;">
-            🎉 Gratulacje! Przerobiłeś wszystkie fiszki.
-          </div>
-          <button id="restart-btn" class="practice-btn">Zacznij od nowa</button>
+        <div class="empty-state">
+          🎉 Gratulacje! Przerobiłaś wszystkie fiszki.
+          <br><br>
+          <button id="restart-btn">Zacznij od nowa</button>
         </div>
       `;
-      document.getElementById("restart-btn").addEventListener("click", () => {
+      document.getElementById("restart-btn").onclick = () => {
         queueFlashcards = shuffleArray([...words]);
         saveFlashcards();
         renderCard();
-      });
-            tryAutoCompleteLesson();
-
+      };
+      tryAutoCompleteLesson();
       return;
     }
-    message.textContent = "";
+
     currentCard = queueFlashcards[0];
     flipped = false;
     cardContainer.className = "flashcard";
@@ -392,178 +239,98 @@ const KEY_PRACTICE = "practice-queue-m1";
       <div class="card-inner">
         <div class="card-front">
           ${frontLang === "en" ? currentCard.en : currentCard.pl}
-          ${frontLang === "en" ? `<button type="button" class="speak-btn">🔊</button>` : ""}
+          ${frontLang === "en" ? `<button class="speak-btn">🔊</button>` : ""}
         </div>
         <div class="card-back">
           ${frontLang === "en" ? currentCard.pl : currentCard.en}
-          ${frontLang === "pl" ? `<button type="button" class="speak-btn">🔊</button>` : ""}
+          ${frontLang === "pl" ? `<button class="speak-btn">🔊</button>` : ""}
         </div>
       </div>
     `;
   }
 
-  function swipeCard(direction) {
+  function swipeCard(dir) {
     if (!currentCard) return;
-    if (direction === "left") {
-      cardContainer.classList.add("swipe-left");
-      setTimeout(() => {
+
+    cardContainer.classList.add(dir === "left" ? "swipe-left" : "swipe-right");
+
+    setTimeout(() => {
+      if (dir === "left") {
         queueFlashcards.push(queueFlashcards.shift());
-        saveFlashcards();
-        cardContainer.classList.remove("swipe-left");
-        renderCard();
-      }, 400);
-    } else if (direction === "right") {
-      cardContainer.classList.add("swipe-right");
-      setTimeout(() => {
+      } else {
         queueFlashcards.shift();
-        saveFlashcards();
-        cardContainer.classList.remove("swipe-right");
-        renderCard();
-      }, 400);
-    }
+      }
+      saveFlashcards();
+      cardContainer.className = "flashcard";
+      renderCard();
+    }, 400);
   }
 
-  // gesty
-  let startX = 0;
-  cardContainer.addEventListener("touchstart", (e) => {
-    startX = e.touches[0].clientX;
-  });
-  cardContainer.addEventListener("touchend", (e) => {
-    const endX = e.changedTouches[0].clientX;
-    const diffX = endX - startX;
-    if (Math.abs(diffX) > 50) {
-      if (diffX > 0) swipeCard("right");
-      else swipeCard("left");
-    }
-  });
+  againBtn.onclick = () => swipeCard("left");
+  knowBtn.onclick  = () => swipeCard("right");
 
-  // tryb ćwiczenia pisowni
+  // ===== PRACTICE =====
   function renderPractice() {
     practiceMode = true;
     document.querySelector(".nav-controls").style.display = "none";
     renderMenu();
 
-    cardContainer.innerHTML = "";
-    message.textContent = "";
-  if (queuePractice.length === 0) {
-  cardContainer.innerHTML = "🎉 Gratulacje! Przerobiłeś wszystkie słowa w ćwiczeniu pisowni.";
-  tryAutoCompleteLesson();
-  return;
-}
+    if (queuePractice.length === 0) {
+      cardContainer.innerHTML = "🎉 Ukończyłaś ćwiczenie pisowni!";
+      tryAutoCompleteLesson();
+      return;
+    }
 
     const polishWord = queuePractice[0].pl;
+    const correctRaw = queuePractice[0].en;
+    const correctLC  = correctRaw.toLowerCase();
+
     cardContainer.innerHTML = `
       <div class="practice-container">
-        <div class="practice-word">
-          ${polishWord}
-          <span id="idk" class="idk-link">Nie wiem</span>
-        </div>
-        <div class="typing-wrap">
-          <div id="hl" class="highlighter" aria-hidden="true"></div>
-          <input id="answer" type="text" class="practice-input" placeholder="(ANGIELSKI)" autocomplete="off">
-        </div>
-        <div id="correct-answer" class="feedback"></div>
-        <div style="margin-top:10px; text-align:right;">
-          <button id="check-btn" class="practice-btn">Odpowiedz</button>
-        </div>
+        <div class="practice-word">${polishWord}</div>
+        <input id="answer" placeholder="ANGIELSKI" />
+        <div id="feedback"></div>
+        <button id="check">Sprawdź</button>
       </div>
     `;
 
-    const answerInput = document.getElementById("answer");
-    const hl          = document.getElementById("hl");
-    const correctDiv  = document.getElementById("correct-answer");
-    const checkBtn    = document.getElementById("check-btn");
-    const correctRaw  = queuePractice[0].en;
-    const correctLC   = correctRaw.toLowerCase();
+    const input = document.getElementById("answer");
+    const feedback = document.getElementById("feedback");
 
-    answerInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        checkBtn.click();
-      }
-    });
-
-    const esc = (s) => (s || "").replace(/[&<>"']/g, c => ({
-      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-    }[c]));
-    answerInput.addEventListener("input", () => {
-      const userRaw = answerInput.value;
-      let out = "";
-      for (let i = 0; i < userRaw.length; i++) {
-        if (userRaw[i].toLowerCase() === correctLC[i]) {
-          out += `<span class="correct">${esc(userRaw[i])}</span>`;
-        } else {
-          out += `<span class="wrong">${esc(userRaw[i])}</span>`;
-        }
-      }
-      hl.innerHTML = out;
-    });
-
-    checkBtn.onclick = () => {
-      const userRaw = answerInput.value.trim().toLowerCase();
-      if (!userRaw) {
-        correctDiv.textContent = `${correctRaw}`;
-        setTimeout(() => { correctDiv.textContent = ""; answerInput.value = ""; hl.innerHTML=""; answerInput.focus(); }, 4000);
-        return;
-      }
-      if (userRaw === correctLC) {
-        correctDiv.textContent = `✔️ ${correctRaw}`;
-        setTimeout(() => {
-          queuePractice.shift();
-          savePractice();
-          renderPractice();
-        }, 1000);
+    document.getElementById("check").onclick = () => {
+      if (input.value.trim().toLowerCase() === correctLC) {
+        queuePractice.shift();
+        savePractice();
+        renderPractice();
       } else {
-        correctDiv.textContent = `${correctRaw}`;
-        setTimeout(() => { correctDiv.textContent = ""; answerInput.value = ""; hl.innerHTML=""; answerInput.focus(); }, 4000);
+        feedback.textContent = correctRaw;
       }
     };
 
-    document.getElementById("idk").onclick = () => {
-      correctDiv.textContent = `${correctRaw}`;
-      setTimeout(() => {
-        correctDiv.textContent = "";
-        answerInput.value = "";
-        hl.innerHTML = "";
-        answerInput.focus();
-      }, 3000);
-    };
-
-    answerInput.focus();
+    input.focus();
   }
 
-  // obsługa menu (otwieranie / zamykanie / klik pozycji)
-  menuBtn.addEventListener("click", () => {
-    menuList.classList.toggle("hidden");
-  });
-  document.addEventListener("click", (e) => {
-    if (!e.target.closest(".menu")) {
-      menuList.classList.add("hidden");
-    }
-  });
-  menuList.addEventListener("click", (e) => {
+  // ===== MENU ACTIONS =====
+  menuBtn.onclick = () => menuList.classList.toggle("hidden");
+
+  menuList.onclick = (e) => {
     if (e.target.tagName !== "LI") return;
-    const val = e.target.dataset.action;
+    const a = e.target.dataset.action;
     menuList.classList.add("hidden");
 
-    if (val === "flashcards") renderCard();
-    if (val === "en") { frontLang = "en"; renderCard(); }
-    if (val === "pl") { frontLang = "pl"; renderCard(); }
-    if (val === "reset") { queueFlashcards = shuffleArray([...words]); saveFlashcards(); renderCard(); }
-    if (val === "resetPractice") { queuePractice = shuffleArray([...words]); savePractice(); renderPractice(); }
-    if (val === "practice") renderPractice();
-  });
+    if (a === "flashcards") renderCard();
+    if (a === "en") { frontLang = "en"; renderCard(); }
+    if (a === "pl") { frontLang = "pl"; renderCard(); }
+    if (a === "reset") { queueFlashcards = shuffleArray([...words]); saveFlashcards(); renderCard(); }
+    if (a === "resetPractice") { queuePractice = shuffleArray([...words]); savePractice(); renderPractice(); }
+    if (a === "practice") renderPractice();
+  };
 
-  againBtn.addEventListener("click", () => swipeCard("left"));
-  knowBtn.addEventListener("click", () => swipeCard("right"));
+  renderMenu();
+  renderCard();
 
-  // start
-  renderMenu();   // ustaw menu do trybu startowego
-  renderCard();   // wejdź w fiszki na start
 })();
-
-  
-
 </script>
+
 </body>
 </html>
