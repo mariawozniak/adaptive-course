@@ -21,10 +21,49 @@ const modulesByLevel = {
   5: "module_1"
 };
 
+function isModuleFullyCompleted(module) {
+  if (!module) return false;
+
+  return module.activities
+    .filter(a => a.required)
+    .every(a => {
+      if (a.variants?.length) {
+        return a.variants.every(v =>
+          progress?.[module.id]?.completedLessons?.[v.id]
+        );
+      }
+      if (a.lessonId) {
+        return progress?.[module.id]?.completedLessons?.[a.lessonId];
+      }
+      return true;
+    });
+}
+
+
 function setModuleForLevel(level) {
-  const moduleId = modulesByLevel[level] || modules[0]?.id;
-  const found = modules.find(m => m.id === moduleId);
-  currentModule = found || modules[0];
+  const moduleId = modulesByLevel[level];
+  if (!moduleId) {
+    currentModule = modules[0];
+    return;
+  }
+
+  const startIndex = modules.findIndex(m => m.id === moduleId);
+  if (startIndex === -1) {
+    currentModule = modules[0];
+    return;
+  }
+
+  // szukamy pierwszego NIEUKOŃCZONEGO modułu
+  for (let i = startIndex; i < modules.length; i++) {
+    const m = modules[i];
+    if (!isModuleFullyCompleted(m)) {
+      currentModule = m;
+      return;
+    }
+  }
+
+  // fallback: wszystkie ukończone → zostajemy na ostatnim
+  currentModule = modules[startIndex];
 }
 
 
