@@ -215,6 +215,15 @@ body {
 .swipe-left .card-back {
   background: #fecaca !important;
 }
+html, body {
+  min-height: 100%;
+}
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
 
 .swipe-right .card-front,
 .swipe-right .card-back {
