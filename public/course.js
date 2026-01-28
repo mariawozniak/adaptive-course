@@ -10,32 +10,6 @@ let progress = {};
 let currentLevel = null;
 let finalFeedbackShown = false;
 
-// ===============================
-// PERSIST VIEW (refresh restore)
-// ===============================
-// "hero" = ekran z okładką modułu i przyciskiem "Rozpocznij moduł"
-// "activities" = lista aktywności w module (po starcie)
-const LS_VIEW_KEY = "course_view";
-
-const LS_ACTIVE_ITEM_KEY = "course_active_item";
-
-
-
-function setSavedView(view) {
-  try {
-    localStorage.setItem(LS_VIEW_KEY, view);
-  } catch {}
-}
-
-function getSavedView() {
-  try {
-    return localStorage.getItem(LS_VIEW_KEY);
-  } catch {
-    return null;
-  }
-}
-
-
 // ===== LEVEL -> MODULE MAP (FRONTEND) =====
 // USTAW TU, który moduł ma być otwierany dla danego poziomu.
 // Na start możesz zostawić wszystko na module_1, potem zmienisz.
@@ -235,31 +209,6 @@ function renderFinalFeedback() {
   `;
 }
 
-function saveActiveItem(data) {
-  try {
-    localStorage.setItem(
-      LS_ACTIVE_ITEM_KEY,
-      JSON.stringify(data)
-    );
-  } catch {}
-}
-
-function loadActiveItem() {
-  try {
-    const raw = localStorage.getItem(LS_ACTIVE_ITEM_KEY);
-    return raw ? JSON.parse(raw) : null;
-  } catch {
-    return null;
-  }
-}
-
-function clearActiveItem() {
-  try {
-    localStorage.removeItem(LS_ACTIVE_ITEM_KEY);
-  } catch {}
-}
-
-
 // ===============================
 // RENDER
 // ===============================
@@ -290,26 +239,18 @@ window.goBack = () => {
     return;
   }
 
-if (moduleStarted) {
-  moduleStarted = false;
-  clearActiveItem();
-  setSavedView("hero");
-  render();
-}
-
-
+  if (moduleStarted) {
+    moduleStarted = false;
+    render();
+  }
 };
 
 window.openActivity = (activityId) => {
   moduleStarted = true;
   activeActivity = currentModule.activities.find(a => a.id === activityId);
   activeVariant = null;
-
-  setSavedView("activities"); // ✅ nadal jesteśmy „w module”
-
   render();
 };
-
 
 window.openVariant = (variantId) => {
   activeVariant = activeActivity.variants.find(v => v.id === variantId);
@@ -536,64 +477,60 @@ if (
 }
 
   const item = activeVariant || activeActivity;
-  if (item?.type === "iframe") {
+  if (!item) return "";
+
+  // 👉 PRZEJŚCIE DO SHADOWINGU (OSOBNA APLIKACJA)
+if (item.type === "internal" && item.engine === "shadowing") {
+  window.location.href =
+    `/shadowing/index.html?module=${currentModule.id}`;
+  return "";
+}
+
+  // 👉 AI LEKTOR (OSOBNA APLIKACJA)
+if (item.type === "internal" && item.engine === "ai-voice") {
+  window.location.href =
+    `/ai-voice/index.html?module=${currentModule.id}`;
+  return "";
+}
+
+
+  // 👉 VOCABULARY ENGINE (osobna aplikacja)
+if (item.id === "vocabulary") {
+  window.location.href =
+    `/vocabulary/index.html?module=${currentModule.id}`;
+  return "";
+}
+
+
+if (item.type === "iframe")
   return `
     ${renderLessonHeader(item)}
 
     <div class="lesson-iframe-wrapper">
       <iframe
         src="${item.src}"
-        loading="lazy"
         allowfullscreen
+        loading="lazy"
+        scrolling="no"
       ></iframe>
     </div>
+
+    <div class="lesson-difficulty lesson-difficulty-mobile">
+      <button
+        class="lesson-diff-btn"
+        onclick="lessonFeedback('easier')"
+      >
+        Za trudne
+      </button>
+
+      <button
+        class="lesson-diff-btn"
+        onclick="lessonFeedback('harder')"
+      >
+        Za łatwe
+      </button>
+    </div>
   `;
-}
-
-  if (!item) return "";
-
-  // 👉 PRZEJŚCIE DO SHADOWINGU (OSOBNA APLIKACJA)
-if (item.type === "internal" && item.engine === "shadowing") {
-  activeActivity = {
-    type: "iframe",
-    src: `/shadowing/index.html?module=${currentModule.id}`,
-    lessonId: item.id
-  };
-
-  saveActiveItem(activeActivity);
-  render();
-  return "";
-}
-
-
-  // 👉 AI LEKTOR (OSOBNA APLIKACJA)
-if (item.type === "internal" && item.engine === "ai-voice") {
-  activeActivity = {
-    type: "iframe",
-    src: `/ai-voice/index.html?module=${currentModule.id}`,
-    lessonId: item.id
-  };
-
-  saveActiveItem(activeActivity);
-  render();
-  return "";
-}
-
-
-
-  // 👉 VOCABULARY ENGINE (osobna aplikacja)
-if (item.id === "vocabulary") {
-  activeActivity = {
-    type: "iframe",
-    src: `/vocabulary/index.html?module=${currentModule.id}`,
-    lessonId: item.id
-  };
-
-  saveActiveItem(activeActivity);
-  render();
-  return "";
-}
-
 
 
 if (item.type === "audio")
@@ -636,14 +573,10 @@ window.markCompleted = async (lessonId) => {
 
 window.startModule = () => {
   moduleStarted = true;
-  activeActivity = null;
+  activeActivity = null;   // ← KLUCZ
   activeVariant = null;
-
-  setSavedView("activities"); // ✅ zapamiętaj widok listy aktywności
-
   render();
 };
-
 
 window.chooseLevel = async (lvl) => {
   await saveLevel(lvl);
@@ -653,9 +586,6 @@ window.chooseLevel = async (lvl) => {
   activeActivity = null;
   activeVariant = null;
   finalFeedbackShown = false;
-
-  setSavedView("hero"); // ✅ po wyborze poziomu pokazujemy hero modułu
-
 
   window.scrollTo(0, 0);
   render();
@@ -695,38 +625,13 @@ window.lessonFeedback = async (dir) => {
 // INIT
 // ===============================
 async function init() {
-
-
-
-
   await ensureUser();
   await loadProgress();
   await loadState();
-const savedItem = loadActiveItem();
-
-if (savedItem) {
-  // 🔥 NAJWIĘKSZY PRIORYTET
-  moduleStarted = true;
-  activeActivity = savedItem;
-  activeVariant = null;
-} else if (currentLevel) {
-  // dopiero jak NIE MA aktywnej lekcji
-  const view = getSavedView();
-
-  if (view === "activities") {
-    moduleStarted = true;
-    activeActivity = null;
-    activeVariant = null;
-  } else {
-    moduleStarted = false;
-    activeActivity = null;
-    activeVariant = null;
-  }
-}
-
-
   render();
 }
+
+init();
 
 // ===============================
 // iframe auto-height — TYLKO shadowing
@@ -746,5 +651,3 @@ window.addEventListener("message", (e) => {
 
   iframe.style.height = e.data.height + "px";
 });
-init();
-
