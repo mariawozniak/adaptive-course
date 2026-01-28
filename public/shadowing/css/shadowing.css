@@ -266,6 +266,14 @@ body{
   100%{ transform:scale(1); opacity:.6; }
 }
 
+/* iOS / mobile iframe fix */
+@supports (-webkit-touch-callout: none) {
+  .shadowing-page {
+    min-height: -webkit-fill-available;
+  }
+}
+
+
 /* ===== FIX: iframe height + mobile ===== */
 
 /* pozwól stronie rosnąć */
