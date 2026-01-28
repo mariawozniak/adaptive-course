@@ -499,15 +499,31 @@ if (item.type === "iframe")
     ${renderLessonHeader(item)}
 
     <div class="lesson-iframe-wrapper">
-<iframe
-  src="${item.src}"
-  allowfullscreen
-  loading="lazy"
-  scrolling="no"
-></iframe>
+      <iframe
+        src="${item.src}"
+        allowfullscreen
+        loading="lazy"
+        scrolling="no"
+      ></iframe>
+    </div>
 
+    <div class="lesson-difficulty lesson-difficulty-mobile">
+      <button
+        class="lesson-diff-btn"
+        onclick="lessonFeedback('easier')"
+      >
+        Za trudne
+      </button>
+
+      <button
+        class="lesson-diff-btn"
+        onclick="lessonFeedback('harder')"
+      >
+        Za łatwe
+      </button>
     </div>
   `;
+
 
 if (item.type === "audio")
   return `
