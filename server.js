@@ -414,6 +414,37 @@ app.post("/api/tts", async (req, res) => {
   }
 });
 
+// ===== WHISPER (OPENAI) =====
+app.post("/api/whisper", async (req, res) => {
+  try {
+    const chunks = [];
+
+    req.on("data", chunk => chunks.push(chunk));
+    req.on("end", async () => {
+      const buffer = Buffer.concat(chunks);
+
+      if (!buffer.length) {
+        return res.status(400).json({ error: "No audio" });
+      }
+
+      const client = new OpenAI({
+        apiKey: process.env.OPENAI_API_KEY
+      });
+
+      const response = await client.audio.transcriptions.create({
+        file: new File([buffer], "audio.webm", { type: "audio/webm" }),
+        model: "whisper-1",
+        language: "en"
+      });
+
+      res.json({ text: response.text });
+    });
+  } catch (err) {
+    console.error("Whisper failed:", err);
+    res.status(500).json({ error: "Whisper failed" });
+  }
+});
+
 // ===== DEBUG OPENAI KEY =====
 app.get("/api/debug-key", (req, res) => {
   res.json({
@@ -572,6 +603,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
