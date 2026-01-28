@@ -428,3 +428,67 @@ body {
 .lesson-iframe-wrapper iframe::-webkit-scrollbar{
   display: none;
 }
+
+/* ===== LESSON DIFFICULTY FEEDBACK ===== */
+
+.lesson-difficulty {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: 12px;
+}
+
+/* wspólna baza */
+.lesson-diff-btn {
+  appearance: none;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: #f5f5f5;
+  color: #333;
+  white-space: nowrap;
+}
+
+/* ZA TRUDNE */
+.lesson-diff-btn:first-child {
+  background: #fff5f5;
+  border-color: #f3c6c6;
+  color: #a40000;
+}
+
+.lesson-diff-btn:first-child:hover {
+  background: #ffecec;
+}
+
+/* ZA ŁATWE */
+.lesson-diff-btn:last-child {
+  background: #f5fff7;
+  border-color: #ccebd6;
+  color: #0f7a3a;
+}
+
+.lesson-diff-btn:last-child:hover {
+  background: #e9fff0;
+}
+
+/* klik */
+.lesson-diff-btn:active {
+  transform: translateY(1px);
+}
+
+/* MOBILE */
+@media (max-width: 640px) {
+  .lesson-difficulty {
+    margin-left: 0;
+    margin-top: 6px;
+  }
+
+  .lesson-diff-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
