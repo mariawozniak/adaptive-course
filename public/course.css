@@ -530,12 +530,6 @@ body {
 
 @media (max-width: 600px) {
 
-  /* level select ma wypełniać ekran */
-  .level-page {
-    min-height: 100vh;
-    justify-content: center;
-    padding: 24px 16px;
-  }
 
   /* 🔥 KLUCZ: zdejmujemy desktopowe ograniczenia szerokości */
   .level-list,
