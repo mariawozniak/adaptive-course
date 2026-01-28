@@ -275,6 +275,7 @@ async function sendMagicLink(email, link) {
 }
 
 // ===== PUBLIGO WEBHOOK =====
+const ALLOWED_PUBLIGO_PRODUCT_ID = "21686";
 
 app.post("/api/publigo-webhook", async (req, res) => {
   console.log("📩 PUBLIGO WEBHOOK");
@@ -286,6 +287,13 @@ app.post("/api/publigo-webhook", async (req, res) => {
     null;
 
   console.log("🧾 productId:", productId);
+
+  // ⛔️ ignorujemy inne produkty
+if (productId !== ALLOWED_PUBLIGO_PRODUCT_ID) {
+  console.log("⛔️ Produkt nieobsługiwany – pomijam wysyłkę maila");
+  return res.status(200).json({ ok: true });
+}
+
 
   // ✅ email (żeby wiedzieć, na co ma iść link)
   const email =
@@ -393,6 +401,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
