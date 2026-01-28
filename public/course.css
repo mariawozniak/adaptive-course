@@ -633,17 +633,31 @@ body {
 /* 🔥 FIX: AI LEKTOR – FULL HEIGHT IFRAME */
 /* ===================================== */
 
+/* ===================================== */
+/* 🔥 FIX: AI LEKTOR – REAL MOBILE HEIGHT */
+/* ===================================== */
+
 .lesson-iframe-wrapper iframe[src*="/ai-voice/"] {
   aspect-ratio: auto !important;
-  height: 100svh;
-  min-height: 100svh;
+  height: calc(100svh - 120px);
+  min-height: calc(100svh - 120px);
   background: #fff;
 }
+
 
 /* ===================================== */
 /* 🔥 FIX: AI LEKTOR – iframe NIE łapie dotyku */
 /* ===================================== */
 
+/* ===================================== */
+/* 🔥 AI VOICE UI – ALWAYS CLICKABLE */
+/* ===================================== */
+
+.lesson-iframe-wrapper {
+  position: relative;
+}
+
 .lesson-iframe-wrapper iframe[src*="/ai-voice/"] {
-  pointer-events: none;
+  position: relative;
+  z-index: 1;
 }
