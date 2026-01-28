@@ -727,44 +727,35 @@ window.lessonFeedback = async (dir) => {
 // INIT
 // ===============================
 async function init() {
-  const lastUrl = localStorage.getItem(LS_LAST_URL_KEY);
 
-  // 🔁 jeśli user był w innej części kursu — wróć tam
- if (
-  lastUrl &&
-  lastUrl !== window.location.href &&
-  location.pathname.startsWith("/course")
-) {
-  window.location.replace(lastUrl);
-  return;
-}
+
 
 
   await ensureUser();
   await loadProgress();
   await loadState();
-  const savedItem = loadActiveItem();
+const savedItem = loadActiveItem();
 
 if (savedItem) {
+  // 🔥 NAJWIĘKSZY PRIORYTET
   moduleStarted = true;
   activeActivity = savedItem;
   activeVariant = null;
+} else if (currentLevel) {
+  // dopiero jak NIE MA aktywnej lekcji
+  const view = getSavedView();
+
+  if (view === "activities") {
+    moduleStarted = true;
+    activeActivity = null;
+    activeVariant = null;
+  } else {
+    moduleStarted = false;
+    activeActivity = null;
+    activeVariant = null;
+  }
 }
 
-
-  if (currentLevel) {
-    const view = getSavedView();
-
-    if (view === "activities") {
-      moduleStarted = true;
-      activeActivity = null;
-      activeVariant = null;
-    } else {
-      moduleStarted = false;
-      activeActivity = null;
-      activeVariant = null;
-    }
-  }
 
   render();
 }
