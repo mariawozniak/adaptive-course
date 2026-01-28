@@ -1,42 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <title>Fiszki EN–PL</title>
+  <meta charset="utf-8" />
+  <title>Shadowing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- STYLE -->
-  <link rel="stylesheet" href="vocab.css" />
+  <link rel="stylesheet" href="/shadowing/css/shadowing.css" />
+
+  <!-- Player API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="https://player.vimeo.com/api/player.js"></script>
 </head>
 <body>
 
-  <div class="flashcard-wrapper">
+<div class="page">
+  <div id="main-card" class="card">
+    <div class="player-wrap">
+      <div id="ytplayer"></div>
+      <iframe id="vimeoplayer" class="hidden"></iframe>
+    </div>
 
-    <!-- MENU -->
-    <div style="margin-bottom:10px; text-align:right;">
-      <div class="menu">
-        <button id="menu-btn">Menu ⚙️</button>
-        <ul id="menu-list" class="hidden"></ul>
+    <div class="controls">
+      <div class="subs-toggle">
+        <label class="pill">
+          <input type="radio" name="subsMode" value="with" checked> Z napisami
+        </label>
+        <label class="pill">
+          <input type="radio" name="subsMode" value="without"> Bez napisów
+        </label>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="prevSegment()">◀ Wstecz</button>
+        <button class="btn" onclick="nextSegment()">Dalej ▶</button>
+        <button class="btn" onclick="retrySegment()">🔄 Powtórz</button>
+        <button class="btn" onclick="markAsGood()">Było dobrze ✔</button>
       </div>
     </div>
 
-    <!-- KARTA -->
-    <div id="card-area">
-      <div class="flashcard" id="card"></div>
-    </div>
-
-    <!-- NAWIGACJA -->
-    <div class="nav-controls">
-      <button id="again-btn">⬅️ Wciąż się uczę</button>
-      <button id="know-btn">Umiem ➡️</button>
-    </div>
-
-    <!-- KOMUNIKATY -->
-    <div id="message" style="margin-top:20px; font-weight:bold;"></div>
+   <div class="panel">
+  <p id="status" class="foot status-listening"></p>
+  <p id="sentence" class="hidden"></p>
+</div>
 
   </div>
 
-  <!-- LOGIKA -->
-  <script src="vocab.js"></script>
+  <div id="end-screen" class="hidden">
+    <div class="card">
+      <div class="end-inner">
+        <h2>🎉 Brawo, to wszystko na dziś!</h2>
+        <p>Świetna robota.</p>
+        <button class="btn btn-lg" onclick="restart()">🔄 Zacznij od nowa</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/shadowing/js/shadowingEngine.js"></script>
 </body>
 </html>
