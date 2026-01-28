@@ -70,7 +70,6 @@ function buildInitialQueue(words, statuses) {
   ];
 }
 
-  const KEY_FLASH = "flashcards-queue-m1";
   const KEY_PRACTICE = "practice-queue-m1";
 
   let frontLang = "en";
@@ -114,9 +113,6 @@ function buildInitialQueue(words, statuses) {
 queuePractice = shuffleArray([...words]);
 
 
-  function saveFlashcards() {
-    localStorage.setItem(KEY_FLASH, JSON.stringify(queueFlashcards));
-  }
   function savePractice() {
     localStorage.setItem(KEY_PRACTICE, JSON.stringify(queuePractice));
   }
@@ -202,11 +198,19 @@ queuePractice = shuffleArray([...words]);
           <button id="restart-btn" class="practice-btn">Zacznij od nowa</button>
         </div>
       `;
-      document.getElementById("restart-btn").onclick = () => {
-        queueFlashcards = shuffleArray([...words]);
-        saveFlashcards();
-        renderCard();
-      };
+document.getElementById("restart-btn").onclick = () => {
+  fetch("/api/vocab/reset", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ moduleId })
+  }).then(() => {
+    vocabStatuses = {};
+    queueFlashcards = shuffleArray([...words]);
+    renderCard();
+  });
+};
+
       return;
     }
 
@@ -229,22 +233,51 @@ queuePractice = shuffleArray([...words]);
     `;
   }
 
-  function swipeCard(direction) {
-    if (!currentCard) return;
-
-    cardContainer.classList.add(direction === "left" ? "swipe-left" : "swipe-right");
-
-    setTimeout(() => {
-      if (direction === "left") {
-        queueFlashcards.push(queueFlashcards.shift());
-      } else {
-        queueFlashcards.shift();
-      }
-      saveFlashcards();
-      cardContainer.classList.remove("swipe-left", "swipe-right");
-      renderCard();
-    }, 400);
+  async function saveWordStatus(wordId, status) {
+  try {
+    await fetch("/api/vocab/answer", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({
+        moduleId,
+        wordId,
+        status
+      })
+    });
+  } catch (e) {
+    console.warn("Nie udało się zapisać statusu fiszki", e);
   }
+}
+
+
+ function swipeCard(direction) {
+  if (!currentCard) return;
+
+  const wordId = currentCard._id;
+  const status = direction === "right" ? "known" : "learning";
+
+  // 🔥 ZAPIS DO BACKENDU
+  saveWordStatus(wordId, status);
+
+  cardContainer.classList.add(
+    direction === "left" ? "swipe-left" : "swipe-right"
+  );
+
+  setTimeout(() => {
+    if (direction === "left") {
+      // "uczę się" → wraca na koniec kolejki
+      queueFlashcards.push(queueFlashcards.shift());
+    } else {
+      // "umiem" → wypada z aktywnej kolejki
+      queueFlashcards.shift();
+    }
+
+    cardContainer.classList.remove("swipe-left", "swipe-right");
+    renderCard();
+  }, 400);
+}
+
 
   /* =======================
      GESTY
@@ -328,7 +361,18 @@ queuePractice = shuffleArray([...words]);
     if (a === "flashcards") renderCard();
     if (a === "en") { frontLang = "en"; renderCard(); }
     if (a === "pl") { frontLang = "pl"; renderCard(); }
-    if (a === "reset") { queueFlashcards = shuffleArray([...words]); saveFlashcards(); renderCard(); }
+if (a === "reset") {
+  fetch("/api/vocab/reset", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ moduleId })
+  }).then(() => {
+    vocabStatuses = {};
+    queueFlashcards = shuffleArray([...words]);
+    renderCard();
+  });
+}
     if (a === "resetPractice") { queuePractice = shuffleArray([...words]); savePractice(); renderPractice(); }
     if (a === "practice") renderPractice();
   };
