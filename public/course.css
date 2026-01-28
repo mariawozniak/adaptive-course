@@ -727,3 +727,25 @@ body {
   }
 }
 
+/* ===================================== */
+/* 🔥 FIX: SHADOWING – WRAPPER AUTO HEIGHT */
+/* ===================================== */
+
+/* tylko iframe shadowingu */
+.lesson-iframe-wrapper iframe[src*="/shadowing/"] {
+  height: auto !important;
+  min-height: 0 !important;
+  display: block;
+}
+
+/* wrapper NIE wymusza wysokości */
+.lesson-iframe-wrapper:has(iframe[src*="/shadowing/"]) {
+  padding-bottom: 0;
+}
+
+/* usuń wizualne "ciągnięcie" tła */
+.lesson-iframe-wrapper:has(iframe[src*="/shadowing/"]) {
+  background: #fffaf4; /* zostaje spójne */
+}
+
+
