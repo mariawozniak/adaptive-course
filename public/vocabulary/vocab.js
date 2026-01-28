@@ -3,7 +3,7 @@
   /* =======================
      ŁADOWANIE DANYCH MODUŁU
      ======================= */
-  const MODULE_PATH = "../../data/vocabulary/module_1.json";
+const MODULE_PATH = "/data/vocabulary/module_1.json";
 
   const response = await fetch(MODULE_PATH);
   const words = await response.json();
