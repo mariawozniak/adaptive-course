@@ -103,13 +103,16 @@ export const modules = [
       /* =======================
          AI LEKTOR
          ======================= */
-      {
-        id: "ai-voice",
-        label: "AI Lektor",
-        required: false,
-        type: "internal",
-        engine: "ai-voice"
-      }
+{
+  id: "ai-voice",
+  label: "AI Lektor",
+  required: false,
+  type: "iframe",
+  src: "/ai-voice/index.html?module=module_1",
+  lessonId: "module_1__ai_voice",
+  completion: "manual"
+}
+
     ]
   }
 ];
