@@ -514,7 +514,12 @@ if (item.type === "audio")
     ${renderLessonHeader(item)}
 
     <div class="lesson-audio-wrapper">
-      <audio controls src="${item.src}"></audio>
+<audio
+  controls
+  controlsList="nodownload"
+  preload="metadata"
+  src="${item.src}"
+></audio>
     </div>
   `;
 
