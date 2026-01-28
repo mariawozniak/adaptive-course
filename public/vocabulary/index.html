@@ -39,8 +39,6 @@
 const params = new URLSearchParams(window.location.search);
 const MODULE_ID = params.get("module") || "module_1";
 
-}
-
 const res = await fetch(`/data/vocabulary/${MODULE_ID}.json`);
 
 if (!res.ok) {
