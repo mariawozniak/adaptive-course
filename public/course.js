@@ -64,18 +64,7 @@ function setModuleForLevel(level) {
 }
 
 
-  // szukamy pierwszego NIEUKOŃCZONEGO modułu
-  for (let i = startIndex; i < modules.length; i++) {
-    const m = modules[i];
-    if (!isModuleFullyCompleted(m)) {
-      currentModule = m;
-      return;
-    }
-  }
 
-  // fallback: wszystkie ukończone → zostajemy na ostatnim
-  currentModule = modules[startIndex];
-}
 
 
 // ===============================
