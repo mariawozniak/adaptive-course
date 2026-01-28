@@ -522,3 +522,45 @@ body {
   }
 }
 
+/* ============================= */
+/* 🔥 MOBILE FULL SCREEN FIX 🔥 */
+/* ============================= */
+
+@media (max-width: 600px) {
+
+  /* level select ma wypełniać ekran */
+  .level-page {
+    min-height: 100vh;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+
+  /* 🔥 KLUCZ: zdejmujemy desktopowe ograniczenia szerokości */
+  .level-list,
+  .activities-list,
+  .module-inner {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  /* przyciski „jak aplikacja” */
+  .level-item {
+    padding: 20px 18px;
+    font-size: 18px;
+  }
+
+  .level-code {
+    width: 52px;
+    height: 52px;
+    font-size: 16px;
+  }
+
+  .level-desc {
+    font-size: 16px;
+  }
+
+  /* globalna czytelność bez zoomu */
+  body {
+    font-size: 17px;
+  }
+}
