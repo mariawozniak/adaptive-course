@@ -431,6 +431,18 @@ body {
   display: none;
 }
 
+/* ===================================== */
+/* 🔥 FIX: vocabulary iframe (app, nie video) */
+/* ===================================== */
+
+.lesson-iframe-wrapper iframe[src*="/vocabulary/"] {
+  aspect-ratio: auto;
+  height: auto;
+  min-height: 75svh;
+  background: transparent;
+}
+
+
 /* ===== LESSON DIFFICULTY FEEDBACK ===== */
 
 .lesson-difficulty {
