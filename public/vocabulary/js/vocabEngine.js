@@ -5,8 +5,10 @@
      ======================= */
 const MODULE_PATH = "/data/vocabulary/module_1.json";
 
-  const response = await fetch(MODULE_PATH);
-  const words = await response.json();
+const response = await fetch(MODULE_PATH);
+const moduleData = await response.json();
+const words = moduleData.words;
+
 
   /* =======================
      POMOCNICZE
