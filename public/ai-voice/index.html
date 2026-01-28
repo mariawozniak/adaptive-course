@@ -8,86 +8,145 @@
 
 <style>
 
-  /* 🔒 MOBILE SAFETY: box model */
+/* =========================================================
+   RESET + MOBILE SAFETY
+========================================================= */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
+  margin: 0;
+  padding: 0;
+
   font-family: 'Roboto', Arial, sans-serif;
   color: #222;
-  text-align: center;
-  padding: 20px;
   background: #fafafa;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh; /* 🔥 realna wysokość mobile */
+  overflow-x: hidden;
 }
+
+/* =========================================================
+   CHATBOX – GŁÓWNY KONTENER
+========================================================= */
 #chatbox {
+  width: 100%;
   max-width: 600px;
-  margin: 20px auto;
-  text-align: left;
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 15px;
-  background-color: #fff;
+  margin: 0 auto;
+
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  padding: 14px;
+  background: #ffffff;
+
+  border: 1px solid #ddd;
+  border-radius: 0;
 }
+
+/* =========================================================
+   WIADOMOŚCI
+========================================================= */
 #messages {
-  max-height: 350px;
+  flex: 1;
   overflow-y: auto;
-  margin-bottom: 10px;
-  font-size: 19px;
+  -webkit-overflow-scrolling: touch;
+
+  margin-bottom: 12px;
+  font-size: 18px;
   line-height: 1.6;
 }
-.message { margin: 8px 0; }
-.message.user { text-align: right; color: #2563eb; }
-.message.ai { text-align: left; color: #495057; }
 
-button {
-  padding: 12px 25px;
-  font-size: 16px;
-  margin: 8px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s ease;
+.message {
+  margin: 8px 0;
+  max-width: 100%;
+  word-wrap: break-word;
 }
-button:hover { opacity: 0.8; }
+
+.message.user {
+  text-align: right;
+  color: #2563eb;
+}
+
+.message.ai {
+  text-align: left;
+  color: #374151;
+}
+
+/* =========================================================
+   PRZYCISKI
+========================================================= */
+button {
+  padding: 14px 18px;
+  font-size: 16px;
+  margin: 6px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.speak-button {
+  background: #ffffff;
+  border: 2px solid #333;
+  color: #333;
+}
+
+.level-up-button {
+  background: #F4A300;
+}
+
+.level-down-button {
+  background: #A3D9A5;
+}
+
+.toggle-errors-button {
+  background: #8FB2F4;
+}
+
+/* =========================================================
+   BUTTON CONTAINER
+========================================================= */
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+#speakBtn {
+  flex: 1 1 100%;
+  font-size: 18px;
+  padding: 16px;
+}
 
 #playAnswerBtn {
-  background-color: #eee;
+  width: 100%;
+  background: #eee;
   color: #111;
   display: none;
 }
 
-.speak-button { background-color: white; border: 2px solid #333; color: #333; }
-.level-up-button { background-color: #F4A300; }
-.level-down-button { background-color: #A3D9A5; }
-.toggle-errors-button { background-color: #8FB2F4; }
-
-.translatable-word {
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-.translatable-word:hover {
-  background-color: #e0e0e0;
-}
-
-.translation-popup {
-  position: absolute;
-  background-color: rgba(0,0,0,0.85);
-  color: #fff;
-  padding: 6px 10px;
-  border-radius: 6px;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  pointer-events: none;
-  max-width: calc(100vw - 20px);
-  white-space: normal;
-  word-wrap: break-word;
-  z-index: 1000;
-
-}
-.translation-popup.show { opacity: 1; }
-
-button:disabled { opacity: 0.5 !important; cursor: not-allowed !important; }
+/* =========================================================
+   LISTENING STATE
+========================================================= */
 #speakBtn.listening {
   background-color: #d9534f;
   color: white;
@@ -96,76 +155,55 @@ button:disabled { opacity: 0.5 !important; cursor: not-allowed !important; }
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(217,83,79,0.7); }
+  0% { box-shadow: 0 0 0 0 rgba(217,83,79,0.6); }
   70% { box-shadow: 0 0 0 10px rgba(217,83,79,0); }
   100% { box-shadow: 0 0 0 0 rgba(217,83,79,0); }
 }
 
-/* ================================
-   MOBILE UX FIX (iOS / Android)
-================================ */
+/* =========================================================
+   TRANSLATABLE WORDS + POPUP
+========================================================= */
+.translatable-word {
+  cursor: pointer;
+}
 
-@media (max-width: 768px) {
+.translatable-word:hover {
+  background: #e5e7eb;
+}
 
-  body {
-    background: #fafafa !important;
-    padding: 0;
-    margin: 0;
-    overflow-x: hidden;
-  }
+.translation-popup {
+  position: absolute;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
 
-  #chatbox {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 12px;
-    border-radius: 0;
-  }
+  max-width: calc(100vw - 20px);
+  white-space: normal;
+  word-wrap: break-word;
 
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 1000;
+}
 
-  #messages {
-    max-height: 60vh;
-    font-size: 18px;
-    line-height: 1.55;
-  }
+.translation-popup.show {
+  opacity: 1;
+}
 
-  .message.user {
-    color: #2563eb;        /* niebieski jak na desktopie */
-    background: transparent;
-  }
-
-  .message.ai {
-    color: #374151;        /* ciemny szary, nie czarny */
-    background: transparent;
-  }
-
-  button {
-    font-size: 16px;
-    padding: 14px 18px;
-    border-radius: 12px;
-  }
-
-  .button-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  #speakBtn {
-    flex: 1 1 100%;
-    font-size: 18px;
-    padding: 16px;
-  }
-
-  #playAnswerBtn {
-    width: 100%;
-    font-size: 16px;
-  }
+/* =========================================================
+   SETTINGS PANEL
+========================================================= */
+#settingsPanel {
+  max-width: 600px;
+  margin: 10px auto;
+  padding: 10px;
+  text-align: left;
 }
 
 .setting-group {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .setting-option {
@@ -173,14 +211,35 @@ button:disabled { opacity: 0.5 !important; cursor: not-allowed !important; }
   padding: 8px 12px;
   border-radius: 8px;
   border: 1px solid #ccc;
-  cursor: pointer;
   background: #f9f9f9;
+  cursor: pointer;
 }
 
 .setting-option.active {
   background: #2563eb;
   color: white;
   border-color: #2563eb;
+}
+
+/* =========================================================
+   BOTTOM SETTINGS BUTTON
+========================================================= */
+#bottomSettings {
+  text-align: center;
+  padding: 10px;
+}
+
+/* =========================================================
+   SAFE AREA – iOS NOTCH / HOME BAR
+========================================================= */
+@supports (padding: env(safe-area-inset-bottom)) {
+  body {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  #chatbox {
+    padding-bottom: calc(14px + env(safe-area-inset-bottom));
+  }
 }
 
 
