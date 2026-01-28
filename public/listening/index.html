@@ -1,107 +1,115 @@
-// public/listening/js/quizEngine.js
-(() => {
-  "use strict";
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  const engine = {
-    data: null,
-    CORE: null,
+  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    state: {
-      current: 0,
-      selected: false,
-      phase: "answer" // answer | explanation
-    },
+  <!-- GAPFILL THEME (1:1 z monolitu) -->
+<link rel="stylesheet" href="/listening/css/gapfill.css">
 
-    init(data, CORE_API){
-      this.data = data;
-      this.CORE = CORE_API;
+  <link rel="stylesheet" href="/listening/css/quiz.css">
 
-      this.cacheDom();
-      this.bindEvents();
-    },
+  <link rel="stylesheet" href="/listening/css/mixed.css">
 
-    cacheDom(){
-      this.overlay = document.getElementById("overlay");
-      this.qtext = document.getElementById("qtext");
-      this.answersBox = document.getElementById("answers");
-      this.instruction = document.getElementById("instruction");
-      this.nextBtn = document.getElementById("next");
-      this.replayBtn = document.getElementById("replayBtn");
-    },
 
-    bindEvents(){
-      this.nextBtn.addEventListener("click", () => this.onNext());
-      this.replayBtn.addEventListener("click", () => this.onReplay());
-    },
 
-    onSegmentEnd(index){
-      this.state.current = index;
-      this.renderMCQ(this.data.segments[index]);
-      this.CORE.showOverlay();
-    },
+  <!-- SHELL / APP STYLES -->
+ 
+</head>
 
-    renderMCQ(seg){
-      this.state.selected = false;
-      this.state.phase = "answer";
+<body>
+  <div class="wrap">
 
-      this.instruction.textContent = "Pytanie";
-      this.qtext.textContent = seg.question;
+    <div class="player">
+      <div id="yt"></div>
 
-      this.answersBox.innerHTML = "";
-      this.answersBox.style.display = "block";
+      <!-- SCORE -->
+      <div id="scoreBox"></div>
 
-      seg.answers.forEach(ans => {
-        const div = document.createElement("div");
-        div.className = "answer";
-        div.textContent = ans.text;
+      <!-- OVERLAY (renderowane przez engine) -->
+      <div class="overlay" id="overlay">
+        <div class="card">
+          <div id="instruction"></div>
+          <div id="qtext"></div>
+          <div id="answers"></div>
+          <div id="explanation"></div>
 
-        div.onclick = () => {
-          if (this.state.selected) return;
-          this.state.selected = true;
+          <div class="actions">
+            <span class="material-icons replay" id="replayBtn">replay</span>
+            <button id="next">Dalej ▶</button>
+          </div>
 
-          if (ans.correct){
-            div.classList.add("correct");
-            this.CORE.setScore(1);
-          } else {
-            div.classList.add("wrong");
-            [...this.answersBox.children].forEach(el => {
-              const correct = seg.answers.find(a => a.correct && a.text === el.textContent);
-              if (correct) el.classList.add("correct");
-            });
-          }
-        };
+          <div id="msg"></div>
+        </div>
+      </div>
+    </div>
 
-        this.answersBox.appendChild(div);
-      });
-    },
+  </div>
 
-    onNext(){
-      const seg = this.data.segments[this.state.current];
-      if (!this.state.selected) return;
+ <!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      if (this.state.phase === "answer"){
-        this.answersBox.style.display = "none";
-        this.qtext.textContent = seg.explanation || "";
-        this.instruction.textContent = "Wyjaśnienie";
-        this.state.phase = "explanation";
-        return;
-      }
+  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-      this.CORE.hideOverlay();
+  <!-- GAPFILL THEME (1:1 z monolitu) -->
+<link rel="stylesheet" href="/listening/css/gapfill.css">
 
-      const next = this.state.current + 1;
-      if (next < this.data.segments.length){
-        this.CORE.playSegment(next);
-      } else {
-        this.CORE.finishExercise();
-      }
-    },
+  <link rel="stylesheet" href="/listening/css/quiz.css">
 
-    onReplay(){
-      this.CORE.hideOverlay();
-      this.CORE.playSegment(this.state.current);
-    }
-  };
 
-  window.quizEngine = engine;
-})();
+  <!-- SHELL / APP STYLES -->
+ 
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="player">
+      <div id="yt"></div>
+
+      <!-- SCORE -->
+      <div id="scoreBox"></div>
+
+      <!-- OVERLAY (renderowane przez engine) -->
+      <div class="overlay" id="overlay">
+        <div class="card">
+          <div id="instruction"></div>
+          <div id="qtext"></div>
+          <div id="answers"></div>
+          <div id="explanation"></div>
+
+          <div class="actions">
+            <span class="material-icons replay" id="replayBtn">replay</span>
+            <button id="next">Dalej ▶</button>
+          </div>
+
+          <div id="msg"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= CORE ================= -->
+  <script src="/listening/js/core.js"></script>
+
+  <!-- ================= ENGINES ================= -->
+<script src="/listening/js/gapfillEngine.js"></script>
+<script src="/listening/js/quizEngine.js"></script>
+
+<script src="/listening/js/mixedEngine.js"></script>
+<script src="/listening/js/mixed/extraWord.js"></script>
+  <script src="/listening/js/mixed/order.js"></script>
+  <script src="/listening/js/mixed/correctWord.js"></script>
+<script src="/listening/js/mixed/match.js"></script>
+
+
+</body>
+</html>
