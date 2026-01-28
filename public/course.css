@@ -581,3 +581,17 @@ body {
   }
 }
 
+/* ===================================== */
+/* MOBILE: move difficulty under iframe */
+/* ===================================== */
+
+@media (max-width: 600px) {
+
+  /* chowamy difficulty w nagłówku */
+  .lesson-header .lesson-difficulty {
+    display: none;
+  }
+
+}
+
+
