@@ -492,3 +492,33 @@ body {
     font-size: 12px;
   }
 }
+/* ===== MOBILE: lesson header ===== */
+@media (max-width: 600px) {
+  .lesson-header-inner {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .lesson-breadcrumbs {
+    width: 100%;
+    order: 2;
+    font-size: 14px;
+  }
+
+  .lesson-checkbox {
+    order: 3;
+    width: 100%;
+  }
+
+  .lesson-difficulty {
+    order: 4;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+  }
+
+  .lesson-diff-btn {
+    flex: 1;
+  }
+}
+
