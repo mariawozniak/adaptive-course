@@ -731,38 +731,6 @@ body {
 /* 🔥 SHADOWING – MOBILE PERFECT FIT */
 /* ===================================== */
 
-@media (max-width: 600px) {
-  .lesson-iframe-wrapper iframe[src*="//* ===================================== */
-/* 🔥 SHADOWING – SAFE HEIGHT + SCROLL */
-/* ===================================== */
-
-@media (max-width: 600px) {
-  .lesson-iframe-wrapper iframe[src*="/shadowing/"] {
-    aspect-ratio: auto !important;
-
-    /* trochę więcej niż ekran */
-    height: calc(100svh - 40px);
-    min-height: calc(100svh - 40px);
-
-    overflow-y: auto;      /* ⬅️ KLUCZ */
-    overscroll-behavior: contain;
-
-    background: transparent;
-  }
-}
-g/"] {
-    aspect-ratio: auto !important;
-
-    /* pełna wysokość ekranu
-       minus nagłówek lekcji */
-    height: calc(100svh - 72px);
-    min-height: calc(100svh - 72px);
-    max-height: calc(100svh - 72px);
-
-    overflow: hidden;
-    background: transparent;
-  }
-}
 
 /* ===================================== */
 /* 🔥 FIX: TEST IFRAME – DO NOT CUT BOTTOM */
@@ -872,7 +840,4 @@ body.install-modal-open {
 @keyframes installPop {
   from { transform: scale(.95); opacity: 0; }
   to   { transform: scale(1); opacity: 1; }
-}
-body {
-  outline: 10px solid red !important;
 }
