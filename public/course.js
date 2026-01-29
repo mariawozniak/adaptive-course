@@ -860,3 +860,33 @@ window.addEventListener("message", (e) => {
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("/sw.js");
 }
+
+// ===============================
+// LISTENING FULLSCREEN (PARENT)
+// ===============================
+
+window.addEventListener("message", (e) => {
+  if (e.data?.type !== "listening-start") return;
+
+  // znajdź iframe listening
+  const iframe = document.querySelector(
+    'iframe[src*="/listening/"]'
+  );
+
+  if (!iframe) return;
+
+  // CSS fullscreen (iOS + fallback)
+  iframe.classList.add("listening-fullscreen");
+  document.body.classList.add("listening-lock");
+
+  // Android / Chrome: prawdziwy fullscreen (best effort)
+  if (iframe.requestFullscreen) {
+    iframe.requestFullscreen().catch(() => {});
+  }
+
+  // landscape lock (best effort)
+  if (screen.orientation?.lock) {
+    screen.orientation.lock("landscape").catch(() => {});
+  }
+});
+
