@@ -342,3 +342,11 @@ body.listening-start-lock {
   }
 }
 
+/* =====================================
+   DISABLE LEGACY START OVERLAY
+   ===================================== */
+
+.start-overlay {
+  display: none !important;
+  pointer-events: none !important;
+}
