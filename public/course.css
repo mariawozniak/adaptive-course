@@ -877,3 +877,29 @@ body {
   outline: 10px solid red !important;
 }
 
+/* ===============================
+   LISTENING FULLSCREEN (PARENT)
+   =============================== */
+
+iframe.listening-fullscreen {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100svh !important;
+  max-height: 100svh !important;
+  z-index: 2147483647 !important;
+  background: #000;
+  border: none !important;
+}
+
+/* iOS stabilne vh */
+@supports (height: 100dvh) {
+  iframe.listening-fullscreen {
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+  }
+}
+
+body.listening-lock {
+  overflow: hidden !important;
+}
