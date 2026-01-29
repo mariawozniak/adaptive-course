@@ -1,8 +1,8 @@
-import { modules } from "../data/modules.js";
 
 const app = document.getElementById("app");
 
-let currentModule = modules[0];
+let modules = [];              // NAJPIERW
+let currentModule = null;      // nie modules[0]
 let moduleStarted = false;
 let activeActivity = null;
 let activeVariant = null;
@@ -12,9 +12,18 @@ let finalFeedbackShown = false;
 let deferredInstallPrompt = null;
 
 
+
 // ===== LEVEL -> MODULE MAP (FRONTEND) =====
 // USTAW TU, który moduł ma być otwierany dla danego poziomu.
 // Na start możesz zostawić wszystko na module_1, potem zmienisz.
+
+async function loadModules() {
+  const res = await fetch("/api/modules", {
+    credentials: "include"
+  });
+  modules = await res.json();
+}
+
 
 function getModulesForLevel(level) {
   return modules
@@ -797,30 +806,32 @@ function showInstallPrompt() {
 // INIT
 // ===============================
 async function init() {
+  // 1️⃣ upewnij się, że user istnieje (cookie)
   await ensureUser();
+
+  // 2️⃣ pobierz strukturę kursu (MUSI być pierwsze)
+  await loadModules();
+
+  // 3️⃣ pobierz progress
   await loadProgress();
 
-  // 1️⃣ najpierw pobierz level z backendu
-  await loadState();
+  // 4️⃣ pobierz level z backendu
+  await loadState();   // ← TU level z bazy
 
-  // 2️⃣ dopiero POTEM spróbuj odtworzyć stan z URL
+  // 5️⃣ odtwórz stan z URL (jeśli ktoś wraca do lekcji)
   restoreFromURL();
 
-  // 3️⃣ jeśli nadal nie ma levela → pokaż wybór poziomu
-  // (render sam to ogarnie)
-  if (currentLevel) {
-    const params = new URLSearchParams(window.location.search);
-    if (!params.get("module")) {
-      setModuleForLevel(currentLevel);
-    }
+  // 6️⃣ jeśli backend dał level, ale URL go nie nadpisał
+  if (currentLevel && !currentModule) {
+    setModuleForLevel(currentLevel);
   }
 
   updateURL();
   render();
 }
 
-
 init();
+
 
 
 // ===============================
