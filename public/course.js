@@ -871,29 +871,35 @@ window.addEventListener("message", (e) => {
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   if (!isMobile) return;
 
+  console.log("📱 listening start (mobile)");
+
+
+  // znajdź iframe listening
   const iframe = document.querySelector(
     'iframe[src*="/listening/"]'
   );
 
   if (!iframe) return;
 
-  // 🔥 PRAWDZIWY FULLSCREEN (MUSI BYĆ W GESTURE)
+  // CSS fullscreen (iOS + fallback)
+iframe.classList.add("listening-fullscreen");
+
+iframe
+  .closest(".lesson-iframe-wrapper")
+  ?.classList.add("listening-fullscreen");
+
+document.body.classList.add("listening-lock");
+
+
+  // Android / Chrome: prawdziwy fullscreen (best effort)
   if (iframe.requestFullscreen) {
     iframe.requestFullscreen().catch(() => {});
-  } else if (iframe.webkitRequestFullscreen) {
-    iframe.webkitRequestFullscreen(); // iOS Safari
   }
 
-  // klasy pomocnicze
-  iframe.classList.add("listening-fullscreen");
-  iframe
-    .closest(".lesson-iframe-wrapper")
-    ?.classList.add("listening-fullscreen");
-
-  document.body.classList.add("listening-lock");
-
-  // 🔄 landscape lock (best effort)
+  // landscape lock (best effort)
   if (screen.orientation?.lock) {
     screen.orientation.lock("landscape").catch(() => {});
+
+    
   }
 });
