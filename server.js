@@ -477,31 +477,14 @@ app.use("/data", express.static(path.join(__dirname, "data")));
 // ===== FRONTEND =====
 app.get("/course", (req, res) => {
   console.log(">>> /course HIT");
-
-  const cookieUserId = req.cookies.course_user || null;
-
-  // 1️⃣ jeśli user jest zapamiętany → wpuszczamy
-  if (cookieUserId) {
-    const user = db
-      .prepare("SELECT id FROM users WHERE id = ?")
-      .get(cookieUserId);
-
-    if (user) {
-      return res.sendFile(
-        path.join(__dirname, "public", "course.html")
-      );
-    }
-  }
-
-  // 2️⃣ jeśli nie → ekran logowania
-  return res.sendFile(
-  path.join(__dirname, "login.html")
-  );
+  return res.send("COURSE ROUTE OK");
 });
+
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log("🚀 Server listening on port", PORT);
 });
+
 
 
 
