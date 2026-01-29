@@ -543,7 +543,9 @@ app.use("/data", express.static(path.join(__dirname, "data")));
 // ===== FRONTEND =====
 app.get("/course", (req, res) => {
   const token = req.query.token;
+  const cookieUserId = req.cookies.course_user || null;
 
+  // 1️⃣ WEJŚCIE Z LINKU MAILOWEGO (MAGIC LINK)
   if (token) {
     const user = db.prepare(`
       SELECT id, devices_count
@@ -552,7 +554,7 @@ app.get("/course", (req, res) => {
     `).get(token);
 
     if (!user) {
-      return res.status(403).send("Nieprawidłowy link");
+      return res.status(403).send("Nieprawidłowy lub zużyty link");
     }
 
     if (user.devices_count >= 2) {
@@ -561,7 +563,7 @@ app.get("/course", (req, res) => {
         .send("Limit urządzeń został osiągnięty");
     }
 
-    // zapisujemy cookie (NOWE urządzenie)
+    // zapamiętujemy usera na tym urządzeniu
     res.setHeader(
       "Set-Cookie",
       `course_user=${user.id}; Path=/; SameSite=Lax; Secure`
@@ -574,9 +576,28 @@ app.get("/course", (req, res) => {
           login_token = NULL
       WHERE id = ?
     `).run(user.id);
+
+    // 👉 bardzo ważne: czyścimy URL z tokena
+    return res.redirect("/course");
   }
 
-  res.sendFile(path.join(__dirname, "public", "course.html"));
+  // 2️⃣ KOLEJNE WEJŚCIA (COOKIE)
+  if (cookieUserId) {
+    const user = db
+      .prepare("SELECT id FROM users WHERE id = ?")
+      .get(cookieUserId);
+
+    if (user) {
+      return res.sendFile(
+        path.join(__dirname, "public", "course.html")
+      );
+    }
+  }
+
+  // 3️⃣ WSZYSCY INNI — BRAK DOSTĘPU
+  return res
+    .status(403)
+    .send("Dostęp tylko przez link wysłany na email");
 });
 
 
@@ -584,6 +605,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
