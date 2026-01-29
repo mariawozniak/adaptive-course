@@ -894,5 +894,31 @@ g/"] {
     opacity: 1;
   }
 }
+/* =========================
+   🔥 MODAL HARD FIX 🔥
+========================= */
+
+.install-prompt {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647; /* MAX SAFE Z-INDEX */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+
+  pointer-events: auto;
+}
+
+.install-prompt * {
+  pointer-events: auto;
+}
+
+body.install-modal-open {
+  overflow: hidden;
+}
 
 
