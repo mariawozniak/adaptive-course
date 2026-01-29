@@ -158,23 +158,7 @@ app.post("/api/lesson-complete", (req, res) => {
   res.json({ ok: true });
 });
 
-function ensureUserRow(userId) {
-  if (!userId) return null;
 
-  const user = db
-    .prepare("SELECT id FROM users WHERE id = ?")
-    .get(userId);
-
-  if (user) return userId;
-
-  // user ma cookie, ale nie istnieje jeszcze w tabeli users
-  db.prepare(`
-    INSERT INTO users (id, email)
-    VALUES (?, NULL)
-  `).run(userId);
-
-  return userId;
-}
 // ===== VOCABULARY =====
 
 // pobierz statusy fiszek dla modułu
@@ -190,13 +174,12 @@ app.get("/api/vocab/status", (req, res) => {
     return res.status(400).json({ error: "No moduleId" });
   }
 
-  ensureUserRow(userId);
+ const rows = db.prepare(`
+  SELECT word_id, status
+  FROM vocabulary_progress
+  WHERE user_id = ? AND module_id = ?
+`).all(userId, moduleId);
 
-  const rows = db.prepare(`
-    SELECT word_id, status
-    FROM vocabulary_progress
-    WHERE user_id = ? AND module_id = ?
-  `).all(userId, moduleId);
 
   const statuses = {};
   for (const row of rows) {
@@ -605,6 +588,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
