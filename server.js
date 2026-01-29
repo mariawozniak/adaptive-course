@@ -489,13 +489,13 @@ app.get("/course", (req, res) => {
 
       if (user) {
         return res.sendFile(
-          path.resolve("course.html")
+          path.join(__dirname, "public", "course.html")
         );
       }
     }
 
     return res.sendFile(
-      path.resolve("login.html")
+      path.join(__dirname, "public", "login.html")
     );
   } catch (err) {
     console.error("COURSE ROUTE ERROR:", err);
@@ -505,9 +505,11 @@ app.get("/course", (req, res) => {
 
 
 
+
 app.listen(PORT, "0.0.0.0", () => {
   console.log("🚀 Server listening on port", PORT);
 });
+
 
 
 
