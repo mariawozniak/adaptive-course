@@ -601,12 +601,14 @@ if (item.type === "audio")
     ${renderLessonHeader(item)}
 
     <div class="lesson-audio-wrapper">
-      <audio
-        controls
-        controlsList="nodownload"
-        preload="metadata"
-        src="${item.src}"
-      ></audio>
+<audio
+  controls
+  controlsList="nodownload"
+  preload="metadata"
+>
+  <source src="${item.src}" type="audio/mpeg" />
+</audio>
+
     </div>
 
     ${renderLessonDifficultyBottom()}
