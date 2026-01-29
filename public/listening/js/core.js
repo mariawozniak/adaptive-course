@@ -75,29 +75,8 @@
   };
 
   // ---- segment control ----
-  function playSegment(index) {
-    if (!data || !player) return;
-
-    const seg = data.segments[index];
-    if (!seg) return;
-
-    currentSegmentIndex = index;
-
-    player.seekTo(seg.start, true);
-    player.playVideo();
-
-    clearWatcher();
-    watcher = setInterval(() => {
-      const t = player.getCurrentTime();
-      if (t >= seg.end) {
-        clearWatcher();
-        player.pauseVideo();
-        if (engine && typeof engine.onSegmentEnd === "function") {
-          engine.onSegmentEnd(index);
-        }
-      }
-    }, 200);
-  }
+ function playSegment(index) {
+ 
 
   // ---- engine selection ----
   function pickEngine(mode) {
