@@ -706,47 +706,86 @@ render();
 
 
 function showInstallPrompt() {
-  // 🔒 blokada duplikatów
   if (document.querySelector(".install-prompt")) return;
 
   const overlay = document.createElement("div");
   overlay.className = "install-prompt";
 
+  // 🔥 HARD INLINE STYLES (pewne)
+  Object.assign(overlay.style, {
+    position: "fixed",
+    inset: "0",
+    zIndex: "2147483647",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "rgba(0,0,0,0.6)"
+  });
+
   overlay.innerHTML = `
     <div class="install-box">
-      <p>📲 Dodać kurs do ekranu głównego?</p>
-      <p style="font-size:14px; color:#6b4e2e; margin-bottom:20px;">
+      <p style="font-size:18px;font-weight:600;margin-bottom:8px;">
+        📲 Dodać kurs do ekranu głównego?
+      </p>
+      <p style="font-size:14px;color:#6b4e2e;margin-bottom:20px;">
         Szybszy dostęp i działanie jak aplikacja
       </p>
-      <div class="install-actions">
+      <div style="display:flex;gap:12px;">
         <button id="install-yes">OK</button>
         <button id="install-no">Nie, dziękuję</button>
       </div>
     </div>
   `;
 
-  document.body.classList.add("install-modal-open");
+  const box = overlay.querySelector(".install-box");
+  Object.assign(box.style, {
+    background: "#fffaf4",
+    borderRadius: "24px",
+    padding: "28px 24px",
+    width: "min(90vw, 360px)",
+    textAlign: "center",
+    boxShadow: "0 24px 60px rgba(0,0,0,.25)"
+  });
+
+  const yes = overlay.querySelector("#install-yes");
+  const no = overlay.querySelector("#install-no");
+
+  [yes, no].forEach(btn => {
+    Object.assign(btn.style, {
+      flex: "1",
+      height: "48px",
+      borderRadius: "999px",
+      border: "none",
+      fontSize: "15px",
+      cursor: "pointer"
+    });
+  });
+
+  yes.style.background = "#e67e22";
+  yes.style.color = "#fff";
+  no.style.background = "#f1e3d3";
+
   document.body.appendChild(overlay);
+  document.body.style.overflow = "hidden";
 
-  // ✅ OK
-  document.getElementById("install-yes").onclick = async () => {
+  yes.onclick = async () => {
     localStorage.setItem("a2hs_prompted", "yes");
-
     if (deferredInstallPrompt) {
       deferredInstallPrompt.prompt();
       await deferredInstallPrompt.userChoice;
       deferredInstallPrompt = null;
     }
-
-    document.body.classList.remove("install-modal-open");
-    overlay.remove();
+    close();
   };
 
-  // ❌ NIE, DZIĘKUJĘ (NIE zapisujemy localStorage)
-  document.getElementById("install-no").onclick = () => {
-    document.body.classList.remove("install-modal-open");
-    overlay.remove();
+  no.onclick = () => {
+    close();
   };
+
+  function close() {
+    document.body.style.overflow = "";
+    overlay.remove();
+  }
 }
 
 
