@@ -712,6 +712,9 @@ function showInstallPrompt() {
   overlay.innerHTML = `
     <div class="install-box">
       <p>📲 Dodać kurs do ekranu głównego?</p>
+      <p style="font-size:14px; color:#6b4e2e; margin-bottom:20px;">
+        Szybszy dostęp i działanie jak aplikacja
+      </p>
       <div class="install-actions">
         <button id="install-yes">OK</button>
         <button id="install-no">Nie, dziękuję</button>
@@ -719,35 +722,33 @@ function showInstallPrompt() {
     </div>
   `;
 
-document.body.classList.add("install-modal-open");
-document.body.appendChild(overlay);
+  // 🔒 blokujemy scroll strony
+  document.body.classList.add("install-modal-open");
+  document.body.appendChild(overlay);
 
-document.getElementById("install-yes").onclick = async () => {
-  localStorage.setItem("a2hs_prompted", "yes");
-
-  if (deferredInstallPrompt) {
-    deferredInstallPrompt.prompt();
-    await deferredInstallPrompt.userChoice;
-    deferredInstallPrompt = null;
-  }
-
-  document.body.classList.remove("install-modal-open");
-  overlay.remove();
-};
-
-document.getElementById("install-no").onclick = () => {
-  localStorage.setItem("a2hs_prompted", "yes");
-
-  document.body.classList.remove("install-modal-open");
-  overlay.remove();
-};
-
-
-  document.getElementById("install-no").onclick = () => {
+  // ✅ OK
+  document.getElementById("install-yes").onclick = async () => {
     localStorage.setItem("a2hs_prompted", "yes");
+
+    if (deferredInstallPrompt) {
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+    }
+
+    document.body.classList.remove("install-modal-open");
+    overlay.remove();
+  };
+
+  // ❌ NIE, DZIĘKUJĘ (bez localStorage!)
+  document.getElementById("install-no").onclick = () => {
+    document.body.classList.remove("install-modal-open");
     overlay.remove();
   };
 }
+
+
+
 
 
 // ===============================
