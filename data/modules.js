@@ -28,7 +28,7 @@ export const modules = [
   label: "Nagranie MP3",
   type: "audio",
   lessonId: "module_1__vocabulary__audio",
-  src: "/assets/covers/module_1.jpg",
+  src: "assets/vocab/module_1_vocab_audio.mp3",
   completion: "manual"
 },
 
