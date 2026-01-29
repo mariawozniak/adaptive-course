@@ -285,3 +285,6 @@ button:active{ transform:scale(.98); }
   font-weight: 600;
   cursor: pointer;
 }
+body.listening-start-lock {
+  overflow: hidden;
+}
