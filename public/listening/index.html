@@ -14,6 +14,21 @@
 </head>
 
 <body>
+
+  <!-- ================= START OVERLAY (MOBILE) ================= -->
+  <!-- 🔥 KLUCZOWE: core.js SZUKA #startBtn -->
+  <div class="start-overlay" id="startOverlay">
+    <div class="start-card">
+      <h2>Instrukcja</h2>
+      <p>
+        Kliknij <strong>Start</strong>, aby rozpocząć ćwiczenie.<br>
+        Film zatrzyma się automatycznie i pojawią się pytania.
+      </p>
+      <button id="startBtn">Start ▶</button>
+    </div>
+  </div>
+  <!-- ========================================================== -->
+
   <div class="wrap">
 
     <!-- PLAYER -->
@@ -23,7 +38,7 @@
       <!-- SCORE -->
       <div id="scoreBox"></div>
 
-      <!-- OVERLAY (MUSI BYĆ W PLAYERZE) -->
+      <!-- OVERLAY (QUESTIONS) -->
       <div class="overlay" id="overlay">
         <div class="card">
 
@@ -33,7 +48,7 @@
           <!-- MCQ answers -->
           <div id="answers"></div>
 
-          <!-- explanation (opcjonalnie) -->
+          <!-- explanation -->
           <div id="explanation"></div>
 
           <div class="actions">
