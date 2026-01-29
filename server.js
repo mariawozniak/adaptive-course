@@ -74,7 +74,7 @@ app.get("/api/me", (req, res) => {
   });
 });
 app.post("/api/login-email", (req, res) => {
-  const { email } = req.body || {};
+  const email = req.body?.email?.trim().toLowerCase();
 
   if (!email) {
     return res.status(400).json({ error: "Brak emaila" });
@@ -88,14 +88,14 @@ app.post("/api/login-email", (req, res) => {
     return res.status(401).json({ error: "Nie znaleziono użytkownika" });
   }
 
-res.setHeader(
-  "Set-Cookie",
-  `course_user=${user.id}; Path=/; HttpOnly; SameSite=Lax; Secure`
-);
-
+  res.setHeader(
+    "Set-Cookie",
+    `course_user=${user.id}; Path=/; HttpOnly; SameSite=Lax; Secure`
+  );
 
   return res.json({ ok: true });
 });
+
 
 
 // ===== STATE =====
@@ -529,6 +529,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, "0.0.0.0", () => {
   console.log("🚀 Server listening on port", PORT);
 });
+
 
 
 
