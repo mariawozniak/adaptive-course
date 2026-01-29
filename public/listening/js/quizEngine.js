@@ -29,16 +29,21 @@
       this.replayBtn = document.getElementById("replayBtn");
     },
 
-    bindEvents(){
-      this.nextBtn.addEventListener("click", () => this.onNext());
-      this.replayBtn.addEventListener("click", () => this.onReplay());
-    },
+bindEvents(){
+  this.nextBtn.onclick = () => this.onNext();
+  this.replayBtn.onclick = () => this.onReplay();
+},
 
-    onSegmentEnd(index){
-      this.state.current = index;
-      this.renderMCQ(this.data.segments[index]);
-      this.CORE.showOverlay();
-    },
+
+  onSegmentEnd(index){
+  this.state.current = index;
+
+  // 🔒 defensywnie zatrzymaj wszystko
+  this.CORE.hideOverlay();
+  this.renderMCQ(this.data.segments[index]);
+  this.CORE.showOverlay();
+},
+
 
     renderMCQ(seg){
       this.state.selected = false;
@@ -77,7 +82,7 @@
 
     onNext(){
       const seg = this.data.segments[this.state.current];
-      if (!this.state.selected) return;
+if (!this.state.selected) return false;
 
       if (this.state.phase === "answer"){
         this.answersBox.style.display = "none";
