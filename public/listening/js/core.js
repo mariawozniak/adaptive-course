@@ -221,6 +221,8 @@ function setupFullscreenStart() {
 
   // ---- init ----
   async function start() {
+    setupFullscreenStart();
+
     data = await loadModuleJson();
  score = 0;
 maxScore = 0;
