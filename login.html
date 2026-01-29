@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dostęp do kursu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: #0b0e14;
+      color: #eee;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .box {
+      background: #1b2130;
+      padding: 32px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.5);
+      text-align: center;
+    }
+    h1 {
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+    p {
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+    button {
+      width: 100%;
+      height: 48px;
+      border-radius: 999px;
+      border: none;
+      background: #e67e22;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .error {
+      margin-top: 16px;
+      color: #f88;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h1>Dostęp do kursu</h1>
+    <p>Podaj email użyty przy zakupie kursu.</p>
+
+    <input
+      type="email"
+      id="email"
+      placeholder="Twój email"
+      autocomplete="email"
+    />
+
+    <button id="loginBtn">Wejdź do kursu</button>
+
+    <div class="error" id="error"></div>
+  </div>
+
+  <script>
+    const btn = document.getElementById("loginBtn");
+    const input = document.getElementById("email");
+    const error = document.getElementById("error");
+
+    btn.onclick = async () => {
+      error.style.display = "none";
+
+      const email = input.value.trim().toLowerCase();
+      if (!email) {
+        error.textContent = "Podaj email";
+        error.style.display = "block";
+        return;
+      }
+
+      const res = await fetch("/api/login-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email })
+      });
+
+      if (res.ok) {
+        location.href = "/course";
+      } else {
+        const data = await res.json();
+        error.textContent =
+          data.error || "Brak dostępu do kursu";
+        error.style.display = "block";
+      }
+    };
+  </script>
+
+</body>
+</html>
