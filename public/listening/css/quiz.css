@@ -170,20 +170,29 @@ button:active{ transform:scale(.98); }
 ========================= */
 
 .fullscreen-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 999999;          /* ⬅️ WYŻEJ niż iframe */
+  position: fixed !important;
+
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 2147483647; /* 🔥 absolutny top */
   display: none;
 
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.92);
   color: #fff;
 
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   padding: 24px;
+
+  pointer-events: auto;
 }
+
 
 /* przycisk */
 .fullscreen-overlay button {
