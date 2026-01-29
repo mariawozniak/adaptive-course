@@ -165,32 +165,7 @@ button:active{ transform:scale(.98); }
 
 .replay:active{ transform:scale(.95); }
 
-/* =========================
-   FULLSCREEN START OVERLAY
-========================= */
 
-.fullscreen-overlay {
-  position: fixed !important;
-
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-
-  z-index: 2147483647; /* 🔥 absolutny top */
-  display: none;
-
-  background: rgba(0,0,0,0.92);
-  color: #fff;
-
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  padding: 24px;
-
-  pointer-events: auto;
-}
 
 
 /* przycisk */
