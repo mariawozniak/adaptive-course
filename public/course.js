@@ -871,24 +871,28 @@ window.addEventListener("message", (e) => {
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   if (!isMobile) return;
 
-  console.log("📱 listening start (mobile)");
-
-
-  // znajdź iframe listening
   const iframe = document.querySelector(
     'iframe[src*="/listening/"]'
   );
 
   if (!iframe) return;
 
-  // CSS fullscreen (iOS + fallback)
-iframe.classList.add("listening-fullscreen");
+  // 🔥 PRAWDZIWY FULLSCREEN
+  if (iframe.requestFullscreen) {
+    iframe.requestFullscreen().catch(() => {});
+  } else if (iframe.webkitRequestFullscreen) {
+    iframe.webkitRequestFullscreen(); // iOS Safari
+  }
 
-iframe
-  .closest(".lesson-iframe-wrapper")
-  ?.classList.add("listening-fullscreen");
+  // klasy pomocnicze (CSS)
+  iframe.classList.add("listening-fullscreen");
+  iframe
+    .closest(".lesson-iframe-wrapper")
+    ?.classList.add("listening-fullscreen");
 
-document.body.classList.add("listening-lock");
+  document.body.classList.add("listening-lock");
+});
+
 
 
 
