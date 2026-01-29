@@ -199,9 +199,9 @@ function setupStartOverlay() {
   }
 
 
-  const btn = document.getElementById("startBtn");
+const btn = document.getElementById("startBtn");
+if (!btn) return;
 
-  if (!overlay || !btn) return;
 
 
   btn.onclick = () => {
