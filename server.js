@@ -73,6 +73,29 @@ app.get("/api/me", (req, res) => {
     level: user.level ?? null
   });
 });
+app.post("/api/login-email", (req, res) => {
+  const { email } = req.body || {};
+
+  if (!email) {
+    return res.status(400).json({ error: "Brak emaila" });
+  }
+
+  const user = db
+    .prepare("SELECT id FROM users WHERE email = ?")
+    .get(email);
+
+  if (!user) {
+    return res.status(401).json({ error: "Nie znaleziono użytkownika" });
+  }
+
+res.setHeader(
+  "Set-Cookie",
+  `course_user=${user.id}; Path=/; HttpOnly; SameSite=Lax; Secure`
+);
+
+
+  return res.json({ ok: true });
+});
 
 
 // ===== STATE =====
@@ -503,6 +526,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, "0.0.0.0", () => {
   console.log("🚀 Server listening on port", PORT);
 });
+
 
 
 
