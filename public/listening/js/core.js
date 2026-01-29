@@ -171,6 +171,54 @@ function nextSegment() {
   }
 }
 
+  // ===============================
+// FULLSCREEN START (MOBILE)
+// ===============================
+
+function setupFullscreenStart() {
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const isAndroid = /Android/i.test(navigator.userAgent);
+
+  const overlay = document.getElementById("fullscreenOverlay");
+  const msg = document.getElementById("overlayMessage");
+  const btn = document.getElementById("overlayButton");
+  const playerEl = document.querySelector(".player");
+
+  if (!overlay || !btn || !playerEl) return;
+
+  // tylko mobile
+  if (!isIOS && !isAndroid) return;
+
+  msg.innerHTML = `
+    <strong>Instrukcja:</strong><br><br>
+    ▶ Obejrzyj fragment<br>
+    ❓ Odpowiedz na pytanie<br>
+    ⏭ Kliknij „Dalej”
+  `;
+
+  overlay.style.display = "flex";
+
+  btn.onclick = () => {
+    overlay.style.display = "none";
+
+    if (isIOS) {
+      // iOS pseudo fullscreen
+      playerEl.classList.add("ios-fullscreen");
+      document.body.style.overflow = "hidden";
+    } else {
+      // Android / Chrome
+      if (playerEl.requestFullscreen) {
+        playerEl.requestFullscreen().catch(() => {});
+      }
+    }
+
+    // best effort: lock landscape
+    if (screen.orientation?.lock) {
+      screen.orientation.lock("landscape").catch(() => {});
+    }
+  };
+}
+
   // ---- init ----
   async function start() {
     data = await loadModuleJson();
