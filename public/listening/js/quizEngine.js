@@ -17,6 +17,7 @@
       this.CORE = CORE_API;
 
       this.cacheDom();
+      this.bindEvents();
     },
 
     cacheDom(){
@@ -28,7 +29,10 @@
       this.replayBtn = document.getElementById("replayBtn");
     },
 
-
+    bindEvents(){
+      this.nextBtn.addEventListener("click", () => this.onNext());
+      this.replayBtn.addEventListener("click", () => this.onReplay());
+    },
 
     onSegmentEnd(index){
       this.state.current = index;
@@ -71,21 +75,27 @@
       });
     },
 
-  onNext(){
-  const seg = this.data.segments[this.state.current];
-  if (!this.state.selected) return false;
+    onNext(){
+      const seg = this.data.segments[this.state.current];
+      if (!this.state.selected) return;
 
-  if (this.state.phase === "answer"){
-    this.answersBox.style.display = "none";
-    this.qtext.textContent = seg.explanation || "";
-    this.instruction.textContent = "Wyjaśnienie";
-    this.state.phase = "explanation";
-    return false; // ⛔ NIE przechodź dalej
-  }
+      if (this.state.phase === "answer"){
+        this.answersBox.style.display = "none";
+        this.qtext.textContent = seg.explanation || "";
+        this.instruction.textContent = "Wyjaśnienie";
+        this.state.phase = "explanation";
+        return;
+      }
 
-  // phase === explanation
-  return true; // ✅ core może iść do nextSegment
-},
+      this.CORE.hideOverlay();
+
+      const next = this.state.current + 1;
+      if (next < this.data.segments.length){
+        this.CORE.playSegment(next);
+      } else {
+        this.CORE.finishExercise();
+      }
+    },
 
     onReplay(){
       this.CORE.hideOverlay();
