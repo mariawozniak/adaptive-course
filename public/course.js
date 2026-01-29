@@ -737,6 +737,39 @@ function showInstallPrompt() {
     overlay.remove();
   };
 }
+function showInstallPrompt() {
+  const overlay = document.createElement("div");
+  overlay.className = "install-prompt";
+
+  overlay.innerHTML = `
+    <div class="install-box">
+      <p>📲 Dodać kurs do ekranu głównego?</p>
+      <div class="install-actions">
+        <button id="install-yes">OK</button>
+        <button id="install-no">Nie, dziękuję</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  document.getElementById("install-yes").onclick = async () => {
+    localStorage.setItem("a2hs_prompted", "yes");
+
+    if (deferredInstallPrompt) {
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+    }
+
+    overlay.remove();
+  };
+
+  document.getElementById("install-no").onclick = () => {
+    localStorage.setItem("a2hs_prompted", "yes");
+    overlay.remove();
+  };
+}
 
 
 // ===============================
