@@ -209,7 +209,7 @@ function setupFullscreenStart() {
     );
   }
 };
-
+}
 
   // ---- init ----
   async function start() {
