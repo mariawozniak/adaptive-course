@@ -153,18 +153,22 @@ function isModuleCompleted() {
 function restoreFromURL() {
   const params = new URLSearchParams(window.location.search);
 
-  const levelParam = params.get("level");
   const moduleId = params.get("module");
   const started = params.get("started") === "1";
   const activityId = params.get("activity");
   const variantId = params.get("variant");
 
-  // 1) Level
-  const level = levelParam ? Number(levelParam) : null;
-  if (level && [1,2,3,4,5].includes(level)) {
+const levelParam = params.get("level");
+
+if (levelParam) {
+  const level = Number(levelParam);
+
+  if ([1,2,3,4,5].includes(level)) {
     currentLevel = level;
     setModuleForLevel(level);
   }
+}
+
 
   // 2) Module (nadpisuje wybrany przez setModuleForLevel jeśli jest w URL)
   if (moduleId) {
