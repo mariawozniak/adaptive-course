@@ -11,16 +11,39 @@
 
   <title>Angielski z Piosenek i Seriali</title>
 
+  <!-- COURSE STYLES -->
   <link rel="stylesheet" href="/course.css">
 
+  <!-- PWA -->
   <link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#000000">
-
+  <meta name="theme-color" content="#000000">
 </head>
+
 <body>
 
+  <!-- =====================================
+       LISTENING START OVERLAY (PARENT)
+       ===================================== -->
+  <div id="listeningStartOverlay" class="start-overlay" style="display:none">
+    <div class="start-card">
+      <h2>Instrukcja</h2>
+      <p>
+        ▶ Obejrzyj fragment<br>
+        ❓ Odpowiedz na pytanie<br>
+        ⏭ Kliknij „Dalej”
+      </p>
+      <button id="listeningStartBtn">OK</button>
+    </div>
+  </div>
+
+  <!-- =====================================
+       APP ROOT
+       ===================================== -->
   <div id="app"></div>
 
+  <!-- =====================================
+       COURSE SCRIPT
+       ===================================== -->
   <script type="module" src="/course.js"></script>
 
 </body>
