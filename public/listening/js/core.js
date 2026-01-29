@@ -20,6 +20,7 @@
   let maxScore = 0;
   let waitingForStart = true;
 let overlayLocked = false;
+let segmentTimeout = null;
 
 
   // ---- helpers ----
@@ -84,8 +85,7 @@ hideOverlay() {
 
 // ---- segment control ----
 function playSegment(index) {
-    if (waitingForStart) return;
-
+  if (waitingForStart) return;
   if (!data || !player) return;
 
   const seg = data.segments[index];
@@ -93,21 +93,36 @@ function playSegment(index) {
 
   currentSegmentIndex = index;
 
+  clearWatcher();
+  if (segmentTimeout) {
+    clearTimeout(segmentTimeout);
+    segmentTimeout = null;
+  }
+
   player.seekTo(seg.start, true);
   player.playVideo();
 
-  clearWatcher();
+  const durationMs = Math.max(0, (seg.end - seg.start) * 1000);
 
-// ⏱️ KONTROLA CZASU — ZAWSZE
-watcher = setInterval(() => {
-  const t = player.getCurrentTime();
-  if (t >= seg.end) {
-    clearWatcher();
+  // 🔥 GŁÓWNY MECHANIZM (DZIAŁA NA MOBILE)
+  segmentTimeout = setTimeout(() => {
     player.pauseVideo();
     engine?.onSegmentEnd?.(index);
-  }
-}, 200);
+  }, durationMs + 150);
 
+  // 👀 watcher tylko jako pomoc (desktop)
+  watcher = setInterval(() => {
+    const t = player.getCurrentTime();
+    if (t >= seg.end) {
+      clearWatcher();
+      if (segmentTimeout) {
+        clearTimeout(segmentTimeout);
+        segmentTimeout = null;
+      }
+      player.pauseVideo();
+      engine?.onSegmentEnd?.(index);
+    }
+  }, 250);
 }
 
  
