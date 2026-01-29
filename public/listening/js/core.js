@@ -198,19 +198,15 @@ function setupStartOverlay() {
     return;
   }
 
-  const overlay = document.getElementById("startOverlay");
 
   const btn = document.getElementById("startBtn");
 
   if (!overlay || !btn) return;
 
-  overlay.style.display = "flex";
-  document.body.classList.add("listening-start-lock");
-
 
   btn.onclick = () => {
-    overlay.style.display = "none";
-    document.body.classList.remove("listening-start-lock");
+
+    
 
 
     // 🔥 poinformuj parent (fullscreen)
