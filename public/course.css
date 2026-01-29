@@ -7,13 +7,15 @@ body {
 
 /* ===== LEVEL PAGE ===== */
 .level-page {
-  min-height: 100svh;
+  min-height: 100svh;              /* 🔥 KLUCZ */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 24px 16px 32px;
+  padding: 24px 16px 32px;         /* ⬅️ mniejszy top padding */
 }
+
+
 
 .level-title {
   font-size: 28px;
@@ -36,12 +38,19 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
+
   padding: 16px 18px;
   border-radius: 14px;
   border: 1px solid #f1e3d3;
   background: #fffaf4;
+
   cursor: pointer;
-  transition: background .15s ease, box-shadow .15s ease, transform .05s ease;
+  text-align: left;
+
+  transition: 
+    background .15s ease,
+    box-shadow .15s ease,
+    transform .05s ease;
 }
 
 .level-item:hover {
@@ -50,19 +59,23 @@ body {
   transform: translateY(-1px);
 }
 
+/* ===== LEVEL CODE ===== */
 .level-code {
   min-width: 48px;
   height: 48px;
   border-radius: 50%;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   background: #f59e0b;
   color: #ffffff;
   font-weight: 600;
   font-size: 15px;
 }
 
+/* ===== DESCRIPTION ===== */
 .level-desc {
   font-size: 16px;
   font-weight: 400;
@@ -91,6 +104,7 @@ body {
   box-shadow:0 18px 40px rgba(0,0,0,.08);
 }
 
+/* obraz – WIĘKSZY, ALE KONTROLOWANY */
 .module-cover{
   width:100%;
   max-height:420px;
@@ -99,6 +113,8 @@ body {
   margin-bottom:28px;
 }
 
+
+/* tytuł */
 .module-title{
   font-size:26px;
   font-weight:600;
@@ -106,6 +122,37 @@ body {
   color:#3a2a1a;
 }
 
+/* główny przycisk */
+.btn-primary{
+  display:inline-block;
+  padding:16px 36px;
+  font-size:18px;
+  font-weight:500;
+  font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  background:#e67e22;
+  color:#ffffff;
+  border:none;
+  border-radius:999px;
+  cursor:pointer;
+
+  box-shadow:0 10px 28px rgba(230,126,34,.35);
+  transition:
+    transform .08s ease,
+    box-shadow .08s ease,
+    background .15s ease;
+}
+
+.btn-primary:hover{
+  background:#d97706;
+  transform:translateY(-1px);
+  box-shadow:0 14px 32px rgba(230,126,34,.4);
+}
+
+.btn-primary:active{
+  transform:translateY(0);
+  box-shadow:0 8px 20px rgba(230,126,34,.3);
+}
 /* ===== ACTIVITIES LIST ===== */
 .activities-list{
   margin:24px auto 0;
@@ -115,35 +162,81 @@ body {
   gap:14px;
 }
 
+
+/* pojedyncza aktywność */
 .activity-item{
   display:flex;
   align-items:center;
   gap:16px;
+
   padding:18px 20px;
   border-radius:16px;
   border:1px solid #f1e3d3;
   background:#fffaf4;
+
   cursor:pointer;
+  transition:
+    background .15s ease,
+    box-shadow .15s ease,
+    transform .05s ease;
 }
 
+.activity-item:hover{
+  background:#fff3e6;
+  box-shadow:0 8px 22px rgba(0,0,0,.06);
+  transform:translateY(-1px);
+}
+
+/* ===== STATUS CIRCLE ===== */
 .activity-status{
   width:20px;
   height:20px;
   border-radius:50%;
   border:2px solid #f1c27d;
+  flex-shrink:0;
+  position:relative;
+  background:transparent;
 }
 
+/* ukończone */
 .activity-status.done{
   background:#f59e0b;
   border-color:#f59e0b;
 }
 
+.activity-status.done::after{
+  content:"✓";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+  font-weight:600;
+  color:#fff;
+}
+
+/* ===== LABEL ===== */
 .activity-label{
   font-size:17px;
   font-weight:500;
   color:#3a2a1a;
 }
 
+/* ===== MOBILE ===== */
+@media (max-width:480px){
+  .activities-list{
+    margin-top:16px;
+  }
+
+  .activity-item{
+    padding:16px;
+  }
+
+  .activity-label{
+    font-size:16px;
+  }
+}
 /* ===== MODULE CONTENT WRAPPER ===== */
 #content{
   width:100%;
@@ -157,49 +250,629 @@ body {
   box-sizing: border-box;
 }
 
-/* ===== LISTENING FULLSCREEN (PARENT) ===== */
 
-iframe.listening-fullscreen {
-  position: fixed !important;
-  inset: 0 !important;
-  width: 100vw !important;
-  height: 100svh !important;
-  max-height: 100svh !important;
-  z-index: 2147483647 !important;
-  background: #000;
-  border: none !important;
+
+.lesson-header {
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 24px;
 }
 
-@supports (height: 100dvh) {
-  iframe.listening-fullscreen {
-    height: 100dvh !important;
-    max-height: 100dvh !important;
+.lesson-header-inner {
+  max-width: 1200px;   /* 🔥 szeroko, jak dawniej */
+  margin: 0 auto;
+  padding: 12px 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.lesson-breadcrumbs {
+  font-size: 14px;
+  color: #6b4e2e;
+}
+
+.lesson-complete-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+.page-title{
+  margin: 24px auto 0;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+  color:#3a2a1a;
+}
+
+.page-subtitle{
+  margin: 16px auto 0;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  color:#3a2a1a;
+}
+.lesson-back-btn{
+  background:none;
+  border:none;
+  font-size:14px;
+  font-weight:500;
+  color:#e67e22;
+  cursor:pointer;
+  padding:4px 8px;
+}
+
+.lesson-back-btn:hover{
+  text-decoration:underline;
+}
+.lesson-checkbox{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.lesson-checkbox input{
+  cursor:pointer;
+}
+
+/* ===== CUSTOM CHECKBOX (LESSON) ===== */
+
+.lesson-checkbox{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+  user-select:none;
+}
+
+/* ukrywamy systemowy checkbox */
+.lesson-checkbox input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+
+/* kółko */
+.lesson-checkmark{
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  border:2px solid #f1c27d;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:
+    background .15s ease,
+    border-color .15s ease,
+    transform .1s ease;
+}
+
+/* check */
+.lesson-checkmark::after{
+  content:"✓";
+  font-size:13px;
+  font-weight:600;
+  color:#fff;
+  opacity:0;
+  transform:scale(0.5);
+  transition:
+    opacity .12s ease,
+    transform .12s ease;
+}
+
+/* label tekstowy */
+.lesson-check-label{
+  font-size:14px;
+  color:#3a2a1a;
+}
+
+/* STAN ZAZNACZONY */
+.lesson-checkbox input:checked + .lesson-checkmark{
+  background:#f59e0b;
+  border-color:#f59e0b;
+}
+
+.lesson-checkbox input:checked + .lesson-checkmark::after{
+  opacity:1;
+  transform:scale(1);
+}
+
+/* hover */
+.lesson-checkbox:hover .lesson-checkmark{
+  transform:scale(1.05);
+}
+/* ===== AUDIO LESSON ===== */
+
+.lesson-audio-wrapper{
+  margin: 40px auto 0;
+  max-width: 560px;
+  display: flex;
+  justify-content: center;
+}
+
+.lesson-audio-wrapper audio{
+  width: 100%;
+  max-width: 560px;
+}
+/* ===== LISTENING / IFRAME LESSON ===== */
+
+.lesson-iframe-wrapper{
+  margin: 32px auto 0;
+  max-width: 900px;
+  background: #fffaf4;
+  border: 1px solid #f1e3d3;
+  border-radius: 24px;
+  padding: 16px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.08);
+    overflow: hidden; /* ⭐ KLUCZ */
+
+}
+
+.lesson-iframe-wrapper iframe{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 16px;
+  background: #000; /* tylko wnętrze playera */
+}
+/* 🔥 BLOKADA SCROLLA W IFRAME (LISTENING) */
+
+.lesson-iframe-wrapper iframe{
+  overflow: hidden;
+}
+.lesson-iframe-wrapper iframe::-webkit-scrollbar{
+  display: none;
+}
+
+/* ===================================== */
+/* 🔥 MOBILE: vocabulary iframe SAFE HEIGHT */
+/* ===================================== */
+
+@media (max-width: 600px) {
+
+  .lesson-iframe-wrapper iframe[src*="/vocabulary/"] {
+    aspect-ratio: auto;
+
+    /* 
+      100svh
+      - nagłówek lekcji
+      - przyciski difficulty
+      - padding wrappera
+    */
+    height: calc(100svh - 260px);
+    max-height: calc(100svh - 260px);
+
+    width: 100%;
+    border: none;
+    background: transparent;
+  }
+
+}
+
+
+
+/* ===== LESSON DIFFICULTY FEEDBACK ===== */
+
+.lesson-difficulty {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: 12px;
+}
+
+/* wspólna baza */
+.lesson-diff-btn {
+  appearance: none;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: #f5f5f5;
+  color: #333;
+  white-space: nowrap;
+}
+
+/* ZA TRUDNE */
+.lesson-diff-btn:first-child {
+  background: #fff5f5;
+  border-color: #f3c6c6;
+  color: #a40000;
+}
+
+.lesson-diff-btn:first-child:hover {
+  background: #ffecec;
+}
+
+/* ZA ŁATWE */
+.lesson-diff-btn:last-child {
+  background: #f5fff7;
+  border-color: #ccebd6;
+  color: #0f7a3a;
+}
+
+.lesson-diff-btn:last-child:hover {
+  background: #e9fff0;
+}
+
+/* klik */
+.lesson-diff-btn:active {
+  transform: translateY(1px);
+}
+
+/* MOBILE */
+@media (max-width: 640px) {
+  .lesson-difficulty {
+    margin-left: 0;
+    margin-top: 6px;
+  }
+
+  .lesson-diff-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+/* ===== MOBILE: lesson header ===== */
+@media (max-width: 600px) {
+  .lesson-header-inner {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .lesson-breadcrumbs {
+    width: 100%;
+    order: 2;
+    font-size: 14px;
+  }
+
+  .lesson-checkbox {
+    order: 3;
+    width: 100%;
+  }
+
+  .lesson-difficulty {
+    order: 4;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+  }
+
+  .lesson-diff-btn {
+    flex: 1;
   }
 }
 
-body.listening-lock {
-  overflow: hidden !important;
+/* ============================= */
+/* 🔥 MOBILE FULL SCREEN FIX 🔥 */
+/* ============================= */
+
+@media (max-width: 600px) {
+
+
+  /* 🔥 KLUCZ: zdejmujemy desktopowe ograniczenia szerokości */
+  .level-list,
+  .activities-list,
+  .module-inner {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  /* przyciski „jak aplikacja” */
+  .level-item {
+    padding: 20px 18px;
+    font-size: 18px;
+  }
+
+  .level-code {
+    width: 52px;
+    height: 52px;
+    font-size: 16px;
+  }
+
+  .level-desc {
+    font-size: 16px;
+  }
+
+  /* globalna czytelność bez zoomu */
+  body {
+    font-size: 17px;
+  }
 }
 
-/* ===== WRAPPER FULLSCREEN ===== */
+/* ===== MOBILE: header spacing ===== */
+@media (max-width: 600px) {
+  .page-title,
+  .page-subtitle {
+    margin-bottom: 24px;
+  }
+}
+/* ========================================= */
+/* MOBILE: hide breadcrumbs in variants menu */
+/* ========================================= */
 
-.lesson-iframe-wrapper.listening-fullscreen {
-  position: fixed !important;
-  inset: 0 !important;
-  width: 100vw !important;
-  height: 100svh !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  background: #000 !important;
-  overflow: visible !important;
-  z-index: 2147483646 !important;
+@media (max-width: 600px) {
+
+  /* menu wariantów (listening, vocabulary) */
+  .lesson-header-inner:not(:has(.lesson-checkbox)):not(:has(.lesson-difficulty))
+  .lesson-breadcrumbs {
+    display: none;
+  }
 }
 
-.lesson-iframe-wrapper.listening-fullscreen iframe {
-  width: 100vw !important;
-  height: 100svh !important;
+/* ===================================== */
+/* MOBILE: move difficulty under iframe */
+/* ===================================== */
+
+@media (max-width: 600px) {
+
+  /* chowamy difficulty w nagłówku */
+  .lesson-header .lesson-difficulty {
+    display: none;
+  }
+
+}
+/* ===================================== */
+/* MOBILE: difficulty under iframe */
+/* ===================================== */
+
+.lesson-difficulty-mobile {
+  display: none; /* domyślnie ukryte */
+}
+
+@media (max-width: 600px) {
+
+  /* chowamy difficulty w nagłówku */
+  .lesson-header .lesson-difficulty {
+    display: none;
+  }
+
+  /* pokazujemy wersję pod iframe */
+  .lesson-difficulty-mobile {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px auto 0;
+  }
+}
+
+/* ===================================== */
+/* 🔥 FIX: AI LEKTOR – FULL HEIGHT IFRAME */
+/* ===================================== */
+
+/* ===================================== */
+/* 🔥 FIX: AI LEKTOR – REAL MOBILE HEIGHT */
+/* ===================================== */
+
+.lesson-iframe-wrapper iframe[src*="/ai-voice/"] {
   aspect-ratio: auto !important;
-  border-radius: 0 !important;
+  height: calc(100svh - 120px);
+  min-height: calc(100svh - 120px);
+  background: #fff;
+}
+
+
+/* ===================================== */
+/* 🔥 FIX: AI LEKTOR – iframe NIE łapie dotyku */
+/* ===================================== */
+
+/* ===================================== */
+/* 🔥 AI VOICE UI – ALWAYS CLICKABLE */
+/* ===================================== */
+
+.lesson-iframe-wrapper {
+  position: relative;
+}
+
+.lesson-iframe-wrapper iframe[src*="/ai-voice/"] {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===================================== */
+/* 🔥 LESSON DIFFICULTY – FINAL FIX (SAFE) */
+/* ===================================== */
+
+/* kontener pod treścią */
+.lesson-difficulty-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 16px;
+
+  margin: 48px auto 24px;   /* więcej dystansu od treści */
+  padding: 0 16px;
+
+  max-width: 560px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* same przyciski */
+.lesson-difficulty-bottom .lesson-diff-btn {
+  flex: 1;
+
+  height: 54px;             /* ⬅️ WIĘKSZY TAP TARGET */
+  font-size: 15px;
+  font-weight: 500;
+
+  border-radius: 999px;
+  border-width: 2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+/* MOBILE – jeszcze lepiej */
+@media (max-width: 600px) {
+  .lesson-difficulty-bottom {
+    gap: 18px;
+    margin-top: 56px;       /* ⬅️ więcej powietrza na mobile */
+  }
+
+  .lesson-difficulty-bottom .lesson-diff-btn {
+    height: 58px;
+    font-size: 16px;
+  }
+}
+
+/* ===================================== */
+/* 🔥 SHADOWING – MOBILE PERFECT FIT */
+/* ===================================== */
+
+@media (max-width: 600px) {
+  .lesson-iframe-wrapper iframe[src*="//* ===================================== */
+/* 🔥 SHADOWING – SAFE HEIGHT + SCROLL */
+/* ===================================== */
+
+@media (max-width: 600px) {
+  .lesson-iframe-wrapper iframe[src*="/shadowing/"] {
+    aspect-ratio: auto !important;
+
+    /* trochę więcej niż ekran */
+    height: calc(100svh - 40px);
+    min-height: calc(100svh - 40px);
+
+    overflow-y: auto;      /* ⬅️ KLUCZ */
+    overscroll-behavior: contain;
+
+    background: transparent;
+  }
+}
+g/"] {
+    aspect-ratio: auto !important;
+
+    /* pełna wysokość ekranu
+       minus nagłówek lekcji */
+    height: calc(100svh - 72px);
+    min-height: calc(100svh - 72px);
+    max-height: calc(100svh - 72px);
+
+    overflow: hidden;
+    background: transparent;
+  }
+}
+
+/* ===================================== */
+/* 🔥 FIX: TEST IFRAME – DO NOT CUT BOTTOM */
+/* ===================================== */
+
+@media (max-width: 600px) {
+  /* pozwalamy testowi scrollować się W RAMCE */
+  .lesson-iframe-wrapper:has(iframe[src*="/test"]),
+  .lesson-iframe-wrapper:has(iframe[src*="/quiz"]),
+  .lesson-iframe-wrapper:has(iframe[src*="/exercise"]),
+  .lesson-iframe-wrapper:has(iframe[src*="/exam"]) {
+    overflow: visible; /* ⬅️ KLUCZ */
+  }
+}
+
+/* ===================================== */
+/* 🔥 TEST – REAL FIX (NO CUT, NO GUESS) */
+/* ===================================== */
+
+@media (max-width: 600px) {
+
+  /* wrapper ma prawdziwą wysokość ekranu */
+  .lesson-iframe-wrapper:has(iframe[src*="/test"]),
+  .lesson-iframe-wrapper:has(iframe[src*="/quiz"]),
+  .lesson-iframe-wrapper:has(iframe[src*="/exercise"]),
+  .lesson-iframe-wrapper:has(iframe[src*="/exam"]) {
+
+    height: calc(100svh - 72px); /* nagłówek */
+    padding: 0;                 /* ⬅️ KLUCZ */
+    overflow: hidden;
+  }
+
+  /* iframe wypełnia wrapper i scrolluje */
+  .lesson-iframe-wrapper iframe[src*="/test"],
+  .lesson-iframe-wrapper iframe[src*="/quiz"],
+  .lesson-iframe-wrapper iframe[src*="/exercise"],
+  .lesson-iframe-wrapper iframe[src*="/exam"] {
+
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+
+    aspect-ratio: auto !important;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 0; /* opcjonalnie */
+  }
+}
+/* =========================
+   INSTALL PROMPT – FINAL
+========================= */
+
+.install-prompt {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.install-box {
+  background: #fffaf4;
+  border-radius: 24px;
+  padding: 28px 24px;
+  width: min(90vw, 360px);
+
+  box-shadow: 0 24px 60px rgba(0,0,0,.25);
+  text-align: center;
+
+  animation: installPop .25s ease-out;
+}
+
+.install-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.install-actions button {
+  flex: 1;
+  height: 48px;
+  border-radius: 999px;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#install-yes {
+  background: #e67e22;
+  color: white;
+}
+
+#install-no {
+  background: #f1e3d3;
+  color: #3a2a1a;
+}
+
+body.install-modal-open {
+  overflow: hidden;
+}
+
+@keyframes installPop {
+  from { transform: scale(.95); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+body {
+  outline: 10px solid red !important;
 }
