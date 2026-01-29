@@ -199,16 +199,7 @@ button:active{ transform:scale(.98); }
   }
 }
 
-/* =====================================
-   MOBILE: overlay fullscreen (jak monolit)
-   ===================================== */
-@media (max-width: 768px) {
-  .overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 2147483647;
-  }
-}
+
 /* =====================================
    FULLSCREEN OVERLAY – MOBILE + DESKTOP
    ===================================== */
@@ -218,3 +209,14 @@ button:active{ transform:scale(.98); }
   inset: 0;
   z-index: 2147483647; /* ponad iframe + fullscreen */
 }
+
+/* =====================================
+   LISTENING OVERLAY – ALWAYS ON TOP
+   ===================================== */
+
+.overlay {
+  position: fixed !important;
+  inset: 0;
+  z-index: 2147483648 !important; /* ⬅️ WYŻEJ NIŻ iframe */
+}
+
