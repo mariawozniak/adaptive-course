@@ -868,6 +868,9 @@ if ("serviceWorker" in navigator) {
 window.addEventListener("message", (e) => {
   if (e.data?.type !== "listening-start") return;
 
+  console.log("🔥 LISTENING START EVENT", e);
+
+
   // znajdź iframe listening
   const iframe = document.querySelector(
     'iframe[src*="/listening/"]'
@@ -893,6 +896,8 @@ document.body.classList.add("listening-lock");
   // landscape lock (best effort)
   if (screen.orientation?.lock) {
     screen.orientation.lock("landscape").catch(() => {});
+
+    
   }
 });
 
