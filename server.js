@@ -100,7 +100,7 @@ app.get("/api/me", (req, res) => {
 
 // ===== STATE =====
 app.get("/api/state", (req, res) => {
-  const userId = req.cookies.course_user;
+  const userId = req.userId;
 
   if (!userId) {
     return res.json({ level: null });
@@ -605,6 +605,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
