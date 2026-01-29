@@ -846,4 +846,96 @@ g/"] {
   cursor: pointer;
 }
 
+/* =========================
+   INSTALL PROMPT (A2HS)
+========================= */
+
+.install-prompt {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  animation: fadeIn 0.25s ease-out;
+}
+
+.install-box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px 24px;
+  width: min(90vw, 360px);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.18);
+
+  text-align: center;
+  animation: scaleIn 0.25s ease-out;
+}
+
+.install-box p {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.install-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* BUTTONS */
+
+.install-actions button {
+  border: none;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+#install-yes {
+  background: #ff8a00;
+  color: white;
+  box-shadow: 0 6px 14px rgba(255, 138, 0, 0.35);
+}
+
+#install-yes:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(255, 138, 0, 0.45);
+}
+
+#install-no {
+  background: #f1f1f1;
+  color: #333;
+}
+
+#install-no:hover {
+  background: #e5e5e5;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
