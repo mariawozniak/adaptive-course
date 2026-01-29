@@ -794,77 +794,6 @@ function showInstallPrompt() {
 
 
 
-
-
-
-// ===============================
-// INIT
-// ===============================
-async function init() {
-  await ensureUser();
-  await loadProgress();
-
-  // 1️⃣ najpierw pobierz level z backendu
-  await loadState();
-
-  // 2️⃣ dopiero POTEM spróbuj odtworzyć stan z URL
-  restoreFromURL();
-
-  // 3️⃣ jeśli nadal nie ma levela → pokaż wybór poziomu
-  // (render sam to ogarnie)
-  if (currentLevel) {
-    const params = new URLSearchParams(window.location.search);
-    if (!params.get("module")) {
-      setModuleForLevel(currentLevel);
-    }
-  }
-
-  updateURL();
-  render();
-}
-
-
-init();
-
-
-// ===============================
-// iframe auto-height — TYLKO shadowing
-// ===============================
-
-window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault(); // ⛔️ BLOKUJE SYSTEMOWY PROMPT
-  deferredInstallPrompt = e;
-
-  // pokaż tylko jeśli NIE było jeszcze na tym urządzeniu
-  const asked = localStorage.getItem("a2hs_prompted");
-  if (asked === "yes") return;
-
-  // opóźnienie = lepszy UX (iOS/Android)
-  setTimeout(() => {
-    showInstallPrompt();
-  }, 600);
-});
-
-window.addEventListener("message", (e) => {
-  if (
-    e.data?.type !== "shadowing-height" ||
-    e.data?.source !== "shadowing"
-  ) return;
-
-  // znajdź iframe, który pokazuje shadowing
-  const iframe = document.querySelector(
-    'iframe[src*="/shadowing/"]'
-  );
-
-  if (!iframe) return;
-
-  iframe.style.height = e.data.height + "px";
-});
-
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/sw.js");
-}
-
 import { modules } from "../data/modules.js";
 
 const app = document.getElementById("app");
@@ -1451,7 +1380,9 @@ if (item.id === "vocabulary") {
 }
 
 
-if (item.type === "iframe")
+if (item.type === "iframe") {
+  setTimeout(initListeningStartOverlay, 0);
+
   return `
     ${renderLessonHeader(item)}
 
@@ -1466,6 +1397,8 @@ if (item.type === "iframe")
 
     ${renderLessonDifficultyBottom()}
   `;
+}
+
 
 
 
@@ -1728,39 +1661,74 @@ if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("/sw.js");
 }
 
+
+
+
 // ===============================
-// LISTENING FULLSCREEN (PARENT)
+// INIT
 // ===============================
+async function init() {
+  await ensureUser();
+  await loadProgress();
+
+  // 1️⃣ najpierw pobierz level z backendu
+  await loadState();
+
+  // 2️⃣ dopiero POTEM spróbuj odtworzyć stan z URL
+  restoreFromURL();
+
+  // 3️⃣ jeśli nadal nie ma levela → pokaż wybór poziomu
+  // (render sam to ogarnie)
+  if (currentLevel) {
+    const params = new URLSearchParams(window.location.search);
+    if (!params.get("module")) {
+      setModuleForLevel(currentLevel);
+    }
+  }
+
+  updateURL();
+  render();
+}
+
+
+init();
+
+
+// ===============================
+// iframe auto-height — TYLKO shadowing
+// ===============================
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault(); // ⛔️ BLOKUJE SYSTEMOWY PROMPT
+  deferredInstallPrompt = e;
+
+  // pokaż tylko jeśli NIE było jeszcze na tym urządzeniu
+  const asked = localStorage.getItem("a2hs_prompted");
+  if (asked === "yes") return;
+
+  // opóźnienie = lepszy UX (iOS/Android)
+  setTimeout(() => {
+    showInstallPrompt();
+  }, 600);
+});
 
 window.addEventListener("message", (e) => {
-  if (e.data?.type !== "listening-start") return;
+  if (
+    e.data?.type !== "shadowing-height" ||
+    e.data?.source !== "shadowing"
+  ) return;
 
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  if (!isMobile) return;
-
+  // znajdź iframe, który pokazuje shadowing
   const iframe = document.querySelector(
-    'iframe[src*="/listening/"]'
+    'iframe[src*="/shadowing/"]'
   );
 
   if (!iframe) return;
 
-  // 🔥 PRAWDZIWY FULLSCREEN (MUSI BYĆ W GESTURE)
-  if (iframe.requestFullscreen) {
-    iframe.requestFullscreen().catch(() => {});
-  } else if (iframe.webkitRequestFullscreen) {
-    iframe.webkitRequestFullscreen(); // iOS Safari
-  }
-
-  // klasy pomocnicze
-  iframe.classList.add("listening-fullscreen");
-  iframe
-    .closest(".lesson-iframe-wrapper")
-    ?.classList.add("listening-fullscreen");
-
-  document.body.classList.add("listening-lock");
-
-  // 🔄 landscape lock (best effort)
-  if (screen.orientation?.lock) {
-    screen.orientation.lock("landscape").catch(() => {});
-  }
+  iframe.style.height = e.data.height + "px";
 });
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js");
+}
+
