@@ -85,7 +85,7 @@
 
   // phase === explanation
   return true; // ✅ core może iść do nextSegment
-}
+},
 
     onReplay(){
       this.CORE.hideOverlay();
