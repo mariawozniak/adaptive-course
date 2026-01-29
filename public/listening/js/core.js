@@ -194,7 +194,15 @@ function nextSegment() {
 // FULLSCREEN START (MOBILE)
 // ===============================
 function setupStartOverlay() {
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (!isMobile) {
+    waitingForStart = false;
+    playSegment(0);
+    return;
+  }
+
   const overlay = document.getElementById("startOverlay");
+
   const btn = document.getElementById("startBtn");
 
   if (!overlay || !btn) return;
