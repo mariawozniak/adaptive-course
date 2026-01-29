@@ -92,19 +92,16 @@ function playSegment(index) {
 
   clearWatcher();
 
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-  // 🖥 desktop – kontrola czasu
-  if (!isMobile) {
-    watcher = setInterval(() => {
-      const t = player.getCurrentTime();
-      if (t >= seg.end) {
-        clearWatcher();
-        player.pauseVideo();
-        engine?.onSegmentEnd?.(index);
-      }
-    }, 200);
+// ⏱️ KONTROLA CZASU — ZAWSZE
+watcher = setInterval(() => {
+  const t = player.getCurrentTime();
+  if (t >= seg.end) {
+    clearWatcher();
+    player.pauseVideo();
+    engine?.onSegmentEnd?.(index);
   }
+}, 200);
+
 }
 
  
@@ -150,11 +147,11 @@ const path = `/data/listening/${moduleName}.${mode}.json`;
 onStateChange: (event) => {
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  // 📱 MOBILE: pauza = koniec segmentu → pokaż overlay
-  if (isMobile && event.data === YT.PlayerState.PAUSED) {
-    engine?.onSegmentEnd?.(currentSegmentIndex);
-    return;
-  }
+ // 📱 MOBILE: ignoruj ręczną pauzę (czas kontroluje watcher)
+if (isMobile && event.data === YT.PlayerState.PAUSED) {
+  return;
+}
+
 
   // 🖥 DESKTOP: tylko prawdziwy koniec wideo
   if (!isMobile && event.data === YT.PlayerState.ENDED) {
