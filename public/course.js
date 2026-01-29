@@ -868,7 +868,10 @@ if ("serviceWorker" in navigator) {
 window.addEventListener("message", (e) => {
   if (e.data?.type !== "listening-start") return;
 
-  console.log("🔥 LISTENING START EVENT", e);
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (!isMobile) return;
+
+  console.log("📱 listening start (mobile)");
 
 
   // znajdź iframe listening
