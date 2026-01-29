@@ -1,9 +1,19 @@
 import Database from "better-sqlite3";
+import fs from "fs";
 
 // ======================
-// DATABASE INIT
+// DATABASE (RAILWAY VOLUME)
 // ======================
-export const db = new Database("data.db");
+
+// Railway montuje volume w /data
+const DB_DIR = "/data";
+const DB_PATH = `${DB_DIR}/db.sqlite`;
+
+// upewnij się, że katalog istnieje
+fs.mkdirSync(DB_DIR, { recursive: true });
+
+// SQLite na TRWAŁYM volume
+export const db = new Database(DB_PATH);
 
 // ======================
 // USERS
@@ -14,10 +24,10 @@ db.prepare(`
     email TEXT UNIQUE,
     level INTEGER,
 
-    -- magic link
+    -- magic link (na przyszłość)
     login_token TEXT,
 
-    -- limit urządzeń
+    -- limit urządzeń (na przyszłość)
     devices_count INTEGER DEFAULT 0
   )
 `).run();
@@ -27,9 +37,9 @@ db.prepare(`
 // ======================
 db.prepare(`
   CREATE TABLE IF NOT EXISTS progress (
-    user_id TEXT,
-    module_id TEXT,
-    lesson_id TEXT,
+    user_id TEXT NOT NULL,
+    module_id TEXT NOT NULL,
+    lesson_id TEXT NOT NULL,
     PRIMARY KEY (user_id, module_id, lesson_id)
   )
 `).run();
@@ -58,3 +68,8 @@ db.prepare(`
   CREATE INDEX IF NOT EXISTS idx_vocab_user_module
   ON vocabulary_progress (user_id, module_id)
 `).run();
+
+// ======================
+// READY
+// ======================
+console.log("✅ SQLite DB ready at", DB_PATH);
