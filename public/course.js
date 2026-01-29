@@ -706,26 +706,25 @@ async function init() {
   await ensureUser();
   await loadProgress();
 
-  // 1) najpierw spróbuj odtworzyć stan z URL
+  // 1️⃣ najpierw pobierz level z backendu
+  await loadState();
+
+  // 2️⃣ dopiero POTEM spróbuj odtworzyć stan z URL
   restoreFromURL();
 
-  // 2) jeśli URL nie miał levela, to pobierz level z serwera
-  if (!currentLevel) {
-    await loadState();
+  // 3️⃣ jeśli nadal nie ma levela → pokaż wybór poziomu
+  // (render sam to ogarnie)
+  if (currentLevel) {
+    const params = new URLSearchParams(window.location.search);
+    if (!params.get("module")) {
+      setModuleForLevel(currentLevel);
+    }
   }
 
-// jeśli URL NIE podał modułu, dopiero wtedy ustaw z levela
-const params = new URLSearchParams(window.location.search);
-if (currentLevel && !params.get("module")) {
-  setModuleForLevel(currentLevel);
-}
-
-
-  // 4) zsynchronizuj URL (żeby zawsze był poprawny)
   updateURL();
-
   render();
 }
+
 
 init();
 
