@@ -903,3 +903,34 @@ iframe.listening-fullscreen {
 body.listening-lock {
   overflow: hidden !important;
 }
+/* ===============================
+   LISTENING FULLSCREEN – WRAPPER FIX
+   =============================== */
+
+.lesson-iframe-wrapper.listening-fullscreen {
+  position: fixed !important;
+  inset: 0 !important;
+
+  width: 100vw !important;
+  height: 100svh !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  background: #000 !important;
+  overflow: visible !important;
+
+  z-index: 2147483646 !important;
+}
+
+/* iframe wypełnia wrapper */
+.lesson-iframe-wrapper.listening-fullscreen iframe {
+  width: 100vw !important;
+  height: 100svh !important;
+
+  aspect-ratio: auto !important;
+  border-radius: 0 !important;
+}
