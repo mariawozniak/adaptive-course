@@ -18,6 +18,8 @@
   let currentSegmentIndex = 0;  // global progress
   let score = 0;
   let maxScore = 0;
+  let waitingForStart = true;
+
 
   // ---- helpers ----
  
@@ -76,6 +78,8 @@
 
 // ---- segment control ----
 function playSegment(index) {
+    if (waitingForStart) return;
+
   if (!data || !player) return;
 
   const seg = data.segments[index];
@@ -189,46 +193,33 @@ function nextSegment() {
   // ===============================
 // FULLSCREEN START (MOBILE)
 // ===============================
+function setupStartOverlay() {
+  const overlay = document.getElementById("startOverlay");
+  const btn = document.getElementById("startBtn");
 
-function setupFullscreenStart() {
-  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  const isAndroid = /Android/i.test(navigator.userAgent);
-
-  const overlay = document.getElementById("fullscreenOverlay");
-  const msg = document.getElementById("overlayMessage");
-  const btn = document.getElementById("overlayButton");
-  const playerEl = document.querySelector(".player");
-
-  if (!overlay || !btn || !playerEl) return;
-
-  // tylko mobile
-  if (!isIOS && !isAndroid) return;
-
-  msg.innerHTML = `
-    <strong>Instrukcja:</strong><br><br>
-    ▶ Obejrzyj fragment<br>
-    ❓ Odpowiedz na pytanie<br>
-    ⏭ Kliknij „Dalej”
-  `;
+  if (!overlay || !btn) return;
 
   overlay.style.display = "flex";
 
- btn.onclick = () => {
-  overlay.style.display = "none";
+  btn.onclick = () => {
+    overlay.style.display = "none";
 
-  // 🔥 POWIADOM RODZICA (COURSE)
-  if (window.parent !== window) {
-    window.parent.postMessage(
-      { type: "listening-start" },
-      "*"
-    );
-  }
-};
+    // 🔥 poinformuj parent (fullscreen)
+    if (window.parent !== window) {
+      window.parent.postMessage(
+        { type: "listening-start" },
+        "*"
+      );
+    }
+
+    waitingForStart = false;
+    playSegment(0);
+  };
 }
+
 
   // ---- init ----
   async function start() {
-    setupFullscreenStart();
 
     data = await loadModuleJson();
  score = 0;
@@ -246,12 +237,12 @@ updateScoreBox();
 
     await loadYouTubeIframeApi();
     await createPlayer(data.videoId);
-    
+    setupStartOverlay();
+
 
     // Start: od razu odtwarzamy pierwszy segment (jak w prototypie po PLAY)
     // Tu celowo upraszczam: startujemy automatycznie.
     // Jeśli chcesz wymusić kliknięcie play → powiemy engine/core jak to zsynchronizować.
-    playSegment(0);
   }
 
   const nextBtn = document.getElementById("next");
@@ -271,9 +262,10 @@ if (replayBtn) {
     playSegment(currentSegmentIndex);
 
     // 🔥 poinformuj engine (mixed / quiz / gapfill)
-    if (engine && typeof engine.onReplay === "function") {
-      engine.onReplay(currentSegmentIndex);
-    }
+  if (engine && typeof engine.onReplay === "function") {
+  engine.onReplay(currentSegmentIndex);
+}
+
   };
 }
 
@@ -288,3 +280,4 @@ if (replayBtn) {
     alert(err.message || String(err));
   });
 })();
+
