@@ -17,7 +17,12 @@
 
 html { -webkit-text-size-adjust: 100%; }
 
-body { margin:0; font-family:Arial,sans-serif; background:#0b0e14; color:#eee; }
+body {
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#0b0e14;
+  color:#eee;
+}
 
 .wrap{
   max-width:960px;
@@ -28,23 +33,56 @@ body { margin:0; font-family:Arial,sans-serif; background:#0b0e14; color:#eee; }
   padding-bottom: max(var(--pad), env(safe-area-inset-bottom));
 }
 
-.player { position:relative; aspect-ratio:16/9; background:#111; border-radius:12px; overflow:hidden; }
-#yt { position:absolute; inset:0; width:100%; height:100%; }
+/* ===============================
+   PLAYER
+   =============================== */
 
-/* SCORE BOX */
+.player {
+  position:relative;
+  aspect-ratio:16/9;
+  background:#111;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+#yt {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+
+/* ===============================
+   SCORE
+   =============================== */
+
 #scoreBox{
-  position:absolute; top:8px; right:12px;
+  position:absolute;
+  top:8px;
+  right:12px;
   background:rgba(0,0,0,.6);
-  padding:6px 12px; border-radius:8px;
-  font-weight:600; font-size:14px; color:#ffd257;
+  padding:6px 12px;
+  border-radius:8px;
+  font-weight:600;
+  font-size:14px;
+  color:#ffd257;
   z-index:10;
 }
 
-/* OVERLAY */
+/* ===============================
+   QUIZ OVERLAY (QUESTIONS)
+   =============================== */
+
 .overlay{
-  position:absolute; inset:0; display:none;
-  background:rgba(0,0,0,.65); backdrop-filter:blur(3px);
-  align-items:center; justify-content:center; padding:20px;
+  position: fixed !important;
+  inset: 0;
+  display:none;
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(3px);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:2147483648;
 }
 
 .card{
@@ -54,12 +92,16 @@ body { margin:0; font-family:Arial,sans-serif; background:#0b0e14; color:#eee; }
   padding:var(--card-pad);
   max-width:700px;
   width:min(700px, 100%);
-  max-height: min(80vh, 620px);
+  max-height:min(80vh, 620px);
   overflow:auto;
   box-shadow:0 6px 20px rgba(0,0,0,.5);
 }
 
-#instruction { font-size:20px; font-weight:600; margin-bottom:12px; }
+#instruction {
+  font-size:20px;
+  font-weight:600;
+  margin-bottom:12px;
+}
 
 .qtext{
   font-size:20px;
@@ -69,6 +111,7 @@ body { margin:0; font-family:Arial,sans-serif; background:#0b0e14; color:#eee; }
 }
 
 /* ===== MCQ ===== */
+
 #answers { margin-top:12px; }
 
 .answer{
@@ -130,8 +173,16 @@ body { margin:0; font-family:Arial,sans-serif; background:#0b0e14; color:#eee; }
   }
 }
 
-/* ACTIONS */
-.actions{ margin-top:14px; display:flex; gap:12px; align-items:center; }
+/* ===============================
+   ACTIONS
+   =============================== */
+
+.actions{
+  margin-top:14px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
 
 button{
   padding:var(--btn-pad-y) var(--btn-pad-x);
@@ -165,23 +216,9 @@ button:active{ transform:scale(.98); }
 
 .replay:active{ transform:scale(.95); }
 
-
-
-
-/* przycisk */
-.fullscreen-overlay button {
-  margin-top: 24px;
-  padding: 14px 28px;
-  font-size: 18px;
-  font-weight: 600;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-}
-
-/* =========================
+/* ===============================
    iOS PSEUDO FULLSCREEN
-========================= */
+   =============================== */
 
 .player.ios-fullscreen {
   position: fixed !important;
@@ -199,112 +236,52 @@ button:active{ transform:scale(.98); }
   }
 }
 
-
-/* =====================================
-   FULLSCREEN OVERLAY – MOBILE + DESKTOP
-   ===================================== */
-
-.overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 2147483647; /* ponad iframe + fullscreen */
-}
-
-/* =====================================
-   LISTENING OVERLAY – ALWAYS ON TOP
-   ===================================== */
-
-.overlay {
-  position: fixed !important;
-  inset: 0;
-  z-index: 2147483648 !important; /* ⬅️ WYŻEJ NIŻ iframe */
-}
 /* ===============================
-   START OVERLAY – MOBILE SAFE
+   START OVERLAY — FULLSCREEN
    =============================== */
 
 .start-overlay {
   position: fixed;
   inset: 0;
-  z-index: 2147483649;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(0,0,0,0.9);
-  color: #fff;
-
-  pointer-events: auto;
-}
-
-.start-card {
-  background: #1b2130;
-  border-radius: 16px;
-  padding: 28px 24px;
-  max-width: 420px;
-  width: 90%;
-  text-align: center;
-}
-
-.start-card h2 {
-  margin-top: 0;
-}
-
-.start-card button {
-  margin-top: 24px;
-  padding: 14px 28px;
-  font-size: 18px;
-  font-weight: 600;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-}
-/* ===============================
-   START OVERLAY — FAKE FULLSCREEN
-   =============================== */
-
-.start-overlay {
-  position: fixed;          /* 🔥 KLUCZ */
-  inset: 0;                 /* top/right/bottom/left = 0 */
   width: 100vw;
   height: 100vh;
 
-  display: none;            /* JS ustawi flex */
+  display: none;
   align-items: center;
   justify-content: center;
 
-  background: rgba(0,0,0,0.65);
-  z-index: 999999;
+  background: rgba(0,0,0,0.7);
+  z-index: 2147483649;
 }
 
-/* karta w środku */
 .start-overlay .start-card {
-  background: #fff;
-  border-radius: 24px;
-  padding: 24px 20px;
-  width: min(90vw, 360px);
+  background: #1b2130;
+  color: #fff;
+  border-radius: 20px;
+  padding: 28px 24px;
+  width: min(90vw, 380px);
   text-align: center;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4);
 }
 
 .start-overlay h2 {
+  margin-top: 0;
   margin-bottom: 12px;
 }
 
 .start-overlay p {
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .start-overlay button {
   height: 48px;
-  padding: 0 28px;
+  padding: 0 32px;
   border-radius: 999px;
   border: none;
   background: #e67e22;
   color: #fff;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
 }
-
