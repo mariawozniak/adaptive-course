@@ -584,21 +584,11 @@ if (item.id === "vocabulary") {
 }
 
 
-if (item.type === "iframe")
-  return `
-    ${renderLessonHeader(item)}
+if (item.type === "iframe") {
+  window.location.href = item.src;
+  return "";
+}
 
-    <div class="lesson-iframe-wrapper">
-      <iframe
-        src="${item.src}"
-        allowfullscreen
-        loading="lazy"
-        scrolling="no"
-      ></iframe>
-    </div>
-
-    ${renderLessonDifficultyBottom()}
-  `;
 
 
 
