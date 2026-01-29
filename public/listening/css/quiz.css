@@ -74,16 +74,17 @@ body {
    =============================== */
 
 .overlay{
-  position: fixed !important;
+  position: absolute;
   inset: 0;
-  display:none;
-  background:rgba(0,0,0,.65);
-  backdrop-filter:blur(3px);
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  z-index:2147483648;
+  display: none;
+  background: rgba(0,0,0,.65);
+  backdrop-filter: blur(3px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 20; /* nad scoreBox, pod nic więcej */
 }
+
 
 .card{
   background:#1b2130;
