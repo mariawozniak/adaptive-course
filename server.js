@@ -441,55 +441,59 @@ app.get("/api/debug-key", (req, res) => {
 });
 
 // ===== PUBLIGO WEBHOOK =====
+// ===== PUBLIGO WEBHOOK =====
 const ALLOWED_PUBLIGO_PRODUCT_ID = "21686";
 
-const productId =
-  req.body?.order?.product?.id ||
-  req.body?.order?.products?.[0]?.id ||
-  req.body?.products?.[0]?.id ||
-  req.body?.line_items?.[0]?.product_id ||
-  req.body?.offer_id ||
-  null;
+app.post("/api/publigo-webhook", (req, res) => {
+  console.log("📩 PUBLIGO WEBHOOK");
 
-console.log("🧾 resolved productId:", productId);
+  const productId =
+    req.body?.order?.product?.id ||
+    req.body?.order?.products?.[0]?.id ||
+    req.body?.products?.[0]?.id ||
+    req.body?.line_items?.[0]?.product_id ||
+    req.body?.offer_id ||
+    null;
 
-if (String(productId) !== ALLOWED_PUBLIGO_PRODUCT_ID) {
-  console.log("⛔️ Produkt nieobsługiwany – pomijam");
-  return res.status(200).json({ ok: true });
-}
+  console.log("🧾 resolved productId:", productId);
 
+  if (String(productId) !== ALLOWED_PUBLIGO_PRODUCT_ID) {
+    console.log("⛔️ Produkt nieobsługiwany – pomijam");
+    return res.status(200).json({ ok: true });
+  }
 
-
-  // ✅ email (żeby wiedzieć, na co ma iść link)
   const email =
     req.body?.customer?.email ||
+    req.body?.order?.customer?.email ||
+    req.body?.buyer_email ||
     req.body?.email ||
     null;
 
-  console.log("📧 email:", email);
+  console.log("📧 resolved email:", email);
 
   if (!email) {
     console.log("❌ Brak email w webhooku");
     return res.status(200).json({ ok: false });
   }
 
-  // 1️⃣ znajdź lub utwórz użytkownika
+  const normalizedEmail = email.trim().toLowerCase();
+
   let user = db
     .prepare("SELECT id FROM users WHERE email = ?")
-    .get(email);
+    .get(normalizedEmail);
 
   if (!user) {
     const id = "u_" + crypto.randomUUID();
-    db.prepare(`
-      INSERT INTO users (id, email)
-      VALUES (?, ?)
-    `).run(id, email);
+    db.prepare(
+      "INSERT INTO users (id, email) VALUES (?, ?)"
+    ).run(id, normalizedEmail);
     user = { id };
   }
 
   console.log("👤 userId:", user.id);
   return res.status(200).json({ ok: true });
 });
+
 
 
 // ===== STATIC =====
@@ -525,6 +529,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, "0.0.0.0", () => {
   console.log("🚀 Server listening on port", PORT);
 });
+
 
 
 
