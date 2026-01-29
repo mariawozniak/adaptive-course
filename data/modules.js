@@ -24,12 +24,14 @@ export const modules = [
             completion: "auto"
           },
           {
-            id: "module_1__vocabulary__audio",
-            label: "Nagranie MP3",
-            type: "audio",
-            src: "/assets/vocab/module_1.mp3",
-            completion: "manual"
-          },
+  id: "module_1__vocabulary__audio",
+  label: "Nagranie MP3",
+  type: "audio",
+  lessonId: "module_1__vocabulary__audio",
+  src: "/assets/covers/module_1.jpg",
+  completion: "manual"
+},
+
           {
             id: "module_1__vocabulary__print",
             label: "Lista do druku",
