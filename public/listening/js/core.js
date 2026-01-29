@@ -210,24 +210,28 @@ function nextSegment() {
 // ===============================
 function setupStartOverlay() {
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  // desktop – start automatyczny
   if (!isMobile) {
     waitingForStart = false;
     playSegment(0);
     return;
   }
 
-
-const btn = document.getElementById("startBtn");
-if (!btn) return;
-
-
+  // mobile – wymagany klik użytkownika
+  const btn = document.getElementById("startBtn");
+  if (!btn) {
+    console.warn("Brak #startBtn – mobile nie wystartuje");
+    return;
+  }
 
   btn.onclick = () => {
+    // 🔥 TO JEST KLUCZOWE: user gesture dla YouTube
+    try {
+      player.playVideo();
+    } catch (e) {}
 
-    
-
-
-    // 🔥 poinformuj parent (fullscreen)
+    // jeśli listening jest w iframe – info do parenta
     if (window.parent !== window) {
       window.parent.postMessage(
         { type: "listening-start" },
@@ -236,6 +240,8 @@ if (!btn) return;
     }
 
     waitingForStart = false;
+
+    // start pierwszego segmentu
     playSegment(0);
   };
 }
