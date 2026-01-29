@@ -205,9 +205,13 @@ function setupStartOverlay() {
   if (!overlay || !btn) return;
 
   overlay.style.display = "flex";
+  document.body.classList.add("listening-start-lock");
+
 
   btn.onclick = () => {
     overlay.style.display = "none";
+    document.body.classList.remove("listening-start-lock");
+
 
     // 🔥 poinformuj parent (fullscreen)
     if (window.parent !== window) {
