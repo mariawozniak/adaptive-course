@@ -584,9 +584,7 @@ if (item.id === "vocabulary") {
 }
 
 
-if (item.type === "iframe") {
-  setTimeout(initListeningStartOverlay, 0);
-
+if (item.type === "iframe")
   return `
     ${renderLessonHeader(item)}
 
@@ -601,8 +599,6 @@ if (item.type === "iframe") {
 
     ${renderLessonDifficultyBottom()}
   `;
-}
-
 
 
 
@@ -793,83 +789,8 @@ function showInstallPrompt() {
 }
 
 
-// ===============================
-// LISTENING START OVERLAY (PARENT)
-// ===============================
-function initListeningStartOverlay() {
-  if (document.getElementById("listeningStartOverlay")) return;
 
-  const overlay = document.createElement("div");
-  overlay.id = "listeningStartOverlay";
 
-  Object.assign(overlay.style, {
-    position: "fixed",
-    inset: "0",
-    zIndex: "999999",
-    background: "rgba(0,0,0,0.85)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-  });
-
-  overlay.innerHTML = `
-    <div style="
-      background:#fff;
-      padding:24px 28px;
-      border-radius:16px;
-      text-align:center;
-      max-width:320px;
-      width:90%;
-    ">
-      <h3 style="margin-bottom:12px">Instrukcja</h3>
-      <p style="margin-bottom:20px;line-height:1.4">
-        ▶ Obejrzyj fragment<br>
-        ❓ Odpowiedz na pytanie<br>
-        ⏭ Kliknij „Dalej”
-      </p>
-      <button id="listeningStartBtn" style="
-        width:100%;
-        height:44px;
-        border:none;
-        border-radius:999px;
-        background:#000;
-        color:#fff;
-        font-size:16px;
-        cursor:pointer;
-      ">
-        OK
-      </button>
-    </div>
-  `;
-
-  document.body.appendChild(overlay);
-  document.body.style.overflow = "hidden";
-
-  document
-    .getElementById("listeningStartBtn")
-    .onclick = () => {
-      overlay.remove();
-      document.body.style.overflow = "";
-
-      const iframe = document.querySelector(
-        'iframe[src*="/listening"]'
-      );
-      if (!iframe) return;
-
-      // 🔥 fullscreen – tylko z kliknięcia
-      if (iframe.requestFullscreen) {
-        iframe.requestFullscreen().catch(() => {});
-      } else if (iframe.webkitRequestFullscreen) {
-        iframe.webkitRequestFullscreen();
-      }
-
-      // 🔥 start listening
-      iframe.contentWindow?.postMessage(
-        { type: "listening-start" },
-        "*"
-      );
-    };
-}
 
 
 // ===============================
@@ -939,3 +860,40 @@ window.addEventListener("message", (e) => {
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("/sw.js");
 }
+
+// ===============================
+// LISTENING FULLSCREEN (PARENT)
+// ===============================
+
+window.addEventListener("message", (e) => {
+  if (e.data?.type !== "listening-start") return;
+
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (!isMobile) return;
+
+  const iframe = document.querySelector(
+    'iframe[src*="/listening/"]'
+  );
+
+  if (!iframe) return;
+
+  // 🔥 PRAWDZIWY FULLSCREEN (MUSI BYĆ W GESTURE)
+  if (iframe.requestFullscreen) {
+    iframe.requestFullscreen().catch(() => {});
+  } else if (iframe.webkitRequestFullscreen) {
+    iframe.webkitRequestFullscreen(); // iOS Safari
+  }
+
+  // klasy pomocnicze
+  iframe.classList.add("listening-fullscreen");
+  iframe
+    .closest(".lesson-iframe-wrapper")
+    ?.classList.add("listening-fullscreen");
+
+  document.body.classList.add("listening-lock");
+
+  // 🔄 landscape lock (best effort)
+  if (screen.orientation?.lock) {
+    screen.orientation.lock("landscape").catch(() => {});
+  }
+});
