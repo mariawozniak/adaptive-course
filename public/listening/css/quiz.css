@@ -219,4 +219,45 @@ button:active{ transform:scale(.98); }
   inset: 0;
   z-index: 2147483648 !important; /* ⬅️ WYŻEJ NIŻ iframe */
 }
+/* ===============================
+   START OVERLAY – MOBILE SAFE
+   =============================== */
+
+.start-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483649;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0,0,0,0.9);
+  color: #fff;
+
+  pointer-events: auto;
+}
+
+.start-card {
+  background: #1b2130;
+  border-radius: 16px;
+  padding: 28px 24px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+}
+
+.start-card h2 {
+  margin-top: 0;
+}
+
+.start-card button {
+  margin-top: 24px;
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}
 
