@@ -495,13 +495,14 @@ app.get("/course", (req, res) => {
 
   // 2️⃣ jeśli nie → ekran logowania
   return res.sendFile(
-    path.join(__dirname, "public", "login.html")
+  path.join(__dirname, "login.html")
   );
 });
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log("🚀 Server listening on port", PORT);
 });
+
 
 
 
