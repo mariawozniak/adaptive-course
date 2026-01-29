@@ -209,3 +209,12 @@ button:active{ transform:scale(.98); }
     z-index: 2147483647;
   }
 }
+/* =====================================
+   FULLSCREEN OVERLAY – MOBILE + DESKTOP
+   ===================================== */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647; /* ponad iframe + fullscreen */
+}
