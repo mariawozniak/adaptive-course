@@ -877,31 +877,23 @@ window.addEventListener("message", (e) => {
 
   if (!iframe) return;
 
-  // 🔥 PRAWDZIWY FULLSCREEN
+  // 🔥 PRAWDZIWY FULLSCREEN (MUSI BYĆ W GESTURE)
   if (iframe.requestFullscreen) {
     iframe.requestFullscreen().catch(() => {});
   } else if (iframe.webkitRequestFullscreen) {
     iframe.webkitRequestFullscreen(); // iOS Safari
   }
 
-  // klasy pomocnicze (CSS)
+  // klasy pomocnicze
   iframe.classList.add("listening-fullscreen");
   iframe
     .closest(".lesson-iframe-wrapper")
     ?.classList.add("listening-fullscreen");
 
   document.body.classList.add("listening-lock");
-});
 
-
-
-
-
-  // landscape lock (best effort)
+  // 🔄 landscape lock (best effort)
   if (screen.orientation?.lock) {
     screen.orientation.lock("landscape").catch(() => {});
-
-    
   }
 });
-
