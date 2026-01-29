@@ -443,22 +443,21 @@ app.get("/api/debug-key", (req, res) => {
 // ===== PUBLIGO WEBHOOK =====
 const ALLOWED_PUBLIGO_PRODUCT_ID = "21686";
 
-app.post("/api/publigo-webhook", async (req, res) => {
-  console.log("📩 PUBLIGO WEBHOOK");
+const productId =
+  req.body?.order?.product?.id ||
+  req.body?.order?.products?.[0]?.id ||
+  req.body?.products?.[0]?.id ||
+  req.body?.line_items?.[0]?.product_id ||
+  req.body?.offer_id ||
+  null;
 
-  // ✅ produkt (żeby widzieć, co kupiono)
-  const productId =
-    req.body?.product?.id ||
-    req.body?.product_id ||
-    null;
+console.log("🧾 resolved productId:", productId);
 
-  console.log("🧾 productId:", productId);
-
-  // ⛔️ ignorujemy inne produkty
-if (productId !== ALLOWED_PUBLIGO_PRODUCT_ID) {
-  console.log("⛔️ Produkt nieobsługiwany – pomijam wysyłkę maila");
+if (String(productId) !== ALLOWED_PUBLIGO_PRODUCT_ID) {
+  console.log("⛔️ Produkt nieobsługiwany – pomijam");
   return res.status(200).json({ ok: true });
 }
+
 
 
   // ✅ email (żeby wiedzieć, na co ma iść link)
@@ -526,6 +525,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, "0.0.0.0", () => {
   console.log("🚀 Server listening on port", PORT);
 });
+
 
 
 
