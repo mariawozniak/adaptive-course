@@ -198,26 +198,18 @@ function setupFullscreenStart() {
 
   overlay.style.display = "flex";
 
-  btn.onclick = () => {
-    overlay.style.display = "none";
+ btn.onclick = () => {
+  overlay.style.display = "none";
 
-    if (isIOS) {
-      // iOS pseudo fullscreen
-      playerEl.classList.add("ios-fullscreen");
-      document.body.style.overflow = "hidden";
-    } else {
-      // Android / Chrome
-      if (playerEl.requestFullscreen) {
-        playerEl.requestFullscreen().catch(() => {});
-      }
-    }
+  // 🔥 POWIADOM RODZICA (COURSE)
+  if (window.parent !== window) {
+    window.parent.postMessage(
+      { type: "listening-start" },
+      "*"
+    );
+  }
+};
 
-    // best effort: lock landscape
-    if (screen.orientation?.lock) {
-      screen.orientation.lock("landscape").catch(() => {});
-    }
-  };
-}
 
   // ---- init ----
   async function start() {
