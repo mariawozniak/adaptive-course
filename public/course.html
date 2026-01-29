@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
 
-  <!-- 🔥 KLUCZOWE DLA MOBILE -->
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1, maximum-scale=1"
@@ -11,40 +10,64 @@
 
   <title>Angielski z Piosenek i Seriali</title>
 
-  <!-- COURSE STYLES -->
   <link rel="stylesheet" href="/course.css">
-
-  <!-- PWA -->
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#000000">
 </head>
-
 <body>
 
-  <!-- =====================================
-       LISTENING START OVERLAY (PARENT)
-       ===================================== -->
-  <div id="listeningStartOverlay" class="start-overlay" style="display:none">
-    <div class="start-card">
+  <div id="app"></div>
+
+  <!-- 🔥 LISTENING START OVERLAY -->
+  <div
+    id="listeningStartOverlay"
+    style="
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,0,0,.7);
+      z-index:2147483647;
+    "
+  >
+    <div
+      style="
+        background:#1b2130;
+        color:#fff;
+        padding:28px 24px;
+        border-radius:20px;
+        width:min(90vw,380px);
+        text-align:center;
+        box-shadow:0 24px 60px rgba(0,0,0,.4);
+      "
+    >
       <h2>Instrukcja</h2>
-      <p>
+      <p style="line-height:1.6;margin:16px 0 24px;">
         ▶ Obejrzyj fragment<br>
         ❓ Odpowiedz na pytanie<br>
         ⏭ Kliknij „Dalej”
       </p>
-      <button id="listeningStartBtn">OK</button>
+
+      <button
+        id="listeningStartBtn"
+        style="
+          height:48px;
+          padding:0 32px;
+          border-radius:999px;
+          border:none;
+          background:#e67e22;
+          color:#fff;
+          font-size:16px;
+          font-weight:600;
+          cursor:pointer;
+        "
+      >
+        OK
+      </button>
     </div>
   </div>
 
-  <!-- =====================================
-       APP ROOT
-       ===================================== -->
-  <div id="app"></div>
-
-  <!-- =====================================
-       COURSE SCRIPT
-       ===================================== -->
   <script type="module" src="/course.js"></script>
-
 </body>
 </html>
