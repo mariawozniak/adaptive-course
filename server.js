@@ -482,28 +482,23 @@ app.get("/course", (req, res) => {
 
   const cookieUserId = req.cookies.course_user || null;
 
-  try {
-    if (cookieUserId) {
-      const user = db
-        .prepare("SELECT id FROM users WHERE id = ?")
-        .get(cookieUserId);
+  if (cookieUserId) {
+    const user = db
+      .prepare("SELECT id FROM users WHERE id = ?")
+      .get(cookieUserId);
 
-      if (user) {
-        return res.sendFile(
-          path.join(__dirname, "public", "course.html")
-        );
-      }
+    if (user) {
+      return res.sendFile(
+        path.join(__dirname, "public", "course.html")
+      );
     }
-
-    // ⬇️ login.html z ROOTA
-    return res.sendFile(
-      path.join(__dirname, "login.html")
-    );
-  } catch (err) {
-    console.error("COURSE ROUTE ERROR:", err);
-    return res.status(500).send("Course unavailable");
   }
+
+  return res.sendFile(
+    path.join(__dirname, "login.html")
+  );
 });
+
 
 
 
@@ -511,5 +506,6 @@ app.get("/course", (req, res) => {
 app.listen(PORT, "0.0.0.0", () => {
   console.log("🚀 Server listening on port", PORT);
 });
+
 
 
