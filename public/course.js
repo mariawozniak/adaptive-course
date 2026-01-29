@@ -785,13 +785,17 @@ init();
 // ===============================
 
 window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
+  e.preventDefault(); // ⛔️ BLOKUJE SYSTEMOWY PROMPT
   deferredInstallPrompt = e;
 
-  const alreadyAsked = localStorage.getItem("a2hs_prompted");
-  if (alreadyAsked) return;
+  // pokaż tylko jeśli NIE było jeszcze na tym urządzeniu
+  const asked = localStorage.getItem("a2hs_prompted");
+  if (asked === "yes") return;
 
-  showInstallPrompt();
+  // opóźnienie = lepszy UX (iOS/Android)
+  setTimeout(() => {
+    showInstallPrompt();
+  }, 600);
 });
 
 window.addEventListener("message", (e) => {
