@@ -751,3 +751,7 @@ window.addEventListener("message", (e) => {
 
   iframe.style.height = e.data.height + "px";
 });
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js");
+}
