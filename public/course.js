@@ -706,6 +706,9 @@ render();
 
 
 function showInstallPrompt() {
+  // 🔒 blokada duplikatów
+  if (document.querySelector(".install-prompt")) return;
+
   const overlay = document.createElement("div");
   overlay.className = "install-prompt";
 
@@ -722,7 +725,6 @@ function showInstallPrompt() {
     </div>
   `;
 
-  // 🔒 blokujemy scroll strony
   document.body.classList.add("install-modal-open");
   document.body.appendChild(overlay);
 
@@ -740,12 +742,13 @@ function showInstallPrompt() {
     overlay.remove();
   };
 
-  // ❌ NIE, DZIĘKUJĘ (bez localStorage!)
+  // ❌ NIE, DZIĘKUJĘ (NIE zapisujemy localStorage)
   document.getElementById("install-no").onclick = () => {
     document.body.classList.remove("install-modal-open");
     overlay.remove();
   };
 }
+
 
 
 
