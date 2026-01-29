@@ -18,10 +18,6 @@
   let currentSegmentIndex = 0;  // global progress
   let score = 0;
   let maxScore = 0;
-  let waitingForStart = true;
-let overlayLocked = false;
-let segmentTimeout = null;
-
 
   // ---- helpers ----
  
@@ -44,16 +40,13 @@ let segmentTimeout = null;
       playSegment(index);
     },
     showOverlay() {
-  overlayLocked = true;
-  const overlay = document.getElementById("overlay");
-  if (overlay) overlay.style.display = "flex";
-},
-hideOverlay() {
-  overlayLocked = false;
-  const overlay = document.getElementById("overlay");
-  if (overlay) overlay.style.display = "none";
-},
-
+      const overlay = document.getElementById("overlay");
+      if (overlay) overlay.style.display = "flex";
+    },
+    hideOverlay() {
+      const overlay = document.getElementById("overlay");
+      if (overlay) overlay.style.display = "none";
+    },
     setScore(delta) {
       score += delta;
       updateScoreBox();
@@ -62,8 +55,6 @@ hideOverlay() {
       updateScoreBox();
     },
     finishExercise() {
-        overlayLocked = false;
-
       // Na razie minimalnie: engine może wołać finish.
       // Docelowo: ekran końcowy + restart itp.
       clearWatcher();
@@ -83,49 +74,30 @@ hideOverlay() {
 
   };
 
-// ---- segment control ----
-function playSegment(index) {
-  if (waitingForStart) return;
-  if (!data || !player) return;
+  // ---- segment control ----
+  function playSegment(index) {
+    if (!data || !player) return;
 
-  const seg = data.segments[index];
-  if (!seg) return;
+    const seg = data.segments[index];
+    if (!seg) return;
 
-  currentSegmentIndex = index;
+    currentSegmentIndex = index;
 
-  clearWatcher();
-  if (segmentTimeout) {
-    clearTimeout(segmentTimeout);
-    segmentTimeout = null;
-  }
+    player.seekTo(seg.start, true);
+    player.playVideo();
 
-  player.seekTo(seg.start, true);
-  player.playVideo();
-
-  const durationMs = Math.max(0, (seg.end - seg.start) * 1000);
-
-  // 🔥 GŁÓWNY MECHANIZM (DZIAŁA NA MOBILE)
-  segmentTimeout = setTimeout(() => {
-    player.pauseVideo();
-    engine?.onSegmentEnd?.(index);
-  }, durationMs + 150);
-
-  // 👀 watcher tylko jako pomoc (desktop)
-  watcher = setInterval(() => {
-    const t = player.getCurrentTime();
-    if (t >= seg.end) {
-      clearWatcher();
-      if (segmentTimeout) {
-        clearTimeout(segmentTimeout);
-        segmentTimeout = null;
+    clearWatcher();
+    watcher = setInterval(() => {
+      const t = player.getCurrentTime();
+      if (t >= seg.end) {
+        clearWatcher();
+        player.pauseVideo();
+        if (engine && typeof engine.onSegmentEnd === "function") {
+          engine.onSegmentEnd(index);
+        }
       }
-      player.pauseVideo();
-      engine?.onSegmentEnd?.(index);
-    }
-  }, 250);
-}
-
- 
+    }, 200);
+  }
 
   // ---- engine selection ----
   function pickEngine(mode) {
@@ -165,27 +137,21 @@ const path = `/data/listening/${moduleName}.${mode}.json`;
           playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
           events: {
             onReady: () => resolve(player),
-onStateChange: (event) => {
+ onStateChange: (event) => {
   if (event.data === YT.PlayerState.ENDED) {
-
-    // 🔒 jeśli quiz/gapfill przejął kontrolę – nic nie rób
-    if (overlayLocked) return;
-
+    // 🔒 tylko jeśli to naprawdę OSTATNI segment
     if (currentSegmentIndex >= data.segments.length - 1) {
       CORE_API.finishExercise();
     }
   }
 }
-        }
-      });
-    };
-  });
-}
 
-
+          }
+        });
+      };
+    });
+  }
 function nextSegment() {
-    if (mode === "quiz") return;
-
   // 👉 jeśli engine (np. mixed) chce przejąć „Dalej”
   if (engine && typeof engine.onNext === "function") {
     const canProceed = engine.onNext(currentSegmentIndex);
@@ -205,51 +171,8 @@ function nextSegment() {
   }
 }
 
-  // ===============================
-// FULLSCREEN START (MOBILE)
-// ===============================
-function setupStartOverlay() {
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-  // desktop – start automatyczny
-  if (!isMobile) {
-    waitingForStart = false;
-    playSegment(0);
-    return;
-  }
-
-  // mobile – wymagany klik użytkownika
-  const btn = document.getElementById("startBtn");
-  if (!btn) {
-    console.warn("Brak #startBtn – mobile nie wystartuje");
-    return;
-  }
-
-  btn.onclick = () => {
-    // 🔥 TO JEST KLUCZOWE: user gesture dla YouTube
-    try {
-      player.playVideo();
-    } catch (e) {}
-
-    // jeśli listening jest w iframe – info do parenta
-    if (window.parent !== window) {
-      window.parent.postMessage(
-        { type: "listening-start" },
-        "*"
-      );
-    }
-
-    waitingForStart = false;
-
-    // start pierwszego segmentu
-    playSegment(0);
-  };
-}
-
-
   // ---- init ----
   async function start() {
-
     data = await loadModuleJson();
  score = 0;
 maxScore = 0;
@@ -266,14 +189,18 @@ updateScoreBox();
 
     await loadYouTubeIframeApi();
     await createPlayer(data.videoId);
-    setupStartOverlay();
-
+    
 
     // Start: od razu odtwarzamy pierwszy segment (jak w prototypie po PLAY)
     // Tu celowo upraszczam: startujemy automatycznie.
     // Jeśli chcesz wymusić kliknięcie play → powiemy engine/core jak to zsynchronizować.
+    playSegment(0);
   }
 
+  const nextBtn = document.getElementById("next");
+if (nextBtn) {
+  nextBtn.onclick = nextSegment;
+}
   const replayBtn = document.getElementById("replayBtn");
 if (replayBtn) {
   replayBtn.onclick = () => {
@@ -287,10 +214,9 @@ if (replayBtn) {
     playSegment(currentSegmentIndex);
 
     // 🔥 poinformuj engine (mixed / quiz / gapfill)
-  if (engine && typeof engine.onReplay === "function") {
-  engine.onReplay(currentSegmentIndex);
-}
-
+    if (engine && typeof engine.onReplay === "function") {
+      engine.onReplay(currentSegmentIndex);
+    }
   };
 }
 
@@ -305,4 +231,3 @@ if (replayBtn) {
     alert(err.message || String(err));
   });
 })();
-
