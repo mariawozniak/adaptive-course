@@ -208,8 +208,6 @@ app.post("/api/vocab/answer", (req, res) => {
     return res.status(400).json({ error: "Invalid status" });
   }
 
-  ensureUserRow(userId);
-
   db.prepare(`
     INSERT INTO vocabulary_progress
       (user_id, module_id, word_id, status, updated_at)
@@ -241,7 +239,6 @@ app.post("/api/vocab/reset", (req, res) => {
     return res.status(400).json({ error: "No moduleId" });
   }
 
-  ensureUserRow(userId);
 
   db.prepare(`
     DELETE FROM vocabulary_progress
@@ -588,6 +585,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
