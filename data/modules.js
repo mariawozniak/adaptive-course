@@ -32,13 +32,15 @@ export const modules = [
   completion: "manual"
 },
 
-          {
-            id: "module_1__vocabulary__print",
-            label: "Lista do druku",
-            type: "pdf",
-            src: "/assets/vocab/module_1.pdf",
-            completion: "manual"
-          }
+ {
+  id: "module_1__vocabulary__print",
+  label: "Lista do druku",
+  type: "pdf",
+  lessonId: "module_1__vocabulary__print",
+  src: "/assets/vocab/module_1.pdf",
+  completion: "manual"
+}
+
         ]
       },
 
