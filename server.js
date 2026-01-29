@@ -476,6 +476,8 @@ app.use("/data", express.static(path.join(__dirname, "data")));
 
 // ===== FRONTEND =====
 app.get("/course", (req, res) => {
+  console.log(">>> /course HIT");
+
   const cookieUserId = req.cookies.course_user || null;
 
   // 1️⃣ jeśli user jest zapamiętany → wpuszczamy
@@ -491,11 +493,12 @@ app.get("/course", (req, res) => {
     }
   }
 
-  // 2️⃣ jeśli nie → frontend pokaże ekran z polem email
+  // 2️⃣ jeśli nie → ekran logowania
   return res.sendFile(
     path.join(__dirname, "public", "login.html")
   );
 });
+
 
 
 
