@@ -231,3 +231,49 @@ if (replayBtn) {
     alert(err.message || String(err));
   });
 })();
+// =====================================
+// MOBILE INSTRUCTION MODAL (UI ONLY)
+// =====================================
+window.addEventListener("load", () => {
+  const isMobile =
+    /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  if (!isMobile) return;
+
+  const overlay = document.getElementById("mobileInstruction");
+  const okBtn = document.getElementById("mobileInstructionOk");
+  const playerContainer = document.querySelector(".player");
+
+  if (!overlay || !okBtn || !playerContainer) return;
+
+  // pokaż instrukcję
+  overlay.style.display = "flex";
+
+  okBtn.onclick = () => {
+    overlay.style.display = "none";
+
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    // ===============================
+    // FULLSCREEN (TYLKO UI)
+    // ===============================
+    if (isIOS) {
+      // iOS pseudo-fullscreen
+      playerContainer.classList.add("ios-fullscreen");
+      document.body.style.overflow = "hidden";
+
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(() => {});
+      }
+    } else {
+      // Android / inne – prawdziwy fullscreen
+      if (playerContainer.requestFullscreen) {
+        playerContainer.requestFullscreen().catch(() => {});
+      }
+
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(() => {});
+      }
+    }
+  };
+});
