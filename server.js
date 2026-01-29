@@ -13,6 +13,7 @@ const app = express();
 
 app.use(express.json());
 
+
 // ===== COOKIES =====
 app.use((req, res, next) => {
   const raw = req.headers.cookie || "";
@@ -494,8 +495,9 @@ app.get("/course", (req, res) => {
       }
     }
 
+    // ⬇️ login.html z ROOTA
     return res.sendFile(
-      path.join(__dirname, "public", "login.html")
+      path.join(__dirname, "login.html")
     );
   } catch (err) {
     console.error("COURSE ROUTE ERROR:", err);
@@ -509,28 +511,5 @@ app.get("/course", (req, res) => {
 app.listen(PORT, "0.0.0.0", () => {
   console.log("🚀 Server listening on port", PORT);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
