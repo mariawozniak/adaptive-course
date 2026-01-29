@@ -199,3 +199,13 @@ button:active{ transform:scale(.98); }
   }
 }
 
+/* =====================================
+   MOBILE: overlay fullscreen (jak monolit)
+   ===================================== */
+@media (max-width: 768px) {
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483647;
+  }
+}
