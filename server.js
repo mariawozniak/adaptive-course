@@ -53,9 +53,21 @@ app.use((req, res, next) => {
     return next();
   }
 
-  // 3. brak usera – dalej (fallback zrobi /api/me)
-  req.userId = null;
-  next();
+  // 3. brak usera – UTWÓRZ ANONIMOWEGO
+const anonId = "anon_" + crypto.randomUUID();
+
+res.setHeader(
+  "Set-Cookie",
+  `course_user=${anonId}; Path=/; SameSite=Lax; Secure`
+);
+
+req.userId = anonId;
+
+// od razu tworzymy rekord
+ensureUserRow(anonId);
+
+next();
+
 });
 
 // ===== SETUP =====
@@ -605,6 +617,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
