@@ -30,45 +30,12 @@ app.use((req, res, next) => {
   next();
 });
 
-// ===== USER IDENTIFICATION (PUBLIGO + COOKIE) =====
+// ===== USER IDENTIFICATION (COOKIE ONLY) =====
 app.use((req, res, next) => {
-  // 1. jeśli mamy cookie – użyj go
-  if (req.cookies.course_user) {
-    req.userId = req.cookies.course_user;
-    return next();
-  }
-
-  // 2. jeśli przyszło z Publigo
-  const publigoUid = req.query.publigo_uid;
-
-  if (publigoUid) {
-    const userId = `publigo_${publigoUid}`;
-
-    res.setHeader(
-      "Set-Cookie",
-      `course_user=${userId}; Path=/; SameSite=Lax; Secure`
-    );
-
-    req.userId = userId;
-    return next();
-  }
-
-  // 3. brak usera – UTWÓRZ ANONIMOWEGO
-const anonId = "anon_" + crypto.randomUUID();
-
-res.setHeader(
-  "Set-Cookie",
-  `course_user=${anonId}; Path=/; SameSite=Lax; Secure`
-);
-
-req.userId = anonId;
-
-// od razu tworzymy rekord
-ensureUserRow(anonId);
-
-next();
-
+  req.userId = req.cookies.course_user || null;
+  next();
 });
+
 
 // ===== SETUP =====
 const PORT = process.env.PORT || 8080;
@@ -617,6 +584,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
 
 
 
