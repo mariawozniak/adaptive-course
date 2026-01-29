@@ -7,11 +7,9 @@ import path from "path";
 import { fileURLToPath } from "url";
 import crypto from "crypto";
 import { modules } from "./data/modules.js";
-import { Resend } from "resend";
 
 
 const app = express();
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 app.use(express.json());
 
@@ -419,24 +417,6 @@ app.get("/api/debug-key", (req, res) => {
   });
 });
 
-async function sendMagicLink(email, link) {
-  await resend.emails.send({
-    from: "Kurs <onboarding@resend.dev>",
-    to: email,
-    subject: "Dostęp do kursu",
-    html: `
-      <p>Cześć 👋</p>
-      <p>Kliknij w link poniżej, aby wejść do kursu:</p>
-      <p>
-        <a href="${link}">👉 Otwórz kurs</a>
-      </p>
-      <p>
-        Jeśli otwierasz kurs na nowym urządzeniu, ten link zaloguje Cię automatycznie.
-      </p>
-    `
-  });
-}
-
 // ===== PUBLIGO WEBHOOK =====
 const ALLOWED_PUBLIGO_PRODUCT_ID = "21686";
 
@@ -486,34 +466,8 @@ if (productId !== ALLOWED_PUBLIGO_PRODUCT_ID) {
   }
 
   console.log("👤 userId:", user.id);
-
-  // 2️⃣ generuj magic token
-  const token = crypto.randomUUID();
-
-  db.prepare(`
-    UPDATE users
-    SET login_token = ?
-    WHERE id = ?
-  `).run(token, user.id);
-
-  // 3️⃣ magic link
-  const link =
-    `https://adaptive-course-production.up.railway.app/course?token=${token}`;
-
-  console.log("🔗 magic link:", link);
-
-  // 4️⃣ wyślij maila
-  console.log("✉️ Wysyłam magic link na:", email);
-  try {
-    await sendMagicLink(email, link);
-    console.log("✅ Mail wysłany");
-  } catch (err) {
-    console.error("❌ Błąd wysyłki maila:", err);
-  }
-
-  res.status(200).json({ ok: true });
+  return res.status(200).json({ ok: true });
 });
-
 
 
 // ===== STATIC =====
@@ -522,46 +476,9 @@ app.use("/data", express.static(path.join(__dirname, "data")));
 
 // ===== FRONTEND =====
 app.get("/course", (req, res) => {
-  const token = req.query.token;
   const cookieUserId = req.cookies.course_user || null;
 
-  // 1️⃣ WEJŚCIE Z LINKU MAILOWEGO (MAGIC LINK)
-  if (token) {
-    const user = db.prepare(`
-      SELECT id, devices_count
-      FROM users
-      WHERE login_token = ?
-    `).get(token);
-
-    if (!user) {
-      return res.status(403).send("Nieprawidłowy lub zużyty link");
-    }
-
-    if (user.devices_count >= 2) {
-      return res
-        .status(403)
-        .send("Limit urządzeń został osiągnięty");
-    }
-
-    // zapamiętujemy usera na tym urządzeniu
-    res.setHeader(
-      "Set-Cookie",
-      `course_user=${user.id}; Path=/; SameSite=Lax; Secure`
-    );
-
-    // zwiększamy licznik + kasujemy token
-    db.prepare(`
-      UPDATE users
-      SET devices_count = devices_count + 1,
-          login_token = NULL
-      WHERE id = ?
-    `).run(user.id);
-
-    // 👉 bardzo ważne: czyścimy URL z tokena
-    return res.redirect("/course");
-  }
-
-  // 2️⃣ KOLEJNE WEJŚCIA (COOKIE)
+  // 1️⃣ jeśli user jest zapamiętany → wpuszczamy
   if (cookieUserId) {
     const user = db
       .prepare("SELECT id FROM users WHERE id = ?")
@@ -574,22 +491,11 @@ app.get("/course", (req, res) => {
     }
   }
 
-  // 3️⃣ WSZYSCY INNI — BRAK DOSTĘPU
-  return res
-    .status(403)
-    .send("Dostęp tylko przez link wysłany na email");
+  // 2️⃣ jeśli nie → frontend pokaże ekran z polem email
+  return res.sendFile(
+    path.join(__dirname, "public", "login.html")
+  );
 });
-
-
-// ===== START =====
-app.listen(PORT, () => {
-  console.log("Server running on port", PORT);
-});
-
-
-
-
-
 
 
 
