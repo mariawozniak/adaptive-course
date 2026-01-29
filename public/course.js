@@ -9,6 +9,8 @@ let activeVariant = null;
 let progress = {};
 let currentLevel = null;
 let finalFeedbackShown = false;
+let deferredInstallPrompt = null;
+
 
 // ===== LEVEL -> MODULE MAP (FRONTEND) =====
 // USTAW TU, który moduł ma być otwierany dla danego poziomu.
