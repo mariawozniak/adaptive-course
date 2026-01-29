@@ -891,10 +891,7 @@ iframe
 document.body.classList.add("listening-lock");
 
 
-  // Android / Chrome: prawdziwy fullscreen (best effort)
-  if (iframe.requestFullscreen) {
-    iframe.requestFullscreen().catch(() => {});
-  }
+
 
   // landscape lock (best effort)
   if (screen.orientation?.lock) {
