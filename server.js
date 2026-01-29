@@ -12,7 +12,6 @@ import { modules } from "./data/modules.js";
 const app = express();
 
 app.use(express.json());
-app.use("/data", express.static(path.join(__dirname, "data")));
 
 // ===== COOKIES =====
 app.use((req, res, next) => {
@@ -508,6 +507,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, "0.0.0.0", () => {
   console.log("🚀 Server listening on port", PORT);
 });
+
 
 
 
