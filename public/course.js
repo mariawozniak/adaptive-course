@@ -876,8 +876,14 @@ window.addEventListener("message", (e) => {
   if (!iframe) return;
 
   // CSS fullscreen (iOS + fallback)
-  iframe.classList.add("listening-fullscreen");
-  document.body.classList.add("listening-lock");
+iframe.classList.add("listening-fullscreen");
+
+iframe
+  .closest(".lesson-iframe-wrapper")
+  ?.classList.add("listening-fullscreen");
+
+document.body.classList.add("listening-lock");
+
 
   // Android / Chrome: prawdziwy fullscreen (best effort)
   if (iframe.requestFullscreen) {
