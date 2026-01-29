@@ -54,16 +54,41 @@
     updateScoreBox() {
       updateScoreBox();
     },
-    finishExercise() {
-      // Na razie minimalnie: engine może wołać finish.
-      // Docelowo: ekran końcowy + restart itp.
-      clearWatcher();
-      if (player) player.pauseVideo();
-      const endOverlay = document.getElementById("endOverlay");
-      const finalScoreEnd = document.getElementById("finalScoreEnd");
-      if (finalScoreEnd) finalScoreEnd.textContent = `${score} / ${maxScore}`;
-      if (endOverlay) endOverlay.style.display = "flex";
-    },
+   finishExercise() {
+  clearWatcher();
+  if (player) player.pauseVideo();
+
+  // ===============================
+  // EXIT FULLSCREEN (SAFE)
+  // ===============================
+
+  // Android / desktop fullscreen
+  if (document.fullscreenElement) {
+    document.exitFullscreen().catch(() => {});
+  }
+
+  // iOS pseudo-fullscreen
+  const playerContainer = document.querySelector(".player");
+  if (playerContainer) {
+    playerContainer.classList.remove("ios-fullscreen");
+  }
+  document.body.style.overflow = "";
+
+  // ===============================
+  // END OVERLAY
+  // ===============================
+  const endOverlay = document.getElementById("endOverlay");
+  const finalScoreEnd = document.getElementById("finalScoreEnd");
+
+  if (finalScoreEnd) {
+    finalScoreEnd.textContent = `${score} / ${maxScore}`;
+  }
+
+  if (endOverlay) {
+    endOverlay.style.display = "flex";
+  }
+},
+
     getCurrentSegmentIndex() {
       return currentSegmentIndex;
     },
