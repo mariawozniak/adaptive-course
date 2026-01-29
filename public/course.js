@@ -719,19 +719,29 @@ function showInstallPrompt() {
     </div>
   `;
 
-  document.body.appendChild(overlay);
+document.body.classList.add("install-modal-open");
+document.body.appendChild(overlay);
 
-  document.getElementById("install-yes").onclick = async () => {
-    localStorage.setItem("a2hs_prompted", "yes");
+document.getElementById("install-yes").onclick = async () => {
+  localStorage.setItem("a2hs_prompted", "yes");
 
-    if (deferredInstallPrompt) {
-      deferredInstallPrompt.prompt();
-      await deferredInstallPrompt.userChoice;
-      deferredInstallPrompt = null;
-    }
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt = null;
+  }
 
-    overlay.remove();
-  };
+  document.body.classList.remove("install-modal-open");
+  overlay.remove();
+};
+
+document.getElementById("install-no").onclick = () => {
+  localStorage.setItem("a2hs_prompted", "yes");
+
+  document.body.classList.remove("install-modal-open");
+  overlay.remove();
+};
+
 
   document.getElementById("install-no").onclick = () => {
     localStorage.setItem("a2hs_prompted", "yes");
