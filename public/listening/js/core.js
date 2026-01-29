@@ -74,8 +74,35 @@
 
   };
 
-  // ---- segment control ----
- function playSegment(index) {
+// ---- segment control ----
+function playSegment(index) {
+  if (!data || !player) return;
+
+  const seg = data.segments[index];
+  if (!seg) return;
+
+  currentSegmentIndex = index;
+
+  player.seekTo(seg.start, true);
+  player.playVideo();
+
+  clearWatcher();
+
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  // 🖥 desktop – kontrola czasu
+  if (!isMobile) {
+    watcher = setInterval(() => {
+      const t = player.getCurrentTime();
+      if (t >= seg.end) {
+        clearWatcher();
+        player.pauseVideo();
+        engine?.onSegmentEnd?.(index);
+      }
+    }, 200);
+  }
+}
+
  
 
   // ---- engine selection ----
@@ -132,13 +159,13 @@ onStateChange: (event) => {
     }
   }
 }
+        }
+      });
+    };
+  });
+}
 
 
-          }
-        });
-      };
-    });
-  }
 function nextSegment() {
   // 👉 jeśli engine (np. mixed) chce przejąć „Dalej”
   if (engine && typeof engine.onNext === "function") {
