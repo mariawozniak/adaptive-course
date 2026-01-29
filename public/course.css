@@ -811,22 +811,21 @@ g/"] {
     border-radius: 0; /* opcjonalnie */
   }
 }
-
 /* =========================
-   🔥 INSTALL PROMPT MODAL 🔥
+   INSTALL PROMPT – FINAL
 ========================= */
 
 .install-prompt {
   position: fixed;
   inset: 0;
-  z-index: 100000;
+  z-index: 2147483647;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
 }
 
 .install-box {
@@ -835,23 +834,10 @@ g/"] {
   padding: 28px 24px;
   width: min(90vw, 360px);
 
-  box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+  box-shadow: 0 24px 60px rgba(0,0,0,.25);
   text-align: center;
 
-  animation: installPop 0.25s ease-out;
-}
-
-.install-box p:first-child {
-  font-size: 18px;
-  font-weight: 600;
-  color: #3a2a1a;
-  margin-bottom: 8px;
-}
-
-.install-box p:last-of-type {
-  font-size: 14px;
-  color: #6b4e2e;
-  margin-bottom: 20px;
+  animation: installPop .25s ease-out;
 }
 
 .install-actions {
@@ -862,7 +848,6 @@ g/"] {
 .install-actions button {
   flex: 1;
   height: 48px;
-
   border-radius: 999px;
   border: none;
   font-size: 15px;
@@ -870,55 +855,22 @@ g/"] {
   cursor: pointer;
 }
 
-/* PRIMARY */
 #install-yes {
   background: #e67e22;
   color: white;
-  box-shadow: 0 10px 24px rgba(230,126,34,.4);
 }
 
-/* SECONDARY */
 #install-no {
   background: #f1e3d3;
   color: #3a2a1a;
-}
-
-/* ANIMATION */
-@keyframes installPop {
-  from {
-    transform: scale(.95);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-/* =========================
-   🔥 MODAL HARD FIX 🔥
-========================= */
-
-.install-prompt {
-  position: fixed;
-  inset: 0;
-  z-index: 2147483647; /* MAX SAFE Z-INDEX */
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(10px);
-
-  pointer-events: auto;
-}
-
-.install-prompt * {
-  pointer-events: auto;
 }
 
 body.install-modal-open {
   overflow: hidden;
 }
 
+@keyframes installPop {
+  from { transform: scale(.95); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
 
