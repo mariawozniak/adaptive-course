@@ -471,10 +471,6 @@ if (productId !== ALLOWED_PUBLIGO_PRODUCT_ID) {
 
 
 // ===== STATIC =====
-app.use(express.static(path.join(__dirname, "public")));
-app.use("/data", express.static(path.join(__dirname, "data")));
-
-// ===== FRONTEND =====
 app.get("/course", (req, res) => {
   console.log(">>> /course HIT");
 
@@ -488,13 +484,13 @@ app.get("/course", (req, res) => {
 
       if (user) {
         return res.sendFile(
-          path.resolve("public/course.html")
+          path.resolve("course.html")
         );
       }
     }
 
     return res.sendFile(
-      path.resolve("public/login.html")
+      path.resolve("login.html")
     );
   } catch (err) {
     console.error("COURSE ROUTE ERROR:", err);
@@ -507,6 +503,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, "0.0.0.0", () => {
   console.log("🚀 Server listening on port", PORT);
 });
+
 
 
 
