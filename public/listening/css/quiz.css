@@ -183,7 +183,6 @@ button:active{ transform:scale(.98); }
   background: rgba(0,0,0,0.92);
   color: #fff;
 
-  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
