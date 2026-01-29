@@ -477,13 +477,37 @@ app.use("/data", express.static(path.join(__dirname, "data")));
 // ===== FRONTEND =====
 app.get("/course", (req, res) => {
   console.log(">>> /course HIT");
-  return res.send("COURSE ROUTE OK");
+
+  const cookieUserId = req.cookies.course_user || null;
+
+  try {
+    if (cookieUserId) {
+      const user = db
+        .prepare("SELECT id FROM users WHERE id = ?")
+        .get(cookieUserId);
+
+      if (user) {
+        return res.sendFile(
+          path.resolve("public/course.html")
+        );
+      }
+    }
+
+    return res.sendFile(
+      path.resolve("public/login.html")
+    );
+  } catch (err) {
+    console.error("COURSE ROUTE ERROR:", err);
+    return res.status(500).send("Course unavailable");
+  }
 });
+
 
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log("🚀 Server listening on port", PORT);
 });
+
 
 
 
