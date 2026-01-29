@@ -19,6 +19,7 @@
   let score = 0;
   let maxScore = 0;
   let waitingForStart = true;
+let overlayLocked = false;
 
 
   // ---- helpers ----
@@ -42,13 +43,16 @@
       playSegment(index);
     },
     showOverlay() {
-      const overlay = document.getElementById("overlay");
-      if (overlay) overlay.style.display = "flex";
-    },
-    hideOverlay() {
-      const overlay = document.getElementById("overlay");
-      if (overlay) overlay.style.display = "none";
-    },
+  overlayLocked = true;
+  const overlay = document.getElementById("overlay");
+  if (overlay) overlay.style.display = "flex";
+},
+hideOverlay() {
+  overlayLocked = false;
+  const overlay = document.getElementById("overlay");
+  if (overlay) overlay.style.display = "none";
+},
+
     setScore(delta) {
       score += delta;
       updateScoreBox();
@@ -57,6 +61,8 @@
       updateScoreBox();
     },
     finishExercise() {
+        overlayLocked = false;
+
       // Na razie minimalnie: engine może wołać finish.
       // Docelowo: ekran końcowy + restart itp.
       clearWatcher();
@@ -145,16 +151,11 @@ const path = `/data/listening/${moduleName}.${mode}.json`;
           events: {
             onReady: () => resolve(player),
 onStateChange: (event) => {
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (event.data === YT.PlayerState.ENDED) {
 
- // 📱 MOBILE: ignoruj ręczną pauzę (czas kontroluje watcher)
-if (isMobile && event.data === YT.PlayerState.PAUSED) {
-  return;
-}
+    // 🔒 jeśli quiz/gapfill przejął kontrolę – nic nie rób
+    if (overlayLocked) return;
 
-
-  // 🖥 DESKTOP: tylko prawdziwy koniec wideo
-  if (!isMobile && event.data === YT.PlayerState.ENDED) {
     if (currentSegmentIndex >= data.segments.length - 1) {
       CORE_API.finishExercise();
     }
@@ -168,6 +169,8 @@ if (isMobile && event.data === YT.PlayerState.PAUSED) {
 
 
 function nextSegment() {
+    if (mode === "quiz") return;
+
   // 👉 jeśli engine (np. mixed) chce przejąć „Dalej”
   if (engine && typeof engine.onNext === "function") {
     const canProceed = engine.onNext(currentSegmentIndex);
@@ -250,10 +253,6 @@ updateScoreBox();
     // Jeśli chcesz wymusić kliknięcie play → powiemy engine/core jak to zsynchronizować.
   }
 
-  const nextBtn = document.getElementById("next");
-if (nextBtn) {
-  nextBtn.onclick = nextSegment;
-}
   const replayBtn = document.getElementById("replayBtn");
 if (replayBtn) {
   replayBtn.onclick = () => {
