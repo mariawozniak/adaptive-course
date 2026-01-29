@@ -116,14 +116,23 @@ const path = `/data/listening/${moduleName}.${mode}.json`;
           playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
           events: {
             onReady: () => resolve(player),
- onStateChange: (event) => {
-  if (event.data === YT.PlayerState.ENDED) {
-    // 🔒 tylko jeśli to naprawdę OSTATNI segment
+onStateChange: (event) => {
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  // 📱 MOBILE: pauza = koniec segmentu → pokaż overlay
+  if (isMobile && event.data === YT.PlayerState.PAUSED) {
+    engine?.onSegmentEnd?.(currentSegmentIndex);
+    return;
+  }
+
+  // 🖥 DESKTOP: tylko prawdziwy koniec wideo
+  if (!isMobile && event.data === YT.PlayerState.ENDED) {
     if (currentSegmentIndex >= data.segments.length - 1) {
       CORE_API.finishExercise();
     }
   }
 }
+
 
           }
         });
