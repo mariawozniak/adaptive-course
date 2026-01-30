@@ -1,0 +1,117 @@
+{
+  "videoId": "_0jMPi50MG8",
+  "segments": [
+    {
+      "type": "order",
+      "start": 0,
+      "end": 10,
+      "instruction": "Ułóż w kolejności.",
+      "words": ["when", "I", "was", "in", "college", "it", "was", "my", "dream", "to", "be", "a", "lawyer"],
+      "correct": ["when", "I", "was", "in", "college", "it", "was", "my", "dream", "to", "be", "a", "lawyer"]
+    },
+    {
+      "type": "extra-word",
+      "start": 10,
+      "end": 15,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["Trevor", "convinced", "me", "to", "memorize", "this", "math", "test", "and", "to", "sell", "it."],
+      "extra": "to"
+    },
+    {
+      "type": "correct-word",
+      "start": 15,
+      "end": 20,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["Turns", "up", "we", "sold", "it", "to", "the", "dean's", "daughter."],
+      "wrong": "up",
+      "correct": "out"
+    },
+    {
+      "type": "order",
+      "start": 20,
+      "end": 23,
+      "instruction": "Ułóż w kolejności.",
+      "words": ["I", "got", "kicked", "out", "of", "school"],
+      "correct": ["I", "got", "kicked", "out", "of", "school"]
+    },
+    {
+      "type": "correct-word",
+      "start": 23,
+      "end": 29,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["I", "got", "knocked", "in", "a", "different", "life."],
+      "wrong": "in",
+      "correct": "into"
+    },
+    {
+      "type": "order",
+      "start": 29,
+      "end": 34,
+      "instruction": "Ułóż w kolejności.",
+      "words": ["I", "have", "been", "wishing", "for", "a", "way", "back", "ever", "since"],
+      "correct": ["I", "have", "been", "wishing", "for", "a", "way", "back", "ever", "since"]
+    },
+    {
+      "type": "extra-word",
+      "start": 34,
+      "end": 46,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["This", "isn't", "elementary", "school.", "This", "is", "hard", "work.", "It's", "long", "hours,", "high", "pressure."],
+      "extra": "It's"
+    },
+    {
+      "type": "order",
+      "start": 46,
+      "end": 52,
+      "instruction": "Ułóż w kolejności.",
+      "words": ["I", "will", "work", "as", "hard", "as", "it", "takes", "to", "school", "those", "Harvard", "douches."],
+      "correct": ["I", "will", "work", "as", "hard", "as", "it", "takes", "to", "school", "those", "Harvard", "douches."]
+    },
+    {
+      "type": "order",
+      "start": 52,
+      "end": 58,
+      "instruction": "Ułóż w kolejności.",
+      "words": ["what", "if", "I", "decide", "to", "go", "another", "way"],
+      "correct": ["what", "if", "I", "decide", "to", "go", "another", "way"]
+    },
+    {
+      "type": "gap-fill",
+      "start": 58,
+      "end": 63,
+      "instruction": "Wpisz brakujące słowa.",
+      "parts": [
+        { "text": "Sometimes I like to hang out", "gap": false },
+        { "text": "with", "gap": true },
+        { "text": "people who aren't", "gap": false },
+        { "text": "that", "gap": true },
+        { "text": "bright.", "gap": false }
+      ]
+    },
+    {
+      "type": "order",
+      "start": 63,
+      "end": 66,
+      "instruction": "Ułóż w kolejności.",
+      "words": ["just", "to", "see", "how", "the", "other", "half", "lives"],
+      "correct": ["just", "to", "see", "how", "the", "other", "half", "lives"]
+    },
+    {
+      "type": "correct-word",
+      "start": 66,
+      "end": 85,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["I", "assume", "that's", "all", "the", "drugs", "to", "do."],
+      "wrong": "to",
+      "correct": "you"
+    },
+    {
+      "type": "order",
+      "start": 85,
+      "end": 94,
+      "instruction": "Ułóż w kolejności.",
+      "words": ["You're", "Albert", "friggin'", "Einstein", "and", "you", "couldn't", "manage", "to", "get", "to", "law", "school."],
+      "correct": ["You're", "Albert", "friggin'", "Einstein", "and", "you", "couldn't", "manage", "to", "get", "to", "law", "school."]
+    }
+  ]
+}
