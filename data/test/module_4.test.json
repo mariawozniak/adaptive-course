@@ -1,0 +1,196 @@
+{
+  "moduleId": "module_4",
+  "lessonId": "module_4__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Jak przetłumaczysz wyrażenie „Fight against all odds”?",
+      "comment": "Wyrażenie oznacza walkę mimo trudnych okoliczności.",
+      "answers": [
+        { "text": "Zakochać się", "correct": false },
+        { "text": "Walczyć mimo wszelkich przeciwności", "correct": true },
+        { "text": "Walczyć ze złymi nawykami", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Co oznacza wyrażenie „This time”?",
+      "comment": "Odnosi się do obecnej sytuacji.",
+      "answers": [
+        { "text": "Tym razem", "correct": true },
+        { "text": "Następnym razem", "correct": false },
+        { "text": "Nie tym razem", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Co oznacza wyrażenie „dive in”?",
+      "comment": "Dosłownie oznacza zanurzenie się.",
+      "answers": [
+        { "text": "Zatrzymać się", "correct": false },
+        { "text": "Zanurzyć się", "correct": true },
+        { "text": "Trzymać", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Jakie jest tłumaczenie „follow my lead”?",
+      "comment": "Oznacza podążanie za kimś.",
+      "answers": [
+        { "text": "Podążać za mną", "correct": true },
+        { "text": "śledzić", "correct": false },
+        { "text": "prowadzić", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Jak przetłumaczyć „give something up”?",
+      "comment": "Chodzi o rezygnację z czegoś.",
+      "answers": [
+        { "text": "Oddać coś", "correct": true },
+        { "text": "poddąć się czemuś", "correct": false },
+        { "text": "podnieść", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Jakie jest tłumaczenie wyrażenia „all I own”?",
+      "comment": "Odnosi się do wszystkich posiadanych rzeczy.",
+      "answers": [
+        { "text": "Wszystko, co posiadam", "correct": true },
+        { "text": "wszystko, co jestem ci winien", "correct": false },
+        { "text": "mam wszystko na własność", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Co oznacza „hold”?",
+      "comment": "Czasownik oznaczający trzymanie.",
+      "answers": [
+        { "text": "Trzymać", "correct": true },
+        { "text": "Zanurzyć się", "correct": false },
+        { "text": "wieszać", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Jak przetłumaczyć wyrażenie „in the dark”?",
+      "comment": "Dosłowne znaczenie wyrażenia.",
+      "answers": [
+        { "text": "Powoli", "correct": false },
+        { "text": "W ciemności", "correct": true },
+        { "text": "nocą", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Jakie jest znaczenie wyrażenia „while”?",
+      "comment": "Spójnik określający czas.",
+      "answers": [
+        { "text": "Podczas", "correct": true },
+        { "text": "zamiast", "correct": false },
+        { "text": "koło", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Co oznacza „whisper”?",
+      "comment": "Czasownik związany z mówieniem cicho.",
+      "answers": [
+        { "text": "Szeptać", "correct": true },
+        { "text": "Zakochać się", "correct": false },
+        { "text": "czarować", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Jak przetłumaczyć „I don't deserve this”?",
+      "comment": "Wyrażenie braku poczucia zasługi.",
+      "answers": [
+        { "text": "Nie zasługuję na to", "correct": true },
+        { "text": "Oddać coś", "correct": false },
+        { "text": "Nie rozumiem tego", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Jakie jest tłumaczenie słowa „faith”?",
+      "comment": "Rzeczownik związany z wiarą.",
+      "answers": [
+        { "text": "wiara", "correct": true },
+        { "text": "miłość", "correct": false },
+        { "text": "los", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Uzupełnij zdanie: „I see my ______ in your eyes.”",
+      "comment": "Chodzi o przyszłość.",
+      "answers": [
+        { "text": "future", "correct": true },
+        { "text": "faith", "correct": false },
+        { "text": "fate", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Uzupełnij zdanie: „Fightin’ against all ______.”",
+      "comment": "Stałe wyrażenie językowe.",
+      "answers": [
+        { "text": "odds", "correct": true },
+        { "text": "offs", "correct": false },
+        { "text": "gods", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Uzupełnij zdanie: „I don’t ______ this.”",
+      "comment": "Chodzi o brak zasługi.",
+      "answers": [
+        { "text": "deserve", "correct": true },
+        { "text": "suppose", "correct": false },
+        { "text": "prefer", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Uzupełnij zdanie: „I have ______ in what I see.”",
+      "comment": "Rzeczownik oznaczający wiarę.",
+      "answers": [
+        { "text": "faith", "correct": true },
+        { "text": "future", "correct": false },
+        { "text": "blessing", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Uzupełnij zdanie: „Now I know I have met an angel in ______.”",
+      "comment": "Stałe wyrażenie „in person”.",
+      "answers": [
+        { "text": "person", "correct": true },
+        { "text": "reality", "correct": false },
+        { "text": "myself", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Uzupełnij zdanie: „Darling, just ______ my hand.”",
+      "comment": "Czasownik oznaczający trzymanie.",
+      "answers": [
+        { "text": "hold", "correct": true },
+        { "text": "get", "correct": false },
+        { "text": "have", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "Uzupełnij zdanie: „I’m dancin’ in the dark with you ______ my arms.”",
+      "comment": "Przyimek określający położenie.",
+      "answers": [
+        { "text": "between", "correct": true },
+        { "text": "against", "correct": false },
+        { "text": "across", "correct": false }
+      ]
+    }
+  ]
+}
