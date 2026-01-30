@@ -1,0 +1,111 @@
+{
+  "videoId": "D8d8Dqp6alU",
+  "segments": [
+    {
+      "type": "mcq",
+      "start": 0,
+      "end": 8,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "Jestem dziesięć stóp pod ziemią", "correct": false },
+        { "text": "Spadam z dziesięciu stóp na ziemię", "correct": false },
+        { "text": "Jestem dziesięć stóp nad ziemią", "correct": true }
+      ],
+      "explanation": "Ten feet off the ground – dziesięć stóp nad ziemią."
+    },
+    {
+      "type": "mcq",
+      "start": 8,
+      "end": 17,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "Nie mogę wydać z siebie dźwięku", "correct": true },
+        { "text": "Nie słyszę dźwięków", "correct": false },
+        { "text": "Nie rozróżniam dźwięków", "correct": false }
+      ],
+      "explanation": "I just can't make a sound – nie mogę wydobyć z siebie dźwięku."
+    },
+    {
+      "type": "mcq",
+      "start": 17,
+      "end": 25,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "Ścinasz mnie", "correct": false },
+        { "text": "Odcinasz mnie", "correct": true },
+        { "text": "Ranisz mnie", "correct": false }
+      ],
+      "explanation": "Cut me down – odcinasz mnie (nawiązanie do liny)."
+    },
+    {
+      "type": "mcq",
+      "start": 25,
+      "end": 33,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "Nie myślałaś, że się odwrócę", "correct": true },
+        { "text": "Nie myślałaś, że się do ciebie zwrócę", "correct": false },
+        { "text": "Myślałaś, że do ciebie wrócę", "correct": false }
+      ],
+      "explanation": "Didn't think I'd turn around – nie sądziłaś, że się odwrócę."
+    },
+    {
+      "type": "mcq",
+      "start": 33,
+      "end": 39,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "Jest już późno na rozmowę", "correct": false },
+        { "text": "Jest za późno na przeprosiny", "correct": true },
+        { "text": "To konieczne, abyś mnie przeprosiła", "correct": false }
+      ],
+      "explanation": "It's too late to apologize – jest za późno na przeprosiny."
+    },
+    {
+      "type": "mcq",
+      "start": 39,
+      "end": 65,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "Zastrzeliłbym się dla ciebie", "correct": false },
+        { "text": "Podjąłbym próbę dla ciebie", "correct": true },
+        { "text": "Zamówiłbym ci shota", "correct": false }
+      ],
+      "explanation": "Take a shot – podjąć próbę."
+    },
+    {
+      "type": "mcq",
+      "start": 65,
+      "end": 71,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "Już cię nie potrzebuję", "correct": false },
+        { "text": "Potrzebuję cię jak serce potrzebuje bić", "correct": true }
+      ],
+      "explanation": "I need you like a heart needs a beat – potrzebuję cię jak serce potrzebuje bić."
+    },
+    {
+      "type": "mcq",
+      "start": 71,
+      "end": 82,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "Teraz zmienia się w niebieski", "correct": true },
+        { "text": "Teraz gaśnie", "correct": false },
+        { "text": "Teraz blednie", "correct": false }
+      ],
+      "explanation": "It's turning blue – zamienia się w niebieski."
+    },
+    {
+      "type": "mcq",
+      "start": 82,
+      "end": 89,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "Niebo nie pozwala mi zapomnieć o tobie", "correct": true },
+        { "text": "Niebo pozwoliło mi uważać cię za anioła", "correct": false }
+      ],
+      "explanation": "The angel heaven let me think was you – anioł, za którego niebo pozwoliło mi ciebie uważać."
+    }
+  ]
+}
