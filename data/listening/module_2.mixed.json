@@ -1,0 +1,150 @@
+{
+  "videoId": "32MynUrjGyY",
+  "segments": [
+    {
+      "type": "correct-word",
+      "start": 5,
+      "end": 11,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["he", "look", "exactly", "like", "Sully"],
+      "wrong": "look",
+      "correct": "looks"
+    },
+    {
+      "type": "order",
+      "start": 11,
+      "end": 16,
+      "instruction": "Ułóż zdanie w odpowiedniej kolejności.",
+      "words": ["I", "know", "what", "you're", "doing"],
+      "correct": ["I", "know", "what", "you're", "doing"]
+    },
+    {
+      "type": "extra-word",
+      "start": 16,
+      "end": 21,
+      "instruction": "Znajdź zbędne słowo.",
+      "sentence": ["I", "will", "have", "you", "to", "know", "that"],
+      "extra": "to"
+    },
+    {
+      "type": "correct-word",
+      "start": 21,
+      "end": 33,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["Hi", "folks,", "this", "is", "our", "captain."],
+      "wrong": "our",
+      "correct": "your"
+    },
+    {
+      "type": "extra-word",
+      "start": 33,
+      "end": 49,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["Time", "to", "take", "our", "flying", "medicine", "Ronaldo", "gave", "to", "us."],
+      "extra": "to"
+    },
+    {
+      "type": "order",
+      "start": 49,
+      "end": 55,
+      "instruction": "Ułóż zdanie w odpowiedniej kolejności.",
+      "words": ["did", "we", "land"],
+      "correct": ["did", "we", "land"]
+    },
+    {
+      "type": "order",
+      "start": 55,
+      "end": 58,
+      "instruction": "Ułóż zdanie w odpowiedniej kolejności.",
+      "words": ["we", "will", "need", "to", "head", "back", "to", "the", "gate"],
+      "correct": ["we", "will", "need", "to", "head", "back", "to", "the", "gate"]
+    },
+    {
+      "type": "order",
+      "start": 58,
+      "end": 67,
+      "instruction": "Ułóż zdanie w odpowiedniej kolejności.",
+      "words": [
+        "anytime", "you", "head", "back", "to", "the", "gate,",
+        "that", "means", "your", "flight's", "not", "taking", "off"
+      ],
+      "correct": [
+        "anytime", "you", "head", "back", "to", "the", "gate,",
+        "that", "means", "your", "flight's", "not", "taking", "off"
+      ]
+    },
+    {
+      "type": "correct-word",
+      "start": 67,
+      "end": 73,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["There", "is", "a", "connecting", "flight", "through", "Dallas", "that", "leaves", "after", "5", "minutes"],
+      "wrong": "after",
+      "correct": "in"
+    },
+    {
+      "type": "extra-word",
+      "start": 73,
+      "end": 79,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["Dallas", "there", "is", "just", "where", "you", "make", "your", "connection."],
+      "extra": "there"
+    },
+    {
+      "type": "order",
+      "start": 79,
+      "end": 88,
+      "instruction": "Ułóż zdanie w odpowiedniej kolejności.",
+      "words": [
+        "I'm", "having", "a", "really", "hard", "time",
+        "processing", "information", "right", "now"
+      ],
+      "correct": [
+        "I'm", "having", "a", "really", "hard", "time",
+        "processing", "information", "right", "now"
+      ]
+    },
+    {
+      "type": "order",
+      "start": 88,
+      "end": 93,
+      "instruction": "Ułóż zdanie w odpowiedniej kolejności.",
+      "words": ["I'm", "sorry,", "there's", "been", "a", "horrible", "mistake."],
+      "correct": ["I'm", "sorry,", "there's", "been", "a", "horrible", "mistake."]
+    },
+    {
+      "type": "correct-word",
+      "start": 93,
+      "end": 101,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["Okay,", "listen", "careful"],
+      "wrong": "careful",
+      "correct": "carefully."
+    },
+    {
+      "type": "order",
+      "start": 101,
+      "end": 109,
+      "instruction": "Ułóż zdanie w odpowiedniej kolejności.",
+      "words": ["you", "need", "to", "be", "at", "gate", "32", "in", "4", "minutes"],
+      "correct": ["you", "need", "to", "be", "at", "gate", "32", "in", "4", "minutes"]
+    },
+    {
+      "type": "correct-word",
+      "start": 109,
+      "end": 112,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["Why", "is", "she", "so", "hungry"],
+      "wrong": "hungry",
+      "correct": "angry?"
+    },
+    {
+      "type": "extra-word",
+      "start": 112,
+      "end": 114,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["She", "did", "gave", "me", "a", "marker."],
+      "extra": "did"
+    }
+  ]
+}
