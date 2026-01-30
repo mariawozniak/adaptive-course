@@ -1,0 +1,183 @@
+{
+  "videoId": "1095350",
+  "segments": [
+    {
+      "type": "mcq",
+      "start": 0,
+      "end": 21,
+      "question": "Recepcjonista poprosił o",
+      "answers": [
+        { "text": "Imię gościa", "correct": false },
+        { "text": "Nazwisko gościa", "correct": true },
+        { "text": "Nazwę pokoju", "correct": false }
+      ],
+      "explanation": "last name - nazwisko"
+    },
+    {
+      "type": "mcq",
+      "start": 21,
+      "end": 39,
+      "question": "Czy recepcjonista znalazł rezerwację?",
+      "answers": [
+        { "text": "Tak", "correct": true },
+        { "text": "Nie, musiał sprawdzić jeszcze raz", "correct": false },
+        { "text": "Nie, rezerwacja została anulowana", "correct": false }
+      ],
+      "explanation": "Found it.  - Znalazłem"
+    },
+    {
+      "type": "mcq",
+      "start": 39,
+      "end": 56,
+      "question": "Dlaczego gość nie był zainteresowany udogodnieniami?",
+      "answers": [
+        { "text": "Ponieważ znał już wszystkie udogodnienia", "correct": false },
+        { "text": "Ponieważ spieszył się na spotkanie", "correct": false },
+        { "text": "Ponieważ był zmęczony i chciał odpocząć", "correct": true }
+      ],
+      "explanation": "I just want to get into my room and relax. - Chcę tylko dostać się do pokoju i odpocząć"
+    },
+    {
+      "type": "mcq",
+      "start": 56,
+      "end": 71,
+      "question": "Co gość z pokoju 904 poprosił o dostarczenie?",
+      "answers": [
+        { "text": "Zapasowych kluczy", "correct": false },
+        { "text": "Ręcznika papierowego", "correct": false },
+        { "text": "Ręczników", "correct": true }
+      ],
+      "explanation": "towels  - ręczniki"
+    },
+    {
+      "type": "mcq",
+      "start": 71,
+      "end": 102,
+      "question": "W jakim pokoju umieszczono głównego gościa?",
+      "answers": [
+        { "text": "904", "correct": false },
+        { "text": "905", "correct": true },
+        { "text": "906", "correct": false }
+      ],
+      "explanation": ""
+    },
+    {
+      "type": "mcq",
+      "start": 102,
+      "end": 115,
+      "question": "Jaką usługę spa zaproponował recepcjonista?",
+      "answers": [
+        { "text": "Aromaterapię", "correct": false },
+        { "text": "Saunę fińską", "correct": false },
+        { "text": "Masaż gorącymi kamieniami", "correct": true }
+      ],
+      "explanation": "hot stone massage - masaż gorącymi kamieniami"
+    },
+    {
+      "type": "mcq",
+      "start": 115,
+      "end": 118,
+      "question": "O której godzinie zaplanowano masaż?",
+      "answers": [
+        { "text": "5:15 wieczorem", "correct": false },
+        { "text": "5:15 rano", "correct": true }
+      ],
+      "explanation": "5:15 a.m. - rano"
+    },
+    {
+      "type": "mcq",
+      "start": 118,
+      "end": 123,
+      "question": "Dlaczego gość zrezygnował z masażu?",
+      "answers": [
+        { "text": "Był zbyt wcześnie", "correct": true },
+        { "text": "Był zbyt późno", "correct": false },
+        { "text": "Był zbyt drogi", "correct": false }
+      ],
+      "explanation": "that's too early - to za wcześnie"
+    },
+    {
+      "type": "mcq",
+      "start": 123,
+      "end": 135,
+      "question": "Czy recepcjonista zgodził się odwołać masaż?",
+      "answers": [
+        { "text": "Nie, bo wymagano 24-godzinnego wyprzedzenia", "correct": true },
+        { "text": "Tak, bez problemu", "correct": false },
+        { "text": "Tak, ale za opłatą", "correct": false }
+      ],
+      "explanation": "cancellations must be made 24 hours in advance - anulacje muszą być robione z 24 godzinnym wyprzedzeniem"
+    },
+    {
+      "type": "mcq",
+      "start": 135,
+      "end": 155,
+      "question": "Co zaproponowano gościowi podczas oczekiwania na pokój?",
+      "answers": [
+        { "text": "Wycieczkę po hotelu", "correct": false },
+        { "text": "Szklankę wody", "correct": false },
+        { "text": "Kieliszek szampana", "correct": true }
+      ],
+      "explanation": "glass of champagne - kieliszek szampana"
+    },
+    {
+      "type": "mcq",
+      "start": 155,
+      "end": 189,
+      "question": "Czy gość wiedział, kim jest Danny Band?",
+      "answers": [
+        { "text": "Tak, był ich fanem", "correct": false },
+        { "text": "Nie, nie znał ich", "correct": true },
+        { "text": "Tak, widział ich na żywo", "correct": false }
+      ],
+      "explanation": "I don't know who the Danny Band is. - Nie wiem, kto to Danny Band."
+    },
+    {
+      "type": "mcq",
+      "start": 189,
+      "end": 210,
+      "question": "Jak dostać się do pokoju?",
+      "answers": [
+        { "text": "Windą w lobby", "correct": true },
+        { "text": "Ruchomymi schodami", "correct": false },
+        { "text": "Schodami na zewnątrz", "correct": false }
+      ],
+      "explanation": "lobby elevator - Winda w lobby"
+    },
+    {
+      "type": "mcq",
+      "start": 210,
+      "end": 214,
+      "question": "O której godzinie zaczyna się zameldowanie?",
+      "answers": [
+        { "text": "Za cztery godziny", "correct": true },
+        { "text": "O czwartej", "correct": false }
+      ],
+      "explanation": "Check-in starts in four hours. - Zameldowanie zaczyna się za 4 godziny."
+    },
+    {
+      "type": "mcq",
+      "start": 214,
+      "end": 221,
+      "question": "Jak gość zareagował na informację o czasie oczekiwania?",
+      "answers": [
+        { "text": "Poprosił o wcześniejsze zameldowanie", "correct": false },
+        { "text": "Zapytał, co może zrobić przez ten czas", "correct": true },
+        { "text": "Zapytał jak to możliwe", "correct": false }
+      ],
+      "explanation": "What am I supposed to do for four hours? - Co mam robić przez 4 godziny?"
+    },
+    {
+      "type": "mcq",
+      "start": 221,
+      "end": 223,
+      "question": "Co gość odpowiedział na sugestię recepcjonisty?",
+      "answers": [
+        { "text": "Powiedział \"Nie jestem zainteresowany\"", "correct": false },
+        { "text": "Powiedział \"Nie mogę się doczekać\"", "correct": true },
+        { "text": "Powiedział \"Dziękuję za propozycję\"", "correct": false }
+      ],
+      "explanation": "Can't wait. - Nie mogę się doczekać."
+    }
+  ]
+}
