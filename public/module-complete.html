@@ -4,19 +4,69 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Moduł ukończony</title>
+
   <style>
-    body{margin:0;font-family:Arial,sans-serif;background:#fff7ef;color:#2b1d0e}
-    .wrap{max-width:640px;margin:0 auto;padding:28px 18px}
-    .card{background:#fffaf4;border:1px solid #f1e3d3;border-radius:22px;padding:26px;box-shadow:0 12px 30px rgba(0,0,0,.08);text-align:center}
-    h1{margin:0 0 10px;font-size:34px}
-    p{margin:0 0 18px;font-size:16px;color:#6b4e2e;line-height:1.5}
-    .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px}
-    button{border:none;border-radius:999px;padding:14px 18px;min-width:180px;font-weight:700;cursor:pointer;font-size:16px}
-    .primary{background:#e67e22;color:#fff}
-    .secondary{background:#f1e3d3;color:#2b1d0e}
-    .tiny{margin-top:14px;font-size:13px;color:#8b6a45}
+    body{
+      margin:0;
+      font-family:Arial,sans-serif;
+      background:#fff7ef;
+      color:#2b1d0e
+    }
+    .wrap{
+      max-width:640px;
+      margin:0 auto;
+      padding:28px 18px
+    }
+    .card{
+      background:#fffaf4;
+      border:1px solid #f1e3d3;
+      border-radius:22px;
+      padding:26px;
+      box-shadow:0 12px 30px rgba(0,0,0,.08);
+      text-align:center
+    }
+    h1{
+      margin:0 0 10px;
+      font-size:34px
+    }
+    p{
+      margin:0 0 18px;
+      font-size:16px;
+      color:#6b4e2e;
+      line-height:1.5
+    }
+    .btns{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top:16px
+    }
+    button{
+      border:none;
+      border-radius:999px;
+      padding:14px 18px;
+      min-width:180px;
+      font-weight:700;
+      cursor:pointer;
+      font-size:16px
+    }
+    .primary{
+      background:#e67e22;
+      color:#fff
+    }
+    .secondary{
+      background:#f1e3d3;
+      color:#2b1d0e
+    }
+    .tiny{
+      margin-top:14px;
+      font-size:13px;
+      color:#8b6a45
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <div class="card">
@@ -32,52 +82,39 @@
     </div>
   </div>
 
- <script>
-  async function nextModule(){
-    try{
-      const res = await fetch("/api/next-module", {
-        method: "POST",
-        credentials: "include"
-      });
+  <script>
+    async function nextModule(){
+      try {
+        const res = await fetch("/api/next-module", {
+          method: "POST",
+          credentials: "include"
+        });
 
-      if(!res.ok){
+        if (!res.ok) {
+          document.getElementById("info").textContent =
+            "❌ Błąd serwera przy pobieraniu kolejnego modułu.";
+          return;
+        }
+
+        const { moduleId, level } = await res.json();
+
+        if (!moduleId) {
+          document.getElementById("info").textContent =
+            "🎉 Ukończyłaś wszystkie dostępne moduły!";
+          return;
+        }
+
+        // ✅ JEDYNE POPRAWNE PRZEJŚCIE DO KURSU
+        window.location.href = `/course?level=${level}&module=${moduleId}`;
+
+      } catch (e) {
         document.getElementById("info").textContent =
-          "Błąd serwera przy pobieraniu kolejnego modułu.";
-        return;
+          "❌ Błąd sieci: " + e.message;
       }
-
-      const data = await res.json();
-      const { moduleId, level } = data;
-
-      if (!moduleId) {
-        document.getElementById("info").textContent =
-          "🎉 Ukończyłaś wszystkie dostępne moduły!";
-        return;
-      }
-
-      // 🔥 JEDYNE POPRAWNE PRZEJŚCIE
-      window.location.href =
-        `/course?level=${level}&module=${moduleId}`;
-
-    }catch(e){
-      document.getElementById("info").textContent =
-        "Błąd sieci: " + e;
     }
-  }
-
-  function finishToday(){
-    window.close();
-    document.getElementById("info").textContent =
-      "Możesz zamknąć kartę. Do zobaczenia!";
-  }
-</script>
-
 
     function finishToday(){
-      // Mobilna PWA: spróbuj zamknąć okno (czasem zadziała)
       window.close();
-
-      // Desktop: zostaw ekran gratulacji
       document.getElementById("info").textContent =
         "Możesz zamknąć kartę. Do zobaczenia!";
     }
