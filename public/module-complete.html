@@ -1,93 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Moduł ukończony</title>
-
-  <!-- używamy Twojego stylu -->
-  <link rel="stylesheet" href="course.css">
-
   <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background: #fffaf2;
-    }
-
-    .card {
-      background: #ffffff;
-      border-radius: 20px;
-      padding: 32px 24px;
-      max-width: 420px;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
-
-    h1 {
-      margin-bottom: 12px;
-    }
-
-    p {
-      margin-bottom: 28px;
-      opacity: 0.8;
-    }
-
-    .btn {
-      width: 100%;
-      padding: 14px;
-      border-radius: 14px;
-      border: none;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      margin-bottom: 12px;
-    }
-
-    .btn-next {
-      background: #f59e0b;
-      color: #fff;
-    }
-
-    .btn-exit {
-      background: #f3f4f6;
-    }
+    body{margin:0;font-family:Arial,sans-serif;background:#fff7ef;color:#2b1d0e}
+    .wrap{max-width:640px;margin:0 auto;padding:28px 18px}
+    .card{background:#fffaf4;border:1px solid #f1e3d3;border-radius:22px;padding:26px;box-shadow:0 12px 30px rgba(0,0,0,.08);text-align:center}
+    h1{margin:0 0 10px;font-size:34px}
+    p{margin:0 0 18px;font-size:16px;color:#6b4e2e;line-height:1.5}
+    .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+    button{border:none;border-radius:999px;padding:14px 18px;min-width:180px;font-weight:700;cursor:pointer;font-size:16px}
+    .primary{background:#e67e22;color:#fff}
+    .secondary{background:#f1e3d3;color:#2b1d0e}
+    .tiny{margin-top:14px;font-size:13px;color:#8b6a45}
   </style>
 </head>
 <body>
+  <div class="wrap">
+    <div class="card">
+      <h1>🎉 Brawo!</h1>
+      <p>Ukończyłaś moduł. Chcesz zakończyć na dziś czy przejść dalej?</p>
 
-  <div class="card">
-    <h1>🎉 Brawo!</h1>
-    <p>Ukończyłaś cały moduł <strong>Restaurant</strong>.</p>
+      <div class="btns">
+        <button class="secondary" onclick="finishToday()">Kończymy na dziś</button>
+        <button class="primary" onclick="nextModule()">Daj kolejny!</button>
+      </div>
 
-    <button class="btn btn-next" onclick="goNext()">
-      Daj kolejny 🚀
-    </button>
-
-    <button class="btn btn-exit" onclick="finishToday()">
-      Kończymy na dziś
-    </button>
+      <div class="tiny" id="info"></div>
+    </div>
   </div>
 
   <script>
-    function goNext() {
-      // 👇 tu później zmienisz nazwę kolejnego modułu
-      window.location.href = "index.html";
+    async function nextModule(){
+      // backend policzy czy zostały moduły na tym levelu,
+      // a jeśli nie - podbije level.
+      try{
+        const res = await fetch("/api/next-module", {
+          method: "POST",
+          headers: { "Content-Type":"application/json" },
+          credentials: "include"
+        });
+
+        // nawet jeśli endpoint jeszcze nie istnieje, pokażemy czytelny błąd
+        if(!res.ok){
+          document.getElementById("info").textContent =
+            "Brak endpointu /api/next-module albo błąd serwera. Dodajemy go w backendzie w kolejnym kroku.";
+          return;
+        }
+
+        // po aktualizacji levelu/progresu wracamy do kursu
+        // UWAGA: tu ustawiamy poprawny plik startowy Twojej aplikacji
+        window.location.href = "/course.html";
+      }catch(e){
+        document.getElementById("info").textContent = "Błąd sieci: " + e;
+      }
     }
 
-    function finishToday() {
-      // Mobile PWA
-      if (window.navigator.standalone) {
-        window.close();
-      }
+    function finishToday(){
+      // Mobilna PWA: spróbuj zamknąć okno (czasem zadziała)
+      window.close();
 
-      // Desktop – po prostu zostajemy na ekranie
-      alert("Do zobaczenia następnym razem 👋");
+      // Desktop: zostaw ekran gratulacji
+      document.getElementById("info").textContent =
+        "Możesz zamknąć kartę. Do zobaczenia!";
     }
   </script>
-
 </body>
 </html>
