@@ -1,0 +1,41 @@
+{
+  "moduleId": "module_1",
+  "lessonId": "module_1__shadowing",
+
+  "player": {
+    "type": "youtube",
+    "videoId": "pAkwimWgYTg"
+  },
+
+  "phrases": [
+    { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
+    { "en": "shut up about", "pl": "przestać gadać o" },
+    { "en": "as they are", "pl": "tak jak są" }
+  ],
+
+  "dictionary": {
+    "discuss": "dyskutować",
+    "dear": "drogi",
+    "papa": "tata",
+    "married": "żonaty/zamężna",
+    "king": "król",
+    "happy": "szczęśliwy",
+    "blessing": "błogosławieństwo"
+  },
+
+  "segments": [
+    { "start": 0.0,   "end": 20.5,  "text": "I heard that you're settled down" },
+    { "start": 20.5,  "end": 29.0,  "text": "That you found a girl and you're married now" },
+    { "start": 28.5,  "end": 34.5,  "text": "I heard that your dreams came true" },
+    { "start": 34.5,  "end": 42.5,  "text": "Guess she gave you things, I didn't give to you" },
+    { "start": 42.5,  "end": 48.5,  "text": "Old friend, why are you so shy?" },
+    { "start": 48.5,  "end": 56.5,  "text": "Ain't like you to hold back or hide from the light" },
+    { "start": 56.5,  "end": 64.0,  "text": "I hate to turn up out of the blue, uninvited. But I couldn't stay away, I couldn't fight it" },
+    { "start": 63.5,  "end": 71.5,  "text": "I had hoped you'd see my face. And that you'd be reminded that for me, it isn't over" },
+    { "start": 71.5,  "end": 79.5,  "text": "Never mind, I'll find someone like you" },
+    { "start": 79.5,  "end": 86.5,  "text": "I wish nothing but the best for you, too" },
+    { "start": 86.5,  "end": 90.0,  "text": "Don't forget me, I beg" },
+    { "start": 90.0,  "end": 100.5, "text": "I remember you said: Sometimes it lasts in love, but sometimes it hurts instead" },
+    { "start": 100.5, "end": 107.5, "text": "Sometimes it lasts in love, but sometimes it hurts instead" }
+  ]
+}
