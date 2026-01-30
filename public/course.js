@@ -106,15 +106,10 @@ function isModuleFullyCompleted(module) {
 // API
 // ===============================
 async function ensureUser() {
-  await fetch("/api/me", { credentials: "include" });
-}
-
-async function loadProgress() {
   try {
-    const res = await fetch("/api/progress", { credentials: "include" });
-    progress = await res.json();
-  } catch {
-    progress = {};
+    await fetch("/api/me", { credentials: "include" });
+  } catch (e) {
+    console.warn("ensureUser failed", e);
   }
 }
 
@@ -875,31 +870,29 @@ function showInstallPrompt() {
 // INIT
 // ===============================
 async function init() {
-  // 1️⃣ upewnij się, że user istnieje (cookie)
-  await ensureUser();
+  // 🔥 RENDERUJEMY OD RAZU COŚ, ŻEBY NIE BYŁO BIAŁO
+  render();
 
-  // 2️⃣ pobierz strukturę kursu (MUSI być pierwsze)
-  await loadModules();
+  try {
+    await ensureUser();
+    await loadModules();
+    await loadProgress();
+    await loadState();
 
-  // 3️⃣ pobierz progress
-  await loadProgress();
+    if (currentLevel) {
+      const visible = getVisibleModulesForUser();
+      currentModule = getInitialActiveModule(visible);
+    }
 
-  // 4️⃣ pobierz level z backendu
-  await loadState();   // ← TU level z bazy
-
-  if (currentLevel) {
-  const visible = getVisibleModulesForUser();
-  currentModule = getInitialActiveModule(visible);
-}
-
-
-  // 5️⃣ odtwórz stan z URL (jeśli ktoś wraca do lekcji)
-  restoreFromURL();
-
+    restoreFromURL();
+  } catch (e) {
+    console.error("INIT FAILED", e);
+  }
 
   updateURL();
   render();
 }
+
 
 init();
 
