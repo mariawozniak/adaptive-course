@@ -1,0 +1,129 @@
+{
+  "videoId": "r3c8QLEUNAk",
+  "segments": [
+    {
+      "type": "order",
+      "start": 0,
+      "end": 9,
+      "instruction": "Ułóż zdanie w poprawnej kolejności.",
+      "words": ["may", "I", "have", "the", "last", "name", "of", "the", "reservation,", "please"],
+      "correct": ["may", "I", "have", "the", "last", "name", "of", "the", "reservation,", "please"]
+    },
+    {
+      "type": "correct-word",
+      "start": 9,
+      "end": 18,
+      "instruction": "Kliknij i popraw błędne słowo.",
+      "sentence": ["Can", "you", "spell", "could", "for", "me?"],
+      "wrong": "could",
+      "correct": "that"
+    },
+    {
+      "type": "order",
+      "start": 18,
+      "end": 33,
+      "instruction": "Ułóż zdanie w poprawnej kolejności.",
+      "words": ["I", "would", "love", "to", "tell", "you", "about", "some", "of", "our", "amenities"],
+      "correct": ["I", "would", "love", "to", "tell", "you", "about", "some", "of", "our", "amenities"]
+    },
+    {
+      "type": "order",
+      "start": 33,
+      "end": 39,
+      "instruction": "Ułóż zdanie w poprawnej kolejności.",
+      "words": ["it's", "been", "a", "long", "day"],
+      "correct": ["it's", "been", "a", "long", "day"]
+    },
+    {
+      "type": "order",
+      "start": 39,
+      "end": 44,
+      "instruction": "Ułóż zdanie w poprawnej kolejności.",
+      "words": ["and", "where", "are", "you", "traveling", "in", "from"],
+      "correct": ["and", "where", "are", "you", "traveling", "in", "from"]
+    },
+    {
+      "type": "extra-word",
+      "start": 44,
+      "end": 53,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["Sorry", "to", "interrupt", "you."],
+      "extra": "you."
+    },
+    {
+      "type": "order",
+      "start": 53,
+      "end": 98,
+      "instruction": "Ułóż zdanie w poprawnej kolejności.",
+      "words": ["your", "reservation", "comes", "with", "a", "complimentary", "spa", "service"],
+      "correct": ["your", "reservation", "comes", "with", "a", "complimentary", "spa", "service"]
+    },
+    {
+      "type": "correct-word",
+      "start": 98,
+      "end": 115,
+      "instruction": "Kliknij i popraw błędne słowo.",
+      "sentence": ["Hot", "stone", "massage", "tomorrow", "with", "Carly", "at", "5:15", "p.m."],
+      "wrong": "p.m.",
+      "correct": "a.m."
+    },
+    {
+      "type": "order",
+      "start": 115,
+      "end": 126,
+      "instruction": "Ułóż zdanie w poprawnej kolejności.",
+      "words": ["is", "there", "anything", "else", "I", "can", "help", "you", "with,", "sir"],
+      "correct": ["is", "there", "anything", "else", "I", "can", "help", "you", "with,", "sir"]
+    },
+    {
+      "type": "correct-word",
+      "start": 126,
+      "end": 139,
+      "instruction": "Kliknij i popraw błędne słowo.",
+      "sentence": ["That", "would", "be", "available", "in", "the", "Stargazer", "Lounge."],
+      "wrong": "would",
+      "correct": "will"
+    },
+    {
+      "type": "order",
+      "start": 139,
+      "end": 160,
+      "instruction": "Ułóż zdanie w poprawnej kolejności.",
+      "words": ["I", "just", "want", "you", "to", "show", "me", "to", "my", "room,", "man"],
+      "correct": ["I", "just", "want", "you", "to", "show", "me", "to", "my", "room,", "man"]
+    },
+    {
+      "type": "correct-word",
+      "start": 160,
+      "end": 182,
+      "instruction": "Kliknij i popraw błędne słowo.",
+      "sentence": ["The", "escalator", "here", "will", "bring", "you", "to", "the", "mezzanine", "when", "you", "will", "find", "the", "Stargazer", "Lounge."],
+      "wrong": "when",
+      "correct": "where"
+    },
+    {
+      "type": "order",
+      "start": 182,
+      "end": 192,
+      "instruction": "Ułóż zdanie w poprawnej kolejności.",
+      "words": ["as", "well", "as", "the", "bar", "entrance", "to", "the", "Stargazer", "Lounge."],
+      "correct": ["as", "well", "as", "the", "bar", "entrance", "to", "the", "Stargazer", "Lounge."]
+    },
+    {
+      "type": "order",
+      "start": 192,
+      "end": 209,
+      "instruction": "Ułóż zdanie w poprawnej kolejności.",
+      "words": ["Is", "there", "anything", "else", "I", "can", "help", "you", "with", "while", "you", "wait", "for", "your", "room", "to", "be", "cleaned?"],
+      "correct": ["Is", "there", "anything", "else", "I", "can", "help", "you", "with", "while", "you", "wait", "for", "your", "room", "to", "be", "cleaned?"]
+    },
+    {
+      "type": "extra-word",
+      "start": 209,
+      "end": 216,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["Might", "I", "suggest", "you", "to", "visit", "the", "Stargazer", "Lounge"],
+      "extra": "to"
+    }
+  ]
+}
