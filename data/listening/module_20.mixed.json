@@ -1,0 +1,104 @@
+{
+  "videoId": "NlXvArCM9nc",
+  "segments": [
+    {
+      "type": "order",
+      "start": 0,
+      "end": 8,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["what", "would", "I", "do", "without", "your", "smart", "mouth"],
+      "correct": ["what", "would", "I", "do", "without", "your", "smart", "mouth"]
+    },
+    {
+      "type": "correct-word",
+      "start": 8,
+      "end": 12,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["Drawing", "it", "in,", "and", "you", "kicking", "me", "out"],
+      "wrong": "it",
+      "correct": "me"
+    },
+    {
+      "type": "extra-word",
+      "start": 12,
+      "end": 20,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": [
+        "You've", "got", "my", "head", "in", "spinning,",
+        "no", "kidding,", "I", "can't", "pin", "you", "down"
+      ],
+      "extra": "in"
+    },
+    {
+      "type": "order",
+      "start": 20,
+      "end": 24,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["what's", "going", "on", "in", "that", "beautiful", "mind"],
+      "correct": ["what's", "going", "on", "in", "that", "beautiful", "mind"]
+    },
+    {
+      "type": "extra-word",
+      "start": 24,
+      "end": 27,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["I'm", "on", "your", "magical", "and", "mystery", "ride"],
+      "extra": "and"
+    },
+    {
+      "type": "correct-word",
+      "start": 27,
+      "end": 35,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": [
+        "And", "I'm", "so", "dizzy,", "don't", "know",
+        "what", "beat", "me,", "but", "I'll", "be", "alright"
+      ],
+      "wrong": "beat",
+      "correct": "hit"
+    },
+    {
+      "type": "order",
+      "start": 35,
+      "end": 43,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["my", "head's", "under", "water", "but", "I'm", "breathing", "fine"],
+      "correct": ["my", "head's", "under", "water", "but", "I'm", "breathing", "fine"]
+    },
+    {
+      "type": "correct-word",
+      "start": 43,
+      "end": 49,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["You're", "crazy", "or", "I'm", "out", "of", "my", "mind"],
+      "wrong": "or",
+      "correct": "and"
+    },
+    {
+      "type": "correct-word",
+      "start": 49,
+      "end": 56,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["'Cause", "all", "of", "me", "lost", "all", "of", "you"],
+      "wrong": "lost",
+      "correct": "loves"
+    },
+    {
+      "type": "order",
+      "start": 56,
+      "end": 60,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["love", "your", "curves", "and", "all", "your", "edges"],
+      "correct": ["love", "your", "curves", "and", "all", "your", "edges"]
+    },
+    {
+      "type": "correct-word",
+      "start": 60,
+      "end": 63,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["All", "your", "perfect", "unperfections"],
+      "wrong": "unperfections",
+      "correct": "imperfections"
+    }
+  ]
+}
