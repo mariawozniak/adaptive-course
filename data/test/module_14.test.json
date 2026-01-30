@@ -1,0 +1,206 @@
+{
+  "moduleId": "module_14",
+  "lessonId": "module_14__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Co oznacza „When is your next flight to London?”?",
+      "comment": "Pytanie o termin lotu.",
+      "answers": [
+        { "text": "Kiedy jest następny lot do Londynu?", "correct": true },
+        { "text": "Skąd odlatuje następny samolot do Londynu?", "correct": false },
+        { "text": "Czy jest jakiś lot do Londynu?", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Co oznacza „How about”?",
+      "comment": "Wyrażenie propozycji.",
+      "answers": [
+        { "text": "Co powiesz na", "correct": true },
+        { "text": "Jak się masz?", "correct": false },
+        { "text": "Dlaczego nie", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Co oznacza „You can split it with another credit card”?",
+      "comment": "Informacja o podziale płatności.",
+      "answers": [
+        { "text": "Możesz podzielić płatność na dwie karty kredytowe.", "correct": true },
+        { "text": "Możesz zapłacić inną kartą kredytową.", "correct": false },
+        { "text": "Możesz zmienić kartę kredytową.", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Jak przetłumaczyć „driver's license”?",
+      "comment": "Dokument uprawniający do prowadzenia pojazdów.",
+      "answers": [
+        { "text": "Prawo jazdy.", "correct": true },
+        { "text": "Dowód osobisty.", "correct": false },
+        { "text": "Dowód osobisty.", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Co oznacza „I need to get on that 11:00 flight”?",
+      "comment": "Pilna potrzeba zdążenia na lot.",
+      "answers": [
+        { "text": "Muszę dostać się na ten lot o 11:00.", "correct": true },
+        { "text": "Muszę wiedzieć, czy lot o 11:00 jest dostępny.", "correct": false },
+        { "text": "Muszę zapytać o lot o 11:00.", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "„I'm afraid that plane has already pulled away from the gate” oznacza:",
+      "comment": "Informacja o zamknięciu bramki.",
+      "answers": [
+        { "text": "Obawiam się, że ten samolot już odjechał od bramki.", "correct": true },
+        { "text": "Obawiam się, że ten samolot już odleciał.", "correct": false },
+        { "text": "Obawiam się, że ten samolot jest odwołany.", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Jak przetłumaczyć „a problem with the engine”?",
+      "comment": "Problem techniczny.",
+      "answers": [
+        { "text": "Problem z silnikiem.", "correct": true },
+        { "text": "Problem z lotem.", "correct": false },
+        { "text": "Problem z bagażem.", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Co oznacza „step aside”?",
+      "comment": "Polecenie.",
+      "answers": [
+        { "text": "Odsuń się.", "correct": true },
+        { "text": "Poczekaj chwilę.", "correct": false },
+        { "text": "Zatrzymaj się.", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Jak przetłumaczyć „pick me up”?",
+      "comment": "Prośba o odebranie.",
+      "answers": [
+        { "text": "Odbierz mnie.", "correct": true },
+        { "text": "Daj mi znać.", "correct": false },
+        { "text": "Przynieś mi coś.", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Co oznacza „Until”?",
+      "comment": "Spójnik czasu.",
+      "answers": [
+        { "text": "Do momentu, aż.", "correct": true },
+        { "text": "Ponieważ.", "correct": false },
+        { "text": "Natychmiast", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Co oznacza „last-minute fare”?",
+      "comment": "Termin lotniczy.",
+      "answers": [
+        { "text": "Cena za bilet kupiony w ostatniej chwili", "correct": true },
+        { "text": "Ostatni dostępny bilet na lot", "correct": false },
+        { "text": "Cena biletu zwrotnego", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Jak przetłumaczyć „barter”?",
+      "comment": "Forma wymiany.",
+      "answers": [
+        { "text": "Targować się", "correct": true },
+        { "text": "Pożyczać", "correct": false },
+        { "text": "Oszczędzać", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "„The plane pulled away from the gate” najlepiej oddaje znaczenie:",
+      "comment": "Moment przed startem.",
+      "answers": [
+        { "text": "Samolot odjechał od bramki", "correct": true },
+        { "text": "Samolot wystartował", "correct": false },
+        { "text": "Samolot został odwołany", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Co oznacza „You’re going to have to call that plane”?",
+      "comment": "Dosłowne, żartobliwe wyrażenie.",
+      "answers": [
+        { "text": "Będziesz musiał zadzwonić po ten samolot", "correct": true },
+        { "text": "Musisz zadzwonić do linii lotniczej", "correct": false },
+        { "text": "Musisz ogłosić lot", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Jak przetłumaczyć „credit card limit”?",
+      "comment": "Termin finansowy.",
+      "answers": [
+        { "text": "Limit na karcie kredytowej", "correct": true },
+        { "text": "Numer karty kredytowej", "correct": false },
+        { "text": "Zadłużenie na karcie", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Co oznacza „swing around”?",
+      "comment": "Zmiana kierunku.",
+      "answers": [
+        { "text": "Zawrócić", "correct": true },
+        { "text": "Zatrzymać się", "correct": false },
+        { "text": "Wystartować", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Uzupełnij zdanie: „I’m not ______ here.”",
+      "comment": "Zaprzeczenie zamiaru.",
+      "answers": [
+        { "text": "leaving", "correct": true },
+        { "text": "staying", "correct": false },
+        { "text": "moving", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "„Can't imagine why” znaczy:",
+      "comment": "Wyrażenie ironiczne.",
+      "answers": [
+        { "text": "Nie wyobrażam sobie dlaczego", "correct": true },
+        { "text": "Nie mogę tego zrozumieć", "correct": false },
+        { "text": "Nie wyobrażam sobie, jak", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "Co znaczy „split the payment”?",
+      "comment": "Termin płatniczy.",
+      "answers": [
+        { "text": "Podzielić płatność", "correct": true },
+        { "text": "Odroczyć płatność", "correct": false },
+        { "text": "Unieważnić płatność", "correct": false }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Jak przetłumaczyć „step aside, Miss”?",
+      "comment": "Uprzejme polecenie.",
+      "answers": [
+        { "text": "Proszę się odsunąć, proszę pani", "correct": true },
+        { "text": "Proszę poczekać, proszę pani", "correct": false },
+        { "text": "Proszę wejść do środka, proszę pani", "correct": false }
+      ]
+    }
+  ]
+}
