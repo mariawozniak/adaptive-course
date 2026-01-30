@@ -1,0 +1,186 @@
+{
+  "moduleId": "module_16",
+  "lessonId": "module_16__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "„Cut me down” oznacza:",
+      "comment": "Znaczenie przenośne.",
+      "answers": [
+        { "text": "Odciąć mnie", "correct": true },
+        { "text": "Pocieszyć mnie", "correct": false },
+        { "text": "Zmniejszyć mi pensję", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Jak najlepiej przetłumaczyć „turn around”?",
+      "comment": "Czasownik frazowy.",
+      "answers": [
+        { "text": "Odwrócić się", "correct": true },
+        { "text": "Rozpłakać się", "correct": false },
+        { "text": "Spaść na ziemię", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "„It's too late to apologize” oznacza:",
+      "comment": "Znaczenie idiomatyczne.",
+      "answers": [
+        { "text": "Za późno na przeprosiny", "correct": true },
+        { "text": "Czas na przeprosiny", "correct": false },
+        { "text": "Nie musisz przepraszać", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "„I'd take another chance” oznacza:",
+      "comment": "Wyrażenie warunkowe.",
+      "answers": [
+        { "text": "Dałbym kolejną szansę", "correct": true },
+        { "text": "Nie chcę więcej próbować", "correct": false },
+        { "text": "Straciłem okazję", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Jak najlepiej przetłumaczyć „Take a shot”?",
+      "comment": "Znaczenie potoczne.",
+      "answers": [
+        { "text": "Spróbować, podjąć próbę", "correct": true },
+        { "text": "Zrobić zdjęcie", "correct": false },
+        { "text": "Zmarnować okazję", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "„I'm afraid” oznacza:",
+      "comment": "Zwrot grzecznościowy.",
+      "answers": [
+        { "text": "Obawiam się", "correct": true },
+        { "text": "Nie boję się", "correct": false },
+        { "text": "Jestem podekscytowany", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Co oznacza „hold on something”?",
+      "comment": "Czasownik frazowy.",
+      "answers": [
+        { "text": "Trzymać się czegoś", "correct": true },
+        { "text": "Puścić coś", "correct": false },
+        { "text": "Poczekać na coś", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "„Take a fall” oznacza:",
+      "comment": "Znaczenie dosłowne.",
+      "answers": [
+        { "text": "Upadać", "correct": true },
+        { "text": "Tańczyć", "correct": false },
+        { "text": "Potknąć się", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Co oznacza „turn blue” w kontekście emocjonalnym?",
+      "comment": "Znaczenie metaforyczne.",
+      "answers": [
+        { "text": "Zrobić się smutnym", "correct": true },
+        { "text": "Zacząć tańczyć", "correct": false },
+        { "text": "Być szczęśliwym", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "„Beat” oznacza:",
+      "comment": "Czasownik.",
+      "answers": [
+        { "text": "Bić, uderzać", "correct": true },
+        { "text": "Gryźć", "correct": false },
+        { "text": "Walczyć", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Uzupełnij zdanie: „I said it's too late to ______.”",
+      "comment": "Fragment zdania.",
+      "answers": [
+        { "text": "apologize", "correct": true },
+        { "text": "forgive", "correct": false },
+        { "text": "explain", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "„Now it's turnin' blue” oznacza:",
+      "comment": "Znaczenie emocjonalne.",
+      "answers": [
+        { "text": "Gaśnie / robi się smutne", "correct": true },
+        { "text": "Zaczyna się palić", "correct": false },
+        { "text": "Staje się silniejsze", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Jak najlepiej przetłumaczyć „Like the angel”?",
+      "comment": "Porównanie.",
+      "answers": [
+        { "text": "Jak anioł", "correct": true },
+        { "text": "Jak wróg", "correct": false },
+        { "text": "Jak cień", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Uzupełnij zdanie: „It's too ______.”",
+      "comment": "Wyrażenie czasu.",
+      "answers": [
+        { "text": "late", "correct": true },
+        { "text": "fast", "correct": false },
+        { "text": "soon", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "„Heaven let me think” oznacza:",
+      "comment": "Znaczenie metaforyczne.",
+      "answers": [
+        { "text": "Niebo pozwoliło mi uwierzyć", "correct": true },
+        { "text": "Niebo mnie oszukało", "correct": false },
+        { "text": "Niebo kazało mi czekać", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Uzupełnij zdanie: „I'm ______ it's too late.”",
+      "comment": "Wyrażenie opinii.",
+      "answers": [
+        { "text": "afraid", "correct": true },
+        { "text": "happy", "correct": false },
+        { "text": "sure", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Uzupełnij zdanie: „I ______ it's too late.”",
+      "comment": "Czas przeszły.",
+      "answers": [
+        { "text": "said", "correct": true },
+        { "text": "heard", "correct": false },
+        { "text": "hoped", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Uzupełnij zdanie: „Oh, I need you like a heart needs a ______.”",
+      "comment": "Porównanie.",
+      "answers": [
+        { "text": "beat", "correct": true },
+        { "text": "rest", "correct": false },
+        { "text": "sound", "correct": false }
+      ]
+    }
+  ]
+}
