@@ -1,0 +1,206 @@
+{
+  "moduleId": "module_15",
+  "lessonId": "module_15__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Jakie jest znaczenie „dismiss”?",
+      "comment": "Termin prawniczy.",
+      "answers": [
+        { "text": "Oddalić", "correct": true },
+        { "text": "Skazać", "correct": false },
+        { "text": "Pozwać", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Które tłumaczenie najlepiej pasuje do „trial”?",
+      "comment": "Kontekst sądowy.",
+      "answers": [
+        { "text": "Proces", "correct": true },
+        { "text": "Przesłuchanie", "correct": false },
+        { "text": "Śledztwo", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Co oznacza „case”?",
+      "comment": "Znaczenie ogólne i prawne.",
+      "answers": [
+        { "text": "Przypadek, sprawa", "correct": true },
+        { "text": "Walizka", "correct": false },
+        { "text": "Świadek", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "„Contract expiration” oznacza:",
+      "comment": "Termin umowny.",
+      "answers": [
+        { "text": "Wygaśnięcie umowy", "correct": true },
+        { "text": "Przedłużenie umowy", "correct": false },
+        { "text": "Podpisanie kontraktu", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "„Find out” oznacza:",
+      "comment": "Czasownik frazowy.",
+      "answers": [
+        { "text": "Dowiedzieć się", "correct": true },
+        { "text": "Znaleźć coś", "correct": false },
+        { "text": "Podejrzewać", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "„Let alone” oznacza:",
+      "comment": "Wyrażenie wzmacniające.",
+      "answers": [
+        { "text": "Nie mówiąc już o", "correct": true },
+        { "text": "Samodzielnie", "correct": false },
+        { "text": "Zostawić kogoś w spokoju", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "„Refuse to pay” oznacza:",
+      "comment": "Kontekst finansowy.",
+      "answers": [
+        { "text": "Odmówić zapłaty", "correct": true },
+        { "text": "Uregulować płatność", "correct": false },
+        { "text": "Zgodzić się na cenę", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Co oznacza „Insurance”?",
+      "comment": "Termin finansowy.",
+      "answers": [
+        { "text": "Ubezpieczenie", "correct": true },
+        { "text": "Podatek", "correct": false },
+        { "text": "Wynagrodzenie", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "„Admitted to hospital” oznacza:",
+      "comment": "Kontekst medyczny.",
+      "answers": [
+        { "text": "Przyjęty do szpitala", "correct": true },
+        { "text": "Otrzymał diagnozę", "correct": false },
+        { "text": "Został wyleczony", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "„MRI” to:",
+      "comment": "Badanie diagnostyczne.",
+      "answers": [
+        { "text": "Rezonans magnetyczny", "correct": true },
+        { "text": "Prześwietlenie", "correct": false },
+        { "text": "Przeszczep", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Co oznacza „Your Honor” w sądzie?",
+      "comment": "Forma grzecznościowa.",
+      "answers": [
+        { "text": "Wysoki Sądzie", "correct": true },
+        { "text": "Panie Sędzio w stanie spoczynku", "correct": false },
+        { "text": "Obrońco", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Jakie znaczenie ma „complaint” w kontekście prawnym?",
+      "comment": "Termin prawny.",
+      "answers": [
+        { "text": "Pozew / skarga", "correct": true },
+        { "text": "Narzekanie", "correct": false },
+        { "text": "Oskarżony", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Uzupełnij zdanie: „He felt ______ in his chest.”",
+      "comment": "Opis objawu.",
+      "answers": [
+        { "text": "tightness", "correct": true },
+        { "text": "weakness", "correct": false },
+        { "text": "sharpness", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Jak przetłumaczysz „victims”?",
+      "comment": "Liczba mnoga.",
+      "answers": [
+        { "text": "Ofiary", "correct": true },
+        { "text": "Świadkowie", "correct": false },
+        { "text": "Sprawcy", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Co oznacza fraza „rule against us”?",
+      "comment": "Decyzja sądu.",
+      "answers": [
+        { "text": "Orzec na naszą niekorzyść", "correct": true },
+        { "text": "Zasądzić dla nas", "correct": false },
+        { "text": "Odrzucić sprawę", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Uzupełnij zdanie: „______ selection starts Monday.”",
+      "comment": "Proces sądowy.",
+      "answers": [
+        { "text": "Jury", "correct": true },
+        { "text": "Judge", "correct": false },
+        { "text": "Lawyer", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Jak przetłumaczysz „shake us down”?",
+      "comment": "Znaczenie potoczne.",
+      "answers": [
+        { "text": "Zastraszyć / wymusić", "correct": true },
+        { "text": "Potrząsnąć nami dosłownie", "correct": false },
+        { "text": "Zmusić do szybszej pracy", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Co oznacza „hard to believe”?",
+      "comment": "Wyrażenie opinii.",
+      "answers": [
+        { "text": "Trudne do uwierzenia", "correct": true },
+        { "text": "Łatwe do sprawdzenia", "correct": false },
+        { "text": "Niemożliwe do rozwiązania", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "Co oznacza „too late” w zdaniu „until it was too late”?",
+      "comment": "Wyrażenie czasu.",
+      "answers": [
+        { "text": "Zbyt późno", "correct": true },
+        { "text": "Za wcześnie", "correct": false },
+        { "text": "Dokładnie na czas", "correct": false }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Jak przetłumaczysz „associate”?",
+      "comment": "Kontekst zawodowy.",
+      "answers": [
+        { "text": "Współpracownik", "correct": true },
+        { "text": "Przeciwnik", "correct": false },
+        { "text": "Sędzia", "correct": false }
+      ]
+    }
+  ]
+}
