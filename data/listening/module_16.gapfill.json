@@ -1,0 +1,124 @@
+{
+  "videoId": "D8d8Dqp6alU",
+  "segments": [
+    {
+      "start": 0,
+      "end": 8,
+      "parts": [
+        { "text": "You have to", "gap": false },
+        { "text": "put", "gap": true },
+        { "text": "in a request", "gap": false }
+      ]
+    },
+    {
+      "start": 8,
+      "end": 18,
+      "parts": [
+        { "text": "I can see you're", "gap": false },
+        { "text": "disappointed", "gap": true }
+      ]
+    },
+    {
+      "start": 18,
+      "end": 25,
+      "parts": [
+        { "text": "Perhaps", "gap": true },
+        {
+          "text": "you can even speak to some patients in our low-security wing.",
+          "gap": false
+        }
+      ]
+    },
+    {
+      "start": 25,
+      "end": 34,
+      "parts": [
+        { "text": "Then you're", "gap": false },
+        { "text": "out", "gap": true },
+        { "text": "of time.", "gap": false }
+      ]
+    },
+    {
+      "start": 34,
+      "end": 46,
+      "parts": [
+        { "text": "The fact of the matter is we did put in a", "gap": false },
+        { "text": "request", "gap": true },
+        { "text": "months ago and were denied", "gap": false }
+      ]
+    },
+    {
+      "start": 46,
+      "end": 55,
+      "parts": [
+        { "text": "I can't", "gap": false },
+        { "text": "breathe", "gap": true },
+        { "text": "in this thing.", "gap": false }
+      ]
+    },
+    {
+      "start": 55,
+      "end": 63,
+      "parts": [
+        { "text": "I'm starting to think this", "gap": false },
+        { "text": "whole", "gap": true },
+        { "text": "thing is a colossal mistake.", "gap": false }
+      ]
+    },
+    {
+      "start": 63,
+      "end": 74,
+      "parts": [
+        { "text": "I", "gap": false },
+        { "text": "borrowed", "gap": true },
+        {
+          "text": "them because I wanted you to take us seriously.",
+          "gap": false
+        }
+      ]
+    },
+    {
+      "start": 74,
+      "end": 110,
+      "parts": [
+        { "text": "What would", "gap": false },
+        { "text": "drive", "gap": true },
+        { "text": "a human being to", "gap": false },
+        { "text": "commit", "gap": true },
+        { "text": "such unimaginable acts?", "gap": false }
+      ]
+    },
+    {
+      "start": 110,
+      "end": 120,
+      "parts": [
+        { "text": "So", "gap": false },
+        { "text": "forgive", "gap": true },
+        { "text": "me if I'll now try anything in my power", "gap": false }
+      ]
+    },
+    {
+      "start": 120,
+      "end": 131,
+      "parts": [
+        {
+          "text": "To learn a little bit more about how his twisted, but let's",
+          "gap": false
+        },
+        { "text": "face", "gap": true },
+        { "text": "it, totally fascinating", "gap": false },
+        { "text": "mind", "gap": true },
+        { "text": "works.", "gap": false }
+      ]
+    },
+    {
+      "start": 131,
+      "end": 161,
+      "parts": [
+        { "text": "because you and I", "gap": false },
+        { "text": "both", "gap": true },
+        { "text": "know that he would!", "gap": false }
+      ]
+    }
+  ]
+}
