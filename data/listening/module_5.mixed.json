@@ -1,0 +1,151 @@
+{
+  "videoId": "3r2HG2fJVHA",
+  "segments": [
+    {
+      "type": "order",
+      "start": 0,
+      "end": 8,
+      "instruction": "Ułóż zdanie w odpowiedniej kolejności.",
+      "words": ["I", "can't", "pay", "for", "this", "right", "now"],
+      "correct": ["I", "can't", "pay", "for", "this", "right", "now"]
+    },
+    {
+      "type": "match",
+      "start": 8,
+      "end": 15,
+      "instruction": "Dopasuj wyrażenia do tłumaczeń.",
+      "pairs": [
+        { "left": "stuff", "right": "rzeczy" },
+        { "left": "luxuries", "right": "luksusy" },
+        { "left": "cut down on", "right": "ograniczyć" }
+      ]
+    },
+    {
+      "type": "correct-word",
+      "start": 15,
+      "end": 32,
+      "instruction": "Kliknij i popraw błędne słowo.",
+      "sentence": ["Plus,", "you", "get", "to", "stay", "at", "Rachel", "as", "much", "as", "you", "want."],
+      "wrong": "stay",
+      "correct": "stare"
+    },
+    {
+      "type": "extra-word",
+      "start": 32,
+      "end": 43,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["Could", "I", "use", "on", "the", "phone?"],
+      "extra": "on"
+    },
+    {
+      "type": "order",
+      "start": 43,
+      "end": 60,
+      "instruction": "Ułóż zdanie w odpowiedniej kolejności.",
+      "words": [
+        "Hey,", "Ross,", "listen,", "you", "want", "anything",
+        "to", "drink?", "'Cause", "I'm", "heading", "up", "there."
+      ],
+      "correct": [
+        "Hey,", "Ross,", "listen,", "you", "want", "anything",
+        "to", "drink?", "'Cause", "I'm", "heading", "up", "there."
+      ]
+    },
+    {
+      "type": "extra-word",
+      "start": 60,
+      "end": 73,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["I'd", "love", "a", "nice", "and", "water."],
+      "extra": "and"
+    },
+    {
+      "type": "order",
+      "start": 73,
+      "end": 78,
+      "instruction": "Ułóż zdanie w odpowiedniej kolejności.",
+      "words": ["Joey…", "what", "are", "you", "doing?"],
+      "correct": ["Joey…", "what", "are", "you", "doing?"]
+    },
+    {
+      "type": "correct-word",
+      "start": 78,
+      "end": 92,
+      "instruction": "Kliknij i popraw błędne słowo.",
+      "sentence": ["Put", "on", "an", "apron."],
+      "wrong": "an",
+      "correct": "your"
+    },
+    {
+      "type": "extra-word",
+      "start": 92,
+      "end": 102,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["Joey…", "do", "you", "work", "in", "here?"],
+      "extra": "in"
+    },
+    {
+      "type": "order",
+      "start": 102,
+      "end": 116,
+      "instruction": "Ułóż zdanie w odpowiedniej kolejności.",
+      "words": ["It's", "supposed", "to", "go", "in", "the", "other", "direction"],
+      "correct": ["It's", "supposed", "to", "go", "in", "the", "other", "direction"]
+    },
+    {
+      "type": "correct-word",
+      "start": 116,
+      "end": 131,
+      "instruction": "Kliknij i popraw błędne słowo.",
+      "sentence": ["I", "just", "feel", "kind", "of", "weird", "searching", "you", "guys,", "you", "know?"],
+      "wrong": "searching",
+      "correct": "serving"
+    },
+    {
+      "type": "order",
+      "start": 131,
+      "end": 153,
+      "instruction": "Ułóż zdanie w odpowiedniej kolejności.",
+      "words": ["I", "think", "it's", "great", "that", "you", "work", "here."],
+      "correct": ["I", "think", "it's", "great", "that", "you", "work", "here."]
+    },
+    {
+      "type": "extra-word",
+      "start": 153,
+      "end": 171,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": [
+        "Let", "me", "tell", "you", "about", "a", "couple", "of",
+        "things", "I", "learned", "while", "working", "here",
+        "at", "the", "coffee", "house."
+      ],
+      "extra": "here"
+    },
+    {
+      "type": "correct-word",
+      "start": 171,
+      "end": 183,
+      "instruction": "Kliknij i popraw błędne słowo.",
+      "sentence": ["And", "if", "everyone", "is", "ever", "rude", "to", "you,", "sneeze", "muffin."],
+      "wrong": "everyone",
+      "correct": "anyone"
+    },
+    {
+      "type": "correct-word",
+      "start": 183,
+      "end": 196,
+      "instruction": "Kliknij i popraw błędne słowo.",
+      "sentence": ["It's", "on", "about", "turnover."],
+      "wrong": "on",
+      "correct": "all"
+    },
+    {
+      "type": "order",
+      "start": 196,
+      "end": 209,
+      "instruction": "Ułóż zdanie w odpowiedniej kolejności.",
+      "words": ["And", "since", "I", "made", "you", "wait,", "I'll", "toss", "in", "a", "free", "muffin."],
+      "correct": ["And", "since", "I", "made", "you", "wait,", "I'll", "toss", "in", "a", "free", "muffin."]
+    }
+  ]
+}
