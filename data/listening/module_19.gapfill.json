@@ -1,0 +1,105 @@
+{
+  "videoId": "C5Cq-qH1zS4",
+  "segments": [
+    {
+      "start": 0,
+      "end": 4,
+      "parts": [
+        { "text": "Do you think you'll", "gap": false },
+        { "text": "enjoy", "gap": true },
+        { "text": "village life?", "gap": false }
+      ]
+    },
+    {
+      "start": 4,
+      "end": 12,
+      "parts": [
+        { "text": "I'm sure I'll find something to", "gap": false },
+        { "text": "keep me busy", "gap": true }
+      ]
+    },
+    {
+      "start": 12,
+      "end": 20,
+      "parts": [
+        { "text": "Well, it's", "gap": false },
+        { "text": "barely", "gap": true },
+        { "text": "a hospital.", "gap": false }
+      ]
+    },
+    {
+      "start": 20,
+      "end": 27,
+      "parts": [
+        { "text": "It's a", "gap": false },
+        { "text": "cottage", "gap": true },
+        { "text": "hospital, of course, but", "gap": false },
+        { "text": "quite", "gap": true },
+        { "text": "well equipped.", "gap": false }
+      ]
+    },
+    {
+      "start": 27,
+      "end": 38,
+      "parts": [
+        { "text": "In a way, he", "gap": false },
+        { "text": "set up", "gap": true },
+        { "text": "his own memorial.", "gap": false }
+      ]
+    },
+    {
+      "start": 38,
+      "end": 43,
+      "parts": [
+        { "text": "And Mr. Lloyd George's new", "gap": false },
+        { "text": "insurance", "gap": true },
+        { "text": "measures will help.", "gap": false }
+      ]
+    },
+    {
+      "start": 43,
+      "end": 47,
+      "parts": [
+        { "text": "Please don't speak that man's name—we are", "gap": false },
+        { "text": "about to", "gap": true },
+        { "text": "eat.", "gap": false }
+      ]
+    },
+    {
+      "start": 47,
+      "end": 54,
+      "parts": [
+        { "text": "I will hold it steady, and you can", "gap": false },
+        { "text": "help", "gap": true },
+        { "text": "yourself.", "gap": false }
+      ]
+    },
+    {
+      "start": 54,
+      "end": 63,
+      "parts": [
+        { "text": "If you mean that I'm accustomed to a very", "gap": false },
+        { "text": "different life from", "gap": true },
+        { "text": "this, then that is true.", "gap": false }
+      ]
+    },
+    {
+      "start": 63,
+      "end": 84,
+      "parts": [
+        { "text": "You do know I mean to", "gap": false },
+        { "text": "involve", "gap": true },
+        { "text": "you in the running of the estate?", "gap": false }
+      ]
+    },
+    {
+      "start": 84,
+      "end": 92,
+      "parts": [
+        { "text": "We mustn't", "gap": false },
+        { "text": "bore", "gap": true },
+        { "text": "the ladies.", "gap": false }
+      ]
+    }
+  ]
+}
