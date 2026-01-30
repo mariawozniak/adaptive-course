@@ -870,13 +870,19 @@ function showInstallPrompt() {
 // INIT
 // ===============================
 async function init() {
-  // 🔥 RENDERUJEMY OD RAZU COŚ, ŻEBY NIE BYŁO BIAŁO
-  render();
+  render(); // pokaż level page od razu
 
   try {
     await ensureUser();
     await loadModules();
-    await loadProgress();
+
+    if (typeof loadProgress === "function") {
+      await loadProgress();
+    } else {
+      console.warn("loadProgress missing – skipping");
+      progress = {};
+    }
+
     await loadState();
 
     if (currentLevel) {
