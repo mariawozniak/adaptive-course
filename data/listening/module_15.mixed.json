@@ -1,0 +1,180 @@
+{
+  "videoId": "-mfpZOwxLN0",
+  "segments": [
+    {
+      "type": "order",
+      "start": 0,
+      "end": 8,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": [
+        "Well,", "if", "you", "expedite", "our", "trial,", "that",
+        "takes", "care", "of", "their", "motion", "to", "dismiss"
+      ],
+      "correct": [
+        "Well,", "if", "you", "expedite", "our", "trial,", "that",
+        "takes", "care", "of", "their", "motion", "to", "dismiss"
+      ]
+    },
+    {
+      "type": "extra-word",
+      "start": 8,
+      "end": 15,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": [
+        "You're", "using", "the", "timing", "of", "our", "client's",
+        "contract", "of", "expiration", "to", "try", "to", "shake",
+        "us", "down."
+      ],
+      "extra": "of"
+    },
+    {
+      "type": "order",
+      "start": 15,
+      "end": 24,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["let", "alone", "care", "about", "these", "people", "at", "all"],
+      "correct": ["let", "alone", "care", "about", "these", "people", "at", "all"]
+    },
+    {
+      "type": "correct-word",
+      "start": 24,
+      "end": 33,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": [
+        "he", "thought", "it", "was", "nothing,", "but", "his",
+        "wife", "inndicated", "he", "go", "to", "the", "hospital"
+      ],
+      "wrong": "inndicated",
+      "correct": "insisted"
+    },
+    {
+      "type": "correct-word",
+      "start": 33,
+      "end": 39,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": [
+        "When", "he", "got", "there,", "doctors", "couldn't", "find",
+        "something", "wrong,", "but", "they", "wanted", "to", "keep",
+        "him", "for", "one", "extra", "day."
+      ],
+      "wrong": "something",
+      "correct": "anything"
+    },
+    {
+      "type": "extra-word",
+      "start": 39,
+      "end": 47,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": [
+        "So", "Mr.", "Powell", "went", "home,", "crawled", "into",
+        "his", "bed,", "and", "one", "day", "later,", "he", "was", "dead."
+      ],
+      "extra": "his"
+    },
+    {
+      "type": "correct-word",
+      "start": 47,
+      "end": 54,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": [
+        "In", "front", "of", "you,", "you", "have", "a", "complaint",
+        "that’s", "over", "5000", "pages", "long,", "which", "tells",
+        "the", "stories", "of", "another", "199", "victims."
+      ],
+      "wrong": "199",
+      "correct": "189"
+    },
+    {
+      "type": "correct-word",
+      "start": 54,
+      "end": 67,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["Page", "6207.", "Mr..."],
+      "wrong": "6207",
+      "correct": "627"
+    },
+    {
+      "type": "correct-word",
+      "start": 67,
+      "end": 78,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": [
+        "He", "thought", "it", "was", "stress.", "Turns", "up",
+        "it", "was", "lymphoma"
+      ],
+      "wrong": "up",
+      "correct": "out"
+    },
+    {
+      "type": "order",
+      "start": 78,
+      "end": 85,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": [
+        "only", "they", "didn’t", "find", "out", "until", "it",
+        "was", "too", "late,", "because", "their", "client",
+        "refused", "to", "pay", "for", "the", "MRI"
+      ],
+      "correct": [
+        "only", "they", "didn’t", "find", "out", "until", "it",
+        "was", "too", "late,", "because", "their", "client",
+        "refused", "to", "pay", "for", "the", "MRI"
+      ]
+    },
+    {
+      "type": "extra-word",
+      "start": 85,
+      "end": 91,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": [
+        "So", "please,", "now", "rule", "against", "us", "if",
+        "you", "have", "to,", "but", "don’t", "tell", "me", "we",
+        "don’t", "care."
+      ],
+      "extra": "now"
+    },
+    {
+      "type": "order",
+      "start": 91,
+      "end": 101,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": [
+        "For", "your", "information,", "that’s", "what", "I",
+        "was", "doing."
+      ],
+      "correct": [
+        "For", "your", "information,", "that’s", "what", "I",
+        "was", "doing."
+      ]
+    },
+    {
+      "type": "extra-word",
+      "start": 101,
+      "end": 108,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": [
+        "I", "was", "also", "doing", "something", "for", "the",
+        "one", "person", "who", "has", "the", "right", "to",
+        "treat", "me", "like", "his", "associate", "but",
+        "then", "treats", "me", "like", "his", "partner."
+      ],
+      "extra": "then"
+    },
+    {
+      "type": "order",
+      "start": 108,
+      "end": 116,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": [
+        "Well,", "if", "you", "can", "forgive", "me,", "what",
+        "do", "you", "say", "I", "take", "my", "partner",
+        "out", "to", "lunch?"
+      ],
+      "correct": [
+        "Well,", "if", "you", "can", "forgive", "me,", "what",
+        "do", "you", "say", "I", "take", "my", "partner",
+        "out", "to", "lunch?"
+      ]
+    }
+  ]
+}
