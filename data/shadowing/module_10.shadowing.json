@@ -1,18 +1,15 @@
 {
   "moduleId": "module_10",
   "lessonId": "module_10__shadowing",
-
   "player": {
     "type": "vimeo",
     "videoId": "1050338812"
   },
-
   "phrases": [
     { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
     { "en": "shut up about", "pl": "przestać gadać o" },
     { "en": "as they are", "pl": "tak jak są" }
   ],
-
   "dictionary": {
     "discuss": "dyskutować",
     "dear": "drogi",
@@ -22,12 +19,11 @@
     "happy": "szczęśliwy",
     "blessing": "błogosławieństwo"
   },
-
   "segments": [
     { "start": 0.0, "end": 2.0, "text": "Yes, sir, can I help you?" },
     { "start": 2.0, "end": 4.2, "text": "Hi, checking out of room 809, please." },
     { "start": 4.2, "end": 6.0, "text": "Yes, sir, was everything satisfactory?" },
-    { "start": 6.0, "end": 12.0, "text": " Yeah, look, I'm sorry, I'm in a hurry, I'm running late for a flight, so if we could speed this up." },
+    { "start": 6.0, "end": 12.0, "text": "Yeah, look, I'm sorry, I'm in a hurry, I'm running late for a flight, so if we could speed this up." },
     { "start": 12.0, "end": 16.0, "text": "I just need to review your account and have you sign the room rate and the incidentals, sir." },
     { "start": 16.0, "end": 20.0, "text": "Fine. One night at our standard rate, $119." },
     { "start": 20.0, "end": 23.5, "text": "Yes? State tax comes to $9.52." },
