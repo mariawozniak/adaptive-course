@@ -1,0 +1,206 @@
+{
+  "moduleId": "module_13",
+  "lessonId": "module_13__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "„Sympathetic” oznacza:",
+      "comment": "Przymiotnik opisujący postawę wobec innych.",
+      "answers": [
+        { "text": "Współczujący", "correct": true },
+        { "text": "Entuzjastyczny", "correct": false },
+        { "text": "Charyzmatyczny", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "„Struggle” to:",
+      "comment": "Rzeczownik lub czasownik.",
+      "answers": [
+        { "text": "zmaganie, trudność", "correct": true },
+        { "text": "Sukces", "correct": false },
+        { "text": "Radość", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "„Put in a request” znaczy:",
+      "comment": "Wyrażenie formalne.",
+      "answers": [
+        { "text": "Złożyć wniosek", "correct": true },
+        { "text": "Wypełnić ankietę", "correct": false },
+        { "text": "Odmówić", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "„Board” oznacza:",
+      "comment": "Znaczenie instytucjonalne.",
+      "answers": [
+        { "text": "Komisję, zarząd", "correct": true },
+        { "text": "Tablicę szkolną", "correct": false },
+        { "text": "Statek", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "„Disappointed” znaczy:",
+      "comment": "Opis stanu emocjonalnego.",
+      "answers": [
+        { "text": "Rozczarowany", "correct": true },
+        { "text": "Szczęśliwy", "correct": false },
+        { "text": "Zestresowany", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "„Perhaps” to:",
+      "comment": "Przysłówek.",
+      "answers": [
+        { "text": "Być może", "correct": true },
+        { "text": "Na pewno", "correct": false },
+        { "text": "Nigdy", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "„Out of time” znaczy:",
+      "comment": "Brak dostępnego czasu.",
+      "answers": [
+        { "text": "Nie mieć czasu", "correct": true },
+        { "text": "Być przed czasem", "correct": false },
+        { "text": "najwyższa pora", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "„Whose fault is that?” oznacza:",
+      "comment": "Pytanie o odpowiedzialność.",
+      "answers": [
+        { "text": "Czyja to wina?", "correct": true },
+        { "text": "Kto to powiedział?", "correct": false },
+        { "text": "Jak to się stało?", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "„Screw that!” to:",
+      "comment": "Potoczne, emocjonalne wyrażenie.",
+      "answers": [
+        { "text": "Niech to szlag!", "correct": true },
+        { "text": "Świetny pomysł!", "correct": false },
+        { "text": "Na pewno nie!", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "„Break out in a rash” oznacza:",
+      "comment": "Reakcja fizyczna.",
+      "answers": [
+        { "text": "Dostać wysypki", "correct": true },
+        { "text": "Zacząć kaszleć", "correct": false },
+        { "text": "Mieć dreszcze", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "„Protocol” oznacza:",
+      "comment": "Zasady postępowania.",
+      "answers": [
+        { "text": "Procedura / zasady postępowania", "correct": true },
+        { "text": "Tajemnica", "correct": false },
+        { "text": "Lekarstwo", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Co znaczy „colossal mistake”?",
+      "comment": "Bardzo duży błąd.",
+      "answers": [
+        { "text": "Ogromny błąd", "correct": true },
+        { "text": "Mała pomyłka", "correct": false },
+        { "text": "Świetny wybór", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Jak przetłumaczyć „Take us seriously”?",
+      "comment": "Prośba o poważne traktowanie.",
+      "answers": [
+        { "text": "Traktować nas poważnie", "correct": true },
+        { "text": "Zignorować nas", "correct": false },
+        { "text": "Śmiać się z nas", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Uzupełnij zdanie: „Not 'cause I was ______.”",
+      "comment": "Zdanie z luką – brak poprawnej odpowiedzi w oryginale.",
+      "answers": [
+        { "text": "scared", "correct": false },
+        { "text": "angry", "correct": false },
+        { "text": "tired", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Jak przetłumaczyć „ignite passion”?",
+      "comment": "Wyrażenie metaforyczne.",
+      "answers": [
+        { "text": "Rozpalić pasję", "correct": true },
+        { "text": "Zniszczyć zainteresowanie", "correct": false },
+        { "text": "Zasnąć z nudów", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "„Twisted mind” oznacza:",
+      "comment": "Negatywne określenie umysłu.",
+      "answers": [
+        { "text": "Skrzywiony / wypaczony umysł", "correct": true },
+        { "text": "Niezwykle inteligentny umysł", "correct": false },
+        { "text": "Spokojny charakter", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Uzupełnij zdanie: „We ______ a request months ago.”",
+      "comment": "Czas przeszły.",
+      "answers": [
+        { "text": "put in", "correct": true },
+        { "text": "made up", "correct": false },
+        { "text": "gave away", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Uzupełnij zdanie: „I'll try anything in my ______.”",
+      "comment": "Stałe wyrażenie.",
+      "answers": [
+        { "text": "power", "correct": true },
+        { "text": "dream", "correct": false },
+        { "text": "job", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "Uzupełnij zdanie: „Ten minutes with Victor is all I ______.”",
+      "comment": "Czasownik.",
+      "answers": [
+        { "text": "ask", "correct": true },
+        { "text": "think", "correct": false },
+        { "text": "please", "correct": false }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Uzupełnij zdanie: „Little Petey McHugh started ______.”",
+      "comment": "Opis reakcji emocjonalnej.",
+      "answers": [
+        { "text": "sobbing", "correct": true },
+        { "text": "laughing", "correct": false },
+        { "text": "dancing", "correct": false }
+      ]
+    }
+  ]
+}
