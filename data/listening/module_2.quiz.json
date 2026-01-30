@@ -1,0 +1,132 @@
+{
+  "videoId": "32MynUrjGyY",
+  "segments": [
+    {
+      "type": "mcq",
+      "start": 0,
+      "end": 5,
+      "question": "Dlaczego Cameron myśli, że pilot to Sully?",
+      "answers": [
+        { "text": "Bo wygląda zupełnie jak Sully.", "correct": true },
+        { "text": "Bo brzmi jak Sully.", "correct": false },
+        { "text": "Bo przedstawił się jako Sully.", "correct": false }
+      ],
+      "explanation": "He looks exactly like Sully – wygląda zupełnie jak Sully."
+    },
+    {
+      "type": "mcq",
+      "start": 5,
+      "end": 19,
+      "question": "Cameron twierdzi, że:",
+      "answers": [
+        { "text": "wolałby nie składać życia w ręce kobiety pilota", "correct": false },
+        { "text": "odpowiada mu oddanie życia w ręce kobiety pilota", "correct": true }
+      ],
+      "explanation": "I am perfectly fine putting my life in the hands of a female pilot."
+    },
+    {
+      "type": "mcq",
+      "start": 19,
+      "end": 26,
+      "question": "Za 6 godzin i 24 minuty:",
+      "answers": [
+        { "text": "będzie przesiadka", "correct": false },
+        { "text": "będą mijać Turks i Caicos", "correct": false },
+        { "text": "wylądują w Turks i Caicos", "correct": true }
+      ],
+      "explanation": "Our flight time to Turks and Caicos is 6 hours 24 minutes."
+    },
+    {
+      "type": "mcq",
+      "start": 26,
+      "end": 35,
+      "question": "Po co oni zażywają lekarstwo?",
+      "answers": [
+        { "text": "bo mają chorobę lokomocyjną", "correct": false },
+        { "text": "aby przespać lot", "correct": true },
+        { "text": "dla zabawy", "correct": false }
+      ],
+      "explanation": "I think it means sleep tight – śpij dobrze."
+    },
+    {
+      "type": "mcq",
+      "start": 35,
+      "end": 56,
+      "question": "Dlaczego nie startują?",
+      "answers": [
+        { "text": "z powodu problemów technicznych", "correct": true },
+        { "text": "z powodu złej pogody", "correct": false }
+      ],
+      "explanation": "We have had some mechanical issues."
+    },
+    {
+      "type": "mcq",
+      "start": 56,
+      "end": 67,
+      "question": "Czy mają szansę zdążyć na kolejny lot?",
+      "answers": [
+        { "text": "tak, jeśli się pospieszą", "correct": true },
+        { "text": "raczej nie, ale mogą próbować", "correct": false }
+      ],
+      "explanation": "You can catch it if you hurry."
+    },
+    {
+      "type": "mcq",
+      "start": 67,
+      "end": 73,
+      "question": "Dlaczego mają lecieć do Dallas?",
+      "answers": [
+        { "text": "mają się tam przesiąść", "correct": true },
+        { "text": "mają tak napisane na bilecie", "correct": false }
+      ],
+      "explanation": "Dallas is just where you make your connection."
+    },
+    {
+      "type": "mcq",
+      "start": 73,
+      "end": 79,
+      "question": "Dlaczego mają trudności z porozumieniem się?",
+      "answers": [
+        { "text": "mają trudny okres", "correct": false },
+        { "text": "wzięli tabletki na sen", "correct": true },
+        { "text": "kiepsko spali", "correct": false }
+      ],
+      "explanation": "We took sleeping pills."
+    },
+    {
+      "type": "mcq",
+      "start": 79,
+      "end": 90,
+      "question": "Dlaczego mężczyźni zawrócili?",
+      "answers": [
+        { "text": "przypomnieli sobie o czymś", "correct": false },
+        { "text": "nie chcą lecieć do Dallas", "correct": true },
+        { "text": "popełnili błąd", "correct": false }
+      ],
+      "explanation": "We don't want to go to Dallas."
+    },
+    {
+      "type": "mcq",
+      "start": 90,
+      "end": 100,
+      "question": "Gdzie mają być za 4 minuty?",
+      "answers": [
+        { "text": "przy bramce 32", "correct": true },
+        { "text": "przy bramce 42", "correct": false }
+      ],
+      "explanation": "You need to be at gate 32 in 4 minutes."
+    },
+    {
+      "type": "mcq",
+      "start": 100,
+      "end": 113,
+      "question": "Mitchell uważa, że kobieta jest zła, ponieważ:",
+      "answers": [
+        { "text": "on jej się podoba", "correct": true },
+        { "text": "on ją denerwuje", "correct": false },
+        { "text": "zabrał jej marker", "correct": false }
+      ],
+      "explanation": "She's totally into me."
+    }
+  ]
+}
