@@ -1,0 +1,125 @@
+{
+  "videoId": "C5Cq-qH1zS4",
+  "segments": [
+    {
+      "type": "mcq",
+      "start": 0,
+      "end": 7,
+      "question": "Jaką różnicę między życiem na wsi a życiem w mieście wskazuje rozmówca?",
+      "answers": [
+        { "text": "Na wsi będzie dość cicho.", "correct": true },
+        { "text": "Na wsi będzie nudno.", "correct": false },
+        { "text": "Na wsi jest trudniej znaleźć pracę.", "correct": false }
+      ],
+      "explanation": "It will be very quiet after life in the city – będzie bardzo cicho po życiu w mieście."
+    },
+    {
+      "type": "mcq",
+      "start": 7,
+      "end": 16,
+      "question": "O co pyta rozmówczyni?",
+      "answers": [
+        { "text": "Gdzie jest szpital.", "correct": false },
+        { "text": "Co to za szpital.", "correct": true },
+        { "text": "Jak duży jest ten szpital.", "correct": false }
+      ],
+      "explanation": "What sort of hospital is it? – Jaki to rodzaj szpitala?"
+    },
+    {
+      "type": "mcq",
+      "start": 16,
+      "end": 27,
+      "question": "Jakie miejsce Cora sugeruje rozmówczyni jako takie, które może jej się spodobać?",
+      "answers": [
+        { "text": "Mały szpital wiejski.", "correct": true },
+        { "text": "Szpital wojskowy.", "correct": false },
+        { "text": "Duży, nowoczesny szpital miejski.", "correct": false }
+      ],
+      "explanation": "Cottage hospital – mały szpital wiejski."
+    },
+    {
+      "type": "mcq",
+      "start": 27,
+      "end": 38,
+      "question": "Kto finansuje działanie szpitala?",
+      "answers": [
+        { "text": "Rząd.", "correct": false },
+        { "text": "Właściciel ziemski i jego fundacja.", "correct": true },
+        { "text": "Lokalne społeczeństwo.", "correct": false }
+      ],
+      "explanation": "My father gave the building and an endowment to run it."
+    },
+    {
+      "type": "mcq",
+      "start": 38,
+      "end": 52,
+      "question": "Jak bohater reaguje, gdy podawane jest jedzenie?",
+      "answers": [
+        { "text": "Pyta o dokładkę.", "correct": false },
+        { "text": "Odmawia jedzenia.", "correct": false },
+        { "text": "Wyraża zdziwienie postawą służącego.", "correct": true }
+      ],
+      "explanation": "Yes, I know – tak, wiem."
+    },
+    {
+      "type": "mcq",
+      "start": 52,
+      "end": 62,
+      "question": "Bohater twierdzi, że:",
+      "answers": [
+        { "text": "Jest przyzwyczajony do innego życia.", "correct": true },
+        { "text": "Jest nawykły do takiego życia.", "correct": false },
+        { "text": "Chciałby się przyzwyczaić do takiego życia.", "correct": false }
+      ],
+      "explanation": "I'm accustomed to a very different life from this."
+    },
+    {
+      "type": "mcq",
+      "start": 62,
+      "end": 80,
+      "question": "Jakie stanowisko obejmuje bohater w Ripon?",
+      "answers": [
+        { "text": "Urzędnik państwowy.", "correct": false },
+        { "text": "Prawnik specjalizujący się w prawie przemysłowym.", "correct": true },
+        { "text": "Dyrektor szkoły.", "correct": false }
+      ],
+      "explanation": "Someone who understands industrial law."
+    },
+    {
+      "type": "mcq",
+      "start": 80,
+      "end": 89,
+      "question": "Jak bohater zamierza pogodzić obowiązki zawodowe z zarządzaniem majątkiem?",
+      "answers": [
+        { "text": "Będzie pracował tylko w weekendy.", "correct": false },
+        { "text": "Nie zamierza się tym zajmować.", "correct": false },
+        { "text": "Ma dość czasu na oba zajęcia.", "correct": true }
+      ],
+      "explanation": "There are plenty of hours in the day, and of course, I'll have the weekend."
+    },
+    {
+      "type": "mcq",
+      "start": 89,
+      "end": 92,
+      "question": "Jak rozmówca reaguje na ten pomysł?",
+      "answers": [
+        { "text": "Od razu go akceptuje.", "correct": false },
+        { "text": "Protestuje.", "correct": false },
+        { "text": "Chce omówić to później.", "correct": true }
+      ],
+      "explanation": "We'll discuss it later."
+    },
+    {
+      "type": "mcq",
+      "start": 92,
+      "end": 97,
+      "question": "Jak Violet reaguje na wzmiankę o pracy w weekend?",
+      "answers": [
+        { "text": "Nie rozumie pojęcia „weekend”.", "correct": true },
+        { "text": "Nie rozumie, jak można pracować w weekend.", "correct": false },
+        { "text": "Dopytuje, co rozmówca zamierza robić w weekend.", "correct": false }
+      ],
+      "explanation": "But what is a weekend?"
+    }
+  ]
+}
