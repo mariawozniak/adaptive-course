@@ -1,0 +1,32 @@
+{
+  "moduleId": "module_14",
+  "title": "Airport, Flights & Urgency",
+  "language": "en-pl",
+  "words": [
+    { "en": "When is your next flight to London?", "pl": "Kiedy jest następny lot do Londynu?" },
+    { "en": "There's one leaving in 30 minutes", "pl": "Jest jeden odlatujący za 30 minut." },
+    { "en": "I do have one seat left.", "pl": "Mam jeszcze jedno miejsce." },
+    { "en": "The last-minute fare on this ticket is $2,700.", "pl": "Cena biletu na ostatnią chwilę wynosi 2700 dolarów." },
+    { "en": "How about", "pl": "Co powiesz na" },
+    { "en": "these earrings", "pl": "Te kolczyki" },
+    { "en": "They prefer it if I don't barter.", "pl": "Wolą, żebym nie negocjowała cen." },
+    { "en": "enough", "pl": "Wystarczająco" },
+    { "en": "left on my credit card", "pl": "Pozostałe na mojej karcie kredytowej" },
+    { "en": "You can split it with another credit card.", "pl": "Możesz podzielić płatność na dwie karty kredytowe." },
+    { "en": "see your passport.", "pl": "Zobaczyć twój paszport" },
+    { "en": "I can tell you exactly where it is", "pl": "Mogę powiedzieć dokładnie, gdzie jest" },
+    { "en": "on my nightstand", "pl": "Na moim stoliku nocnym" },
+    { "en": "driver's license", "pl": "Prawo jazdy" },
+    { "en": "I'm back", "pl": "Wróciłam." },
+    { "en": "I need to get on that 11:00 flight.", "pl": "Muszę dostać się na ten lot o 11:00." },
+    { "en": "I'm afraid that plane has already pulled away from the gate.", "pl": "Obawiam się, że ten samolot już odjechał od bramki." },
+    { "en": "swing around", "pl": "Zawrócić" },
+    { "en": "pick me up", "pl": "Zabrać mnie" },
+    { "en": "a problem with the engine", "pl": "Problem z silnikiem" },
+    { "en": "step aside", "pl": "Odsunąć się" },
+    { "en": "if I don't get to London", "pl": "Jeśli nie dotrę do Londynu" },
+    { "en": "Can't imagine why.", "pl": "Nie mogę sobie wyobrazić dlaczego." },
+    { "en": "until", "pl": "Dopóki" },
+    { "en": "call that plane back", "pl": "Zawrócić ten samolot" }
+  ]
+}
