@@ -1,0 +1,92 @@
+{
+  "videoId": "re91rg5g_YI",
+  "segments": [
+    {
+      "type": "correct-word",
+      "start": 0,
+      "end": 7,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["It's", "what", "he", "want", "to", "do."],
+      "wrong": "want",
+      "correct": "wants"
+    },
+    {
+      "type": "extra-word",
+      "start": 7,
+      "end": 14,
+      "instruction": "Wybierz zbędne słowo.",
+      "sentence": ["I", "knew", "of", "it."],
+      "extra": "of"
+    },
+    {
+      "type": "extra-word",
+      "start": 14,
+      "end": 20,
+      "instruction": "Wybierz zbędne słowo.",
+      "sentence": ["Charles", "will", "be", "the", "king", "one", "day."],
+      "extra": "the"
+    },
+    {
+      "type": "order",
+      "start": 20,
+      "end": 24,
+      "instruction": "Ułóż w kolejności.",
+      "words": ["it", "did", "not", "end", "well"],
+      "correct": ["it", "did", "not", "end", "well"]
+    },
+    {
+      "type": "order",
+      "start": 24,
+      "end": 30,
+      "instruction": "Ułóż w kolejności.",
+      "words": ["obviously", "both", "of", "us", "prefer", "to", "think", "of", "him", "with", "mommy"],
+      "correct": ["obviously", "both", "of", "us", "prefer", "to", "think", "of", "him", "with", "mommy"]
+    },
+    {
+      "type": "correct-word",
+      "start": 30,
+      "end": 40,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["This", "isn't", "the", "reality."],
+      "wrong": "isn't",
+      "correct": "is"
+    },
+    {
+      "type": "order",
+      "start": 40,
+      "end": 50,
+      "instruction": "Ułóż w kolejności.",
+      "words": ["having", "him", "happy", "and", "settled", "is", "good", "for", "us"],
+      "correct": ["having", "him", "happy", "and", "settled", "is", "good", "for", "us"]
+    },
+    {
+      "type": "correct-word",
+      "start": 50,
+      "end": 58,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["Well,", "that", "you", "say.."],
+      "wrong": "that",
+      "correct": "as"
+    },
+    {
+      "type": "order",
+      "start": 58,
+      "end": 65,
+      "instruction": "Ułóż w kolejności.",
+      "words": ["he", "might", "finally", "shut", "up", "about", "it", "all"],
+      "correct": ["he", "might", "finally", "shut", "up", "about", "it", "all"]
+    },
+    {
+      "type": "correct-word",
+      "start": 65,
+      "end": 79,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": [
+        "I", "didn't", "want", "to", "give", "my", "blessing",
+        "until", "you'd", "given", "your"
+      ],
+      "wrong": "your",
+      "correct": "yours"
+    }
+  ]
+}
