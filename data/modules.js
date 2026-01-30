@@ -17,11 +17,14 @@ export const modules = [
 
         variants: [
           {
-            id: "module_1__vocabulary__app",
-            label: "Aplikacja do słówek",
-            type: "iframe",
-            src: "/vocabulary/index.html",
-            completion: "auto"
+  id: "module_1__vocabulary__app",
+  label: "Aplikacja do słówek",
+  type: "iframe",
+  src: "/vocabulary/index.html",
+  lessonId: "module_1__vocabulary__app",
+  completion: "auto"
+},
+
           },
           {
   id: "module_1__vocabulary__audio",
@@ -137,11 +140,14 @@ export const modules = [
 
         variants: [
           {
-            id: "module_2__vocabulary__app",
-            label: "Aplikacja do słówek",
-            type: "iframe",
-            src: "/vocabulary/index.html",
-            completion: "auto"
+  id: "module_2__vocabulary__app",
+  label: "Aplikacja do słówek",
+  type: "iframe",
+  src: "/vocabulary/index.html",
+  lessonId: "module_2__vocabulary__app",
+  completion: "auto"
+},
+
           },
           {
   id: "module_2__vocabulary__audio",
