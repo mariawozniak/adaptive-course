@@ -1,0 +1,124 @@
+{
+  "videoId": "6FJ2txod1K0",
+  "segments": [
+    {
+      "type": "mcq",
+      "start": 0,
+      "end": 20,
+      "question": "Jak rozmówczyni reaguje na wypowiedź królowej o sukcesji tronu?",
+      "answers": [
+        { "text": "Takie są zasady", "correct": true },
+        { "text": "Nie takie są zasady", "correct": false },
+        { "text": "Można to zmienić", "correct": false }
+      ],
+      "explanation": "Those are the rules. – Takie są zasady."
+    },
+    {
+      "type": "mcq",
+      "start": 20,
+      "end": 37,
+      "question": "Jak królowa opisuje księcia Karola?",
+      "answers": [
+        { "text": "Jako kogoś, kto nie jest gotowy na tron", "correct": false },
+        { "text": "Jako kogoś, kto nie chce zostać królem", "correct": false },
+        { "text": "Jako osobę w najlepszym momencie swojego życia", "correct": true }
+      ],
+      "explanation": "Charles is in the prime of his life now. – Karol jest teraz w szczytowym momencie swojego życia."
+    },
+    {
+      "type": "mcq",
+      "start": 37,
+      "end": 47,
+      "question": "Jaką przysięgę przypomina rozmówczyni królowej?",
+      "answers": [
+        { "text": "Służenie monarchii do końca życia", "correct": true },
+        { "text": "Obrona kraju w razie wojny", "correct": false },
+        { "text": "Niezmienność zasad sukcesji", "correct": false }
+      ],
+      "explanation": "My whole life, whether it be long or short, shall be devoted to your service – całe moje życie zostanie poświęcone waszej służbie."
+    },
+    {
+      "type": "mcq",
+      "start": 47,
+      "end": 58,
+      "question": "Kto jest określany jako „kolejna geriatria”?",
+      "answers": [
+        { "text": "Książę Karol", "correct": false },
+        { "text": "Królowa Maria", "correct": true },
+        { "text": "Królowa Wiktoria", "correct": false }
+      ],
+      "explanation": "You remember what Queen Mary told you? – Pamiętasz, co powiedziała ci królowa Maria?"
+    },
+    {
+      "type": "mcq",
+      "start": 58,
+      "end": 72,
+      "question": "Jakie cechy przypisywane są monarchii?",
+      "answers": [
+        { "text": "Zmiana i dostosowanie do nowych czasów", "correct": false },
+        { "text": "Stałość i ciągłość", "correct": true },
+        { "text": "Sprawiedliwość i równość", "correct": false }
+      ],
+      "explanation": "A symbol of permanence, of stability, of continuity – symbol trwałości, stabilności i ciągłości."
+    },
+    {
+      "type": "mcq",
+      "start": 72,
+      "end": 82,
+      "question": "Jaki jest argument przeciwko wcześniejszej abdykacji?",
+      "answers": [
+        { "text": "Brytyjczycy nie chcą zmian w rodzinie królewskiej", "correct": false },
+        { "text": "Królowa nie ma prawa podejmować takiej decyzji", "correct": false },
+        { "text": "Korona to nie wybór, ale zobowiązanie na życie", "correct": true }
+      ],
+      "explanation": "The luxury of choice, which is the one thing we cannot have – luksus wyboru, którego nie możemy mieć."
+    },
+    {
+      "type": "mcq",
+      "start": 82,
+      "end": 105,
+      "question": "Jak rozmówca królowej ocenia jej obecny stan?",
+      "answers": [
+        { "text": "Jako zmęczoną i starzejącą się", "correct": false },
+        { "text": "Jako przytłoczoną obowiązkami", "correct": false },
+        { "text": "Jako silną i pewną siebie", "correct": true }
+      ],
+      "explanation": "I see you as liberated, confident. – Widzę cię jako osobę wyzwoloną i pewną siebie."
+    },
+    {
+      "type": "mcq",
+      "start": 105,
+      "end": 115,
+      "question": "Co sugeruje rozmówczyni królowej?",
+      "answers": [
+        { "text": "Że jest inna niż reszta rodziny", "correct": true },
+        { "text": "Że nie żyje w zgodzie z resztą rodziny", "correct": false },
+        { "text": "Że jest podziwiana przez resztę rodziny", "correct": false }
+      ],
+      "explanation": "There's a difference between you and the rest of the family – jest różnica między tobą a resztą rodziny."
+    },
+    {
+      "type": "mcq",
+      "start": 115,
+      "end": 151,
+      "question": "Co sugeruje rozmówca królowej na temat systemu monarchii?",
+      "answers": [
+        { "text": "Że jest niesprawiedliwy", "correct": true },
+        { "text": "Że wymaga natychmiastowej reformy", "correct": false },
+        { "text": "Że przynosi więcej szkody niż pożytku", "correct": false }
+      ],
+      "explanation": "It's not natural. It's not fair. It's not kind. – Nie jest naturalny. Nie jest sprawiedliwy. Nie jest łaskawy."
+    },
+    {
+      "type": "mcq",
+      "start": 151,
+      "end": 173,
+      "question": "Królowa twierdzi, że:",
+      "answers": [
+        { "text": "Poświęciła życie dla monarchii", "correct": true },
+        { "text": "Zmarnowała życie", "correct": false }
+      ],
+      "explanation": "But what about the life I put aside? – A co z życiem, które odłożyłam na bok?"
+    }
+  ]
+}
