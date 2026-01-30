@@ -1,0 +1,141 @@
+{
+  "videoId": "vUI8Oftasg8",
+  "segments": [
+    {
+      "type": "mcq",
+      "start": 0,
+      "end": 5,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "Jesteśmy nadal dziećmi.", "correct": true },
+        { "text": "Nie jesteśmy już dziećmi.", "correct": false }
+      ],
+      "explanation": "We are still kids."
+    },
+    {
+      "type": "mcq",
+      "start": 5,
+      "end": 9,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "Ciągle się kłóciliśmy.", "correct": false },
+        { "text": "Walczymy z przeciwnościami.", "correct": true }
+      ],
+      "explanation": "fight against all odds - walczyć z przeciwnościami/ pomimo przeciwności"
+    },
+    {
+      "type": "mcq",
+      "start": 9,
+      "end": 13,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "Może wszystko będzie dobrze", "correct": false },
+        { "text": "Wiem, że wszystko będzie dobrze", "correct": true }
+      ],
+      "explanation": "I know – wiem"
+    },
+    {
+      "type": "mcq",
+      "start": 13,
+      "end": 20,
+      "question": "Wybierz poprawną odpowiedź:",
+      "answers": [
+        { "text": "Kochanie, trzymaj mnie za rękę", "correct": true },
+        { "text": "Kochanie, daj mi rękę", "correct": false }
+      ],
+      "explanation": "hold – trzymać"
+    },
+    {
+      "type": "mcq",
+      "start": 20,
+      "end": 24,
+      "question": "Wybierz poprawną odpowiedź:",
+      "answers": [
+        { "text": "Będę twoim mężczyzną", "correct": true },
+        { "text": "Jestem twoim mężczyzną", "correct": false }
+      ],
+      "explanation": "I’ll be – będę"
+    },
+    {
+      "type": "mcq",
+      "start": 24,
+      "end": 31,
+      "question": "Wybierz poprawną odpowiedź:",
+      "answers": [
+        { "text": "Myślę o przyszłości", "correct": false },
+        { "text": "Widzę przyszłość", "correct": true }
+      ],
+      "explanation": "I see – widzę"
+    },
+    {
+      "type": "mcq",
+      "start": 31,
+      "end": 37,
+      "question": "Wybierz poprawną odpowiedź:",
+      "answers": [
+        { "text": "tańczę w ciemności", "correct": true },
+        { "text": "tańczę w domu", "correct": false },
+        { "text": "tańczę w odurzeniu", "correct": false }
+      ],
+      "explanation": "I'm dancing in the dark – tańczę w ciemności"
+    },
+    {
+      "type": "mcq",
+      "start": 37,
+      "end": 41,
+      "question": "Wybierz poprawną odpowiedź:",
+      "answers": [
+        { "text": "trzymam cię za ręce", "correct": false },
+        { "text": "z tobą w moich ramionach", "correct": true }
+      ],
+      "explanation": "With you between my arms – z tobą w moich ramionach"
+    },
+    {
+      "type": "mcq",
+      "start": 41,
+      "end": 45,
+      "question": "Wybierz poprawną odpowiedź:",
+      "answers": [
+        { "text": "Boso na dywanie", "correct": false },
+        { "text": "Boso na ziemi", "correct": false },
+        { "text": "Boso na trawie", "correct": true }
+      ],
+      "explanation": "Barefoot on the grass – boso na trawie"
+    },
+    {
+      "type": "mcq",
+      "start": 45,
+      "end": 49,
+      "question": "Wybierz poprawną odpowiedź:",
+      "answers": [
+        { "text": "słuchając naszej ulubionej piosenki", "correct": true },
+        { "text": "tańcząc do naszej ulubionej piosenki", "correct": false }
+      ],
+      "explanation": "Listening to our favourite song – słuchając naszej ulubionej piosenki"
+    },
+    {
+      "type": "mcq",
+      "start": 49,
+      "end": 55,
+      "question": "Wybierz poprawną odpowiedź:",
+      "answers": [
+        { "text": "kiedy zobaczyłem cię w tej sukience", "correct": true },
+        { "text": "kiedy obejmowałem cię w tej sukience", "correct": false },
+        { "text": "kiedy cię poznałem byłaś w tej sukience", "correct": false }
+      ],
+      "explanation": "When I saw you in that dress – kiedy zobaczyłem cię w tej sukience"
+    },
+    {
+      "type": "mcq",
+      "start": 55,
+      "end": 64,
+      "question": "Wybierz poprawną odpowiedź:",
+      "answers": [
+        { "text": "nie pojmuje tego", "correct": false },
+        { "text": "nie zasługuję na to", "correct": true },
+        { "text": "nie mam takich słów", "correct": false }
+      ],
+      "explanation": "I don't deserve this – nie zasługuję na to"
+    }
+  ]
+}
