@@ -181,6 +181,98 @@ app.post("/api/lesson-complete", (req, res) => {
   res.json({ ok: true });
 });
 
+// ===== NEXT MODULE =====
+app.post("/api/next-module", (req, res) => {
+  const userId = req.cookies.course_user;
+
+  if (!userId) {
+    return res.status(401).json({ error: "No user" });
+  }
+
+  // 1️⃣ pobierz level użytkownika
+  const user = db
+    .prepare("SELECT level FROM users WHERE id = ?")
+    .get(userId);
+
+  let level = user?.level;
+  if (!level) {
+    return res.status(400).json({ error: "Level not set" });
+  }
+
+  // 2️⃣ pobierz progress użytkownika
+  const rows = db.prepare(`
+    SELECT module_id, lesson_id
+    FROM progress
+    WHERE user_id = ?
+  `).all(userId);
+
+  const progressByModule = {};
+  for (const row of rows) {
+    progressByModule[row.module_id] ??= new Set();
+    progressByModule[row.module_id].add(row.lesson_id);
+  }
+
+  // helper: czy moduł ukończony
+  function isModuleCompleted(module) {
+    const completed = progressByModule[module.id] || new Set();
+
+    return module.activities
+      .filter(a => a.required)
+      .every(a => {
+        if (a.variants?.length) {
+          return a.variants.every(v => completed.has(v.id));
+        }
+        if (a.lessonId) {
+          return completed.has(a.lessonId);
+        }
+        return true;
+      });
+  }
+
+  // 3️⃣ moduły na aktualnym levelu
+  const sameLevelModules = modules
+    .filter(m => m.level === level)
+    .sort((a, b) => a.id.localeCompare(b.id));
+
+  // 4️⃣ znajdź pierwszy NIEukończony
+  const nextSameLevel = sameLevelModules.find(
+    m => !isModuleCompleted(m)
+  );
+
+  if (nextSameLevel) {
+    return res.json({
+      moduleId: nextSameLevel.id,
+      level
+    });
+  }
+
+  // 5️⃣ wszystkie ukończone → level + 1
+  const nextLevel = Math.min(5, level + 1);
+
+  if (nextLevel !== level) {
+    db.prepare(`
+      UPDATE users
+      SET level = ?
+      WHERE id = ?
+    `).run(nextLevel, userId);
+  }
+
+  const nextLevelModules = modules
+    .filter(m => m.level === nextLevel)
+    .sort((a, b) => a.id.localeCompare(b.id));
+
+  if (!nextLevelModules.length) {
+    return res.json({
+      moduleId: null,
+      level: nextLevel
+    });
+  }
+
+  return res.json({
+    moduleId: nextLevelModules[0].id,
+    level: nextLevel
+  });
+});
 
 // ===== VOCABULARY =====
 
@@ -507,6 +599,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, "0.0.0.0", () => {
   console.log("🚀 Server listening on port", PORT);
 });
+
 
 
 
