@@ -1,18 +1,15 @@
 {
   "moduleId": "module_9",
   "lessonId": "module_9__shadowing",
-
   "player": {
     "type": "youtube",
     "videoId": "NA-Wzuwj__Y"
   },
-
   "phrases": [
     { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
     { "en": "shut up about", "pl": "przestać gadać o" },
     { "en": "as they are", "pl": "tak jak są" }
   ],
-
   "dictionary": {
     "discuss": "dyskutować",
     "dear": "drogi",
@@ -22,10 +19,9 @@
     "happy": "szczęśliwy",
     "blessing": "błogosławieństwo"
   },
-
   "segments": [
-    { "start": 0.0,  "end": 7.0,  "text": "Okay, who wants light cheese, and who wants dark cheese?" },
-    { "start": 7.0,  "end": 11.0, "text": "I don't even want to know about the dark cheese." },
+    { "start": 0.0, "end": 7.0, "text": "Okay, who wants light cheese, and who wants dark cheese?" },
+    { "start": 7.0, "end": 11.0, "text": "I don't even want to know about the dark cheese." },
     { "start": 11.0, "end": 13.5, "text": "Does anybody want to split this with me?" },
     { "start": 13.5, "end": 14.5, "text": "Oh, I will." },
     { "start": 14.5, "end": 16.0, "text": "You guys have to make a wish." },
