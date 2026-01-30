@@ -1,0 +1,158 @@
+{
+  "videoId": "pAkwimWgYTg",
+  "segments": [
+    {
+      "type": "mcq",
+      "start": 0,
+      "end": 21,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        {
+          "text": "Słyszałam, że się przeprowadziłeś.",
+          "correct": false
+        },
+        {
+          "text": "Słyszałam, że się ustatkowałeś.",
+          "correct": true
+        }
+      ],
+      "explanation": "I heard that you're settled down – Słyszałam, że się ustatkowałeś"
+    },
+    {
+      "type": "mcq",
+      "start": 21,
+      "end": 24,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        {
+          "text": "znalazłeś dziewczynę",
+          "correct": true
+        },
+        {
+          "text": "spotkałeś dziewczynę",
+          "correct": false
+        }
+      ],
+      "explanation": "found a girl – znalazłeś dziewczynę"
+    },
+    {
+      "type": "mcq",
+      "start": 24,
+      "end": 34,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        {
+          "text": "Słyszałam, że spełniły się twoje marzenia",
+          "correct": true
+        },
+        {
+          "text": "Słyszałam, że masz wielkie marzenia.",
+          "correct": false
+        }
+      ],
+      "explanation": "I heard that your dreams came true – Słyszałam, że twoje marzenia się spełniły"
+    },
+    {
+      "type": "mcq",
+      "start": 34,
+      "end": 41,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        {
+          "text": "ona dała ci rzeczy, których ja nie miałam",
+          "correct": false
+        },
+        {
+          "text": "ona dała ci rzeczy, których ja ci nie dałam",
+          "correct": true
+        }
+      ],
+      "explanation": "she gave you things I didn't give to you – dała ci rzeczy, których ja ci nie dałam"
+    },
+    {
+      "type": "mcq",
+      "start": 41,
+      "end": 49,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        {
+          "text": "Stary przyjacielu, czemu jesteś taki wystraszony?",
+          "correct": false
+        },
+        {
+          "text": "Stary przyjacielu, czemu jesteś taki nieśmiały?",
+          "correct": true
+        }
+      ],
+      "explanation": "why are you so shy? – dlaczego jesteś taki nieśmiały?"
+    },
+    {
+      "type": "mcq",
+      "start": 49,
+      "end": 56,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        {
+          "text": "Nie powinieneś się powstrzymywać",
+          "correct": false
+        },
+        {
+          "text": "To do ciebie niepodobne, by się powstrzymywać.",
+          "correct": true
+        }
+      ],
+      "explanation": "Ain't like you to hold back – To do ciebie niepodobne, by się powstrzymywać"
+    },
+    {
+      "type": "mcq",
+      "start": 56,
+      "end": 60,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        {
+          "text": "Nie znoszę pojawiać się z nikąd",
+          "correct": true
+        },
+        {
+          "text": "Nie znoszę wchodzić ci na głowę",
+          "correct": false
+        }
+      ],
+      "explanation": "I hate to turn up out of the blue – Nienawidzę pojawiać się z nikąd"
+    },
+    {
+      "type": "mcq",
+      "start": 60,
+      "end": 64,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        {
+          "text": "Nie mogłam się powstrzymać.",
+          "correct": false
+        },
+        {
+          "text": "Nie mogłam trzymać się z daleka",
+          "correct": true
+        }
+      ],
+      "explanation": "I couldn't stay away – Nie mogłam trzymać się z daleka"
+    },
+    {
+      "type": "mcq",
+      "start": 64,
+      "end": 71,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        {
+          "text": "I przypomni Ci to, że dla mnie to nie koniec.",
+          "correct": true
+        },
+        {
+          "text": "I zauważysz, że dla mnie to nie koniec.",
+          "correct": false
+        }
+      ],
+      "explanation": "you'd be reminded – przypomni ci to"
+    }
+  ]
+}
