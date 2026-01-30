@@ -1,0 +1,130 @@
+{
+  "videoId": "o47f3pJtvpQ",
+  "segments": [
+    {
+      "type": "order",
+      "start": 0,
+      "end": 12,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["I'm", "running", "late", "for", "a", "flight,", "so", "if", "we", "could", "speed", "this", "up"],
+      "correct": ["I'm", "running", "late", "for", "a", "flight,", "so", "if", "we", "could", "speed", "this", "up"]
+    },
+    {
+      "type": "correct-word",
+      "start": 12,
+      "end": 21,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["One", "night", "on", "our", "standard", "rate,", "$119."],
+      "wrong": "on",
+      "correct": "at"
+    },
+    {
+      "type": "extra-word",
+      "start": 21,
+      "end": 32,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["I", "just", "really", "need", "to", "get", "to", "the", "airport"],
+      "extra": "really"
+    },
+    {
+      "type": "order",
+      "start": 32,
+      "end": 49,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["and", "only", "a", "few", "more", "charges,", "sir"],
+      "correct": ["and", "only", "a", "few", "more", "charges,", "sir"]
+    },
+    {
+      "type": "correct-word",
+      "start": 49,
+      "end": 58,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["I'm", "sorry,", "what", "did", "you", "said", "about", "diamonds?"],
+      "wrong": "said",
+      "correct": "say"
+    },
+    {
+      "type": "extra-word",
+      "start": 58,
+      "end": 72,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["Then", "I'll", "remove", "from", "the", "charge,", "sir."],
+      "extra": "from"
+    },
+    {
+      "type": "order",
+      "start": 72,
+      "end": 87,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["did", "you", "have", "room", "service", "for", "breakfast"],
+      "correct": ["did", "you", "have", "room", "service", "for", "breakfast"]
+    },
+    {
+      "type": "order",
+      "start": 87,
+      "end": 105,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["I'm", "sorry,", "you", "charge", "for", "that?"],
+      "correct": ["I'm", "sorry,", "you", "charge", "for", "that?"]
+    },
+    {
+      "type": "order",
+      "start": 105,
+      "end": 124,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["how", "can", "you", "be", "entirely", "sure"],
+      "correct": ["how", "can", "you", "be", "entirely", "sure"]
+    },
+    {
+      "type": "correct-word",
+      "start": 124,
+      "end": 161,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["Very", "well,", "sir,", "that", "charge", "will", "stay"],
+      "wrong": "stay",
+      "correct": "stand"
+    },
+    {
+      "type": "order",
+      "start": 161,
+      "end": 174,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["Yes,", "sir,", "there", "is", "an", "option", "where", "you", "can", "choose", "to", "pay", "either", "$7", "or", "$119,000"],
+      "correct": ["Yes,", "sir,", "there", "is", "an", "option", "where", "you", "can", "choose", "to", "pay", "either", "$7", "or", "$119,000"]
+    },
+    {
+      "type": "correct-word",
+      "start": 174,
+      "end": 181,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["Very", "well,", "sir,", "you'll", "be", "the", "first", "person", "forever", "to", "choose", "that", "price."],
+      "wrong": "forever",
+      "correct": "ever"
+    },
+    {
+      "type": "correct-word",
+      "start": 181,
+      "end": 193,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["That", "creeps", "me", "down,", "but", "I", "didn't", "notice", "him."],
+      "wrong": "down",
+      "correct": "out"
+    },
+    {
+      "type": "extra-word",
+      "start": 193,
+      "end": 201,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["Would", "you", "like", "to", "donate", "just", "$1", "for", "the", "relief", "fund", "for", "hurricane", "victims?"],
+      "extra": "just"
+    },
+    {
+      "type": "order",
+      "start": 201,
+      "end": 223,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["and", "look", "at", "that,", "I", "missed", "my", "flight"],
+      "correct": ["and", "look", "at", "that,", "I", "missed", "my", "flight"]
+    }
+  ]
+}
