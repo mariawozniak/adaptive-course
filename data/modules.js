@@ -25,7 +25,6 @@ export const modules = [
   completion: "auto"
 },
 
-          },
           {
   id: "module_1__vocabulary__audio",
   label: "Nagranie MP3",
@@ -146,7 +145,6 @@ export const modules = [
   src: "/vocabulary/index.html",
   lessonId: "module_2__vocabulary__app",
   completion: "auto"
-},
 
           },
           {
