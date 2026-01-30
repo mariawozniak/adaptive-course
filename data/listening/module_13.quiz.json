@@ -1,0 +1,125 @@
+{
+  "videoId": "o47f3pJtvpQ",
+  "segments": [
+    {
+      "type": "mcq",
+      "start": 0,
+      "end": 13,
+      "question": "Dlaczego Anthony odmawia Rose i Ruth dostępu do Victora?",
+      "answers": [
+        { "text": "Nie lubi studentek i nie chce im pomóc.", "correct": false },
+        { "text": "Nie uważa ich za kompetentne badaczki.", "correct": false },
+        { "text": "Nie przeszły procedury zatwierdzania wizyty.", "correct": true }
+      ],
+      "explanation": "There's a protocol – jest procedura."
+    },
+    {
+      "type": "mcq",
+      "start": 13,
+      "end": 25,
+      "question": "Co Anthony proponuje Rose i Ruth zamiast spotkania z Victorem?",
+      "answers": [
+        { "text": "Zwiedzanie placówki i rozmowę z pacjentami.", "correct": true },
+        { "text": "Spotkanie z innym skazańcem.", "correct": false },
+        { "text": "Udział w wykładzie o psychopatach.", "correct": false }
+      ],
+      "explanation": "I'm more than happy to give you a tour of our facility. – Z przyjemnością oprowadzę was po naszej placówce."
+    },
+    {
+      "type": "mcq",
+      "start": 25,
+      "end": 34,
+      "question": "Dlaczego Rose i Ruth tak bardzo zależy na spotkaniu z Victorem?",
+      "answers": [
+        { "text": "Są jego krewnymi i chcą z nim porozmawiać.", "correct": false },
+        { "text": "Piszą pracę naukową i zbliża się termin oddania.", "correct": true },
+        { "text": "Chcą napisać książkę o jego zbrodniach.", "correct": false }
+      ],
+      "explanation": "It's just that our thesis is due next month. – Nasza praca dyplomowa musi być gotowa na przyszły miesiąc."
+    },
+    {
+      "type": "mcq",
+      "start": 34,
+      "end": 39,
+      "question": "Jak Anthony reaguje na informację, że termin oddania pracy dziewczyn mija za miesiąc?",
+      "answers": [
+        { "text": "Prosi o więcej szczegółów.", "correct": false },
+        { "text": "Mówi, że to nie jego problem.", "correct": false },
+        { "text": "Stwierdza, że już nie mają czasu i to ich wina.", "correct": true }
+      ],
+      "explanation": "Then you're out of time. Whose fault is that? – W takim razie nie macie już czasu. Czyja to wina?"
+    },
+    {
+      "type": "mcq",
+      "start": 39,
+      "end": 55,
+      "question": "Dlaczego Rose mówi, że nie może oddychać?",
+      "answers": [
+        { "text": "Jej ubranie jest niewygodne i za ciasne.", "correct": true },
+        { "text": "Jest uczulona na coś w pomieszczeniu.", "correct": false },
+        { "text": "Czuje się osaczona przez Anthony’ego.", "correct": false }
+      ],
+      "explanation": "I can't breathe in this thing. – Nie mogę w tym oddychać."
+    },
+    {
+      "type": "mcq",
+      "start": 55,
+      "end": 76,
+      "question": "Dlaczego Rose przyznaje, że jej ubranie nie jest jej własnością?",
+      "answers": [
+        { "text": "Jest biedna i nie ma własnych ubrań.", "correct": false },
+        { "text": "Chciała, by traktowano je poważnie.", "correct": true },
+        { "text": "Musiała się przebrać, żeby dostać się do budynku.", "correct": false }
+      ],
+      "explanation": "I borrowed them because I wanted you to take us seriously. – Pożyczyłam je, bo chciałam, żebyś potraktował nas poważnie."
+    },
+    {
+      "type": "mcq",
+      "start": 76,
+      "end": 90,
+      "question": "Jakie wydarzenie z przeszłości zainspirowało Rose do zainteresowania się psychologią przestępców?",
+      "answers": [
+        { "text": "Opowieść opiekuna na obozie o masakrze Victora.", "correct": true },
+        { "text": "Historia rodzinna związana z Victorem Creelem.", "correct": false },
+        { "text": "Oglądanie horrorów w młodości.", "correct": false }
+      ],
+      "explanation": "My counselor told me the true story of Victor Creel."
+    },
+    {
+      "type": "mcq",
+      "start": 90,
+      "end": 101,
+      "question": "Jak zareagował mały Petey McHugh na opowieść o Victorze Creelu?",
+      "answers": [
+        { "text": "Był zachwycony i chciał dowiedzieć się więcej.", "correct": false },
+        { "text": "Od razu uciekł z pokoju.", "correct": false },
+        { "text": "Rozpłakał się i dostał ataku paniki.", "correct": true }
+      ],
+      "explanation": "Started sobbing right there on the spot. Full-on hyperventilating."
+    },
+    {
+      "type": "mcq",
+      "start": 101,
+      "end": 111,
+      "question": "Dlaczego Rose nie mogła spać po usłyszeniu historii o Victorze Creelu?",
+      "answers": [
+        { "text": "Była przerażona i miała koszmary.", "correct": false },
+        { "text": "Zastanawiała się, co popycha ludzi do takich czynów.", "correct": true },
+        { "text": "Bała się, że Victor Creel ją odnajdzie.", "correct": false }
+      ],
+      "explanation": "What would drive a human being to commit such unimaginable acts?"
+    },
+    {
+      "type": "mcq",
+      "start": 111,
+      "end": 150,
+      "question": "O ile czasu Rose prosi o spędzenie z Victorem?",
+      "answers": [
+        { "text": "5 minut.", "correct": false },
+        { "text": "10 minut.", "correct": true },
+        { "text": "Kilka minut.", "correct": false }
+      ],
+      "explanation": "Ten minutes with Victor is all I ask."
+    }
+  ]
+}
