@@ -1,0 +1,113 @@
+{
+  "videoId": "9BoSFeFSoVw",
+  "segments": [
+    {
+      "type": "mcq",
+      "start": 0,
+      "end": 4,
+      "question": "Jakie było pierwsze pytanie pasażerki do pracownika linii lotniczych?",
+      "answers": [
+        { "text": "Czy są jeszcze miejsca na lot do Londynu?", "correct": false },
+        { "text": "Kiedy odlatuje następny samolot do Londynu?", "correct": true },
+        { "text": "Czy mogę wejść na pokład bez paszportu?", "correct": false }
+      ],
+      "explanation": "When is your next flight to London? – Kiedy jest następny lot do Londynu?"
+    },
+    {
+      "type": "mcq",
+      "start": 4,
+      "end": 10,
+      "question": "Dlaczego pasażerka wyraziła wdzięczność na początku rozmowy?",
+      "answers": [
+        { "text": "Bo usłyszała, że są wolne miejsca na lot.", "correct": true },
+        { "text": "Bo cena biletu została obniżona.", "correct": false },
+        { "text": "Bo usłyszała, że jeszcze zdąży na lot.", "correct": false }
+      ],
+      "explanation": "I do have one seat left – Mam jeszcze jedno miejsce."
+    },
+    {
+      "type": "mcq",
+      "start": 10,
+      "end": 14,
+      "question": "Jaka jest cena biletu last-minute?",
+      "answers": [
+        { "text": "$700", "correct": false },
+        { "text": "$2,700", "correct": true },
+        { "text": "$7000", "correct": false }
+      ],
+      "explanation": "Twenty-seven hundred dollars."
+    },
+    {
+      "type": "mcq",
+      "start": 14,
+      "end": 22,
+      "question": "Jak pasażerka chciała obniżyć cenę biletu?",
+      "answers": [
+        { "text": "Prosząc o opóźnienie płatności.", "correct": false },
+        { "text": "Oferując wymianę gotówki na dodatkowe przedmioty.", "correct": true },
+        { "text": "Prosząc o zniżkę.", "correct": false }
+      ],
+      "explanation": "How about $600 and these earrings? – Co powiesz na 600 dolarów i te kolczyki?"
+    },
+    {
+      "type": "mcq",
+      "start": 22,
+      "end": 30,
+      "question": "Dlaczego pasażerka nie mogła kupić biletu za $2,700?",
+      "answers": [
+        { "text": "Jej karta kredytowa była już prawie pusta.", "correct": false },
+        { "text": "Nie miała wystarczających środków na karcie.", "correct": true },
+        { "text": "Nie miała przy sobie karty kredytowej.", "correct": false }
+      ],
+      "explanation": "I just don't think I have enough left on my credit card."
+    },
+    {
+      "type": "mcq",
+      "start": 30,
+      "end": 53,
+      "question": "Co pasażerka zaoferowała jako dokument tożsamości?",
+      "answers": [
+        { "text": "Dowód osobisty.", "correct": false },
+        { "text": "Prawo jazdy.", "correct": true },
+        { "text": "Paszport.", "correct": false }
+      ],
+      "explanation": "Driver's license – prawo jazdy."
+    },
+    {
+      "type": "mcq",
+      "start": 53,
+      "end": 67,
+      "question": "Dlaczego pasażerka ostatecznie nie mogła wejść na pokład samolotu odlatującego o 11:00?",
+      "answers": [
+        { "text": "Nie miała biletu.", "correct": true },
+        { "text": "Samolot już odjechał od bramki.", "correct": false },
+        { "text": "Spóźniła się na odprawę bagażową.", "correct": false }
+      ],
+      "explanation": "That plane has already pulled away from the gate."
+    },
+    {
+      "type": "mcq",
+      "start": 67,
+      "end": 73,
+      "question": "Jak pracownik zareagował na żądanie pasażerki, by zawrócić samolot?",
+      "answers": [
+        { "text": "Wyjaśniła, dlaczego to jest niemożliwe.", "correct": false },
+        { "text": "Była zdziwiona i stanowczo odmówiła.", "correct": true },
+        { "text": "Zgodziła się, ale pod warunkiem.", "correct": false }
+      ],
+      "explanation": "Can't do that. – Nie mogę tego zrobić."
+    },
+    {
+      "type": "mcq",
+      "start": 73,
+      "end": 86,
+      "question": "Dlaczego pasażerka desperacko chciała dostać się do Londynu?",
+      "answers": [
+        { "text": "Chciała powstrzymać ślub.", "correct": true },
+        { "text": "Obiecała komuś, że przyjedzie na czas.", "correct": false },
+        { "text": "Bała się utraty pracy.", "correct": false }
+      ],
+      "explanation": "If I don't get to London, he is going to marry that other girl!"
+    }
+  ]
+}
