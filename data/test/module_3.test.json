@@ -1,0 +1,206 @@
+{
+  "moduleId": "module_3",
+  "lessonId": "module_3__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Jak przetłumaczyć „Experience”?",
+      "comment": "W tym kontekście chodzi o doświadczenie, np. zawodowe.",
+      "answers": [
+        { "text": "Doświadczenie", "correct": true },
+        { "text": "Przygoda", "correct": false },
+        { "text": "Wykształcenie", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Jak przetłumaczyć „Can you spell that for me?”?",
+      "comment": "To prośba o przeliterowanie słowa.",
+      "answers": [
+        { "text": "Czy możesz mi to przeliterować?", "correct": true },
+        { "text": "Czy możesz to powtórzyć?", "correct": false },
+        { "text": "Czy możesz to zapisać?", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "„Your room and incidentals have been taken care of” znaczy:",
+      "comment": "Chodzi o to, że koszty zostały opłacone.",
+      "answers": [
+        { "text": "Twój pokój i dodatkowe opłaty zostały opłacone.", "correct": true },
+        { "text": "Twój pokój został przygotowany.", "correct": false },
+        { "text": "Twój pokój i ubezpieczenie zostały opłacone.", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Jak przetłumaczyć „I'm good”?",
+      "comment": "Często oznacza uprzejmą odmowę lub że wszystko jest w porządku.",
+      "answers": [
+        { "text": "W porządku.", "correct": true },
+        { "text": "Jestem gotowy.", "correct": false },
+        { "text": "Dobrze się bawię.", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Jak przetłumaczyć „Cancel that, please”?",
+      "comment": "To prośba o anulowanie czegoś.",
+      "answers": [
+        { "text": "Proszę to anulować.", "correct": true },
+        { "text": "Usuń to, proszę.", "correct": false },
+        { "text": "Zmień to, proszę.", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Co oznacza „Here's a map of the property”?",
+      "comment": "Chodzi o mapę obiektu, np. hotelu.",
+      "answers": [
+        { "text": "Tu jest mapa obiektu.", "correct": true },
+        { "text": "To jest mapa okolicy.", "correct": false },
+        { "text": "Oto plan podróży.", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "„Check-in starts in four hours” znaczy:",
+      "comment": "Informacja o czasie rozpoczęcia zameldowania.",
+      "answers": [
+        { "text": "Zameldowanie zaczyna się za cztery godziny.", "correct": true },
+        { "text": "Zameldowanie trwa cztery godziny.", "correct": false },
+        { "text": "Zameldowanie trwa od czterech godzin.", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Jak przetłumaczyć „Can't wait”?",
+      "comment": "Wyrażenie entuzjazmu.",
+      "answers": [
+        { "text": "Nie mogę się doczekać.", "correct": true },
+        { "text": "Nie czekaj.", "correct": false },
+        { "text": "Nie zwlekaj.", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Co znaczy „as well as”?",
+      "comment": "Wyrażenie używane do dodawania informacji.",
+      "answers": [
+        { "text": "Jak również", "correct": true },
+        { "text": "Oprócz tego", "correct": false },
+        { "text": "tak dobrze jak", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "„Your reservation comes with a complimentary spa service” oznacza:",
+      "comment": "„Complimentary” znaczy darmowy.",
+      "answers": [
+        { "text": "Twoja rezerwacja obejmuje darmową usługę spa.", "correct": true },
+        { "text": "Twoja rezerwacja zawiera dodatkowe opłaty za spa.", "correct": false },
+        { "text": "Twoja rezerwacja umożliwia korzystanie ze spa w niskiej cenie.", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Uzupełnij zdanie: „May I have the ______ name of the reservation, please?”",
+      "comment": "Chodzi o nazwisko na rezerwację.",
+      "answers": [
+        { "text": "last", "correct": true },
+        { "text": "first", "correct": false },
+        { "text": "family", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Jak przetłumaczyć „Found it”?",
+      "comment": "Oznacza, że coś zostało znalezione.",
+      "answers": [
+        { "text": "Znalazłem", "correct": true },
+        { "text": "Zgubiłem", "correct": false },
+        { "text": "Zauważyłem", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "„Since this is your first time staying with us” oznacza:",
+      "comment": "Wprowadzenie do dalszego wyjaśnienia.",
+      "answers": [
+        { "text": "Ponieważ to twój pierwszy pobyt u nas", "correct": true },
+        { "text": "Odkąd często tu bywasz", "correct": false },
+        { "text": "Skoro chcesz zostać z nami na zawsze", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Uzupełnij zdanie: „I would love to tell you about some of our ______.”",
+      "comment": "Chodzi o udogodnienia hotelowe.",
+      "answers": [
+        { "text": "amenities", "correct": true },
+        { "text": "possibilities", "correct": false },
+        { "text": "reservations", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Jak przetłumaczyć „I'm not really interested”?",
+      "comment": "Wyrażenie braku zainteresowania.",
+      "answers": [
+        { "text": "Nie jestem naprawdę zainteresowany", "correct": true },
+        { "text": "Nie jestem pewien", "correct": false },
+        { "text": "Nie mam pojęcia", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "„Complimentary glass of champagne” oznacza:",
+      "comment": "„Complimentary” = darmowy.",
+      "answers": [
+        { "text": "Darmowa lampka szampana", "correct": true },
+        { "text": "Specjalna oferta na szampana", "correct": false },
+        { "text": "Szampan w prezencie urodzinowym", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Uzupełnij zdanie: „Sorry to ______.”",
+      "comment": "Standardowe przeprosiny za przerwanie.",
+      "answers": [
+        { "text": "interrupt", "correct": true },
+        { "text": "bother", "correct": false },
+        { "text": "stop", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Jak przetłumaczyć „That actually does sound nice”?",
+      "comment": "Podkreślenie pozytywnego wrażenia.",
+      "answers": [
+        { "text": "To rzeczywiście brzmi dobrze", "correct": true },
+        { "text": "To brzmi dziwnie", "correct": false },
+        { "text": "To brzmi nierealnie", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "„Cancellations must be made 24 hours in advance” oznacza:",
+      "comment": "Informacja o zasadach anulowania.",
+      "answers": [
+        { "text": "Anulacje muszą być dokonane z 24-godzinnym wyprzedzeniem", "correct": true },
+        { "text": "Rezerwacje można robić tylko na 24 godziny wcześniej", "correct": false },
+        { "text": "Płatność należy uiścić dobę przed przyjazdem", "correct": false }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Co oznacza „It’s been a long day”?",
+      "comment": "Odnosi się do dnia, który już minął.",
+      "answers": [
+        { "text": "To był długi dzień", "correct": true },
+        { "text": "To będzie długi dzień", "correct": false },
+        { "text": "To jest trudny dzień", "correct": false }
+      ]
+    }
+  ]
+}
