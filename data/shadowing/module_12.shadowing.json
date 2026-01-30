@@ -1,0 +1,38 @@
+{
+  "moduleId": "module_1",
+  "lessonId": "module_1__shadowing",
+
+  "player": {
+    "type": "youtube",
+    "videoId": "qeWsP3NWVow"
+  },
+
+  "phrases": [
+    { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
+    { "en": "shut up about", "pl": "przestać gadać o" },
+    { "en": "as they are", "pl": "tak jak są" }
+  ],
+
+  "dictionary": {
+    "discuss": "dyskutować",
+    "dear": "drogi",
+    "papa": "tata",
+    "married": "żonaty/zamężna",
+    "king": "król",
+    "happy": "szczęśliwy",
+    "blessing": "błogosławieństwo"
+  },
+
+  "segments": [
+    { "start": 0.0,  "end": 4.0,  "text": "I should not be left to my own devices" },
+    { "start": 4.0,  "end": 6.5,  "text": "They come with prices and vices" },
+    { "start": 6.5,  "end": 11.0, "text": "I end up in crisis (tale as old as time)" },
+    { "start": 11.0, "end": 13.5, "text": "I wake up screaming from dreaming" },
+    { "start": 13.5, "end": 16.0, "text": "One day I'll watch as you're leaving" },
+    { "start": 16.0, "end": 19.0, "text": "'Cause you got tired of my scheming" },
+    { "start": 19.0, "end": 25.0, "text": "It's me, hi, I'm the problem, it's me" },
+    { "start": 25.0, "end": 30.0, "text": "At tea time, everybody agrees" },
+    { "start": 30.0, "end": 36.0, "text": "I'll stare directly at the sun but never in the mirror" },
+    { "start": 36.0, "end": 41.0, "text": "It must be exhausting always rooting for the anti-hero" }
+  ]
+}
