@@ -1,0 +1,175 @@
+{
+  "videoId": "UYIIRveNuUY",
+  "segments": [
+    {
+      "type": "order",
+      "start": 0,
+      "end": 2,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["I", "don't", "know", "what", "you", "think", "you're", "doing"],
+      "correct": ["I", "don't", "know", "what", "you", "think", "you're", "doing"]
+    },
+    {
+      "type": "matching",
+      "start": 2,
+      "end": 8,
+      "instruction": "Połącz słowa z ich tłumaczeniami.",
+      "pairs": [
+        { "left": "careful", "right": "ostrożny" },
+        { "left": "sensible", "right": "rozsądny" },
+        { "left": "responsible", "right": "odpowiedzialny" }
+      ]
+    },
+    {
+      "type": "order",
+      "start": 8,
+      "end": 18,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": [
+        "a", "tired,", "white-haired", "geriatric", "queen",
+        "will", "hand", "over", "to", "a", "tired,", "white-haired",
+        "geriatric", "Prince", "of", "Wales"
+      ],
+      "correct": [
+        "a", "tired,", "white-haired", "geriatric", "queen",
+        "will", "hand", "over", "to", "a", "tired,", "white-haired",
+        "geriatric", "Prince", "of", "Wales"
+      ]
+    },
+    {
+      "type": "extra-word",
+      "start": 18,
+      "end": 33,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": [
+        "the", "British", "monarchy", "would", "be", "a", "very",
+        "much", "decrepit", "experience", "indeed."
+      ],
+      "extra": "much"
+    },
+    {
+      "type": "correct-word",
+      "start": 33,
+      "end": 39,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["Obviously,", "I've", "never", "heard", "so", "much", "nonsense."],
+      "wrong": "Obviously",
+      "correct": "Honestly"
+    },
+    {
+      "type": "order",
+      "start": 39,
+      "end": 51,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": [
+        "You're", "fit", "enough", "to", "ride", "and", "drive,",
+        "so", "you're", "fit", "enough", "to", "wear", "the", "crown."
+      ],
+      "correct": [
+        "You're", "fit", "enough", "to", "ride", "and", "drive,",
+        "so", "you're", "fit", "enough", "to", "wear", "the", "crown."
+      ]
+    },
+    {
+      "type": "correct-word",
+      "start": 51,
+      "end": 63,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["Monarchy", "is", "something", "you", "are,", "not", "that", "you", "do."],
+      "wrong": "that",
+      "correct": "what"
+    },
+    {
+      "type": "matching",
+      "start": 63,
+      "end": 72,
+      "instruction": "Połącz słowa z ich tłumaczeniami.",
+      "pairs": [
+        { "left": "impermanence", "right": "nietrwałość" },
+        { "left": "instability", "right": "niestabilność" },
+        { "left": "continuity", "right": "ciągłość" },
+        { "left": "stability", "right": "stabilność" },
+        { "left": "permanence", "right": "trwałość" }
+      ]
+    },
+    {
+      "type": "extra-word",
+      "start": 72,
+      "end": 84,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": [
+        "So", "then", "you", "would", "have", "a", "superannuated",
+        "old", "lady", "running", "the", "show"
+      ],
+      "extra": "then"
+    },
+    {
+      "type": "matching",
+      "start": 84,
+      "end": 97,
+      "instruction": "Połącz słowa z ich tłumaczeniami.",
+      "pairs": [
+        { "left": "confident", "right": "pewna siebie" },
+        { "left": "liberated", "right": "wyzwolona" },
+        { "left": "decrepit", "right": "niedołężny" }
+      ]
+    },
+    {
+      "type": "order",
+      "start": 97,
+      "end": 114,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": [
+        "you", "sometimes", "think", "there's", "a", "difference",
+        "between", "you", "and", "the", "rest", "of", "the", "family"
+      ],
+      "correct": [
+        "you", "sometimes", "think", "there's", "a", "difference",
+        "between", "you", "and", "the", "rest", "of", "the", "family"
+      ]
+    },
+    {
+      "type": "correct-word",
+      "start": 114,
+      "end": 126,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["They", "all", "seem", "to", "make", "much", "a", "mess", "of", "it."],
+      "wrong": "much",
+      "correct": "such"
+    },
+    {
+      "type": "order",
+      "start": 126,
+      "end": 143,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": [
+        "this", "system", "is", "a", "dreadful", "thing",
+        "to", "inflict", "upon", "people"
+      ],
+      "correct": [
+        "this", "system", "is", "a", "dreadful", "thing",
+        "to", "inflict", "upon", "people"
+      ]
+    },
+    {
+      "type": "correct-word",
+      "start": 143,
+      "end": 158,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["And", "most", "importantly,", "it", "seems", "to", "thrive", "under", "you."],
+      "wrong": "most",
+      "correct": "more"
+    },
+    {
+      "type": "extra-word",
+      "start": 158,
+      "end": 164,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": [
+        "So", "shouldn't", "you", "to", "stay", "for", "every",
+        "single", "day", "that", "you", "can?"
+      ],
+      "extra": "to"
+    }
+  ]
+}
