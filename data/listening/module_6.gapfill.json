@@ -1,0 +1,73 @@
+{
+  "videoId": "mBsG5ag6DWM",
+  "segments": [
+    {
+      "start": 0,
+      "end": 17,
+      "parts": [
+        { "text": "Wanna", "gap": true },
+        { "text": "dance ?", "gap": false }
+      ]
+    },
+    {
+      "start": 17,
+      "end": 36,
+      "parts": [
+        { "text": "A little", "gap": true },
+        { "text": "closer", "gap": false }
+      ]
+    },
+    {
+      "start": 36,
+      "end": 46,
+      "parts": [
+        { "text": "Start", "gap": false },
+        { "text": "to move", "gap": true },
+        { "text": "to it.", "gap": false }
+      ]
+    },
+    {
+      "start": 46,
+      "end": 53,
+      "parts": [
+        { "text": "Out of all", "gap": true },
+        { "text": "my brother's friends", "gap": false }
+      ]
+    },
+    {
+      "start": 53,
+      "end": 68,
+      "parts": [
+        { "text": "Girls", "gap": false },
+        { "text": "at this age", "gap": true },
+        { "text": "are dumb.", "gap": false }
+      ]
+    },
+    {
+      "start": 68,
+      "end": 72,
+      "parts": [
+        { "text": "They all", "gap": false },
+        { "text": "wise up.", "gap": true }
+      ]
+    },
+    {
+      "start": 72,
+      "end": 76,
+      "parts": [
+        { "text": "You're gonna", "gap": false },
+        { "text": "drive them nuts", "gap": true },
+        { "text": ".", "gap": false }
+      ]
+    },
+    {
+      "start": 76,
+      "end": 78,
+      "parts": [
+        { "text": "Oh, I", "gap": false },
+        { "text": "know", "gap": true },
+        { "text": "so.", "gap": false }
+      ]
+    }
+  ]
+}
