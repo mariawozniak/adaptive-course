@@ -1,0 +1,102 @@
+{
+  "videoId": "re91rg5g_YI",
+  "segments": [
+    {
+      "start": 0,
+      "end": 4,
+      "parts": [
+        { "text": "Nothing he's", "gap": false },
+        { "text": "done", "gap": true }
+      ]
+    },
+    {
+      "start": 4,
+      "end": 11,
+      "parts": [
+        { "text": "How would you", "gap": false },
+        { "text": "both", "gap": true },
+        { "text": "feel", "gap": false }
+      ]
+    },
+    {
+      "start": 11,
+      "end": 18,
+      "parts": [
+        { "text": "Why can't they just", "gap": false },
+        { "text": "carry on", "gap": true },
+        { "text": "as they are?", "gap": false }
+      ]
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "parts": [
+        { "text": "The last time we had an", "gap": false },
+        { "text": "unmarried", "gap": true },
+        { "text": "king on the throne it did not end well.", "gap": false }
+      ]
+    },
+    {
+      "start": 24,
+      "end": 34,
+      "parts": [
+        { "text": "...and", "gap": false },
+        { "text": "anything other", "gap": true },
+        { "text": "than that feels...", "gap": false }
+      ]
+    },
+    {
+      "start": 34,
+      "end": 40,
+      "parts": [
+        { "text": "But,", "gap": false },
+        { "text": "I suppose,", "gap": true },
+        { "text": "this is the reality.", "gap": false }
+      ]
+    },
+    {
+      "start": 40,
+      "end": 50,
+      "parts": [
+        { "text": "And having him happy and", "gap": false },
+        { "text": "setled", "gap": true },
+        { "text": "is good for us.", "gap": false }
+      ]
+    },
+    {
+      "start": 50,
+      "end": 59,
+      "parts": [
+        { "text": "Well,", "gap": false },
+        { "text": "as you say", "gap": true }
+      ]
+    },
+    {
+      "start": 59,
+      "end": 65,
+      "parts": [
+        { "text": "Plus, then he might finally", "gap": false },
+        { "text": "shut up", "gap": true },
+        { "text": "about it all.", "gap": false }
+      ]
+    },
+    {
+      "start": 65,
+      "end": 71,
+      "parts": [
+        { "text": "So, is", "gap": false },
+        { "text": "that", "gap": true },
+        { "text": "a yes?", "gap": false }
+      ]
+    },
+    {
+      "start": 71,
+      "end": 80,
+      "parts": [
+        { "text": "I didn;t wan to", "gap": false },
+        { "text": "give my blessing", "gap": true },
+        { "text": "until you'd given yours.", "gap": false }
+      ]
+    }
+  ]
+}
