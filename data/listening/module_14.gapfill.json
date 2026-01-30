@@ -1,0 +1,179 @@
+{
+  "videoId": "9BoSFeFSoVw",
+  "segments": [
+    {
+      "start": 0,
+      "end": 5,
+      "parts": [
+        { "text": "Hello, um,", "gap": false },
+        { "text": "when", "gap": true },
+        { "text": "is your", "gap": false },
+        { "text": "next", "gap": true },
+        { "text": "flight to London?", "gap": false }
+      ]
+    },
+    {
+      "start": 5,
+      "end": 9,
+      "parts": [
+        { "text": "and I do have one", "gap": false },
+        { "text": "seat left", "gap": true }
+      ]
+    },
+    {
+      "start": 9,
+      "end": 13,
+      "parts": [
+        { "text": "The last-minute fare on", "gap": false },
+        { "text": "this ticket", "gap": true },
+        { "text": "is $2,700.", "gap": false }
+      ]
+    },
+    {
+      "start": 13,
+      "end": 21,
+      "parts": [
+        { "text": "Sorry, how", "gap": false },
+        { "text": "about", "gap": true },
+        { "text": "$600 and", "gap": false },
+        { "text": "these", "gap": true },
+        { "text": "earrings?", "gap": false }
+      ]
+    },
+    {
+      "start": 21,
+      "end": 25,
+      "parts": [
+        { "text": "They prefer", "gap": false },
+        { "text": "it if", "gap": true },
+        { "text": "I don't barter.", "gap": false }
+      ]
+    },
+    {
+      "start": 25,
+      "end": 29,
+      "parts": [
+        { "text": "Well, I just don't think I have enough", "gap": false },
+        { "text": "left on my", "gap": true },
+        { "text": "credit card.", "gap": false }
+      ]
+    },
+    {
+      "start": 29,
+      "end": 32,
+      "parts": [
+        { "text": "But", "gap": false },
+        { "text": "you can split", "gap": true },
+        { "text": "it with another credit card.", "gap": false }
+      ]
+    },
+    {
+      "start": 32,
+      "end": 40,
+      "parts": [
+        { "text": "I'm just going to", "gap": false },
+        { "text": "need to see", "gap": true },
+        { "text": "your passport.", "gap": false }
+      ]
+    },
+    {
+      "start": 40,
+      "end": 47,
+      "parts": [
+        { "text": "I don't have it, but I", "gap": false },
+        { "text": "can tell you", "gap": true },
+        { "text": "exactly", "gap": false },
+        { "text": "where it is", "gap": true },
+        { "text": "on my nightstand.", "gap": false }
+      ]
+    },
+    {
+      "start": 47,
+      "end": 55,
+      "parts": [
+        { "text": "I have my", "gap": true },
+        { "text": "driver's license, and I have a $20.", "gap": false }
+      ]
+    },
+    {
+      "start": 55,
+      "end": 64,
+      "parts": [
+        { "text": "I need to", "gap": false },
+        { "text": "get on that", "gap": true },
+        { "text": "11:00 flight.", "gap": false }
+      ]
+    },
+    {
+      "start": 64,
+      "end": 66,
+      "parts": [
+        { "text": "Oh, I'm afraid", "gap": false },
+        { "text": "that plane has", "gap": true },
+        { "text": "already pulled away", "gap": false },
+        { "text": "from", "gap": true },
+        { "text": "the gate.", "gap": false }
+      ]
+    },
+    {
+      "start": 66,
+      "end": 70,
+      "parts": [
+        { "text": "You're going to have to call that plane and", "gap": false },
+        { "text": "tell them", "gap": true },
+        { "text": "to swing around and come and", "gap": false },
+        { "text": "pick", "gap": true },
+        { "text": "me up.", "gap": false }
+      ]
+    },
+    {
+      "start": 70,
+      "end": 77,
+      "parts": [
+        { "text": "Come on, we'll just", "gap": false },
+        { "text": "tell them", "gap": true },
+        { "text": "that", "gap": false },
+        { "text": "there was,", "gap": true },
+        { "text": "like, a problem with, like, the engine.", "gap": false }
+      ]
+    },
+    {
+      "start": 77,
+      "end": 82,
+      "parts": [
+        { "text": "I'm afraid I'm going to", "gap": false },
+        { "text": "have to", "gap": true },
+        { "text": "ask you to step aside, Miss.", "gap": false }
+      ]
+    },
+    {
+      "start": 82,
+      "end": 85,
+      "parts": [
+        { "text": "Look, if I don't", "gap": false },
+        { "text": "get to", "gap": true },
+        { "text": "London, he is going to marry", "gap": false },
+        { "text": "that other", "gap": true },
+        { "text": "girl!", "gap": false }
+      ]
+    },
+    {
+      "start": 85,
+      "end": 88,
+      "parts": [
+        { "text": "Can't imagine", "gap": false },
+        { "text": "why", "gap": true }
+      ]
+    },
+    {
+      "start": 88,
+      "end": 94,
+      "parts": [
+        { "text": "I am not leaving here", "gap": false },
+        { "text": "until", "gap": true },
+        { "text": "you call that plane", "gap": false },
+        { "text": "back", "gap": true }
+      ]
+    }
+  ]
+}
