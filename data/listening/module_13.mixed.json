@@ -1,0 +1,99 @@
+{
+  "videoId": "o47f3pJtvpQ",
+  "segments": [
+    {
+      "type": "order",
+      "start": 0,
+      "end": 6,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["but", "there's", "a", "protocol", "to", "visiting", "a", "patient", "like", "Victor"],
+      "correct": ["but", "there's", "a", "protocol", "to", "visiting", "a", "patient", "like", "Victor"]
+    },
+    {
+      "type": "match",
+      "start": 6,
+      "end": 14,
+      "instruction": "Dopasuj wyrażenia do tłumaczeń.",
+      "pairs": [
+        { "left": "board", "right": "komisja, zarząd" },
+        { "left": "undergo", "right": "przejść przez (proces)" },
+        { "left": "request", "right": "wniosek, prośba" }
+      ]
+    },
+    {
+      "type": "correct-word",
+      "start": 14,
+      "end": 22,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["But", "I'm", "more", "than", "happy", "to", "give", "you", "a", "tour", "in", "our", "facility."],
+      "wrong": "in",
+      "correct": "of"
+    },
+    {
+      "type": "extra-word",
+      "start": 22,
+      "end": 34,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["It's", "just", "that", "our", "thesis", "is", "due", "to", "next", "month."],
+      "extra": "to"
+    },
+    {
+      "type": "order",
+      "start": 34,
+      "end": 46,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["The", "fact", "of", "the", "matter", "is", "we", "did", "put", "in", "a", "request", "months", "ago", "and", "were", "denied"],
+      "correct": ["The", "fact", "of", "the", "matter", "is", "we", "did", "put", "in", "a", "request", "months", "ago", "and", "were", "denied"]
+    },
+    {
+      "type": "order",
+      "start": 46,
+      "end": 58,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["well,", "Rose,", "maybe", "you'd", "like", "to", "go", "outside", "and", "get", "some", "air"],
+      "correct": ["well,", "Rose,", "maybe", "you'd", "like", "to", "go", "outside", "and", "get", "some", "air"]
+    },
+    {
+      "type": "correct-word",
+      "start": 58,
+      "end": 71,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["These", "are", "actually", "my", "clothes."],
+      "wrong": "are",
+      "correct": "aren't"
+    },
+    {
+      "type": "match",
+      "start": 71,
+      "end": 110,
+      "instruction": "Dopasuj słowa do tłumaczeń.",
+      "pairs": [
+        { "left": "human being", "right": "istota ludzka" },
+        { "left": "act", "right": "czyn" },
+        { "left": "commit", "right": "popełnić" },
+        { "left": "drive to", "right": "skłonić, doprowadzić" },
+        { "left": "unimaginable", "right": "niewyobrażalny" }
+      ]
+    },
+    {
+      "type": "match",
+      "start": 110,
+      "end": 122,
+      "instruction": "Dopasuj wyrażenia do tłumaczeń.",
+      "pairs": [
+        { "left": "outfit", "right": "strój, ubranie" },
+        { "left": "ridiculous", "right": "żałosny, śmieszny" },
+        { "left": "wear", "right": "nosić, mieć na sobie" },
+        { "left": "including", "right": "włączając, uwzględniając" }
+      ]
+    },
+    {
+      "type": "order",
+      "start": 122,
+      "end": 134,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["we", "don't", "have", "the", "official", "paperwork"],
+      "correct": ["we", "don't", "have", "the", "official", "paperwork"]
+    }
+  ]
+}
