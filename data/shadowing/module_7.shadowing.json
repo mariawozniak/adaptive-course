@@ -1,0 +1,46 @@
+{
+  "moduleId": "module_1",
+  "lessonId": "module_1__shadowing",
+
+  "player": {
+    "type": "youtube",
+    "videoId": "re91rg5g_YI"
+  },
+
+  "phrases": [
+    { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
+    { "en": "shut up about", "pl": "przestać gadać o" },
+    { "en": "as they are", "pl": "tak jak są" }
+  ],
+
+  "dictionary": {
+    "discuss": "dyskutować",
+    "dear": "drogi",
+    "papa": "tata",
+    "married": "żonaty/zamężna",
+    "king": "król",
+    "happy": "szczęśliwy",
+    "blessing": "błogosławieństwo"
+  },
+
+  "segments": [
+    { "start": 0.0, "end": 4.0, "text": "I'd like to discuss your dear papa." },
+    { "start": 4.0, "end": 5.0, "text": "What's he done now?" },
+    { "start": 5.0, "end": 10.0, "text": "Nothing he's done. It's what he wants to do." },
+    { "start": 9.0, "end": 16.0, "text": "How would you both feel about him getting married?" },
+    { "start": 16.0, "end": 20.0, "text": "Why can't they just carry on as they are?" },
+    { "start": 20.0, "end": 22.0, "text": "Because Charles will be king one day." },
+    { "start": 22.0, "end": 26.0, "text": "The last time we had an unmarried king on the throne, it did not end well." },
+    { "start": 26.0, "end": 33.0, "text": "Actually, both of us prefer to think of him with Mummy." },
+    { "start": 33.0, "end": 38.0, "text": "And anything other than that feels..." },
+    { "start": 38.0, "end": 42.0, "text": "But, I suppose, this is the reality." },
+    { "start": 42.0, "end": 45.0, "text": "And she does seem to make him happy." },
+    { "start": 45.0, "end": 49.0, "text": "Does she?" },
+    { "start": 49.0, "end": 52.0, "text": "And having him happy and settled is good for us." },
+    { "start": 52.0, "end": 56.0, "text": "And ultimately, good for..." },
+    { "start": 56.0, "end": 62.0, "text": "Well, as you say, he is going to be king, isn't he, one day?" },
+    { "start": 62.0, "end": 67.0, "text": "Yes. Plus, then he might finally shut up about it all." },
+    { "start": 67.0, "end": 74.0, "text": "So... Is that a yes?" },
+    { "start": 74.0, "end": 82.0, "text": "Thank you. I didn't want to give my blessing until you'd given yours." }
+  ]
+}
