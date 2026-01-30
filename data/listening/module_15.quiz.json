@@ -1,0 +1,100 @@
+{
+  "videoId": "-mfpZOwxLN0",
+  "segments": [
+    {
+      "type": "mcq",
+      "start": 0,
+      "end": 8,
+      "question": "Jakie było pierwotne założenie spotkania?",
+      "answers": [
+        { "text": "Rozpoczęcie procesu.", "correct": false },
+        { "text": "Omówienie wniosku o odrzucenie sprawy.", "correct": true },
+        { "text": "Wybór ławy przysięgłych.", "correct": false }
+      ],
+      "explanation": "That takes care of their motion to dismiss. – To rozwiąże sprawę ich wniosku o oddalenie."
+    },
+    {
+      "type": "mcq",
+      "start": 8,
+      "end": 24,
+      "question": "Co mówi sędzia na temat wniosku o przyspieszenie rozprawy?",
+      "answers": [
+        { "text": "Wątpi w motywację strony oskarżającej.", "correct": true },
+        { "text": "Całkowicie zgadza się z propozycją.", "correct": false },
+        { "text": "Wierzy, że sprawa jest gotowa do przyspieszenia.", "correct": false }
+      ],
+      "explanation": "Let alone care about these people at all – mówiąc już o tym, że w ogóle obchodzi was los tych ludzi."
+    },
+    {
+      "type": "mcq",
+      "start": 24,
+      "end": 48,
+      "question": "Jaką historię opowiada adwokat w trakcie rozprawy?",
+      "answers": [
+        { "text": "O sytuacji dotyczącej opóźnionych płatności.", "correct": false },
+        { "text": "O ubezpieczeniowcach, którzy odmówili płatności.", "correct": false },
+        { "text": "O kliencie, który zginął przez błędy medyczne.", "correct": true }
+      ],
+      "explanation": "Insurance refused to pay – Ubezpieczyciel odmówił płatności."
+    },
+    {
+      "type": "mcq",
+      "start": 48,
+      "end": 61,
+      "question": "Jakie dane dotyczące sprawy przedstawia adwokat?",
+      "answers": [
+        { "text": "Dowody zebrane przez ubezpieczyciela.", "correct": false },
+        { "text": "Historie 189 ofiar poszkodowanych przez firmę.", "correct": true },
+        { "text": "Umowy między klientami a ubezpieczycielem.", "correct": false }
+      ],
+      "explanation": "The stories of another 189 victims – historie kolejnych 189 ofiar."
+    },
+    {
+      "type": "mcq",
+      "start": 61,
+      "end": 84,
+      "question": "Co adwokat przedstawia na stronie 627 dokumentu?",
+      "answers": [
+        { "text": "Listę osób zadowolonych z usług firmy.", "correct": false },
+        { "text": "Przypadek mężczyzny zmarłego przez brak płatności.", "correct": true }
+      ],
+      "explanation": "Before they found out it was too late – zanim się zorientowali, było za późno."
+    },
+    {
+      "type": "mcq",
+      "start": 84,
+      "end": 95,
+      "question": "Jak kończy się decyzja sądu?",
+      "answers": [
+        { "text": "Wniosek zostaje odrzucony.", "correct": false },
+        { "text": "Przyspieszenie rozprawy zostaje przyjęte.", "correct": true },
+        { "text": "Decyzja zostaje zawieszona.", "correct": false }
+      ],
+      "explanation": "Motion for expedited trial granted. – Wniosek o przyspieszony proces zostaje zatwierdzony."
+    },
+    {
+      "type": "mcq",
+      "start": 95,
+      "end": 109,
+      "question": "Jak adwokat przedstawia swoją relację z przełożonym?",
+      "answers": [
+        { "text": "Jest traktowany jak asystent.", "correct": false },
+        { "text": "Nie czuje zaufania ze strony przełożonego.", "correct": false },
+        { "text": "Jest traktowany jak partner.", "correct": true }
+      ],
+      "explanation": "Who has the right to treat me like his associate but treats me like his partner."
+    },
+    {
+      "type": "mcq",
+      "start": 109,
+      "end": 121,
+      "question": "Jak adwokat kończy rozmowę?",
+      "answers": [
+        { "text": "Proponuje wspólny obiad z przełożonym.", "correct": true },
+        { "text": "Pyta o zgodę na dalszą współpracę.", "correct": false },
+        { "text": "Prosi o dodatkowe dokumenty.", "correct": false }
+      ],
+      "explanation": "What do you say I take my partner out to lunch?"
+    }
+  ]
+}
