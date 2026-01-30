@@ -106,21 +106,14 @@ function isModuleFullyCompleted(module) {
 // API
 // ===============================
 async function ensureUser() {
-  try {
-    await fetch("/api/me", { credentials: "include" });
-  } catch (e) {
-    console.warn("ensureUser failed", e);
-  }
+  await fetch("/api/me", { credentials: "include" });
 }
 
 async function loadProgress() {
   try {
-    const res = await fetch("/api/progress", {
-      credentials: "include"
-    });
+    const res = await fetch("/api/progress", { credentials: "include" });
     progress = await res.json();
-  } catch (e) {
-    console.warn("loadProgress failed", e);
+  } catch {
     progress = {};
   }
 }
@@ -882,35 +875,31 @@ function showInstallPrompt() {
 // INIT
 // ===============================
 async function init() {
-  render(); // pokaż level page od razu
+  // 1️⃣ upewnij się, że user istnieje (cookie)
+  await ensureUser();
 
-  try {
-    await ensureUser();
-    await loadModules();
+  // 2️⃣ pobierz strukturę kursu (MUSI być pierwsze)
+  await loadModules();
 
-    if (typeof loadProgress === "function") {
-      await loadProgress();
-    } else {
-      console.warn("loadProgress missing – skipping");
-      progress = {};
-    }
+  // 3️⃣ pobierz progress
+  await loadProgress();
 
-    await loadState();
+  // 4️⃣ pobierz level z backendu
+  await loadState();   // ← TU level z bazy
 
-    if (currentLevel) {
-      const visible = getVisibleModulesForUser();
-      currentModule = getInitialActiveModule(visible);
-    }
+  if (currentLevel) {
+  const visible = getVisibleModulesForUser();
+  currentModule = getInitialActiveModule(visible);
+}
 
-    restoreFromURL();
-  } catch (e) {
-    console.error("INIT FAILED", e);
-  }
+
+  // 5️⃣ odtwórz stan z URL (jeśli ktoś wraca do lekcji)
+  restoreFromURL();
+
 
   updateURL();
   render();
 }
-
 
 init();
 
@@ -972,4 +961,3 @@ window.startModuleFromHub = (e, moduleId) => {
   updateURL();
   render();
 };
-
