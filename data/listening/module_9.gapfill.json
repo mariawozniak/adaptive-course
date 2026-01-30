@@ -1,0 +1,129 @@
+{
+  "videoId": "NA-Wzuwj__Y",
+  "segments": [
+    {
+      "start": 0,
+      "end": 7,
+      "parts": [
+        { "text": "Who", "gap": false },
+        { "text": "wants", "gap": true },
+        { "text": "light cheese and who", "gap": false },
+        { "text": "wants", "gap": true },
+        { "text": "dark cheese?", "gap": false }
+      ]
+    },
+    {
+      "start": 7,
+      "end": 11,
+      "parts": [
+        { "text": "I don't", "gap": false },
+        { "text": "even", "gap": true },
+        { "text": "wanna know about the dark cheese.", "gap": false }
+      ]
+    },
+    {
+      "start": 11,
+      "end": 14,
+      "parts": [
+        { "text": "Does anybody want to", "gap": false },
+        { "text": "split", "gap": true },
+        { "text": "this", "gap": false },
+        { "text": "with", "gap": true },
+        { "text": "me?", "gap": false }
+      ]
+    },
+    {
+      "start": 14,
+      "end": 18,
+      "parts": [
+        { "text": "Make a", "gap": false },
+        { "text": "wish?", "gap": true }
+      ]
+    },
+    {
+      "start": 18,
+      "end": 28,
+      "parts": [
+        { "text": "You got the", "gap": false },
+        { "text": "bigger half.", "gap": true }
+      ]
+    },
+    {
+      "start": 28,
+      "end": 35,
+      "parts": [
+        { "text": "I'd like to", "gap": false },
+        { "text": "propose a toast.", "gap": true }
+      ]
+    },
+    {
+      "start": 35,
+      "end": 41,
+      "parts": [
+        { "text": "I know this isn't exactly the kind of Thanksgiving that", "gap": false },
+        { "text": "all of you", "gap": true },
+        { "text": "planned", "gap": false }
+      ]
+    },
+    {
+      "start": 41,
+      "end": 45,
+      "parts": [
+        { "text": "This has been", "gap": false },
+        { "text": "really great.", "gap": true }
+      ]
+    },
+    {
+      "start": 45,
+      "end": 50,
+      "parts": [
+        { "text": "It didn't", "gap": false },
+        { "text": "involve divorce", "gap": true },
+        { "text": "or...", "gap": false }
+      ]
+    },
+    {
+      "start": 50,
+      "end": 57,
+      "parts": [
+        { "text": "...or", "gap": false },
+        { "text": "if you", "gap": true },
+        { "text": "guys had been with your family", "gap": false }
+      ]
+    },
+    {
+      "start": 57,
+      "end": 62,
+      "parts": [
+        { "text": "and if you", "gap": false },
+        { "text": "didn't have", "gap": true },
+        { "text": "siphilis and stuff...", "gap": false }
+      ]
+    },
+    {
+      "start": 62,
+      "end": 67,
+      "parts": [
+        { "text": "so I guess", "gap": false },
+        { "text": "what I'm trying", "gap": true },
+        { "text": "to say", "gap": false }
+      ]
+    },
+    {
+      "start": 67,
+      "end": 72,
+      "parts": [
+        { "text": "I'm very thankful", "gap": true },
+        { "text": "that all of your Thanksgivings sucked.", "gap": false }
+      ]
+    },
+    {
+      "start": 72,
+      "end": 82,
+      "parts": [
+        { "text": "Here's to", "gap": true },
+        { "text": "a lousy Christmas.", "gap": false }
+      ]
+    }
+  ]
+}
