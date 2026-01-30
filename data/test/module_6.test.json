@@ -1,0 +1,206 @@
+{
+  "moduleId": "module_6",
+  "lessonId": "module_6__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Jak poprosisz kogoś o tańca?",
+      "comment": "Pytanie o zaproszenie do tańca.",
+      "answers": [
+        { "text": "Wanna dance?", "correct": true },
+        { "text": "Do you like to dance?", "correct": false },
+        { "text": "Why aren't you dancing?", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Jak przetłumaczysz „Come on.”?",
+      "comment": "Potoczne wyrażenie zachęty.",
+      "answers": [
+        { "text": "Chodź do mnie.", "correct": false },
+        { "text": "No dalej.", "correct": true },
+        { "text": "Proszę bardzo.", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Co oznacza „Let's go.”?",
+      "comment": "Zachęta do wyjścia lub rozpoczęcia.",
+      "answers": [
+        { "text": "Chodźmy", "correct": true },
+        { "text": "Zostańmy.", "correct": false },
+        { "text": "Uciekajmy", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Jak przetłumaczysz „Closer”?",
+      "comment": "Stopień wyższy przymiotnika.",
+      "answers": [
+        { "text": "Blisko", "correct": false },
+        { "text": "Bliżej", "correct": true },
+        { "text": "Daleko", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Co oznacza „A little closer.”?",
+      "comment": "Prośba o zbliżenie się.",
+      "answers": [
+        { "text": "Trochę dalej.", "correct": false },
+        { "text": "Trochę bliżej.", "correct": true },
+        { "text": "Całkiem blisko.", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Jak przetłumaczysz „Feel the music.”?",
+      "comment": "Zachęta do odczuwania rytmu.",
+      "answers": [
+        { "text": "Poczuj muzykę.", "correct": true },
+        { "text": "Słuchaj muzyki.", "correct": false },
+        { "text": "Tańcz do muzyki.", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Co oznacza „Start to move to it.”?",
+      "comment": "Zachęta do poruszania się w rytm muzyki.",
+      "answers": [
+        { "text": "Zacznij tańczyć.", "correct": false },
+        { "text": "Zacznij się do niej ruszać.", "correct": true },
+        { "text": "Przestań się ruszać.", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Jak przetłumaczysz „Out of all my brother's friends”?",
+      "comment": "Wyrażenie porównawcze.",
+      "answers": [
+        { "text": "Spośród wszystkich moich przyjaciół.", "correct": false },
+        { "text": "Spośród wszystkich przyjaciół mojego brata.", "correct": true },
+        { "text": "Z moich braci.", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Co oznacza „You're my favorite.”?",
+      "comment": "Wyrażenie sympatii.",
+      "answers": [
+        { "text": "Jesteś moim ulubionym.", "correct": true },
+        { "text": "Jesteś moim najlepszym przyjacielem.", "correct": false },
+        { "text": "Jesteś moim wrogiem.", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Jak przetłumaczysz „Girls this age are dumb.”?",
+      "comment": "Ocena zachowania.",
+      "answers": [
+        { "text": "Dziewczyny w tym wieku są mądre.", "correct": false },
+        { "text": "Dziewczyny w tym wieku są głupie.", "correct": true },
+        { "text": "Dziewczyny w tym wieku są niemiłe.", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Jak przetłumaczysz „They’ll wise up.”?",
+      "comment": "Oznacza nabranie rozsądku.",
+      "answers": [
+        { "text": "Zgłupieją", "correct": false },
+        { "text": "Zmądrzeją", "correct": true },
+        { "text": "Zakochają się.", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Co oznacza „You’re gonna drive them nuts.”?",
+      "comment": "Wyrażenie potoczne.",
+      "answers": [
+        { "text": "Doprowadzisz ich do szaleństwa.", "correct": true },
+        { "text": "Będziesz ich denerwować.", "correct": false },
+        { "text": "Podwieziesz je do sklepu po orzeszki.", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Jak zapytasz kogoś, czy naprawdę tak myśli?",
+      "comment": "Pytanie potwierdzające.",
+      "answers": [
+        { "text": "Really?", "correct": false },
+        { "text": "Are you sure?", "correct": false },
+        { "text": "You think so?", "correct": true }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Jak przetłumaczysz „Oh, I know so.”?",
+      "comment": "Wyrażenie pewności.",
+      "answers": [
+        { "text": "Wiem, że tak.", "correct": true },
+        { "text": "Nie wiem.", "correct": false },
+        { "text": "Chyba tak.", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Uzupełnij lukę: „Now, feel the music, start to ______ to it.”",
+      "comment": "Czasownik ruchu.",
+      "answers": [
+        { "text": "move", "correct": true },
+        { "text": "closer", "correct": false },
+        { "text": "keep", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Uzupełnij zdanie: „You’re my ______.”",
+      "comment": "Wyrażenie sympatii.",
+      "answers": [
+        { "text": "favourite", "correct": true },
+        { "text": "dumb", "correct": false },
+        { "text": "amazing", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Uzupełnij zdanie: „Girls at this age are ______.”",
+      "comment": "Przymiotnik opisujący.",
+      "answers": [
+        { "text": "dumb", "correct": true },
+        { "text": "sick", "correct": false },
+        { "text": "nuts", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Uzupełnij zdanie: „____ the music.”",
+      "comment": "Tryb rozkazujący.",
+      "answers": [
+        { "text": "feel", "correct": true },
+        { "text": "move", "correct": false },
+        { "text": "get", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "Uzupełnij zdanie: „Start to ______ to it.”",
+      "comment": "Czasownik ruchu.",
+      "answers": [
+        { "text": "move", "correct": true },
+        { "text": "feel", "correct": false },
+        { "text": "keep", "correct": false }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Uzupełnij zdanie: „You’re gonna drive them ______.”",
+      "comment": "Stałe wyrażenie idiomatyczne.",
+      "answers": [
+        { "text": "nuts", "correct": true },
+        { "text": "dumb", "correct": false },
+        { "text": "mad", "correct": false }
+      ]
+    }
+  ]
+}
