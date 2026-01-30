@@ -1,0 +1,123 @@
+{
+  "videoId": "NlXvArCM9nc",
+  "segments": [
+    {
+      "type": "mcq",
+      "start": 0,
+      "end": 8,
+      "question": "Wybierz poprawną odpowiedź:",
+      "answers": [
+        { "text": "co bym zrobił", "correct": true },
+        { "text": "co mógłbym zrobić", "correct": false },
+        { "text": "co chciałbym zrobić", "correct": false }
+      ],
+      "explanation": "what would I do – co bym zrobił"
+    },
+    {
+      "type": "mcq",
+      "start": 8,
+      "end": 12,
+      "question": "„Drawing me in” oznacza:",
+      "answers": [
+        { "text": "rysować", "correct": false },
+        { "text": "przyciągać", "correct": true },
+        { "text": "kusić", "correct": false }
+      ],
+      "explanation": "to draw someone in – wciągać, przyciągać"
+    },
+    {
+      "type": "mcq",
+      "start": 12,
+      "end": 17,
+      "question": "Wybierz poprawną odpowiedź:",
+      "answers": [
+        { "text": "bez żartów", "correct": true },
+        { "text": "bez szaleństw", "correct": false },
+        { "text": "bez hamulców", "correct": false }
+      ],
+      "explanation": "no kidding – bez żartów"
+    },
+    {
+      "type": "mcq",
+      "start": 17,
+      "end": 20,
+      "question": "Wybierz poprawną odpowiedź:",
+      "answers": [
+        { "text": "nie mogę cię zrozumieć", "correct": false },
+        { "text": "nie mogę cię rozgryźć", "correct": false },
+        { "text": "nie mogę cię przytrzymać", "correct": true }
+      ],
+      "explanation": "to pin down – przytrzymać"
+    },
+    {
+      "type": "mcq",
+      "start": 20,
+      "end": 24,
+      "question": "Wybierz poprawną odpowiedź:",
+      "answers": [
+        { "text": "Co dzieje się w tym pięknym umyśle", "correct": true },
+        { "text": "Co dzieje się w tym pięknym sercu", "correct": false }
+      ],
+      "explanation": "mind – umysł"
+    },
+    {
+      "type": "mcq",
+      "start": 24,
+      "end": 31,
+      "question": "Wybierz poprawną odpowiedź:",
+      "answers": [
+        { "text": "jestem taki rozdarty", "correct": false },
+        { "text": "mam zawroty głowy", "correct": true },
+        { "text": "jestem taki onieśmielony", "correct": false }
+      ],
+      "explanation": "to be dizzy – mieć zawroty głowy"
+    },
+    {
+      "type": "mcq",
+      "start": 31,
+      "end": 36,
+      "question": "Wybierz poprawną odpowiedź:",
+      "answers": [
+        { "text": "nie wiem co mi strzeliło do głowy", "correct": false },
+        { "text": "nie wiem co myśleć", "correct": false },
+        { "text": "nie wiem co mnie uderzyło", "correct": true }
+      ],
+      "explanation": "what hit me – co mnie uderzyło"
+    },
+    {
+      "type": "mcq",
+      "start": 36,
+      "end": 43,
+      "question": "Wybierz poprawną odpowiedź:",
+      "answers": [
+        { "text": "nie mogę oddychać", "correct": false },
+        { "text": "mogę oddychać", "correct": true },
+        { "text": "staram się oddychać", "correct": false }
+      ],
+      "explanation": "I'm breathing fine – mogę oddychać"
+    },
+    {
+      "type": "mcq",
+      "start": 43,
+      "end": 49,
+      "question": "Wybierz poprawną odpowiedź:",
+      "answers": [
+        { "text": "jestem zaskoczony", "correct": false },
+        { "text": "jestem wstrząśnięty", "correct": false },
+        { "text": "jestem oszalały", "correct": true }
+      ],
+      "explanation": "out of my mind – oszalały"
+    },
+    {
+      "type": "mcq",
+      "start": 49,
+      "end": 64,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "kocham twoje niedoskonałości", "correct": true },
+        { "text": "nie masz niedoskonałości", "correct": false }
+      ],
+      "explanation": "Love your perfect imperfections – kocham twoje niedoskonałości"
+    }
+  ]
+}
