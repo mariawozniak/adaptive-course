@@ -1,0 +1,79 @@
+{
+  "videoId": "pAkwimWgYTg",
+  "segments": [
+    {
+      "type": "order",
+      "start": 0,
+      "end": 21,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["I", "heard", "that", "you're", "settled", "down"],
+      "correct": ["I", "heard", "that", "you're", "settled", "down"]
+    },
+    {
+      "type": "correct-word",
+      "start": 21,
+      "end": 29,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["That", "you're", "found", "a", "girl", "and", "you're", "married", "now"],
+      "wrong": "you're",
+      "correct": "you"
+    },
+    {
+      "type": "order",
+      "start": 29,
+      "end": 34,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["I", "heard", "that", "your", "dreams", "came", "true"],
+      "correct": ["I", "heard", "that", "your", "dreams", "came", "true"]
+    },
+    {
+      "type": "extra-word",
+      "start": 34,
+      "end": 41,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["Guess", "she", "gave", "you", "all", "things,", "I", "didn't", "give", "to", "you"],
+      "extra": "all"
+    },
+    {
+      "type": "correct-word",
+      "start": 41,
+      "end": 49,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["Old", "friend,", "when", "are", "you", "so", "shy?"],
+      "wrong": "when",
+      "correct": "why"
+    },
+    {
+      "type": "order",
+      "start": 49,
+      "end": 56,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["Ain't", "like", "you", "to", "hold", "back", "or", "hide", "from", "the", "light"],
+      "correct": ["Ain't", "like", "you", "to", "hold", "back", "or", "hide", "from", "the", "light"]
+    },
+    {
+      "type": "order",
+      "start": 56,
+      "end": 61,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["I", "hate", "to", "turn", "up", "out", "of", "the", "blue,", "uninvited"],
+      "correct": ["I", "hate", "to", "turn", "up", "out", "of", "the", "blue,", "uninvited"]
+    },
+    {
+      "type": "extra-word",
+      "start": 61,
+      "end": 64,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["But", "I", "couldn't", "just", "stay", "away,", "I", "couldn't", "fight", "it"],
+      "extra": "just"
+    },
+    {
+      "type": "order",
+      "start": 64,
+      "end": 71,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["And", "that", "you'd", "be", "reminded", "that", "for", "me,", "it", "isn't", "over"],
+      "correct": ["And", "that", "you'd", "be", "reminded", "that", "for", "me,", "it", "isn't", "over"]
+    }
+  ]
+}
