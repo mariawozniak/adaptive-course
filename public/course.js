@@ -12,6 +12,55 @@ let finalFeedbackShown = false;
 let deferredInstallPrompt = null;
 
 
+// ===============================
+// MODULE HUB HELPERS
+// ===============================
+
+function getVisibleModulesForUser() {
+  if (!currentLevel) return [];
+
+  const completed = modules.filter(m =>
+    isModuleFullyCompleted(m)
+  );
+
+  const levelModules = modules.filter(
+    m => m.level === currentLevel
+  );
+
+  const map = new Map();
+  [...completed, ...levelModules].forEach(m =>
+    map.set(m.id, m)
+  );
+
+  return [...map.values()].sort((a, b) =>
+    a.id.localeCompare(b.id)
+  );
+}
+
+function getInitialActiveModule(list) {
+  const firstIncomplete = list.find(
+    m => !isModuleFullyCompleted(m)
+  );
+  if (firstIncomplete) return firstIncomplete;
+  return list[list.length - 1] || null;
+}
+
+function isActivityCompletedForModule(module, activity) {
+  if (activity.variants?.length) {
+    return activity.variants.every(v =>
+      progress?.[module.id]?.completedLessons?.[v.id]
+    );
+  }
+
+  if (activity.lessonId) {
+    return progress?.[module.id]?.completedLessons?.[activity.lessonId];
+  }
+
+  return true;
+}
+
+
+
 
 // ===== LEVEL -> MODULE MAP (FRONTEND) =====
 // USTAW TU, który moduł ma być otwierany dla danego poziomu.
@@ -51,31 +100,6 @@ function isModuleFullyCompleted(module) {
 }
 
 
-function setModuleForLevel(level) {
-  if (!level) {
-    currentModule = modules[0];
-    return;
-  }
-
-  const sameLevelModules = getModulesForLevel(level);
-
-  if (!sameLevelModules.length) {
-    currentModule = modules[0];
-    return;
-  }
-
-  for (const m of sameLevelModules) {
-    if (!isModuleFullyCompleted(m)) {
-      currentModule = m;
-      return;
-    }
-  }
-
-  currentModule = sameLevelModules[0];
-}
-
-
-
 
 
 // ===============================
@@ -100,9 +124,7 @@ async function loadState() {
     const data = await res.json();
     currentLevel = data?.level ?? null;
 
-    if (currentLevel) {
-      setModuleForLevel(currentLevel);
-    }
+
   } catch {
     currentLevel = null;
   }
@@ -174,10 +196,10 @@ const levelParam = params.get("level");
 if (levelParam) {
   const level = Number(levelParam);
 
-  if ([1,2,3,4,5].includes(level)) {
-    currentLevel = level;
-    setModuleForLevel(level);
-  }
+if ([1,2,3,4,5].includes(level)) {
+  currentLevel = level;
+}
+
 }
 
 
@@ -430,6 +452,58 @@ function renderListHeader(title) {
 }
 
 // ===============================
+// MODULE HUB RENDER
+// ===============================
+function renderModulesHub() {
+  const visibleModules = getVisibleModulesForUser();
+
+  return `
+    <div class="modules-hub">
+      <div class="modules-carousel">
+        ${visibleModules.map(m => `
+          <div
+            class="module-tile ${m.id === currentModule?.id ? "active" : ""}"
+            onclick="selectModule('${m.id}')"
+          >
+            <img
+              src="/assets/covers/${m.id}.jpg"
+              class="module-tile-cover"
+            />
+
+            <h3 class="module-tile-title">${m.title}</h3>
+
+            <div class="module-tile-activities">
+              ${m.activities
+                .filter(a => a.required)
+                .map(a => `
+                  <div class="module-tile-activity">
+                    <span class="check ${
+                      isActivityCompletedForModule(m, a)
+                        ? "done"
+                        : ""
+                    }"></span>
+                    ${a.label}
+                  </div>
+                `).join("")}
+            </div>
+
+            <button
+              class="btn-primary"
+              onclick="startModuleFromHub(event, '${m.id}')"
+            >
+              ${isModuleFullyCompleted(m)
+                ? "Wróć"
+                : "Kontynuuj"}
+            </button>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+
+// ===============================
 // CONTENT
 // ===============================
 function renderContent() {
@@ -470,24 +544,9 @@ function renderContent() {
 
 
 if (!moduleStarted) {
-  return `
-    <div class="module-hero">
-      <div class="module-card">
-        <img
-          src="/assets/covers/${currentModule.id}.jpg"
-          alt="${currentModule.title}"
-          class="module-cover"
-        />
-
-        <h2 class="module-title">${currentModule.title}</h2>
-
-        <button class="btn-primary" onclick="startModule()">
-          Rozpocznij moduł
-        </button>
-      </div>
-    </div>
-  `;
+  return renderModulesHub();
 }
+
 
   if (moduleStarted && !activeActivity) {
   return `
@@ -677,7 +736,8 @@ window.startModule = () => {
 
 window.chooseLevel = async (lvl) => {
   await saveLevel(lvl);
-  setModuleForLevel(currentLevel);
+const visible = getVisibleModulesForUser();
+currentModule = getInitialActiveModule(visible);
 
   moduleStarted = false;
   activeActivity = null;
@@ -707,7 +767,8 @@ window.lessonFeedback = async (dir) => {
 
   // jeśli i tak jesteśmy na granicy (1 albo 5), nic się nie zmieni — ale nadal ok:
   await saveLevel(newLevel);
-  setModuleForLevel(currentLevel);
+const visible = getVisibleModulesForUser();
+currentModule = getInitialActiveModule(visible);
 
   // wyjście do ekranu modułu (hero)
   moduleStarted = false;
@@ -826,13 +887,15 @@ async function init() {
   // 4️⃣ pobierz level z backendu
   await loadState();   // ← TU level z bazy
 
+  if (currentLevel) {
+  const visible = getVisibleModulesForUser();
+  currentModule = getInitialActiveModule(visible);
+}
+
+
   // 5️⃣ odtwórz stan z URL (jeśli ktoś wraca do lekcji)
   restoreFromURL();
 
-  // 6️⃣ jeśli backend dał level, ale URL go nie nadpisał
-  if (currentLevel && !currentModule) {
-    setModuleForLevel(currentLevel);
-  }
 
   updateURL();
   render();
@@ -879,3 +942,23 @@ window.addEventListener("message", (e) => {
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("/sw.js");
 }
+
+// ===============================
+// MODULE HUB ACTIONS
+// ===============================
+window.selectModule = (moduleId) => {
+  currentModule = modules.find(m => m.id === moduleId);
+  updateURL();
+  render();
+};
+
+window.startModuleFromHub = (e, moduleId) => {
+  e.stopPropagation();
+  currentModule = modules.find(m => m.id === moduleId);
+  moduleStarted = true;
+  activeActivity = null;
+  activeVariant = null;
+  updateURL();
+  render();
+};
+
