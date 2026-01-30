@@ -1,0 +1,152 @@
+{
+  "moduleId": "module_2",
+  "lessonId": "module_2__shadowing",
+
+  "player": {
+    "type": "youtube",
+    "videoId": "32MynUrjGyY"
+  },
+
+  "phrases": [
+    { "en": "I just caught a glimpse of", "pl": "właśnie rzuciłem okiem na" },
+    { "en": "put my life in the hands of", "pl": "powierzyć swoje życie" },
+    { "en": "head back to the gate", "pl": "wrócić do bramki" },
+    { "en": "hard time processing", "pl": "problem z przetwarzaniem" }
+  ],
+
+  "dictionary": {
+    "glimpse": "przelotne spojrzenie",
+    "pilot": "pilot",
+    "feminism": "feminizm",
+    "flight": "lot",
+    "gate": "bramka",
+    "mechanical": "techniczny",
+    "issues": "problemy",
+    "connection": "przesiadka",
+    "angry": "zła",
+    "marker": "marker"
+  },
+
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": "I just caught a glimpse of our pilot and he looks exactly like Sully. I think it is Sully."
+    },
+    {
+      "start": 6.0,
+      "end": 8.0,
+      "text": "I think that's a woman."
+    },
+    {
+      "start": 8.0,
+      "end": 13.0,
+      "text": "Oh, I know what you're doing. You're testing the limits of my feminism."
+    },
+    {
+      "start": 13.0,
+      "end": 19.0,
+      "text": "I will have you know that I am perfectly fine putting my life in the hands of a female pilot."
+    },
+    {
+      "start": 19.0,
+      "end": 21.0,
+      "text": "Hi folks, this is your captain."
+    },
+    {
+      "start": 21.0,
+      "end": 25.5,
+      "text": "Our flight time to Turks and Caicos is six hours twenty four minutes."
+    },
+    {
+      "start": 25.5,
+      "end": 27.5,
+      "text": "Flight attendants, prepare for takeoff."
+    },
+    {
+      "start": 27.5,
+      "end": 32.0,
+      "text": "All right, time to take our flying medicine Ronaldo gave us."
+    },
+    {
+      "start": 32.0,
+      "end": 37.0,
+      "text": "What does quidado mean? I think it means sleep tight. Oh well, cheers."
+    },
+    {
+      "start": 37.0,
+      "end": 51.0,
+      "text": "What happened? Did we land? Yeah, that stuff is good."
+    },
+    {
+      "start": 51.0,
+      "end": 55.0,
+      "text": "Bad news folks. We have had some mechanical issues and we will need to head back to the gate."
+    },
+    {
+      "start": 55.0,
+      "end": 58.0,
+      "text": "Anytime you head back to the gate, that means your flight's not taking off."
+    },
+    {
+      "start": 58.0,
+      "end": 60.5,
+      "text": "All right, gather your things. We're going to need to scramble to find another one."
+    },
+    {
+      "start": 60.5,
+      "end": 67.0,
+      "text": "Okay, there is a connecting flight through Dallas that leaves in five minutes. You can catch it if you hurry."
+    },
+    {
+      "start": 67.0,
+      "end": 70.0,
+      "text": "I don't want to go to Dallas. We're going to Turks and Caicos."
+    },
+    {
+      "start": 70.0,
+      "end": 73.0,
+      "text": "Dallas is just where you make your connection."
+    },
+    {
+      "start": 73.0,
+      "end": 79.0,
+      "text": "Sorry, I'm having a really hard time processing information right now. We took sleeping pills."
+    },
+    {
+      "start": 79.0,
+      "end": 81.0,
+      "text": "Just make your way over to gate thirty two."
+    },
+    {
+      "start": 81.0,
+      "end": 90.5,
+      "text": "I'm sorry, there's been a horrible mistake. We don't want to go to Dallas."
+    },
+    {
+      "start": 90.5,
+      "end": 95.7,
+      "text": "Okay, listen carefully. You're connecting in Dallas to Turks and Caicos."
+    },
+    {
+      "start": 95.7,
+      "end": 99.5,
+      "text": "You need to be at gate thirty two in four minutes. Do you understand?"
+    },
+    {
+      "start": 99.5,
+      "end": 103.0,
+      "text": "Yes, I'm not an idiot."
+    },
+    {
+      "start": 104.5,
+      "end": 107.0,
+      "text": "No, gate thirty two. Write it down."
+    },
+    {
+      "start": 107.0,
+      "end": 112.0,
+      "text": "Why is she so angry? Isn't that obvious? She's totally into me. She gave me a marker."
+    }
+  ]
+}
