@@ -183,6 +183,26 @@ queuePractice = shuffleArray([...words]);
     flipped = !flipped;
     cardContainer.className = "flashcard" + (flipped ? " flipped" : "");
   });
+// =======================
+// ZALICZENIE SŁÓWEK (UKOŃCZENIE AKTYWNOŚCI)
+// =======================
+async function markVocabularyCompleted() {
+  if (!moduleId) return;
+
+  try {
+    await fetch("/api/lesson-complete", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({
+        moduleId,
+        lessonId: `${moduleId}__vocabulary__app`
+      })
+    });
+  } catch (e) {
+    console.error("❌ Nie udało się zaliczyć słówek", e);
+  }
+}
 
   function renderCard() {
     practiceMode = false;
@@ -198,6 +218,9 @@ queuePractice = shuffleArray([...words]);
           <button id="restart-btn" class="practice-btn">Zacznij od nowa</button>
         </div>
       `;
+        // 🔥 ZALICZ AKTYWNOŚĆ "SŁÓWKA"
+  markVocabularyCompleted();
+
 document.getElementById("restart-btn").onclick = () => {
   fetch("/api/vocab/reset", {
     method: "POST",
