@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moduł ukończony</title>
+
+  <!-- używamy Twojego stylu -->
+  <link rel="stylesheet" href="course.css">
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #fffaf2;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 32px 24px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 28px;
+      opacity: 0.8;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+
+    .btn-next {
+      background: #f59e0b;
+      color: #fff;
+    }
+
+    .btn-exit {
+      background: #f3f4f6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>🎉 Brawo!</h1>
+    <p>Ukończyłaś cały moduł <strong>Restaurant</strong>.</p>
+
+    <button class="btn btn-next" onclick="goNext()">
+      Daj kolejny 🚀
+    </button>
+
+    <button class="btn btn-exit" onclick="finishToday()">
+      Kończymy na dziś
+    </button>
+  </div>
+
+  <script>
+    function goNext() {
+      // 👇 tu później zmienisz nazwę kolejnego modułu
+      window.location.href = "index.html";
+    }
+
+    function finishToday() {
+      // Mobile PWA
+      if (window.navigator.standalone) {
+        window.close();
+      }
+
+      // Desktop – po prostu zostajemy na ekranie
+      alert("Do zobaczenia następnym razem 👋");
+    }
+  </script>
+
+</body>
+</html>
