@@ -1,0 +1,62 @@
+{
+  "moduleId": "module_17",
+  "lessonId": "module_17__shadowing",
+
+  "player": {
+    "type": "youtube",
+    "videoId": "UYIIRveNuUY"
+  },
+
+  "phrases": [
+    { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
+    { "en": "shut up about", "pl": "przestać gadać o" },
+    { "en": "as they are", "pl": "tak jak są" }
+  ],
+
+  "dictionary": {
+    "discuss": "dyskutować",
+    "dear": "drogi",
+    "papa": "tata",
+    "married": "żonaty/zamężna",
+    "king": "król",
+    "happy": "szczęśliwy",
+    "blessing": "błogosławieństwo"
+  },
+
+  "segments": [
+    { "start": 0.0, "end": 2.0, "text": "I don't know what you think you're doing." },
+    { "start": 2.0, "end": 6.2, "text": "I'm doing the sensible thing, the responsible thing." },
+    { "start": 6.2, "end": 18.0, "text": "We're not careful. If I go on another 20, 25 years, a tired, white-haired geriatric queen will hand over to a tired, white-haired geriatric Prince of Wales." },
+    { "start": 18.0, "end": 20.0, "text": "Those are the rules." },
+
+    { "start": 20.0, "end": 26.6, "text": "But if he were then to go on another 20, 25 years, it would mean that for the next half century" },
+    { "start": 26.6, "end": 30.0, "text": "the British monarchy would be a very decrepit experience indeed." },
+    { "start": 30.0, "end": 32.7, "text": "Is that the right thing to do to the institution?" },
+    { "start": 32.0, "end": 36.0, "text": "Charles is in the prime of his life now." },
+
+    { "start": 36.0, "end": 38.5, "text": "Honestly, I've never heard so much nonsense." },
+    { "start": 38.5, "end": 41.0, "text": "Have you forgotten the oath that you took?" },
+    { "start": 41.0, "end": 47.0, "text": "I declare before you all that my whole life, whether it be long or short, shall be devoted to your service." },
+
+    { "start": 47.0, "end": 51.0, "text": "You're fit enough to ride and drive, so you're fit enough to wear the crown." },
+    { "start": 51.0, "end": 54.0, "text": "You remember what Queen Mary told you?" },
+    { "start": 54.0, "end": 58.0, "text": "Another geriatric." },
+
+    { "start": 58.0, "end": 63.0, "text": "Monarchy is something you are, not what you do." },
+    { "start": 63.0, "end": 67.2, "text": "The crown is a symbol of permanence, of stability, of continuity." },
+    { "start": 67.2, "end": 72.0, "text": "If you step down, you will be symbolising instability and impermanence." },
+    { "start": 72.0, "end": 76.0, "text": "You'll also be indicating the luxury of choice" },
+    { "start": 76.0, "end": 81.0, "text": "which is the one thing we cannot have if we claim the crown is also our birthright." },
+
+    { "start": 81.0, "end": 83.4, "text": "So you would have a superannuated old lady running the show" },
+    { "start": 83.4, "end": 88.2, "text": "while a fit, energetic Prince of Wales watches on, straining at the leash." },
+
+    { "start": 88.2, "end": 91.0, "text": "But I don't see you as decrepit." },
+    { "start": 91.0, "end": 98.0, "text": "Since the Jubilee, since Mummy's death, I see you as liberated, confident." },
+    { "start": 98.0, "end": 100.4, "text": "You say that Charles is in his prime." },
+    { "start": 100.4, "end": 104.0, "text": "Well, I see you in yours." },
+    { "start": 104.0, "end": 115.0, "text": "And admit it, you sometimes think there's a difference between you and the rest of the family." },
+    { "start": 115.0, "end": 122.0, "text": "It comes naturally to you." },
+    { "start": 122.0, "end": 126.0, "text": "They all seem to make such a mess of it." },
+    { "start": 126.0, "end": 128.0, "text": "I didn't say that." },
+    {
