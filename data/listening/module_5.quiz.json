@@ -1,0 +1,173 @@
+{
+  "videoId": "3r2HG2fJVHA",
+  "segments": [
+    {
+      "type": "mcq",
+      "start": 0,
+      "end": 13,
+      "question": "Co oznacza wypowiedź Joeya: „I can't pay for this right now 'cause, uh, I'm not working”?",
+      "answers": [
+        { "text": "Joey nie ma przy sobie gotówki.", "correct": false },
+        { "text": "Joey nie może zapłacić, bo nie pracuje.", "correct": true },
+        { "text": "Joey nie chce płacić, bo to jest zbyt drogie.", "correct": false }
+      ],
+      "explanation": "I can't pay for this right now 'cause, uh, I'm not working - Nie mogę zapłacić za to, bo nie pracuję"
+    },
+    {
+      "type": "mcq",
+      "start": 13,
+      "end": 18,
+      "question": "Co Gunther proponuje Joeyowi?",
+      "answers": [
+        { "text": "Pożyczkę", "correct": false },
+        { "text": "Pracę w kawiarni.", "correct": true },
+        { "text": "Zniżkę na kawę.", "correct": false }
+      ],
+      "explanation": "You can work here – możesz tu pracować."
+    },
+    {
+      "type": "mcq",
+      "start": 18,
+      "end": 28,
+      "question": "Co dodatkowo zniechęca Joeya do pracy w kawiarni?",
+      "answers": [
+        { "text": "Musiałby obsługiwać swoich znajomych.", "correct": true },
+        { "text": "Musiałby pracować w weekendy.", "correct": false },
+        { "text": "Nie dostałby napiwków.", "correct": false }
+      ],
+      "explanation": "I'd have to wait on all my friends – musiałbym obsługiwać wszystkich moich przyjaciół."
+    },
+    {
+      "type": "mcq",
+      "start": 28,
+      "end": 38,
+      "question": "Jaką dodatkową „korzyść” Gunther wymienia, aby przekonać Joeya?",
+      "answers": [
+        { "text": "Możliwość zdobycia nowego doświadczenia.", "correct": false },
+        { "text": "Dodatkowe premie.", "correct": false },
+        { "text": "Elastyczne godziny pracy.", "correct": true }
+      ],
+      "explanation": "Flexible hours – elastyczne godziny pracy."
+    },
+    {
+      "type": "mcq",
+      "start": 38,
+      "end": 62,
+      "question": "Jak Ross reaguje na propozycję Joeya?",
+      "answers": [
+        { "text": "Zgadza się na kawę.", "correct": true },
+        { "text": "Odmawia, bo już zamówił.", "correct": false },
+        { "text": "Prosi o coś innego.", "correct": false }
+      ],
+      "explanation": "I'll take a coffee – wezmę kawę."
+    },
+    {
+      "type": "mcq",
+      "start": 62,
+      "end": 73,
+      "question": "Co zamawia kobieta?",
+      "answers": [
+        { "text": "Kawa z mlekiem.", "correct": false },
+        { "text": "Herbata.", "correct": false },
+        { "text": "Woda z lodem.", "correct": true }
+      ],
+      "explanation": "Ice water – woda z lodem."
+    },
+    {
+      "type": "mcq",
+      "start": 73,
+      "end": 88,
+      "question": "Co Gunther mówi Joeyowi, kiedy ten idzie za ladę?",
+      "answers": [
+        { "text": "Nie puszczaj do mnie oczka.", "correct": true },
+        { "text": "Idź do kuchni.", "correct": false },
+        { "text": "Nie dotykaj ekspresu do kawy.", "correct": false }
+      ],
+      "explanation": "Don't wink at me – nie puszczaj do mnie oczka."
+    },
+    {
+      "type": "mcq",
+      "start": 88,
+      "end": 103,
+      "question": "O co pyta Monica?",
+      "answers": [
+        { "text": "Czy Joey dobrze się czuje.", "correct": false },
+        { "text": "Czy Joey tu pracuje.", "correct": true },
+        { "text": "Czy Joey stracił pracę.", "correct": false }
+      ],
+      "explanation": "Do you work here? – Czy ty tu pracujesz?"
+    },
+    {
+      "type": "mcq",
+      "start": 103,
+      "end": 115,
+      "question": "Dlaczego Joey nie powiedział znajomym, że pracuje w kawiarni?",
+      "answers": [
+        { "text": "Bo uważał to za wstydliwe.", "correct": true },
+        { "text": "Bo pracował tam tylko jeden dzień.", "correct": false },
+        { "text": "Bo chciał ich zaskoczyć.", "correct": false }
+      ],
+      "explanation": "It's kind of embarrassing – to trochę krępujące."
+    },
+    {
+      "type": "mcq",
+      "start": 115,
+      "end": 131,
+      "question": "Jak Joey czuje się, obsługując znajomych?",
+      "answers": [
+        { "text": "Dziwnie.", "correct": true },
+        { "text": "Swobodnie.", "correct": false },
+        { "text": "Profesjonalnie.", "correct": false }
+      ],
+      "explanation": "I just feel kind of weird serving you guys – trochę dziwnie się czuję, obsługując was."
+    },
+    {
+      "type": "mcq",
+      "start": 131,
+      "end": 155,
+      "question": "Co Chandler mówi Joeyowi o pracy?",
+      "answers": [
+        { "text": "Że zarobi dużo pieniędzy.", "correct": true },
+        { "text": "Że powinien szukać czegoś lepszego.", "correct": false },
+        { "text": "Że szybko się znudzi.", "correct": false }
+      ],
+      "explanation": "You'll make a lot of money – zarobisz kupę forsy."
+    },
+    {
+      "type": "mcq",
+      "start": 155,
+      "end": 171,
+      "question": "Co Rachel chce przekazać Joeyowi?",
+      "answers": [
+        { "text": "Swoje doświadczenie z pracy w kawiarni.", "correct": true },
+        { "text": "Przepis na najlepszą kawę.", "correct": false },
+        { "text": "Powód, dla którego powinien się zwolnić.", "correct": false }
+      ],
+      "explanation": "A couple of things I learned while working at the coffee house."
+    },
+    {
+      "type": "mcq",
+      "start": 187,
+      "end": 196,
+      "question": "Dlaczego Joey chce, żeby znajomi wyszli?",
+      "answers": [
+        { "text": "Bo kończy zmianę.", "correct": false },
+        { "text": "Bo boi się, że popełni błąd.", "correct": false },
+        { "text": "Żeby mógł obsłużyć nowych klientów.", "correct": true }
+      ],
+      "explanation": "So I can get some new customers – żebym mógł obsłużyć nowych klientów."
+    },
+    {
+      "type": "mcq",
+      "start": 196,
+      "end": 209,
+      "question": "Co Joey oferuje Rossowi w ramach przeprosin?",
+      "answers": [
+        { "text": "Darmową kawę.", "correct": false },
+        { "text": "Darmową muffinkę.", "correct": true },
+        { "text": "Zniżkę na ciasto.", "correct": false }
+      ],
+      "explanation": "I'll toss in a free muffin – dorzucę ci darmowego muffina."
+    }
+  ]
+}
