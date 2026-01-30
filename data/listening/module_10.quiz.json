@@ -1,0 +1,198 @@
+{
+  "resourceId": 1096658,
+  "title": "Saturday Night Live 2 quiz",
+  "videoSource": "https://vimeo.com/1050338812",
+  "duration": 229,
+  "segments": [
+    {
+      "type": "mcq",
+      "start": 0,
+      "end": 6,
+      "question": "Jak klient rozpoczyna rozmowę w recepcji?",
+      "answers": [
+        { "text": "Prosi o nowy pokój.", "correct": false },
+        { "text": "Informuje, że chce się wymeldować.", "correct": true },
+        { "text": "Skarży się na hałas w hotelu.", "correct": false }
+      ],
+      "explanation": "checking out – wymeldować się"
+    },
+    {
+      "type": "mcq",
+      "start": 6,
+      "end": 11,
+      "question": "Dlaczego klient chce się wymeldować jak najszybciej?",
+      "answers": [
+        { "text": "Ma taksówkę czekającą na zewnątrz.", "correct": false },
+        { "text": "Nie podobał mu się pokój.", "correct": false },
+        { "text": "Spóźnia się na lot.", "correct": true }
+      ],
+      "explanation": "I'm running late for a flight – Spóźniam się na lot"
+    },
+    {
+      "type": "mcq",
+      "start": 11,
+      "end": 16,
+      "question": "Co recepcjonista musi zrobić przed zakończeniem transakcji?",
+      "answers": [
+        { "text": "Sprawdzić konto i poprosić o podpisanie rachunku.", "correct": true },
+        { "text": "Zapytać klienta o jego opinię o hotelu.", "correct": false },
+        { "text": "Wezwać menedżera hotelu.", "correct": false }
+      ],
+      "explanation": "review your account and have you sign the room rate and the incidentals"
+    },
+    {
+      "type": "mcq",
+      "start": 16,
+      "end": 20,
+      "question": "Ile kosztuje jedna noc w hotelu według standardowej stawki?",
+      "answers": [
+        { "text": "$119", "correct": true },
+        { "text": "$99", "correct": false },
+        { "text": "190$", "correct": false }
+      ],
+      "explanation": "one hundred nineteen dollars"
+    },
+    {
+      "type": "mcq",
+      "start": 20,
+      "end": 31,
+      "question": "Jak klient reaguje na kolejne dodatkowe opłaty?",
+      "answers": [
+        { "text": "Negocjuje, żeby obniżyć rachunek.", "correct": false },
+        { "text": "Domaga się rozmowy z menedżerem.", "correct": false },
+        { "text": "Nie przejmuje się nimi i zgadza się na wszystkie.", "correct": true }
+      ],
+      "explanation": "It's fine, I don't care – W porządku, nie ma sprawy"
+    },
+    {
+      "type": "mcq",
+      "start": 31,
+      "end": 47,
+      "question": "Kto czeka na klienta?",
+      "answers": [
+        { "text": "taksówka", "correct": true },
+        { "text": "dziecko", "correct": false },
+        { "text": "samolot", "correct": false }
+      ],
+      "explanation": "I have a cab waiting – taksówka na mnie czeka"
+    },
+    {
+      "type": "mcq",
+      "start": 47,
+      "end": 59,
+      "question": "Co dziwi klienta na rachunku?",
+      "answers": [
+        { "text": "Opłata za internet", "correct": false },
+        { "text": "Sześć diamentów", "correct": true },
+        { "text": "Opłata za minibar", "correct": false }
+      ],
+      "explanation": "Six diamonds – Sześć diamentów"
+    },
+    {
+      "type": "mcq",
+      "start": 59,
+      "end": 73,
+      "question": "Co robi recepcjonista po usłyszeniu protestu klienta?",
+      "answers": [
+        { "text": "Oferuje usunięcie kosztów za diamenty.", "correct": true },
+        { "text": "Upiera się, że klient musi zapłacić.", "correct": false },
+        { "text": "Twierdzi, że nic nie może zrobić.", "correct": false }
+      ],
+      "explanation": "I'll remove the charge – usunę tę opłatę"
+    },
+    {
+      "type": "mcq",
+      "start": 73,
+      "end": 101,
+      "question": "Co zawierał zestaw „sunshine combo”?",
+      "answers": [
+        { "text": "Omlet, tosty, kawa", "correct": false },
+        { "text": "Połowa grejpfruta, dwa jajka, ziemniaki hash brown", "correct": true },
+        { "text": "Jajecznica, bekon, herbata", "correct": false }
+      ],
+      "explanation": "Half a grapefruit, two eggs, breakfast meat, your choice of coffee or orange juice."
+    },
+    {
+      "type": "mcq",
+      "start": 101,
+      "end": 108,
+      "question": "Czy szczoteczka do zębów jest za darmo?",
+      "answers": [
+        { "text": "tak", "correct": true },
+        { "text": "nie", "correct": false }
+      ],
+      "explanation": "It's complimentary – Jest to gratisowe"
+    },
+    {
+      "type": "mcq",
+      "start": 108,
+      "end": 126,
+      "question": "Dlaczego klient nie może być pewien, czy zamówił argon?",
+      "answers": [
+        { "text": "Ponieważ nigdy nie sprawdzał zamówień.", "correct": false },
+        { "text": "Ponieważ to bezbarwny, bezwonny gaz.", "correct": true },
+        { "text": "Ponieważ był nietrzeźwy.", "correct": false }
+      ],
+      "explanation": "colorless, odorless gas – bezbarwny, bezwonny gaz"
+    },
+    {
+      "type": "mcq",
+      "start": 126,
+      "end": 165,
+      "question": "Ile kosztuje pakiet rozrywki w pokoju według jednej z opcji?",
+      "answers": [
+        { "text": "$119,000", "correct": true },
+        { "text": "$119", "correct": false }
+      ],
+      "explanation": "one hundred nineteen thousand dollars"
+    },
+    {
+      "type": "mcq",
+      "start": 165,
+      "end": 176,
+      "question": "Jaką kwotę wybiera klient za pakiet rozrywki?",
+      "answers": [
+        { "text": "$119,000", "correct": false },
+        { "text": "$7", "correct": true },
+        { "text": "Odmawia zapłaty całkowicie.", "correct": false }
+      ],
+      "explanation": "I pick $7 – wybieram 7 dolarów"
+    },
+    {
+      "type": "mcq",
+      "start": 176,
+      "end": 218,
+      "question": "Co się dzieje z rachunkiem podczas drukowania?",
+      "answers": [
+        { "text": "Drukuje się bez problemu.", "correct": false },
+        { "text": "Zatyka się w drukarce.", "correct": true },
+        { "text": "Klient odmawia jego przyjęcia.", "correct": false }
+      ],
+      "explanation": "it's jammed – zaciął się"
+    },
+    {
+      "type": "mcq",
+      "start": 218,
+      "end": 221,
+      "question": "Jak klient reaguje na problem z rachunkiem?",
+      "answers": [
+        { "text": "Mówi, że nie potrzebuje rachunku.", "correct": true },
+        { "text": "Prosi o wydrukowanie jeszcze raz.", "correct": false },
+        { "text": "Pyta, czy może dostać kopię e-mailem.", "correct": false }
+      ],
+      "explanation": "That's okay, don't worry about it."
+    },
+    {
+      "type": "mcq",
+      "start": 221,
+      "end": 227,
+      "question": "Jak hotel reaguje na jego spóźnienie na lot?",
+      "answers": [
+        { "text": "Oferuje rekompensatę.", "correct": false },
+        { "text": "Nie robi nic.", "correct": false },
+        { "text": "Proponuje mu nocleg.", "correct": true }
+      ],
+      "explanation": "You'll be needing lodging tonight, sir."
+    }
+  ]
+}
