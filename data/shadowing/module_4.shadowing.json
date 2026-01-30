@@ -1,0 +1,39 @@
+{
+  "moduleId": "module_1",
+  "lessonId": "module_1__shadowing",
+
+  "player": {
+    "type": "youtube",
+    "videoId": "vUI8Oftasg8"
+  },
+
+  "phrases": [
+    { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
+    { "en": "shut up about", "pl": "przestać gadać o" },
+    { "en": "as they are", "pl": "tak jak są" }
+  ],
+
+  "dictionary": {
+    "discuss": "dyskutować",
+    "dear": "drogi",
+    "papa": "tata",
+    "married": "żonaty/zamężna",
+    "king": "król",
+    "happy": "szczęśliwy",
+    "blessing": "błogosławieństwo"
+  },
+
+  "segments": [
+    { "start": 0.0, "end": 5.0, "text": "We are still kids, but we're so in love" },
+    { "start": 5.0, "end": 9.0, "text": "fighting against all odds" },
+    { "start": 9.0, "end": 16.0, "text": "I know we'll be alright this time" },
+    { "start": 16.0, "end": 20.0, "text": "Darling, just hold my hand" },
+    { "start": 20.0, "end": 24.0, "text": "be my girl, I'll be your man" },
+    { "start": 24.0, "end": 30.0, "text": "I see my future in your eyes" },
+    { "start": 30.0, "end": 38.0, "text": "I'm dancing in the dark" },
+    { "start": 38.0, "end": 41.0, "text": "with you between my arms" },
+    { "start": 41.0, "end": 49.0, "text": "Barefoot on the grass while listening to our favourite song" },
+    { "start": 49.0, "end": 52.5, "text": "When I saw you in that dress" },
+    { "start": 52.5, "end": 63.5, "text": "Looking so beautiful. I don't deserve this, darling, you look perfect tonight" }
+  ]
+}
