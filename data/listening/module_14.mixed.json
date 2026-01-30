@@ -1,0 +1,120 @@
+{
+  "videoId": "9BoSFeFSoVw",
+  "segments": [
+    {
+      "type": "order",
+      "start": 0,
+      "end": 4,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["when", "is", "your", "next", "flight", "to", "London"],
+      "correct": ["when", "is", "your", "next", "flight", "to", "London"]
+    },
+    {
+      "type": "correct-word",
+      "start": 4,
+      "end": 9,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["and", "I", "don't", "have", "one", "seat", "left"],
+      "wrong": "don't",
+      "correct": "do"
+    },
+    {
+      "type": "order",
+      "start": 9,
+      "end": 14,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["the", "last-minute", "fare", "on", "this", "ticket", "is", "$2,700"],
+      "correct": ["the", "last-minute", "fare", "on", "this", "ticket", "is", "$2,700"]
+    },
+    {
+      "type": "extra-word",
+      "start": 14,
+      "end": 25,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["They", "would", "prefer", "it", "if", "I", "don't", "barter."],
+      "extra": "would"
+    },
+    {
+      "type": "correct-word",
+      "start": 25,
+      "end": 31,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["But", "you", "could", "split", "it", "with", "another", "credit", "card."],
+      "wrong": "could",
+      "correct": "can"
+    },
+    {
+      "type": "order",
+      "start": 31,
+      "end": 39,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["I'm", "just", "going", "to", "need", "to", "see", "your", "passport"],
+      "correct": ["I'm", "just", "going", "to", "need", "to", "see", "your", "passport"]
+    },
+    {
+      "type": "correct-word",
+      "start": 39,
+      "end": 47,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["I", "can", "tell", "you", "exactly", "where", "it", "is", "under", "my", "nightstand."],
+      "wrong": "under",
+      "correct": "on"
+    },
+    {
+      "type": "order",
+      "start": 47,
+      "end": 64,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["I", "need", "to", "get", "on", "that", "11:00", "flight"],
+      "correct": ["I", "need", "to", "get", "on", "that", "11:00", "flight"]
+    },
+    {
+      "type": "order",
+      "start": 64,
+      "end": 67,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["I'm", "afraid", "that", "plane", "has", "already", "pulled", "away", "from", "the", "gate"],
+      "correct": ["I'm", "afraid", "that", "plane", "has", "already", "pulled", "away", "from", "the", "gate"]
+    },
+    {
+      "type": "extra-word",
+      "start": 67,
+      "end": 71,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": [
+        "You're", "going", "to", "have", "to", "call", "that", "plane",
+        "and", "tell", "them", "to", "swing", "around", "and", "come",
+        "here", "and", "pick", "me", "up."
+      ],
+      "extra": "here"
+    },
+    {
+      "type": "order",
+      "start": 71,
+      "end": 86,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": [
+        "if", "I", "don't", "get", "to", "London,", "he",
+        "is", "going", "to", "marry", "that", "other", "girl"
+      ],
+      "correct": [
+        "if", "I", "don't", "get", "to", "London,", "he",
+        "is", "going", "to", "marry", "that", "other", "girl"
+      ]
+    },
+    {
+      "type": "order",
+      "start": 86,
+      "end": 94,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": [
+        "I", "am", "not", "leaving", "here",
+        "until", "you", "call", "that", "plane", "back"
+      ],
+      "correct": [
+        "I", "am", "not", "leaving", "here",
+        "until", "you", "call", "that", "plane", "back"
+      ]
+    }
+  ]
+}
