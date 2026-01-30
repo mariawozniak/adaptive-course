@@ -113,6 +113,18 @@ async function ensureUser() {
   }
 }
 
+async function loadProgress() {
+  try {
+    const res = await fetch("/api/progress", {
+      credentials: "include"
+    });
+    progress = await res.json();
+  } catch (e) {
+    console.warn("loadProgress failed", e);
+    progress = {};
+  }
+}
+
 async function loadState() {
   try {
     const res = await fetch("/api/state", { credentials: "include" });
