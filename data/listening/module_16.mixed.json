@@ -1,0 +1,111 @@
+{
+  "videoId": "D8d8Dqp6alU",
+  "segments": [
+    {
+      "type": "order",
+      "start": 0,
+      "end": 5,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["I'm", "holding", "on", "your", "rope"],
+      "correct": ["I'm", "holding", "on", "your", "rope"]
+    },
+    {
+      "type": "correct-word",
+      "start": 5,
+      "end": 9,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["Got", "me", "ten", "feet", "of", "the", "ground"],
+      "wrong": "of",
+      "correct": "off"
+    },
+    {
+      "type": "order",
+      "start": 9,
+      "end": 17,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": [
+        "And", "I'm", "hearing", "what", "you", "say,",
+        "but", "I", "just", "can't", "make", "a", "sound"
+      ],
+      "correct": [
+        "And", "I'm", "hearing", "what", "you", "say,",
+        "but", "I", "just", "can't", "make", "a", "sound"
+      ]
+    },
+    {
+      "type": "correct-word",
+      "start": 17,
+      "end": 25,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["Then", "you", "come", "and", "cut", "me", "down"],
+      "wrong": "come",
+      "correct": "go"
+    },
+    {
+      "type": "extra-word",
+      "start": 25,
+      "end": 33,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": [
+        "You", "tell", "me", "that", "you're", "sorry",
+        "but", "didn't", "think", "I'd", "turn", "around"
+      ],
+      "extra": "but"
+    },
+    {
+      "type": "extra-word",
+      "start": 33,
+      "end": 39,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["That", "it's", "too", "late", "now", "to", "apologize"],
+      "extra": "now"
+    },
+    {
+      "type": "order",
+      "start": 39,
+      "end": 66,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": [
+        "I'd", "take", "another", "chance,", "take", "a", "fall",
+        "take", "a", "shot", "for", "you"
+      ],
+      "correct": [
+        "I'd", "take", "another", "chance,", "take", "a", "fall",
+        "take", "a", "shot", "for", "you"
+      ]
+    },
+    {
+      "type": "extra-word",
+      "start": 66,
+      "end": 73,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": [
+        "I", "need", "you", "just", "like", "a", "heart",
+        "needs", "to", "beat"
+      ],
+      "extra": "just"
+    },
+    {
+      "type": "extra-word",
+      "start": 73,
+      "end": 80,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["I", "loved", "you", "with", "a", "fire", "in", "red"],
+      "extra": "in"
+    },
+    {
+      "type": "order",
+      "start": 80,
+      "end": 90,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": [
+        "Sorry", "like", "the", "angel", "heaven",
+        "let", "me", "think", "was", "you"
+      ],
+      "correct": [
+        "Sorry", "like", "the", "angel", "heaven",
+        "let", "me", "think", "was", "you"
+      ]
+    }
+  ]
+}
