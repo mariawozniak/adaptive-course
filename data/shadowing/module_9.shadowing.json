@@ -1,0 +1,46 @@
+{
+  "moduleId": "module_1",
+  "lessonId": "module_1__shadowing",
+
+  "player": {
+    "type": "youtube",
+    "videoId": "NA-Wzuwj__Y"
+  },
+
+  "phrases": [
+    { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
+    { "en": "shut up about", "pl": "przestać gadać o" },
+    { "en": "as they are", "pl": "tak jak są" }
+  ],
+
+  "dictionary": {
+    "discuss": "dyskutować",
+    "dear": "drogi",
+    "papa": "tata",
+    "married": "żonaty/zamężna",
+    "king": "król",
+    "happy": "szczęśliwy",
+    "blessing": "błogosławieństwo"
+  },
+
+  "segments": [
+    { "start": 0.0,  "end": 7.0,  "text": "Okay, who wants light cheese, and who wants dark cheese?" },
+    { "start": 7.0,  "end": 11.0, "text": "I don't even want to know about the dark cheese." },
+    { "start": 11.0, "end": 13.5, "text": "Does anybody want to split this with me?" },
+    { "start": 13.5, "end": 14.5, "text": "Oh, I will." },
+    { "start": 14.5, "end": 16.0, "text": "You guys have to make a wish." },
+    { "start": 16.0, "end": 20.0, "text": "Make a wish, come on, you know Thanksgiving!" },
+    { "start": 20.0, "end": 28.0, "text": "You got the bigger half. What'd you wish for?" },
+    { "start": 28.0, "end": 30.0, "text": "The bigger half." },
+    { "start": 30.0, "end": 35.0, "text": "All right, I'd like to propose a toast." },
+    { "start": 35.0, "end": 37.0, "text": "A little toast here." },
+    { "start": 37.0, "end": 44.7, "text": "I know this isn't exactly the kind of Thanksgiving that all of you planned, but for me, this has been really great." },
+    { "start": 44.7, "end": 51.0, "text": "You know, I think because it didn't involve divorce or projectile vomiting." },
+    { "start": 51.0, "end": 56.9, "text": "Anyway, I was just thinking I mean, if you'd gone to Vail, or if you guys had been with your family" },
+    { "start": 56.9, "end": 61.0, "text": "or if you didn't have syphilis and stuff," },
+    { "start": 61.0, "end": 65.0, "text": "we wouldn't be all together, you know?" },
+    { "start": 65.0, "end": 69.5, "text": "So, I guess what I'm trying to say is that I'm very thankful" },
+    { "start": 69.5, "end": 72.0, "text": "that all of your Thanksgivings suck." },
+    { "start": 72.0, "end": 84.0, "text": "And hey, here's to a lousy Christmas and a crappy New Year!" }
+  ]
+}
