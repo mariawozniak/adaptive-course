@@ -1,0 +1,206 @@
+{
+  "moduleId": "module_2",
+  "lessonId": "module_2__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Co oznacza wyrażenie „I just caught a glimpse of our pilot”?",
+      "comment": "„Catch a glimpse” oznacza zobaczyć coś tylko na moment.",
+      "answers": [
+        { "text": "Właśnie zobaczyłem naszego pilota", "correct": true },
+        { "text": "Złapałem naszego pilota na gorącym uczynku", "correct": false },
+        { "text": "Właśnie usłyszałem naszego pilota", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Wyrażenie „put my life in the hands of a female pilot” oznacza:",
+      "comment": "Chodzi o powierzenie komuś pełnej odpowiedzialności.",
+      "answers": [
+        { "text": "Oddać życie w ręce pilota kobiety", "correct": true },
+        { "text": "Ufać, że pilot mężczyzna uratuje życie", "correct": false },
+        { "text": "Sprzeciwić się pilotowi kobiecie", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "„What does 'quidato' mean?” można przetłumaczyć jako:",
+      "comment": "To pytanie o znaczenie słowa.",
+      "answers": [
+        { "text": "Co oznacza „quidato”?", "correct": true },
+        { "text": "Jak poprawnie pisze się „quidato”?", "correct": false },
+        { "text": "Dlaczego „quidato” jest ważne?", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Jakie jest znaczenie zwrotu „scramble to find another one”?",
+      "comment": "„Scramble” oznacza działać szybko i chaotycznie.",
+      "answers": [
+        { "text": "Szybko szukać kolejnego lotu", "correct": true },
+        { "text": "Walczyć o miejsce w samolocie", "correct": false },
+        { "text": "Znaleźć coś w swoim bagażu", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Jak przetłumaczyć „I'm having a really hard time processing information right now”?",
+      "comment": "Chodzi o trudność ze zrozumieniem sytuacji.",
+      "answers": [
+        { "text": "Mam teraz problem z przetwarzaniem informacji", "correct": true },
+        { "text": "Właśnie przetwarzam trudne informacje", "correct": false },
+        { "text": "Mam problemy z pamięcią", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Co oznacza „make your way over to gate 32”?",
+      "comment": "To polecenie, by udać się w dane miejsce.",
+      "answers": [
+        { "text": "Skieruj się do bramki 32", "correct": true },
+        { "text": "Poczekaj przy bramce 32", "correct": false },
+        { "text": "Znajdź drogę do bramki 32", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Która odpowiedź najlepiej oddaje sens wyrażenia „She’s totally into me”?",
+      "comment": "To potoczne wyrażenie oznaczające zainteresowanie.",
+      "answers": [
+        { "text": "Ona jest we mnie zakochana", "correct": true },
+        { "text": "Ona chce mi pomóc", "correct": false },
+        { "text": "Ona nie może mnie zrozumieć", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Co znaczy „Write it down”?",
+      "comment": "To polecenie zapisania informacji.",
+      "answers": [
+        { "text": "Zapisz to", "correct": true },
+        { "text": "Przeczytaj to", "correct": false },
+        { "text": "Zapamiętaj to", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Jak można przetłumaczyć „Why is she so angry?”?",
+      "comment": "To pytanie o powód zdenerwowania.",
+      "answers": [
+        { "text": "Dlaczego ona jest taka zła?", "correct": true },
+        { "text": "Dlaczego ona mnie ignoruje?", "correct": false },
+        { "text": "Czy ona się denerwuje?", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Co oznacza „cheers”?",
+      "comment": "Używane przy toaście.",
+      "answers": [
+        { "text": "Na zdrowie", "correct": true },
+        { "text": "Cześć", "correct": false },
+        { "text": "Dzięki", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Jak najlepiej oddać znaczenie zdania „You're testing the limits of my feminism”?",
+      "comment": "Chodzi o wystawianie czyichś przekonań na próbę.",
+      "answers": [
+        { "text": "Sprawdzasz granice mojego feminizmu", "correct": true },
+        { "text": "Wystawiasz mój feminizm na próbę", "correct": false },
+        { "text": "Kpisz z mojego feminizmu", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Co oznacza „Flight attendants, prepare for takeoff”?",
+      "comment": "Standardowy komunikat przed startem.",
+      "answers": [
+        { "text": "Stewardesy, przygotować się do startu", "correct": true },
+        { "text": "Stewardesy, przygotować się do lądowania", "correct": false },
+        { "text": "Stewardesy, przygotować posiłki", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Uzupełnij zdanie: „Anytime you ______ back to the gate, that means your flight's not taking off.”",
+      "comment": "Chodzi o zawracanie do bramki.",
+      "answers": [
+        { "text": "head", "correct": true },
+        { "text": "look", "correct": false },
+        { "text": "move", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Które tłumaczenie najlepiej oddaje sens zdania „Sorry, I’m having a really hard time processing information right now”?",
+      "comment": "To uprzejme przeprosiny i wyjaśnienie.",
+      "answers": [
+        { "text": "Przepraszam, mam teraz trudności ze zrozumieniem informacji", "correct": true },
+        { "text": "Przepraszam, nie mam teraz pamięci do informacji", "correct": false },
+        { "text": "Przepraszam, nie mogę teraz mówić o trudnych informacjach", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Jak najlepiej przetłumaczyć „You’re connecting in Dallas to Turks and Caicos”?",
+      "comment": "Chodzi o lot z przesiadką.",
+      "answers": [
+        { "text": "Masz przesiadkę w Dallas do Turks i Caicos", "correct": true },
+        { "text": "Masz lot bezpośredni z Dallas do Turks i Caicos", "correct": false },
+        { "text": "Dallas jest twoim ostatecznym celem", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Co najlepiej oddaje znaczenie „I am perfectly fine putting my life in the hands of a female pilot”?",
+      "comment": "Wyraża pełną akceptację i zaufanie.",
+      "answers": [
+        { "text": "Całkowicie akceptuję powierzenie życia pilotce", "correct": true },
+        { "text": "Jestem zmuszony zaufać pilotce", "correct": false },
+        { "text": "Nie mam nic przeciwko pilotce, ale wolę pilota", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Uzupełnij zdanie: „Our ______ time to Turks and Caicos is 6 hours 24 minutes.”",
+      "comment": "Chodzi o długość lotu.",
+      "answers": [
+        { "text": "flight", "correct": true },
+        { "text": "fly", "correct": false },
+        { "text": "flying", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Co oznacza zdanie „All right, time to take out flying medicine Ronaldo gave us”?",
+      "comment": "Dotyczy wzięcia leków.",
+      "answers": [
+        { "text": "Czas wziąć leki na latanie, które dał nam Ronaldo", "correct": true },
+        { "text": "Czas kupić lekarstwa na lotnisku", "correct": false },
+        { "text": "Czas pozbyć się leków", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "Co oznacza „We have had some mechanical issues”?",
+      "comment": "Chodzi o problemy techniczne.",
+      "answers": [
+        { "text": "Mieliśmy problemy techniczne", "correct": true },
+        { "text": "Mieliśmy problemy z załogą", "correct": false },
+        { "text": "Mieliśmy problemy z pasażerami", "correct": false }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Uzupełnij zdanie: „All right, ______ your things.”",
+      "comment": "To polecenie zebrania rzeczy.",
+      "answers": [
+        { "text": "gather", "correct": true },
+        { "text": "hold", "correct": false },
+        { "text": "put", "correct": false }
+      ]
+    }
+  ]
+}
