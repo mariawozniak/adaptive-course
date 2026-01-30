@@ -1,18 +1,15 @@
 {
   "moduleId": "module_3",
   "lessonId": "module_3__shadowing",
-
   "player": {
     "type": "vimeo",
     "videoId": "1050475042"
   },
-
   "phrases": [
     { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
     { "en": "shut up about", "pl": "przestać gadać o" },
     { "en": "as they are", "pl": "tak jak są" }
   ],
-
   "dictionary": {
     "discuss": "dyskutować",
     "dear": "drogi",
@@ -22,7 +19,6 @@
     "happy": "szczęśliwy",
     "blessing": "błogosławieństwo"
   },
-
   "segments": [
     { "start": 0.0, "end": 5.0, "text": "Hello! Welcome to Chatsworth House, a Marriott experience." },
     { "start": 5.0, "end": 8.0, "text": "May I have the last name of the reservation, please?" },
@@ -54,7 +50,7 @@
     { "start": 128.0, "end": 134.0, "text": "Of course. And while I finish your reservation, can I offer you a complimentary glass of champagne?" },
     { "start": 134.0, "end": 139.0, "text": "Yes, please. Excellent. That will be available in the Stargazer Lounge." },
     { "start": 139.0, "end": 143.0, "text": "You keep pushing the Stargazer Lounge. I'm not going there, man." },
-    { "start": 142.0, "end": 150.0, "text": "Of course. However, you didn't hear this from me. The Stargazer's headline act this evening is the Danny Band." },
+    { "start": 143.0, "end": 150.0, "text": "Of course. However, you didn't hear this from me. The Stargazer's headline act this evening is the Danny Band." },
     { "start": 150.0, "end": 152.61, "text": "They were featured in Latitudes magazine." },
     { "start": 152.61, "end": 161.0, "text": "I don't know who the Danny Band is. I don't read Latitudes magazine. I just want you to show me to my room, man." },
     { "start": 161.0, "end": 169.0, "text": "Of course. Here's a map of the property. So we are here on that X that I have just drawn for you." },
@@ -62,8 +58,8 @@
     { "start": 175.0, "end": 182.0, "text": "Okay. The escalator here will bring you to the mezzanine where you will find the Stargazer Lounge." },
     { "start": 182.0, "end": 184.0, "text": "No, my room. My room." },
     { "start": 184.0, "end": 192.5, "text": "Of course. The lobby elevator, which is right here, will take you to your room as well as the bar entrance to the Stargazer Lounge." },
-    { "start": 195.0, "end": 195.0, "text": "I'm so sorry." },
-    { "start": 195.0, "end": 204.0, "text": "Perfectly all right, sir. Happens all the time. Here's your key. Your room, 905." },
+    { "start": 195.0, "end": 195.5, "text": "I'm so sorry." },
+    { "start": 195.5, "end": 204.0, "text": "Perfectly all right, sir. Happens all the time. Here's your key. Your room, 905." },
     { "start": 204.0, "end": 210.0, "text": "Excellent. Thank you. Is there anything else I can help you with while you wait for your room to be cleaned? Check-in starts in four hours." },
     { "start": 210.0, "end": 213.5, "text": "What am I supposed to do for four hours?" },
     { "start": 213.5, "end": 221.0, "text": "Might I suggest you visit the Stargazer Lounge, right? And listen to the Danny Band. Can't wait." }
