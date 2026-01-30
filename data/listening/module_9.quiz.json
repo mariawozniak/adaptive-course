@@ -1,0 +1,112 @@
+{
+  "videoId": "NA-Wzuwj__Y",
+  "segments": [
+    {
+      "type": "mcq",
+      "start": 0,
+      "end": 7,
+      "question": "Chandler mówi, aby:",
+      "answers": [
+        { "text": "zaproponować różne rodzaje sera", "correct": true },
+        { "text": "opisać różne sery", "correct": false },
+        { "text": "ogłosić, że nie ma sera", "correct": false }
+      ],
+      "explanation": "Who wants light cheese and who wants dark cheese?"
+    },
+    {
+      "type": "mcq",
+      "start": 7,
+      "end": 12,
+      "question": "Ross mówi, że:",
+      "answers": [
+        { "text": "chce ciemny ser", "correct": false },
+        { "text": "nie chce nawet wiedzieć o ciemnym serze", "correct": true },
+        { "text": "chce dowiedzieć się więcej o ciemnym serze", "correct": false }
+      ],
+      "explanation": "I don't even wanna know about the dark cheese."
+    },
+    {
+      "type": "mcq",
+      "start": 12,
+      "end": 16,
+      "question": "Pheobe mówi, że:",
+      "answers": [
+        { "text": "muszą wypowiedzieć życzenie", "correct": true },
+        { "text": "ona też życzy sobie tosty", "correct": false },
+        { "text": "życzy im smacznego", "correct": false }
+      ],
+      "explanation": "You guys have to make a wish. – Musicie wypowiedzieć życzenie."
+    },
+    {
+      "type": "mcq",
+      "start": 16,
+      "end": 28,
+      "question": "Pheobe pyta Joego:",
+      "answers": [
+        { "text": "czy wypowiedział życzenie", "correct": false },
+        { "text": "czego sobie życzył", "correct": true }
+      ],
+      "explanation": "What did you wish for? – Czego sobie życzyłeś?"
+    },
+    {
+      "type": "mcq",
+      "start": 28,
+      "end": 35,
+      "question": "Chandler mówi, że:",
+      "answers": [
+        { "text": "chce wznieść toast", "correct": true },
+        { "text": "mają jedynie tosty", "correct": false },
+        { "text": "to jest pyszny tost", "correct": false }
+      ],
+      "explanation": "I'd like to propose a toast – Chciałbym wznieść toast."
+    },
+    {
+      "type": "mcq",
+      "start": 35,
+      "end": 42,
+      "question": "Chandler przyznaje, że:",
+      "answers": [
+        { "text": "nie wszystko poszło według planu", "correct": false },
+        { "text": "to nie jest święto takie, jakie planowali", "correct": true },
+        { "text": "chce zaplanować resztę dnia", "correct": false }
+      ],
+      "explanation": "I know it's not exactly the kind of Thanksgiving all of you planned."
+    },
+    {
+      "type": "mcq",
+      "start": 42,
+      "end": 66,
+      "question": "Gdyby nie przypadki losowe...",
+      "answers": [
+        { "text": "nie bylibyśmy wszyscy razem.", "correct": true },
+        { "text": "bylibyśmy razem z naszymi rodzinami.", "correct": false }
+      ],
+      "explanation": "We wouldn't be all together. – Nie bylibyśmy wszyscy razem."
+    },
+    {
+      "type": "mcq",
+      "start": 66,
+      "end": 73,
+      "question": "Chandler jest wdzięczny, że:",
+      "answers": [
+        { "text": "spędzają razem Święto Dziękczynienia", "correct": false },
+        {
+          "text": "Święto Dziękczynienia każdego z nich się nie udało",
+          "correct": true
+        }
+      ],
+      "explanation": "...all your Thanksgivings sucked. – wasze Święto Dziękczynienia było do bani."
+    },
+    {
+      "type": "mcq",
+      "start": 73,
+      "end": 82,
+      "question": "Ross wznosi toast za:",
+      "answers": [
+        { "text": "nieudane Boże Narodzenie", "correct": true },
+        { "text": "udane Boże Narodzenie", "correct": false }
+      ],
+      "explanation": "Here's to a lousy Christmas – Za nieudane Boże Narodzenie"
+    }
+  ]
+}
