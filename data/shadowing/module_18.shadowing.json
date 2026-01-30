@@ -1,0 +1,54 @@
+{
+  "moduleId": "module_18",
+  "lessonId": "module_18__shadowing",
+
+  "player": {
+    "type": "youtube",
+    "videoId": "_0jMPi50MG8"
+  },
+
+  "phrases": [
+    { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
+    { "en": "shut up about", "pl": "przestać gadać o" },
+    { "en": "as they are", "pl": "tak jak są" }
+  ],
+
+  "dictionary": {
+    "discuss": "dyskutować",
+    "dear": "drogi",
+    "papa": "tata",
+    "married": "żonaty/zamężna",
+    "king": "król",
+    "happy": "szczęśliwy",
+    "blessing": "błogosławieństwo"
+  },
+
+  "segments": [
+    { "start": 0.0, "end": 3.0, "text": "You want this job so much, why don't you just go to law school?" },
+    { "start": 3.0, "end": 8.0, "text": "When I was in college, it was my dream to be a lawyer." },
+    { "start": 8.0, "end": 14.0, "text": "I needed some money, and Trevor convinced me to memorize this math test and sell it." },
+    { "start": 14.0, "end": 19.5, "text": "Turns out we sold it to the dean's daughter." },
+    { "start": 19.5, "end": 30.0, "text": "I lost my scholarship, I got kicked out of school, I... I got knocked into a different life." },
+    { "start": 30.0, "end": 33.0, "text": "And I have been wishing for a way back ever since." },
+    { "start": 33.0, "end": 38.0, "text": "Let me tell you something." },
+    { "start": 38.0, "end": 41.5, "text": "This isn't elementary school, this is hard work." },
+    { "start": 41.5, "end": 46.0, "text": "Long hours, high pressure. I need a grown goddamn man." },
+    { "start": 46.0, "end": 54.0, "text": "You give me this, and I will work as hard as it takes to school those Harvard douches and become the best lawyer you have ever seen." },
+    { "start": 54.0, "end": 57.5, "text": "I'm inclined to give you a shot, but what if I decide to go another way?" },
+    { "start": 57.5, "end": 59.0, "text": "I'd say that's fair." },
+    { "start": 59.0, "end": 62.5, "text": "Sometimes I like to hang out with people who aren't that bright." },
+    { "start": 62.5, "end": 65.0, "text": "You know, just to see how the other half lives." },
+    { "start": 65.0, "end": 70.0, "text": "Move over. I'm emailing the firm—I just found our next associate." },
+    { "start": 70.0, "end": 78.5, "text": "All right. You're gonna start a week from Monday. Here's what you're gonna do." },
+    { "start": 78.5, "end": 81.0, "text": "First, no more pot. We drug test." },
+    { "start": 81.0, "end": 84.0, "text": "Stop smoking now, you'll be fine. I assume that's all the drugs you do." },
+    { "start": 84.0, "end": 85.0, "text": "How do you know that?" },
+    { "start": 85.0, "end": 88.5, "text": "You read books, I read people, and potheads smoke pot. That's what they do." },
+    { "start": 88.5, "end": 90.3, "text": "That's not all I do. I have interests." },
+    { "start": 90.3, "end": 94.5, "text": "You're Albert friggin' Einstein, and you couldn't manage to get into law school? You think that's not from smoking weed?" },
+    { "start": 94.5, "end": 97.5, "text": "That's another thing. You're never gonna talk to Trevor again." },
+    { "start": 97.5, "end": 103.0, "text": "You're gonna ditch that briefcase, and you're gonna get on a plane to Harvard, and you're gonna learn everything there is about going to law school there." },
+    { "start": 103.0, "end": 104.5, "text": "Did you buy that suit?" },
+    { "start": 104.5, "end": 106.0, "text": "Let's buy some new ones." }
+  ]
+}
