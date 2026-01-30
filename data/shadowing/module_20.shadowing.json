@@ -1,0 +1,41 @@
+{
+  "moduleId": "module_20",
+  "lessonId": "module_20__shadowing",
+
+  "player": {
+    "type": "youtube",
+    "videoId": "NlXvArCM9nc"
+  },
+
+  "phrases": [
+    { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
+    { "en": "shut up about", "pl": "przestać gadać o" },
+    { "en": "as they are", "pl": "tak jak są" }
+  ],
+
+  "dictionary": {
+    "discuss": "dyskutować",
+    "dear": "drogi",
+    "papa": "tata",
+    "married": "żonaty/zamężna",
+    "king": "król",
+    "happy": "szczęśliwy",
+    "blessing": "błogosławieństwo"
+  },
+
+  "segments": [
+    { "start": 0.0,  "end": 8.9,  "text": "What would I do without your smart mouth?" },
+    { "start": 8.9,  "end": 12.0, "text": "Drawing me in, and you kicking me out" },
+    { "start": 12.0, "end": 20.0, "text": "You've got my head spinning, no kidding, I can't pin you down" },
+    { "start": 20.0, "end": 23.3, "text": "What's going on in that beautiful mind?" },
+    { "start": 23.3, "end": 27.2, "text": "I'm on your magical mystery ride" },
+    { "start": 27.2, "end": 36.0, "text": "And I'm so dizzy, don't know what hit me, but I'll be alright" },
+
+    { "start": 36.0, "end": 43.0, "text": "My head's under water but I'm breathing fine" },
+    { "start": 43.0, "end": 49.0, "text": "You're crazy and I'm out of my mind" },
+
+    { "start": 49.0, "end": 52.5, "text": "'Cause all of me" },
+    { "start": 52.5, "end": 60.0, "text": "Loves all of you, love your curves and all your edges" },
+    { "start": 60.0, "end": 64.0, "text": "All your perfect imperfections" }
+  ]
+}
