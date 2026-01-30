@@ -32,31 +32,46 @@
     </div>
   </div>
 
-  <script>
-    async function nextModule(){
-      // backend policzy czy zostały moduły na tym levelu,
-      // a jeśli nie - podbije level.
-      try{
-        const res = await fetch("/api/next-module", {
-          method: "POST",
-          headers: { "Content-Type":"application/json" },
-          credentials: "include"
-        });
+ <script>
+  async function nextModule(){
+    try{
+      const res = await fetch("/api/next-module", {
+        method: "POST",
+        credentials: "include"
+      });
 
-        // nawet jeśli endpoint jeszcze nie istnieje, pokażemy czytelny błąd
-        if(!res.ok){
-          document.getElementById("info").textContent =
-            "Brak endpointu /api/next-module albo błąd serwera. Dodajemy go w backendzie w kolejnym kroku.";
-          return;
-        }
-
-        // po aktualizacji levelu/progresu wracamy do kursu
-        // UWAGA: tu ustawiamy poprawny plik startowy Twojej aplikacji
-        window.location.href = "/course.html";
-      }catch(e){
-        document.getElementById("info").textContent = "Błąd sieci: " + e;
+      if(!res.ok){
+        document.getElementById("info").textContent =
+          "Błąd serwera przy pobieraniu kolejnego modułu.";
+        return;
       }
+
+      const data = await res.json();
+      const { moduleId, level } = data;
+
+      if (!moduleId) {
+        document.getElementById("info").textContent =
+          "🎉 Ukończyłaś wszystkie dostępne moduły!";
+        return;
+      }
+
+      // 🔥 JEDYNE POPRAWNE PRZEJŚCIE
+      window.location.href =
+        `/course?level=${level}&module=${moduleId}`;
+
+    }catch(e){
+      document.getElementById("info").textContent =
+        "Błąd sieci: " + e;
     }
+  }
+
+  function finishToday(){
+    window.close();
+    document.getElementById("info").textContent =
+      "Możesz zamknąć kartę. Do zobaczenia!";
+  }
+</script>
+
 
     function finishToday(){
       // Mobilna PWA: spróbuj zamknąć okno (czasem zadziała)
