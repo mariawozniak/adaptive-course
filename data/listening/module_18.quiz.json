@@ -1,0 +1,93 @@
+{
+  "videoId": "_0jMPi50MG8",
+  "segments": [
+    {
+      "type": "mcq",
+      "start": 0,
+      "end": 8,
+      "question": "Kiedy kandydat marzył o zostaniu prawnikiem?",
+      "answers": [
+        { "text": "Gdy był w college’u", "correct": true },
+        { "text": "Od dziecka", "correct": false }
+      ],
+      "explanation": "When I was in college – gdy byłem w college’u."
+    },
+    {
+      "type": "mcq",
+      "start": 8,
+      "end": 20,
+      "question": "Komu kandydat sprzedał test?",
+      "answers": [
+        { "text": "Córce dziekana", "correct": true },
+        { "text": "Siostrze dziekana", "correct": false }
+      ],
+      "explanation": "Dean’s daughter – córka dziekana."
+    },
+    {
+      "type": "mcq",
+      "start": 20,
+      "end": 34,
+      "question": "O czym marzy kandydat?",
+      "answers": [
+        { "text": "O powrocie do miasta rodzinnego", "correct": false },
+        { "text": "O powrocie do dawnego życia", "correct": true }
+      ],
+      "explanation": "I got knocked into a different life – zostałem wrzucony w inne życie."
+    },
+    {
+      "type": "mcq",
+      "start": 34,
+      "end": 45,
+      "question": "O czym mówi rekruter?",
+      "answers": [
+        { "text": "Ostrzega kandydata przed tą pracą", "correct": true },
+        { "text": "Wyjaśnia, że nie przyjmie go do pracy", "correct": false }
+      ],
+      "explanation": "It’s hard work – to ciężka praca."
+    },
+    {
+      "type": "mcq",
+      "start": 45,
+      "end": 58,
+      "question": "O czym mówi rekruter?",
+      "answers": [
+        { "text": "Pokazuje kandydatowi drogę do wyjścia", "correct": false },
+        { "text": "Skłania się, by dać mu szansę", "correct": true }
+      ],
+      "explanation": "Give you a shot – dać ci szansę."
+    },
+    {
+      "type": "mcq",
+      "start": 58,
+      "end": 62,
+      "question": "Co kandydat mówi, że lubi?",
+      "answers": [
+        { "text": "Unikać ludzi, którzy nie są najbystrzejsi", "correct": false },
+        { "text": "Przebywać z ludźmi, którzy nie są najbystrzejsi", "correct": true }
+      ],
+      "explanation": "Hang out with – przebywać z."
+    },
+    {
+      "type": "mcq",
+      "start": 62,
+      "end": 79,
+      "question": "O czym mówi rekruter?",
+      "answers": [
+        { "text": "Daje kandydatowi wskazówki do nowej pracy", "correct": true },
+        { "text": "Mówi, aby wrócił w poniedziałek", "correct": false }
+      ],
+      "explanation": "You’re gonna start a week from Monday – zaczynasz tydzień od poniedziałku."
+    },
+    {
+      "type": "mcq",
+      "start": 79,
+      "end": 102,
+      "question": "Jak kandydat ma dotrzeć na Harvard?",
+      "answers": [
+        { "text": "Samolotem", "correct": true },
+        { "text": "Pociągiem", "correct": false }
+      ],
+      "explanation": "You’re gonna get on a plane to Harvard – wsiądziesz w samolot na Harvard."
+    }
+  ]
+}
