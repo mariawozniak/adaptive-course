@@ -1,0 +1,127 @@
+{
+  "videoId": "NlXvArCM9nc",
+  "segments": [
+    {
+      "start": 0,
+      "end": 9,
+      "parts": [
+        { "text": "What would I do", "gap": false },
+        { "text": "without", "gap": true },
+        { "text": "your", "gap": false },
+        { "text": "smart", "gap": true },
+        { "text": "mouth?", "gap": false }
+      ]
+    },
+    {
+      "start": 9,
+      "end": 12,
+      "parts": [
+        { "text": "Drawing me in, and you", "gap": false },
+        { "text": "kicking", "gap": true },
+        { "text": "me", "gap": false },
+        { "text": "out", "gap": true }
+      ]
+    },
+    {
+      "start": 12,
+      "end": 15,
+      "parts": [
+        { "text": "You've got my head", "gap": false },
+        { "text": "spinning", "gap": true }
+      ]
+    },
+    {
+      "start": 15,
+      "end": 20,
+      "parts": [
+        { "text": "No kidding, I can't", "gap": false },
+        { "text": "pin", "gap": true },
+        { "text": "you", "gap": false },
+        { "text": "down", "gap": true }
+      ]
+    },
+    {
+      "start": 20,
+      "end": 24,
+      "parts": [
+        { "text": "What's", "gap": false },
+        { "text": "going on", "gap": true },
+        { "text": "in that beautiful mind?", "gap": false }
+      ]
+    },
+    {
+      "start": 24,
+      "end": 27,
+      "parts": [
+        { "text": "I'm on your", "gap": false },
+        { "text": "magical", "gap": true },
+        { "text": "mystery", "gap": false },
+        { "text": "ride", "gap": true }
+      ]
+    },
+    {
+      "start": 27,
+      "end": 33,
+      "parts": [
+        { "text": "And I'm so", "gap": false },
+        { "text": "dizzy,", "gap": true },
+        { "text": "don't know what", "gap": false },
+        { "text": "hit", "gap": true },
+        { "text": "me", "gap": false }
+      ]
+    },
+    {
+      "start": 33,
+      "end": 36,
+      "parts": [
+        { "text": "but", "gap": true },
+        { "text": "I'll be", "gap": false },
+        { "text": "alright", "gap": true }
+      ]
+    },
+    {
+      "start": 36,
+      "end": 40,
+      "parts": [
+        { "text": "My head's", "gap": false },
+        { "text": "under", "gap": true },
+        { "text": "water", "gap": false }
+      ]
+    },
+    {
+      "start": 40,
+      "end": 44,
+      "parts": [
+        { "text": "But I'm breathing", "gap": false },
+        { "text": "fine", "gap": true }
+      ]
+    },
+    {
+      "start": 44,
+      "end": 49,
+      "parts": [
+        { "text": "You're crazy and I'm", "gap": false },
+        { "text": "out of my", "gap": true },
+        { "text": "mind", "gap": false }
+      ]
+    },
+    {
+      "start": 49,
+      "end": 60,
+      "parts": [
+        { "text": "Love your curves", "gap": false },
+        { "text": "and all", "gap": true },
+        { "text": "your", "gap": false },
+        { "text": "edges", "gap": true }
+      ]
+    },
+    {
+      "start": 60,
+      "end": 64,
+      "parts": [
+        { "text": "All your", "gap": false },
+        { "text": "perfect imperfections", "gap": true }
+      ]
+    }
+  ]
+}
