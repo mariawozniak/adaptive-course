@@ -1,0 +1,153 @@
+{
+  "moduleId": "module_1",
+  "lessonId": "module_1__shadowing",
+
+  "player": {
+    "type": "youtube",
+    "videoId": "-mfpZOwxLN0"
+  },
+
+  "phrases": [
+    { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
+    { "en": "shut up about", "pl": "przestać gadać o" },
+    { "en": "as they are", "pl": "tak jak są" }
+  ],
+
+  "dictionary": {
+    "discuss": "dyskutować",
+    "dear": "drogi",
+    "papa": "tata",
+    "married": "żonaty/zamężna",
+    "king": "król",
+    "happy": "szczęśliwy",
+    "blessing": "błogosławieństwo"
+  },
+
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.9,
+      "text": "Motion to expedite trial. I thought this was a hearing on their motion to dismiss."
+    },
+    {
+      "start": 3.9,
+      "end": 7.8,
+      "text": "Well, if you expedite our trial, that takes care of their motion to dismiss."
+    },
+    {
+      "start": 7.8,
+      "end": 11.0,
+      "text": "Your Honor, they just got this case two days ago."
+    },
+    {
+      "start": 11.0,
+      "end": 15.0,
+      "text": "You're using the timing of our client's contract expiration to try to shake us down."
+    },
+    {
+      "start": 15.0,
+      "end": 21.3,
+      "text": "I have to say, Mr. Zay, I find it hard to believe that in two days you found out enough to know you need an expedited trial"
+    },
+    {
+      "start": 21.3,
+      "end": 23.8,
+      "text": "let alone care about these people at all."
+    },
+    {
+      "start": 23.8,
+      "end": 28.4,
+      "text": "Your Honor, four years ago, a mail carrier named Stanley Powell felt tightness in his chest."
+    },
+    {
+      "start": 28.4,
+      "end": 33.0,
+      "text": "He, he thought it was nothing, but his wife insisted he go to the hospital."
+    },
+    {
+      "start": 33.0,
+      "end": 38.9,
+      "text": "When he got there, doctors couldn't find anything wrong, but they wanted to keep him for one extra day."
+    },
+    {
+      "start": 38.9,
+      "end": 43.9,
+      "text": "Now, unfortunately, Kelton Insurance refused to pay."
+    },
+    {
+      "start": 43.9,
+      "end": 47.8,
+      "text": "So Mr. Powell went home, crawled into bed, and one day later, he was dead."
+    },
+    {
+      "start": 47.8,
+      "end": 51.3,
+      "text": "In front of you, you have a complaint that’s over 5,000 pages long,"
+    },
+    {
+      "start": 51.3,
+      "end": 54.3,
+      "text": "which tells the stories of another 189 victims."
+    },
+    {
+      "start": 54.3,
+      "end": 59.7,
+      "text": "Pick a page at random, tell me the number, and I will tell you exactly what their client did to them."
+    },
+    {
+      "start": 59.7,
+      "end": 62.0,
+      "text": "Your Honor, are you actually buying that?"
+    },
+    {
+      "start": 62.0,
+      "end": 75.0,
+      "text": "Page 627. Mr. Lawrence Green, 63-year-old grandfather, admitted to St. Vincent with complaints of lower back pain and excessive weight loss."
+    },
+    {
+      "start": 75.0,
+      "end": 77.0,
+      "text": "He thought it was stress."
+    },
+    {
+      "start": 77.0,
+      "end": 81.9,
+      "text": "Turns out it was lymphoma—only they didn’t find out until it was too late"
+    },
+    {
+      "start": 81.9,
+      "end": 84.4,
+      "text": "because their client refused to pay for the MRI."
+    },
+    {
+      "start": 84.4,
+      "end": 91.0,
+      "text": "So please, rule against us if you have to, but don’t tell me we don’t care."
+    },
+    {
+      "start": 91.0,
+      "end": 96.0,
+      "text": "Motion for expedited trial granted. Jury selection starts Monday."
+    },
+    {
+      "start": 96.0,
+      "end": 100.5,
+      "text": "For your information, that’s what I was doing."
+    },
+    {
+      "start": 100.5,
+      "end": 106.0,
+      "text": "And it only took as long as it did because I was also doing something for the one person who has the right to treat me like his associate"
+    },
+    {
+      "start": 106.0,
+      "end": 108.0,
+      "text": "but treats me like his partner anyway."
+    },
+    {
+      "start": 108.0,
+      "end": 115.0,
+      "text": "Well, if you can forgive me, what do you say I take my partner out to lunch?"
+    }
+  ]
+}
