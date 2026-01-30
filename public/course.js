@@ -655,8 +655,16 @@ window.markCompleted = async (lessonId) => {
   });
 
   await loadProgress();
+
+  // 🔥 NOWE: jeśli moduł ukończony → ekran gratulacji
+  if (isModuleCompleted()) {
+    window.location.href = "/module-complete.html";
+    return;
+  }
+
   render();
 };
+
 
 window.startModule = () => {
   moduleStarted = true;
