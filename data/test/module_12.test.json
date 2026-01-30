@@ -1,0 +1,206 @@
+{
+  "moduleId": "module_12",
+  "lessonId": "module_12__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Jakie jest znaczenie „Left to my own devices”?",
+      "comment": "Wyrażenie idiomatyczne.",
+      "answers": [
+        { "text": "Pozostawiony samemu sobie", "correct": true },
+        { "text": "Zmuszony do działania", "correct": false },
+        { "text": "Otrzymujący wsparcie", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Jakie jest znaczenie „Vice”?",
+      "comment": "Rzeczownik.",
+      "answers": [
+        { "text": "Wada / nałóg", "correct": true },
+        { "text": "Zaleta", "correct": false },
+        { "text": "Decyzja", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Jeśli ktoś „Ends up” gdzieś, to…",
+      "comment": "Wyrażenie opisujące rezultat.",
+      "answers": [
+        { "text": "Skończy jako / w", "correct": true },
+        { "text": "Rozpocznie nowy etap", "correct": false },
+        { "text": "Znajdzie nową drogę", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Co oznacza „In crisis”?",
+      "comment": "Opis sytuacji.",
+      "answers": [
+        { "text": "W kryzysie", "correct": true },
+        { "text": "W doskonałej sytuacji", "correct": false },
+        { "text": "W niebezpieczeństwie", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Jakie jest znaczenie „Tale”?",
+      "comment": "Rzeczownik.",
+      "answers": [
+        { "text": "Opowieść", "correct": true },
+        { "text": "Przemowa", "correct": false },
+        { "text": "Rzeczywistość", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Jakie jest znaczenie „Get tired”?",
+      "comment": "Czasownik.",
+      "answers": [
+        { "text": "Zmęczyć się", "correct": true },
+        { "text": "Wypocząć", "correct": false },
+        { "text": "Znaleźć motywację", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Jeśli coś dzieje się „For the last time”, to znaczy, że…",
+      "comment": "Wyrażenie czasowe.",
+      "answers": [
+        { "text": "Dzieje się po raz ostatni", "correct": true },
+        { "text": "Powtórzy się jeszcze wiele razy", "correct": false },
+        { "text": "Będzie trwać wiecznie", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Jeśli ktoś „Stares” na coś, to…",
+      "comment": "Czasownik opisujący sposób patrzenia.",
+      "answers": [
+        { "text": "Wpatruje się", "correct": true },
+        { "text": "Patrzy ukradkiem", "correct": false },
+        { "text": "Unika spojrzenia", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Jakie jest znaczenie „Directly”?",
+      "comment": "Przysłówek.",
+      "answers": [
+        { "text": "Bezpośrednio", "correct": true },
+        { "text": "Pośrednio", "correct": false },
+        { "text": "Ostatecznie", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Jeśli coś jest „Exhausting”, to znaczy, że jest…",
+      "comment": "Przymiotnik.",
+      "answers": [
+        { "text": "Wyczerpujące", "correct": true },
+        { "text": "Relaksujące", "correct": false },
+        { "text": "Nudne", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "„Rooting for someone” oznacza…",
+      "comment": "Wyrażenie idiomatyczne.",
+      "answers": [
+        { "text": "Kibicować komuś / trzymać kciuki", "correct": true },
+        { "text": "Krytykować kogoś", "correct": false },
+        { "text": "Podążać za kimś", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Jak najlepiej przetłumaczyć „wake up screaming from dreaming”?",
+      "comment": "Opis reakcji po koszmarze.",
+      "answers": [
+        { "text": "Budzić się z krzykiem po koszmarze", "correct": true },
+        { "text": "Obudzić się szczęśliwym ze snu", "correct": false },
+        { "text": "Spać niespokojnie", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Co oznacza „scheming”?",
+      "comment": "Rzeczownik.",
+      "answers": [
+        { "text": "Knucie, intrygi", "correct": true },
+        { "text": "Marzenia", "correct": false },
+        { "text": "Ciężka praca", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Uzupełnij zdanie: „It must be ______.”",
+      "comment": "Przymiotnik opisujący stan.",
+      "answers": [
+        { "text": "exhausting", "correct": true },
+        { "text": "exciting", "correct": false },
+        { "text": "surprising", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Uzupełnij zdanie: „I should not be left to my own ______.”",
+      "comment": "Stałe wyrażenie.",
+      "answers": [
+        { "text": "devices", "correct": true },
+        { "text": "dreams", "correct": false },
+        { "text": "plans", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Uzupełnij zdanie: „I end ___ in crisis.”",
+      "comment": "Czasownik frazowy.",
+      "answers": [
+        { "text": "up", "correct": true },
+        { "text": "down", "correct": false },
+        { "text": "off", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Uzupełnij zdanie: „I'll stare ______ at the sun.”",
+      "comment": "Przysłówek.",
+      "answers": [
+        { "text": "directly", "correct": true },
+        { "text": "slowly", "correct": false },
+        { "text": "secretly", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Uzupełnij zdanie: „But never in the ______.”",
+      "comment": "Rzeczownik.",
+      "answers": [
+        { "text": "mirror", "correct": true },
+        { "text": "window", "correct": false },
+        { "text": "shadow", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "Uzupełnij zdanie: „At tea time, everybody ______.”",
+      "comment": "Czas teraźniejszy prosty.",
+      "answers": [
+        { "text": "agrees", "correct": true },
+        { "text": "accepts", "correct": false },
+        { "text": "believes", "correct": false }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Jak przetłumaczyć „tale as old as time”?",
+      "comment": "Stałe wyrażenie.",
+      "answers": [
+        { "text": "Historia stara jak świat", "correct": true },
+        { "text": "Opowieść przyszłości", "correct": false },
+        { "text": "Opowieść krótkotrwała", "correct": false }
+      ]
+    }
+  ]
+}
