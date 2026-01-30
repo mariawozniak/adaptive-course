@@ -213,21 +213,36 @@ app.post("/api/next-module", (req, res) => {
   }
 
   // helper: czy moduł ukończony
-  function isModuleCompleted(module) {
-    const completed = progressByModule[module.id] || new Set();
+ function isModuleCompleted(module) {
+  const completed = progressByModule[module.id] || new Set();
 
-    return module.activities
-      .filter(a => a.required)
-      .every(a => {
-        if (a.variants?.length) {
-          return a.variants.every(v => completed.has(v.id));
+  return module.activities
+    .filter(a => a.required)
+    .every(activity => {
+
+      // 1️⃣ AKTYWNOŚCI Z WARIANTAMI (np. vocabulary)
+      if (activity.variants?.length) {
+        if (activity.completionRule === "any") {
+          return activity.variants.some(v =>
+            completed.has(v.id)
+          );
         }
-        if (a.lessonId) {
-          return completed.has(a.lessonId);
-        }
-        return true;
-      });
-  }
+
+        // domyślnie: wszystkie warianty
+        return activity.variants.every(v =>
+          completed.has(v.id)
+        );
+      }
+
+      // 2️⃣ ZWYKŁA LEKCJA (test, video, audio itd.)
+      if (activity.lessonId) {
+        return completed.has(activity.lessonId);
+      }
+
+      return true;
+    });
+}
+
 
   // 3️⃣ moduły na aktualnym levelu
   const sameLevelModules = modules
@@ -599,6 +614,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, "0.0.0.0", () => {
   console.log("🚀 Server listening on port", PORT);
 });
+
 
 
 
