@@ -1,0 +1,206 @@
+{
+  "moduleId": "module_20",
+  "lessonId": "module_20__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Jak przetłumaczysz wyrażenie „What would I do”?",
+      "comment": "",
+      "answers": [
+        { "text": "Co bym zrobił?", "correct": true },
+        { "text": "Co powinienem zrobić?", "correct": false },
+        { "text": "Co zrobiłem?", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Jakie znaczenie ma słowo „Spin”?",
+      "comment": "",
+      "answers": [
+        { "text": "Kręcić się", "correct": true },
+        { "text": "Rozpraszać", "correct": false },
+        { "text": "Spadać", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Co oznacza „Pin you down”?",
+      "comment": "",
+      "answers": [
+        { "text": "Przytrzymać cię", "correct": true },
+        { "text": "Przywołać cię", "correct": false },
+        { "text": "Wyrzucić cię", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Jakie jest znaczenie „Out of my mind”?",
+      "comment": "",
+      "answers": [
+        { "text": "Oszalały", "correct": true },
+        { "text": "Skoncentrowany", "correct": false },
+        { "text": "Wesoły", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Jak przetłumaczysz „Curves”?",
+      "comment": "",
+      "answers": [
+        { "text": "Krzywizny", "correct": true },
+        { "text": "Krawędzie", "correct": false },
+        { "text": "Niedoskonałości", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Co oznacza „Lose”?",
+      "comment": "",
+      "answers": [
+        { "text": "Przegrać", "correct": true },
+        { "text": "Wygrać", "correct": false },
+        { "text": "Poddać się", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Jakie jest znaczenie „Cards on the table”?",
+      "comment": "",
+      "answers": [
+        { "text": "Karty na stole", "correct": true },
+        { "text": "Ryzykować wszystko", "correct": false },
+        { "text": "Trzymać sekrety", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Jakie jest znaczenie „Edge”?",
+      "comment": "",
+      "answers": [
+        { "text": "Krawędź", "correct": true },
+        { "text": "Róg", "correct": false },
+        { "text": "Środek", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Jak powiesz po angielsku „Upadek”?",
+      "comment": "",
+      "answers": [
+        { "text": "Downfall", "correct": true },
+        { "text": "Beginning", "correct": false },
+        { "text": "Draw", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Jakie znaczenie ma „Worst distraction”?",
+      "comment": "",
+      "answers": [
+        { "text": "Najgorsze rozproszenie", "correct": true },
+        { "text": "Powolny ruch", "correct": false },
+        { "text": "Najgorsze zniszczenie", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Uzupełnij zdanie: \"Don't know what ______ me, but I'll be alright.\"",
+      "comment": "",
+      "answers": [
+        { "text": "hit", "correct": true },
+        { "text": "touched", "correct": false },
+        { "text": "called", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Jak przetłumaczyć „My head's under water, but I'm breathing fine”?",
+      "comment": "",
+      "answers": [
+        { "text": "Moja głowa jest pod wodą, ale oddycham normalnie.", "correct": true },
+        { "text": "Tonę, ale czuję się dobrze.", "correct": false },
+        { "text": "Czuję, że jestem zmęczony, ale dam radę.", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Co oznacza „You're my muse”?",
+      "comment": "",
+      "answers": [
+        { "text": "Jesteś moją muzą.", "correct": true },
+        { "text": "Jesteś moim problemem.", "correct": false },
+        { "text": "Jesteś moim początkiem.", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Uzupełnij zdanie: \"You're my ______ and my beginning.\"",
+      "comment": "",
+      "answers": [
+        { "text": "end", "correct": true },
+        { "text": "last", "correct": false },
+        { "text": "final", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Co najlepiej oddaje znaczenie „Even when I lose, I'm winning”?",
+      "comment": "",
+      "answers": [
+        { "text": "Nawet kiedy przegrywam, to wygrywam.", "correct": true },
+        { "text": "Czasami przegrana jest jak zwycięstwo.", "correct": false },
+        { "text": "Zawsze wygrywam, bo nigdy nie przegrywam.", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Jak można przetłumaczyć „Perfect imperfections”?",
+      "comment": "",
+      "answers": [
+        { "text": "Doskonałe niedoskonałości.", "correct": true },
+        { "text": "Ukryte zalety.", "correct": false },
+        { "text": "Drobne szczegóły.", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Uzupełnij zdanie: \"The world is beating you down, I'm around through every ______.\"",
+      "comment": "",
+      "answers": [
+        { "text": "mood", "correct": true },
+        { "text": "move", "correct": false },
+        { "text": "moment", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Co oznacza „My worst distraction, my rhythm and blues”?",
+      "comment": "",
+      "answers": [
+        { "text": "Moje najgorsze rozproszenie, moja muzyka i smutki.", "correct": true },
+        { "text": "Moja przeszkoda i moja pasja.", "correct": false },
+        { "text": "Moja radość i moja inspiracja.", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "Jak przetłumaczyć „I can't stop singing, it's ringing in my head for you”?",
+      "comment": "",
+      "answers": [
+        { "text": "Nie mogę przestać śpiewać, to dźwięczy mi w głowie dla ciebie.", "correct": true },
+        { "text": "Śpiewam, bo muszę, to gra mi w głowie.", "correct": false },
+        { "text": "Nie mogę śpiewać, bo ciągle to słyszę.", "correct": false }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Uzupełnij zdanie: \"Drawing me in, and you ______ me out.\"",
+      "comment": "",
+      "answers": [
+        { "text": "kicking", "correct": true },
+        { "text": "throwing", "correct": false },
+        { "text": "pushing", "correct": false }
+      ]
+    }
+  ]
+}
