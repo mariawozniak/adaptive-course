@@ -1,0 +1,51 @@
+{
+  "moduleId": "module_1",
+  "lessonId": "module_1__shadowing",
+
+  "player": {
+    "type": "youtube",
+    "videoId": "9BoSFeFSoVw"
+  },
+
+  "phrases": [
+    { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
+    { "en": "shut up about", "pl": "przestać gadać o" },
+    { "en": "as they are", "pl": "tak jak są" }
+  ],
+
+  "dictionary": {
+    "discuss": "dyskutować",
+    "dear": "drogi",
+    "papa": "tata",
+    "married": "żonaty/zamężna",
+    "king": "król",
+    "happy": "szczęśliwy",
+    "blessing": "błogosławieństwo"
+  },
+
+  "segments": [
+    { "start": 0.0,  "end": 3.8,  "text": "Hello, um, when is your next flight to London?" },
+    { "start": 3.8,  "end": 8.4,  "text": "There's one leaving in 30 minutes, and I do have one seat left." },
+    { "start": 8.4,  "end": 10.0, "text": "Oh, thank you, thank you, thank you!" },
+    { "start": 10.0, "end": 14.0, "text": "The last-minute fare on this ticket is $2,700." },
+    { "start": 14.0, "end": 18.0, "text": " How about $600?" },
+    { "start": 18.0, "end": 22.0, "text": "Sorry, how about $600 and these earrings?" },
+    { "start": 22.0, "end": 25.0, "text": "They prefer it if I don't barter." },
+    { "start": 25.0, "end": 29.6, "text": "Well, I just don't think I have enough left on my credit card." },
+    { "start": 29.6, "end": 31.6, "text": "But you can split it with another credit card." },
+    { "start": 31.6, "end": 34.0, "text": "Okay, how about... how about 5?" },
+    { "start": 34.0, "end": 40.0, "text": "I'm just going to need to see your passport." },
+    { "start": 40.0, "end": 46.5, "text": "Okay, you know what? I... I don't have it, but I can tell you exactly where it is—on my nightstand." },
+    { "start": 46.5, "end": 55.0, "text": "Okay, you know what? Okay, I have my... I have my driver's license, and I have a $20." },
+    { "start": 55.0, "end": 60.0, "text": "I'm back. Listen, I need to—" },
+    { "start": 60.0, "end": 64.0, "text": "Hello? Hello? Um, I need to get on that 11:00 flight." },
+    { "start": 64.0, "end": 66.5, "text": "Oh, I'm afraid that plane has already pulled away from the gate." },
+    { "start": 66.5, "end": 70.0, "text": "Okay, you know what? You're going to have to call that plane and tell them to swing around and come and pick me up." },
+    { "start": 70.0, "end": 72.0, "text": "Can't do that." },
+    { "start": 72.0, "end": 77.0, "text": "Sure, you know what? Come on, we'll just tell them that there was, like, a problem with, like, the engine." },
+    { "start": 77.0, "end": 82.0, "text": "I'm afraid I'm going to have to ask you to step aside, Miss." },
+    { "start": 82.0, "end": 85.4, "text": "Look, if I don't get to London, he is going to marry that other girl!" },
+    { "start": 85.4, "end": 88.0, "text": "Can't imagine why." },
+    { "start": 88.0, "end": 94.0, "text": "All right, you know what? I am not leaving here until you call that plane back!" }
+  ]
+}
