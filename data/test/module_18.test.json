@@ -1,0 +1,206 @@
+{
+  "moduleId": "module_18",
+  "lessonId": "module_18__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Co oznacza wyrażenie \"Let me tell you something\"?",
+      "comment": "Zwrot wprowadzający wypowiedź.",
+      "answers": [
+        { "text": "Pozwól, że coś ci powiem.", "correct": true },
+        { "text": "Pokażę ci coś.", "correct": false },
+        { "text": "Muszę ci powiedzieć coś ważnego.", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Co oznacza \"Elementary school\"?",
+      "comment": "Rodzaj szkoły.",
+      "answers": [
+        { "text": "Szkoła podstawowa.", "correct": true },
+        { "text": "Szkoła średnia.", "correct": false },
+        { "text": "Przedszkole.", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Co oznacza \"Hang out with people\"?",
+      "comment": "Zwrot potoczny.",
+      "answers": [
+        { "text": "Przebywać z ludźmi.", "correct": true },
+        { "text": "Dyskutować z ludźmi.", "correct": false },
+        { "text": "Wydawać się ludźmi.", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Co oznacza \"Move over\"?",
+      "comment": "Polecenie.",
+      "answers": [
+        { "text": "Przesuń się.", "correct": true },
+        { "text": "Zatrzymaj się.", "correct": false },
+        { "text": "Wstań.", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "I assume that's all drugs you do. Co oznacza \"Assume\"?",
+      "comment": "Czasownik.",
+      "answers": [
+        { "text": "Zakładać.", "correct": true },
+        { "text": "Rozważać.", "correct": false },
+        { "text": "Przypuszczać.", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Co oznacza \"What if I decide to go another way?\"?",
+      "comment": "Pytanie warunkowe.",
+      "answers": [
+        { "text": "Co jeśli zdecyduję się na inną drogę?", "correct": true },
+        { "text": "Co by było gdybym zdecydował się na inną drogę?", "correct": false },
+        { "text": "Co jeśli zdecyduję się na inny sposób?", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Co oznacza \"You’ll be fine\"?",
+      "comment": "Zwrot uspokajający.",
+      "answers": [
+        { "text": "Będzie dobrze.", "correct": true },
+        { "text": "Okej, to się uda.", "correct": false },
+        { "text": "Będziesz w porządku.", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Co oznacza \"It’s not all I do\"?",
+      "comment": "Wyrażenie wyjaśniające.",
+      "answers": [
+        { "text": "To nie wszystko, co robię.", "correct": true },
+        { "text": "Mam więcej do zrobienia.", "correct": false },
+        { "text": "Zrobię jeszcze coś.", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Co oznacza \"I’m inclined to give you a shot\"?",
+      "comment": "Wyrażenie potoczne.",
+      "answers": [
+        { "text": "Jestem skłonny dać ci szansę.", "correct": true },
+        { "text": "Mam zamiar dać ci pracę.", "correct": false },
+        { "text": "Rozważam danie ci szansy.", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Co oznacza \"We sold it to the dean’s daughter\"?",
+      "comment": "Zdanie w czasie przeszłym.",
+      "answers": [
+        { "text": "Sprzedaliśmy to córce dziekana.", "correct": true },
+        { "text": "Córka dziekana kupiła to od nas.", "correct": false },
+        { "text": "Sprzedaliśmy to dziekanowi.", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Co oznacza „Why don’t you just go to law school?”",
+      "comment": "Propozycja.",
+      "answers": [
+        { "text": "Dlaczego po prostu nie pójdziesz na studia prawnicze?", "correct": true },
+        { "text": "Dlaczego nie spróbujesz zostać prawnikiem?", "correct": false },
+        { "text": "Po co ci szkoła prawnicza?", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Jak przetłumaczysz „It was my dream to be a lawyer”?",
+      "comment": "Zdanie w czasie przeszłym.",
+      "answers": [
+        { "text": "To było moim marzeniem, żeby zostać prawnikiem.", "correct": true },
+        { "text": "Moim planem było pójście na prawo.", "correct": false },
+        { "text": "Chciałem zawsze znać prawo.", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Uzupełnij zdanie: \"Trevor convinced me to ______ this math test and sell it.\"",
+      "comment": "Czasownik.",
+      "answers": [
+        { "text": "memorize", "correct": true },
+        { "text": "remember", "correct": false },
+        { "text": "repeat", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Co oznacza „I lost my scholarship”?",
+      "comment": "Kontekst edukacyjny.",
+      "answers": [
+        { "text": "Straciłem stypendium.", "correct": true },
+        { "text": "Zrezygnowałem ze studiów.", "correct": false },
+        { "text": "Przestałem chodzić na zajęcia.", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Uzupełnij zdanie: \"I got ______ out of school.\"",
+      "comment": "Czasownik frazowy.",
+      "answers": [
+        { "text": "kicked", "correct": true },
+        { "text": "knocked", "correct": false },
+        { "text": "sold", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Co oznacza zdanie „I have been wishing for a way back ever since”?",
+      "comment": "Czas Present Perfect Continuous.",
+      "answers": [
+        { "text": "Od tamtej pory marzę o powrocie.", "correct": true },
+        { "text": "Od tamtej pory nie chcę wracać.", "correct": false },
+        { "text": "Od tamtej pory wracam do marzeń.", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Uzupełnij zdanie: \"This is hard work. Long hours, high ______.\"",
+      "comment": "Rzeczownik.",
+      "answers": [
+        { "text": "pressure", "correct": true },
+        { "text": "attitude", "correct": false },
+        { "text": "rush", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Jak najlepiej przetłumaczyć „Sometimes I like to hang out with people who aren’t that bright”?",
+      "comment": "Zdanie potoczne.",
+      "answers": [
+        { "text": "Czasami lubię spędzać czas z ludźmi, którzy nie są zbyt bystrzy.", "correct": true },
+        { "text": "Czasami wolę spotykać się z ludźmi, którzy są zupełnie inni.", "correct": false },
+        { "text": "Czasami wychodzę z ludźmi, których nie znam.", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "Co oznacza „I just found our next associate”?",
+      "comment": "Kontekst zawodowy.",
+      "answers": [
+        { "text": "Właśnie znalazłem naszego następnego współpracownika.", "correct": true },
+        { "text": "Właśnie znalazłem nową sprawę.", "correct": false },
+        { "text": "Właśnie znalazłem naszego klienta.", "correct": false }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Uzupełnij zdanie: \"That’s another thing. You’re never gonna talk to Trevor ______.\"",
+      "comment": "Określenie czasu.",
+      "answers": [
+        { "text": "again", "correct": true },
+        { "text": "back", "correct": false },
+        { "text": "over", "correct": false }
+      ]
+    }
+  ]
+}
