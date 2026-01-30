@@ -1,0 +1,206 @@
+{
+  "moduleId": "module_10",
+  "lessonId": "module_10__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Jak przetłumaczysz „I'm in a hurry”?",
+      "comment": "Wyrażenie oznaczające pośpiech.",
+      "answers": [
+        { "text": "Spieszę się.", "correct": true },
+        { "text": "Mam wolny czas.", "correct": false },
+        { "text": "Jestem spóźniony.", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Co oznacza „review your account”?",
+      "comment": "Chodzi o sprawdzenie danych konta.",
+      "answers": [
+        { "text": "Sprawdzić twoje konto.", "correct": true },
+        { "text": "Zmienić hasło do konta.", "correct": false },
+        { "text": "Zablokować konto.", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Co oznacza „overcharge”?",
+      "comment": "Dotyczy naliczenia zbyt wysokiej opłaty.",
+      "answers": [
+        { "text": "Nadpłata / przepłacenie.", "correct": true },
+        { "text": "Naliczona zbyt niska opłata.", "correct": false },
+        { "text": "Płatność ratalna.", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Jak przetłumaczysz „facility fee”?",
+      "comment": "Opłata związana z udogodnieniami.",
+      "answers": [
+        { "text": "Opłata za udogodnienia.", "correct": true },
+        { "text": "Podatek dochodowy.", "correct": false },
+        { "text": "Opłata za naprawy.", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Jak przetłumaczysz „remove the charge”?",
+      "comment": "Chodzi o anulowanie opłaty.",
+      "answers": [
+        { "text": "Usunąć opłatę.", "correct": true },
+        { "text": "Naliczyć opłatę.", "correct": false },
+        { "text": "Anulować zamówienie.", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Co oznacza „It's complimentary”?",
+      "comment": "Wyrażenie używane w hotelach i restauracjach.",
+      "answers": [
+        { "text": "Jest bezpłatne.", "correct": true },
+        { "text": "Jest tańsze niż zwykle.", "correct": false },
+        { "text": "Jest bezpłatne.", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Jak przetłumaczysz „housekeeping gratuity”?",
+      "comment": "Dotyczy napiwku w hotelu.",
+      "answers": [
+        { "text": "Napiwek dla obsługi hotelowej.", "correct": true },
+        { "text": "Opłata za internet.", "correct": false },
+        { "text": "Zniżka dla gości hotelowych.", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Co oznacza „generous”?",
+      "comment": "Przymiotnik opisujący cechę charakteru.",
+      "answers": [
+        { "text": "Hojny.", "correct": true },
+        { "text": "Bogaty.", "correct": false },
+        { "text": "Ostrożny.", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Jak przetłumaczysz „I missed my flight”?",
+      "comment": "Chodzi o spóźnienie na lot.",
+      "answers": [
+        { "text": "Nie zdążyłem na lot.", "correct": true },
+        { "text": "Przegapiłem kontrolę paszportową.", "correct": false },
+        { "text": "Nie dostałem biletu.", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Jak przetłumaczysz „satisfactory”?",
+      "comment": "Ocena czegoś jako wystarczającego.",
+      "answers": [
+        { "text": "Zadowalający.", "correct": true },
+        { "text": "Niezbędny.", "correct": false },
+        { "text": "Luksusowy.", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Jak przetłumaczysz „incidentals”?",
+      "comment": "Dodatkowe koszty, np. hotelowe.",
+      "answers": [
+        { "text": "Dodatkowe opłaty", "correct": true },
+        { "text": "Zdarzenia", "correct": false },
+        { "text": "Przypadki", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Co oznacza „colorless, odorless gas”?",
+      "comment": "Opis właściwości gazu.",
+      "answers": [
+        { "text": "Gaz bezbarwny i bezzapachowy", "correct": true },
+        { "text": "Gaz wybuchowy i szkodliwy", "correct": false },
+        { "text": "Gaz pod ciśnieniem", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Co oznacza „charge will stand”?",
+      "comment": "Informacja o decyzji finansowej.",
+      "answers": [
+        { "text": "Opłata pozostaje w mocy", "correct": true },
+        { "text": "Opłata zostaje usunięta", "correct": false },
+        { "text": "Opłata jest zawieszona", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Jak przetłumaczyć „receipt is printing”?",
+      "comment": "Komunikat techniczny.",
+      "answers": [
+        { "text": "Rachunek się drukuje", "correct": true },
+        { "text": "Rachunek został zapłacony", "correct": false },
+        { "text": "Rachunek został zgubiony", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Co oznacza „lodging”?",
+      "comment": "Termin związany z podróżami.",
+      "answers": [
+        { "text": "Zakwaterowanie", "correct": true },
+        { "text": "Wyżywienie", "correct": false },
+        { "text": "Transport", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Jak przetłumaczysz „booking fee”?",
+      "comment": "Opłata związana z rezerwacją.",
+      "answers": [
+        { "text": "Opłata rezerwacyjna", "correct": true },
+        { "text": "Opłata hotelowa", "correct": false },
+        { "text": "Opłata manipulacyjna", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Co oznacza „very disappointed”?",
+      "comment": "Silne negatywne uczucie.",
+      "answers": [
+        { "text": "Bardzo rozczarowany", "correct": true },
+        { "text": "Bardzo zadowolony", "correct": false },
+        { "text": "Bardzo pewny siebie", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Uzupełnij zdanie: „I'm in a ______.”",
+      "comment": "Wyrażenie oznaczające pośpiech.",
+      "answers": [
+        { "text": "hurry", "correct": true },
+        { "text": "rushes", "correct": false },
+        { "text": "speed", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "Uzupełnij zdanie: „Review your ______.”",
+      "comment": "Dotyczy sprawdzenia danych.",
+      "answers": [
+        { "text": "account", "correct": true },
+        { "text": "payment", "correct": false },
+        { "text": "card", "correct": false }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Uzupełnij zdanie: „It's ______.”",
+      "comment": "Wyrażenie oznaczające brak opłaty.",
+      "answers": [
+        { "text": "complimentary", "correct": true },
+        { "text": "freezy", "correct": false },
+        { "text": "costless", "correct": false }
+      ]
+    }
+  ]
+}
