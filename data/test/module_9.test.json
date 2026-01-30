@@ -1,0 +1,206 @@
+{
+  "moduleId": "module_9",
+  "lessonId": "module_9__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Co oznacza: All right.",
+      "comment": "Potoczne wyrażenie zgody lub akceptacji.",
+      "answers": [
+        { "text": "W porządku", "correct": true },
+        { "text": "Dokładnie", "correct": false },
+        { "text": "Nawet", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Co oznacza: even",
+      "comment": "Przysłówek wzmacniający znaczenie.",
+      "answers": [
+        { "text": "Nawet", "correct": true },
+        { "text": "Podzielić", "correct": false },
+        { "text": "W każdym razie", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Co oznacza: anybody",
+      "comment": "Zaimek nieokreślony.",
+      "answers": [
+        { "text": "Ktokolwiek", "correct": true },
+        { "text": "Dokładnie", "correct": false },
+        { "text": "I takie tam", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Co oznacza: split",
+      "comment": "Czasownik.",
+      "answers": [
+        { "text": "Podzielić", "correct": true },
+        { "text": "W porządku", "correct": false },
+        { "text": "Rozwód", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Co oznacza: What did you wish for?",
+      "comment": "Pytanie o życzenie.",
+      "answers": [
+        { "text": "O co poprosiłeś?", "correct": true },
+        { "text": "Próbuję powiedzieć", "correct": false },
+        { "text": "Czego chcesz?", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Co oznacza: I’d like to propose a toast.",
+      "comment": "Formalne zaproponowanie toastu.",
+      "answers": [
+        { "text": "Chciałbym wznieść toast.", "correct": true },
+        { "text": "Chciałbym tosta.", "correct": false },
+        { "text": "Proponuję tosta.", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Co oznacza: exactly",
+      "comment": "Przysłówek.",
+      "answers": [
+        { "text": "Dokładnie", "correct": true },
+        { "text": "W każdym razie", "correct": false },
+        { "text": "Nawet", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Co oznacza: involve",
+      "comment": "Czasownik oznaczający zawieranie czegoś.",
+      "answers": [
+        { "text": "Zawierać", "correct": true },
+        { "text": "Rozwód", "correct": false },
+        { "text": "Zaręczyć się", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Jak powiesz „wydaje mi się”?",
+      "comment": "Wyrażenie przypuszczenia.",
+      "answers": [
+        { "text": "I guess", "correct": true },
+        { "text": "I believe", "correct": false },
+        { "text": "I don't think so", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Jak wyrazisz wdzięczność?",
+      "comment": "Wyrażenie podziękowania.",
+      "answers": [
+        { "text": "I'm thankful", "correct": true },
+        { "text": "I'm involved", "correct": false },
+        { "text": "I'm thoughtful", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Co oznacza „Make a wish”?",
+      "comment": "Zachęta do pomyślenia życzenia.",
+      "answers": [
+        { "text": "Pomyśl życzenie.", "correct": true },
+        { "text": "Zrób coś.", "correct": false },
+        { "text": "Podejmij decyzję.", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Jak najlepiej przetłumaczyć „You got the bigger half”?",
+      "comment": "Porównanie części.",
+      "answers": [
+        { "text": "Ty dostałeś większą połowę.", "correct": true },
+        { "text": "Ty wygrałeś wszystko.", "correct": false },
+        { "text": "Ty masz większą część rodziny.", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Uzupełnij zdanie: „I know this isn’t exactly the kind of Thanksgiving that all of you ______.”",
+      "comment": "Czas przeszły.",
+      "answers": [
+        { "text": "planned", "correct": true },
+        { "text": "wished", "correct": false },
+        { "text": "guessed", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Jak najlepiej przetłumaczyć „Anyway, I was just thinking…”?",
+      "comment": "Potoczne rozpoczęcie wypowiedzi.",
+      "answers": [
+        { "text": "W każdym razie, właśnie sobie pomyślałem…", "correct": true },
+        { "text": "Jednak, miałem rację.", "correct": false },
+        { "text": "W każdym razie, już wiem.", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Co oznacza „We wouldn’t be all together”?",
+      "comment": "Tryb warunkowy.",
+      "answers": [
+        { "text": "Nie bylibyśmy wszyscy razem.", "correct": true },
+        { "text": "Nie moglibyśmy się spotkać.", "correct": false },
+        { "text": "Nie pasowalibyśmy do siebie.", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Uzupełnij zdanie: „I guess what I’m trying to ______…”",
+      "comment": "Czasownik mówienia.",
+      "answers": [
+        { "text": "say", "correct": true },
+        { "text": "see", "correct": false },
+        { "text": "wish", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Co oznacza zdanie „I’m very thankful that all of your Thanksgivings suck”?",
+      "comment": "Wypowiedź ironiczna.",
+      "answers": [
+        { "text": "Jestem bardzo wdzięczny, że wasze Święta Dziękczynienia są do niczego.", "correct": true },
+        { "text": "Przykro mi, że wasze Święta mijają.", "correct": false },
+        { "text": "Myślę, że wasze Święta były udane.", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Co oznacza „Here’s to a lousy Christmas and a crappy New Year!”?",
+      "comment": "Toast o ironicznym wydźwięku.",
+      "answers": [
+        { "text": "Wypijmy za kiepskie Święta i beznadziejny Nowy Rok!", "correct": true },
+        { "text": "Chciałbym wesołych Świąt i Nowego Roku!", "correct": false },
+        { "text": "Niech wasze Święta będą piękne, a Nowy Rok szczęśliwy.", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "Co oznacza „Lousy Christmas”?",
+      "comment": "Przymiotnik o negatywnym znaczeniu.",
+      "answers": [
+        { "text": "Beznadziejne Święta", "correct": true },
+        { "text": "Zwyczajne Święta", "correct": false },
+        { "text": "Wielkie Święta", "correct": false }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Co oznacza „I don't even want to know about the dark cheese”?",
+      "comment": "Wyrażenie niechęci do poznania szczegółów.",
+      "answers": [
+        { "text": "Nawet nie chcę wiedzieć o tym ciemnym serze", "correct": true },
+        { "text": "Chcę się dowiedzieć o tym serze", "correct": false },
+        { "text": "Wiem wszystko o tym serze", "correct": false }
+      ]
+    }
+  ]
+}
