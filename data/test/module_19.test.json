@@ -1,0 +1,206 @@
+{
+  "moduleId": "module_19",
+  "lessonId": "module_19__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Co oznacza „What sort of”?",
+      "comment": "",
+      "answers": [
+        { "text": "Jakiego rodzaju?", "correct": true },
+        { "text": "Ile dokładnie?", "correct": false },
+        { "text": "Po co to wszystko?", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Jakie jest znaczenie „Barely”?",
+      "comment": "",
+      "answers": [
+        { "text": "Ledwie, ledwo", "correct": true },
+        { "text": "Z łatwością", "correct": false },
+        { "text": "Całkowicie", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Jeśli coś jest „Second only to St. Thomas’s”, to…",
+      "comment": "",
+      "answers": [
+        { "text": "Jest zaraz po St. Thomas’s", "correct": true },
+        { "text": "Jest znacznie gorszy od St. Thomas’s", "correct": false },
+        { "text": "Jest taki sam jak St. Thomas’s", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Jeśli coś jest „Quite well equipped”, to znaczy, że jest…",
+      "comment": "",
+      "answers": [
+        { "text": "Dość dobrze wyposażone", "correct": true },
+        { "text": "W opłakanym stanie", "correct": false },
+        { "text": "Całkowicie nowe", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Jakie jest znaczenie „In a way”?",
+      "comment": "",
+      "answers": [
+        { "text": "W pewnym sensie", "correct": true },
+        { "text": "W żadnym wypadku", "correct": false },
+        { "text": "Absolutnie nie", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Co oznacza „Set up”?",
+      "comment": "",
+      "answers": [
+        { "text": "Założyć, utworzyć", "correct": true },
+        { "text": "Zakończyć", "correct": false },
+        { "text": "Zepsuć", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Jakie jest znaczenie „How splendid!”?",
+      "comment": "",
+      "answers": [
+        { "text": "Jak wspaniale!", "correct": true },
+        { "text": "Jak okropnie!", "correct": false },
+        { "text": "Jak dziwnie!", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Co oznacza „Insurance”?",
+      "comment": "",
+      "answers": [
+        { "text": "Ubezpieczenie", "correct": true },
+        { "text": "Podatek", "correct": false },
+        { "text": "Wynagrodzenie", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Jeśli ktoś mówi o „Measures”, to ma na myśli…",
+      "comment": "",
+      "answers": [
+        { "text": "Środki, działania", "correct": true },
+        { "text": "Problemy z prawem", "correct": false },
+        { "text": "Sprawy rodzinne", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Co oznacza „We are about to eat”?",
+      "comment": "",
+      "answers": [
+        { "text": "Zaraz zaczniemy jeść", "correct": true },
+        { "text": "Właśnie skończyliśmy jeść", "correct": false },
+        { "text": "Nie mamy ochoty jeść", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Jak najlepiej przetłumaczyć „accustomed to” w „I’m accustomed to a very different life”?",
+      "comment": "",
+      "answers": [
+        { "text": "Przyzwyczajony do", "correct": true },
+        { "text": "Znudzony czymś", "correct": false },
+        { "text": "Zmuszony do", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Co oznacza „plenty of hours in the day”?",
+      "comment": "",
+      "answers": [
+        { "text": "Wystarczająco dużo czasu", "correct": true },
+        { "text": "Zbyt mało czasu", "correct": false },
+        { "text": "Czas bez żadnych obowiązków", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Jak przetłumaczyć „to involve you in the running of the estate”?",
+      "comment": "",
+      "answers": [
+        { "text": "Zaangażować cię w prowadzenie majątku", "correct": true },
+        { "text": "Zmuszać cię do ciężkiej pracy", "correct": false },
+        { "text": "Oddać ci cały majątek", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "„We mustn’t bore the ladies” oznacza…",
+      "comment": "",
+      "answers": [
+        { "text": "Nie możemy nudzić dam", "correct": true },
+        { "text": "Nie powinniśmy przeszkadzać służbie", "correct": false },
+        { "text": "Nie możemy rozmawiać przy stole", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Jak przetłumaczyć „You might like the hospital”?",
+      "comment": "",
+      "answers": [
+        { "text": "Może spodoba ci się szpital", "correct": true },
+        { "text": "Możesz odwiedzić lekarza", "correct": false },
+        { "text": "Na pewno spodoba ci się szpital", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "„Don’t let Dr. Clarkson hear you” oznacza…",
+      "comment": "",
+      "answers": [
+        { "text": "Nie pozwól, żeby dr Clarkson to usłyszał", "correct": true },
+        { "text": "Powiedz to dr Clarksonowi", "correct": false },
+        { "text": "Upewnij się, że dr Clarkson to potwierdzi", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Uzupełnij zdanie: \"Quite well ______.\"",
+      "comment": "",
+      "answers": [
+        { "text": "equipped", "correct": true },
+        { "text": "prepared", "correct": false },
+        { "text": "organized", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Uzupełnij zdanie: \"How ______!\"",
+      "comment": "",
+      "answers": [
+        { "text": "splendid", "correct": true },
+        { "text": "awful", "correct": false },
+        { "text": "strange", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "Co oznacza zdanie „I will hold it steady, and you can help yourself”?",
+      "comment": "",
+      "answers": [
+        { "text": "Przytrzymam to, a ty możesz sobie nałożyć", "correct": true },
+        { "text": "Dam ci to w spokoju", "correct": false },
+        { "text": "Utrzymam równowagę, a ty mi pomożesz", "correct": false }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Uzupełnij zdanie: \"You might have ______ of it.\"",
+      "comment": "",
+      "answers": [
+        { "text": "heard", "correct": true },
+        { "text": "hear", "correct": false },
+        { "text": "told", "correct": false }
+      ]
+    }
+  ]
+}
