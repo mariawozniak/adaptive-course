@@ -1,0 +1,206 @@
+{
+  "moduleId": "module_7",
+  "lessonId": "module_7__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Co oznacza „She seems to make him happy.”?",
+      "comment": "Wyrażenie „seems to” oznacza, że coś się wydaje.",
+      "answers": [
+        { "text": "Wydaje się, że ona go uszczęśliwia.", "correct": true },
+        { "text": "Ona na pewno go uszczęśliwia.", "correct": false },
+        { "text": "Ona wydaje się być szczęśliwa.", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "And having him happy and settled is good for us. Co w tym kontekście oznacza „settled”?",
+      "comment": "Chodzi o stabilizację życiową.",
+      "answers": [
+        { "text": "Ustatkowany.", "correct": true },
+        { "text": "Wzburzony.", "correct": false },
+        { "text": "osiadły", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Jak przetłumaczysz „He is going to be king, isn’t he?”?",
+      "comment": "Pytanie z końcówką potwierdzającą.",
+      "answers": [
+        { "text": "On zostanie królem, prawda?", "correct": true },
+        { "text": "On zmierza do tego, aby zostać królem, prawda?", "correct": false },
+        { "text": "On unika tego, aby zostać królem, prawda?", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Co oznacza „I didn’t want to give my blessing”?",
+      "comment": "„Blessing” oznacza błogosławieństwo.",
+      "answers": [
+        { "text": "Nie chciałam dawać swojego błogosławieństwa.", "correct": true },
+        { "text": "Nie chciałam dać swojego pozwolenia.", "correct": false },
+        { "text": "Nie chciałam wyrazić zgody.", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "„…until you'd given yours.” Co oznacza „until”?",
+      "comment": "Spójnik określający granicę czasową.",
+      "answers": [
+        { "text": "dopóki", "correct": true },
+        { "text": "kiedy", "correct": false },
+        { "text": "zanim", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Co oznacza „I’d like to discuss”?",
+      "comment": "Formalna propozycja rozmowy.",
+      "answers": [
+        { "text": "Chciałbym omówić.", "correct": true },
+        { "text": "Chciałbym porozmawiać.", "correct": false },
+        { "text": "Chciałbym porozmawiać.", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Jak przetłumaczysz „dear”?",
+      "comment": "Forma grzecznościowa lub osobista.",
+      "answers": [
+        { "text": "Drogi.", "correct": true },
+        { "text": "Szanowny.", "correct": false },
+        { "text": "Miły.", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Co oznacza „What’s he done now?”?",
+      "comment": "Pytanie o ostatnie zachowanie.",
+      "answers": [
+        { "text": "Co on teraz zrobił?", "correct": true },
+        { "text": "Co on zamierza teraz zrobić?", "correct": false },
+        { "text": "Co on planuje?", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "How would you both feel…? Jak przetłumaczysz „both”?",
+      "comment": "Odnosi się do dwóch osób.",
+      "answers": [
+        { "text": "Obaj", "correct": true },
+        { "text": "Każdy", "correct": false },
+        { "text": "Wszyscy", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Co oznacza „How would you feel about…?”?",
+      "comment": "Pytanie o opinię lub odczucia.",
+      "answers": [
+        { "text": "Jak byście się czuli, gdyby…?", "correct": true },
+        { "text": "Jak to poczujesz?", "correct": false },
+        { "text": "Co sądzisz o tym?", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Co oznacza „get married”?",
+      "comment": "Zawarcie związku małżeńskiego.",
+      "answers": [
+        { "text": "Ożenić się/wyjść za mąż", "correct": true },
+        { "text": "Rozwodzić się.", "correct": false },
+        { "text": "Cieszyć się", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Jak przetłumaczysz „Ultimately”?",
+      "comment": "Odnosi się do końcowego rezultatu.",
+      "answers": [
+        { "text": "Ostatecznie.", "correct": true },
+        { "text": "Na początku.", "correct": false },
+        { "text": "W końcu.", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Co oznacza „Charles will be king one day.”?",
+      "comment": "Mowa o przyszłości.",
+      "answers": [
+        { "text": "Karol pewnego dnia zostanie królem.", "correct": true },
+        { "text": "Karol zostaje królem.", "correct": false },
+        { "text": "Karol jest królem.", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Jak przetłumaczysz „It feels wrong”?",
+      "comment": "Subiektywne odczucie.",
+      "answers": [
+        { "text": "To wydaje się niewłaściwe.", "correct": true },
+        { "text": "To jest złe.", "correct": false },
+        { "text": "To jest nieodpowiednie.", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Co oznacza zdanie „Why can’t they just carry on as they are?”?",
+      "comment": "Pytanie o kontynuowanie obecnego stanu.",
+      "answers": [
+        { "text": "Dlaczego nie mogą po prostu kontynuować tak, jak jest teraz?", "correct": true },
+        { "text": "Dlaczego nie mogą wrócić do tego, co było dawniej?", "correct": false },
+        { "text": "Dlaczego nie mogą robić tego, co wszyscy inni?", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Uzupełnij zdanie: „___ we had an unmarried king on the throne, it did not end well.”",
+      "comment": "Odniesienie do przeszłości.",
+      "answers": [
+        { "text": "The last time", "correct": true },
+        { "text": "The next time", "correct": false },
+        { "text": "The previous time", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Uzupełnij zdanie: „But, I ______, this is the reality.”",
+      "comment": "Wyrażenie przypuszczenia.",
+      "answers": [
+        { "text": "suppose", "correct": true },
+        { "text": "prefer", "correct": false },
+        { "text": "feel", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Uzupełnij zdanie: „And having him happy and ______ is good for us.”",
+      "comment": "Przymiotnik opisujący stabilizację.",
+      "answers": [
+        { "text": "settled", "correct": true },
+        { "text": "carried", "correct": false },
+        { "text": "supposed", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "Uzupełnij zdanie: „Well, as you say, he is going to be king, _____, one day?”",
+      "comment": "Końcówka pytania typu „question tag”.",
+      "answers": [
+        { "text": "isn't he", "correct": true },
+        { "text": "doesn't he", "correct": false },
+        { "text": "won't he", "correct": false }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Uzupełnij zdanie: „I didn’t want to give my ______ until you’d given yours.”",
+      "comment": "Rzeczownik związany ze zgodą.",
+      "answers": [
+        { "text": "blessing", "correct": true },
+        { "text": "feeling", "correct": false },
+        { "text": "promise", "correct": false }
+      ]
+    }
+  ]
+}
