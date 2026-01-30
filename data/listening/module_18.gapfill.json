@@ -1,0 +1,108 @@
+{
+  "videoId": "_0jMPi50MG8",
+  "segments": [
+    {
+      "start": 0,
+      "end": 2,
+      "parts": [
+        { "text": "You want this job", "gap": true },
+        { "text": "so much.", "gap": false }
+      ]
+    },
+    {
+      "start": 2,
+      "end": 10,
+      "parts": [
+        { "text": "I", "gap": false },
+        { "text": "needed some", "gap": true },
+        { "text": "money.", "gap": false }
+      ]
+    },
+    {
+      "start": 10,
+      "end": 15,
+      "parts": [
+        { "text": "...memorize this math test and", "gap": false },
+        { "text": "sell it", "gap": true }
+      ]
+    },
+    {
+      "start": 15,
+      "end": 25,
+      "parts": [
+        { "text": "I got kicked", "gap": false },
+        { "text": "out of", "gap": true },
+        { "text": "school", "gap": false }
+      ]
+    },
+    {
+      "start": 25,
+      "end": 33,
+      "parts": [
+        { "text": "I have been wishing for a way back", "gap": false },
+        { "text": "ever since", "gap": true }
+      ]
+    },
+    {
+      "start": 33,
+      "end": 44,
+      "parts": [
+        { "text": "long", "gap": false },
+        { "text": "hours,", "gap": true },
+        { "text": "high pressure", "gap": false }
+      ]
+    },
+    {
+      "start": 44,
+      "end": 54,
+      "parts": [
+        { "text": "...and become the best lawyer", "gap": false },
+        { "text": "you have ever seen", "gap": true }
+      ]
+    },
+    {
+      "start": 54,
+      "end": 70,
+      "parts": [
+        { "text": "I'm emailing the", "gap": false },
+        { "text": "firm", "gap": true },
+        { "text": "I", "gap": false },
+        { "text": "just", "gap": true },
+        { "text": "found our next associate.", "gap": false }
+      ]
+    },
+    {
+      "start": 70,
+      "end": 83,
+      "parts": [
+        { "text": "Stop smoking now,", "gap": true },
+        { "text": "you'll be fine.", "gap": false }
+      ]
+    },
+    {
+      "start": 83,
+      "end": 91,
+      "parts": [
+        { "text": "It's not", "gap": false },
+        { "text": "all I do,", "gap": true },
+        { "text": "I have interests.", "gap": false }
+      ]
+    },
+    {
+      "start": 91,
+      "end": 96,
+      "parts": [
+        { "text": "That's", "gap": false },
+        { "text": "another thing", "gap": true }
+      ]
+    },
+    {
+      "start": 96,
+      "end": 105,
+      "parts": [
+        { "text": "Did you buy", "gap": true },
+        { "text": "that suit?", "gap": false }
+      ]
+    }
+  ]
+}
