@@ -1,18 +1,15 @@
 {
   "moduleId": "module_19",
   "lessonId": "module_19__shadowing",
-
   "player": {
     "type": "youtube",
     "videoId": "C5Cq-qH1zS4"
   },
-
   "phrases": [
     { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
     { "en": "shut up about", "pl": "przestać gadać o" },
     { "en": "as they are", "pl": "tak jak są" }
   ],
-
   "dictionary": {
     "discuss": "dyskutować",
     "dear": "drogi",
@@ -22,22 +19,21 @@
     "happy": "szczęśliwy",
     "blessing": "błogosławieństwo"
   },
-
   "segments": [
-    { "start": 0.0,  "end": 4.3,  "text": "Do you think you'll enjoy village life?" },
-    { "start": 4.3,  "end": 9.0,  "text": "It will be very quiet after life in the city, even Manchester." },
-    { "start": 9.0,  "end": 11.3, "text": "I'm sure I'll find something to keep me busy." },
+    { "start": 0.0, "end": 4.3, "text": "Do you think you'll enjoy village life?" },
+    { "start": 4.3, "end": 9.0, "text": "It will be very quiet after life in the city, even Manchester." },
+    { "start": 9.0, "end": 11.3, "text": "I'm sure I'll find something to keep me busy." },
     { "start": 11.3, "end": 14.0, "text": "You might like the hospital." },
     { "start": 14.0, "end": 17.0, "text": "What sort of hospital is it? How many beds?" },
     { "start": 17.0, "end": 19.3, "text": "Well, it's barely a hospital." },
-    { "start": 19.3, "end": 23.8, "text": "Don't let Dr. Clarkson hear you—he thinks it's second only to St. Thomas's." },
+    { "start": 19.3, "end": 23.8, "text": "Don't let Dr. Clarkson hear you-he thinks it's second only to St. Thomas's." },
     { "start": 23.8, "end": 27.0, "text": "It's a cottage hospital, of course, but quite well equipped." },
     { "start": 27.0, "end": 29.0, "text": "Who pays for it?" },
-    { "start": 29.0, "end": 31.0, "text": "Oh, good let’s talk about money." },
+    { "start": 29.0, "end": 31.0, "text": "Oh, good let's talk about money." },
     { "start": 31.0, "end": 34.7, "text": "My father gave the building and an endowment to run it." },
     { "start": 34.7, "end": 38.0, "text": "In a way, he set up his own memorial." },
     { "start": 38.0, "end": 42.3, "text": "But how splendid! And Mr. Lloyd George's new insurance measures will help." },
-    { "start": 42.3, "end": 46.3, "text": "Please don't speak that man's name—we are about to eat." },
+    { "start": 42.3, "end": 46.3, "text": "Please don't speak that man's name-we are about to eat." },
     { "start": 46.3, "end": 50.0, "text": "I will hold it steady, and you can help yourself." },
     { "start": 50.0, "end": 54.0, "text": "Yes, I know. Thank you." },
     { "start": 54.0, "end": 57.5, "text": "You'll soon get used to the way things are done here." },
@@ -45,7 +41,7 @@
     { "start": 61.9, "end": 65.0, "text": "What will you do with your time?" },
     { "start": 65.0, "end": 68.0, "text": "I've got a job in Ripon. I said I'd start tomorrow." },
     { "start": 68.0, "end": 71.5, "text": "A job? In a partnership" },
-    { "start": 71.5, "end": 73.5, "text": "You might have heard of it—Harl and Carter." },
+    { "start": 71.5, "end": 73.5, "text": "You might have heard of it-Harl and Carter." },
     { "start": 73.5, "end": 76.7, "text": "They need someone who understands industrial law, I'm glad to say" },
     { "start": 76.7, "end": 80.0, "text": "although I'm afraid most of it will be wills and conveyancing." },
     { "start": 80.0, "end": 83.0, "text": "You do know I mean to involve you in the running of the estate?" },
