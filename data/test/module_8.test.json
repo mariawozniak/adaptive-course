@@ -1,0 +1,206 @@
+{
+  "moduleId": "module_8",
+  "lessonId": "module_8__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Co oznacza wyrażenie „I heard”?",
+      "comment": "Forma czasu przeszłego od „hear”.",
+      "answers": [
+        { "text": "Słyszałam", "correct": true },
+        { "text": "Widziałam", "correct": false },
+        { "text": "Pomyślałam", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Jak przetłumaczyć „Settled down”?",
+      "comment": "Wyrażenie związane ze stabilizacją życiową.",
+      "answers": [
+        { "text": "Ustatkowany", "correct": true },
+        { "text": "Osiedlić się", "correct": false },
+        { "text": "Wyjechał", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Co znaczy „Found”?",
+      "comment": "Czas przeszły od „find”.",
+      "answers": [
+        { "text": "Znalazł", "correct": true },
+        { "text": "Przyszedł", "correct": false },
+        { "text": "Zbudował", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Jak przetłumaczyć „Dreams came true”?",
+      "comment": "Stałe wyrażenie.",
+      "answers": [
+        { "text": "Marzenia się spełniły", "correct": true },
+        { "text": "Marzenia zostały wymyślone", "correct": false },
+        { "text": "Marzenia zniknęły", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Co oznacza „Why are you so shy?”?",
+      "comment": "Pytanie o cechę charakteru.",
+      "answers": [
+        { "text": "Czemu jesteś taki nieśmiały?", "correct": true },
+        { "text": "Czemu jesteś taki zmęczony?", "correct": false },
+        { "text": "Czemu jesteś taki nerwowy?", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "„Hold back” znaczy:",
+      "comment": "Wyrażenie oznaczające powstrzymywanie się.",
+      "answers": [
+        { "text": "Powstrzymywać się", "correct": true },
+        { "text": "Ukrywać się", "correct": false },
+        { "text": "Zapomnieć o czymś", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Co znaczy „Out of the blue”?",
+      "comment": "Idiomu używa się przy czymś niespodziewanym.",
+      "answers": [
+        { "text": "Niespodziewanie", "correct": true },
+        { "text": "Z nieba", "correct": false },
+        { "text": "Z góry", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Jak przetłumaczyć „Uninvited”?",
+      "comment": "Brak zaproszenia.",
+      "answers": [
+        { "text": "Nieproszony", "correct": true },
+        { "text": "Zaproszony", "correct": false },
+        { "text": "Odwiedzony", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Co oznacza „I couldn't stay away”?",
+      "comment": "Wyrażenie niemożności powstrzymania się.",
+      "answers": [
+        { "text": "Nie mogłam trzymać się z daleka", "correct": true },
+        { "text": "Nie mogłam odejść", "correct": false },
+        { "text": "Nie mogłam zostać", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "„Remind” znaczy:",
+      "comment": "Czasownik.",
+      "answers": [
+        { "text": "Przypomnieć", "correct": true },
+        { "text": "Zapomnieć", "correct": false },
+        { "text": "Ominąć", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Uzupełnij zdanie: „I heard that your dreams ____ true.”",
+      "comment": "Czas przeszły.",
+      "answers": [
+        { "text": "came", "correct": true },
+        { "text": "come", "correct": false },
+        { "text": "went", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Co oznacza „Guess she gave you things, I didn’t give to you”?",
+      "comment": "Wyrażenie przypuszczenia.",
+      "answers": [
+        { "text": "Chyba dała ci rzeczy, których ja ci nie dałam", "correct": true },
+        { "text": "Chyba dała ci to samo, co ja", "correct": false },
+        { "text": "Chyba dostałeś rzeczy ode mnie", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "„Hide from the light” oznacza:",
+      "comment": "Dosłowne znaczenie.",
+      "answers": [
+        { "text": "Ukrywać się przed światłem", "correct": true },
+        { "text": "Patrzeć w światło", "correct": false },
+        { "text": "Zgasnąć w świetle", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Uzupełnij zdanie: „I couldn’t ______ it.”",
+      "comment": "Wyrażenie niemożności powstrzymania się.",
+      "answers": [
+        { "text": "fight", "correct": true },
+        { "text": "hold", "correct": false },
+        { "text": "stop", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Co oznacza „I had hoped you’d see my face”?",
+      "comment": "Wyrażenie nadziei w przeszłości.",
+      "answers": [
+        { "text": "Miałam nadzieję, że zobaczysz moją twarz", "correct": true },
+        { "text": "Myślałam, że zapomniałeś moją twarz", "correct": false },
+        { "text": "Chciałam, żebyś ukrył moją twarz", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Jak najlepiej przetłumaczyć „for me, it isn’t over”?",
+      "comment": "Podkreślenie osobistej perspektywy.",
+      "answers": [
+        { "text": "Dla mnie to się jeszcze nie skończyło", "correct": true },
+        { "text": "Dla mnie to się nigdy nie zaczęło", "correct": false },
+        { "text": "Dla mnie to jest trudne do zapomnienia", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Uzupełnij zdanie: „I’ll find ______ like you.”",
+      "comment": "Zaimek nieokreślony.",
+      "answers": [
+        { "text": "someone", "correct": true },
+        { "text": "anyone", "correct": false },
+        { "text": "nobody", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Co oznacza wyrażenie „I wish nothing but the best for you”?",
+      "comment": "Życzenie dobra.",
+      "answers": [
+        { "text": "Życzę ci tylko wszystkiego najlepszego", "correct": true },
+        { "text": "Mam nadzieję, że ci się nie uda", "correct": false },
+        { "text": "Chciałabym zapomnieć o tobie", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "„Don’t forget me, I beg” oznacza:",
+      "comment": "Prośba wyrażona emocjonalnie.",
+      "answers": [
+        { "text": "Nie zapomnij o mnie, błagam", "correct": true },
+        { "text": "Zapomnij o mnie, proszę", "correct": false },
+        { "text": "Nie proś mnie o pamięć", "correct": false }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Uzupełnij zdanie: „Sometimes it lasts in love, but sometimes it ______ instead.”",
+      "comment": "Czasownik opisujący ból.",
+      "answers": [
+        { "text": "hurts", "correct": true },
+        { "text": "breaks", "correct": false },
+        { "text": "ends", "correct": false }
+      ]
+    }
+  ]
+}
