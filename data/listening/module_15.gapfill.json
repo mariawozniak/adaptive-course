@@ -1,0 +1,141 @@
+{
+  "videoId": "-mfpZOwxLN0",
+  "segments": [
+    {
+      "start": 0,
+      "end": 4,
+      "parts": [
+        { "text": "I thought this was a", "gap": false },
+        { "text": "hearing on", "gap": true },
+        { "text": "their motion to dismiss.", "gap": false }
+      ]
+    },
+    {
+      "start": 4,
+      "end": 8,
+      "parts": [
+        { "text": "Well, if you expedite our trial, that", "gap": false },
+        { "text": "takes care of", "gap": true },
+        { "text": "their motion to dismiss.", "gap": false }
+      ]
+    },
+    {
+      "start": 8,
+      "end": 15,
+      "parts": [
+        {
+          "text": "You're using the timing of our client's contract expiration to try to",
+          "gap": false
+        },
+        { "text": "shake us down.", "gap": true }
+      ]
+    },
+    {
+      "start": 15,
+      "end": 24,
+      "parts": [
+        { "text": "let alone", "gap": true },
+        { "text": "you care about these people at all", "gap": false }
+      ]
+    },
+    {
+      "start": 24,
+      "end": 33,
+      "parts": [
+        { "text": "He thought it was nothing, but his wife", "gap": false },
+        { "text": "insisted", "gap": true },
+        { "text": "he go to the hospital.", "gap": false }
+      ]
+    },
+    {
+      "start": 33,
+      "end": 47,
+      "parts": [
+        { "text": "Mr. Powell went home, crawled into bed, and", "gap": false },
+        { "text": "one day later", "gap": true },
+        { "text": ", he was dead.", "gap": false }
+      ]
+    },
+    {
+      "start": 47,
+      "end": 57,
+      "parts": [
+        { "text": "Pick a page", "gap": false },
+        { "text": "at random", "gap": true },
+        { "text": ", tell me the number,", "gap": false }
+      ]
+    },
+    {
+      "start": 57,
+      "end": 62,
+      "parts": [
+        { "text": "Your Honor, are you actually", "gap": false },
+        { "text": "buying that", "gap": true },
+        { "text": "?", "gap": false }
+      ]
+    },
+    {
+      "start": 62,
+      "end": 77,
+      "parts": [
+        { "text": "He", "gap": false },
+        { "text": "thought", "gap": true },
+        { "text": "it was stress.", "gap": false }
+      ]
+    },
+    {
+      "start": 77,
+      "end": 85,
+      "parts": [
+        { "text": "they didn’t", "gap": false },
+        { "text": "find out", "gap": true },
+        {
+          "text": "until it was too late, because their client refused to pay for the MRI.",
+          "gap": false
+        }
+      ]
+    },
+    {
+      "start": 85,
+      "end": 91,
+      "parts": [
+        { "text": "So please, rule against us", "gap": false },
+        { "text": "if you have to", "gap": true },
+        { "text": ", but don’t tell me we don’t care.", "gap": false }
+      ]
+    },
+    {
+      "start": 91,
+      "end": 97,
+      "parts": [
+        { "text": "Motion for expedited trial", "gap": false },
+        { "text": "granted", "gap": true },
+        { "text": ". Jury selection starts Monday.", "gap": false }
+      ]
+    },
+    {
+      "start": 97,
+      "end": 108,
+      "parts": [
+        { "text": "I was also doing something for the one person", "gap": false },
+        { "text": "who has the right", "gap": true },
+        {
+          "text": "to treat me like his associate but treats me like his partner",
+          "gap": false
+        }
+      ]
+    },
+    {
+      "start": 108,
+      "end": 114,
+      "parts": [
+        { "text": "Well, if you can", "gap": false },
+        { "text": "forgive me", "gap": true },
+        {
+          "text": ", what do you say I take my partner out to lunch?",
+          "gap": false
+        }
+      ]
+    }
+  ]
+}
