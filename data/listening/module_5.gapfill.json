@@ -1,0 +1,157 @@
+{
+  "videoId": "3r2HG2fJVHA",
+  "segments": [
+    {
+      "start": 0,
+      "end": 11,
+      "parts": [
+        { "text": "I've had to", "gap": false },
+        { "text": "cut down on", "gap": true },
+        { "text": "some luxuries", "gap": false }
+      ]
+    },
+    {
+      "start": 11,
+      "end": 28,
+      "parts": [
+        { "text": "I'd have to", "gap": false },
+        { "text": "wait on", "gap": true },
+        { "text": "all my friends.", "gap": false }
+      ]
+    },
+    {
+      "start": 28,
+      "end": 43,
+      "parts": [
+        { "text": "Could I", "gap": false },
+        { "text": "use", "gap": true },
+        { "text": "the phone?", "gap": false }
+      ]
+    },
+    {
+      "start": 43,
+      "end": 52,
+      "parts": [
+        { "text": "Yeah, that Chandler", "gap": false },
+        { "text": "cracks", "gap": true },
+        { "text": "me up.", "gap": false }
+      ]
+    },
+    {
+      "start": 52,
+      "end": 71,
+      "parts": [
+        { "text": "You guys need anything? 'Cause I'm", "gap": false },
+        { "text": "heading up", "gap": true },
+        { "text": "there.", "gap": false }
+      ]
+    },
+    {
+      "start": 71,
+      "end": 79,
+      "parts": [
+        { "text": "Just being", "gap": false },
+        { "text": "friendly", "gap": true }
+      ]
+    },
+    {
+      "start": 79,
+      "end": 88,
+      "parts": [
+        { "text": "Don't", "gap": false },
+        { "text": "wink at", "gap": true },
+        { "text": "me.", "gap": false }
+      ]
+    },
+    {
+      "start": 88,
+      "end": 98,
+      "parts": [
+        { "text": "I don't see you asking any other", "gap": false },
+        { "text": "paying customers", "gap": true },
+        { "text": "to put on aprons.", "gap": false }
+      ]
+    },
+    {
+      "start": 98,
+      "end": 116,
+      "parts": [
+        { "text": "It's", "gap": false },
+        { "text": "supposed to", "gap": true },
+        { "text": "go in the other direction.", "gap": false }
+      ]
+    },
+    {
+      "start": 116,
+      "end": 131,
+      "parts": [
+        { "text": "I just feel kind of", "gap": false },
+        { "text": "weird", "gap": true },
+        { "text": "serving you guys, you know?", "gap": false }
+      ]
+    },
+    {
+      "start": 131,
+      "end": 147,
+      "parts": [
+        { "text": "Seriously", "gap": true },
+        { "text": ", I asked you before. You still haven't gotten it.", "gap": false }
+      ]
+    },
+    {
+      "start": 147,
+      "end": 168,
+      "parts": [
+        { "text": "Finally, I have someone I can pass on my", "gap": false },
+        { "text": "wisdom", "gap": true },
+        { "text": "to.", "gap": false }
+      ]
+    },
+    {
+      "start": 168,
+      "end": 175,
+      "parts": [
+        { "text": "First of all, the", "gap": false },
+        { "text": "customer", "gap": true },
+        { "text": "is always right.", "gap": false }
+      ]
+    },
+    {
+      "start": 175,
+      "end": 183,
+      "parts": [
+        { "text": "And if anyone is ever", "gap": false },
+        { "text": "rude to", "gap": true },
+        { "text": "you, sneeze muffin.", "gap": false }
+      ]
+    },
+    {
+      "start": 183,
+      "end": 191,
+      "parts": [
+        { "text": "You guys are just", "gap": false },
+        { "text": "terrific", "gap": true },
+        { "text": ", you know?", "gap": false }
+      ]
+    },
+    {
+      "start": 191,
+      "end": 197,
+      "parts": [
+        { "text": "It's all about", "gap": false },
+        { "text": "turnover", "gap": true }
+      ]
+    },
+    {
+      "start": 197,
+      "end": 208,
+      "parts": [
+        { "text": "And", "gap": false },
+        { "text": "since", "gap": true },
+        { "text": "I made you wait, I'll", "gap": false },
+        { "text": "toss in", "gap": true },
+        { "text": "a free muffin.", "gap": false }
+      ]
+    }
+  ]
+}
