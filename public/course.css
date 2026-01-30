@@ -841,3 +841,52 @@ body.install-modal-open {
   from { transform: scale(.95); opacity: 0; }
   to   { transform: scale(1); opacity: 1; }
 }
+
+/* === MODULE HUB – MINIMAL === */
+
+.modules-hub {
+  padding: 24px;
+}
+
+.modules-carousel {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+}
+
+.module-tile {
+  min-width: 260px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+}
+
+.module-tile.active {
+  outline: 3px solid #e67e22;
+}
+
+.module-tile-cover {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.module-tile-activity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.module-tile-activity .check {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+}
+
+.module-tile-activity .check.done {
+  background: #27ae60;
+}
+
