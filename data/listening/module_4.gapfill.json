@@ -1,0 +1,111 @@
+{
+  "videoId": "vUI8Oftasg8",
+  "segments": [
+    {
+      "start": 0,
+      "end": 5,
+      "parts": [
+        { "text": "We", "gap": false },
+        { "text": "are still kids", "gap": true },
+        { "text": "but we're so in love", "gap": false }
+      ]
+    },
+    {
+      "start": 4,
+      "end": 9,
+      "parts": [
+        { "text": "fighting", "gap": false },
+        { "text": "against all", "gap": true },
+        { "text": "odds", "gap": false }
+      ]
+    },
+    {
+      "start": 8,
+      "end": 13,
+      "parts": [
+        { "text": "I", "gap": false },
+        { "text": "know", "gap": true },
+        { "text": "we'll", "gap": false },
+        { "text": "be", "gap": true },
+        { "text": "alright", "gap": false }
+      ]
+    },
+    {
+      "start": 12,
+      "end": 21,
+      "parts": [
+        { "text": "darling", "gap": true },
+        { "text": "just", "gap": false },
+        { "text": "hold", "gap": true },
+        { "text": "my hand", "gap": false }
+      ]
+    },
+    {
+      "start": 21,
+      "end": 30,
+      "parts": [
+        { "text": "I see my", "gap": false },
+        { "text": "future in your", "gap": true },
+        { "text": "eyes", "gap": false }
+      ]
+    },
+    {
+      "start": 30,
+      "end": 37,
+      "parts": [
+        { "text": "I'm dancing", "gap": false },
+        { "text": "in the dark", "gap": true }
+      ]
+    },
+    {
+      "start": 37,
+      "end": 41,
+      "parts": [
+        { "text": "with you", "gap": false },
+        { "text": "between", "gap": true },
+        { "text": "my arms", "gap": false }
+      ]
+    },
+    {
+      "start": 41,
+      "end": 45,
+      "parts": [
+        { "text": "Barefoot on the", "gap": false },
+        { "text": "grass", "gap": true }
+      ]
+    },
+    {
+      "start": 45,
+      "end": 49,
+      "parts": [
+        { "text": "listening to our", "gap": false },
+        { "text": "favourite song", "gap": true }
+      ]
+    },
+    {
+      "start": 49,
+      "end": 52,
+      "parts": [
+        { "text": "When I saw you", "gap": false },
+        { "text": "in that dress", "gap": true }
+      ]
+    },
+    {
+      "start": 52,
+      "end": 59,
+      "parts": [
+        { "text": "I don't", "gap": false },
+        { "text": "deserve this", "gap": true }
+      ]
+    },
+    {
+      "start": 59,
+      "end": 64,
+      "parts": [
+        { "text": "darling, you", "gap": false },
+        { "text": "look perfect", "gap": true },
+        { "text": "tonight", "gap": false }
+      ]
+    }
+  ]
+}
