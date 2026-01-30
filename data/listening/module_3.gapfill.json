@@ -1,0 +1,199 @@
+{
+  "videoId": "r3c8QLEUNAk",
+  "segments": [
+    {
+      "start": 0,
+      "end": 8,
+      "parts": [
+        { "text": "May I have", "gap": true },
+        { "text": "the last name of the reservation, please?", "gap": false }
+      ]
+    },
+    {
+      "start": 8,
+      "end": 18,
+      "parts": [
+        { "text": "Can you spell that", "gap": false },
+        { "text": "for me?", "gap": true }
+      ]
+    },
+    {
+      "start": 18,
+      "end": 25,
+      "parts": [
+        { "text": "I see your room and incidentals", "gap": false },
+        { "text": "have been", "gap": true },
+        { "text": "taken care", "gap": false },
+        { "text": "of.", "gap": true }
+      ]
+    },
+    {
+      "start": 25,
+      "end": 31,
+      "parts": [
+        { "text": "I would", "gap": false },
+        { "text": "love to tell you", "gap": true },
+        { "text": "about some of our amenities", "gap": false }
+      ]
+    },
+    {
+      "start": 31,
+      "end": 39,
+      "parts": [
+        { "text": "I just want to", "gap": false },
+        { "text": "get into", "gap": true },
+        { "text": "my room and relax.", "gap": false }
+      ]
+    },
+    {
+      "start": 39,
+      "end": 51,
+      "parts": [
+        { "text": "Just", "gap": false },
+        { "text": "give", "gap": true },
+        { "text": "me a moment", "gap": false },
+        { "text": "while", "gap": true },
+        { "text": "I pull up your room.", "gap": false }
+      ]
+    },
+    {
+      "start": 51,
+      "end": 55,
+      "parts": [
+        { "text": "Could you", "gap": false },
+        { "text": "get us", "gap": true },
+        { "text": "some towels to the room's 904?", "gap": false }
+      ]
+    },
+    {
+      "start": 55,
+      "end": 67,
+      "parts": [
+        { "text": "All the", "gap": false },
+        { "text": "time", "gap": true }
+      ]
+    },
+    {
+      "start": 67,
+      "end": 80,
+      "parts": [
+        { "text": "such", "gap": false },
+        { "text": "as", "gap": true },
+        { "text": "the Stargazer Lounge.", "gap": false }
+      ]
+    },
+    {
+      "start": 80,
+      "end": 98,
+      "parts": [
+        { "text": "Your reservation", "gap": false },
+        { "text": "comes with", "gap": true },
+        { "text": "a complimentary spa service.", "gap": false }
+      ]
+    },
+    {
+      "start": 98,
+      "end": 104,
+      "parts": [
+        { "text": "That actually", "gap": false },
+        { "text": "does", "gap": true },
+        { "text": "sound nice.", "gap": false }
+      ]
+    },
+    {
+      "start": 104,
+      "end": 115,
+      "parts": [
+        { "text": "Hot", "gap": true },
+        { "text": "stone massage tomorrow", "gap": false },
+        { "text": "with", "gap": true },
+        { "text": "Carly at 5:15 a.m.", "gap": false }
+      ]
+    },
+    {
+      "start": 115,
+      "end": 122,
+      "parts": [
+        { "text": "My apologies, but cancellations", "gap": false },
+        { "text": "must be made", "gap": true },
+        { "text": "24 hours in advance.", "gap": false }
+      ]
+    },
+    {
+      "start": 122,
+      "end": 134,
+      "parts": [
+        { "text": "Can", "gap": false },
+        { "text": "I offer you", "gap": true },
+        { "text": "a complimentary glass of champagne?", "gap": false }
+      ]
+    },
+    {
+      "start": 134,
+      "end": 143,
+      "parts": [
+        { "text": "I'm", "gap": false },
+        { "text": "not going", "gap": true },
+        { "text": "there, man.", "gap": false }
+      ]
+    },
+    {
+      "start": 143,
+      "end": 152,
+      "parts": [
+        { "text": "They", "gap": false },
+        { "text": "were", "gap": true },
+        { "text": "featured in Latitudes magazine.", "gap": false }
+      ]
+    },
+    {
+      "start": 152,
+      "end": 181,
+      "parts": [
+        { "text": "The escalator here will", "gap": false },
+        { "text": "bring you", "gap": true },
+        { "text": "to the mezzanine", "gap": false },
+        { "text": "where", "gap": true },
+        { "text": "you will find the Stargazer Lounge.", "gap": false }
+      ]
+    },
+    {
+      "start": 181,
+      "end": 192,
+      "parts": [
+        { "text": "The lobby elevator, which is", "gap": false },
+        { "text": "right here", "gap": true },
+        { "text": "will take you to your room as", "gap": false },
+        { "text": "well", "gap": true },
+        { "text": "as the bar entrance to the Stargazer Lounge.", "gap": false }
+      ]
+    },
+    {
+      "start": 192,
+      "end": 210,
+      "parts": [
+        { "text": "Check-in starts", "gap": false },
+        { "text": "in", "gap": true },
+        { "text": "four hours.", "gap": false }
+      ]
+    },
+    {
+      "start": 210,
+      "end": 213,
+      "parts": [
+        { "text": "What am I supposed", "gap": false },
+        { "text": "to do", "gap": true },
+        { "text": "for four hours?", "gap": false }
+      ]
+    },
+    {
+      "start": 213,
+      "end": 220,
+      "parts": [
+        { "text": "And", "gap": false },
+        { "text": "listen to", "gap": true },
+        { "text": "the Danny Band. Can't wait.", "gap": false }
+      ]
+    }
+  ]
+}
