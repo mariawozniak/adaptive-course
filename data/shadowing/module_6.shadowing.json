@@ -1,0 +1,40 @@
+{
+  "moduleId": "module_1",
+  "lessonId": "module_1__shadowing",
+
+  "player": {
+    "type": "youtube",
+    "videoId": "mBsG5ag6DWM"
+  },
+
+  "phrases": [
+    { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
+    { "en": "shut up about", "pl": "przestać gadać o" },
+    { "en": "as they are", "pl": "tak jak są" }
+  ],
+
+  "dictionary": {
+    "discuss": "dyskutować",
+    "dear": "drogi",
+    "papa": "tata",
+    "married": "żonaty/zamężna",
+    "king": "król",
+    "happy": "szczęśliwy",
+    "blessing": "błogosławieństwo"
+  },
+
+  "segments": [
+    { "start": 0.0, "end": 16.0, "text": "Hey. Wanna dance?" },
+    { "start": 16.0, "end": 20.0, "text": "Come on. Let’s go" },
+    { "start": 20, "end": 30.0, "text": "Here." },
+    { "start": 30.0, "end": 34.0, "text": "Closer" },
+    { "start": 34.0, "end": 36.0, "text": "A little closer" },
+    { "start": 36.0, "end": 46.0, "text": "Now, feel the music, rhythm, start to move to it." },
+    { "start": 46.0, "end": 56.0, "text": "You know, out of all my brother’s friends you’re my favourite." },
+    { "start": 56.0, "end": 58.0, "text": "You’ve always been my favourite." },
+    { "start": 58.0, "end": 69.0, "text": "Girls at this age are dumb." },
+    { "start": 69.0, "end": 73.0, "text": "Give them a few years. They’ll wise up." },
+    { "start": 73.0, "end": 76.0, "text": " You’re gonna drive them nuts." },
+    { "start": 76.0, "end": 79.0, "text": "You think so? Oh, I know so." }
+  ]
+}
