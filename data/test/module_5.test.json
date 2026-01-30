@@ -1,0 +1,206 @@
+{
+  "moduleId": "module_5",
+  "lessonId": "module_5__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Jak przetłumaczyć „I can't pay for this right now”?",
+      "comment": "Chodzi o brak możliwości zapłaty w tej chwili.",
+      "answers": [
+        { "text": "Nie mogę teraz za to zapłacić.", "correct": true },
+        { "text": "Nie mogę teraz tego kupić.", "correct": false },
+        { "text": "Nie chcę teraz za to płacić.", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Co oznacza „cut down on some luxuries”?",
+      "comment": "Wyrażenie oznacza ograniczenie wydatków na luksusy.",
+      "answers": [
+        { "text": "Ograniczyć pewne luksusy.", "correct": true },
+        { "text": "Zrezygnować z wszystkich wygód.", "correct": false },
+        { "text": "Przestać kupować niepotrzebne rzeczy.", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "„Stare at” to:",
+      "comment": "Oznacza intensywne patrzenie.",
+      "answers": [
+        { "text": "Gapić się na.", "correct": true },
+        { "text": "Mrugać do kogoś.", "correct": false },
+        { "text": "Patrzeć ukradkiem.", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "„As much as you want” oznacza:",
+      "comment": "Chodzi o brak ograniczeń ilościowych.",
+      "answers": [
+        { "text": "Ile tylko chcesz.", "correct": true },
+        { "text": "Na tyle, na ile cię stać.", "correct": false },
+        { "text": "W ograniczonej ilości.", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Co oznacza „Flexible hours”?",
+      "comment": "Dotyczy czasu pracy.",
+      "answers": [
+        { "text": "Elastyczne godziny pracy.", "correct": true },
+        { "text": "Krótszy czas pracy.", "correct": false },
+        { "text": "Sztywne godziny pracy.", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "„Check this out” to:",
+      "comment": "Zachęta do spojrzenia na coś.",
+      "answers": [
+        { "text": "Zobacz to / spójrz na to.", "correct": true },
+        { "text": "Sprawdź cenę.", "correct": false },
+        { "text": "Skasuj to.", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "„Crack me up” oznacza:",
+      "comment": "Potoczne określenie na coś bardzo zabawnego.",
+      "answers": [
+        { "text": "Rozśmiesza mnie.", "correct": true },
+        { "text": "Wkurza mnie.", "correct": false },
+        { "text": "Szokuje mnie.", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Co oznacza „I don't think you're supposed to go there”?",
+      "comment": "Wyrażenie sugestii, że coś nie jest dozwolone.",
+      "answers": [
+        { "text": "Nie sądzę, żebyś powinien tam iść.", "correct": true },
+        { "text": "Myślę, że powinieneś tam iść.", "correct": false },
+        { "text": "Wiem, że możesz tam iść.", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "„Wink at” oznacza:",
+      "comment": "Gest wykonywany okiem.",
+      "answers": [
+        { "text": "Puszczać oczko do.", "correct": true },
+        { "text": "Śmiać się z kogoś.", "correct": false },
+        { "text": "Patrzeć uważnie.", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "„Paying customer” oznacza:",
+      "comment": "Klient, który płaci za usługę lub produkt.",
+      "answers": [
+        { "text": "Płacącego klienta.", "correct": true },
+        { "text": "Stałego klienta.", "correct": false },
+        { "text": "Niezadowolonego klienta.", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Uzupełnij zdanie: „It's kind of ______.”",
+      "comment": "Chodzi o uczucie skrępowania.",
+      "answers": [
+        { "text": "embarrassing", "correct": true },
+        { "text": "exciting", "correct": false },
+        { "text": "relaxing", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Uzupełnij zdanie: „The job's ______, and the money's good.”",
+      "comment": "Opis pozytywnych warunków pracy.",
+      "answers": [
+        { "text": "easy", "correct": true },
+        { "text": "hard", "correct": false },
+        { "text": "boring", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Uzupełnij zdanie: „The customer is always ______.”",
+      "comment": "Popularne powiedzenie.",
+      "answers": [
+        { "text": "right", "correct": true },
+        { "text": "happy", "correct": false },
+        { "text": "first", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "„Toss in a free muffin” oznacza:",
+      "comment": "Dodanie czegoś gratis.",
+      "answers": [
+        { "text": "Dorzucić darmową muffinkę", "correct": true },
+        { "text": "Upiec muffinkę", "correct": false },
+        { "text": "Odmówić muffinki", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "„Apron” to po angielsku:",
+      "comment": "Element odzieży ochronnej.",
+      "answers": [
+        { "text": "Fartuch", "correct": true },
+        { "text": "Koc", "correct": false },
+        { "text": "Szalik", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Uzupełnij zdanie: „I just feel kind of ______ serving you guys.”",
+      "comment": "Chodzi o dziwne odczucie.",
+      "answers": [
+        { "text": "weird", "correct": true },
+        { "text": "proud", "correct": false },
+        { "text": "calm", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "„Clear out of here” oznacza:",
+      "comment": "Potoczne polecenie opuszczenia miejsca.",
+      "answers": [
+        { "text": "Wynieść się stąd", "correct": true },
+        { "text": "Posprzątać stolik", "correct": false },
+        { "text": "Zgłosić reklamację", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Uzupełnij zdanie: „This is great — finally, I have someone I can pass on my ______ to.”",
+      "comment": "Chodzi o przekazywanie doświadczenia.",
+      "answers": [
+        { "text": "wisdom", "correct": true },
+        { "text": "smart", "correct": false },
+        { "text": "mistake", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "„Hang out here” oznacza:",
+      "comment": "Spędzanie czasu w danym miejscu.",
+      "answers": [
+        { "text": "Spędzać tu czas", "correct": true },
+        { "text": "Naprawiać coś", "correct": false },
+        { "text": "Spać w kawiarni", "correct": false }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Uzupełnij zdanie: „Hey, look… you guys are just ______.”",
+      "comment": "Komplement.",
+      "answers": [
+        { "text": "terrific", "correct": true },
+        { "text": "strange", "correct": false },
+        { "text": "annoying", "correct": false }
+      ]
+    }
+  ]
+}
