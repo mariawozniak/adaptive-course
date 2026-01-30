@@ -142,7 +142,7 @@ export const modules = [
   id: "module_2__vocabulary__app",
   label: "Aplikacja do słówek",
   type: "iframe",
-  src: "/vocabulary/index.html",
+  src: "/vocabulary/index.html?module=module_2",
   lessonId: "module_2__vocabulary__app",
   completion: "auto"
 
