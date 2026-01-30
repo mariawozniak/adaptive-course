@@ -1,0 +1,64 @@
+{
+  "videoId": "mBsG5ag6DWM",
+  "segments": [
+    {
+      "type": "correct-word",
+      "start": 0,
+      "end": 17,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["dance", "?"],
+      "wrong": "Wonna",
+      "correct": "Wanna"
+    },
+    {
+      "type": "order",
+      "start": 17,
+      "end": 46,
+      "instruction": "Ułóż słowa w odpowiedniej kolejności.",
+      "words": ["start", "to", "move", "to", "it"],
+      "correct": ["start", "to", "move", "to", "it"]
+    },
+    {
+      "type": "extra-word",
+      "start": 46,
+      "end": 56,
+      "instruction": "Które słowo nie padło?",
+      "sentence": ["Out", "of", "all", "my", "brother's", "friends", "you're", "my", "favourite."],
+      "extra": "of"
+    },
+    {
+      "type": "correct-word",
+      "start": 56,
+      "end": 59,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["You've", "always", "be", "my", "favourite."],
+      "wrong": "be",
+      "correct": "been"
+    },
+    {
+      "type": "order",
+      "start": 59,
+      "end": 69,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["Girls", "at", "this", "age", "are", "dumb."],
+      "correct": ["Girls", "at", "this", "age", "are", "dumb."]
+    },
+    {
+      "type": "correct-word",
+      "start": 69,
+      "end": 75,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["Give", "them", "a", "few", "years.", "They", "all", "wise", "out"],
+      "wrong": "out",
+      "correct": "up"
+    },
+    {
+      "type": "gapfill",
+      "start": 75,
+      "end": 78,
+      "instruction": "Uzupełnij.",
+      "sentence": ["You're", "gonna", "_____", "them", "nuts."],
+      "answers": ["drive"]
+    }
+  ]
+}
