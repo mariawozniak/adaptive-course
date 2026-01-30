@@ -1,0 +1,160 @@
+{
+  "videoId": "32MynUrjGyY",
+  "segments": [
+    {
+      "start": 0,
+      "end": 5,
+      "parts": [
+        { "text": "I just caught a", "gap": false },
+        { "text": "glimpse", "gap": true },
+        { "text": "of our pilot", "gap": false }
+      ]
+    },
+    {
+      "start": 5,
+      "end": 13,
+      "parts": [
+        { "text": "You're", "gap": false },
+        { "text": "testing the limits", "gap": true },
+        { "text": "of my feminism.", "gap": false }
+      ]
+    },
+    {
+      "start": 13,
+      "end": 19,
+      "parts": [
+        { "text": "I am perfectly fine putting my life", "gap": false },
+        { "text": "in the hands", "gap": true },
+        { "text": "of a female pilot.", "gap": false }
+      ]
+    },
+    {
+      "start": 19,
+      "end": 28,
+      "parts": [
+        { "text": "Flight attendants,", "gap": false },
+        { "text": "prepare for", "gap": true },
+        { "text": "takeoff.", "gap": false }
+      ]
+    },
+    {
+      "start": 28,
+      "end": 33,
+      "parts": [
+        { "text": "What", "gap": false },
+        { "text": "does", "gap": true },
+        { "text": "quidato mean?", "gap": false }
+      ]
+    },
+    {
+      "start": 33,
+      "end": 51,
+      "parts": [
+        { "text": "Yeah,", "gap": false },
+        { "text": "that", "gap": true },
+        { "text": "stuff", "gap": false },
+        { "text": "is", "gap": true },
+        { "text": "good.", "gap": false }
+      ]
+    },
+    {
+      "start": 51,
+      "end": 55,
+      "parts": [
+        { "text": "We will need to", "gap": false },
+        { "text": "head back", "gap": true },
+        { "text": "to the gate", "gap": false }
+      ]
+    },
+    {
+      "start": 55,
+      "end": 60,
+      "parts": [
+        { "text": "gather", "gap": true },
+        { "text": "your things", "gap": false }
+      ]
+    },
+    {
+      "start": 60,
+      "end": 67,
+      "parts": [
+        { "text": "there is a", "gap": false },
+        { "text": "connecting", "gap": true },
+        { "text": "flight through Dallas that leaves", "gap": false },
+        { "text": "in", "gap": true },
+        { "text": "5 minutes", "gap": false }
+      ]
+    },
+    {
+      "start": 67,
+      "end": 73,
+      "parts": [
+        { "text": "Dallas", "gap": false },
+        { "text": "is just where", "gap": true },
+        { "text": "you make your connection.", "gap": false }
+      ]
+    },
+    {
+      "start": 73,
+      "end": 78,
+      "parts": [
+        { "text": "Sorry, I'm having a really", "gap": false },
+        { "text": "hard time", "gap": true },
+        { "text": "processing information right now.", "gap": false }
+      ]
+    },
+    {
+      "start": 78,
+      "end": 81,
+      "parts": [
+        { "text": "Just make your way", "gap": false },
+        { "text": "over", "gap": true },
+        { "text": "to gate 32.", "gap": false }
+      ]
+    },
+    {
+      "start": 81,
+      "end": 88,
+      "parts": [
+        { "text": "I'm sorry, there's been a horrible", "gap": false },
+        { "text": "mistake.", "gap": true }
+      ]
+    },
+    {
+      "start": 88,
+      "end": 99,
+      "parts": [
+        { "text": "You", "gap": false },
+        { "text": "need", "gap": true },
+        { "text": "to be", "gap": false },
+        { "text": "at", "gap": true },
+        { "text": "gate 32 in 4 minutes.", "gap": false }
+      ]
+    },
+    {
+      "start": 99,
+      "end": 107,
+      "parts": [
+        { "text": "No, gate 32. Write it", "gap": false },
+        { "text": "down.", "gap": true }
+      ]
+    },
+    {
+      "start": 107,
+      "end": 111,
+      "parts": [
+        { "text": "Isn't", "gap": false },
+        { "text": "that", "gap": true },
+        { "text": "obvious?", "gap": false }
+      ]
+    },
+    {
+      "start": 111,
+      "end": 113,
+      "parts": [
+        { "text": "Makes", "gap": true },
+        { "text": "sense.", "gap": false }
+      ]
+    }
+  ]
+}
