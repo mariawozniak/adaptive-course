@@ -1,0 +1,151 @@
+{
+  "videoId": "UYIIRveNuUY",
+  "segments": [
+    {
+      "start": 0,
+      "end": 5,
+      "parts": [
+        { "text": "I'm doing the", "gap": false },
+        { "text": "sensible", "gap": true },
+        { "text": "thing", "gap": false }
+      ]
+    },
+    {
+      "start": 5,
+      "end": 19,
+      "parts": [
+        { "text": "Those", "gap": true },
+        { "text": "are the rules.", "gap": false }
+      ]
+    },
+    {
+      "start": 19,
+      "end": 30,
+      "parts": [
+        {
+          "text": "the British monarchy would be a very decrepit experience",
+          "gap": false
+        },
+        { "text": "indeed", "gap": true }
+      ]
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "parts": [
+        { "text": "Charles is in the", "gap": false },
+        { "text": "prime of his life", "gap": true },
+        { "text": "now.", "gap": false }
+      ]
+    },
+    {
+      "start": 36,
+      "end": 47,
+      "parts": [
+        { "text": "...shall be devoted to your", "gap": false },
+        { "text": "service", "gap": true }
+      ]
+    },
+    {
+      "start": 47,
+      "end": 67,
+      "parts": [
+        { "text": "The crown is a", "gap": false },
+        { "text": "symbol of", "gap": true },
+        { "text": "permanence, of", "gap": false },
+        { "text": "stability,", "gap": true },
+        { "text": "of continuity", "gap": false }
+      ]
+    },
+    {
+      "start": 67,
+      "end": 76,
+      "parts": [
+        { "text": "You'll also be indicating the luxury of", "gap": false },
+        { "text": "choice", "gap": true }
+      ]
+    },
+    {
+      "start": 76,
+      "end": 84,
+      "parts": [
+        { "text": "So you would have a superannuated old lady", "gap": false },
+        { "text": "running the show", "gap": true }
+      ]
+    },
+    {
+      "start": 84,
+      "end": 99,
+      "parts": [
+        { "text": "I see you as liberated,", "gap": false },
+        { "text": "confident", "gap": true }
+      ]
+    },
+    {
+      "start": 99,
+      "end": 114,
+      "parts": [
+        { "text": "And admit it, you sometimes think there's a", "gap": false },
+        { "text": "difference between", "gap": true },
+        { "text": "you and the", "gap": false },
+        { "text": "rest", "gap": true },
+        { "text": "of the family.", "gap": false }
+      ]
+    },
+    {
+      "start": 114,
+      "end": 126,
+      "parts": [
+        { "text": "They all seem to make", "gap": false },
+        { "text": "such a mess", "gap": true },
+        { "text": "of it.", "gap": false }
+      ]
+    },
+    {
+      "start": 126,
+      "end": 133,
+      "parts": [
+        { "text": "You've thought it,", "gap": false },
+        { "text": "privately", "gap": true }
+      ]
+    },
+    {
+      "start": 133,
+      "end": 149,
+      "parts": [
+        { "text": "It's not", "gap": false },
+        { "text": "natural.", "gap": true },
+        { "text": "It's not fair. It's not kind.", "gap": false }
+      ]
+    },
+    {
+      "start": 149,
+      "end": 158,
+      "parts": [
+        { "text": "And more importantly, it", "gap": false },
+        { "text": "seems to", "gap": true },
+        { "text": "thrive", "gap": false },
+        { "text": "under", "gap": true },
+        { "text": "you.", "gap": false }
+      ]
+    },
+    {
+      "start": 158,
+      "end": 164,
+      "parts": [
+        { "text": "So shouldn't you stay", "gap": false },
+        { "text": "for every single day", "gap": true },
+        { "text": "that you can?", "gap": false }
+      ]
+    },
+    {
+      "start": 164,
+      "end": 172,
+      "parts": [
+        { "text": "But", "gap": false },
+        { "text": "what about", "gap": true },
+        { "text": "the life I put aside?", "gap": false }
+      ]
+    }
+  ]
+}
