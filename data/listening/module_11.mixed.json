@@ -1,0 +1,87 @@
+{
+  "videoId": "RYzDhsnmpjc",
+  "segments": [
+    {
+      "type": "order",
+      "start": 0,
+      "end": 10,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["I", "helped", "you", "with", "your", "case"],
+      "correct": ["I", "helped", "you", "with", "your", "case"]
+    },
+    {
+      "type": "correct-word",
+      "start": 10,
+      "end": 15,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["but", "eventually,", "you", "were", "going", "to", "have", "to", "forgive", "me."],
+      "wrong": "were",
+      "correct": "are"
+    },
+    {
+      "type": "extra-word",
+      "start": 15,
+      "end": 24,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["Or", "for", "telling", "to", "Rachel", "about", "your", "secret?"],
+      "extra": "to"
+    },
+    {
+      "type": "order",
+      "start": 24,
+      "end": 31,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["I", "was", "at", "my", "lowest", "point."],
+      "correct": ["I", "was", "at", "my", "lowest", "point."]
+    },
+    {
+      "type": "order",
+      "start": 31,
+      "end": 35,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["I", "hope", "you", "two", "are", "happy", "together."],
+      "correct": ["I", "hope", "you", "two", "are", "happy", "together."]
+    },
+    {
+      "type": "extra-word",
+      "start": 35,
+      "end": 39,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["Well,", "let", "to", "me", "tell", "you", "something"],
+      "extra": "to"
+    },
+    {
+      "type": "order",
+      "start": 39,
+      "end": 48,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": [
+        "I'm", "glad", "to", "hear", "that,", "because",
+        "I", "didn't", "give", "you", "to", "Louis",
+        "as", "punishment"
+      ],
+      "correct": [
+        "I'm", "glad", "to", "hear", "that,", "because",
+        "I", "didn't", "give", "you", "to", "Louis",
+        "as", "punishment"
+      ]
+    },
+    {
+      "type": "correct-word",
+      "start": 48,
+      "end": 54,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["Harvey,", "I", "regreted", "what", "I", "did"],
+      "wrong": "regreted",
+      "correct": "regret"
+    },
+    {
+      "type": "order",
+      "start": 54,
+      "end": 60,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["Maybe", "you", "didn’t", "hear", "me."],
+      "correct": ["Maybe", "you", "didn’t", "hear", "me."]
+    }
+  ]
+}
