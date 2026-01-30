@@ -1,0 +1,206 @@
+{
+  "moduleId": "module_17",
+  "lessonId": "module_17__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Jakie jest znaczenie wyrażenia „Sensible”?",
+      "comment": "Chodzi o cechę charakteru.",
+      "answers": [
+        { "text": "Rozsądny", "correct": true },
+        { "text": "Wrażliwy", "correct": false },
+        { "text": "Sensacyjny", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Co oznacza „Hand over to”?",
+      "comment": "Czasownik frazowy.",
+      "answers": [
+        { "text": "Przekazać (komuś)", "correct": true },
+        { "text": "Podnieść rękę", "correct": false },
+        { "text": "Podać komuś coś", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Co oznacza „Indeed”?",
+      "comment": "Przysłówek potwierdzający.",
+      "answers": [
+        { "text": "Rzeczywiście", "correct": true },
+        { "text": "Oczywiście", "correct": false },
+        { "text": "Przypadkowo", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "„The prime of his life” oznacza…",
+      "comment": "Wyrażenie idiomatyczne.",
+      "answers": [
+        { "text": "Szczyt jego życia", "correct": true },
+        { "text": "Koniec jego kariery", "correct": false },
+        { "text": "Jego największy błąd", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Jeśli ktoś jest „Devoted to”, to znaczy, że jest…",
+      "comment": "Opis zaangażowania.",
+      "answers": [
+        { "text": "Poświęcony sprawie", "correct": true },
+        { "text": "Odizolowany", "correct": false },
+        { "text": "Nieodpowiedzialny", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Co oznacza „make your way over to gate 32”?",
+      "comment": "Zwrot sytuacyjny (lotnisko).",
+      "answers": [
+        { "text": "Udać się w kierunku bramki 32", "correct": true },
+        { "text": "Symbol zmiany", "correct": false },
+        { "text": "Oznaka bogactwa", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "„Step down” oznacza…",
+      "comment": "Kontekst formalny.",
+      "answers": [
+        { "text": "Ustąpić (ze stanowiska)", "correct": true },
+        { "text": "Wstąpić na tron", "correct": false },
+        { "text": "Zrobić krok do przodu", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Co oznacza „Claim the crown”?",
+      "comment": "Znaczenie formalne.",
+      "answers": [
+        { "text": "Rościć sobie prawo do korony", "correct": true },
+        { "text": "Stracić prawo do korony", "correct": false },
+        { "text": "Poddać się", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "„Put aside” oznacza…",
+      "comment": "Czasownik frazowy.",
+      "answers": [
+        { "text": "Odłożyć na bok / zignorować", "correct": true },
+        { "text": "Położyć na stole", "correct": false },
+        { "text": "Przedyskutować", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Co oznacza „Indicate”?",
+      "comment": "Czasownik.",
+      "answers": [
+        { "text": "Wskazywać", "correct": true },
+        { "text": "Ukrywać", "correct": false },
+        { "text": "Zmieniać", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Uzupełnij zdanie: „If we are not ______, the British monarchy would be a very decrepit experience indeed.”",
+      "comment": "Warunek.",
+      "answers": [
+        { "text": "careful", "correct": true },
+        { "text": "prime", "correct": false },
+        { "text": "stable", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Uzupełnij zdanie: „Have you forgotten the ______ that you took?”",
+      "comment": "Kontekst formalny.",
+      "answers": [
+        { "text": "oath", "correct": true },
+        { "text": "gift", "correct": false },
+        { "text": "promise", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Uzupełnij zdanie: „The crown is a symbol of permanence, of stability, of ______.”",
+      "comment": "Rzeczownik abstrakcyjny.",
+      "answers": [
+        { "text": "continuity", "correct": true },
+        { "text": "priority", "correct": false },
+        { "text": "security", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Uzupełnij zdanie: „If you step down, you will be symbolising instability and ______.”",
+      "comment": "Znaczenie przeciwstawne.",
+      "answers": [
+        { "text": "impermanence", "correct": true },
+        { "text": "improvement", "correct": false },
+        { "text": "importance", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Uzupełnij zdanie: „The one thing we cannot have if we ______ the crown is also our birthright.”",
+      "comment": "Czasownik.",
+      "answers": [
+        { "text": "claim", "correct": true },
+        { "text": "wear", "correct": false },
+        { "text": "show", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Uzupełnij zdanie: „But I don’t see you as ______.”",
+      "comment": "Opis osoby.",
+      "answers": [
+        { "text": "decrepit", "correct": true },
+        { "text": "liberated", "correct": false },
+        { "text": "confident", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Uzupełnij zdanie: „What about the life I ______ aside when I became Queen?”",
+      "comment": "Czasownik frazowy.",
+      "answers": [
+        { "text": "put", "correct": true },
+        { "text": "gave", "correct": false },
+        { "text": "threw", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "„Liberated” w zdaniu „I see you as liberated, confident” oznacza:",
+      "comment": "Opis stanu.",
+      "answers": [
+        { "text": "Wyzwolona", "correct": true },
+        { "text": "Zmęczona", "correct": false },
+        { "text": "Zastraszona", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "„Monarchy is something you are, not what you do” oznacza:",
+      "comment": "Znaczenie metaforyczne.",
+      "answers": [
+        { "text": "Monarchia to coś, czym jesteś, nie coś co robisz", "correct": true },
+        { "text": "Monarchia to zawód, który trzeba wykonywać", "correct": false },
+        { "text": "Monarchia to hobby, które można wybrać", "correct": false }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Jak najlepiej oddać sens wyrażenia „birthright” w zdaniu „the crown is also our birthright”?",
+      "comment": "Znaczenie formalne.",
+      "answers": [
+        { "text": "Prawo z urodzenia", "correct": true },
+        { "text": "Obowiązek wobec państwa", "correct": false },
+        { "text": "Majątek rodzinny", "correct": false }
+      ]
+    }
+  ]
+}
