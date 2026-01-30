@@ -183,111 +183,122 @@ app.post("/api/lesson-complete", (req, res) => {
 
 // ===== NEXT MODULE =====
 app.post("/api/next-module", (req, res) => {
-  const userId = req.cookies.course_user;
+  console.log("➡️ /api/next-module");
 
-  if (!userId) {
-    return res.status(401).json({ error: "No user" });
-  }
+  try {
+    const userId = req.cookies.course_user;
+    if (!userId) {
+      return res.status(401).json({ error: "No user" });
+    }
 
-  // 1️⃣ pobierz level użytkownika
-  const user = db
-    .prepare("SELECT level FROM users WHERE id = ?")
-    .get(userId);
+    // 1️⃣ level użytkownika
+    const user = db
+      .prepare("SELECT level FROM users WHERE id = ?")
+      .get(userId);
 
-  let level = user?.level;
-  if (!level) {
-    return res.status(400).json({ error: "Level not set" });
-  }
+    let level = user?.level;
+    if (!level) {
+      return res.status(400).json({ error: "Level not set" });
+    }
 
-  // 2️⃣ pobierz progress użytkownika
-  const rows = db.prepare(`
-    SELECT module_id, lesson_id
-    FROM progress
-    WHERE user_id = ?
-  `).all(userId);
+    // 2️⃣ progress użytkownika
+    const rows = db.prepare(`
+      SELECT module_id, lesson_id
+      FROM progress
+      WHERE user_id = ?
+    `).all(userId);
 
-  const progressByModule = {};
-  for (const row of rows) {
-    progressByModule[row.module_id] ??= new Set();
-    progressByModule[row.module_id].add(row.lesson_id);
-  }
+    const progressByModule = {};
+    for (const row of rows) {
+      progressByModule[row.module_id] ??= new Set();
+      progressByModule[row.module_id].add(row.lesson_id);
+    }
 
-  // helper: czy moduł ukończony
- function isModuleCompleted(module) {
-  const completed = progressByModule[module.id] || new Set();
+    // 3️⃣ helper – CZY MODUŁ UKOŃCZONY (zgodnie z frontendem)
+    function isModuleCompleted(module) {
+      if (!module?.activities) return false;
 
-  return module.activities
-    .filter(a => a.required)
-    .every(activity => {
+      const completed = progressByModule[module.id] || new Set();
 
-      // 1️⃣ AKTYWNOŚCI Z WARIANTAMI (np. vocabulary)
-      if (activity.variants?.length) {
-        if (activity.completionRule === "any") {
-          return activity.variants.some(v =>
-            completed.has(v.id)
-          );
-        }
+      return module.activities
+        .filter(a => a.required)
+        .every(activity => {
 
-        // domyślnie: wszystkie warianty
-        return activity.variants.every(v =>
-          completed.has(v.id)
-        );
-      }
+          // 🔹 warianty (np. vocabulary, listening)
+          if (Array.isArray(activity.variants) && activity.variants.length) {
+            if (activity.completionRule === "any") {
+              return activity.variants.some(v =>
+                completed.has(v.id) ||
+                (v.lessonId && completed.has(v.lessonId))
+              );
+            }
 
-      // 2️⃣ ZWYKŁA LEKCJA (test, video, audio itd.)
-      if (activity.lessonId) {
-        return completed.has(activity.lessonId);
-      }
+            return activity.variants.every(v =>
+              completed.has(v.id) ||
+              (v.lessonId && completed.has(v.lessonId))
+            );
+          }
 
-      return true;
-    });
-}
+          // 🔹 pojedyncza lekcja (test, audio, pdf, iframe)
+          if (activity.lessonId) {
+            return completed.has(activity.lessonId);
+          }
 
+          // 🔹 fallback (nie blokujemy modułu)
+          return true;
+        });
+    }
 
-  // 3️⃣ moduły na aktualnym levelu
-  const sameLevelModules = modules
-    .filter(m => m.level === level)
-    .sort((a, b) => a.id.localeCompare(b.id));
+    // 4️⃣ moduły na tym samym levelu
+    const sameLevelModules = modules
+      .filter(m => m.level === level)
+      .sort((a, b) => a.id.localeCompare(b.id));
 
-  // 4️⃣ znajdź pierwszy NIEukończony
-  const nextSameLevel = sameLevelModules.find(
-    m => !isModuleCompleted(m)
-  );
+    // 5️⃣ pierwszy nieukończony na tym levelu
+    const nextSameLevel = sameLevelModules.find(
+      m => !isModuleCompleted(m)
+    );
 
-  if (nextSameLevel) {
-    return res.json({
-      moduleId: nextSameLevel.id,
-      level
-    });
-  }
+    if (nextSameLevel) {
+      console.log("➡️ next same level:", nextSameLevel.id);
+      return res.json({
+        moduleId: nextSameLevel.id,
+        level
+      });
+    }
 
-  // 5️⃣ wszystkie ukończone → level + 1
-  const nextLevel = Math.min(5, level + 1);
+    // 6️⃣ wszystko ukończone → level + 1
+    const nextLevel = Math.min(5, level + 1);
 
-  if (nextLevel !== level) {
-    db.prepare(`
-      UPDATE users
-      SET level = ?
-      WHERE id = ?
-    `).run(nextLevel, userId);
-  }
+    if (nextLevel !== level) {
+      db.prepare(`
+        UPDATE users
+        SET level = ?
+        WHERE id = ?
+      `).run(nextLevel, userId);
+    }
 
-  const nextLevelModules = modules
-    .filter(m => m.level === nextLevel)
-    .sort((a, b) => a.id.localeCompare(b.id));
+    const nextLevelModules = modules
+      .filter(m => m.level === nextLevel)
+      .sort((a, b) => a.id.localeCompare(b.id));
 
-  if (!nextLevelModules.length) {
-    return res.json({
-      moduleId: null,
+    const nextModuleId = nextLevelModules[0]?.id || null;
+
+    console.log("⬆️ level up:", nextLevel, "module:", nextModuleId);
+
+    res.json({
+      moduleId: nextModuleId,
       level: nextLevel
     });
-  }
 
-  return res.json({
-    moduleId: nextLevelModules[0].id,
-    level: nextLevel
-  });
+  } catch (err) {
+    console.error("❌ /api/next-module crashed:", err);
+    res.status(500).json({ error: "next-module crashed" });
+  }
 });
+
+
+
 
 // ===== VOCABULARY =====
 
@@ -614,6 +625,7 @@ app.get("/course", (req, res) => {
 app.listen(PORT, "0.0.0.0", () => {
   console.log("🚀 Server listening on port", PORT);
 });
+
 
 
 
