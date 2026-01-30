@@ -1,0 +1,88 @@
+{
+  "videoId": "NA-Wzuwj__Y",
+  "segments": [
+    {
+      "type": "order",
+      "start": 0,
+      "end": 10,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["I", "don't", "even", "wanna", "know", "about", "the", "dark", "cheese"],
+      "correct": ["I", "don't", "even", "wanna", "know", "about", "the", "dark", "cheese"]
+    },
+    {
+      "type": "extra-word",
+      "start": 10,
+      "end": 14,
+      "instruction": "Wybierz słowo, które nie padło.",
+      "sentence": ["Does", "anybody", "wanna", "split", "on", "this", "with", "me?"],
+      "extra": "on"
+    },
+    {
+      "type": "order",
+      "start": 14,
+      "end": 21,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["come", "on,", "you", "know,", "thanksgiving"],
+      "correct": ["come", "on,", "you", "know,", "thanksgiving"]
+    },
+    {
+      "type": "correct-word",
+      "start": 21,
+      "end": 27,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["You", "got", "a", "bigger", "have"],
+      "wrong": "have",
+      "correct": "half"
+    },
+    {
+      "type": "order",
+      "start": 27,
+      "end": 45,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["for", "me", "this", "has", "been", "really", "great"],
+      "correct": ["for", "me", "this", "has", "been", "really", "great"]
+    },
+    {
+      "type": "extra-word",
+      "start": 45,
+      "end": 50,
+      "instruction": "Wybierz słowo, które nie padło.",
+      "sentence": ["It", "didn't", "involve", "a", "divorce"],
+      "extra": "a"
+    },
+    {
+      "type": "order",
+      "start": 50,
+      "end": 58,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["if", "you", "guys", "had", "been", "with", "your", "family"],
+      "correct": ["if", "you", "guys", "had", "been", "with", "your", "family"]
+    },
+    {
+      "type": "correct-word",
+      "start": 58,
+      "end": 66,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["We", "would", "be", "all", "together,", "you", "know."],
+      "wrong": "would",
+      "correct": "wouldn't"
+    },
+    {
+      "type": "order",
+      "start": 66,
+      "end": 72,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["I'm", "very", "thankful", "that", "all", "of", "your", "Thanksgivings", "sucked"],
+      "correct": ["I'm", "very", "thankful", "that", "all", "of", "your", "Thanksgivings", "sucked"]
+    },
+    {
+      "type": "correct-word",
+      "start": 72,
+      "end": 82,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["Here's", "to", "a", "lausy", "Christmas."],
+      "wrong": "lausy",
+      "correct": "lousy"
+    }
+  ]
+}
