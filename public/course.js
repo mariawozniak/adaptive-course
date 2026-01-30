@@ -429,6 +429,40 @@ function renderListHeader(title) {
   `;
 }
 
+function renderModulesHub() {
+  const levelModules = modules.filter(m => m.level === currentLevel);
+  const completedModules = modules.filter(m =>
+    m.level < currentLevel && isModuleFullyCompleted(m)
+  );
+
+  const visibleModules = [...completedModules, ...levelModules]
+    .sort((a, b) => a.id.localeCompare(b.id));
+
+  return `
+    <div class="modules-hub">
+      <div class="modules-carousel">
+        ${visibleModules.map(m => `
+          <div
+            class="module-tile ${m.id === currentModule?.id ? "active" : ""}"
+            onclick="selectModule('${m.id}')"
+          >
+            <img
+              src="/assets/covers/${m.id}.jpg"
+              class="module-tile-cover"
+            />
+
+            <h3 class="module-tile-title">${m.title}</h3>
+
+            <button class="btn-primary">
+              ${isModuleFullyCompleted(m) ? "Wróć" : "Kontynuuj"}
+            </button>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
 // ===============================
 // CONTENT
 // ===============================
@@ -468,45 +502,8 @@ function renderContent() {
   `;
 }
 
-
-if (!moduleStarted) {
-  return `
-    <div class="module-hero">
-      <div class="module-card">
-        <img
-          src="/assets/covers/${currentModule.id}.jpg"
-          alt="${currentModule.title}"
-          class="module-cover"
-        />
-
-        <h2 class="module-title">${currentModule.title}</h2>
-
-        <button class="btn-primary" onclick="startModule()">
-          Rozpocznij moduł
-        </button>
-      </div>
-    </div>
-  `;
-}
-
-  if (moduleStarted && !activeActivity) {
-  return `
-<h1 class="page-title">${currentModule.title}</h1>
-
-    <div class="activities-list">
-      ${currentModule.activities.map(act => `
-        <div
-          class="activity-item"
-          onclick="openActivity('${act.id}')"
-        >
-          <span class="activity-status ${
-            isActivityCompleted(act) ? "done" : ""
-          }"></span>
-          <span class="activity-label">${act.label}</span>
-        </div>
-      `).join("")}
-    </div>
-  `;
+  if (!moduleStarted) {
+  return renderModulesHub();
 }
 
 
