@@ -1,0 +1,99 @@
+{
+  "videoId": "qeWsP3NWVow",
+  "segments": [
+    {
+      "type": "mcq",
+      "start": 0,
+      "end": 4,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "nie powinnam być pozostawiana sama sobie", "correct": true },
+        { "text": "muszę być pozostawiona sama sobie", "correct": false }
+      ],
+      "explanation": "I should not be left to my own devices – Nie powinno się mnie zostawiać samej sobie."
+    },
+    {
+      "type": "mcq",
+      "start": 4,
+      "end": 9,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "zakańczam kryzys", "correct": false },
+        { "text": "zapobiegam kryzysowi", "correct": false },
+        { "text": "kończę w kryzysie", "correct": true }
+      ],
+      "explanation": "I end up in crisis – Kończę w kryzysie."
+    },
+    {
+      "type": "mcq",
+      "start": 9,
+      "end": 14,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "krzyczę aby się obudzić", "correct": false },
+        { "text": "budzę się krzycząc", "correct": true },
+        { "text": "tłumię krzyk", "correct": false }
+      ],
+      "explanation": "I wake up screaming – Budzę się z krzykiem."
+    },
+    {
+      "type": "mcq",
+      "start": 14,
+      "end": 16,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "pewnego dnia będę patrzeć jak odchodzisz", "correct": true },
+        { "text": "pewnego dnia odejdę", "correct": false },
+        { "text": "nigdy nie zobaczę jak odchodzisz", "correct": false }
+      ],
+      "explanation": "One day I'll watch as you're leaving – Pewnego dnia będę patrzeć, jak odchodzisz."
+    },
+    {
+      "type": "mcq",
+      "start": 16,
+      "end": 25,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "mam problem", "correct": false },
+        { "text": "jestem problemem", "correct": true }
+      ],
+      "explanation": "I'm the problem – to ja jestem problemem."
+    },
+    {
+      "type": "mcq",
+      "start": 25,
+      "end": 30,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "wszyscy się zgadzają", "correct": true },
+        { "text": "wszyscy się kłócą", "correct": false },
+        { "text": "wszyscy to mówią", "correct": false }
+      ],
+      "explanation": "everybody agrees – wszyscy się zgadzają."
+    },
+    {
+      "type": "mcq",
+      "start": 30,
+      "end": 36,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "będę patrzeć z przyjemnością w słońce", "correct": false },
+        { "text": "chętnie popatrzę w słońce", "correct": false },
+        { "text": "będę patrzeć bezpośrednio w słońce", "correct": true }
+      ],
+      "explanation": "I'll stare directly at the sun – Będę patrzeć prosto w słońce."
+    },
+    {
+      "type": "mcq",
+      "start": 36,
+      "end": 41,
+      "question": "Wybierz prawidłową odpowiedź:",
+      "answers": [
+        { "text": "to musi być zabawne", "correct": false },
+        { "text": "to musi być wyczerpujące", "correct": true },
+        { "text": "to musi być nie do zniesienia", "correct": false }
+      ],
+      "explanation": "exhausting – wyczerpujące."
+    }
+  ]
+}
