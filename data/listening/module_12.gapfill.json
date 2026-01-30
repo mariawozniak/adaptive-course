@@ -1,0 +1,86 @@
+{
+  "videoId": "qeWsP3NWVow",
+  "segments": [
+    {
+      "start": 0,
+      "end": 4,
+      "parts": [
+        { "text": "I should not be left to my", "gap": false },
+        { "text": "own devices", "gap": true }
+      ]
+    },
+    {
+      "start": 4,
+      "end": 7,
+      "parts": [
+        { "text": "They come with", "gap": false },
+        { "text": "prices", "gap": true },
+        { "text": "and vices", "gap": false }
+      ]
+    },
+    {
+      "start": 7,
+      "end": 9,
+      "parts": [
+        { "text": "I end", "gap": false },
+        { "text": "up", "gap": true },
+        { "text": "in crisis", "gap": false }
+      ]
+    },
+    {
+      "start": 9,
+      "end": 16,
+      "parts": [
+        { "text": "One day I'll", "gap": false },
+        { "text": "watch", "gap": true },
+        { "text": "as you're leaving", "gap": false }
+      ]
+    },
+    {
+      "start": 16,
+      "end": 19,
+      "parts": [
+        { "text": "Cause you got", "gap": false },
+        { "text": "tired of", "gap": true },
+        { "text": "my scheming", "gap": false }
+      ]
+    },
+    {
+      "start": 19,
+      "end": 25,
+      "parts": [
+        { "text": "It's me, hi, I'm the", "gap": false },
+        { "text": "problem,", "gap": true },
+        { "text": "it's me", "gap": false }
+      ]
+    },
+    {
+      "start": 25,
+      "end": 30,
+      "parts": [
+        { "text": "At tea time", "gap": true },
+        { "text": "everybody agrees", "gap": false }
+      ]
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "parts": [
+        { "text": "I'll", "gap": false },
+        { "text": "stare", "gap": true },
+        { "text": "directly", "gap": false },
+        { "text": "at", "gap": true },
+        { "text": "the sun but never in the mirror", "gap": false }
+      ]
+    },
+    {
+      "start": 36,
+      "end": 41,
+      "parts": [
+        { "text": "It must be exhausting always", "gap": false },
+        { "text": "rooting for", "gap": true },
+        { "text": "the anti-hero", "gap": false }
+      ]
+    }
+  ]
+}
