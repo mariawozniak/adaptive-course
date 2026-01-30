@@ -1,0 +1,81 @@
+{
+  "videoId": "qeWsP3NWVow",
+  "segments": [
+    {
+      "type": "order",
+      "start": 0,
+      "end": 4,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["I", "should", "not", "be", "left", "to", "my", "own", "devices"],
+      "correct": ["I", "should", "not", "be", "left", "to", "my", "own", "devices"]
+    },
+    {
+      "type": "correct-word",
+      "start": 4,
+      "end": 7,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["They", "come", "with", "crisis", "and", "vices"],
+      "wrong": "crisis",
+      "correct": "prices"
+    },
+    {
+      "type": "extra-word",
+      "start": 7,
+      "end": 14,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["I", "wake", "up", "screaming", "from", "my", "dreaming"],
+      "extra": "my"
+    },
+    {
+      "type": "order",
+      "start": 14,
+      "end": 16,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["One", "day", "I'll", "watch", "as", "you're", "leaving"],
+      "correct": ["One", "day", "I'll", "watch", "as", "you're", "leaving"]
+    },
+    {
+      "type": "correct-word",
+      "start": 16,
+      "end": 19,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["Cause", "you", "got", "tired", "with", "my", "scheming"],
+      "wrong": "with",
+      "correct": "of"
+    },
+    {
+      "type": "correct-word",
+      "start": 19,
+      "end": 25,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["I'm", "with", "problem,", "it's", "me"],
+      "wrong": "with",
+      "correct": "the"
+    },
+    {
+      "type": "order",
+      "start": 25,
+      "end": 30,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["At", "tea", "time,", "everybody", "agrees"],
+      "correct": ["At", "tea", "time,", "everybody", "agrees"]
+    },
+    {
+      "type": "correct-word",
+      "start": 30,
+      "end": 35,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["I'll", "stare", "directly", "to", "the", "sun", "but", "never", "in", "the", "mirror"],
+      "wrong": "to",
+      "correct": "at"
+    },
+    {
+      "type": "order",
+      "start": 35,
+      "end": 41,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["It", "must", "be", "exhausting", "always", "rooting", "for", "the", "anti-hero"],
+      "correct": ["It", "must", "be", "exhausting", "always", "rooting", "for", "the", "anti-hero"]
+    }
+  ]
+}
