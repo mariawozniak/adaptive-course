@@ -1,0 +1,52 @@
+{
+  "moduleId": "module_16",
+  "lessonId": "module_16__shadowing",
+
+  "player": {
+    "type": "youtube",
+    "videoId": "138W2Ox8cos"
+  },
+
+  "phrases": [
+    { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
+    { "en": "shut up about", "pl": "przestać gadać o" },
+    { "en": "as they are", "pl": "tak jak są" }
+  ],
+
+  "dictionary": {
+    "discuss": "dyskutować",
+    "dear": "drogi",
+    "papa": "tata",
+    "married": "żonaty/zamężna",
+    "king": "król",
+    "happy": "szczęśliwy",
+    "blessing": "błogosławieństwo"
+  },
+
+  "segments": [
+    { "start": 0.0,  "end": 5.0,  "text": "I'm holdin' on your rope" },
+    { "start": 5.0,  "end": 9.0,  "text": "Got me ten feet off the ground" },
+    { "start": 9.0,  "end": 13.0, "text": "And I'm hearin' what you say" },
+    { "start": 13.0, "end": 17.0, "text": "But I just can't make a sound" },
+    { "start": 17.0, "end": 21.4, "text": "You tell me that you need me" },
+    { "start": 21.4, "end": 27.0, "text": "Then you go and cut me down, but wait" },
+    { "start": 27.0, "end": 29.5, "text": "You tell me that you're sorry" },
+    { "start": 29.5, "end": 35.0, "text": "Didn't think I'd turn around, and say" },
+
+    { "start": 35.0, "end": 39.0, "text": "That it's too late to apologize" },
+    { "start": 39.0, "end": 42.0, "text": "It's too late" },
+    { "start": 42.0, "end": 47.0, "text": "I said it's too late to apologize" },
+    { "start": 47.0, "end": 51.0, "text": "It's too late" },
+
+    { "start": 51.0, "end": 62.0, "text": "I'd take another chance" },
+    { "start": 62.0, "end": 66.0, "text": "Take a fall, take a shot for you" },
+    { "start": 66.0, "end": 71.0, "text": "Oh, I need you like a heart needs a beat" },
+    { "start": 71.0, "end": 74.0, "text": "But it's nothin' new" },
+    { "start": 74.0, "end": 79.0, "text": "I loved you with a fire red" },
+    { "start": 79.0, "end": 84.0, "text": "Now it's turnin' blue, and you say" },
+    { "start": 84.0, "end": 86.5, "text": "Sorry, like the angel" },
+    { "start": 86.5, "end": 92.3, "text": "Heaven let me think was you, but I'm afraid" },
+
+    { "start": 92.3, "end": 96.0, "text": "It's too late to apologize" }
+  ]
+}
