@@ -1,0 +1,93 @@
+{
+  "videoId": "C5Cq-qH1zS4",
+  "segments": [
+    {
+      "type": "order",
+      "start": 0,
+      "end": 7,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["it", "will", "be", "very", "quiet", "after", "life", "in", "the", "city"],
+      "correct": ["it", "will", "be", "very", "quiet", "after", "life", "in", "the", "city"]
+    },
+    {
+      "type": "correct-word",
+      "start": 7,
+      "end": 12,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["I'm", "sure", "I'll", "find", "something", "to", "keep", "it", "busy."],
+      "wrong": "it",
+      "correct": "me"
+    },
+    {
+      "type": "correct-word",
+      "start": 12,
+      "end": 19,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["It", "is", "really", "a", "hospital."],
+      "wrong": "really",
+      "correct": "barely"
+    },
+    {
+      "type": "extra-word",
+      "start": 19,
+      "end": 27,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["It's", "a", "cottage", "hospital,", "of", "course,", "but", "it's", "quite", "well", "equipped."],
+      "extra": "it's"
+    },
+    {
+      "type": "matching",
+      "start": 28,
+      "end": 38,
+      "instruction": "Dopasuj pojęcia do tłumaczeń.",
+      "pairs": [
+        { "left": "set up", "right": "stworzyć, założyć" },
+        { "left": "run", "right": "prowadzić (np. biznes)" },
+        { "left": "endowment", "right": "darowizna" },
+        { "left": "building", "right": "budynek" }
+      ]
+    },
+    {
+      "type": "extra-word",
+      "start": 38,
+      "end": 46,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["Please", "don't", "speak", "that", "man's", "name—we", "are", "all", "about", "to", "eat."],
+      "extra": "all"
+    },
+    {
+      "type": "order",
+      "start": 46,
+      "end": 51,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["I", "will", "hold", "it", "steady,", "and", "you", "can", "help", "yourself,", "sir"],
+      "correct": ["I", "will", "hold", "it", "steady,", "and", "you", "can", "help", "yourself,", "sir"]
+    },
+    {
+      "type": "correct-word",
+      "start": 51,
+      "end": 62,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["If", "you", "mean", "that", "I'm", "accustomed", "to", "a", "really", "different", "life", "from", "this,", "then", "that", "is", "true."],
+      "wrong": "really",
+      "correct": "very"
+    },
+    {
+      "type": "order",
+      "start": 62,
+      "end": 84,
+      "instruction": "Ułóż w odpowiedniej kolejności.",
+      "words": ["You", "do", "know", "I", "mean", "to", "involve", "you", "in", "the", "running", "of", "the", "estate?"],
+      "correct": ["You", "do", "know", "I", "mean", "to", "involve", "you", "in", "the", "running", "of", "the", "estate?"]
+    },
+    {
+      "type": "correct-word",
+      "start": 84,
+      "end": 92,
+      "instruction": "Popraw błędne słowo.",
+      "sentence": ["We", "mustn't", "bother", "the", "ladies."],
+      "wrong": "bother",
+      "correct": "bore"
+    }
+  ]
+}
