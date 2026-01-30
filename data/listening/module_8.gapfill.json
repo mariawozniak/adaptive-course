@@ -1,0 +1,110 @@
+{
+  "videoId": "pAkwimWgYTg",
+  "segments": [
+    {
+      "start": 0,
+      "end": 20,
+      "parts": [
+        { "text": "I", "gap": false },
+        { "text": "heard that", "gap": true },
+        { "text": "you're settled down", "gap": false }
+      ]
+    },
+    {
+      "start": 20,
+      "end": 29,
+      "parts": [
+        { "text": "That you found a", "gap": false },
+        { "text": "girl and", "gap": true },
+        { "text": "you're married now", "gap": false }
+      ]
+    },
+    {
+      "start": 29,
+      "end": 34,
+      "parts": [
+        { "text": "I", "gap": true },
+        { "text": "heard", "gap": false },
+        { "text": "that your", "gap": true },
+        { "text": "dreams came true", "gap": false }
+      ]
+    },
+    {
+      "start": 34,
+      "end": 42,
+      "parts": [
+        { "text": "Guess she gave", "gap": false },
+        { "text": "you things,", "gap": true },
+        { "text": "I", "gap": false },
+        { "text": "didn't", "gap": true },
+        { "text": "give to you", "gap": false }
+      ]
+    },
+    {
+      "start": 42,
+      "end": 48,
+      "parts": [
+        { "text": "Old friend,", "gap": false },
+        { "text": "why are you", "gap": true },
+        { "text": "so shy?", "gap": false }
+      ]
+    },
+    {
+      "start": 48,
+      "end": 52,
+      "parts": [
+        { "text": "Ain't", "gap": false },
+        { "text": "like you", "gap": true },
+        { "text": "to hold back", "gap": false }
+      ]
+    },
+    {
+      "start": 52,
+      "end": 56,
+      "parts": [
+        { "text": "or hide", "gap": false },
+        { "text": "from the", "gap": true },
+        { "text": "light", "gap": false }
+      ]
+    },
+    {
+      "start": 56,
+      "end": 60,
+      "parts": [
+        { "text": "I hate to", "gap": false },
+        { "text": "turn up", "gap": true },
+        { "text": "out of the blue, uninvited", "gap": false }
+      ]
+    },
+    {
+      "start": 60,
+      "end": 64,
+      "parts": [
+        { "text": "But I couldn't", "gap": false },
+        { "text": "stay away,", "gap": true },
+        { "text": "I couldn't fight", "gap": false },
+        { "text": "it", "gap": true }
+      ]
+    },
+    {
+      "start": 64,
+      "end": 68,
+      "parts": [
+        { "text": "And", "gap": false },
+        { "text": "that", "gap": true },
+        { "text": "you'd", "gap": false },
+        { "text": "be", "gap": true },
+        { "text": "reminded that for me", "gap": false }
+      ]
+    },
+    {
+      "start": 68,
+      "end": 72,
+      "parts": [
+        { "text": "it", "gap": false },
+        { "text": "isn't", "gap": true },
+        { "text": "over", "gap": false }
+      ]
+    }
+  ]
+}
