@@ -1,0 +1,206 @@
+{
+  "moduleId": "module_11",
+  "lessonId": "module_11__test",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Co oznacza „blackmail”?",
+      "comment": "Czasownik oznaczający szantaż.",
+      "answers": [
+        { "text": "Szantażować", "correct": true },
+        { "text": "Grozić.", "correct": false },
+        { "text": "Zastraszać.", "correct": false }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Jak przetłumaczyć „You cut me loose”?",
+      "comment": "Wyrażenie oznaczające zerwanie współpracy.",
+      "answers": [
+        { "text": "Zwolniłeś mnie.", "correct": true },
+        { "text": "Zostawiłeś mnie w tyle.", "correct": false },
+        { "text": "Zdradziłeś mnie", "correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Co oznacza „I was at my lowest point”?",
+      "comment": "Odnosi się do najtrudniejszego momentu.",
+      "answers": [
+        { "text": "Byłem na samym dnie.", "correct": true },
+        { "text": "Byłem w krytycznym punkcie.", "correct": false },
+        { "text": "Byłem blisko rozwiązania problemu.", "correct": false }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Jak przetłumaczyć „still”?",
+      "comment": "Przysłówek czasu.",
+      "answers": [
+        { "text": "Nadal / Wciąż.", "correct": true },
+        { "text": "Już.", "correct": false },
+        { "text": "W końcu.", "correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Jak przetłumaczyć „it failed”?",
+      "comment": "Informacja o niepowodzeniu.",
+      "answers": [
+        { "text": "To się nie udało.", "correct": true },
+        { "text": "To zostało zapomniane.", "correct": false },
+        { "text": "To się zgubiło.", "correct": false }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Co oznacza „I regret what I did”?",
+      "comment": "Wyrażenie żalu.",
+      "answers": [
+        { "text": "Żałuję tego, co zrobiłem.", "correct": true },
+        { "text": "Nie jestem pewien, co zrobiłem.", "correct": false },
+        { "text": "To było złe, co zrobiłem.", "correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Co oznacza „Betray”?",
+      "comment": "Czasownik.",
+      "answers": [
+        { "text": "Zdradzić.", "correct": true },
+        { "text": "Wybaczyć.", "correct": false },
+        { "text": "Karać.", "correct": false }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Co oznacza „punishment”?",
+      "comment": "Rzeczownik.",
+      "answers": [
+        { "text": "Kara.", "correct": true },
+        { "text": "Nagroda.", "correct": false },
+        { "text": "Rozwiązanie.", "correct": false }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Jak przetłumaczyć „eventually”?",
+      "comment": "Odnosi się do końcowego rezultatu.",
+      "answers": [
+        { "text": "Ostatecznie.", "correct": true },
+        { "text": "W tej chwili.", "correct": false },
+        { "text": "Ewentualnie", "correct": false }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Co oznacza „I'm glad to hear that”?",
+      "comment": "Wyrażenie pozytywnej reakcji.",
+      "answers": [
+        { "text": "Miło to słyszeć.", "correct": true },
+        { "text": "Martwi mnie to.", "correct": false },
+        { "text": "Miło to słyszeć.", "correct": false }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Uzupełnij zdanie: „You have to ______ me.”",
+      "comment": "Czasownik oznaczający wybaczenie.",
+      "answers": [
+        { "text": "forgive", "correct": true },
+        { "text": "regret", "correct": false },
+        { "text": "punish", "correct": false }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Jak najlepiej przetłumaczyć „You and I are done”?",
+      "comment": "Zakończenie relacji.",
+      "answers": [
+        { "text": "Między nami koniec.", "correct": true },
+        { "text": "Zakończyliśmy pracę.", "correct": false },
+        { "text": "Musimy odpocząć.", "correct": false }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Co oznacza „at my lowest point”?",
+      "comment": "Opis bardzo trudnego momentu.",
+      "answers": [
+        { "text": "W najgorszym momencie mojego życia.", "correct": true },
+        { "text": "Kiedy byłem bardzo zmęczony.", "correct": false },
+        { "text": "Kiedy byłem blisko sukcesu.", "correct": false }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Uzupełnij zdanie: „He made me feel like I was working ______ him, not ______ him.”",
+      "comment": "Różnica między współpracą a podległością.",
+      "answers": [
+        { "text": "with / for", "correct": true },
+        { "text": "for / with", "correct": false },
+        { "text": "by / to", "correct": false }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Co oznacza „let me tell you something—it failed”?",
+      "comment": "Wprowadzenie informacji o porażce.",
+      "answers": [
+        { "text": "Pozwól, że ci coś powiem – to się nie udało.", "correct": true },
+        { "text": "Muszę ci powiedzieć – to już się skończyło.", "correct": false },
+        { "text": "Powiem ci – to było trudne.", "correct": false }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Jak przetłumaczyć „I get that you are pissed off at me”?",
+      "comment": "Wyrażenie zrozumienia czyichś emocji.",
+      "answers": [
+        { "text": "Rozumiem, że jesteś na mnie wściekły.", "correct": true },
+        { "text": "Myślę, że jesteś zirytowany.", "correct": false },
+        { "text": "Widzę, że jesteś zmęczony.", "correct": false }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Uzupełnij zdanie: „I ______ what I did.”",
+      "comment": "Czasownik wyrażający żal.",
+      "answers": [
+        { "text": "regret", "correct": true },
+        { "text": "forgive", "correct": false },
+        { "text": "betray", "correct": false }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Co oznacza „cut me loose”?",
+      "comment": "Zakończenie współpracy.",
+      "answers": [
+        { "text": "Zerwałeś ze mną współpracę.", "correct": true },
+        { "text": "Dałeś mi wolne.", "correct": false },
+        { "text": "Zostawiłeś mnie samemu sobie.", "correct": false }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "Jak najlepiej przetłumaczyć „You’re going to regret this”?",
+      "comment": "Ostrzeżenie.",
+      "answers": [
+        { "text": "Będziesz tego żałował.", "correct": true },
+        { "text": "Zrozumiesz mnie później.", "correct": false },
+        { "text": "Zmienisz zdanie.", "correct": false }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Uzupełnij zdanie: „______ you’re going to have to forgive me.”",
+      "comment": "Przysłówek czasu.",
+      "answers": [
+        { "text": "Eventually", "correct": true },
+        { "text": "Finally", "correct": false },
+        { "text": "Suddenly", "correct": false }
+      ]
+    }
+  ]
+}
