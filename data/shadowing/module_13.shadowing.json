@@ -1,18 +1,15 @@
 {
   "moduleId": "module_13",
   "lessonId": "module_13__shadowing",
-
   "player": {
     "type": "youtube",
     "videoId": "o47f3pJtvpQ"
   },
-
   "phrases": [
     { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
     { "en": "shut up about", "pl": "przestać gadać o" },
     { "en": "as they are", "pl": "tak jak są" }
   ],
-
   "dictionary": {
     "discuss": "dyskutować",
     "dear": "drogi",
@@ -22,7 +19,6 @@
     "happy": "szczęśliwy",
     "blessing": "błogosławieństwo"
   },
-
   "segments": [
     { "start": 0.0, "end": 3.0, "text": "And I'm sympathetic to your struggle, truly." },
     { "start": 3.0, "end": 7.0, "text": "But there's a protocol to visiting a patient like Victor." },
@@ -30,14 +26,14 @@
     { "start": 14.0, "end": 18.0, "text": "I can see you're disappointed." },
     { "start": 18.0, "end": 21.4, "text": "But I'm more than happy to give you a tour of our facility." },
     { "start": 21.4, "end": 25.0, "text": "Perhaps you can even speak to some patients in our low-security wing." },
-    { "start": 25.0, "end": 28.0, "text": "And we'd—we would love that." },
+    { "start": 25.0, "end": 28.0, "text": "And we'd-we would love that." },
     { "start": 28.0, "end": 33.5, "text": "It's just that our thesis is due next month." },
     { "start": 33.5, "end": 36.0, "text": "Then you're out of time. Whose fault is that?" },
-    { "start": 36.0, "end": 40.0, "text": "Ours. Absolutely. And I do apologize—" },
+    { "start": 36.0, "end": 40.0, "text": "Ours. Absolutely. And I do apologize-" },
     { "start": 40.0, "end": 42.1, "text": "Don't apologize, Ruth. Screw that!" },
     { "start": 42.1, "end": 46.0, "text": "The fact of the matter is we did put in a request months ago and were denied." },
     { "start": 46.0, "end": 48.0, "text": "And then we reapplied and were denied again." },
-    { "start": 48.0, "end": 54.3, "text": "Coming here was our last-ditch effort to save our thesis, and I really— I can't breathe in this thing." },
+    { "start": 48.0, "end": 54.3, "text": "Coming here was our last-ditch effort to save our thesis, and I really- I can't breathe in this thing." },
     { "start": 54.3, "end": 57.5, "text": "Well, Rose, maybe you'd like to go outside and get some air?" },
     { "start": 57.5, "end": 59.0, "text": "Maybe I should, Ruth." },
     { "start": 59.0, "end": 63.4, "text": "Because I'm starting to think this whole thing is a colossal mistake." },
@@ -48,22 +44,22 @@
     { "start": 75.9, "end": 79.2, "text": "They just don't. We don't look the part or whatever." },
     { "start": 79.2, "end": 81.0, "text": "But can I tell you a story?" },
     { "start": 81.0, "end": 89.0, "text": "1978. I was at summer camp, and my counselor, Drew, told me and everyone in Cabin C the true story of the Victor Creel massacre." },
-    { "start": 89.0, "end": 92.5, "text": "And little Petey McHugh—you know Petey, right, Ruth?" },
+    { "start": 89.0, "end": 92.5, "text": "And little Petey McHugh-you know Petey, right, Ruth?" },
     { "start": 92.5, "end": 93.1, "text": "Of course." },
     { "start": 93.1, "end": 97.8, "text": "Yeah. Little Petey McHugh started sobbing right there on the spot." },
     { "start": 97.8, "end": 101.7, "text": "Full-on hyperventilating. And all the other campers? They couldn't sleep for weeks." },
     { "start": 101.7, "end": 102.9, "text": "And I couldn't sleep either." },
-    { "start": 102.9, "end": 105.8, "text": "But not 'cause I was scared—because I was obsessed with the question" },
+    { "start": 102.9, "end": 105.8, "text": "But not 'cause I was scared-because I was obsessed with the question" },
     { "start": 105.8, "end": 110.0, "text": "What would drive a human being to commit such unimaginable acts?" },
     { "start": 110.0, "end": 113.7, "text": "Other kids, they wanted to be astronauts, basketball players, rockstars." },
     { "start": 113.7, "end": 116.3, "text": "But I wanted to be you. I wanted to be you." },
     { "start": 116.3, "end": 119.7, "text": "So forgive me if I'll now try anything in my power" },
-    { "start": 119.7, "end": 122.0, "text": "—including wearing this ridiculous outfit" },
-    { "start": 122.0, "end": 125.6, "text": "—if it means I might get the chance to speak to the man that ignited my passion." },
+    { "start": 119.7, "end": 122.0, "text": "-including wearing this ridiculous outfit" },
+    { "start": 122.0, "end": 125.6, "text": "-if it means I might get the chance to speak to the man that ignited my passion." },
     { "start": 125.6, "end": 131.0, "text": "To learn a little bit more about how his twisted, but let's face it, totally fascinating mind works." },
     { "start": 131.0, "end": 134.3, "text": "So, yes, we don't have the official paperwork." },
     { "start": 134.3, "end": 140.5, "text": "But don't tell me that crybaby Petey McHugh wouldn't have gotten an audience with Victor in a matter of moments" },
-    { "start": 140.5, "end": 143.0, "text": "if he'd asked politely—'cause you and I both know that he would!" },
+    { "start": 140.5, "end": 143.0, "text": "if he'd asked politely-'cause you and I both know that he would!" },
     { "start": 143.0, "end": 150.0, "text": "So... ten minutes with Victor. Is all I ask." },
     { "start": 150.0, "end": 156.0, "text": "I'm back in thirty." }
   ]
