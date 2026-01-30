@@ -1,0 +1,105 @@
+{
+  "videoId": "vUI8Oftasg8",
+  "segments": [
+    {
+      "type": "correct-word",
+      "start": 0,
+      "end": 5,
+      "instruction": "Kliknij i popraw błędne słowo.",
+      "sentence": ["We", "are", "still", "kids", "but", "we're", "saw", "in", "love"],
+      "wrong": "saw",
+      "correct": "so"
+    },
+    {
+      "type": "order",
+      "start": 5,
+      "end": 9,
+      "instruction": "Ułóż słowa w kolejności.",
+      "words": ["fighting", "against", "all", "odds"],
+      "correct": ["fighting", "against", "all", "odds"]
+    },
+    {
+      "type": "extra-word",
+      "start": 9,
+      "end": 12,
+      "instruction": "Wskaż zbędne słowo.",
+      "sentence": ["I", "know", "we'll", "would", "be", "alright"],
+      "extra": "would"
+    },
+    {
+      "type": "gapfill",
+      "start": 12,
+      "end": 20,
+      "instruction": "Uzupełnij lukę.",
+      "sentence": ["darling", "_____", "hold", "my", "hand"],
+      "answers": ["just"]
+    },
+    {
+      "type": "correct-word",
+      "start": 20,
+      "end": 31,
+      "instruction": "Kliknij i popraw błędne słowo.",
+      "sentence": ["I", "see", "the", "future", "in", "your", "eyes."],
+      "wrong": "the",
+      "correct": "my"
+    },
+    {
+      "type": "order",
+      "start": 31,
+      "end": 37,
+      "instruction": "Ułóż słowa w kolejności.",
+      "words": ["I'm", "dancing", "in", "the", "dark"],
+      "correct": ["I'm", "dancing", "in", "the", "dark"]
+    },
+    {
+      "type": "gapfill",
+      "start": 37,
+      "end": 41,
+      "instruction": "Uzupełnij lukę.",
+      "sentence": ["With", "you", "_____", "my", "arms"],
+      "answers": ["between"]
+    },
+    {
+      "type": "correct-word",
+      "start": 41,
+      "end": 46,
+      "instruction": "Kliknij i popraw błędne słowo.",
+      "sentence": ["Barefeet", "on", "the", "grass"],
+      "wrong": "Barefeet",
+      "correct": "Barefoot"
+    },
+    {
+      "type": "gapfill",
+      "start": 46,
+      "end": 49,
+      "instruction": "Uzupełnij lukę.",
+      "sentence": ["Listening", "_____", "our", "favourite", "song"],
+      "answers": ["to"]
+    },
+    {
+      "type": "order",
+      "start": 49,
+      "end": 55,
+      "instruction": "Ułóż słowa w odpowiedniej kolejności.",
+      "words": ["When", "I", "saw", "you", "in", "that", "dress", "looking", "so", "beautiful"],
+      "correct": ["When", "I", "saw", "you", "in", "that", "dress", "looking", "so", "beautiful"]
+    },
+    {
+      "type": "gapfill",
+      "start": 55,
+      "end": 59,
+      "instruction": "Uzupełnij lukę.",
+      "sentence": ["I", "don't", "_____", "this"],
+      "answers": ["deserve"]
+    },
+    {
+      "type": "correct-word",
+      "start": 59,
+      "end": 64,
+      "instruction": "Kliknij i popraw błędne słowo.",
+      "sentence": ["Darling,", "you", "look", "perfectly", "tonight"],
+      "wrong": "perfectly",
+      "correct": "perfect"
+    }
+  ]
+}
