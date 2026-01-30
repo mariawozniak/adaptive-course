@@ -1,18 +1,15 @@
 {
   "moduleId": "module_11",
   "lessonId": "module_11__shadowing",
-
   "player": {
     "type": "youtube",
     "videoId": "RYzDhsnmpjc"
   },
-
   "phrases": [
     { "en": "I'd like to", "pl": "chciałbym / chciałabym" },
     { "en": "shut up about", "pl": "przestać gadać o" },
     { "en": "as they are", "pl": "tak jak są" }
   ],
-
   "dictionary": {
     "discuss": "dyskutować",
     "dear": "drogi",
@@ -22,10 +19,9 @@
     "happy": "szczęśliwy",
     "blessing": "błogosławieństwo"
   },
-
   "segments": [
-    { "start": 0.0,  "end": 8.2,  "text": "What the hell is wrong with you? I said I was sorry. I gave back the office." },
-    { "start": 8.2,  "end": 11.2, "text": "I helped you with your case. I even blackmailed Jessica, Harvey." },
+    { "start": 0.0, "end": 8.2, "text": "What the hell is wrong with you? I said I was sorry. I gave back the office." },
+    { "start": 8.2, "end": 11.2, "text": "I helped you with your case. I even blackmailed Jessica, Harvey." },
     { "start": 11.2, "end": 15.0, "text": "I get that you are pissed off at me, but eventually, you were going to have to forgive me." },
     { "start": 15.0, "end": 17.0, "text": "Forgive you? For what? Making me hire Katrina?" },
     { "start": 17.0, "end": 21.0, "text": "Getting high on the job your first week? Betraying me with Jessica?" },
@@ -34,12 +30,12 @@
     { "start": 29.2, "end": 33.0, "text": "I was at my lowest point. She was there for me. She's still there for me." },
     { "start": 33.0, "end": 35.0, "text": "Congratulations. I hope you two are happy together." },
     { "start": 35.0, "end": 37.1, "text": "So you're going to punish me by giving me to Louis?" },
-    { "start": 37.1, "end": 40.0, "text": "Well, let me tell you something—it failed." },
+    { "start": 37.1, "end": 40.0, "text": "Well, let me tell you something-it failed." },
     { "start": 40.0, "end": 42.0, "text": "I actually like working for Louis." },
     { "start": 42.0, "end": 45.0, "text": "He makes me feel like I'm working with him, not for him." },
-    { "start": 45.5, "end": 47.5, "text": "Well, I'm glad to hear that. Because I didn't give you to Louis as punishment." },
+    { "start": 45.5, "end": 47.0, "text": "Well, I'm glad to hear that. Because I didn't give you to Louis as punishment." },
     { "start": 47.0, "end": 49.1, "text": "I gave you to Louis because you and I are done." },
-    { "start": 49.1, "end": 57.0, "text": "Harvey, I regret what I did, but I'm telling you right now—you’re going to regret this." },
+    { "start": 49.1, "end": 57.0, "text": "Harvey, I regret what I did, but I'm telling you right now-you're going to regret this." },
     { "start": 57.0, "end": 66.0, "text": "Maybe you didn't hear me. I said you and I... we're done." }
   ]
 }
