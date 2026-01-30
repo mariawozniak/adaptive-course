@@ -1,0 +1,114 @@
+{
+  "videoId": "RYzDhsnmpjc",
+  "segments": [
+    {
+      "type": "mcq",
+      "start": 0,
+      "end": 11,
+      "question": "Co zrobił Mike, żeby naprawić relację z Harveyem?",
+      "answers": [
+        { "text": "Przeprosił i przekupił Louisa.", "correct": false },
+        { "text": "Publicznie przeprosił przed Rachel i Jessicą.", "correct": false },
+        { "text": "Oddał mu biuro i pomógł w sprawie.", "correct": true }
+      ],
+      "explanation": "I gave back the office. I helped you with your case. – Oddałem biuro. Pomogłem ci w twojej sprawie."
+    },
+    {
+      "type": "mcq",
+      "start": 11,
+      "end": 15,
+      "question": "Co Mike myśli na temat postawy Harveya?",
+      "answers": [
+        { "text": "Ostatecznie będzie musiał mu wybaczyć.", "correct": true },
+        { "text": "Ostatecznie będzie musiał z nim pracować.", "correct": false }
+      ],
+      "explanation": "Eventually, you are going to have to forgive me. – W końcu będziesz musiał mi wybaczyć."
+    },
+    {
+      "type": "mcq",
+      "start": 15,
+      "end": 24,
+      "question": "Dlaczego Harvey jest zły na Mike’a?",
+      "answers": [
+        { "text": "Bo Mike wziął urlop bez jego zgody.", "correct": false },
+        { "text": "Bo Mike zdradził jego zaufanie na różne sposoby.", "correct": true },
+        { "text": "Bo Mike nie pomógł mu w ważnej sprawie.", "correct": false }
+      ],
+      "explanation": ""
+    },
+    {
+      "type": "mcq",
+      "start": 24,
+      "end": 34,
+      "question": "Jak Mike tłumaczy swoją bliską relację z Rachel?",
+      "answers": [
+        { "text": "Rachel jest jego jedyną przyjaciółką w firmie.", "correct": false },
+        { "text": "Rachel jest jego przełożoną.", "correct": false },
+        { "text": "Rachel pomogła mu w trudnym momencie.", "correct": true }
+      ],
+      "explanation": "I was at my lowest point. She was there for me. – Byłem na samym dnie. Ona była tam dla mnie."
+    },
+    {
+      "type": "mcq",
+      "start": 34,
+      "end": 36,
+      "question": "Jak Harvey reaguje na relację Mike'a z Jessicą?",
+      "answers": [
+        { "text": "Życzy im szczęścia.", "correct": true },
+        { "text": "Mówi, że i tak nie będą szczęśliwi.", "correct": false },
+        { "text": "Twierdzi, że Mike miał szczęście.", "correct": false }
+      ],
+      "explanation": "I hope you two are happy together. – Mam nadzieję, że oboje będziecie szczęśliwi razem."
+    },
+    {
+      "type": "mcq",
+      "start": 36,
+      "end": 46,
+      "question": "Dlaczego Mike uważa, że Louis jest lepszym szefem?",
+      "answers": [
+        { "text": "Bo daje mu więcej swobody.", "correct": false },
+        { "text": "Bo traktuje go jak równego partnera.", "correct": true },
+        { "text": "Pozwala mu zajmować się najważniejszymi sprawami.", "correct": false }
+      ],
+      "explanation": "He makes me feel like I'm working with him, not for him. – Sprawia, że czuję, iż pracuję z nim, a nie dla niego."
+    },
+    {
+      "type": "mcq",
+      "start": 46,
+      "end": 48,
+      "question": "Jak Harvey zareagował na stwierdzenie Mike’a, że Louis traktuje go lepiej?",
+      "answers": [
+        { "text": "Powiedział, że to nie ma znaczenia.", "correct": false },
+        { "text": "Przyznał, że Louis jest lepszym szefem.", "correct": false },
+        { "text": "Powiedział, że miło to słyszeć.", "correct": true }
+      ],
+      "explanation": "I'm glad to hear that – Miło mi to słyszeć."
+    },
+    {
+      "type": "mcq",
+      "start": 48,
+      "end": 52,
+      "question": "Dlaczego Harvey oddał Mike’a do Louisa?",
+      "answers": [
+        { "text": "Aby zakończyć ich współpracę i relację.", "correct": true },
+        { "text": "Aby ukarać Mike’a za jego zachowanie.", "correct": false },
+        { "text": "Aby Mike zdobył doświadczenie pod innym szefem.", "correct": false }
+      ],
+      "explanation": "I gave you to Louis because you and I are done. – Oddałem Cię do Louisa, bo z nami koniec."
+    },
+    {
+      "type": "mcq",
+      "start": 52,
+      "end": 66,
+      "question": "Co Harvey powiedział Mike’owi na zakończenie rozmowy?",
+      "answers": [
+        {
+          "text": "Że ich relacja zawodowa i osobista dobiegła końca.",
+          "correct": true
+        },
+        { "text": "Że Mike nie jest wystarczająco dobry.", "correct": false }
+      ],
+      "explanation": "I said you and I, we're done. – Powiedział, że z nami koniec."
+    }
+  ]
+}
