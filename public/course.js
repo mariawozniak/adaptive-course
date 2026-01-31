@@ -431,6 +431,36 @@ function renderModuleHub() {
     </div>
   `;
 }
+
+function renderActivitiesUnderModule() {
+  if (!currentModule) return "";
+
+  return `
+    <div class="module-activities-preview">
+      <h2 class="module-preview-title">
+        ${currentModule.title}
+        <span class="module-preview-level">
+          Poziom ${currentModule.level}
+        </span>
+      </h2>
+
+      <div class="activities-list">
+        ${currentModule.activities.map(act => `
+          <div
+            class="activity-item"
+            onclick="openActivity('${act.id}')"
+          >
+            <span class="activity-status ${
+              isActivityCompleted(act) ? "done" : ""
+            }"></span>
+            <span class="activity-label">${act.label}</span>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
 // ===============================
 // RENDER
 // ===============================
