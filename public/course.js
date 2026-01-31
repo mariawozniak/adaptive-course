@@ -299,13 +299,26 @@ function pickHubFocusModule() {
   const visible = getVisibleModulesForUser();
   if (!visible.length) return null;
 
+  // 1️⃣ jeśli user NIE MA levela → pierwszy
   if (!currentLevel) return visible[0];
 
+  // 2️⃣ moduły z aktualnego levelu
   const sameLevel = visible.filter(m => m.level === currentLevel);
-  const firstNotDone = sameLevel.find(m => !isModuleHubDone(m));
 
-  return firstNotDone || sameLevel[0] || visible[0];
+  // 3️⃣ pierwszy NIEukończony z tego levelu
+  const firstNotDone = sameLevel.find(m => !isModuleHubDone(m));
+  if (firstNotDone) return firstNotDone;
+
+  // 4️⃣ jeśli level ukończony → SZUKAMY WYŻSZEGO LEVELU
+  const higherLevel = visible.find(
+    m => m.level > currentLevel && !isModuleHubDone(m)
+  );
+  if (higherLevel) return higherLevel;
+
+  // 5️⃣ fallback (wszystko ukończone)
+  return visible[visible.length - 1];
 }
+
 
 // ===============================
 // URL STATE (zapisywanie widoku do URL)
