@@ -246,10 +246,13 @@ function isModuleHubDone(module) {
 function getVisibleModulesForUser() {
   if (!Array.isArray(modules) || !modules.length) return [];
 
-  // moduły z aktualnego levelu
-  const sameLevel = currentLevel
-    ? modules.filter(m => m.level === currentLevel)
-    : modules.slice();
+const sameLevel = currentLevel
+  ? modules.filter(m =>
+      m.level >= currentLevel - 1 &&
+      m.level <= currentLevel + 1
+    )
+  : modules.slice();
+
 
   // moduły ukończone (zawsze widoczne)
   const completed = modules.filter(m => isModuleHubDone(m));
