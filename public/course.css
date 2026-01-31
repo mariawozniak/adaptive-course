@@ -889,10 +889,11 @@ body.install-modal-open {
   opacity: 0.6;
 
   box-shadow: 0 8px 20px rgba(0,0,0,0.10);
-}
 
+  /* ⬇️ TO MUSI BYĆ TU */
   display: flex;
   flex-direction: column;
+}
 
 
 
@@ -951,8 +952,11 @@ body.install-modal-open {
   text-align: center;
   font-size: 26px;
   font-weight: 700;
-  margin: 24px 0;
+
+  margin-top: 24px;
+  margin-bottom: 16px; /* ⬅️ MNIEJ */
 }
+
 
 .module-activities-preview {
   max-width: 720px;
