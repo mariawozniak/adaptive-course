@@ -802,13 +802,14 @@ window.openModuleFromHub = (moduleId) => {
   if (!mod) return;
 
   currentModule = mod;
-  moduleStarted = false;
+  moduleStarted = true;   // ✅ KLUCZ
   activeActivity = null;
   activeVariant = null;
 
   updateURL();
   render();
 };
+
 
 
 window.startModule = () => {
