@@ -410,15 +410,18 @@ function renderModuleHub() {
 // RENDER
 // ===============================
 function render() {
+  const isHub = !moduleStarted;
+
   app.innerHTML = `
     <div id="content">
-      <div class="${moduleStarted && (activeActivity || activeVariant) ? "" : "module-inner"}">
+      <div class="${isHub ? "" : "module-inner"}">
         ${renderContent()}
         ${renderFinalFeedback()}
       </div>
     </div>
   `;
 }
+
 
 // ===============================
 // NAVIGATION
