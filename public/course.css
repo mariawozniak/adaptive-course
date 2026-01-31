@@ -848,11 +848,10 @@ body.install-modal-open {
 =============================== */
 
 .module-hub {
-  position: relative;
-  max-width: 1100px;   /* ⬅️ KLUCZ */
-  margin: 0 auto;      /* ⬅️ centruje całość */
+  position: relative; /* ⬅️ KLUCZ */
   padding: 24px 0;
 }
+
 
 .module-carousel {
   display: flex;
@@ -871,19 +870,17 @@ body.install-modal-open {
 }
 
 .module-tile {
-  opacity: 0.4;              /* ⬅️ boczne bledsze */
-  transform: scale(0.88);
-  filter: grayscale(0.3);   /* ⬅️ delikatnie */
+  flex: 0 0 260px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  scroll-snap-align: center;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-
 
 .module-tile.is-active {
-  opacity: 1;
-  transform: scale(1.12);   /* ⬅️ wyraźnie większy */
-  filter: none;
-  z-index: 2;
-}
-
   transform: scale(1.05);
   box-shadow: 0 20px 45px rgba(0,0,0,0.18);
 }
@@ -991,13 +988,9 @@ body.install-modal-open {
 
 .hub-activities {
   max-width: 560px;
-  margin: 16px auto 0;          /* ⬅️ bliżej modułu */
-  padding: 24px 24px;           /* ⬅️ karta */
-  background: #fffaf4;
-  border: 1px solid #f1e3d3;
-  border-radius: 24px;
+  margin: 32px auto 0;
+  padding: 0 16px;
 }
-
 
 .hub-activities-title {
   font-size: 22px;
@@ -1006,4 +999,3 @@ body.install-modal-open {
   margin-bottom: 16px;
   color: #3a2a1a;
 }
-
