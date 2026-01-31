@@ -358,6 +358,52 @@ function renderFinalFeedback() {
 }
 
 // ===============================
+// MODULE HUB RENDER (NEW)
+// ===============================
+function renderModuleHub() {
+  const visibleModules = getVisibleModulesForUser();
+  const focus = pickHubFocusModule();
+
+  if (!visibleModules.length) {
+    return `<p style="padding:24px">Brak modułów</p>`;
+  }
+
+  return `
+    <div class="module-hub">
+      <div class="module-carousel">
+        ${visibleModules.map(m => {
+          const isActive = focus && m.id === focus.id;
+          const isDone = isModuleHubDone(m);
+
+          return `
+            <div
+              class="module-tile ${isActive ? "is-active" : ""}"
+              onclick="openModuleFromHub('${m.id}')"
+            >
+              <img
+                src="/assets/covers/${m.id}.jpg"
+                class="module-tile-cover"
+                alt="${m.title}"
+              />
+
+              <div class="module-tile-body">
+                <h3 class="module-tile-title">${m.title}</h3>
+                <div class="module-tile-meta">
+                  Poziom ${m.level}
+                </div>
+              </div>
+
+              <div class="module-tile-badges">
+                ${isDone ? `<span class="module-badge done">✓</span>` : ``}
+              </div>
+            </div>
+          `;
+        }).join("")}
+      </div>
+    </div>
+  `;
+}
+// ===============================
 // RENDER
 // ===============================
 function render() {
@@ -539,24 +585,9 @@ function renderContent() {
 
 
 if (!moduleStarted) {
-  return `
-    <div class="module-hero">
-      <div class="module-card">
-        <img
-          src="/assets/covers/${currentModule.id}.jpg"
-          alt="${currentModule.title}"
-          class="module-cover"
-        />
-
-        <h2 class="module-title">${currentModule.title}</h2>
-
-        <button class="btn-primary" onclick="startModule()">
-          Rozpocznij moduł
-        </button>
-      </div>
-    </div>
-  `;
+  return renderModuleHub();
 }
+
 
   if (moduleStarted && !activeActivity) {
   return `
@@ -577,6 +608,7 @@ if (!moduleStarted) {
     </div>
   `;
 }
+
 
 
 // ===============================
@@ -731,6 +763,19 @@ window.markCompleted = async (lessonId) => {
     return;
   }
 
+  render();
+};
+
+window.openModuleFromHub = (moduleId) => {
+  const mod = modules.find(m => m.id === moduleId);
+  if (!mod) return;
+
+  currentModule = mod;
+  moduleStarted = false;
+  activeActivity = null;
+  activeVariant = null;
+
+  updateURL();
   render();
 };
 
