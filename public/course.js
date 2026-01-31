@@ -620,9 +620,9 @@ if (!moduleStarted) {
 }
 
 
-  if (moduleStarted && !activeActivity) {
+if (moduleStarted && !activeActivity) {
   return `
-<h1 class="page-title">${currentModule.title}</h1>
+    ${renderListHeader(currentModule.title)}
 
     <div class="activities-list">
       ${currentModule.activities.map(act => `
@@ -639,6 +639,7 @@ if (!moduleStarted) {
     </div>
   `;
 }
+
 
 
 
