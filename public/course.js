@@ -398,7 +398,18 @@ function renderModuleHub() {
 
   return `
     <div class="module-hub">
-      <div class="module-carousel">
+
+      <!-- ⬅️ STRZAŁKA LEWA -->
+      <button
+        class="carousel-arrow left"
+        onclick="scrollCarousel(-1)"
+        aria-label="Poprzedni moduł"
+      >
+        ←
+      </button>
+
+      <!-- 🎠 KARUZELA -->
+      <div class="module-carousel" id="moduleCarousel">
         ${visibleModules.map(m => {
           const isActive = focus && m.id === focus.id;
           const isDone = isModuleHubDone(m);
@@ -421,16 +432,25 @@ function renderModuleHub() {
                 </div>
               </div>
 
-          <div class="module-tile-badges">
-  ${isDone ? `<span class="module-badge done">✓</span>` : ``}
-</div>
+              <div class="module-tile-badges">
+                ${isDone ? `<span class="module-badge done">✓</span>` : ``}
+              </div>
 
-${renderActivitiesPreviewInTile(m)}
-
+              ${renderActivitiesPreviewInTile(m)}
             </div>
           `;
         }).join("")}
       </div>
+
+      <!-- ➡️ STRZAŁKA PRAWA -->
+      <button
+        class="carousel-arrow right"
+        onclick="scrollCarousel(1)"
+        aria-label="Następny moduł"
+      >
+        →
+      </button>
+
     </div>
   `;
 }
@@ -873,6 +893,19 @@ window.openModuleFromHub = (moduleId) => {
   render();
 };
 
+window.scrollCarousel = (direction) => {
+  const carousel = document.getElementById("moduleCarousel");
+  if (!carousel) return;
+
+  const tileWidth = 240; // MUSI PASOWAĆ do CSS
+  const gap = 24;
+  const scrollAmount = tileWidth + gap;
+
+  carousel.scrollBy({
+    left: direction * scrollAmount,
+    behavior: "smooth"
+  });
+};
 
 
 window.startModule = () => {
