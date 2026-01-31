@@ -244,29 +244,7 @@ function isModuleHubDone(module) {
 
 // lista modułów widocznych w karuzeli
 function getVisibleModulesForUser() {
-  if (!Array.isArray(modules) || !modules.length) return [];
-
-const sameLevel = currentLevel
-  ? modules.filter(m =>
-      m.level >= currentLevel - 1 &&
-      m.level <= currentLevel + 1
-    )
-  : modules.slice();
-
-
-  // moduły ukończone (zawsze widoczne)
-  const completed = modules.filter(m => isModuleHubDone(m));
-
-  // merge bez duplikatów
-  const map = new Map();
-  [...sameLevel, ...completed].forEach(m => map.set(m.id, m));
-
-  return Array.from(map.values()).sort((a, b) => {
-    if ((a.level ?? 0) !== (b.level ?? 0)) {
-      return (a.level ?? 0) - (b.level ?? 0);
-    }
-    return a.id.localeCompare(b.id);
-  });
+  return modules;
 }
 
 // który moduł ma być na środku karuzeli
