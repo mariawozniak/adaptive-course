@@ -652,10 +652,9 @@ if (!moduleStarted) {
     </h1>
 
     ${renderModuleHub()}
-
-    ${renderActivitiesUnderModule()}
   `;
 }
+
 
 
 
