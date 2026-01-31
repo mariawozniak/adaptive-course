@@ -948,9 +948,19 @@ async function init() {
     setModuleForLevel(currentLevel);
   }
 
-  updateURL();
-  render();
+// ===== DEBUG (TYLKO DO SPRAWDZENIA) =====
+window.__debug = {
+  modules,
+  currentLevel,
+  getVisibleModulesForUser,
+  pickHubFocusModule
+};
+
+updateURL();
+render();
+
 }
+
 
 init();
 
