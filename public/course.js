@@ -211,6 +211,75 @@ if (activityId && currentModule?.activities?.length) {
 }
 
 // ===============================
+// MODULE HUB HELPERS (NEW, SAFE)
+// ===============================
+
+// czy moduł jest w 100% ukończony (NIE KOLIDUJE ze starą logiką)
+function isModuleHubDone(module) {
+  if (!module?.activities) return false;
+
+  return module.activities
+    .filter(a => a.required)
+    .every(activity => {
+      if (Array.isArray(activity.variants) && activity.variants.length) {
+        if (activity.completionRule === "any") {
+          return activity.variants.some(v =>
+            progress?.[module.id]?.completedLessons?.[v.id]
+          );
+        }
+        return activity.variants.every(v =>
+          progress?.[module.id]?.completedLessons?.[v.id]
+        );
+      }
+
+      if (activity.lessonId) {
+        return Boolean(
+          progress?.[module.id]?.completedLessons?.[activity.lessonId]
+        );
+      }
+
+      return true;
+    });
+}
+
+// lista modułów widocznych w karuzeli
+function getVisibleModulesForUser() {
+  if (!Array.isArray(modules) || !modules.length) return [];
+
+  // moduły z aktualnego levelu
+  const sameLevel = currentLevel
+    ? modules.filter(m => m.level === currentLevel)
+    : modules.slice();
+
+  // moduły ukończone (zawsze widoczne)
+  const completed = modules.filter(m => isModuleHubDone(m));
+
+  // merge bez duplikatów
+  const map = new Map();
+  [...sameLevel, ...completed].forEach(m => map.set(m.id, m));
+
+  return Array.from(map.values()).sort((a, b) => {
+    if ((a.level ?? 0) !== (b.level ?? 0)) {
+      return (a.level ?? 0) - (b.level ?? 0);
+    }
+    return a.id.localeCompare(b.id);
+  });
+}
+
+// który moduł ma być na środku karuzeli
+function pickHubFocusModule() {
+  const visible = getVisibleModulesForUser();
+  if (!visible.length) return null;
+
+  if (!currentLevel) return visible[0];
+
+  const sameLevel = visible.filter(m => m.level === currentLevel);
+  const firstNotDone = sameLevel.find(m => !isModuleHubDone(m));
+
+  return firstNotDone || sameLevel[0] || visible[0];
+}
+
+// ===============================
 // URL STATE (zapisywanie widoku do URL)
 // ===============================
 function updateURL() {
