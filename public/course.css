@@ -848,10 +848,11 @@ body.install-modal-open {
 =============================== */
 
 .module-hub {
-  position: relative; /* ⬅️ KLUCZ */
+  position: relative;
+  max-width: 1100px;   /* ⬅️ KLUCZ */
+  margin: 0 auto;      /* ⬅️ centruje całość */
   padding: 24px 0;
 }
-
 
 .module-carousel {
   display: flex;
@@ -870,15 +871,11 @@ body.install-modal-open {
 }
 
 .module-tile {
-  flex: 0 0 260px;
-  background: #fff;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-  scroll-snap-align: center;
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  opacity: 0.4;              /* ⬅️ boczne bledsze */
+  transform: scale(0.88);
+  filter: grayscale(0.3);   /* ⬅️ delikatnie */
 }
+
 
 .module-tile.is-active {
   transform: scale(1.05);
