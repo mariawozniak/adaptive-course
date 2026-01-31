@@ -616,8 +616,17 @@ function renderContent() {
 
 
 if (!moduleStarted) {
-  return renderModuleHub();
+  return `
+    <h1 class="course-title">
+      Kurs do Nauki Angielskiego z Piosenek i Seriali
+    </h1>
+
+    ${renderModuleHub()}
+
+    ${renderActivitiesUnderModule()}
+  `;
 }
+
 
 
 if (moduleStarted && !activeActivity) {
