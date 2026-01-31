@@ -842,53 +842,6 @@ body.install-modal-open {
   to   { transform: scale(1); opacity: 1; }
 }
 
-/* === MODULE HUB – MINIMAL === */
-
-.modules-hub {
-  padding: 24px;
-}
-
-.modules-carousel {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-}
-
-.module-tile {
-  min-width: 260px;
-  background: #fff;
-  border-radius: 16px;
-  padding: 16px;
-  box-shadow: 0 6px 20px rgba(0,0,0,.08);
-}
-
-.module-tile.active {
-  outline: 3px solid #e67e22;
-}
-
-.module-tile-cover {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 12px;
-}
-
-.module-tile-activity {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-}
-
-.module-tile-activity .check {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #ccc;
-}
-
-.module-tile-activity .check.done {
-  background: #27ae60;
-}
 
 /* ===============================
    MODULE HUB – CAROUSEL
@@ -902,9 +855,16 @@ body.install-modal-open {
   display: flex;
   gap: 16px;
   overflow-x: auto;
-  padding: 0 16px 12px;
+  overflow-y: hidden;
+  padding: 24px 16px;
   scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
+.module-tile {
+  flex: 0 0 260px;   /* szerokość kafelka */
+  scroll-snap-align: center;
+}
+
 
 .module-carousel::-webkit-scrollbar {
   display: none;
