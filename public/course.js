@@ -532,7 +532,15 @@ function render() {
       </div>
     </div>
   `;
+
+  // 🔥 AUTO-SCROLL DO AKTYWNEGO MODUŁU (TYLKO HUB)
+  if (!moduleStarted) {
+    requestAnimationFrame(() => {
+      scrollHubToActiveModule();
+    });
+  }
 }
+
 
 
 // ===============================
@@ -919,6 +927,19 @@ window.scrollCarousel = (direction) => {
     behavior: "smooth"
   });
 };
+function scrollHubToActiveModule() {
+  const carousel = document.getElementById("moduleCarousel");
+  if (!carousel) return;
+
+  const activeTile = carousel.querySelector(".module-tile.is-active");
+  if (!activeTile) return;
+
+  activeTile.scrollIntoView({
+    behavior: "smooth",
+    inline: "center",
+    block: "nearest"
+  });
+}
 
 
 window.startModule = () => {
