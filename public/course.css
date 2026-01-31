@@ -244,11 +244,12 @@ body {
 
 .module-inner{
   width:100%;
-  max-width:560px;
+  max-width:1200px;   /* ⬅️ DESKTOP WRACA */
   margin: 0 auto;
   padding: 0 16px;
   box-sizing: border-box;
 }
+
 
 
 
