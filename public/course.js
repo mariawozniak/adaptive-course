@@ -421,9 +421,12 @@ function renderModuleHub() {
                 </div>
               </div>
 
-              <div class="module-tile-badges">
-                ${isDone ? `<span class="module-badge done">✓</span>` : ``}
-              </div>
+          <div class="module-tile-badges">
+  ${isDone ? `<span class="module-badge done">✓</span>` : ``}
+</div>
+
+${renderActivitiesPreviewInTile(m)}
+
             </div>
           `;
         }).join("")}
