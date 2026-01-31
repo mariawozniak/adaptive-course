@@ -891,6 +891,10 @@ body.install-modal-open {
   box-shadow: 0 8px 20px rgba(0,0,0,0.10);
 }
 
+  display: flex;
+  flex-direction: column;
+
+
 
 .module-tile.is-active {
   transform: scale(1.08);
