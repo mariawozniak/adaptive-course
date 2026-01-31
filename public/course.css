@@ -848,22 +848,21 @@ body.install-modal-open {
 =============================== */
 
 .module-hub {
+  position: relative; /* ⬅️ KLUCZ */
   padding: 24px 0;
 }
 
+
 .module-carousel {
   display: flex;
-  gap: 16px;
+  gap: 24px;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 24px 16px;
+  padding: 24px 64px; /* ⬅️ miejsce na strzałki */
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
 }
-.module-tile {
-  flex: 0 0 260px;   /* szerokość kafelka */
-  scroll-snap-align: center;
-}
+
 
 
 .module-carousel::-webkit-scrollbar {
@@ -946,27 +945,7 @@ body.install-modal-open {
   opacity: 0.6;
   margin-left: 8px;
 }
-/* ======================================
-   CAROUSEL – CENTERED FOCUS
-====================================== */
 
-.module-carousel {
-  justify-content: center;
-  padding: 32px 64px; /* miejsce na strzałki */
-}
-
-/* kafelki boczne */
-.module-tile {
-  opacity: 0.6;
-  transform: scale(0.92);
-}
-
-/* środkowy (aktywny) */
-.module-tile.is-active {
-  opacity: 1;
-  transform: scale(1.08);
-  z-index: 2;
-}
 /* ======================================
    CAROUSEL ARROWS
 ====================================== */
@@ -1002,5 +981,22 @@ body.install-modal-open {
 
 .carousel-arrow.right {
   right: 16px;
+}
+/* ===============================
+   HUB – ACTIVE MODULE ACTIVITIES
+=============================== */
+
+.hub-activities {
+  max-width: 560px;
+  margin: 32px auto 0;
+  padding: 0 16px;
+}
+
+.hub-activities-title {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 16px;
+  color: #3a2a1a;
 }
 
