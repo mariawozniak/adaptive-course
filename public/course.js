@@ -246,23 +246,45 @@ function isModuleHubDone(module) {
 function getVisibleModulesForUser() {
   if (!Array.isArray(modules) || !modules.length) return [];
 
-  // 1️⃣ moduły na aktualnym poziomie
- const sameLevel = currentLevel
-  ? modules.filter(m => m.level >= currentLevel)
-  : modules;
+  // 1️⃣ grupujemy moduły po levelu
+  const byLevel = modules.reduce((acc, m) => {
+    acc[m.level] ||= [];
+    acc[m.level].push(m);
+    return acc;
+  }, {});
 
+  // 2️⃣ dostępne levele w treściach
+  const availableLevels = Object.keys(byLevel)
+    .map(Number)
+    .sort((a, b) => a - b);
 
-  // 2️⃣ wszystkie ukończone (zawsze widoczne)
+  // 3️⃣ jeśli brak levela usera → pokaż wszystko
+  if (!currentLevel || !availableLevels.length) {
+    return modules.slice().sort((a, b) => a.id.localeCompare(b.id));
+  }
+
+  // 4️⃣ znajdź NAJBLIŻSZY dostępny level
+  let closestLevel = availableLevels[0];
+  let minDiff = Math.abs(currentLevel - closestLevel);
+
+  for (const lvl of availableLevels) {
+    const diff = Math.abs(currentLevel - lvl);
+    if (diff < minDiff) {
+      minDiff = diff;
+      closestLevel = lvl;
+    }
+  }
+
+  // 5️⃣ bierzemy moduły z tego levelu
+  const sameLevel = byLevel[closestLevel] || [];
+
+  // 6️⃣ zawsze dodajemy ukończone (z innych leveli)
   const completed = modules.filter(m => isModuleHubDone(m));
 
-  // 3️⃣ jeśli brak levela (edge case) → pokaż wszystko
-  const base = currentLevel ? sameLevel : modules;
-
-  // 4️⃣ merge bez duplikatów
+  // 7️⃣ merge bez duplikatów
   const map = new Map();
-  [...base, ...completed].forEach(m => map.set(m.id, m));
+  [...sameLevel, ...completed].forEach(m => map.set(m.id, m));
 
-  // 5️⃣ sort stabilny (po poziomie, potem id)
   return Array.from(map.values()).sort((a, b) => {
     if ((a.level ?? 0) !== (b.level ?? 0)) {
       return (a.level ?? 0) - (b.level ?? 0);
