@@ -489,42 +489,31 @@ function renderActivitiesPreviewInTile(module) {
 }
 
 
-function renderActivitiesPreviewInTile(module) {
-  if (!module?.activities?.length) return "";
-
-  const isActiveModule = module.id === currentModule?.id;
+function renderActivitiesUnderModule() {
+  if (!currentModule) return "";
 
   return `
-    <div class="module-tile-activities">
-      ${module.activities.map(act => {
-        const showCheckbox =
-          isActiveModule && shouldRenderCheckbox(act);
+    <div class="module-activities-preview">
+      <h2 class="module-preview-title">
+        ${currentModule.title}
+        <span class="module-preview-level">
+          Poziom ${currentModule.level}
+        </span>
+      </h2>
 
-        const lessonId = getLessonId(act);
-
-        return `
+      <div class="activities-list">
+        ${currentModule.activities.map(act => `
           <div
-            class="module-tile-activity"
-            onclick="event.stopPropagation(); openActivity('${act.id}')"
+            class="activity-item"
+            onclick="openActivity('${act.id}')"
           >
             <span class="activity-status ${
               isActivityCompleted(act) ? "done" : ""
             }"></span>
-
             <span class="activity-label">${act.label}</span>
-
-            ${
-              showCheckbox
-                ? `<input
-                     type="checkbox"
-                     ${isCompleted(lessonId) ? "checked" : ""}
-                     onclick="event.stopPropagation(); markCompleted('${lessonId}')"
-                   />`
-                : ``
-            }
           </div>
-        `;
-      }).join("")}
+        `).join("")}
+      </div>
     </div>
   `;
 }
