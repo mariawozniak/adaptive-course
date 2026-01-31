@@ -432,6 +432,27 @@ function renderModuleHub() {
   `;
 }
 
+function renderActivitiesPreviewInTile(module) {
+  if (!module?.activities?.length) return "";
+
+  return `
+    <div class="module-tile-activities">
+      ${module.activities.map(act => `
+        <div
+          class="module-tile-activity"
+          onclick="event.stopPropagation(); openActivity('${act.id}')"
+        >
+          <span class="activity-status ${
+            isActivityCompleted(act) ? "done" : ""
+          }"></span>
+          <span class="activity-label">${act.label}</span>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+
 function renderActivitiesUnderModule() {
   if (!currentModule) return "";
 
