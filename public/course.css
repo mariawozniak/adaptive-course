@@ -946,4 +946,61 @@ body.install-modal-open {
   opacity: 0.6;
   margin-left: 8px;
 }
+/* ======================================
+   CAROUSEL – CENTERED FOCUS
+====================================== */
+
+.module-carousel {
+  justify-content: center;
+  padding: 32px 64px; /* miejsce na strzałki */
+}
+
+/* kafelki boczne */
+.module-tile {
+  opacity: 0.6;
+  transform: scale(0.92);
+}
+
+/* środkowy (aktywny) */
+.module-tile.is-active {
+  opacity: 1;
+  transform: scale(1.08);
+  z-index: 2;
+}
+/* ======================================
+   CAROUSEL ARROWS
+====================================== */
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid #f1e3d3;
+  box-shadow: 0 8px 20px rgba(0,0,0,.12);
+  cursor: pointer;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+  color: #3a2a1a;
+}
+
+.carousel-arrow:hover {
+  background: #fff3e6;
+}
+
+.carousel-arrow.left {
+  left: 16px;
+}
+
+.carousel-arrow.right {
+  right: 16px;
+}
 
